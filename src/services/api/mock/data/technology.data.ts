@@ -1,7 +1,7 @@
-import { Guide, GuideCategory } from '@/core/types/web/guide';
+import { Technology, TechnologyCategory } from '@/core/types/web/technology';
 
 // Categories
-export const guideCategories: GuideCategory[] = [
+export const technologyCategories: TechnologyCategory[] = [
   {
     id: 'cat-architecture',
     name: { en: 'System Architecture', ar: 'بنية الأنظمة' },
@@ -32,10 +32,10 @@ export const guideCategories: GuideCategory[] = [
   },
 ];
 
-// Guides
-export const guides: Guide[] = [
+// Technologies
+export const technologies: Technology[] = [
   {
-    id: 'guide-1',
+    id: 'tech-1',
     slug: 'building-payment-gateway-architecture',
     title: {
       en: 'Building a Secure Payment Gateway: Complete Architecture Guide',
@@ -45,7 +45,7 @@ export const guides: Guide[] = [
       en: 'Learn how to design and implement a production-ready payment gateway with PCI DSS compliance, fraud detection, and real-time transaction processing. Covers microservices architecture, database design, and API security.',
       ar: 'تعلم كيفية تصميم وتنفيذ بوابة دفع جاهزة للإنتاج مع الامتثال لمعايير PCI DSS، واكتشاف الاحتيال، ومعالجة المعاملات في الوقت الفعلي. يغطي بنية الخدمات المصغرة وتصميم قواعد البيانات وأمن واجهات برمجة التطبيقات.',
     },
-    category: guideCategories[0],
+    category: technologyCategories[0],
     difficulty: 'advanced',
     duration: '60 min read',
     icon: '💳',
@@ -54,7 +54,7 @@ export const guides: Guide[] = [
     updatedAt: '2024-11-20T10:00:00Z',
   },
   {
-    id: 'guide-2',
+    id: 'tech-2',
     slug: 'digital-wallet-implementation',
     title: {
       en: 'Implementing a Digital Wallet: From Design to Deployment',
@@ -64,7 +64,7 @@ export const guides: Guide[] = [
       en: 'Step-by-step guide to building a digital wallet system similar to Apple Pay or STC Pay. Includes balance management, peer-to-peer transfers, QR code payments, and transaction history with high availability architecture.',
       ar: 'دليل خطوة بخطوة لبناء نظام محفظة رقمية مشابه لـ Apple Pay أو STC Pay. يتضمن إدارة الرصيد، والتحويلات بين الأقران، ومدفوعات رمز الاستجابة السريعة، وسجل المعاملات مع بنية عالية التوافر.',
     },
-    category: guideCategories[3],
+    category: technologyCategories[3],
     difficulty: 'intermediate',
     duration: '45 min read',
     icon: '👛',
@@ -73,7 +73,7 @@ export const guides: Guide[] = [
     updatedAt: '2024-11-18T14:00:00Z',
   },
   {
-    id: 'guide-3',
+    id: 'tech-3',
     slug: 'kyc-aml-system-design',
     title: {
       en: 'KYC/AML System Design: Regulatory Compliance in FinTech',
@@ -83,7 +83,7 @@ export const guides: Guide[] = [
       en: 'Comprehensive guide to designing KYC and AML systems that comply with SAMA regulations. Covers identity verification, document processing with OCR, risk scoring algorithms, and automated compliance reporting.',
       ar: 'دليل شامل لتصميم أنظمة اعرف عميلك ومكافحة غسل الأموال المتوافقة مع لوائح ساما. يغطي التحقق من الهوية، ومعالجة المستندات بتقنية التعرف البصري على الحروف، وخوارزميات تقييم المخاطر، وإعداد التقارير التلقائية للامتثال.',
     },
-    category: guideCategories[1],
+    category: technologyCategories[1],
     difficulty: 'advanced',
     duration: '50 min read',
     icon: '🔍',
@@ -92,7 +92,7 @@ export const guides: Guide[] = [
     updatedAt: '2024-11-15T11:00:00Z',
   },
   {
-    id: 'guide-4',
+    id: 'tech-4',
     slug: 'real-time-transaction-processing',
     title: {
       en: 'Real-Time Transaction Processing: Event-Driven Architecture',
@@ -102,16 +102,16 @@ export const guides: Guide[] = [
       en: 'Master event-driven architecture for processing thousands of transactions per second. Learn about message queues, event sourcing, CQRS patterns, and building resilient distributed systems for financial applications.',
       ar: 'إتقان البنية الموجهة بالأحداث لمعالجة آلاف المعاملات في الثانية. تعلم عن قوائم انتظار الرسائل، ومصادر الأحداث، وأنماط CQRS، وبناء أنظمة موزعة مرنة للتطبيقات المالية.',
     },
-    category: guideCategories[0],
+    category: technologyCategories[0],
     difficulty: 'advanced',
-duration: '55 min read',
+    duration: '55 min read',
     icon: '⚡',
     topics: ['Event Sourcing', 'CQRS', 'Message Queues', 'Apache Kafka', 'Distributed Systems'],
     publishedAt: '2024-10-25T08:30:00Z',
     updatedAt: '2024-11-12T09:00:00Z',
   },
   {
-    id: 'guide-5',
+    id: 'tech-5',
     slug: 'api-security-best-practices',
     title: {
       en: 'API Security Best Practices for FinTech Applications',
@@ -121,7 +121,7 @@ duration: '55 min read',
       en: 'Complete guide to securing FinTech APIs. Covers OAuth 2.0, JWT authentication, rate limiting, API gateway patterns, encryption strategies, and defending against common attacks like SQL injection and XSS.',
       ar: 'دليل كامل لتأمين واجهات برمجة التطبيقات للتقنية المالية. يغطي OAuth 2.0، ومصادقة JWT، وتحديد المعدل، وأنماط بوابة API، واستراتيجيات التشفير، والدفاع ضد الهجمات الشائعة مثل حقن SQL وXSS.',
     },
-    category: guideCategories[1],
+    category: technologyCategories[1],
     difficulty: 'intermediate',
     duration: '40 min read',
     icon: '🛡️',
@@ -130,7 +130,7 @@ duration: '55 min read',
     updatedAt: '2024-11-20T08:00:00Z',
   },
   {
-    id: 'guide-6',
+    id: 'tech-6',
     slug: 'microservices-fintech-architecture',
     title: {
       en: 'Microservices Architecture for FinTech: Design Patterns & Best Practices',
@@ -140,7 +140,7 @@ duration: '55 min read',
       en: 'Learn how to structure FinTech platforms using microservices. Covers service boundaries, inter-service communication, data consistency, distributed transactions, and deployment strategies for financial services.',
       ar: 'تعلم كيفية بناء منصات التقنية المالية باستخدام الخدمات المصغرة. يغطي حدود الخدمات، والاتصال بين الخدمات، واتساق البيانات، والمعاملات الموزعة، واستراتيجيات النشر للخدمات المالية.',
     },
-    category: guideCategories[0],
+    category: technologyCategories[0],
     difficulty: 'intermediate',
     duration: '50 min read',
     icon: '🔧',

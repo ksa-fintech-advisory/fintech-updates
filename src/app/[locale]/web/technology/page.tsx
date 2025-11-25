@@ -1,18 +1,18 @@
 'use client';
 
-import { guideService } from '@/services/api/mock';
+import { technologyService } from '@/services/api/mock';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import type { Guide, GuideCategory } from '@/core/types/web/guide';
+import type { Technology, TechnologyCategory } from '@/core/types/web/technology';
 
-export default function GuidesPage() {
+export default function TechnologyPage() {
   const params = useParams();
   const locale = params.locale as string;
   const isArabic = locale === 'ar';
 
-  const [guides, setGuides] = useState<Guide[]>([]);
-  const [categories, setCategories] = useState<GuideCategory[]>([]);
+  const [technologies, setTechnologies] = useState<Technology[]>([]);
+  const [categories, setCategories] = useState<TechnologyCategory[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -32,15 +32,15 @@ export default function GuidesPage() {
   };
 
   useEffect(() => {
-    async function loadGuides() {
+    async function loadTechnologies() {
       setLoading(true);
-      const data = await guideService.paginateGuides(currentPage, limit, selectedCategory || undefined);
-      setGuides(data.guides);
+      const data = await technologyService.paginateTechnologies(currentPage, limit, selectedCategory || undefined);
+      setTechnologies(data.technologies);
       setCategories(data.categories);
       setTotalPages(data.totalPages);
       setLoading(false);
     }
-    loadGuides();
+    loadTechnologies();
   }, [currentPage, selectedCategory]);
 
   const handleCategoryChange = (categorySlug: string) => {
@@ -67,7 +67,7 @@ export default function GuidesPage() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block px-4 py-2 bg-white/10 rounded-full backdrop-blur-sm mb-6 animate-slide-down">
               <span className="text-sm font-semibold">
-                {isArabic ? '📚 موارد عملية' : '📚 Practical Resources'}
+                {isArabic ? '💻 موارد تقنية' : '💻 Technology Resources'}
               </span>
             </div>
             
@@ -119,7 +119,7 @@ export default function GuidesPage() {
                   : 'bg-grey-100 text-grey-700 hover:bg-grey-200'
                 }`}
             >
-              {isArabic ? 'جميع الأدلة' : 'All Guides'}
+              {isArabic ? 'جميع التقنيات' : 'All Technologies'}
             </button>
             {categories.map((category) => (
               <button
@@ -138,26 +138,26 @@ export default function GuidesPage() {
         </div>
       </section>
 
-      {/* Guides Grid */}
+      {/* Technologies Grid */}
       <section className="py-20 bg-grey-50 min-h-screen">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
             <div className="flex items-center justify-center py-20">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
-          ) : guides.length === 0 ? (
+          ) : technologies.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-grey-600 text-lg">
-                {isArabic ? 'لا توجد أدلة في هذه الفئة' : 'No guides found in this category'}
+                {isArabic ? 'لا توجد تقنيات في هذه الفئة' : 'No technologies found in this category'}
               </p>
             </div>
           ) : (
             <>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {guides.map((guide, idx) => (
+                    {technologies.map((tech, idx) => (
                       <Link
-                        key={guide.id}
-                        href={`/${locale}/web/guides/${guide.slug}`}
+                        key={tech.id}
+                        href={`/${locale}/web/technology/${tech.slug}`}
                     className="group animate-fade-in"
                     style={{ animationDelay: `${idx * 0.05}s` }}
                   >
@@ -166,7 +166,7 @@ export default function GuidesPage() {
                       <div className="relative h-48 bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
                         <div className="relative text-8xl transform group-hover:scale-110 transition-transform">
-                          {guide.icon}
+                          {tech.icon}
                         </div>
 
                         {/* Category Badge */}
@@ -174,18 +174,18 @@ export default function GuidesPage() {
                           <span
                             className="px-3 py-1 rounded-full text-xs font-bold backdrop-blur-md"
                             style={{
-                              backgroundColor: `${guide.category.color}CC`,
+                              backgroundColor: `${tech.category.color}CC`,
                               color: 'white',
                             }}
                           >
-                            {guide.category.icon} {isArabic ? guide.category.name.ar : guide.category.name.en}
+                            {tech.category.icon} {isArabic ? tech.category.name.ar : tech.category.name.en}
                           </span>
                         </div>
 
                         {/* Difficulty Badge */}
                         <div className="absolute top-4 right-4">
-                          <span className={`px-3 py-1 rounded-full text-xs font-bold border ${difficultyColor[guide.difficulty]}`}>
-                            {difficultyLabel[guide.difficulty]}
+                          <span className={`px-3 py-1 rounded-full text-xs font-bold border ${difficultyColor[tech.difficulty]}`}>
+                            {difficultyLabel[tech.difficulty]}
                           </span>
                         </div>
                       </div>
@@ -193,16 +193,16 @@ export default function GuidesPage() {
                       {/* Content */}
                       <div className="p-6">
                         <h3 className="text-xl font-bold text-grey-900 mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
-                          {isArabic ? guide.title.ar : guide.title.en}
+                          {isArabic ? tech.title.ar : tech.title.en}
                         </h3>
 
                         <p className="text-grey-600 mb-4 leading-relaxed line-clamp-3 text-sm">
-                          {isArabic ? guide.description.ar : guide.description.en}
+                          {isArabic ? tech.description.ar : tech.description.en}
                         </p>
 
                         {/* Topics */}
                         <div className="flex flex-wrap gap-2 mb-4">
-                          {guide.topics.slice(0, 3).map((topic: string, i: number) => (
+                          {tech.topics.slice(0, 3).map((topic: string, i: number) => (
                             <span
                               key={i}
                               className="px-2 py-1 bg-grey-100 text-grey-700 rounded text-xs font-medium"
@@ -210,9 +210,9 @@ export default function GuidesPage() {
                               {topic}
                             </span>
                           ))}
-                          {guide.topics.length > 3 && (
+                          {tech.topics.length > 3 && (
                             <span className="px-2 py-1 bg-grey-100 text-grey-600 rounded text-xs">
-                              +{guide.topics.length - 3}
+                              +{tech.topics.length - 3}
                             </span>
                           )}
                         </div>
@@ -223,7 +223,7 @@ export default function GuidesPage() {
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            <span>{guide.duration}</span>
+                            <span>{tech.duration}</span>
                           </div>
                           <span className="text-primary hover:text-primary-700 font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">
                             {isArabic ? 'اقرأ الآن ←' : 'Read Guide →'}

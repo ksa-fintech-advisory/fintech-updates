@@ -1,5 +1,5 @@
-// Guide Types
-export interface Guide {
+// Technology Types
+export interface Technology {
   id: string;
   title: {
     en: string;
@@ -9,7 +9,7 @@ export interface Guide {
     en: string;
     ar: string;
   };
-  category: GuideCategory;
+  category: TechnologyCategory;
   difficulty: 'beginner' | 'intermediate' | 'advanced';
   duration: string; // e.g., "45 min read"
   slug: string;
@@ -19,7 +19,7 @@ export interface Guide {
   updatedAt: string;
 }
 
-export interface GuideCategory {
+export interface TechnologyCategory {
   id: string;
   name: {
     en: string;
@@ -30,11 +30,11 @@ export interface GuideCategory {
   icon: string;
 }
 
-export interface PaginatedGuides {
-  guides: Guide[];
+export interface PaginatedTechnologies {
+  technologies: Technology[];
   total: number;
   page: number;
   limit: number;
   totalPages: number;
-  categories: GuideCategory[];
+  categories: TechnologyCategory[];
 }

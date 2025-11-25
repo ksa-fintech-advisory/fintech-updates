@@ -1,27 +1,27 @@
-import { guideService } from '@/services/api/mock';
+import { technologyService } from '@/services/api/mock';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 
-interface GuideDetailPageProps {
+interface TechnologyDetailPageProps {
   params: {
     slug: string;
     locale: string;
   };
 }
 
-export default async function GuideDetailPage({ params }: GuideDetailPageProps) {
+export default async function TechnologyDetailPage({ params }: TechnologyDetailPageProps) {
   const { slug, locale } = params;
   const isArabic = locale === 'ar';
   
-  // Get guide by slug
-  const guide = await guideService.getGuideBySlug(slug);
+  // Get technology by slug
+  const technology = await technologyService.getTechnologyBySlug(slug);
   
-  if (!guide) {
+  if (!technology) {
     notFound();
   }
 
-  const title = isArabic ? guide.title.ar : guide.title.en;
-  const description = isArabic ? guide.description.ar : guide.description.en;
+  const title = isArabic ? technology.title.ar : technology.title.en;
+  const description = isArabic ? technology.description.ar : technology.description.en;
 
   const difficultyColor = {
     beginner: 'bg-success-50 text-success-700 border-success-200',
@@ -32,7 +32,7 @@ export default async function GuideDetailPage({ params }: GuideDetailPageProps) 
   const difficultyLabel = {
     beginner: isArabic ? 'مبتدئ' : 'Beginner',
     intermediate: isArabic ? 'متوسط' : 'Intermediate',
-    advanced: isArabic ? 'متقدم' : 'Advanced',
+    advanced:isArabic ? 'متقدم' : 'Advanced',
   };
 
   return (
@@ -51,23 +51,23 @@ export default async function GuideDetailPage({ params }: GuideDetailPageProps) 
               <span
                 className="px-4 py-2 text-sm font-bold rounded-full backdrop-blur-md"
                 style={{
-                  backgroundColor: `${guide.category.color}CC`,
+                  backgroundColor: `${technology.category.color}CC`,
                   color: 'white',
                 }}
               >
-                {guide.category.icon} {isArabic ? guide.category.name.ar : guide.category.name.en}
+                {technology.category.icon} {isArabic ? technology.category.name.ar : technology.category.name.en}
               </span>
-              <span className={`px-4 py-2 rounded-full text-sm font-bold border-2 ${difficultyColor[guide.difficulty]}`}>
-                {difficultyLabel[guide.difficulty]}
+              <span className={`px-4 py-2 rounded-full text-sm font-bold border-2 ${difficultyColor[technology.difficulty as keyof typeof difficultyColor]}`}>
+                {difficultyLabel[technology.difficulty as keyof typeof difficultyLabel]}
               </span>
               <span className="px-4 py-2 text-sm bg-white/10 backdrop-blur-sm rounded-full">
-                {guide.duration}
+                {technology.duration}
               </span>
             </div>
 
             {/* Title & Icon */}
             <div className="flex items-start gap-6">
-              <div className="text-7xl">{guide.icon}</div>
+              <div className="text-7xl">{technology.icon}</div>
               <div className="flex-1">
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">{title}</h1>
                 <p className="text-xl text-white/90 mb-6">{description}</p>
@@ -76,7 +76,7 @@ export default async function GuideDetailPage({ params }: GuideDetailPageProps) 
 
             {/* Topics */}
             <div className="flex flex-wrap gap-2">
-              {guide.topics.map((topic: string, i: number) => (
+              {technology.topics.map((topic: string, i: number) => (
                 <span
                   key={i}
                   className="px-3 py-1 bg-white/10 backdrop-blur-sm text-white rounded-lg text-sm font-medium"
@@ -89,7 +89,7 @@ export default async function GuideDetailPage({ params }: GuideDetailPageProps) 
             {/* Metadata */}
             <div className="mt-8 pt-6 border-t border-white/20 text-white/70 text-sm">
               {isArabic ? 'آخر تحديث: ' : 'Last updated: '}
-              {new Date(guide.updatedAt).toLocaleDateString(isArabic ? 'ar-SA' : 'en-US', {
+              {new Date(technology.updatedAt).toLocaleDateString(isArabic ? 'ar-SA' : 'en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
@@ -99,7 +99,7 @@ export default async function GuideDetailPage({ params }: GuideDetailPageProps) 
         </div>
       </section>
 
-      {/* Guide Content */}
+      {/* Technology Content */}
       <article className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
@@ -133,7 +133,7 @@ export default async function GuideDetailPage({ params }: GuideDetailPageProps) 
                 </p>
               </div>
 
-              {/* Placeholder for actual guide content */}
+              {/* Placeholder for actual technology content */}
               <div className="space-y-8">
                 <section>
                   <h2 className="text-2xl font-bold text-grey-900 mb-4">
@@ -173,13 +173,13 @@ export default async function GuideDetailPage({ params }: GuideDetailPageProps) 
             {/* Back Navigation */}
             <div className="mt-16 pt-8 border-t border-grey-200">
               <Link
-                href={`/${locale}/web/guides`}
+                href={`/${locale}/web/technology`}
                 className="inline-flex items-center gap-2 text-primary hover:text-primary-700 font-semibold text-lg"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
-                {isArabic ? 'العودة إلى الأدلة' : 'Back to Guides'}
+                {isArabic ? 'العودة إلى التقنيات' : 'Back to Technology'}
               </Link>
             </div>
           </div>
