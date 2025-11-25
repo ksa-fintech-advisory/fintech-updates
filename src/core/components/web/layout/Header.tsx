@@ -15,12 +15,12 @@ export default function Header() {
   const currentPath = pathname.replace(`/${locale}`, '');
 
   const navItems = [
-    { href: '/web/home', label: t('common.nav.home') || 'Home' },
-    { href: '/web/blog', label: t('common.nav.blog') || 'Blog' },
-    { href: '/web/technology', label: t('common.nav.guides') || 'Technology' },
-    { href: '/web/compliance', label: t('common.nav.compliance') || 'Compliance' },
-    { href: '/web/about', label: t('common.nav.about') || 'About Us' },
-    { href: '/web/contact', label: t('common.nav.contact') || 'Contact' },
+    { href: '/web/home', label: t('common.nav.home') },
+    { href: '/web/blog', label: t('common.nav.blog') },
+    { href: '/web/technology', label: t('common.nav.technology')},
+    { href: '/web/compliance', label: t('common.nav.compliance')},
+    { href: '/web/about', label: t('common.nav.about')},
+    { href: '/web/contact', label: t('common.nav.contact')},
   ];
 
   const isActive = (href: string) => {
