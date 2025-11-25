@@ -1,10 +1,105 @@
-export const blogService = {
-    async paginateBlogs(page:number, limit:number){
-        
-  },
-  
+import { Blog, PaginatedBlogs, BlogFilters, BlogCategory } from '@/core/types/web/blog';
+import { blogs, blogCategories } from './data/blogs.data';
 
-  filterBlogs(category:string){
-    
-  }
-}
+// Simulate network delay
+const delay = (ms: number = 500) => new Promise(resolve => setTimeout(resolve, ms));
+
+export const blogService = {
+  /**
+   * Get paginated blogs with optional filters
+   */
+  async paginateBlogs(
+    page: number = 1,
+    limit: number = 12,
+    filters?: BlogFilters
+  ): Promise<PaginatedBlogs> {
+    await delay();
+
+    let filteredBlogs = [...blogs];
+
+    // Apply category filter
+    if (filters?.category) {
+      filteredBlogs = filteredBlogs.filter(
+        blog => blog.category.slug === filters.category
+      );
+    }
+
+    // Apply search filter
+    if (filters?.search) {
+      const searchLower = filters.search.toLowerCase();
+      filteredBlogs = filteredBlogs.filter(blog =>
+        blog.title.en.toLowerCase().includes(searchLower) ||
+        blog.title.ar.toLowerCase().includes(searchLower) ||
+        blog.excerpt.en.toLowerCase().includes(searchLower) ||
+        blog.excerpt.ar.toLowerCase().includes(searchLower) ||
+        blog.tags.some(tag => tag.toLowerCase().includes(searchLower))
+      );
+    }
+
+    // Sort by published date (newest first)
+    filteredBlogs.sort((a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+    );
+
+    const total = filteredBlogs.length;
+    const totalPages = Math.ceil(total / limit);
+    const start = (page - 1) * limit;
+    const end = start + limit;
+
+    return {
+      blogs: filteredBlogs.slice(start, end),
+      total,
+      page,
+      limit,
+      totalPages,
+      categories: blogCategories,
+    };
+  },
+
+  /**
+   * Filter blogs by category
+   */
+  async filterBlogs(categorySlug: string): Promise<Blog[]> {
+    await delay();
+
+    return blogs.filter(blog => blog.category.slug === categorySlug);
+  },
+
+  /**
+   * Get all blog categories
+   */
+  async getBlogCategories(): Promise<BlogCategory[]> {
+    await delay(200);
+
+    return blogCategories;
+  },
+
+  /**
+   * Search blogs by query
+   */
+  async searchBlogs(query: string): Promise<Blog[]> {
+    await delay();
+
+    const searchLower = query.toLowerCase();
+    return blogs.filter(blog =>
+      blog.title.en.toLowerCase().includes(searchLower) ||
+      blog.title.ar.toLowerCase().includes(searchLower) ||
+      blog.excerpt.en.toLowerCase().includes(searchLower) ||
+      blog.excerpt.ar.toLowerCase().includes(searchLower) ||
+      blog.tags.some(tag => tag.toLowerCase().includes(searchLower))
+    );
+  },
+
+  /**
+   * Get a single blog by ID or slug
+   */
+  async getOneBlog(idOrSlug: string): Promise<Blog | null> {
+    await delay();
+
+    const blog = blogs.find(
+      b => b.id === idOrSlug || b.slug === idOrSlug
+    );
+
+    return blog || null;
+  },
+};
