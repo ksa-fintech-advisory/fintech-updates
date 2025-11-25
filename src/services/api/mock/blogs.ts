@@ -66,9 +66,18 @@ export const blogService = {
   },
 
   /**
-   * Get all blog categories
+   * Get a single blog by slug
    */
-  async getBlogCategories(): Promise<BlogCategory[]> {
+  async getBlogBySlug(slug: string) {
+    await delay();
+
+    return blogs.find(blog => blog.slug === slug) || null;
+  },
+
+  /**
+   * Get blog categories
+   */
+  async getBlogCategories() {
     await delay(200);
 
     return blogCategories;
@@ -77,29 +86,24 @@ export const blogService = {
   /**
    * Search blogs by query
    */
-  async searchBlogs(query: string): Promise<Blog[]> {
+  async searchBlogs(query: string) {
     await delay();
 
-    const searchLower = query.toLowerCase();
-    return blogs.filter(blog =>
-      blog.title.en.toLowerCase().includes(searchLower) ||
-      blog.title.ar.toLowerCase().includes(searchLower) ||
-      blog.excerpt.en.toLowerCase().includes(searchLower) ||
-      blog.excerpt.ar.toLowerCase().includes(searchLower) ||
-      blog.tags.some(tag => tag.toLowerCase().includes(searchLower))
+    const lowerQuery = query.toLowerCase();
+    return blogs.filter(blog => 
+      blog.title.en.toLowerCase().includes(lowerQuery) ||
+      blog.title.ar.toLowerCase().includes(lowerQuery) ||
+      blog.excerpt.en.toLowerCase().includes(lowerQuery) ||
+      blog.excerpt.ar.toLowerCase().includes(lowerQuery)
     );
   },
 
   /**
-   * Get a single blog by ID or slug
+   * Get one blog by ID or slug (alias for getBlogBySlug for consistency)
    */
-  async getOneBlog(idOrSlug: string): Promise<Blog | null> {
+  async getOneBlog(idOrSlug: string) {
     await delay();
 
-    const blog = blogs.find(
-      b => b.id === idOrSlug || b.slug === idOrSlug
-    );
-
-    return blog || null;
+    return blogs.find(blog => blog.id === idOrSlug || blog.slug === idOrSlug) || null;
   },
 };

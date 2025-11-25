@@ -17,6 +17,7 @@ export default function Header() {
   const navItems = [
     { href: '/web/home', label: t('common.nav.home') || 'Home' },
     { href: '/web/blog', label: t('common.nav.blog') || 'Blog' },
+      { href: '/web/guides', label: t('common.nav.guides') || 'Guides' },
       { href: '/web/compliance', label: t('common.nav.compliance') || 'Compliance' },
       { href: '/web/about', label: t('common.nav.about') || 'About Us' },
     { href: '/web/contact', label: t('common.nav.contact') || 'Contact' },
