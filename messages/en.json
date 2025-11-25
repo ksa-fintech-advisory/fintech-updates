@@ -11,14 +11,85 @@
       "readMore": "Read More",
       "subscribe": "Subscribe",
       "submit": "Submit",
-      "send": "Send Message"
+      "send": "Send Message",
+      "loading": "Loading...",
+      "sending": "Sending..."
     },
     "labels": {
       "readTime": "min read",
       "views": "views",
       "publishedOn": "Published on",
       "category": "Category",
-      "tags": "Tags"
+      "tags": "Tags",
+      "source": "Source:",
+      "effective": "Effective:",
+      "learnMore": "Learn More →",
+      "allRegions": "All Regions",
+      "allCategories": "All Categories"
+    }
+  },
+  "web": {
+    "home": {
+      "hero": {
+        "title": "Saudi Arabia's Leading FinTech News & Insights",
+        "subtitle": "Stay Updated with the Latest in Saudi Financial Technology",
+        "description": "Your trusted source for comprehensive coverage of FinTech innovations, regulatory updates, and industry trends shaping Saudi Arabia's digital financial future.",
+        "exploreArticles": "Explore Articles",
+        "aboutUs": "About Us"
+      },
+      "sections": {
+        "featured": "Featured Articles",
+        "latest": "Latest Updates",
+        "stats": "By The Numbers"
+      }
+    },
+    "blog": {
+      "title": "Blog",
+      "subtitle": "Insights and updates from the FinTech world",
+      "noResults": "No blog posts found"
+    },
+    "compliance": {
+      "title": "Compliance Updates",
+      "subtitle": "Latest regulatory and compliance updates across the Gulf region",
+      "noUpdates": "No updates found"
+    },
+    "about": {
+      "title": "About Us",
+      "subtitle": "Your trusted source for Saudi FinTech insights and analysis",
+      "authorName": "Mohammed Abdo",
+      "authorTitle": "FinTech Expert & Industry Analyst",
+      "authorBio": "A seasoned FinTech professional with extensive experience in the Saudi financial technology landscape. Specializing in regulatory compliance, digital banking innovations, and emerging payment technologies, I provide in-depth analysis and insights into the rapidly evolving FinTech ecosystem in the Kingdom and across the GCC region.",
+      "mission": "Our Mission",
+      "vision": "Our Vision",
+      "values": "Our Core Values",
+      "expertise": "Areas of Expertise",
+      "cta": {
+        "title": "Stay Informed",
+        "description": "Subscribe to receive the latest FinTech updates and regulatory insights",
+        "button": "Subscribe Now"
+      }
+    },
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "Get in touch with our team",
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Enter your name",
+        "email": "Email",
+        "emailPlaceholder": "Enter your email",
+        "subject": "Subject",
+        "subjectPlaceholder": "Enter subject",
+        "message": "Message",
+        "messagePlaceholder": "Write your message here",
+        "required": "*",
+        "submit": "Send Message",
+        "sending": "Sending...",
+        "success": "Thank you! We'll get back to you soon.",
+        "error": "Something went wrong. Please try again."
+      }
+    },
+    "article": {
+      "relatedArticles": "Related Articles"
     }
   },
   "pages": {
