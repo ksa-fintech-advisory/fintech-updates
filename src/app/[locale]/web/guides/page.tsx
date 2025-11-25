@@ -1,10 +1,23 @@
+'use client';
+
 import { guideService } from '@/services/api/mock';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import type { Guide, GuideCategory } from '@/core/types/web/guide';
 
-export default async function GuidesPage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export default function GuidesPage() {
+  const params = useParams();
+  const locale = params.locale as string;
   const isArabic = locale === 'ar';
-  const guidesData = await guideService.paginateGuides(1, 12);
+
+  const [guides, setGuides] = useState<Guide[]>([]);
+  const [categories, setCategories] = useState<GuideCategory[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const limit = 9;
 
   const difficultyColor = {
     beginner: 'bg-success-50 text-success-700 border-success-200',
@@ -14,8 +27,30 @@ export default async function GuidesPage({ params }: { params: { locale: string 
 
   const difficultyLabel = {
     beginner: isArabic ? 'مبتدئ' : 'Beginner',
-    intermediate: isArabic ? 'متوسط' :  'Intermediate',
+    intermediate: isArabic ? 'متوسط' : 'Intermediate',
     advanced: isArabic ? 'متقدم' : 'Advanced',
+  };
+
+  useEffect(() => {
+    async function loadGuides() {
+      setLoading(true);
+      const data = await guideService.paginateGuides(currentPage, limit, selectedCategory || undefined);
+      setGuides(data.guides);
+      setCategories(data.categories);
+      setTotalPages(data.totalPages);
+      setLoading(false);
+    }
+    loadGuides();
+  }, [currentPage, selectedCategory]);
+
+  const handleCategoryChange = (categorySlug: string) => {
+    setSelectedCategory(categorySlug);
+    setCurrentPage(1);
+  };
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -74,16 +109,26 @@ export default async function GuidesPage({ params }: { params: { locale: string 
       </section>
 
       {/* Category Filter */}
-      <section className="bg-white border-b border-grey-200 sticky top-16 z-40">
+      <section className="bg-white border-b border-grey-200 sticky top-16 z-40 shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex gap-2 overflow-x-auto pb-2">
-            <button className="px-4 py-2 rounded-lg bg-primary text-white font-medium whitespace-nowrap shadow-sm">
+            <button
+              onClick={() => handleCategoryChange('')}
+              className={`px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-colors ${selectedCategory === ''
+                  ? 'bg-primary text-white shadow-md'
+                  : 'bg-grey-100 text-grey-700 hover:bg-grey-200'
+                }`}
+            >
               {isArabic ? 'جميع الأدلة' : 'All Guides'}
             </button>
-            {guidesData.categories.map((category) => (
+            {categories.map((category) => (
               <button
                 key={category.id}
-                className="px-4 py-2 rounded-lg bg-grey-100 text-grey-700 hover:bg-grey-200 font-medium whitespace-nowrap transition-colors flex items-center gap-2"
+                onClick={() => handleCategoryChange(category.slug)}
+                className={`px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-colors flex items-center gap-2 ${selectedCategory === category.slug
+                    ? 'bg-primary text-white shadow-md'
+                    : 'bg-grey-100 text-grey-700 hover:bg-grey-200'
+                  }`}
               >
                 <span>{category.icon}</span>
                 <span>{isArabic ? category.name.ar : category.name.en}</span>
@@ -94,94 +139,137 @@ export default async function GuidesPage({ params }: { params: { locale: string 
       </section>
 
       {/* Guides Grid */}
-      <section className="py-20 bg-grey-50">
+      <section className="py-20 bg-grey-50 min-h-screen">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {guidesData.guides.map((guide, idx) => (
-              <Link
-                key={guide.id}
-                href={`/${locale}/web/guides/${guide.slug}`}
-                className="group"
-              >
-                <article
-                  className="bg-white rounded-xl shadow-soft hover:shadow-hard transition-all duration-500 overflow-hidden transform hover:-translate-y-2 animate-slide-up h-full"
-                  style={{ animationDelay: `${idx * 0.1}s` }}
-                >
-                {/* Header with Icon */}
-                <div className="relative h-48 bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center overflow-hidden">
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
-                  <div className="relative text-8xl transform group-hover:scale-110 transition-transform">
-                    {guide.icon}
+          {loading ? (
+            <div className="flex items-center justify-center py-20">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+            </div>
+          ) : guides.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-grey-600 text-lg">
+                {isArabic ? 'لا توجد أدلة في هذه الفئة' : 'No guides found in this category'}
+              </p>
+            </div>
+          ) : (
+            <>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {guides.map((guide, idx) => (
+                      <Link
+                        key={guide.id}
+                        href={`/${locale}/web/guides/${guide.slug}`}
+                    className="group animate-fade-in"
+                    style={{ animationDelay: `${idx * 0.05}s` }}
+                  >
+                    <article className="bg-white rounded-xl shadow-soft hover:shadow-hard transition-all duration-500 overflow-hidden transform hover:-translate-y-2 h-full">
+                      {/* Header with Icon */}
+                      <div className="relative h-48 bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center overflow-hidden">
+                        <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
+                        <div className="relative text-8xl transform group-hover:scale-110 transition-transform">
+                          {guide.icon}
+                        </div>
+
+                        {/* Category Badge */}
+                        <div className="absolute top-4 left-4">
+                          <span
+                            className="px-3 py-1 rounded-full text-xs font-bold backdrop-blur-md"
+                            style={{
+                              backgroundColor: `${guide.category.color}CC`,
+                              color: 'white',
+                            }}
+                          >
+                            {guide.category.icon} {isArabic ? guide.category.name.ar : guide.category.name.en}
+                          </span>
+                        </div>
+
+                        {/* Difficulty Badge */}
+                        <div className="absolute top-4 right-4">
+                          <span className={`px-3 py-1 rounded-full text-xs font-bold border ${difficultyColor[guide.difficulty]}`}>
+                            {difficultyLabel[guide.difficulty]}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold text-grey-900 mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+                          {isArabic ? guide.title.ar : guide.title.en}
+                        </h3>
+
+                        <p className="text-grey-600 mb-4 leading-relaxed line-clamp-3 text-sm">
+                          {isArabic ? guide.description.ar : guide.description.en}
+                        </p>
+
+                        {/* Topics */}
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {guide.topics.slice(0, 3).map((topic: string, i: number) => (
+                            <span
+                              key={i}
+                              className="px-2 py-1 bg-grey-100 text-grey-700 rounded text-xs font-medium"
+                            >
+                              {topic}
+                            </span>
+                          ))}
+                          {guide.topics.length > 3 && (
+                            <span className="px-2 py-1 bg-grey-100 text-grey-600 rounded text-xs">
+                              +{guide.topics.length - 3}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Footer */}
+                        <div className="flex items-center justify-between pt-4 border-t border-grey-100">
+                          <div className="flex items-center gap-2 text-sm text-grey-600">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>{guide.duration}</span>
+                          </div>
+                          <span className="text-primary hover:text-primary-700 font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block">
+                            {isArabic ? 'اقرأ الآن ←' : 'Read Guide →'}
+                          </span>
+                        </div>
+                      </div>
+                    </article>
+                  </Link>
+                ))}
                   </div>
-                  
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span
-                      className="px-3 py-1 rounded-full text-xs font-bold backdrop-blur-md"
-                      style={{
-                        backgroundColor: `${guide.category.color}CC`,
-                        color: 'white',
-                      }}
+
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="flex justify-center items-center gap-2 mt-12">
+                  <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 rounded-lg bg-white text-grey-700 hover:bg-grey-100 font-medium transition-colors shadow-soft disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isArabic ? '←' : '←'}
+                  </button>
+
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    <button
+                      key={page}
+                      onClick={() => handlePageChange(page)}
+                      className={`px-4 py-2 rounded-lg font-medium transition-colors ${currentPage === page
+                          ? 'bg-primary text-white shadow-md'
+                          : 'bg-white text-grey-700 hover:bg-grey-100 shadow-soft'
+                        }`}
                     >
-                      {guide.category.icon} {isArabic ? guide.category.name.ar : guide.category.name.en}
-                    </span>
-                  </div>
+                      {page}
+                    </button>
+                  ))}
 
-                  {/* Difficulty Badge */}
-                  <div className="absolute top-4 right-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold border ${difficultyColor[guide.difficulty]}`}>
-                      {difficultyLabel[guide.difficulty]}
-                    </span>
-                  </div>
+                  <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className="px-4 py-2 rounded-lg bg-white text-grey-700 hover:bg-grey-100 font-medium transition-colors shadow-soft disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isArabic ? '→' : '→'}
+                  </button>
                 </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-grey-900 mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
-                    {isArabic ? guide.title.ar : guide.title.en}
-                  </h3>
-
-                  <p className="text-grey-600 mb-4 leading-relaxed line-clamp-3 text-sm">
-                    {isArabic ? guide.description.ar : guide.description.en}
-                  </p>
-
-                  {/* Topics */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {guide.topics.slice(0, 3).map((topic, i) => (
-                      <span
-                        key={i}
-                        className="px-2 py-1 bg-grey-100 text-grey-700 rounded text-xs font-medium"
-                      >
-                        {topic}
-                      </span>
-                    ))}
-                    {guide.topics.length > 3 && (
-                      <span className="px-2 py-1 bg-grey-100 text-grey-600 rounded text-xs">
-                        +{guide.topics.length - 3}
-                      </span>
-                    )}
-                  </div>
-
-                  {/* Footer */}
-                  <div className="flex items-center justify-between pt-4 border-t border-grey-100">
-                    <div className="flex items-center gap-2 text-sm text-grey-600">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <span>{guide.duration}</span>
-                    </div>
-                    <Link
-                      href={`/${locale}/web/guides/${guide.slug}`}
-                      className="text-primary hover:text-primary-700 font-semibold text-sm group-hover:translate-x-1 transition-transform inline-block"
-                    >
-                      {isArabic ? 'اقرأ الآن ←' : 'Read Guide →'}
-                    </Link>
-                  </div>
-                </div>
-              </article>
-              </Link>
-            ))}
-          </div>
+              )}
+            </>
+          )}
         </div>
       </section>
     </div>
