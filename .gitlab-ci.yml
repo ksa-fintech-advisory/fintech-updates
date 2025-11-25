@@ -1,0 +1,161 @@
+stages:
+  - build-image
+  - publish
+  - update-helm
+  - deploy
+
+workflow:
+  rules:
+     #- if: '$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH || $CI_JOB_MANUAL == "true"'
+    - if: '$CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH || $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_JOB_MANUAL == "true"'
+
+
+variables:
+  PROJECT_NAME: admin-panel
+  CONTAINER_REGISTRY: $AZURE_REGISTRY_URL
+  HELM_REPO_URL: gitlab.com/awqef-group/devops/awqef-helm.git
+  # HELM_VALUES_FILE: values-base.yaml
+  HELM_VALUES_FILE: values/environments/development/admin-panel.yaml
+  # IMAGE_TAG_PATH: ..image.api.tag
+  IMAGE_TAG_PATH: .microservices.admin-panel.image.tag
+
+
+build docker:
+  stage: build-image
+  image: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  before_script:
+    - echo "Logging into GitLab Container Registry..."
+    - echo $CI_REGISTRY_PASSWORD | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  script:
+    - echo "================================"
+    - echo "Building Docker Image"
+    - echo "================================"
+    - echo "Project:" $PROJECT_NAME
+    - echo "Tag:" $CI_COMMIT_SHORT_SHA
+    - echo ""
+    - echo "Building Docker image..."
+    - docker build --build-arg GITLAB_TOKEN=$GITLAB_TOKEN -t $PROJECT_NAME:$CI_COMMIT_SHORT_SHA .
+    - echo ""
+    - echo "Tagging image for GitLab registry..."
+    - docker tag $PROJECT_NAME:$CI_COMMIT_SHORT_SHA $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - echo ""
+    - echo "Pushing image to GitLab Container Registry..."
+    - docker push $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - echo ""
+    - echo "✅ Build completed successfully!"
+    - echo "Image:" $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+
+
+publish:
+  stage: publish
+  image: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  before_script:
+    - echo "Logging into GitLab Container Registry..."
+    - echo $CI_REGISTRY_PASSWORD | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+    - echo "Logging into Azure Container Registry..."
+    - echo "Checking Azure credentials..."
+    - |
+      if [ -z "$AZURE_SP_APP_ID" ]; then
+        echo "ERROR: AZURE_SP_APP_ID is not set!"
+        exit 1
+      fi
+      if [ -z "$AZURE_SP_PASSWD" ]; then
+        echo "ERROR: AZURE_SP_PASSWD is not set!"
+        exit 1
+      fi
+      if [ -z "$CONTAINER_REGISTRY" ]; then
+        echo "ERROR: CONTAINER_REGISTRY (AZURE_REGISTRY_URL) is not set!"
+        exit 1
+      fi
+      echo "✓ AZURE_SP_APP_ID is set"
+      echo "✓ AZURE_SP_PASSWD is set (length: ${#AZURE_SP_PASSWD})"
+      echo "✓ CONTAINER_REGISTRY is set: $CONTAINER_REGISTRY"
+    - echo $AZURE_SP_PASSWD | docker login $CONTAINER_REGISTRY -u $AZURE_SP_APP_ID --password-stdin
+    - echo "Azure ACR authentication configured successfully"
+  script:
+    - echo "================================"
+    - echo "Publishing to Azure Registry"
+    - echo "================================"
+    - echo "Source:" $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - echo "Target:" $CONTAINER_REGISTRY/$PROJECT_NAME:$CI_COMMIT_SHORT_SHA
+    - echo ""
+    - echo "Pulling image from GitLab registry..."
+    - docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    - echo ""
+    - echo "Tagging image for Azure registry..."
+    - docker tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA $CONTAINER_REGISTRY/$PROJECT_NAME:$CI_COMMIT_SHORT_SHA
+    - echo ""
+    - echo "Pushing image to Azure Container Registry..."
+    - docker push $CONTAINER_REGISTRY/$PROJECT_NAME:$CI_COMMIT_SHORT_SHA
+    - echo ""
+    - echo "✅ Image published to Azure successfully!"
+    - echo "Published image:" $CONTAINER_REGISTRY/$PROJECT_NAME:$CI_COMMIT_SHORT_SHA
+  needs:
+    - build docker
+
+
+update-helm-chart:
+  stage: update-helm
+  image: alpine:3.18
+  before_script:
+    - echo "Installing required packages..."
+    - apk add --no-cache git wget
+    - echo "Downloading yq..."
+    - wget -q https://github.com/mikefarah/yq/releases/download/v4.40.5/yq_linux_amd64 -O /usr/bin/yq
+    - chmod +x /usr/bin/yq
+    - yq --version
+    - echo "Configuring git..."
+    - git config --global user.email "ci-bot@awqef.com"
+    - git config --global user.name "GitLab CI Bot"
+  script:
+    - echo "========================================"
+    - echo "Updating Helm Chart Repository"
+    - echo "========================================"
+    - echo "Project:" $PROJECT_NAME
+    - echo "Image tag:" $CI_COMMIT_SHORT_SHA
+    - echo "Helm repo:" $HELM_REPO_URL
+    - echo "Values file:" $HELM_VALUES_FILE
+    - echo "Tag path:" $IMAGE_TAG_PATH
+    - echo ""
+    - echo "Cloning Helm repository..."
+    - git clone https://oauth2:${GITLAB_TOKEN}@${HELM_REPO_URL} helm-repo
+    - cd helm-repo
+    - echo ""
+    - echo "📋 Current image tag:"
+    - yq eval "${IMAGE_TAG_PATH}" ${HELM_VALUES_FILE}
+    - echo ""
+    - echo "🔄 Updating image tag to ${CI_COMMIT_SHORT_SHA}..."
+    - yq eval -i "${IMAGE_TAG_PATH} = \"${CI_COMMIT_SHORT_SHA}\"" ${HELM_VALUES_FILE}
+    - echo ""
+    - echo "📋 New image tag:"
+    - yq eval "${IMAGE_TAG_PATH}" ${HELM_VALUES_FILE}
+    - echo ""
+    - echo "📊 Changes made:"
+    - git diff --color=always
+    - echo ""
+    - |
+      if git diff --quiet; then
+        echo "⚠️  No changes detected - tag already up to date"
+        echo "Current tag matches new tag: ${CI_COMMIT_SHORT_SHA}"
+        exit 0
+      fi
+    - echo "💾 Committing changes..."
+    - git add ${HELM_VALUES_FILE}
+    - git commit -m "Update ${PROJECT_NAME} image tag to ${CI_COMMIT_SHORT_SHA} "
+    - echo ""
+    - echo "🚀 Pushing changes to remote repository..."
+    - git push https://oauth2:${GITLAB_TOKEN}@${HELM_REPO_URL} HEAD:master
+    - echo ""
+    - echo "✅ Helm chart updated successfully!"
+    - echo "🔗 Commit SHA:" $(git rev-parse HEAD)
+    - echo "🎯 ArgoCD will detect this change and sync automatically"
+  needs:
+    - publish

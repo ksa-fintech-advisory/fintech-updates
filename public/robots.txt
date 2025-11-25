@@ -1,0 +1,6 @@
+# Sitemap
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# Disallow all crawlers (admin panel)
+User-agent: *
+Disallow: /
