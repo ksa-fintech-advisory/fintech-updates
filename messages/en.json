@@ -1,12 +1,68 @@
 {
-
-  "common":{},
-  "pages":{
-    "home":{
-      
+  "common": {
+    "nav": {
+      "home": "Home",
+      "blog": "Blog",
+      "contact": "Contact",
+      "about": "About Us"
     },
-    "about-us":{
-      
+    "actions": {
+      "readMore": "Read More",
+      "subscribe": "Subscribe",
+      "submit": "Submit",
+      "send": "Send Message"
+    },
+    "labels": {
+      "readTime": "min read",
+      "views": "views",
+      "publishedOn": "Published on",
+      "category": "Category",
+      "tags": "Tags"
     }
+  },
+  "pages": {
+    "home": {
+      "hero": {
+        "title": "Saudi Arabia's Leading FinTech News & Insights",
+        "subtitle": "Stay Updated with the Latest in Saudi Financial Technology",
+        "description": "Your trusted source for comprehensive coverage of FinTech innovations, regulatory updates, and industry trends shaping Saudi Arabia's digital financial future."
+      },
+      "sections": {
+        "featured": "Featured Articles",
+        "latest": "Latest Updates",
+        "stats": "By The Numbers"
+      }
+    },
+    "blog": {
+      "title": "Blog",
+      "subtitle": "Insights and updates from the FinTech world",
+      "allCategories": "All Categories",
+      "noResults": "No blog posts found"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "Get in touch with our team",
+      "form": {
+        "name": "Name",
+        "email": "Email",
+        "subject": "Subject",
+        "message": "Message",
+        "submit": "Send Message",
+        "success": "Thank you! We'll get back to you soon.",
+        "error": "Something went wrong. Please try again."
+      }
+    },
+    "about-us": {
+      "mission": "Our Mission",
+      "vision": "Our Vision",
+      "values": "Our Values",
+      "expertise": "Our Expertise"
+    }
+  },
+  "newsletter": {
+    "title": "Subscribe to our Newsletter",
+    "description": "Get the latest FinTech updates delivered to your inbox",
+    "placeholder": "Enter your email",
+    "button": "Subscribe"
   }
 }

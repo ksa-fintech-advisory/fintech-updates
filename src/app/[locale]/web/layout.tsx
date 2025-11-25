@@ -3,20 +3,21 @@ import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { locales } from '@/core/i18n/config';
 import { ThemeProvider } from '@/core/theme/ThemeProvider';
-
 import { NotificationProvider } from '@/core/notifications/NotificationProvider';
+import Header from '@/core/components/web/layout/Header';
+import Footer from '@/core/components/web/layout/Footer';
 import '@/core/theme/globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Admin Panel - Finance Dashboard',
-    template: '%s | Admin Panel',
+    default: 'Saudi FinTech Updates | Latest News & Insights',
+    template: '%s | Saudi FinTech Updates',
   },
-  description: 'Enterprise-level finance institution admin panel for managing customers, transactions, portfolios, and financial operations.',
-  keywords: ['finance', 'admin panel', 'dashboard', 'fintech', 'banking', 'portfolio management'],
-  authors: [{ name: 'AWQEF Group' }],
-  creator: 'AWQEF Group',
-  publisher: 'AWQEF Group',
+  description: 'Stay updated with the latest FinTech innovations, regulatory updates, and industry trends shaping Saudi Arabia\'s digital financial future. Comprehensive coverage of SAMA regulations, digital banking, blockchain, and payment technologies.',
+  keywords: ['Saudi Arabia', 'FinTech', 'Digital Banking', 'SAMA', 'Mada', 'Payment Systems', 'Blockchain', 'Financial Technology', 'Vision 2030', 'Innovation'],
+  authors: [{ name: 'FinTech Updates' }],
+  creator: 'FinTech Updates',
+  publisher: 'FinTech Updates',
   formatDetection: {
     email: false,
     address: false,
@@ -31,19 +32,27 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Admin Panel - Finance Dashboard',
-    description: 'Enterprise-level finance institution admin panel',
+    title: 'Saudi FinTech Updates | Latest News & Insights',
+    description: 'Your trusted source for comprehensive coverage of FinTech innovations and regulatory updates in Saudi Arabia.',
     url: '/',
-    siteName: 'Admin Panel',
+    siteName: 'Saudi FinTech Updates',
     locale: 'en',
     type: 'website',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Saudi FinTech Updates',
+      },
+    ],
   },
   robots: {
-    index: false, // Admin panel should not be indexed
-    follow: false,
+    index: true, // Website should be indexed
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
     },
   },
   icons: {
@@ -75,21 +84,22 @@ export default async function LocaleLayout({
     notFound();
   }
 
- 
-  const messages = (await import(`../../../messages/${locale}.json`)).default;
-
- 
+  const messages = (await import(`../../../../messages/${locale}.json`)).default;
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
     <html lang={locale} dir={direction} suppressHydrationWarning>
-      <body>
+      <body className="min-h-screen flex flex-col bg-grey-50">
         <ThemeProvider>
           <NotificationProvider>
-                <NextIntlClientProvider messages={messages} locale={locale}>
-                  {children}
-                </NextIntlClientProvider>
-              </NotificationProvider>
+            <NextIntlClientProvider messages={messages} locale={locale}>
+              <Header />
+              <main className="flex-1">
+                {children}
+              </main>
+              <Footer />
+            </NextIntlClientProvider>
+          </NotificationProvider>
         </ThemeProvider>
       </body>
     </html>
