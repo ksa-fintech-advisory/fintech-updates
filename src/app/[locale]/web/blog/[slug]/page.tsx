@@ -1,6 +1,8 @@
 import { blogService } from '@/services/api/mock';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
+import { BlogContentRenderer } from '@/core/components/web/blog/BlogContentRenderer';
 
 interface BlogDetailPageProps {
   params: {
@@ -78,6 +80,14 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       {/* Featured Image */}
       <section className="relative h-96 bg-gradient-to-br from-primary-400 to-accent-400">
         <div className="absolute inset-0 bg-black/10"></div>
+        {blog.featuredImage && (
+          <Image
+            src={blog.featuredImage}
+            alt={title}
+            fill
+            className="object-cover opacity-50 mix-blend-overlay"
+          />
+        )}
       </section>
 
       {/* Blog Content */}
@@ -85,34 +95,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             <div className="prose prose-lg max-w-none">
-              {content.split('\n').map((paragraph: string, idx: number) => {
-                if (paragraph.startsWith('# ')) {
-                  return (
-                    <h1 key={idx} className="text-3xl font-bold text-grey-900 mt-8 mb-4">
-                      {paragraph.replace('# ', '')}
-                    </h1>
-                  );
-                } else if (paragraph.startsWith('## ')) {
-                  return (
-                    <h2 key={idx} className="text-2xl font-bold text-grey-900 mt-6 mb-3">
-                      {paragraph.replace('## ', '')}
-                    </h2>
-                  );
-                } else if (paragraph.startsWith('### ')) {
-                  return (
-                    <h3 key={idx} className="text-xl font-bold text-grey-900 mt-4 mb-2">
-                      {paragraph.replace('### ', '')}
-                    </h3>
-                  );
-                } else if (paragraph.trim()) {
-                  return (
-                    <p key={idx} className="text-grey-700 mb-4 leading-relaxed">
-                      {paragraph}
-                    </p>
-                  );
-                }
-                return null;
-              })}
+              <BlogContentRenderer content={content} />
             </div>
 
             {/* Tags */}

@@ -46,8 +46,54 @@ export const blogs: Blog[] = [
       ar: 'استكشاف كيفية إنشاء واجهات برمجة التطبيقات المصرفية المفتوحة فرصاً جديدة للابتكار في القطاع المالي السعودي.',
     },
     content: {
-      en: 'Open banking is set to revolutionize the Saudi financial landscape by enabling secure data sharing between banks and third-party providers through standardized APIs...',
-      ar: 'من المقرر أن تحدث الخدمات المصرفية المفتوحة ثورة في المشهد المالي السعودي من خلال تمكين مشاركة البيانات الآمنة بين البنوك ومقدمي الطرف الثالث من خلال واجهات برمجة التطبيقات الموحدة...',
+      en: [
+        {
+          type: 'paragraph',
+          text: 'Open banking is set to revolutionize the Saudi financial landscape by enabling secure data sharing between banks and third-party providers through standardized APIs.',
+        },
+        {
+          type: 'header',
+          level: 2,
+          text: 'What is Open Banking?',
+        },
+        {
+          type: 'paragraph',
+          text: 'Open banking allows customers to share their financial data securely with third-party providers, enabling new services and products.',
+        },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'Enhanced customer experience',
+            'Increased competition',
+            'New innovative products',
+          ],
+        },
+      ],
+      ar: [
+        {
+          type: 'paragraph',
+          text: 'من المقرر أن تحدث الخدمات المصرفية المفتوحة ثورة في المشهد المالي السعودي من خلال تمكين مشاركة البيانات الآمنة بين البنوك ومقدمي الطرف الثالث من خلال واجهات برمجة التطبيقات الموحدة.',
+        },
+        {
+          type: 'header',
+          level: 2,
+          text: 'ما هي المصرفية المفتوحة؟',
+        },
+        {
+          type: 'paragraph',
+          text: 'تتيح المصرفية المفتوحة للعملاء مشاركة بياناتهم المالية بشكل آمن مع مقدمي خدمات من أطراف ثالثة، مما يتيح خدمات ومنتجات جديدة.',
+        },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'تحسين تجربة العميل',
+            'زيادة المنافسة',
+            'منتجات مبتكرة جديدة',
+          ],
+        },
+      ],
     },
     featuredImage: '/images/blogs/open-banking.jpg',
     category: blogCategories[1],
@@ -72,8 +118,18 @@ export const blogs: Blog[] = [
       ar: 'تدابير الأمن السيبراني الأساسية التي يجب على كل شركة تقنية مالية تنفيذها لحماية بيانات العملاء والحفاظ على الثقة.',
     },
     content: {
-      en: 'As FinTech continues to grow, cybersecurity becomes increasingly critical. This guide covers essential security practices including encryption, multi-factor authentication, and incident response planning...',
-      ar: 'مع استمرار نمو التقنية المالية، يصبح الأمن السيبراني أكثر أهمية. يغطي هذا الدليل ممارسات الأمان الأساسية بما في ذلك التشفير والمصادقة متعددة العوامل وتخطيط الاستجابة للحوادث...',
+      en: [
+        {
+          type: 'paragraph',
+          text: 'As FinTech continues to grow, cybersecurity becomes increasingly critical. This guide covers essential security practices including encryption, multi-factor authentication, and incident response planning.',
+        },
+      ],
+      ar: [
+        {
+          type: 'paragraph',
+          text: 'مع استمرار نمو التقنية المالية، يصبح الأمن السيبراني أكثر أهمية. يغطي هذا الدليل ممارسات الأمان الأساسية بما في ذلك التشفير والمصادقة متعددة العوامل وتخطيط الاستجابة للحوادث.',
+        },
+      ],
     },
     featuredImage: '/images/blogs/cybersecurity.jpg',
     category: blogCategories[2],
@@ -98,8 +154,18 @@ export const blogs: Blog[] = [
       ar: 'كيف يتم استخدام الذكاء الاصطناعي والتعلم الآلي للكشف عن الاحتيال المالي ومنعه في الوقت الفعلي.',
     },
     content: {
-      en: 'Financial institutions in Saudi Arabia are increasingly adopting AI-powered fraud detection systems. These advanced systems analyze millions of transactions in real-time, identifying suspicious patterns and preventing fraud before it occurs...',
-      ar: 'تتبنى المؤسسات المالية في المملكة العربية السعودية بشكل متزايد أنظمة كشف الاحتيال المدعومة بالذكاء الاصطناعي. تحلل هذه الأنظمة المتقدمة ملايين المعاملات في الوقت الفعلي، وتحدد الأنماط المشبوهة وتمنع الاحتيال قبل حدوثه...',
+      en: [
+        {
+          type: 'paragraph',
+          text: 'Financial institutions in Saudi Arabia are increasingly adopting AI-powered fraud detection systems. These advanced systems analyze millions of transactions in real-time, identifying suspicious patterns and preventing fraud before it occurs.',
+        },
+      ],
+      ar: [
+        {
+          type: 'paragraph',
+          text: 'تتبنى المؤسسات المالية في المملكة العربية السعودية بشكل متزايد أنظمة كشف الاحتيال المدعومة بالذكاء الاصطناعي. تحلل هذه الأنظمة المتقدمة ملايين المعاملات في الوقت الفعلي، وتحدد الأنماط المشبوهة وتمنع الاحتيال قبل حدوثه.',
+        },
+      ],
     },
     featuredImage: '/images/blogs/ai-fraud.jpg',
     category: blogCategories[2],
@@ -124,8 +190,18 @@ export const blogs: Blog[] = [
       ar: 'دليل شامل للتنقل في عملية ترخيص ساما لشركات التقنية المالية الجديدة في المملكة العربية السعودية.',
     },
     content: {
-      en: 'Starting a FinTech company in Saudi Arabia requires obtaining the appropriate licenses from SAMA. This guide walks you through the entire process, from initial application to final approval...',
-      ar: 'يتطلب بدء شركة تقنية مالية في المملكة العربية السعودية الحصول على التراخيص المناسبة من ساما. يرشدك هذا الدليل خلال العملية بأكملها، من التطبيق الأولي إلى الموافقة النهائية...',
+      en: [
+        {
+          type: 'paragraph',
+          text: 'Starting a FinTech company in Saudi Arabia requires obtaining the appropriate licenses from SAMA. This guide walks you through the entire process, from initial application to final approval.',
+        },
+      ],
+      ar: [
+        {
+          type: 'paragraph',
+          text: 'يتطلب بدء شركة تقنية مالية في المملكة العربية السعودية الحصول على التراخيص المناسبة من ساما. يرشدك هذا الدليل خلال العملية بأكملها، من التطبيق الأولي إلى الموافقة النهائية.',
+        },
+      ],
     },
     featuredImage: '/images/blogs/sama-licensing.jpg',
     category: blogCategories[3],
@@ -150,8 +226,18 @@ export const blogs: Blog[] = [
       ar: 'الإحصائيات والاتجاهات الأخيرة التي تظهر التحول الدراماتيكي نحو طرق الدفع عبر الهاتف المحمول بين المستهلكين السعوديين.',
     },
     content: {
-      en: 'Mobile payment adoption in Saudi Arabia has accelerated dramatically, with over 75% of consumers now using mobile wallets for everyday transactions. This shift represents a fundamental change in consumer behavior...',
-      ar: 'تسارع اعتماد الدفع عبر الهاتف المحمول في المملكة العربية السعودية بشكل كبير، حيث يستخدم أكثر من 75٪ من المستهلكين الآن المحافظ الرقمية للمعاملات اليومية. يمثلهذا التحول تغييراً أساسياً في سلوك المستهلك...',
+      en: [
+        {
+          type: 'paragraph',
+          text: 'Mobile payment adoption in Saudi Arabia has accelerated dramatically, with over 75% of consumers now using mobile wallets for everyday transactions. This shift represents a fundamental change in consumer behavior.',
+        },
+      ],
+      ar: [
+        {
+          type: 'paragraph',
+          text: 'تسارع اعتماد الدفع عبر الهاتف المحمول في المملكة العربية السعودية بشكل كبير، حيث يستخدم أكثر من 75٪ من المستهلكين الآن المحافظ الرقمية للمعاملات اليومية. يمثل هذا التحول تغييراً أساسياً في سلوك المستهلك.',
+        },
+      ],
     },
     featuredImage: '/images/blogs/mobile-payments.jpg',
     category: blogCategories[0],
@@ -176,8 +262,18 @@ export const blogs: Blog[] = [
       ar: 'كيف يصبح التمويل الأخضر والاستثمار المستدام جزءاً لا يتجزأ من النظام البيئي للتقنية المالية في السعودية.',
     },
     content: {
-      en: 'Green finance initiatives are gaining momentum in Saudi Arabia, aligning with Vision 2030\'s sustainability goals. FinTech companies are playing a crucial role in democratizing access to sustainable investment opportunities...',
-      ar: 'تكتسب مبادرات التمويل الأخضر زخماً في المملكة العربية السعودية، بما يتماشى مع أهداف الاستدامة لرؤية 2030. تلعب شركات التقنية المالية دوراً حاسماً في إضفاء الطابع الديمقراطي على إمكانية الوصول إلى فرص الاستثمار المستدام...',
+      en: [
+        {
+          type: 'paragraph',
+          text: 'Green finance initiatives are gaining momentum in Saudi Arabia, aligning with Vision 2030\'s sustainability goals. FinTech companies are playing a crucial role in democratizing access to sustainable investment opportunities.',
+        },
+      ],
+      ar: [
+        {
+          type: 'paragraph',
+          text: 'تكتسب مبادرات التمويل الأخضر زخماً في المملكة العربية السعودية، بما يتماشى مع أهداف الاستدامة لرؤية 2030. تلعب شركات التقنية المالية دوراً حاسماً في إضفاء الطابع الديمقراطي على إمكانية الوصول إلى فرص الاستثمار المستدام.',
+        },
+      ],
     },
     featuredImage: '/images/blogs/green-finance.jpg',
     category: blogCategories[1],

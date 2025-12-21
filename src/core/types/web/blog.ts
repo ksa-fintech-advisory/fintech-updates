@@ -1,4 +1,10 @@
 // Blog Types
+export type BlogContentBlock =
+  | { type: 'header'; level: 1 | 2 | 3 | 4 | 5 | 6; text: string }
+  | { type: 'paragraph'; text: string }
+  | { type: 'image'; src: string; alt: string; caption?: string }
+  | { type: 'list'; style: 'ordered' | 'unordered'; items: string[] };
+
 export interface Blog {
   id: string;
   slug: string;
@@ -11,8 +17,8 @@ export interface Blog {
     ar: string;
   };
   content: {
-    en: string;
-    ar: string;
+    en: BlogContentBlock[];
+    ar: BlogContentBlock[];
   };
   featuredImage: string;
   category: BlogCategory;
