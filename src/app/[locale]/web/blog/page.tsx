@@ -1,10 +1,10 @@
 'use client';
 
-import { blogService } from '@/services/api/mock';
+import { blogApiService } from '@/services/api/blogs';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import type { Blog, BlogCategory } from '@/core/types/web/blog';
+import type { LocalizedBlog, LocalizedBlogCategory } from '@/core/types/web/blog';
 import dynamic from 'next/dynamic';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
 
@@ -15,8 +15,8 @@ export default function BlogPage() {
   const locale = params.locale as string;
   const isArabic = locale === 'ar';
 
-  const [blogs, setBlogs] = useState<Blog[]>([]);
-  const [categories, setCategories] = useState<BlogCategory[]>([]);
+  const [blogs, setBlogs] = useState<LocalizedBlog[]>([]);
+  const [categories, setCategories] = useState<LocalizedBlogCategory[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -27,14 +27,14 @@ export default function BlogPage() {
     async function loadBlogs() {
       setLoading(true);
       const filters = selectedCategory ? { category: selectedCategory } : undefined;
-      const data = await blogService.paginateBlogs(currentPage, limit, filters);
+      const data = await blogApiService.paginateBlogs(currentPage, limit, filters, locale);
       setBlogs(data.blogs);
       setCategories(data.categories);
       setTotalPages(data.totalPages);
       setLoading(false);
     }
     loadBlogs();
-  }, [currentPage, selectedCategory]);
+  }, [currentPage, selectedCategory, locale]);
 
   const handleCategoryChange = (categorySlug: string) => {
     setSelectedCategory(categorySlug);
@@ -106,7 +106,7 @@ export default function BlogPage() {
                   }`}
               >
                 <span className="text-lg">{category.icon}</span>
-                <span>{isArabic ? category.name.ar : category.name.en}</span>
+                <span>{category.name}</span>
               </button>
             ))}
           </div>
@@ -168,7 +168,7 @@ export default function BlogPage() {
                               }}
                             >
                               <span className="text-base">{blog.category.icon}</span>
-                              {isArabic ? blog.category.name.ar : blog.category.name.en}
+                                  {blog.category.name}
                             </span>
                           </div>
                         </div>
@@ -187,22 +187,22 @@ export default function BlogPage() {
 
                           {/* Title */}
                           <h3 className="text-xl font-bold text-grey-900 mb-3 group-hover:text-primary-600 transition-colors line-clamp-2 leading-tight">
-                            {isArabic ? blog.title.ar : blog.title.en}
+                                {blog.title}
                           </h3>
 
                           {/* Excerpt */}
                           <p className="text-grey-600 mb-6 line-clamp-3 leading-relaxed text-sm flex-1">
-                            {isArabic ? blog.excerpt.ar : blog.excerpt.en}
+                                {blog.excerpt}
                           </p>
 
                           {/* Footer */}
                           <div className="flex items-center justify-between pt-4 border-t border-grey-100 mt-auto">
                             <div className="flex items-center gap-3">
                               <div className="w-9 h-9 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md">
-                                {(isArabic ? blog.author.name.ar : blog.author.name.en).charAt(0)}
+                                    {blog.author.name.charAt(0)}
                               </div>
                               <span className="text-sm font-semibold text-grey-700 group-hover:text-primary-600 transition-colors">
-                                {isArabic ? blog.author.name.ar : blog.author.name.en}
+                                    {blog.author.name}
                               </span>
                             </div>
                             <span className={`text-accent group-hover:translate-x-1 transition-transform inline-block font-bold text-lg ${isArabic ? 'rotate-180 group-hover:-translate-x-1' : ''}`}>

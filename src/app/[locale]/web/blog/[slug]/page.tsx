@@ -1,8 +1,11 @@
-import { blogService } from '@/services/api/mock';
+import { blogApiService } from '@/services/api/blogs';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BlogContentRenderer } from '@/core/components/web/blog/BlogContentRenderer';
+import { AuthorBio } from '@/core/components/web/blog/AuthorBio';
+import { SocialShare } from '@/core/components/web/blog/SocialShare';
+import { RelatedPosts } from '@/core/components/web/blog/RelatedPosts';
 
 interface BlogDetailPageProps {
   params: {
@@ -16,96 +19,126 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
   const isArabic = locale === 'ar';
   
   // Get blog by slug
-  const blog = await blogService.getBlogBySlug(slug);
+  const blog = await blogApiService.getBlogBySlug(slug, locale);
   
   if (!blog) {
     notFound();
   }
 
-  const title = isArabic ? blog.title.ar : blog.title.en;
-  const excerpt = isArabic ? blog.excerpt.ar : blog.excerpt.en;
-  const content = isArabic ? blog.content.ar : blog.content.en;
+  const title = blog.title;
+  const excerpt = blog.excerpt;
+  const content = blog.content;
+
+  // Ideally, get the current URL properly
+  const currentUrl = `https://fintech-updates.sa/${locale}/web/blog/${slug}`;
 
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <section className="bg-grey-900 text-white py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
+      <section className="bg-grey-900 text-white pt-20 pb-24 relative overflow-hidden">
+        {/* Background pattern or subtle gradient could be added here */}
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary-900/20 to-transparent pointer-events-none" />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
             {/* Category Badge */}
-            <div className="flex items-center gap-3 mb-6">
+            <div className="inline-flex items-center gap-2 mb-8 bg-grey-800/50 backdrop-blur-sm px-4 py-2 rounded-full border border-grey-700">
               <span
-                className="px-4 py-2 text-sm font-semibold rounded-full"
-                style={{
-                  backgroundColor: blog.category.color,
-                  color: 'white',
-                }}
-              >
-                {blog.category.icon} {isArabic ? blog.category.name.ar : blog.category.name.en}
-              </span>
-              <span className="text-grey-400 text-sm">
-                {blog.readTime} {isArabic ? 'دقيقة قراءة' : 'min read'}
+                className="w-3 h-3 rounded-full"
+                style={{ backgroundColor: blog.category.color }}
+              />
+              <span className="font-semibold text-sm tracking-wide uppercase text-grey-200">
+                {blog.category.name}
               </span>
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">{title}</h1>
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">{title}</h1>
 
             {/* Excerpt */}
-            <p className="text-xl text-grey-300 mb-6">{excerpt}</p>
+            <p className="text-xl md:text-2xl text-grey-300 mb-10 max-w-2xl mx-auto leading-relaxed">{excerpt}</p>
 
-            {/* Author & Date */}
-            <div className="flex items-center gap-4 text-grey-400">
+            {/* Meta Info */}
+            <div className="flex flex-wrap items-center justify-center gap-6 text-grey-400">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-grey-700 rounded-full flex items-center justify-center text-white font-bold">
-                  {(isArabic ? blog.author.name.ar : blog.author.name.en).charAt(0)}
-                </div>
-                <div className="font-medium text-white">
-                  {isArabic ? blog.author.name.ar : blog.author.name.en}
+                {blog.author.avatar ? (
+                  <Image
+                    src={blog.author.avatar}
+                    alt={blog.author.name}
+                    width={48}
+                    height={48}
+                    className="rounded-full border-2 border-grey-700"
+                  />
+                ) : (
+                  <div className="w-12 h-12 bg-grey-700 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    {blog.author.name.charAt(0)}
+                  </div>
+                )}
+                <div className="text-left">
+                  <div className="font-bold text-white text-base">{blog.author.name}</div>
+                  <div className="text-xs text-grey-400">{blog.author.role}</div>
                 </div>
               </div>
-              <span className="text-grey-600">•</span>
-              <span>
-                {new Date(blog.publishedAt).toLocaleDateString(isArabic ? 'ar-SA' : 'en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </span>
+
+              <span className="hidden sm:inline w-1.5 h-1.5 rounded-full bg-grey-600"></span>
+
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                <span className="font-medium">
+                  {new Date(blog.publishedAt).toLocaleDateString(isArabic ? 'ar-SA' : 'en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </span>
+              </div>
+
+              <span className="hidden sm:inline w-1.5 h-1.5 rounded-full bg-grey-600"></span>
+
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <span className="font-medium">
+                  {blog.readTime} {isArabic ? 'دقيقة قراءة' : 'min read'}
+                </span>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Featured Image */}
-      <section className="relative h-96 bg-gradient-to-br from-primary-400 to-accent-400">
-        <div className="absolute inset-0 bg-black/10"></div>
-        {blog.featuredImage && (
+      <section className="relative px-4 sm:px-6 lg:px-8 -mt-16 mb-16">
+        <div className="max-w-5xl mx-auto relative h-[400px] md:h-[500px] w-full shadow-2xl rounded-2xl overflow-hidden border-4 border-white">
           <Image
             src={blog.featuredImage}
             alt={title}
             fill
-            className="object-cover opacity-50 mix-blend-overlay"
+            className="object-cover"
+            priority
           />
-        )}
+        </div>
       </section>
 
       {/* Blog Content */}
-      <article className="py-16 bg-white">
+      <article className="pb-24 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <div className="prose prose-lg max-w-none">
+            {/* Social Share (Top) */}
+            <div className="mb-8 pb-8 border-b border-grey-100 flex justify-between items-center">
+              <SocialShare title={title} url={currentUrl} />
+            </div>
+
+            <div className="prose prose-lg prose-indigo md:prose-xl max-w-none">
               <BlogContentRenderer content={content} />
             </div>
 
             {/* Tags */}
-            <div className="mt-12 pt-8 border-t border-grey-200">
-              <h3 className="font-bold text-grey-900 mb-4">{isArabic ? 'الوسوم' : 'Tags'}</h3>
+            <div className="mt-12 mb-12">
               <div className="flex flex-wrap gap-2">
                 {blog.tags.map((tag: string) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 bg-grey-100 text-grey-700 rounded-full text-sm"
+                    className="px-4 py-1.5 bg-grey-50 text-grey-600 rounded-full text-sm font-medium border border-grey-200"
                   >
                     #{tag}
                   </span>
@@ -113,16 +146,32 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
               </div>
             </div>
 
+            {/* Author Bio */}
+            <div className="mb-12">
+              <AuthorBio author={blog.author} />
+            </div>
+
+            {/* Related Posts */}
+            <RelatedPosts posts={blog.relatedPosts} locale={locale} />
+
+
             {/* Back to Blog */}
-            <div className="mt-12">
+            <div className="mt-16 text-center">
               <Link
                 href={`/${locale}/web/blog`}
-                className="inline-flex items-center gap-2 text-primary hover:text-primary-700 font-semibold"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-grey-300 rounded-lg text-grey-700 font-semibold hover:bg-grey-50 transition-colors shadow-sm"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                {isArabic ? 'العودة إلى المدونة' : 'Back to Blog'}
+                {isArabic ? (
+                  <>
+                    <svg className="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7 7-7m8 14l-7-7 7-7" /></svg>
+                    <span>العودة إلى المدونة</span>
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7 7-7m8 14l-7-7 7-7" /></svg>
+                    <span>Back to Blog</span>
+                  </>
+                )}
               </Link>
             </div>
           </div>
