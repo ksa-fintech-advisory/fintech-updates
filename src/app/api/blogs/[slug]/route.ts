@@ -38,9 +38,9 @@ export async function GET(
     tags: b.tags,
     author: {
       id: b.author.id,
-      name: b.author.name[locale],
-      bio: b.author.bio[locale],
-      role: b.author.role[locale],
+      name: b.author.name?.[locale],
+      bio: b.author.bio?.[locale],
+      role: b.author.role?.[locale],
       avatar: b.author.avatar,
     },
     publishedAt: b.publishedAt,

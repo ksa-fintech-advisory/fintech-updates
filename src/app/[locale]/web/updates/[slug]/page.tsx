@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { BlogContentRenderer } from '@/core/components/web/blog/BlogContentRenderer';
 import { PdfAttachment } from '@/core/components/web/news/PdfAttachment';
 import { SocialShare } from '@/core/components/web/blog/SocialShare';
+import { TableOfContents } from '@/core/components/web/blog/TableOfContents';
 
 interface NewsDetailPageProps {
   params: {
@@ -94,30 +95,39 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
           </div>
 
           {/* Document Body */}
-          <article className="px-6 py-12 md:px-12 md:py-16 bg-white">
-            <div className="prose prose-lg prose-indigo max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-img:rounded-xl">
-              {/* Primary PDF Download (Top) */}
-              {update.pdfUrl && (
-                <div className="not-prose mb-12 p-6 bg-slate-50 rounded-2xl border border-slate-100">
-                  <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div>
-                      <h4 className="font-bold text-grey-900 text-lg mb-1">
-                        {isArabic ? 'الوثيقة الرسمية' : 'Official Documentation'}
-                      </h4>
-                      <p className="text-grey-500 text-sm">
-                        {isArabic ? 'حمل النص الكامل للتحديث بصيغة PDF' : 'Download the full text of this update as a PDF.'}
-                      </p>
-                    </div>
-                    <div className="w-full md:w-auto">
-                      <PdfAttachment url={update.pdfUrl} label={isArabic ? 'تحميل الملف' : 'Download File'} />
+          <div className="flex flex-col lg:flex-row gap-12 px-6 py-12 md:px-12 md:py-16 bg-white">
+            {/* Sticky Table of Contents */}
+            <aside className="block lg:hidden w-72 flex-shrink-0">
+              <div className="sticky top-24">
+                <TableOfContents content={update.content} title={isArabic ? 'المحتويات' : 'In this update'} />
+              </div>
+            </aside>
+
+            <article className="flex-1 min-w-0">
+              <div className="prose prose-lg prose-indigo max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-img:rounded-xl">
+                {/* Primary PDF Download (Top) */}
+                {update.pdfUrl && (
+                  <div className="not-prose mb-12 p-6 bg-slate-50 rounded-2xl border border-slate-100">
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                      <div>
+                        <h4 className="font-bold text-grey-900 text-lg mb-1">
+                          {isArabic ? 'الوثيقة الرسمية' : 'Official Documentation'}
+                        </h4>
+                        <p className="text-grey-500 text-sm">
+                          {isArabic ? 'حمل النص الكامل للتحديث بصيغة PDF' : 'Download the full text of this update as a PDF.'}
+                        </p>
+                      </div>
+                      <div className="w-full md:w-auto">
+                        <PdfAttachment url={update.pdfUrl} label={isArabic ? 'تحميل الملف' : 'Download File'} />
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              <BlogContentRenderer content={update.content} />
-            </div>
-          </article>
+                <BlogContentRenderer content={update.content} />
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </div>

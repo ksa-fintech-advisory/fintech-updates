@@ -52,6 +52,19 @@ export const newsUpdates: NewsUpdate[] = [
                 title: 'Executive Summary',
                 text: 'The updated Open Banking Framework (v2.0) mandates strict adherence to FAPI 1.0 Advanced security profiles and introduces standardized API specifications to streamline TPP onboarding. Financial institutions must comply by Q2 2025.',
                 variant: 'info'
+            },
+            {
+                type: 'header',
+                level: 2,
+                text: 'Compliance Timeline'
+            },
+            {
+                type: 'timeline',
+                items: [
+                    { date: 'Q1 2024', title: 'Consultation Period', description: 'Industry feedback gathered and reviewed.', status: 'completed' },
+                    { date: 'Dec 2024', title: 'Framework Release', description: 'Publication of v2.0 standards.', status: 'active' },
+                    { date: 'Q2 2025', title: 'Full Compliance Deadline', description: 'All financial institutions must implement new specs.', status: 'upcoming' }
+                ]
             }
       ],
       ar: [

@@ -16,6 +16,7 @@ export default function Header() {
 
   const navItems = [
     { href: '/web/home', label: t('common.nav.home') },
+    { href: '/web/updates', label: locale === 'ar' ? 'التحديثات' : 'Updates' },
     { href: '/web/blog', label: t('common.nav.blog') },
     // { href: '/web/technology', label: t('common.nav.technology')},
     // { href: '/web/compliance', label: t('common.nav.compliance')},

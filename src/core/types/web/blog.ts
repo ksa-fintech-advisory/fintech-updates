@@ -5,7 +5,8 @@ export type BlogContentBlock =
   | { type: 'image'; src: string; alt: string; caption?: string }
   | { type: 'list'; style: 'ordered' | 'unordered'; items: string[] }
   | { type: 'quote'; text: string; author?: string }
-  | { type: 'highlight'; title?: string; text: string; variant?: 'info' | 'warning' | 'success' };
+  | { type: 'highlight'; title?: string; text: string; variant?: 'info' | 'warning' | 'success' }
+  | { type: 'timeline'; items: { date: string; title: string; description?: string; status?: 'completed' | 'active' | 'upcoming' }[] };
 
 export interface Blog {
   id: string;
@@ -27,15 +28,15 @@ export interface Blog {
   tags: string[];
   author: {
     id: string;
-    name: {
+    name?: {
       en: string;
       ar: string;
     };
-    bio: {
+    bio?: {
       en: string;
       ar: string;
     };
-    role: {
+    role?: {
       en: string;
       ar: string;
     };
@@ -83,9 +84,9 @@ export interface LocalizedBlog {
   tags: string[];
   author: {
     id: string;
-    name: string;
-    bio: string;
-    role: string;
+    name?: string;
+    bio?: string;
+    role?: string;
     avatar?: string;
   };
   publishedAt: string;

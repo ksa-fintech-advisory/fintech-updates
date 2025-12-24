@@ -64,9 +64,9 @@ export async function GET(request: Request) {
     tags: blog.tags,
     author: {
       id: blog.author.id,
-      name: blog.author.name[locale],
-      bio: blog.author.bio[locale],
-      role: blog.author.role[locale],
+      name: blog.author.name?.[locale],
+      bio: blog.author.bio?.[locale],
+      role: blog.author.role?.[locale],
       avatar: blog.author.avatar,
     },
     publishedAt: blog.publishedAt,

@@ -16,5 +16,11 @@ export const BlogHeaderBlock: React.FC<BlogHeaderBlockProps> = ({ block }) => {
     6: 'text-base font-semibold text-grey-900 mt-4 mb-2',
   };
 
-  return <Component className={classNameMap[block.level]}>{block.text}</Component>;
+  const id = block.text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .trim();
+
+  return <Component id={id} className={classNameMap[block.level]}>{block.text}</Component>;
 };
