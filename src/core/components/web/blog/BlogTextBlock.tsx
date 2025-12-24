@@ -7,8 +7,9 @@ interface BlogTextBlockProps {
 
 export const BlogTextBlock: React.FC<BlogTextBlockProps> = ({ block }) => {
   return (
-    <p className="text-grey-700 mb-4 leading-relaxed text-lg">
-      {block.text}
-    </p>
+    <p
+      className="text-grey-700 mb-4 leading-relaxed text-lg"
+      dangerouslySetInnerHTML={{ __html: block.text }}
+    />
   );
 };

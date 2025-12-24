@@ -1,6 +1,50 @@
-
 import { JSONContent } from '@tiptap/react';
 import { BlogContentBlock } from '@/core/types/web/blog';
+
+// Helper to serialize inline text nodes to HTML string
+const serializeToHtml = (content: any[]): string => {
+    if (!content) return '';
+
+    return content.map(node => {
+        let text = node.text || '';
+
+        // HTML Escape text to prevent XSS issues when avoiding innerHTML locally if we were, 
+        // but we want to Produce HTML.
+        // Basic escaping for < > &
+        text = text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+        if (node.marks) {
+            node.marks.forEach((mark: any) => {
+                switch (mark.type) {
+                    case 'bold':
+                        text = `<strong>${text}</strong>`;
+                        break;
+                    case 'italic':
+                        text = `<em>${text}</em>`;
+                        break;
+                    case 'strike':
+                        text = `<s>${text}</s>`;
+                        break;
+                    case 'underline':
+                        text = `<u>${text}</u>`;
+                        break;
+                    case 'code':
+                        text = `<code>${text}</code>`;
+                        break;
+                    case 'link':
+                        text = `<a href="${mark.attrs.href}" target="${mark.attrs.target || '_blank'}" rel="noopener noreferrer">${text}</a>`;
+                        break;
+                }
+            });
+        }
+        return text;
+    }).join('');
+};
 
 export const serialize = (json: JSONContent): BlogContentBlock[] => {
   const blocks: BlogContentBlock[] = [];
@@ -10,35 +54,25 @@ export const serialize = (json: JSONContent): BlogContentBlock[] => {
   json.content.forEach((node) => {
     switch (node.type) {
       case 'heading':
-        if (node.attrs && node.content && node.content[0].text) {
+            if (node.attrs && node.content) {
            blocks.push({ 
              type: 'header', 
              level: node.attrs.level as 1 | 2 | 3 | 4 | 5 | 6, 
-             text: node.content[0].text 
+               text: serializeToHtml(node.content)
            });
         }
         break;
 
-      case 'paragraph':
-        // Handle text with marks (bold, italic) - simple paragraphs for now or rich text processing?
-        // The BlogContentBlock 'paragraph' is currently just { text: string }. 
-        // This implies we lose inline formatting if we just take textContent.
-        // However, looking at the mock data: "Europe is building a unified..." it seems plain strings are used, 
-        // OR the 'text' field might need to support HTML/Markdown if we want bold/italic.
-        // Let's check the mock data... it looks like plain text in the examples.
-        // BUT, a real blog needs Bold/Italic. 
-        // If the current schema allows only 'text: string', we might need to assume it can hold HTML or we strip formatting.
-        // Given the requirement "like we did in the blogs", and the mock data shows no HTML tags in the 'text' fields...
-        // Wait, looking at lines 64 of mock data: text: 'حالياً أوروبا بتشتغل...' 
-        // It seems purely text based. 
-        // Use case: "Rich Text Editor" implies we WANT formatting.
-        // I will serialize paragraph content as TEXT for now to match strict schema, 
-        // AND I will check if I should update the type or if 'text' is implicitly HTML-safe.
-        // For now, I will extract text content.
-        
+        case 'paragraph':
         if (node.content) {
-          const text = node.content.map(n => n.text).join('');
-          if (text.trim()) {
+            // Check if it's an empty paragraph or just whitespace
+            const hasContent = node.content.some(n => n.text && n.text.trim());
+            // Or if it has images/hard breaks etc.
+            // For now, if serializeToHtml returns empty string, ignore? 
+            // Or keep empty paragraphs as spacers? 
+            // Tiptap adds empty paragraphs often. Let's keep if it has content.
+            const text = serializeToHtml(node.content);
+            if (text) {
             blocks.push({ type: 'paragraph', text });
           }
         }
@@ -51,7 +85,7 @@ export const serialize = (json: JSONContent): BlogContentBlock[] => {
                 // list item -> paragraph -> text
                 // Tiptap structure: bulletList -> listItem -> paragraph -> text
                 if (listItem.content && listItem.content[0].content) {
-                     return listItem.content[0].content.map((n: any) => n.text).join('');
+                    return serializeToHtml(listItem.content[0].content);
                 }
                 return '';
             }).filter((t: string) => t !== '');
@@ -67,7 +101,7 @@ export const serialize = (json: JSONContent): BlogContentBlock[] => {
       case 'blockquote':
          if (node.content) {
             // blockquote -> paragraph -> text
-             const text = node.content.map((n: any) => n.content?.map((t:any) => t.text).join('')).join('\n');
+             const text = node.content.map((n: any) => serializeToHtml(n.content)).join('<br>');
              blocks.push({ type: 'quote', text });
          }
          break;
@@ -85,10 +119,12 @@ export const serialize = (json: JSONContent): BlogContentBlock[] => {
         
       case 'highlight': // Custom Custom Node
         if (node.attrs) {
-            const text = node.content ? node.content.map(n => n.text).join('') : '';
+            // For highlight, the content is in node.content (if we defined it as inline*)
+            // My previous edit fallback to node.content.
+            const text = node.content ? serializeToHtml(node.content) : (node.attrs.text || '');
              blocks.push({
                  type: 'highlight',
-                 text: text || node.attrs.text || '', // Fallback to attrs for backward compat during dev
+                 text: text, 
                  title: node.attrs.title,
                  variant: node.attrs.variant
              });
@@ -102,6 +138,65 @@ export const serialize = (json: JSONContent): BlogContentBlock[] => {
   return blocks;
 };
 
+const parseHtmlToContent = (html: string): JSONContent[] => {
+    // Basic parser for our supported subset
+    // Since we are in browser, we can use DOMParser
+    if (typeof window === 'undefined') {
+        // Fallback for server-side (if ever used there) -> return plain text
+        return [{ type: 'text', text: html.replace(/<[^>]*>/g, '') }];
+    }
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const nodes: JSONContent[] = [];
+
+    const traverse = (domNode: Node, marks: any[] = []) => {
+        if (domNode.nodeType === Node.TEXT_NODE) {
+            if (domNode.textContent) {
+                nodes.push({ type: 'text', text: domNode.textContent, marks: marks.length ? marks : undefined });
+            }
+        } else if (domNode.nodeType === Node.ELEMENT_NODE) {
+            const el = domNode as HTMLElement;
+            const newMarks = [...marks];
+
+            switch (el.tagName.toLowerCase()) {
+                case 'strong':
+                case 'b':
+                    newMarks.push({ type: 'bold' });
+                    break;
+                case 'em':
+                case 'i':
+                    newMarks.push({ type: 'italic' });
+                    break;
+                case 'u':
+                    newMarks.push({ type: 'underline' });
+                    break;
+                case 's':
+                case 'strike':
+                    newMarks.push({ type: 'strike' });
+                    break;
+                case 'code':
+                    newMarks.push({ type: 'code' });
+                    break;
+                case 'a':
+                    newMarks.push({
+                        type: 'link',
+                        attrs: {
+                            href: el.getAttribute('href'),
+                            target: el.getAttribute('target')
+                        }
+                    });
+                    break;
+            }
+
+            el.childNodes.forEach(child => traverse(child, newMarks));
+        }
+    };
+
+    doc.body.childNodes.forEach(child => traverse(child));
+    return nodes;
+};
+
 export const parse = (blocks: BlogContentBlock[]): JSONContent => {
     const content: JSONContent[] = [];
 
@@ -111,13 +206,13 @@ export const parse = (blocks: BlogContentBlock[]): JSONContent => {
                 content.push({
                     type: 'heading',
                     attrs: { level: block.level },
-                    content: [{ type: 'text', text: block.text }]
+                    content: parseHtmlToContent(block.text)
                 });
                 break;
             case 'paragraph':
                  content.push({
                     type: 'paragraph',
-                    content: [{ type: 'text', text: block.text }]
+                     content: parseHtmlToContent(block.text)
                 });
                 break;
             case 'list':
@@ -128,7 +223,7 @@ export const parse = (blocks: BlogContentBlock[]): JSONContent => {
                          type: 'listItem',
                          content: [{
                              type: 'paragraph',
-                             content: [{ type: 'text', text: item }]
+                             content: parseHtmlToContent(item)
                          }]
                      }))
                  });
@@ -138,7 +233,7 @@ export const parse = (blocks: BlogContentBlock[]): JSONContent => {
                     type: 'blockquote',
                     content: [{
                         type: 'paragraph',
-                        content: [{ type: 'text', text: block.text }]
+                        content: parseHtmlToContent(block.text)
                     }]
                 });
                 break;
@@ -159,7 +254,7 @@ export const parse = (blocks: BlogContentBlock[]): JSONContent => {
                          title: block.title,
                          variant: block.variant
                      },
-                     content: [{ type: 'text', text: block.text }]
+                     content: parseHtmlToContent(block.text)
                  });
                  break;
         }

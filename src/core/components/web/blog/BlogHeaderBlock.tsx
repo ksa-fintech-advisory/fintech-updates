@@ -22,5 +22,5 @@ export const BlogHeaderBlock: React.FC<BlogHeaderBlockProps> = ({ block }) => {
     .replace(/\s+/g, '-')
     .trim();
 
-  return <Component id={id} className={classNameMap[block.level]}>{block.text}</Component>;
+  return <Component id={id} className={classNameMap[block.level]} dangerouslySetInnerHTML={{ __html: block.text }} />;
 };

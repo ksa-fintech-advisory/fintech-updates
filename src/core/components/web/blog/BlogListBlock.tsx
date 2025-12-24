@@ -12,7 +12,7 @@ export const BlogListBlock: React.FC<BlogListBlockProps> = ({ block }) => {
   return (
     <Component className={`${listClass} pl-6 mb-6 space-y-2 text-grey-700 text-lg`}>
       {block.items.map((item, index) => (
-        <li key={index}>{item}</li>
+        <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
       ))}
     </Component>
   );

@@ -49,7 +49,7 @@ export const BlogHighlightBlock: React.FC<BlogHighlightBlockProps> = ({ block })
        {/* Content */}
        <div>
           {title && <h4 className={`font-bold text-lg mb-2 ${style.title}`}>{title}</h4>}
-          <p className={`${style.text} leading-relaxed`}>{text}</p>
+        <p className={`${style.text} leading-relaxed`} dangerouslySetInnerHTML={{ __html: text }} />
        </div>
     </div>
   );
