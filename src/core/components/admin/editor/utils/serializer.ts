@@ -85,9 +85,10 @@ export const serialize = (json: JSONContent): BlogContentBlock[] => {
         
       case 'highlight': // Custom Custom Node
         if (node.attrs) {
+            const text = node.content ? node.content.map(n => n.text).join('') : '';
              blocks.push({
                  type: 'highlight',
-                 text: node.attrs.text,
+                 text: text || node.attrs.text || '', // Fallback to attrs for backward compat during dev
                  title: node.attrs.title,
                  variant: node.attrs.variant
              });
@@ -155,10 +156,10 @@ export const parse = (blocks: BlogContentBlock[]): JSONContent => {
                  content.push({
                      type: 'highlight',
                      attrs: {
-                         text: block.text,
                          title: block.title,
                          variant: block.variant
-                     }
+                     },
+                     content: [{ type: 'text', text: block.text }]
                  });
                  break;
         }
