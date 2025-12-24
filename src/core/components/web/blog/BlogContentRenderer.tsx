@@ -5,6 +5,7 @@ import { BlogTextBlock } from './BlogTextBlock';
 import { BlogImageBlock } from './BlogImageBlock';
 import { BlogListBlock } from './BlogListBlock';
 import { BlogQuoteBlock } from './BlogQuoteBlock';
+import { BlogHighlightBlock } from './BlogHighlightBlock';
 
 interface BlogContentRendererProps {
   content: BlogContentBlock[];
@@ -25,6 +26,8 @@ export const BlogContentRenderer: React.FC<BlogContentRendererProps> = ({ conten
             return <BlogListBlock key={index} block={block} />;
           case 'quote':
             return <BlogQuoteBlock key={index} block={block} />;
+          case 'highlight':
+            return <BlogHighlightBlock key={index} block={block} />;
           default:
             return null;
         }

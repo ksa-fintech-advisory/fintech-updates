@@ -19,14 +19,40 @@ export const newsUpdates: NewsUpdate[] = [
           text: 'The Saudi Central Bank (SAMA) continues to drive innovation in the financial sector with the release of the updated Open Banking Framework.',
         },
         {
+                type: 'image',
+                src: 'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=2940&auto=format&fit=crop',
+                alt: 'Open Banking Dashboard',
+                caption: 'The new open banking interface standards.'
+            },
+            {
             type: 'quote',
             text: 'This update is a significant milestone in our journey towards a fully established fintech ecosystem.',
             author: 'SAMA Spokesperson'
         },
         {
-          type: 'paragraph',
+            type: 'paragraph',
+                text: 'Key highlights of the new framework include:',
+            },
+            {
+                type: 'list',
+                style: 'unordered',
+                items: [
+                    'Enhanced data security standards (FAPI 1.0 Advanced)',
+                    'Standardized API specifications for account information services',
+                    'New guidelines for Third Party Providers (TPPs) onboarding',
+                    'Improved dispute resolution mechanisms'
+                ]
+            },
+            {
+                type: 'paragraph',
           text: 'New requirements focus on enhanced data security standards and improved API performance metrics for third-party providers (TPPs).',
         },
+            {
+                type: 'highlight',
+                title: 'Executive Summary',
+                text: 'The updated Open Banking Framework (v2.0) mandates strict adherence to FAPI 1.0 Advanced security profiles and introduces standardized API specifications to streamline TPP onboarding. Financial institutions must comply by Q2 2025.',
+                variant: 'info'
+            }
       ],
       ar: [
         {
@@ -34,14 +60,40 @@ export const newsUpdates: NewsUpdate[] = [
           text: 'يواصل البنك المركزي السعودي دفع عجلة الابتكار في القطاع المالي من خلال إصدار إطار المصرفية المفتوحة المحدث.',
         },
         {
+              type: 'image',
+              src: 'https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=2940&auto=format&fit=crop',
+              alt: 'لوحة معلومات المصرفية المفتوحة',
+              caption: 'معايير واجهة المصرفية المفتوحة الجديدة.'
+          },
+          {
             type: 'quote',
             text: 'يعد هذا التحديث علامة فارقة في رحلتنا نحو نظام بيئي متكامل للتقنية المالية.',
             author: 'المتحدث الرسمي لساما'
         },
         {
+              type: 'paragraph',
+              text: 'أبرز ما جاء في الإطار الجديد:',
+          },
+          {
+              type: 'list',
+              style: 'unordered',
+              items: [
+                  'معايير أمن بيانات محسنة (FAPI 1.0 Advanced)',
+                  'مواصفات موحدة لواجهات برمجة التطبيقات لخدمات معلومات الحساب',
+                  'إرشادات جديدة لتأهيل مقدمي الخدمات من الطرف الثالث',
+                  'آليات محسنة لفض النزاعات'
+              ]
+          },
+          {
           type: 'paragraph',
           text: 'تركز المتطلبات الجديدة على معايير أمن البيانات المحسنة ومقاييس أداء واجهة برمجة التطبيقات المحسنة لمقدمي الخدمات من الطرف الثالث.',
         },
+          {
+              type: 'highlight',
+              title: 'ملخص تنفيذي',
+              text: 'يفرض إطار المصرفية المفتوحة المحدث (الإصدار 2.0) التزاماً صارماً بملفات الأمان المتقدمة FAPI 1.0 ويدخل مواصفات موحدة لواجهة برمجة التطبيقات لتبسيط عملية تأهيل مقدمي الخدمات. يجب على المؤسسات المالية الامتثال بحلول الربع الثاني من عام 2025.',
+              variant: 'info'
+          }
       ],
     },
     date: '2024-12-20',

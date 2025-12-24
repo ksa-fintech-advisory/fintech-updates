@@ -4,7 +4,8 @@ export type BlogContentBlock =
   | { type: 'paragraph'; text: string }
   | { type: 'image'; src: string; alt: string; caption?: string }
   | { type: 'list'; style: 'ordered' | 'unordered'; items: string[] }
-  | { type: 'quote'; text: string; author?: string };
+  | { type: 'quote'; text: string; author?: string }
+  | { type: 'highlight'; title?: string; text: string; variant?: 'info' | 'warning' | 'success' };
 
 export interface Blog {
   id: string;
