@@ -14,8 +14,10 @@ import {
   Undo, 
   Redo, 
   Image as ImageIcon,
-  Highlighter 
+  Highlighter,
+  Link2 
 } from 'lucide-react';
+import { useRef } from 'react';
 
 interface EditorToolbarProps {
   editor: Editor;
@@ -49,12 +51,44 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
     </button>
   );
 
-  const addImage = () => {
+  /* Image Upload Logic */
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const addImageUrl = () => {
     const url = window.prompt('URL');
     if (url) {
       editor.chain().focus().setImage({ src: url }).run();
     }
   };
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        if (result) {
+          editor.chain().focus().setImage({ src: result }).run();
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+    // Reset value to allow same file upload again
+    if (event.target) {
+        event.target.value = '';
+    }
+  };
+
+  const triggerImageUpload = () => {
+    fileInputRef.current?.click();
+  };
+
+  // ... (inside return)
+  /* Hidden Input */
+  // <input type="file" ref={fileInputRef} className="hidden" accept="image/*" onChange={handleImageUpload} />
+  
+  // Replace toggle button section
+
 
   const addHighlight = () => {
       // Basic implementation: convert current selection to highlight or insert new
@@ -143,11 +177,26 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
       </div>
       
       <div className="flex items-center gap-1">
+          {/* Hidden File Input */}
+          <input 
+            type="file" 
+            ref={fileInputRef} 
+            className="hidden" 
+            accept="image/*" 
+            onChange={handleImageUpload} 
+          />
+          
           <ToggleButton
-              onClick={addImage}
+              onClick={triggerImageUpload}
               isActive={false}
               icon={ImageIcon}
-              label="Image"
+              label="Upload Image"
+            />
+           <ToggleButton
+              onClick={addImageUrl}
+              isActive={false}
+              icon={Link2} // Using Link2 for URL Image
+              label="Image from URL"
             />
             
             {/* Custom Blocks */}

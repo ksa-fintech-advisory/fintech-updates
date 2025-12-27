@@ -131,29 +131,7 @@ export const Sidebar = ({ mobileOpen, setMobileOpen }: {
   const menuItems: MenuItem[] = [
     { href: '/dashboard', label: t('dashboard'), icon: '📊' },
     { href: '/dashboard/customers', label: t('customers'), icon: '👥' },
-    { href: '/dashboard/portfolios', label: t('portfolios'), icon: '📊' },
-    { href: '/dashboard/finance-accounts', label: t('financeAccounts'), icon: '💰' },
-    { href: '/dashboard/etfs', label: t('etfs'), icon: '📈' },
-    { href: '/dashboard/chat', label: t('chat'), icon: '💬' },
-    { href: '/dashboard/custody', label: t('custody'), icon: '🏛️' },
    
-    { 
-      icon: '🏦', 
-      label: t('banks'),
-      href: '/dashboard/banks'
-    },
-    { 
-      icon: '🔌', 
-      label: t('thirdPartyIntegrations'),
-      href: '/dashboard/integrations'
-    },
-    { href: '/dashboard/users', label: t('users'), icon: '👤' },
-    { href: '/dashboard/roles', label: t('roles'), icon: '🛡️' },
-    { 
-      icon: '📋', 
-      label: t('auditLogs'), 
-      href: '/dashboard/audit'
-    },
     { 
       icon: '🔔',
       label: t('notifications'),
@@ -164,21 +142,7 @@ export const Sidebar = ({ mobileOpen, setMobileOpen }: {
       label: t('systemConfigs'),
       href: '/dashboard/system-configs'
     },
-    { 
-      icon: '🛡️',
-      label: t('compliance'),
-      href: '/dashboard/compliance'
-    },
-    {
-      icon: '🔒',
-      label: t('security'),
-      href: '/dashboard/security'
-    },
-    {
-      icon: '📊',
-      label: t('risk'),
-      href: '/dashboard/risk'
-    },
+   
 
     {
       icon: '🎨',
