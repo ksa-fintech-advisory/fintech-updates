@@ -1,5 +1,6 @@
 
 import { homeService } from '@/services/api/mock';
+import { updateApiService } from '@/services/api/updateApi';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
@@ -10,6 +11,13 @@ export default async function HomePage({ params }: { params: { locale: string } 
   const homeContent = await homeService.getHomeContent();
   const locale = params.locale;
   const isArabic = locale === 'ar';
+
+  // Fetch real updates from API
+  const latestUpdates = await updateApiService.getUpdates({
+    featured: true,
+    limit: 5,
+    lang: locale,
+  });
 
   return (
     <div className="w-full">
@@ -234,10 +242,10 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
           <div className="max-w-4xl mx-auto space-y-8">
             <StaggerContainer staggerDelay={0.2}>
-              {homeContent.latestUpdates.map((update, idx) => (
+              {latestUpdates.map((update: any, idx: number) => (
                 <StaggerItem key={update.id} className="group relative">
                   {/* Timeline Line */}
-                  {idx !== homeContent.latestUpdates.length - 1 && (
+                  {idx !== latestUpdates.length - 1 && (
                     <div className="absolute left-[2.25rem] top-20 bottom-[-2rem] w-0.5 bg-gradient-to-b from-primary-200 to-transparent z-0"></div>
                   )}
 
@@ -255,7 +263,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
                     <div className="flex-1 min-w-0 pt-1">
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
                         <h3 className="font-bold text-grey-900 text-xl group-hover:text-primary-600 transition-colors">
-                          {isArabic ? update.title.ar : update.title.en}
+                          {update.title}
                         </h3>
                         <span className="inline-flex items-center gap-1.5 text-sm font-medium text-grey-500 bg-grey-50 px-3 py-1 rounded-full border border-grey-100">
                           <svg className="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -270,7 +278,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
                       </div>
 
                       <p className="text-grey-600 mb-0 leading-relaxed text-base">
-                        {isArabic ? update.description.ar : update.description.en}
+                        {update.description}
                       </p>
                     </div>
                   </div>

@@ -17,6 +17,7 @@ async function main() {
   await prisma.blog.deleteMany({});
   await prisma.blogCategory.deleteMany({});
   await prisma.author.deleteMany({});
+  await prisma.update.deleteMany({});
 
   // Seed authors
   console.log('👤 Seeding authors...');
@@ -98,6 +99,74 @@ async function main() {
   }
 
   console.log(`✅ Created ${blogCount} blogs`);
+
+  // Seed updates
+  console.log('📰 Seeding updates...');
+  const updates = [
+    {
+      titleEn: 'SAMA Digital Payments Updates',
+      titleAr: 'تحديثات المدفوعات الرقمية من ساما',
+      descriptionEn: 'Saudi Central Bank announces new regulatory framework for digital payment services',
+      descriptionAr: 'البنك المركزي السعودي يعلن عن إطار تنظيمي جديد لخدمات المدفوعات الرقمية',
+      icon: '💳',
+      date: new Date('2024-12-15'),
+      publishedAt: new Date('2024-12-15'),
+      featured: true,
+      slug: 'sama-digital-payments-framework-2024',
+    },
+    {
+      titleEn: 'Open Banking Implementation',
+      titleAr: 'تطبيق نظام البنوك المفتوحة',
+      descriptionEn: 'New guidelines for open banking APIs and data sharing standards',
+      descriptionAr: 'إرشادات جديدة لواجهات برمجة التطبيقات المصرفية المفتوحة ومعايير مشاركة البيانات',
+      icon: '🏦',
+      date: new Date('2024-12-10'),
+      publishedAt: new Date('2024-12-10'),
+      featured: true,
+      slug: 'open-banking-api-guidelines',
+    },
+    {
+      titleEn: 'Fintech License Updates',
+      titleAr: 'تحديثات تراخيص التقنية المالية',
+      descriptionEn: 'Streamlined licensing process for fintech startups announced',
+      descriptionAr: 'الإعلان عن عملية مبسطة للترخيص للشركات الناشئة في مجال التقنية المالية',
+      icon: '📋',
+      date: new Date('2024-12-05'),
+      publishedAt: new Date('2024-12-05'),
+      featured: true,
+      slug: 'fintech-licensing-streamline',
+    },
+    {
+      titleEn: 'Cryptocurrency Regulations',
+      titleAr: 'لوائح العملات المشفرة',
+      descriptionEn: 'SAMA issues clarifications on cryptocurrency trading and custody services',
+      descriptionAr: 'ساما تصدر توضيحات حول تداول العملات المشفرة وخدمات الحفظ',
+      icon: '₿',
+      date: new Date('2024-11-28'),
+      publishedAt: new Date('2024-11-28'),
+      featured: false,
+      slug: 'cryptocurrency-regulations-clarification',
+    },
+    {
+      titleEn: 'RegTech Framework Launch',
+      titleAr: 'إطلاق إطار التقنية التنظيمية',
+      descriptionEn: 'New regulatory technology framework to enhance compliance efficiency',
+      descriptionAr: 'إطار تقني تنظيمي جديد لتعزيز كفاءة الامتثال',
+      icon: '⚖️',
+      date: new Date('2024-11-20'),
+      publishedAt: new Date('2024-11-20'),
+      featured: false,
+      slug: 'regtech-framework-2024',
+    },
+  ];
+
+  for (const update of updates) {
+    await prisma.update.create({
+      data: update,
+    });
+  }
+
+  console.log(`✅ Created ${updates.length} updates`);
   console.log('🎉 Seed completed successfully!');
 }
 
