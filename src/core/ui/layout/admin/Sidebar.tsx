@@ -129,33 +129,15 @@ export const Sidebar = ({ mobileOpen, setMobileOpen }: {
   const isRTL = locale === 'ar';
 
   const menuItems: MenuItem[] = [
-    { href: '/dashboard', label: t('dashboard'), icon: '📊' },
-    { href: '/dashboard/customers', label: t('customers'), icon: '👥' },
-   
-    { 
-      icon: '🔔',
-      label: t('notifications'),
-      href: '/dashboard/notifications'
-    },
-    { 
-      icon: '⚙️',
-      label: t('systemConfigs'),
-      href: '/dashboard/system-configs'
-    },
-   
-
-    {
-      icon: '🎨',
-      label:t('example-ui'),
-      href:'/dashboard/ui-examples'
-    },
-    { href: '/dashboard/profile', label: t('profile'), icon: '👤' },
+    { href: '/admin', label: t('home'), icon: '🏠' },
+    { href: '/admin/blogs', label: t('blogs'), icon: '📝' },
+    { href: '/admin/categories', label: t('categories'), icon: '📁' },
   ];
 
   const isActive = (href: string) => {
     if (href === '#' || href === '') return false;
-    if (href === '/dashboard') {
-      return pathname === '/dashboard';
+    if (href === '/admin') {
+      return pathname === '/admin';
     }
     return pathname.startsWith(href);
   };

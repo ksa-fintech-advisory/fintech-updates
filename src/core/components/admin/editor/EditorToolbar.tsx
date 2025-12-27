@@ -24,20 +24,23 @@ interface EditorToolbarProps {
 }
 
 const EditorToolbar = ({ editor }: EditorToolbarProps) => {
+  // Hooks must be called before any conditional returns
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   if (!editor) {
     return null;
   }
 
-  const ToggleButton = ({ 
-    isActive, 
-    onClick, 
-    icon: Icon, 
-    label 
-  }: { 
-    isActive: boolean; 
-    onClick: () => void; 
-    icon: any; 
-    label: string 
+  const ToggleButton = ({
+    isActive,
+    onClick,
+    icon: Icon,
+    label
+  }: {
+    isActive: boolean;
+    onClick: () => void;
+    icon: any;
+    label: string
   }) => (
     <button
       onClick={onClick}
@@ -52,8 +55,6 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   );
 
   /* Image Upload Logic */
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
   const addImageUrl = () => {
     const url = window.prompt('URL');
     if (url) {

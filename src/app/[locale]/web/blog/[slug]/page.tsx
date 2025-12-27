@@ -1,7 +1,7 @@
 import { blogApiService } from '@/services/api/blogs';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
+import SafeImage from '@/core/components/common/SafeImage';
 import { BlogContentRenderer } from '@/core/components/web/blog/BlogContentRenderer';
 import { AuthorBio } from '@/core/components/web/blog/AuthorBio';
 import { SocialShare } from '@/core/components/web/blog/SocialShare';
@@ -62,7 +62,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
             <div className="flex flex-wrap items-center justify-center gap-6 text-grey-400">
               <div className="flex items-center gap-3">
                 {blog.author.avatar ? (
-                  <Image
+                  <SafeImage
                     src={blog.author.avatar}
                     alt={blog.author.name}
                     width={48}
@@ -109,7 +109,7 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
       {/* Featured Image */}
       <section className="relative px-4 sm:px-6 lg:px-8 -mt-16 mb-16">
         <div className="max-w-5xl mx-auto relative h-[400px] md:h-[500px] w-full shadow-2xl rounded-2xl overflow-hidden border-4 border-white">
-          <Image
+          <SafeImage
             src={blog.featuredImage}
             alt={title}
             fill

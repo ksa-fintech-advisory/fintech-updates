@@ -1,7 +1,16 @@
 {
+  "nav": {
+    "home": "Home",
+    "blogs": "Blogs",
+    "categories": "Categories"
+  },
   "common": {
+    "appName": "FinTech Admin",
+    "adminUser": "Admin User",
     "nav": {
       "home": "Home",
+      "blogs": "Blogs",
+      "categories": "Categories",
       "blog": "Blog",
       "technology": "Technology",
       "compliance": "Compliance",

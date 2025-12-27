@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import SafeImage from '@/core/components/common/SafeImage';
 import { LocalizedBlog } from '@/core/types/web/blog';
 
 interface RelatedPostsProps {
@@ -24,7 +24,7 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts, locale }) => 
             className="group flex flex-col gap-4"
           >
             <div className="relative h-48 w-full overflow-hidden rounded-xl">
-              <Image
+              <SafeImage
                 src={post.featuredImage}
                 alt={post.title}
                 fill

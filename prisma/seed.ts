@@ -53,11 +53,11 @@ async function main() {
     const createdCategory = await prisma.blogCategory.create({
       data: {
         id: category.id,
-        name: category.name.en,
-        nameAr: category.name.ar,
+        name: category.name.en || '',
+        nameAr: category.name.ar || '',
         slug: category.slug || '',
         color: category.color,
-        icon: category.icon,
+        icon: category.icon || '',
       },
     });
     categoryMap.set(category.id, createdCategory.id);

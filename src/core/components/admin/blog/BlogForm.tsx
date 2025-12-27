@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import RichTextEditor from '@/core/components/admin/editor/RichTextEditor';
+import ImageUpload from '@/core/components/admin/common/ImageUpload';
 import { BlogContentBlock } from '@/core/types/web/blog';
 import { CreateBlogDto, UpdateBlogDto } from '@/services/api/admin/blogApi';
 
@@ -79,7 +80,7 @@ export default function BlogForm({ initialData, mode, onSubmit, categories, auth
   const handleRemoveTag = (tag: string) => {
     setFormData({
       ...formData,
-      tags: formData.tags.filter(t => t !== tag),
+      tags: formData.tags.filter((t: string) => t !== tag),
     });
   };
 
@@ -197,16 +198,13 @@ export default function BlogForm({ initialData, mode, onSubmit, categories, auth
           </div>
         </div>
 
-        <div>
-          <label className="block text-sm font-medium mb-1">Featured Image URL</label>
-          <input
-            type="text"
-            value={formData.featuredImage}
-            onChange={(e) => setFormData({ ...formData, featuredImage: e.target.value })}
-            className="w-full border rounded px-3 py-2"
-            placeholder="/images/blogs/example.jpg"
-          />
-        </div>
+
+        <ImageUpload
+          label="Featured Image"
+          value={formData.featuredImage}
+          onChange={(value) => setFormData({ ...formData, featuredImage: value })}
+        />
+
 
         <div>
           <label className="block text-sm font-medium mb-1">Tags</label>
@@ -228,7 +226,7 @@ export default function BlogForm({ initialData, mode, onSubmit, categories, auth
             </button>
           </div>
           <div className="flex flex-wrap gap-2">
-            {formData.tags.map(tag => (
+            {formData.tags.map((tag: string) => (
               <span
                 key={tag}
                 className="px-3 py-1 bg-gray-100 rounded-full text-sm flex items-center gap-2"
@@ -274,12 +272,14 @@ export default function BlogForm({ initialData, mode, onSubmit, categories, auth
             key="editor-en"
             initialContent={contentEn}
             onChange={setContentEn}
+            direction="ltr"
           />
         ) : (
           <RichTextEditor
             key="editor-ar"
             initialContent={contentAr}
             onChange={setContentAr}
+              direction="rtl"
           />
         )}
       </div>

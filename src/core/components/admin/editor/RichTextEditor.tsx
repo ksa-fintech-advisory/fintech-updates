@@ -14,9 +14,10 @@ interface RichTextEditorProps {
   initialContent?: BlogContentBlock[];
   onChange?: (blocks: BlogContentBlock[]) => void;
   className?: string; // Additional classes
+  direction?: 'ltr' | 'rtl'; // Text direction for RTL languages
 }
 
-const RichTextEditor = ({ initialContent = [], onChange, className }: RichTextEditorProps) => {
+const RichTextEditor = ({ initialContent = [], onChange, className, direction = 'ltr' }: RichTextEditorProps) => {
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
@@ -34,6 +35,7 @@ const RichTextEditor = ({ initialContent = [], onChange, className }: RichTextEd
     editorProps: {
       attributes: {
         class: 'prose prose-sm sm:prose lg:prose-lg xl:prose-2xl mx-auto focus:outline-none min-h-[300px] p-4',
+        dir: direction, // Apply text direction
       },
     },
     onUpdate: ({ editor }) => {
@@ -57,7 +59,7 @@ const RichTextEditor = ({ initialContent = [], onChange, className }: RichTextEd
   }
 
   return (
-    <div className={`border rounded-lg shadow-sm bg-white ${className}`}>
+    <div className={`border rounded-lg shadow-sm bg-white ${className}`} dir={direction}>
       <EditorToolbar editor={editor} />
       <div className="border-t">
         <EditorContent editor={editor} />
