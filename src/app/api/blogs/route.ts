@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { blogs, blogCategories } from '@/services/api/mock/data/blogs.data';
+import prisma from '@/lib/prisma';
 import { LocalizedPaginatedBlogs, LocalizedBlog, LocalizedBlogCategory } from '@/core/types/web/blog';
 
 export async function GET(request: Request) {
@@ -15,88 +15,96 @@ export async function GET(request: Request) {
   const locale = (lang === 'en' || lang === 'ar') ? lang : 
                  (acceptLanguage?.includes('en') ? 'en' : 'ar');
 
-  let filteredBlogs = [...blogs];
+  try {
+    // Build where clause for filtering
+    const where: any = {};
 
-  // Apply category filter
-  if (category) {
-    filteredBlogs = filteredBlogs.filter(
-      blog => blog.category.slug === category
-    );
+    if (category) {
+      where.category = {
+        slug: category
+      };
+    }
+
+    if (search) {
+      const searchLower = search.toLowerCase();
+      where.OR = [
+        { titleEn: { contains: searchLower } },
+        { titleAr: { contains: searchLower } },
+        { excerptEn: { contains: searchLower } },
+        { excerptAr: { contains: searchLower } },
+      ];
+    }
+
+    // Get total count for pagination
+    const total = await prisma.blog.count({ where });
+
+    // Fetch blogs with pagination
+    const blogs = await prisma.blog.findMany({
+      where,
+      include: {
+        author: true,
+        category: true,
+      },
+      orderBy: {
+        publishedAt: 'desc',
+      },
+      skip: (page - 1) * limit,
+      take: limit,
+    });
+
+    // Fetch all categories
+    const categories = await prisma.blogCategory.findMany();
+
+    // Map to localized structure
+    const localizedBlogs: LocalizedBlog[] = blogs.map(blog => ({
+      id: blog.id,
+      slug: blog.slug,
+      title: locale === 'en' ? blog.titleEn : blog.titleAr,
+      excerpt: locale === 'en' ? blog.excerptEn : blog.excerptAr,
+      content: JSON.parse(locale === 'en' ? blog.contentEn : blog.contentAr),
+      featuredImage: blog.featuredImage,
+      category: {
+        id: blog.category.id,
+        name: locale === 'en' ? blog.category.name : blog.category.nameAr,
+        slug: blog.category.slug,
+        color: blog.category.color,
+        icon: blog.category.icon,
+      },
+      tags: JSON.parse(blog.tags),
+      author: {
+        id: blog.author.id,
+        name: locale === 'en' ? blog.author.name : (blog.author.nameAr || blog.author.name),
+        bio: locale === 'en' ? (blog.author.bio || undefined) : (blog.author.bioAr || undefined),
+        role: locale === 'en' ? (blog.author.role || undefined) : (blog.author.roleAr || undefined),
+        avatar: blog.author.avatar || undefined,
+      },
+      publishedAt: blog.publishedAt.toISOString(),
+      readTime: blog.readTime,
+      relatedPosts: [], // We'll handle related posts separately if needed
+    }));
+
+    const localizedCategories: LocalizedBlogCategory[] = categories.map(cat => ({
+      id: cat.id,
+      name: locale === 'en' ? cat.name : cat.nameAr,
+      slug: cat.slug,
+      color: cat.color,
+      icon: cat.icon,
+    }));
+
+    const totalPages = Math.ceil(total / limit);
+
+    const response: LocalizedPaginatedBlogs = {
+      blogs: localizedBlogs,
+      total,
+      page,
+      limit,
+      totalPages,
+      categories: localizedCategories,
+    };
+
+    return NextResponse.json(response);
+  } catch (error) {
+    console.error('Error fetching blogs:', error);
+    return NextResponse.json({ error: 'Failed to fetch blogs' }, { status: 500 });
   }
-
-  // Apply search filter
-  if (search) {
-    const searchLower = search.toLowerCase();
-    filteredBlogs = filteredBlogs.filter(blog =>
-      blog.title.en.toLowerCase().includes(searchLower) ||
-      blog.title.ar.toLowerCase().includes(searchLower) ||
-      blog.excerpt.en.toLowerCase().includes(searchLower) ||
-      blog.excerpt.ar.toLowerCase().includes(searchLower) ||
-      blog.tags.some(tag => tag.toLowerCase().includes(searchLower))
-    );
-  }
-
-  // Sort by published date (newest first)
-  filteredBlogs.sort((a, b) =>
-    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  );
-
-  const total = filteredBlogs.length;
-  const totalPages = Math.ceil(total / limit);
-  const start = (page - 1) * limit;
-  const end = start + limit;
-
-  // Map to localized structure
-  const mapToLocalized = (blog: typeof blogs[0], isRelated = false): LocalizedBlog => ({
-    id: blog.id,
-    slug: blog.slug,
-    title: blog.title[locale],
-    excerpt: blog.excerpt[locale],
-    content: blog.content[locale],
-    featuredImage: blog.featuredImage,
-    category: {
-      id: blog.category.id,
-      name: blog.category.name[locale],
-      slug: blog.category.slug,
-      color: blog.category.color,
-      icon: blog.category.icon,
-    },
-    tags: blog.tags,
-    author: {
-      id: blog.author.id,
-      name: blog.author.name?.[locale],
-      bio: blog.author.bio?.[locale],
-      role: blog.author.role?.[locale],
-      avatar: blog.author.avatar,
-    },
-    publishedAt: blog.publishedAt,
-    readTime: blog.readTime,
-    relatedPosts: isRelated 
-      ? [] 
-      : (blog.relatedPosts || [])
-          .map(id => blogs.find(b => b.id === id))
-          .filter((b): b is typeof blogs[0] => !!b)
-          .map(b => mapToLocalized(b, true)),
-  });
-
-  const localizedBlogs: LocalizedBlog[] = filteredBlogs.slice(start, end).map(blog => mapToLocalized(blog));
-
-  const localizedCategories: LocalizedBlogCategory[] = blogCategories.map(cat => ({
-    id: cat.id,
-    name: cat.name[locale],
-    slug: cat.slug,
-    color: cat.color,
-    icon: cat.icon,
-  }));
-
-  const response: LocalizedPaginatedBlogs = {
-    blogs: localizedBlogs,
-    total,
-    page,
-    limit,
-    totalPages,
-    categories: localizedCategories,
-  };
-
-  return NextResponse.json(response);
 }

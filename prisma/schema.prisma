@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Author {
+  id        String   @id @default(cuid())
+  name      String
+  nameAr    String?
+  bio       String?
+  bioAr     String?
+  role      String?
+  roleAr    String?
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  blogs Blog[]
+}
+
+model BlogCategory {
+  id        String   @id @default(cuid())
+  name      String
+  nameAr    String
+  slug      String   @unique
+  color     String
+  icon      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  blogs Blog[]
+}
+
+model Blog {
+  id             String       @id @default(cuid())
+  slug           String       @unique
+  titleEn        String
+  titleAr        String
+  excerptEn      String
+  excerptAr      String
+  contentEn      String       // JSON string of content blocks
+  contentAr      String       // JSON string of content blocks
+  featuredImage  String
+  tags           String       // JSON array of tags
+  publishedAt    DateTime
+  readTime       Int
+  relatedPostIds String?      // JSON array of blog IDs
+  authorId       String
+  categoryId     String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  author   Author       @relation(fields: [authorId], references: [id])
+  category BlogCategory @relation(fields: [categoryId], references: [id])
+
+  @@index([slug])
+  @@index([categoryId])
+  @@index([publishedAt])
+}

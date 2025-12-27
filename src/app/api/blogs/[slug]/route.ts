@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { blogs } from '@/services/api/mock/data/blogs.data';
+import prisma from '@/lib/prisma';
 import { LocalizedBlog } from '@/core/types/web/blog';
 
 export async function GET(
@@ -8,7 +8,6 @@ export async function GET(
 ) {
   const { searchParams } = new URL(request.url);
   const slug = params.slug;
-  const blog = blogs.find(b => b.slug === slug);
 
   // Get locale from query param or header, default to 'ar'
   const lang = searchParams.get('lang');
@@ -16,44 +15,49 @@ export async function GET(
   const locale = (lang === 'en' || lang === 'ar') ? lang : 
                  (acceptLanguage?.includes('en') ? 'en' : 'ar');
 
-  if (!blog) {
-    return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
+  try {
+    const blog = await prisma.blog.findUnique({
+      where: { slug },
+      include: {
+        author: true,
+        category: true,
+      },
+    });
+
+    if (!blog) {
+      return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
+    }
+
+    const localizedBlog: LocalizedBlog = {
+      id: blog.id,
+      slug: blog.slug,
+      title: locale === 'en' ? blog.titleEn : blog.titleAr,
+      excerpt: locale === 'en' ? blog.excerptEn : blog.excerptAr,
+      content: JSON.parse(locale === 'en' ? blog.contentEn : blog.contentAr),
+      featuredImage: blog.featuredImage,
+      category: {
+        id: blog.category.id,
+        name: locale === 'en' ? blog.category.name : blog.category.nameAr,
+        slug: blog.category.slug,
+        color: blog.category.color,
+        icon: blog.category.icon,
+      },
+      tags: JSON.parse(blog.tags),
+      author: {
+        id: blog.author.id,
+        name: locale === 'en' ? blog.author.name : (blog.author.nameAr || blog.author.name),
+        bio: locale === 'en' ? (blog.author.bio || undefined) : (blog.author.bioAr || undefined),
+        role: locale === 'en' ? (blog.author.role || undefined) : (blog.author.roleAr || undefined),
+        avatar: blog.author.avatar || undefined,
+      },
+      publishedAt: blog.publishedAt.toISOString(),
+      readTime: blog.readTime,
+      relatedPosts: [], // We'll handle related posts separately if needed
+    };
+
+    return NextResponse.json(localizedBlog);
+  } catch (error) {
+    console.error('Error fetching blog:', error);
+    return NextResponse.json({ error: 'Failed to fetch blog' }, { status: 500 });
   }
-
-
-  const mapToLocalized = (b: typeof blogs[0], isRelated = false): LocalizedBlog => ({
-    id: b.id,
-    slug: b.slug,
-    title: b.title[locale],
-    excerpt: b.excerpt[locale],
-    content: b.content[locale],
-    featuredImage: b.featuredImage,
-    category: {
-      id: b.category.id,
-      name: b.category.name[locale],
-      slug: b.category.slug,
-      color: b.category.color,
-      icon: b.category.icon,
-    },
-    tags: b.tags,
-    author: {
-      id: b.author.id,
-      name: b.author.name?.[locale],
-      bio: b.author.bio?.[locale],
-      role: b.author.role?.[locale],
-      avatar: b.author.avatar,
-    },
-    publishedAt: b.publishedAt,
-    readTime: b.readTime,
-    relatedPosts: isRelated
-      ? []
-      : (b.relatedPosts || [])
-          .map(id => blogs.find(bg => bg.id === id))
-          .filter((bg): bg is typeof blogs[0] => !!bg)
-          .map(bg => mapToLocalized(bg, true)),
-  });
-
-  const localizedBlog = mapToLocalized(blog);
-
-  return NextResponse.json(localizedBlog);
 }
