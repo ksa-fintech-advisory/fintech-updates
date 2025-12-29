@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { CreateUpdateDto, UpdateUpdateDto } from '@/services/api/admin/updateApi';
+import ImageUpload from '@/core/components/admin/common/ImageUpload';
 
 interface UpdateFormProps {
   initialData?: any;
@@ -18,17 +19,31 @@ export default function UpdateForm({initialData, mode, onSubmit }: UpdateFormPro
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Parse references from JSON string
+  const initialReferences = initialData?.references
+    ? JSON.parse(initialData.references)
+    : [];
+
   const [formData, setFormData] = useState({
     slug: initialData?.slug || '',
     titleEn: initialData?.titleEn || '',
     titleAr: initialData?.titleAr || '',
     descriptionEn: initialData?.descriptionEn || '',
     descriptionAr: initialData?.descriptionAr || '',
+    summaryEn: initialData?.summaryEn || '',
+    summaryAr: initialData?.summaryAr || '',
     icon: initialData?.icon || '📰',
+    featuredImage: initialData?.featuredImage || '',
+    content: initialData?.content || '',
+    source: initialData?.source || '',
+    category: initialData?.category || '',
+    pdfUrl: initialData?.pdfUrl || '',
     date: initialData?.date ? new Date(initialData.date).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
     publishedAt: initialData?.publishedAt ? new Date(initialData.publishedAt).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
     featured: initialData?.featured || false,
   });
+
+  const [references, setReferences] = useState<Array<{ title: string, url: string }>>(initialReferences);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +56,12 @@ export default function UpdateForm({initialData, mode, onSubmit }: UpdateFormPro
         throw new Error('Please fill in all required fields');
       }
 
-      await onSubmit(formData);
+      const submitData = {
+        ...formData,
+        references: JSON.stringify(references),
+      };
+
+      await onSubmit(submitData);
       router.push('/admin/updates');
     } catch (err: any) {
       setError(err.message || 'Failed to save update');
@@ -57,6 +77,20 @@ export default function UpdateForm({initialData, mode, onSubmit }: UpdateFormPro
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-')
       .trim();
+  };
+
+  const addReference = () => {
+    setReferences([...references, { title: '', url: '' }]);
+  };
+
+  const removeReference = (index: number) => {
+    setReferences(references.filter((_, i) => i !== index));
+  };
+
+  const updateReference = (index: number, field: 'title' | 'url', value: string) => {
+    const updated = [...references];
+    updated[index][field] = value;
+    setReferences(updated);
   };
 
   return (
@@ -109,13 +143,41 @@ export default function UpdateForm({initialData, mode, onSubmit }: UpdateFormPro
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium mb-1">
+              {isRTL ? 'الملخص (إنجليزي)' : 'Summary (English)'} *
+            </label>
+            <input
+              type="text"
+              value={formData.summaryEn}
+              onChange={(e) => setFormData({ ...formData, summaryEn: e.target.value })}
+              className="w-full border rounded px-3 py-2"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">
+              {isRTL ? 'الملخص (عربي)' : 'Summary (Arabic)'} *
+            </label>
+            <input
+              type="text"
+              value={formData.summaryAr}
+              onChange={(e) => setFormData({ ...formData, summaryAr: e.target.value })}
+              className="w-full border rounded px-3 py-2"
+              dir="rtl"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium mb-1">
               {isRTL ? 'الوصف (إنجليزي)' : 'Description (English)'} *
             </label>
             <textarea
               value={formData.descriptionEn}
               onChange={(e) => setFormData({ ...formData, descriptionEn: e.target.value })}
               className="w-full border rounded px-3 py-2"
-              rows={3}
+              rows={4}
               required
             />
           </div>
@@ -127,26 +189,64 @@ export default function UpdateForm({initialData, mode, onSubmit }: UpdateFormPro
               value={formData.descriptionAr}
               onChange={(e) => setFormData({ ...formData, descriptionAr: e.target.value })}
               className="w-full border rounded px-3 py-2"
-              rows={3}
+              rows={4}
               dir="rtl"
               required
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4">
+        <div>
+          <label className="block text-sm font-medium mb-1">
+            {isRTL ? 'الصورة المميزة' : 'Featured Image'}
+          </label>
+          <ImageUpload
+            value={formData.featuredImage}
+            onChange={(url) => setFormData({ ...formData, featuredImage: url })}
+            placeholder="https://images.unsplash.com/..."
+          />
+        </div>
+
+        <div className="grid grid-cols-4 gap-4">
           <div>
             <label className="block text-sm font-medium mb-1">
-              {isRTL ? 'الرمز التعبيري' : 'Icon (Emoji)'}
+              {isRTL ? 'الرمز' : 'Icon'}
             </label>
             <input
               type="text"
               value={formData.icon}
               onChange={(e) => setFormData({ ...formData, icon: e.target.value })}
-              className="w-full border rounded px-3 py-2 text-2xl"
-              placeholder="📰"
+              className="w-full border rounded px-3 py-2 text-2xl text-center"
               maxLength={2}
             />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">
+              {isRTL ? 'المصدر' : 'Source'}
+            </label>
+            <input
+              type="text"
+              value={formData.source}
+              onChange={(e) => setFormData({ ...formData, source: e.target.value })}
+              className="w-full border rounded px-3 py-2"
+              placeholder="SAMA"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">
+              {isRTL ? 'الفئة' : 'Category'}
+            </label>
+            <select
+              value={formData.category}
+              onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+              className="w-full border rounded px-3 py-2"
+            >
+              <option value="">Select...</option>
+              <option value="Regulation">Regulation</option>
+              <option value="Compliance">Compliance</option>
+              <option value="Market">Market</option>
+              <option value="Announcement">Announcement</option>
+            </select>
           </div>
           <div>
             <label className="block text-sm font-medium mb-1">
@@ -160,34 +260,32 @@ export default function UpdateForm({initialData, mode, onSubmit }: UpdateFormPro
               required
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium mb-1">
-              {isRTL ? 'تاريخ النشر' : 'Published At'}
-            </label>
-            <input
-              type="date"
-              value={formData.publishedAt}
-              onChange={(e) => setFormData({ ...formData, publishedAt: e.target.value })}
-              className="w-full border rounded px-3 py-2"
-            />
-          </div>
         </div>
 
         <div>
           <label className="block text-sm font-medium mb-1">
-            {isRTL ? 'الرابط' : 'Slug'} *
+            {isRTL ? 'رابط PDF (اختياري)' : 'PDF URL (Optional)'}
+          </label>
+          <input
+            type="url"
+            value={formData.pdfUrl}
+            onChange={(e) => setFormData({ ...formData, pdfUrl: e.target.value })}
+            className="w-full border rounded px-3 py-2"
+            placeholder="https://example.com/document.pdf"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium mb-1">
+            {isRTL ? 'رابط URL' : 'Slug'} *
           </label>
           <input
             type="text"
             value={formData.slug}
             onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
             className="w-full border rounded px-3 py-2"
-            placeholder="sama-digital-payments-framework"
             required
           />
-          <p className="text-xs text-gray-500 mt-1">
-            {isRTL ? 'معرّف صديق لمحركات البحث' : 'URL-friendly identifier'}
-          </p>
         </div>
 
         <div className="flex items-center gap-2">
@@ -199,9 +297,71 @@ export default function UpdateForm({initialData, mode, onSubmit }: UpdateFormPro
             className="w-4 h-4"
           />
           <label htmlFor="featured" className="text-sm font-medium">
-            {isRTL ? 'مميز (يظهر في الصفحة الرئيسية)' : 'Featured (Show on home page)'}
+            {isRTL ? 'مميز' : 'Featured'}
           </label>
         </div>
+      </div>
+
+      {/* References */}
+      <div className="bg-white shadow rounded-lg p-6 space-y-4">
+        <div className="flex justify-between items-center">
+          <h2 className="text-xl font-semibold">
+            {isRTL ? 'المراجع' : 'References'}
+          </h2>
+          <button
+            type="button"
+            onClick={addReference}
+            className="px-3 py-1 text-sm bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            {isRTL ? '+ إضافة مرجع' : '+ Add Reference'}
+          </button>
+        </div>
+
+        {references.map((ref, index) => (
+          <div key={index} className="border rounded p-4 space-y-2">
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-sm font-medium">{isRTL ? `مرجع ${index + 1}` : `Reference ${index + 1}`}</span>
+              <button
+                type="button"
+                onClick={() => removeReference(index)}
+                className="text-red-500 hover:text-red-700"
+              >
+                ✕
+              </button>
+            </div>
+            <input
+              type="text"
+              value={ref.title}
+              onChange={(e) => updateReference(index, 'title', e.target.value)}
+              placeholder={isRTL ? 'العنوان' : 'Title'}
+              className="w-full border rounded px-3 py-2"
+            />
+            <input
+              type="url"
+              value={ref.url}
+              onChange={(e) => updateReference(index, 'url', e.target.value)}
+              placeholder={isRTL ? 'الرابط' : 'URL'}
+              className="w-full border rounded px-3 py-2"
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Content (Simple for now) */}
+      <div className="bg-white shadow rounded-lg p-6 space-y-4">
+        <h2 className="text-xl font-semibold">
+          {isRTL ? 'المحتوى' : 'Content'}
+        </h2>
+        <p className="text-sm text-gray-600">
+          {isRTL ? 'المحتوى المخزن كـ JSON. استخدام محرر نصوص غني قريبًا.' : 'Content stored as JSON. Rich editor coming soon.'}
+        </p>
+        <textarea
+          value={formData.content}
+          onChange={(e) => setFormData({ ...formData, content: e.target.value })}
+          className="w-full border rounded px-3 py-2 font-mono text-sm"
+          rows={6}
+          placeholder='[{"type":"paragraph","content":"..."}]'
+        />
       </div>
 
       {/* Submit Buttons */}
@@ -224,7 +384,7 @@ export default function UpdateForm({initialData, mode, onSubmit }: UpdateFormPro
           {isSubmitting
             ? (isRTL ? 'جارٍ الحفظ...' : 'Saving...')
             : mode === 'create'
-            ? (isRTL ? 'إنشاء تحديث' : 'Create Update')
+              ? (isRTL ? 'إنشاء' : 'Create')
             : (isRTL ? 'تحديث' : 'Update')}
         </button>
       </div>

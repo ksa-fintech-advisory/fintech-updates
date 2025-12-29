@@ -55,6 +55,28 @@ export const blogApiService = {
   },
 
   /**
+   * Get featured blogs for home page
+   */
+  async getFeaturedBlogs(locale: string = 'ar', limit: number = 3): Promise<LocalizedBlog[]> {
+    const params = new URLSearchParams({
+      featured: 'true',
+      limit: limit.toString(),
+      lang: locale,
+    });
+
+    const res = await fetch(`${BASE_URL}/api/blogs?${params.toString()}`, {
+      cache: 'no-store',
+    });
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch featured blogs');
+    }
+
+    const data = await res.json();
+    return data.blogs || [];
+  },
+
+  /**
    * Get blog categories
    */
   async getBlogCategories(locale: string = 'ar'): Promise<LocalizedBlogCategory[]> {

@@ -66,21 +66,30 @@ model Blog {
 }
 
 model Update {
-  id            String   @id @default(cuid())
-  titleEn       String
-  titleAr       String
-  descriptionEn String
-  descriptionAr String
-  icon          String   // Emoji or icon identifier
-  date          DateTime
-  publishedAt   DateTime
-  featured      Boolean  @default(false)
-  slug          String   @unique
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id             String   @id @default(cuid())
+  titleEn        String
+  titleAr        String
+  descriptionEn  String
+  descriptionAr  String
+  summaryEn      String   // Brief overview (EN)
+  summaryAr      String   // Brief overview (AR)
+  icon           String   // Emoji or icon identifier
+  featuredImage  String?  // URL to featured image
+  content        String   // JSON string of content blocks
+  source         String?  // e.g., "SAMA", "CMA", "SFDA"
+  category       String?  // e.g., "Regulation", "Compliance", "Market"
+  references     String?  // JSON string array of reference links
+  pdfUrl         String?  // URL to PDF document
+  date           DateTime
+  publishedAt    DateTime
+  featured       Boolean  @default(false)
+  slug           String   @unique
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
-  @@index([publishedAt])
+  @@index([slug])
   @@index([featured])
+  @@index([category])
 }
 
 model Statistic {
