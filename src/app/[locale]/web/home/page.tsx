@@ -1,6 +1,8 @@
 
 import { homeService } from '@/services/api/mock';
 import { updateApiService } from '@/services/api/updateApi';
+import { statisticApiService } from '@/services/api/statisticApi';
+import { heroApiService } from '@/services/api/heroApi';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
@@ -19,6 +21,12 @@ export default async function HomePage({ params }: { params: { locale: string } 
     lang: locale,
   });
 
+  // Fetch real statistics from API
+  const statistics = await statisticApiService.getStatistics(locale);
+
+  // Fetch real hero from API
+  const hero = await heroApiService.getActiveHero(locale);
+
   return (
     <div className="w-full">
       {/* Hero Section with 3D Animation */}
@@ -34,28 +42,28 @@ export default async function HomePage({ params }: { params: { locale: string } 
             <AnimatedSection direction="up" delay={0.2}>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-white via-accent-200 to-white bg-clip-text text-transparent drop-shadow-lg">
-                  {isArabic ? homeContent.hero.title.ar : homeContent.hero.title.en}
+                  {hero.title}
                 </span>
               </h1>
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.4}>
               <p className="text-xl md:text-2xl mb-4 text-white/90 font-light tracking-wide">
-                {isArabic ? homeContent.hero.subtitle.ar : homeContent.hero.subtitle.en}
+                {hero.subtitle}
               </p>
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.6}>
               <p className="text-lg mb-10 text-white/80 max-w-2xl mx-auto leading-relaxed">
-                {isArabic ? homeContent.hero.description.ar : homeContent.hero.description.en}
+                {hero.description}
               </p>
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.8}>
               <div className="flex flex-wrap gap-4 justify-center">
-                {homeContent.hero.ctaButtons.map((button) => (
+                {hero.ctaButtons.map((button: any, index: number) => (
                   <Link
-                    key={button.href}
+                    key={index}
                     href={button.href}
                     className={`group px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-glow-accent ${button.variant === 'primary'
                         ? 'bg-accent hover:bg-accent-600 text-white shadow-lg shadow-accent/30'
@@ -63,7 +71,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
                       }`}
                   >
                     <span className="flex items-center gap-2">
-                      {isArabic ? button.label.ar : button.label.en}
+                      {button.label}
                       <svg className={`w-5 h-5 transition-transform ${isArabic ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                       </svg>
@@ -90,7 +98,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {homeContent.statistics.map((stat) => (
+            {statistics.map((stat: any) => (
               <StaggerItem key={stat.id}>
                 <div
                   className="relative group bg-white rounded-3xl p-8 text-center shadow-soft hover:shadow-hard transition-all duration-500 transform hover:-translate-y-2 border border-grey-100 hover:border-primary-200 h-full flex flex-col justify-center items-center"
@@ -110,7 +118,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
                   {/* Label */}
                   <div className="relative z-10 text-sm font-semibold text-grey-600 group-hover:text-primary-700 transition-colors leading-tight">
-                    {isArabic ? stat.label.ar : stat.label.en}
+                    {stat.label}
                   </div>
 
                   {/* Decorative Corner */}
@@ -249,39 +257,41 @@ export default async function HomePage({ params }: { params: { locale: string } 
                     <div className="absolute left-[2.25rem] top-20 bottom-[-2rem] w-0.5 bg-gradient-to-b from-primary-200 to-transparent z-0"></div>
                   )}
 
-                  <div
-                    className="flex gap-6 p-8 bg-white rounded-3xl shadow-soft hover:shadow-hard transition-all duration-500 transform hover:-translate-y-1 border border-grey-100 group-hover:border-primary-200 relative z-10"
-                  >
-                    {/* Icon - Centered */}
-                    <div className="flex-shrink-0">
-                      <div className="w-18 h-18 p-4 bg-gradient-to-br from-primary-50 to-white rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm border border-primary-100 text-primary-600">
-                        {update.icon}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-1 min-w-0 pt-1">
-                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
-                        <h3 className="font-bold text-grey-900 text-xl group-hover:text-primary-600 transition-colors">
-                          {update.title}
-                        </h3>
-                        <span className="inline-flex items-center gap-1.5 text-sm font-medium text-grey-500 bg-grey-50 px-3 py-1 rounded-full border border-grey-100">
-                          <svg className="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                          </svg>
-                          {new Date(update.date).toLocaleDateString(isArabic ? 'ar-SA' : 'en-US', {
-                            month: 'long',
-                            day: 'numeric',
-                            year: 'numeric',
-                          })}
-                        </span>
+                  <Link href={`/web/updates/${update.slug}`}>
+                    <div
+                      className="flex gap-6 p-8 bg-white rounded-3xl shadow-soft hover:shadow-hard transition-all duration-500 transform hover:-translate-y-1 border border-grey-100 group-hover:border-primary-200 relative z-10 cursor-pointer"
+                    >
+                      {/* Icon - Centered */}
+                      <div className="flex-shrink-0">
+                        <div className="w-18 h-18 p-4 bg-gradient-to-br from-primary-50 to-white rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-sm border border-primary-100 text-primary-600">
+                          {update.icon}
+                        </div>
                       </div>
 
-                      <p className="text-grey-600 mb-0 leading-relaxed text-base">
-                        {update.description}
-                      </p>
+                      {/* Content */}
+                      <div className="flex-1 min-w-0 pt-1">
+                        <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-3">
+                          <h3 className="font-bold text-grey-900 text-xl group-hover:text-primary-600 transition-colors">
+                            {update.title}
+                          </h3>
+                          <span className="inline-flex items-center gap-1.5 text-sm font-medium text-grey-500 bg-grey-50 px-3 py-1 rounded-full border border-grey-100">
+                            <svg className="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            {new Date(update.date).toLocaleDateString(isArabic ? 'ar-SA' : 'en-US', {
+                              month: 'long',
+                              day: 'numeric',
+                              year: 'numeric',
+                            })}
+                          </span>
+                        </div>
+
+                        <p className="text-grey-600 mb-0 leading-relaxed text-base">
+                          {update.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </StaggerItem>
               ))}
             </StaggerContainer>

@@ -1,6 +1,6 @@
 import { LocalizedBlog, LocalizedPaginatedBlogs, BlogFilters, LocalizedBlogCategory } from '@/core/types/web/blog';
 
-const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL;
 
 export const blogApiService = {
   /**

@@ -2,7 +2,10 @@
   "nav": {
     "home": "الرئيسية",
     "blogs": "المدونات",
-    "categories": "الفئات"
+    "categories": "الفئات",
+    "updates": "التحديثات",
+    "statistics": "الإحصائيات",
+    "heroes": "البانرات"
   },
   "common": {
     "appName": "إدارة التقنية المالية",

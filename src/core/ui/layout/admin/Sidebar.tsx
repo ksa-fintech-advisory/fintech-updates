@@ -132,6 +132,9 @@ export const Sidebar = ({ mobileOpen, setMobileOpen }: {
     { href: '/admin', label: t('home'), icon: '🏠' },
     { href: '/admin/blogs', label: t('blogs'), icon: '📝' },
     { href: '/admin/categories', label: t('categories'), icon: '📁' },
+    { href: '/admin/updates', label: t('updates'), icon: '🔔' },
+    { href: '/admin/statistics', label: t('statistics'), icon: '📊' },
+    { href: '/admin/heroes', label: t('heroes'), icon: '🦸' },
   ];
 
   const isActive = (href: string) => {

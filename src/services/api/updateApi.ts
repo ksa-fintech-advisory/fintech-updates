@@ -5,7 +5,7 @@ class UpdateApiService {
     // Check if we're on the server side
     if (typeof window === 'undefined') {
       // Server-side: use full URL
-      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
+      const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
       return `${baseUrl}${path}`;
     }
     // Client-side: use relative path

@@ -1,6 +1,6 @@
 import { LocalizedNewsUpdate, LocalizedPaginatedNewsUpdates, NewsCategory } from '@/core/types/web/news';
 
-const BASE_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+const BASE_URL = process.env.NEXT_PUBLIC_APP_URL;
 
 export const newsApiService = {
   async getNewsUpdates(

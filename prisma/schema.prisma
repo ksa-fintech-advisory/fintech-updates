@@ -82,3 +82,35 @@ model Update {
   @@index([publishedAt])
   @@index([featured])
 }
+
+model Statistic {
+  id        String   @id @default(cuid())
+  value     String   // e.g., "500+", "24/7", "98%"
+  labelEn   String
+  labelAr   String
+  icon      String   // Emoji
+  order     Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([order])
+  @@index([active])
+}
+
+model Hero {
+  id             String   @id @default(cuid())
+  name           String   // Internal name to identify this hero version
+  titleEn        String
+  titleAr        String
+  subtitleEn     String
+  subtitleAr     String
+  descriptionEn  String
+  descriptionAr  String
+  ctaButtons     String   // JSON string of CTA buttons array
+  active         Boolean  @default(false)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@index([active])
+}

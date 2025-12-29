@@ -2,7 +2,10 @@
   "nav": {
     "home": "Home",
     "blogs": "Blogs",
-    "categories": "Categories"
+    "categories": "Categories",
+    "updates": "Updates",
+    "statistics": "Statistics",
+    "heroes": "Heroes"
   },
   "common": {
     "appName": "FinTech Admin",

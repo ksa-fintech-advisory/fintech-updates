@@ -18,6 +18,8 @@ async function main() {
   await prisma.blogCategory.deleteMany({});
   await prisma.author.deleteMany({});
   await prisma.update.deleteMany({});
+  await prisma.statistic.deleteMany({});
+  await prisma.hero.deleteMany({});
 
   // Seed authors
   console.log('👤 Seeding authors...');
@@ -167,6 +169,82 @@ async function main() {
   }
 
   console.log(`✅ Created ${updates.length} updates`);
+
+  // Seed statistics
+  console.log('📊 Seeding statistics...');
+  const statistics = [
+    {
+      value: '500+',
+      labelEn: 'Active Clients',
+      labelAr: 'عملاء نشطون',
+      icon: '👥',
+      order: 1,
+      active: true,
+    },
+    {
+      value: '24/7',
+      labelEn: 'Support',
+      labelAr: 'دعم فني',
+      icon: '🔧',
+      order: 2,
+      active: true,
+    },
+    {
+      value: '98%',
+      labelEn: 'Success Rate',
+      labelAr: 'معدل النجاح',
+      icon: '📈',
+      order: 3,
+      active: true,
+    },
+    {
+      value: '15+',
+      labelEn: 'Years Experience',
+      labelAr: 'سنوات من الخبرة',
+      icon: '⭐',
+      order: 4,
+      active: true,
+    },
+  ];
+
+  for (const stat of statistics) {
+    await prisma.statistic.create({
+      data: stat,
+    });
+  }
+
+  console.log(`✅ Created ${statistics.length} statistics`);
+
+  // Seed hero
+  console.log('🦸 Seeding hero...');
+  await prisma.hero.create({
+    data: {
+      name: 'Default Hero',
+      titleEn: 'Empowering Financial Innovation',
+      titleAr: 'تمكين الابتكار المالي',
+      subtitleEn: 'Expert Advisory for Saudi Fintech Companies',
+      subtitleAr: 'استشارات متخصصة لشركات التقنية المالية السعودية',
+      descriptionEn: 'Navigate regulatory compliance, optimize operations, and accelerate growth in the Saudi financial technology sector',
+      descriptionAr: 'تنقل عبر الامتثال التنظيمي، وحسّن العمليات، وسرّع النمو في قطاع التقنية المالية السعودي',
+      ctaButtons: JSON.stringify([
+        {
+          labelEn: 'Get Started',
+          labelAr: 'ابدأ الآن',
+          href: '/web/contact',
+          variant: 'primary',
+        },
+        {
+          labelEn: 'Learn More',
+          labelAr: 'اعرف المزيد',
+          href: '/web/about',
+          variant: 'secondary',
+        },
+      ]),
+      active: true,
+    },
+  });
+
+  console.log('✅ Created hero');
   console.log('🎉 Seed completed successfully!');
 }
 
