@@ -20,8 +20,8 @@ export default function Header() {
 
   const navItems = [
     { href: '/web/home', label: t('common.nav.home'), key: 'home' },
-    { href: '/web/products', label: isArabic ? 'المنتجات' : 'Products', key: 'products', hasMegaMenu: true },
-    { href: '/web/updates', label: isArabic ? 'التحديثات' : 'Updates', key: 'updates' },
+    { href: '/web/products', label:t("common.nav.products"), key: 'products', hasMegaMenu: true },
+    { href: '/web/updates', label: t('common.nav.updates'), key: 'updates' },
     { href: '/web/blog', label: t('common.nav.blog'), key: 'blog' },
     // { href: '/web/technology', label: t('common.nav.technology')},
     // { href: '/web/compliance', label: t('common.nav.compliance')},
@@ -95,11 +95,6 @@ export default function Header() {
                     <span className={`absolute -top-1 -right-1 w-2 h-2 bg-accent rounded-full transition-all duration-300 ${active ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
                       }`}></span>
                   </Link>
-
-                  {/* Mega Menu */}
-                  {item.hasMegaMenu && isMegaMenuOpen && (
-                    <ProductsMegaMenu closeMenu={() => setHoveredItem(null)} />
-                  )}
                 </div>
               );
             })}
@@ -139,6 +134,16 @@ export default function Header() {
               </div>
             </button>
           </div>
+        </div>
+
+        {/* Mega Menu Rendered Here for Full Width */}
+        <div
+          onMouseEnter={() => handleMouseEnter('products')}
+          onMouseLeave={handleMouseLeave}
+        >
+          {hoveredItem === 'products' && (
+            <ProductsMegaMenu closeMenu={() => setHoveredItem(null)} />
+          )}
         </div>
 
         {/* Enhanced Mobile Navigation */}

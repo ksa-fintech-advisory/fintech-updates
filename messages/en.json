@@ -5,7 +5,8 @@
     "categories": "Categories",
     "updates": "Updates",
     "statistics": "Statistics",
-    "heroes": "Heroes"
+    "heroes": "Heroes",
+    "products":"Products"
   },
   "common": {
     "appName": "FinTech Admin",
@@ -18,7 +19,9 @@
       "technology": "Technology",
       "compliance": "Compliance",
       "contact": "Contact",
-      "about": "About Us"
+      "about": "About Us",
+      "updates": "Updates",
+      "products":"Products"
     },
     "actions": {
       "readMore": "Read More",

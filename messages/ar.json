@@ -5,7 +5,8 @@
     "categories": "الفئات",
     "updates": "التحديثات",
     "statistics": "الإحصائيات",
-    "heroes": "البانرات"
+    "heroes": "البانرات",
+    "products": "المنتجات"
   },
   "common": {
     "appName": "إدارة التقنية المالية",
@@ -18,7 +19,10 @@
       "technology": "التقنيات",
       "compliance": "الامتثال التنظيمي",
       "contact": "اتصل بنا",
-      "about": "من نحن"
+      "about": "من نحن",
+      "updates": "التحديثات",
+         "products": "المنتجات"
+
     },
     "actions": {
       "readMore": "اقرأ المزيد",
