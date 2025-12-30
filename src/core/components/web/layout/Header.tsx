@@ -3,26 +3,42 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import ProductsMegaMenu from './ProductsMegaMenu';
 
 export default function Header() {
   const t = useTranslations();
   const locale = useLocale();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const otherLocale = locale === 'en' ? 'ar' : 'en';
   const currentPath = pathname.replace(`/${locale}`, '');
+  const isArabic = locale === 'ar';
 
   const navItems = [
-    { href: '/web/home', label: t('common.nav.home') },
-    { href: '/web/updates', label: locale === 'ar' ? 'التحديثات' : 'Updates' },
-    { href: '/web/blog', label: t('common.nav.blog') },
+    { href: '/web/home', label: t('common.nav.home'), key: 'home' },
+    { href: '/web/products', label: isArabic ? 'المنتجات' : 'Products', key: 'products', hasMegaMenu: true },
+    { href: '/web/updates', label: isArabic ? 'التحديثات' : 'Updates', key: 'updates' },
+    { href: '/web/blog', label: t('common.nav.blog'), key: 'blog' },
     // { href: '/web/technology', label: t('common.nav.technology')},
     // { href: '/web/compliance', label: t('common.nav.compliance')},
-    { href: '/web/about', label: t('common.nav.about')},
-    { href: '/web/contact', label: t('common.nav.contact')},
+    { href: '/web/about', label: t('common.nav.about'), key: 'about' },
+    { href: '/web/contact', label: t('common.nav.contact'), key: 'contact' },
   ];
+
+  const handleMouseEnter = (key: string) => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setHoveredItem(key);
+  };
+
+  const handleMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setHoveredItem(null);
+    }, 200); // Small delay to prevent flickering
+  };
 
   const isActive = (href: string) => {
     // Check if current path matches the nav item
@@ -47,26 +63,44 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
               const active = isActive(item.href);
+              const isMegaMenuOpen = item.hasMegaMenu && hoveredItem === item.key;
+
               return (
-                <Link
-                  key={item.href}
-                  href={`/${locale}${item.href}`}
-                  className={`relative px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 ${active
+                <div
+                  key={item.key}
+                  className="relative group"
+                  onMouseEnter={() => handleMouseEnter(item.key)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <Link
+                    href={item.hasMegaMenu ? '#' : `/${locale}${item.href}`}
+                    className={`relative px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-1 ${active || isMegaMenuOpen
                       ? 'text-primary bg-primary-50'
                       : 'text-grey-700 hover:text-primary hover:bg-grey-50'
-                    }`}
-                >
-                  {item.label}
+                      }`}
+                  >
+                    {item.label}
+                    {item.hasMegaMenu && (
+                      <svg className={`w-4 h-4 transition-transform duration-300 ${isMegaMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    )}
 
-                  {/* Active Indicator - Animated Underline */}
-                  {active && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-saudi rounded-full animate-pulse"></span>
+                    {/* Active Indicator - Animated Underline */}
+                    {active && !item.hasMegaMenu && (
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-saudi rounded-full animate-pulse"></span>
+                    )}
+
+                    {/* Hover Effect - Dot */}
+                    <span className={`absolute -top-1 -right-1 w-2 h-2 bg-accent rounded-full transition-all duration-300 ${active ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
+                      }`}></span>
+                  </Link>
+
+                  {/* Mega Menu */}
+                  {item.hasMegaMenu && isMegaMenuOpen && (
+                    <ProductsMegaMenu closeMenu={() => setHoveredItem(null)} />
                   )}
-
-                  {/* Hover Effect - Dot */}
-                  <span className={`absolute -top-1 -right-1 w-2 h-2 bg-accent rounded-full transition-all duration-300 ${active ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
-                    }`}></span>
-                </Link>
+                </div>
               );
             })}
           </nav>
@@ -109,12 +143,44 @@ export default function Header() {
 
         {/* Enhanced Mobile Navigation */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
             }`}
         >
           <nav className="py-4 border-t border-grey-200 space-y-1">
             {navItems.map((item, idx) => {
               const active = isActive(item.href);
+
+              if (item.hasMegaMenu) {
+                return (
+                  <div key={item.key} className="space-y-1">
+                    <button
+                      onClick={() => setHoveredItem(hoveredItem === item.key ? null : item.key)}
+                      className="w-full flex items-center justify-between px-4 py-3 rounded-lg font-medium text-grey-700 hover:text-primary hover:bg-grey-50"
+                    >
+                      <span>{item.label}</span>
+                      <svg className={`w-4 h-4 transition-transform duration-300 ${hoveredItem === item.key ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    {/* Mobile Submenu for Products */}
+                    <div className={`pl-4 pr-4 transition-all duration-300 overflow-hidden ${hoveredItem === item.key ? 'max-h-60' : 'max-h-0'}`}>
+                      <Link href={`/${locale}/web/products/fee-calculator`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                        {isArabic ? 'حاسبة الرسوم' : 'Fee Calculator'}
+                      </Link>
+                      <Link href={`/${locale}/web/products/compliance-checker`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                        {isArabic ? 'فاحص الامتثال' : 'Compliance Checker'}
+                      </Link>
+                      <Link href={`/${locale}/web/products/market-analysis`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                        {isArabic ? 'تحليل السوق' : 'Market Analysis'}
+                      </Link>
+                    </div>
+                  </div>
+                );
+              }
+
               return (
                 <Link
                   key={item.href}

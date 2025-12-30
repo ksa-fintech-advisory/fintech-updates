@@ -1,0 +1,190 @@
+{
+  "currency": "SAR",
+  "vat_applies": true,
+  "last_updated": "2025-12",
+  "disclaimer": "All pricing figures are estimated market ranges based on publicly available information and industry benchmarks. Actual pricing varies by merchant volume, risk profile, and negotiation.",
+  "providers": [
+    {
+      "provider": "Tap Payments",
+      "pricing": {
+        "monthly_fee": { "min": 0, "max": 0 },
+        "setup_fee": { "min": 0, "max": 0 },
+        "payment_methods": {
+          "mada": {
+            "percentage": { "min": 1.0, "max": 1.0 },
+            "fixed_fee": { "min": 0, "max": 0 },
+            "cap": 200
+          },
+          "visa_mc_local": {
+            "percentage": { "min": 2.85, "max": 2.85 },
+            "fixed_fee": { "min": 0.30, "max": 0.30 }
+          },
+          "visa_mc_international": {
+            "percentage": { "min": 3.35, "max": 3.85 },
+            "fixed_fee": { "min": 0.30, "max": 0.30 }
+          }
+        }
+      },
+      "settlement_days": { "min": 1, "max": 3 },
+      "additional_fees": ["chargeback", "fx_markup"],
+      "confidence_level": "high",
+      "source_type": "public_pricing"
+    },
+    {
+      "provider": "Telr",
+      "pricing": {
+        "monthly_fee": { "min": 99, "max": 259 },
+        "setup_fee": { "min": 0, "max": 0 },
+        "payment_methods": {
+          "mada": {
+            "percentage": { "min": 1.0, "max": 1.0 },
+            "fixed_fee": { "min": 0, "max": 0 },
+            "cap": 200
+          },
+          "visa_mc_local": {
+            "percentage": { "min": 2.6, "max": 3.0 },
+            "fixed_fee": { "min": 1.0, "max": 1.0 }
+          },
+          "visa_mc_international": {
+            "percentage": { "min": 3.1, "max": 3.6 },
+            "fixed_fee": { "min": 1.0, "max": 1.0 }
+          }
+        }
+      },
+      "settlement_days": { "min": 7, "max": 7 },
+      "additional_fees": ["chargeback"],
+      "confidence_level": "high",
+      "source_type": "public_pricing"
+    },
+    {
+      "provider": "PayTabs",
+      "pricing": {
+        "monthly_fee": { "min": 0, "max": 188 },
+        "setup_fee": { "min": 0, "max": 1875 },
+        "payment_methods": {
+          "mada": {
+            "percentage": { "min": 1.0, "max": 1.5 },
+            "fixed_fee": { "min": 0, "max": 1.0 },
+            "cap": 200
+          },
+          "visa_mc_local": {
+            "percentage": { "min": 2.25, "max": 2.85 },
+            "fixed_fee": { "min": 1.0, "max": 1.0 }
+          },
+          "visa_mc_international": {
+            "percentage": { "min": 3.0, "max": 3.8 },
+            "fixed_fee": { "min": 1.0, "max": 1.0 }
+          }
+        }
+      },
+      "settlement_days": { "min": 1, "max": 3 },
+      "additional_fees": ["chargeback", "refund"],
+      "confidence_level": "high",
+      "source_type": "public_pricing"
+    },
+    {
+      "provider": "Amazon Payment Services",
+      "pricing": {
+        "monthly_fee": { "min": 0, "max": 0 },
+        "setup_fee": { "min": 0, "max": 0 },
+        "payment_methods": {
+          "mada": {
+            "percentage": { "min": 1.0, "max": 1.0 },
+            "fixed_fee": { "min": 0, "max": 0 },
+            "cap": 200
+          },
+          "visa_mc_local": {
+            "percentage": { "min": 2.5, "max": 2.8 },
+            "fixed_fee": { "min": 0, "max": 0 }
+          },
+          "visa_mc_international": {
+            "percentage": { "min": 3.0, "max": 3.8 },
+            "fixed_fee": { "min": 0, "max": 0 }
+          }
+        }
+      },
+      "settlement_days": { "min": 1, "max": 3 },
+      "additional_fees": ["chargeback", "fx_markup"],
+      "confidence_level": "medium",
+      "source_type": "market_estimate"
+    },
+    {
+      "provider": "Moyasar",
+      "pricing": {
+        "monthly_fee": { "min": 200, "max": 200 },
+        "setup_fee": { "min": 1000, "max": 1000 },
+        "payment_methods": {
+          "mada": {
+            "percentage": { "min": 1.5, "max": 1.5 },
+            "fixed_fee": { "min": 1.0, "max": 1.0 },
+            "cap": 200
+          },
+          "visa_mc_local": {
+            "percentage": { "min": 2.2, "max": 3.3 },
+            "fixed_fee": { "min": 1.0, "max": 1.0 }
+          },
+          "visa_mc_international": {
+            "percentage": { "min": 3.2, "max": 4.2 },
+            "fixed_fee": { "min": 1.0, "max": 1.0 }
+          }
+        }
+      },
+      "settlement_days": { "min": 1, "max": 14 },
+      "additional_fees": ["chargeback"],
+      "confidence_level": "medium",
+      "source_type": "market_estimate"
+    },
+    {
+      "provider": "HyperPay",
+      "pricing": {
+        "monthly_fee": { "min": 0, "max": 500 },
+        "setup_fee": { "min": 0, "max": 5000 },
+        "payment_methods": {
+          "mada": {
+            "percentage": { "min": 1.5, "max": 1.75 },
+            "fixed_fee": { "min": 1.0, "max": 1.0 },
+            "cap": 200
+          },
+          "visa_mc_local": {
+            "percentage": { "min": 2.2, "max": 2.7 },
+            "fixed_fee": { "min": 1.0, "max": 1.0 }
+          },
+          "visa_mc_international": {
+            "percentage": { "min": 3.2, "max": 3.9 },
+            "fixed_fee": { "min": 1.0, "max": 1.0 }
+          }
+        }
+      },
+      "settlement_days": { "min": 1, "max": 1 },
+      "additional_fees": ["chargeback"],
+      "confidence_level": "medium",
+      "source_type": "market_estimate"
+    },
+    {
+      "provider": "Geidea",
+      "pricing": {
+        "monthly_fee": { "min": 0, "max": 0 },
+        "setup_fee": { "min": 0, "max": 0 },
+        "payment_methods": {
+          "mada": {
+            "percentage": { "min": 0.8, "max": 1.5 },
+            "fixed_fee": { "min": 0, "max": 0 },
+            "cap": 200
+          },
+          "visa_mc_local": {
+            "percentage": { "min": 2.0, "max": 3.0 },
+            "fixed_fee": { "min": 0, "max": 0 }
+          },
+          "visa_mc_international": {
+            "percentage": { "min": 3.0, "max": 4.0 },
+            "fixed_fee": { "min": 0, "max": 0 }
+          }
+        }
+      },
+      "settlement_days": { "min": 1, "max": 2 },
+      "additional_fees": ["custom_contract"],
+      "confidence_level": "low",
+      "source_type": "industry_inference"
+    }
+  ]
+}
