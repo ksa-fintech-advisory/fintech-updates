@@ -91,7 +91,7 @@ export interface ComplianceGap {
   severity: RiskLevel;
   currentScore: number;
   requiredAction: BilingualText;
-  evidence: BilingualText[];
+    evidence: { ar: string[]; en: string[] };
 }
 
 /**

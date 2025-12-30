@@ -469,6 +469,19 @@ export default function ComplianceCheckerPage({ params: { locale } }: { params: 
               {isArabic ? 'آخر تحديث:' : 'Updated:'} {stats.metadata.extraction_date}
             </span>
           </div>
+
+          {/* Assessment CTA */}
+          <div className="mt-8">
+            <Link
+              href={`/${locale}/web/products/compliance-checker/assess`}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-green-700 font-bold rounded-xl hover:bg-green-50 transition-all transform hover:scale-105 shadow-lg"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+              </svg>
+              {isArabic ? 'قيّم جاهزية مؤسستك' : 'Assess Your Compliance Readiness'}
+            </Link>
+          </div>
         </div>
       </div>
       
