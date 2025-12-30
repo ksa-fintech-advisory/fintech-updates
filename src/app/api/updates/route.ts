@@ -42,7 +42,6 @@ export async function GET(request: Request) {
 
     }));
 
-    console.log('****localizat',localizedUpdates)
 
     return NextResponse.json(localizedUpdates);
   } catch (error) {
