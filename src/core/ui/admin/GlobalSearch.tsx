@@ -19,6 +19,106 @@ interface GlobalSearchProps {
   onClose: () => void;
 }
 
+// Mock search results - replace with actual search implementation
+const mockResults: SearchResult[] = [
+  {
+    id: '1',
+    title: {
+      ar: "الرئيسية",
+      en: "Dashboard"
+    },
+    category: 'Pages',
+    path: '/dashboard',
+    icon: '📊'
+  },
+  {
+    id: '2', title: {
+      ar: "العملاء",
+      en: "Customers"
+    }, subtitle: {
+      ar: "إدارة العملاء",
+      en: "Manage customers"
+    }, category: 'Pages', path: '/dashboard/customers', icon: '👥'
+  },
+  {
+    id: '3', title: {
+      ar: "الصلاحيات",
+      en: "Roles"
+    }, subtitle: {
+      ar: "إدارة الصلاحيات",
+      en: "Configure permissions"
+    }, category: 'Pages', path: '/dashboard/roles', icon: '🛡️'
+  },
+  {
+    id: '4', title: {
+      ar: "صناديق الاستثمار المتداول",
+      en: "ETFs"
+    }, subtitle: {
+      ar: "صناديق الاستثمار المتداول",
+      en: "Exchange Traded Funds"
+    }, category: 'Finance', path: '/dashboard/etfs', icon: '📈'
+  },
+  {
+    id: '5', title: {
+      ar: "الحسابات المالية",
+      en: "Finance Accounts"
+    }, category: 'Finance', path: '/dashboard/finance-accounts', icon: '💰'
+  },
+  {
+    id: '6', title: {
+      ar: "المحافظ الاستثمارية",
+      en: "Portfolios"
+    }, category: 'Finance', path: '/dashboard/portfolios', icon: '📊'
+  },
+  {
+    id: '7', title: {
+      ar: "الإعدادات",
+      en: "System Configs"
+    }, subtitle: {
+      ar: "الإعدادات العامة",
+      en: "General settings"
+    }, category: 'Settings', path: '/dashboard/system-configs', icon: '⚙️'
+  },
+  {
+    id: '9', title: {
+      ar: "المراجعة والتدقيق",
+      en: "Audit Logs"
+    }, subtitle: {
+      ar: "سجل النظام",
+      en: "System logs"
+    }, category: 'Audit', path: '/dashboard/audit/logs', icon: '📋'
+  },
+  {
+    id: '11', title: {
+      ar: "جهات الربط الخارجية",
+      en: "Third party integrations"
+    }, subtitle: {
+      ar: "جهات الربط الخارجية",
+      en: "Third party integrations"
+    }, category: 'Settings', path: '/dashboard/integrations', icon: '⚙️'
+  },
+  {
+    id: '12',
+    title: {
+      en: "Banks",
+      ar: "البنوك"
+    },
+    category: 'Finance',
+    path: '/dashboard/banks',
+    icon: '🏦'
+  },
+  {
+    id: '13',
+    title: {
+      en: "Users",
+      ar: "المستخدمين"
+    },
+    category: 'Users',
+    path: '/dashboard/users',
+    icon: '👥'
+  }
+];
+
 export const GlobalSearch = ({ isOpen, onClose }: GlobalSearchProps) => {
   const t = useTranslations();
   const [query, setQuery] = useState('');
@@ -26,106 +126,6 @@ export const GlobalSearch = ({ isOpen, onClose }: GlobalSearchProps) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
-
-  // Mock search results - replace with actual search implementation
-  const mockResults: SearchResult[] = [
-    {
-      id: '1',
-      title: {
-        ar: "الرئيسية",
-        en: "Dashboard"
-      },
-      category: 'Pages',
-      path: '/dashboard',
-      icon: '📊'
-    },
-    {
-      id: '2', title: {
-        ar: "العملاء",
-        en: "Customers"
-      }, subtitle: {
-        ar: "إدارة العملاء",
-        en: "Manage customers"
-      }, category: 'Pages', path: '/dashboard/customers', icon: '👥'
-    },
-    {
-      id: '3', title: {
-        ar: "الصلاحيات",
-        en: "Roles"
-      }, subtitle: {
-        ar: "إدارة الصلاحيات",
-        en: "Configure permissions"
-      }, category: 'Pages', path: '/dashboard/roles', icon: '🛡️'
-    },
-    {
-      id: '4', title: {
-        ar: "صناديق الاستثمار المتداول",
-        en: "ETFs"
-      }, subtitle: {
-        ar: "صناديق الاستثمار المتداول",
-        en: "Exchange Traded Funds"
-      }, category: 'Finance', path: '/dashboard/etfs', icon: '📈'
-    },
-    {
-      id: '5', title: {
-        ar: "الحسابات المالية",
-        en: "Finance Accounts"
-      }, category: 'Finance', path: '/dashboard/finance-accounts', icon: '💰'
-    },
-    {
-      id: '6', title: {
-        ar: "المحافظ الاستثمارية",
-        en: "Portfolios"
-      }, category: 'Finance', path: '/dashboard/portfolios', icon: '📊'
-    },
-    {
-      id: '7', title: {
-        ar: "الإعدادات",
-        en: "System Configs"
-      }, subtitle: {
-        ar: "الإعدادات العامة",
-        en: "General settings"
-      }, category: 'Settings', path: '/dashboard/system-configs', icon: '⚙️'
-    },
-    {
-      id: '9', title: {
-        ar: "المراجعة والتدقيق",
-        en: "Audit Logs"
-      }, subtitle: {
-        ar: "سجل النظام",
-        en: "System logs"
-      }, category: 'Audit', path: '/dashboard/audit/logs', icon: '📋'
-    },
-    {
-      id: '11', title: {
-        ar: "جهات الربط الخارجية",
-        en: "Third party integrations"
-      }, subtitle: {
-        ar: "جهات الربط الخارجية",
-        en: "Third party integrations"
-      }, category: 'Settings', path: '/dashboard/integrations', icon: '⚙️'
-    },
-    {
-      id: '12',
-      title: {
-        en: "Banks",
-        ar: "البنوك"
-      },
-      category: 'Finance',
-      path: '/dashboard/banks',
-      icon: '🏦'
-    },
-    {
-      id: '13',
-      title: {
-        en: "Users",
-        ar: "المستخدمين"
-      },
-      category: 'Users',
-      path: '/dashboard/users',
-      icon: '👥'
-    }
-  ];
 
   useEffect(() => {
 

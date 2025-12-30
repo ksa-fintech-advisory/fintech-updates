@@ -30,7 +30,7 @@ function renderContentBlock(block: any, index: number) {
     case 'highlight':
       return (
         <div key={key} className="bg-gradient-to-r from-primary-50 to-transparent border-l-4 border-primary-500 p-6 my-8 rounded-r-xl">
-          <p className="text-primary-900 font-medium text-lg italic leading-relaxed">"{block.content}"</p>
+          <p className="text-primary-900 font-medium text-lg italic leading-relaxed">&quot;{block.content}&quot;</p>
         </div>
       );
     default:

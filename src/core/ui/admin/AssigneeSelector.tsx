@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { cn } from '@/core/lib/utils';
 import { Search, X, Check, User, Users, ChevronDown } from 'lucide-react';
+import Image from 'next/image';
 
 export interface AssigneeUser {
   id: string;
@@ -283,7 +284,7 @@ export const AssigneeSelector = ({
             <>
               <div className="w-6 h-6 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-xs font-medium flex-shrink-0">
                 {selectedUsers[0].avatar ? (
-                  <img src={selectedUsers[0].avatar} alt={selectedUsers[0].name} className="w-full h-full rounded-full" />
+                      <Image src={selectedUsers[0].avatar} alt={selectedUsers[0].name} width={24} height={24} className="w-full h-full rounded-full object-cover" unoptimized />
                 ) : (
                   getInitials(selectedUsers[0].name)
                 )}
@@ -350,7 +351,7 @@ export const AssigneeSelector = ({
                     {/* Avatar */}
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-sm font-medium flex-shrink-0">
                       {user.avatar ? (
-                        <img src={user.avatar} alt={user.name} className="w-full h-full rounded-full" />
+                        <Image src={user.avatar} alt={user.name} width={32} height={32} className="w-full h-full rounded-full object-cover" unoptimized />
                       ) : (
                         getInitials(user.name)
                       )}

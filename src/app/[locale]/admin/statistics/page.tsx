@@ -20,7 +20,7 @@ export default function StatisticsPage() {
     try {
       setIsLoading(true);
       const data = await adminStatisticApiService.getStatistics();
-      setStatistics(data);
+      setStatistics(data as any);
     } catch (err: any) {
       setError(err.message || 'Failed to load statistics');
     } finally {

@@ -15,40 +15,39 @@ export default function EditBlogPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true);
+
+        // Load blog data
+        const blogData = await adminBlogApi.getBlog(params.id as string);
+        setBlog(blogData);
+
+        // Load categories and authors
+        const [categoriesRes, authorsRes] = await Promise.all([
+          fetch('/api/blogs?limit=1').then(r => r.json()),
+          fetch('/api/admin/blogs').then(r => r.json()),
+        ]);
+
+        if (categoriesRes.categories) {
+          setCategories(categoriesRes.categories.map((c: any) => ({ id: c.id, name: c.name, nameAr: c.name })));
+        }
+
+        const uniqueAuthors = authorsRes.reduce((acc: any[], blog: any) => {
+          if (!acc.find(a => a.id === blog.author.id)) {
+            acc.push({ id: blog.author.id, name: blog.author.name });
+          }
+          return acc;
+        }, []);
+        setAuthors(uniqueAuthors);
+      } catch (err: any) {
+        setError(err.message || 'Failed to load blog');
+      } finally {
+        setLoading(false);
+      }
+    };
     loadData();
   }, [params.id]);
-
-  const loadData = async () => {
-    try {
-      setLoading(true);
-      
-      // Load blog data
-      const blogData = await adminBlogApi.getBlog(params.id as string);
-      setBlog(blogData);
-
-      // Load categories and authors
-      const [categoriesRes, authorsRes] = await Promise.all([
-        fetch('/api/blogs?limit=1').then(r => r.json()),
-        fetch('/api/admin/blogs').then(r => r.json()),
-      ]);
-      
-      if (categoriesRes.categories) {
-        setCategories(categoriesRes.categories.map((c: any) => ({ id: c.id, name: c.name, nameAr: c.name })));
-      }
-      
-      const uniqueAuthors = authorsRes.reduce((acc: any[], blog: any) => {
-        if (!acc.find(a => a.id === blog.author.id)) {
-          acc.push({ id: blog.author.id, name: blog.author.name });
-        }
-        return acc;
-      }, []);
-      setAuthors(uniqueAuthors);
-    } catch (err: any) {
-      setError(err.message || 'Failed to load blog');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleSubmit = async (data: any) => {
     await adminBlogApi.updateBlog(params.id as string, data);

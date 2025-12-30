@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import BlogListTable from '@/core/components/admin/blog/BlogListTable';
@@ -17,11 +17,7 @@ export default function BlogsPage() {
   const [totalPages, setTotalPages] = useState(1);
   const blogsPerPage = 10;
 
-  useEffect(() => {
-    loadBlogs();
-  }, [currentPage]);
-
-  const loadBlogs = async () => {
+  const loadBlogs = useCallback(async () => {
     try {
       setLoading(true);
       const allBlogs = await adminBlogApi.getBlogs();
@@ -39,7 +35,11 @@ export default function BlogsPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentPage]);
+
+  useEffect(() => {
+    loadBlogs();
+  }, [loadBlogs]);
 
   const handleDelete = async (id: string) => {
     try {

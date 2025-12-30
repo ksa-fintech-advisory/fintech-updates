@@ -17,20 +17,19 @@ export default function EditUpdatePage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const loadUpdate = async () => {
+      try {
+        setIsLoading(true);
+        const data = await adminUpdateApiService.getUpdateById(id);
+        setUpdate(data);
+      } catch (err: any) {
+        setError(err.message || 'Failed to load update');
+      } finally {
+        setIsLoading(false);
+      }
+    };
     loadUpdate();
   }, [id]);
-
-  const loadUpdate = async () => {
-    try {
-      setIsLoading(true);
-      const data = await adminUpdateApiService.getUpdateById(id);
-      setUpdate(data);
-    } catch (err: any) {
-      setError(err.message || 'Failed to load update');
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const handleSubmit = async (data: any) => {
     await adminUpdateApiService.updateUpdate(id, data);

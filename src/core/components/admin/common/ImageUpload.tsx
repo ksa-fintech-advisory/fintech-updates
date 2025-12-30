@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { useLocale } from 'next-intl';
+import Image from 'next/image';
 
 interface ImageUploadProps {
   value: string;
@@ -163,14 +164,12 @@ export default function ImageUpload({ value, onChange, label, error }: ImageUplo
             {isRTL ? 'معاينة' : 'Preview'}
           </p>
           <div className="relative border rounded-lg overflow-hidden bg-gray-50">
-            <img
+            <Image
               src={value}
               alt="Preview"
-              className="w-full h-48 object-cover"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = '/placeholder-image.png';
-              }}
+              fill
+              className="object-cover"
+              unoptimized
             />
             <button
               type="button"

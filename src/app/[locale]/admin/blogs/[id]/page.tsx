@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 import { adminBlogApi } from '@/services/api/admin/blogApi';
 import { format } from 'date-fns';
+import Image from 'next/image';
 
 export default function BlogDetailPage() {
   const params = useParams();
@@ -16,20 +17,19 @@ export default function BlogDetailPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const loadBlog = async () => {
+      try {
+        setLoading(true);
+        const data = await adminBlogApi.getBlog(params.id as string);
+        setBlog(data);
+      } catch (err: any) {
+        setError(err.message || 'Failed to load blog');
+      } finally {
+        setLoading(false);
+      }
+    };
     loadBlog();
   }, [params.id]);
-
-  const loadBlog = async () => {
-    try {
-      setLoading(true);
-      const data = await adminBlogApi.getBlog(params.id as string);
-      setBlog(data);
-    } catch (err: any) {
-      setError(err.message || 'Failed to load blog');
-    } finally {
-      setLoading(false);
-    }
-  };
 
   if (loading) {
     return (
@@ -74,15 +74,12 @@ export default function BlogDetailPage() {
 
       {/* Featured Image */}
       {blog.featuredImage && (
-        <div className="rounded-lg overflow-hidden">
-          <img 
+        <div className="rounded-lg overflow-hidden relative h-64 w-full">
+          <Image 
             src={blog.featuredImage} 
             alt={isRTL ? blog.titleAr : blog.titleEn}
-            className="w-full h-64 object-cover"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.src = '/placeholder-image.svg';
-            }}
+            fill
+            className="object-cover"
           />
         </div>
       )}

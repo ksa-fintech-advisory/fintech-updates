@@ -199,10 +199,10 @@ export default function BlogPage() {
                           <div className="flex items-center justify-between pt-4 border-t border-grey-100 mt-auto">
                             <div className="flex items-center gap-3">
                               <div className="w-9 h-9 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md">
-                                    {blog.author.name.charAt(0)}
+                                    {blog?.author?.name?.charAt(0)}
                               </div>
                               <span className="text-sm font-semibold text-grey-700 group-hover:text-primary-600 transition-colors">
-                                    {blog.author.name}
+                                    {blog?.author?.name}
                               </span>
                             </div>
                             <span className={`text-accent group-hover:translate-x-1 transition-transform inline-block font-bold text-lg ${isArabic ? 'rotate-180 group-hover:-translate-x-1' : ''}`}>

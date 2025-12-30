@@ -21,7 +21,7 @@ export default function HeroesPage() {
     try {
       setIsLoading(true);
       const data = await adminHeroApiService.getHeroes();
-      setHeroes(data);
+      setHeroes(data as any);
     } catch (err: any) {
       setError(err.message || 'Failed to load heroes');
     } finally {

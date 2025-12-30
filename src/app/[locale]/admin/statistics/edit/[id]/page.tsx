@@ -16,17 +16,16 @@ export default function EditStatisticPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    const loadStatistic = async () => {
+      try {
+        const data = await adminStatisticApiService.getStatisticById(id);
+        setStatistic(data);
+      } finally {
+        setIsLoading(false);
+      }
+    };
     loadStatistic();
   }, [id]);
-
-  const loadStatistic = async () => {
-    try {
-      const data = await adminStatisticApiService.getStatisticById(id);
-      setStatistic(data);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const handleSubmit = async (data: any) => {
     await adminStatisticApiService.updateStatistic(id, data);

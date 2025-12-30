@@ -17,20 +17,19 @@ export default function EditHeroPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    const loadHero = async () => {
+      try {
+        setIsLoading(true);
+        const data = await adminHeroApiService.getHeroById(id);
+        setHero(data);
+      } catch (err: any) {
+        setError(err.message || 'Failed to load hero');
+      } finally {
+        setIsLoading(false);
+      }
+    };
     loadHero();
   }, [id]);
-
-  const loadHero = async () => {
-    try {
-      setIsLoading(true);
-      const data = await adminHeroApiService.getHeroById(id);
-      setHero(data);
-    } catch (err: any) {
-      setError(err.message || 'Failed to load hero');
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const handleSubmit = async (data: any) => {
     await adminHeroApiService.updateHero(id, data);

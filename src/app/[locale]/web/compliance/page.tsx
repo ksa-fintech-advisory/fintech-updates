@@ -12,15 +12,14 @@ export default function CompliancePage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const loadCompliance = async () => {
+      setLoading(true);
+      const result = await complianceService.paginateCompliance(1, 20, selectedRegion || undefined);
+      setData(result);
+      setLoading(false);
+    };
     loadCompliance();
   }, [selectedRegion]);
-
-  const loadCompliance = async () => {
-    setLoading(true);
-    const result = await complianceService.paginateCompliance(1, 20, selectedRegion || undefined);
-    setData(result);
-    setLoading(false);
-  };
 
   if (loading || !data) {
     return (

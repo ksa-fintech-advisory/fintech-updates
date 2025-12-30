@@ -64,19 +64,19 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
                 {blog.author.avatar ? (
                   <SafeImage
                     src={blog.author.avatar}
-                    alt={blog.author.name}
+                    alt={blog?.author?.name||""}
                     width={48}
                     height={48}
                     className="rounded-full border-2 border-grey-700"
                   />
                 ) : (
                   <div className="w-12 h-12 bg-grey-700 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    {blog.author.name.charAt(0)}
+                    {blog?.author?.name?.charAt(0)}
                   </div>
                 )}
                 <div className="text-left">
-                  <div className="font-bold text-white text-base">{blog.author.name}</div>
-                  <div className="text-xs text-grey-400">{blog.author.role}</div>
+                  <div className="font-bold text-white text-base">{blog?.author?.name}</div>
+                  <div className="text-xs text-grey-400">{blog?.author?.role}</div>
                 </div>
               </div>
 
@@ -148,11 +148,11 @@ export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
 
             {/* Author Bio */}
             <div className="mb-12">
-              <AuthorBio author={blog.author} />
+              <AuthorBio author={blog?.author as any} />
             </div>
 
             {/* Related Posts */}
-            <RelatedPosts posts={blog.relatedPosts} locale={locale} />
+            <RelatedPosts posts={blog?.relatedPosts} locale={locale} />
 
 
             {/* Back to Blog */}

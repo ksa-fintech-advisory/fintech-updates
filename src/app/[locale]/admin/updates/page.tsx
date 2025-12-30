@@ -21,7 +21,7 @@ export default function UpdatesPage() {
     try {
       setIsLoading(true);
       const data = await adminUpdateApiService.getUpdates();
-      setUpdates(data);
+      setUpdates(data as any);
     } catch (err: any) {
       setError(err.message || 'Failed to load updates');
     } finally {
