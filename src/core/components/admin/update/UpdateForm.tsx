@@ -203,7 +203,6 @@ export default function UpdateForm({initialData, mode, onSubmit }: UpdateFormPro
           <ImageUpload
             value={formData.featuredImage}
             onChange={(url) => setFormData({ ...formData, featuredImage: url })}
-            placeholder="https://images.unsplash.com/..."
           />
         </div>
 

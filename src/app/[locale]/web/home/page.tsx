@@ -211,13 +211,13 @@ export default async function HomePage({ params }: { params: { locale: string } 
                         </p>
 
                         {/* Footer with Author */}
-                        <div className="flex items-center justify-between pt-4 border-t border-grey-100 mt-auto">
+                        <div className="pt-6 border-t border-grey-100 mt-auto flex items-center justify-between">
                           <div className="flex items-center gap-3">
                             <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-md">
-                              {(isArabic ? article.author.name.ar : article.author.name.en).charAt(0)}
+                              {article.author.name?.charAt(0) || 'A'}
                             </div>
                             <span className="text-sm font-semibold text-grey-700 group-hover:text-primary-600 transition-colors">
-                              {isArabic ? article.author.name.ar : article.author.name.en}
+                              {article.author.name || 'Author'}
                             </span>
                           </div>
                           <span className={`text-accent group-hover:translate-x-1 transition-transform inline-block font-bold text-lg ${isArabic ? 'rotate-180 group-hover:-translate-x-1' : ''}`}>
