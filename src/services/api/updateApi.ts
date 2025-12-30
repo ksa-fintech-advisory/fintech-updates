@@ -31,13 +31,14 @@ class UpdateApiService {
 
     const path = `${this.baseUrl}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
     const url = this.getFullUrl(path);
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: 'no-store' });
     
     if (!response.ok) {
       throw new Error('Failed to fetch updates');
     }
     
-    return response.json();
+    const data = await response.json();
+    return data;
   }
 
   async getUpdateBySlug(slug: string, lang?: string): Promise<any> {
@@ -48,13 +49,14 @@ class UpdateApiService {
 
     const path = `${this.baseUrl}/${slug}${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
     const url = this.getFullUrl(path);
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: 'no-store' });
     
     if (!response.ok) {
       throw new Error('Failed to fetch update');
     }
     
-    return response.json();
+    const data = await response.json();
+    return data;
   }
 }
 

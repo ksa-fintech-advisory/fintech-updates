@@ -26,11 +26,18 @@ export async function GET(
       id: update.id,
       title: lang === 'ar' ? update.titleAr : update.titleEn,
       description: lang === 'ar' ? update.descriptionAr : update.descriptionEn,
+      summary: lang === 'ar' ? update.summaryAr : update.summaryEn,
       icon: update.icon,
       date: update.date.toISOString(),
       publishedAt: update.publishedAt.toISOString(),
       featured: update.featured,
       slug: update.slug,
+      featuredImage: update.featuredImage,
+      content: update.content,
+      source: update.source,
+      category: update.category,
+      references: update.references,
+      pdfUrl: update.pdfUrl,
     };
 
     return NextResponse.json(localizedUpdate);

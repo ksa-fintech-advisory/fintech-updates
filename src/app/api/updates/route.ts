@@ -27,12 +27,22 @@ export async function GET(request: Request) {
       id: update.id,
       title: lang === 'ar' ? update.titleAr : update.titleEn,
       description: lang === 'ar' ? update.descriptionAr : update.descriptionEn,
+      summary: lang === 'ar' ? update.summaryAr : update.summaryEn,
       icon: update.icon,
       date: update.date.toISOString(),
       publishedAt: update.publishedAt.toISOString(),
       featured: update.featured,
       slug: update.slug,
+      featuredImage: update.featuredImage,
+      content: update.content,
+      source: update.source,
+      category: update.category,
+      references: update.references,
+      pdfUrl: update.pdfUrl,
+
     }));
+
+    console.log('****localizat',localizedUpdates)
 
     return NextResponse.json(localizedUpdates);
   } catch (error) {

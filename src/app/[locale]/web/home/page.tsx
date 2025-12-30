@@ -158,7 +158,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
               {featuredArticles.map((article: any) => (
                 <StaggerItem key={article.id}>
                   <Link
-                    href={`/${locale}/web/article/${article.slug}`}
+                    href={`/${locale}/web/blog/${article.slug}`}
                     className="group block h-full"
                   >
                     <article className="h-full bg-white rounded-3xl shadow-medium hover:shadow-glow transition-all duration-500 overflow-hidden transform hover:-translate-y-2 border border-grey-100 hover:border-primary-200 flex flex-col">
