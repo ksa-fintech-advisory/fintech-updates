@@ -83,7 +83,7 @@ Each scenario must:
 ━━━━━━━━━━━━━━━━━━━━━━
 FRONTEND UI / UX LOGIC (NO DESIGN)
 ━━━━━━━━━━━━━━━━━━━━━━
-
+we have already the base page for the compliancer checker in /[locale]/web/products/compliance-checker
 Define UI behavior that:
 
 DASHBOARD VIEW
