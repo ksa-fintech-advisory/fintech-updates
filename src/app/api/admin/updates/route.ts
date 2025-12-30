@@ -67,7 +67,7 @@ export async function POST(request: Request) {
         publishedAt: new Date(publishedAt || date),
         featured: featured || false,
         slug,
-      },
+      } as any,
     });
 
     return NextResponse.json(update, { status: 201 });
