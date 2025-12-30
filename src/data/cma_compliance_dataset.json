@@ -1,0 +1,2264 @@
+{
+  "metadata": {
+    "regulation_name": {
+      "ar": "لائحة مؤسسات السوق المالية",
+      "en": "Capital Market Institutions Regulations"
+    },
+    "issuing_authority": {
+      "ar": "هيئة السوق المالية",
+      "en": "Capital Market Authority (CMA)"
+    },
+    "jurisdiction": {
+      "ar": "المملكة العربية السعودية",
+      "en": "Kingdom of Saudi Arabia"
+    },
+    "legal_basis": {
+      "ar": "نظام السوق المالية الصادر بالمرسوم الملكي رقم م/30 وتاريخ 1424/6/2هـ",
+      "en": "Capital Market Law issued by Royal Decree M/30 dated 1424/6/2H"
+    },
+    "extraction_date": "2025-12-30",
+    "total_articles": 99,
+    "version": "2.0-bilingual"
+  },
+
+  "regulated_activities": [
+    {
+      "activity_id": "ACT-001",
+      "activity_name": {
+        "ar": "التعامل",
+        "en": "Dealing"
+      },
+      "description": {
+        "ar": "شراء أو بيع أو تداول الأوراق المالية بصفة أصيل أو وكيل",
+        "en": "Buying, selling, or trading in securities as principal or agent"
+      },
+      "minimum_capital": {
+        "ar": "50,000,000 ريال سعودي",
+        "en": "SAR 50,000,000"
+      },
+      "legal_form_requirements": {
+        "ar": ["شركة مساهمة سعودية", "شركة تابعة لبنك محلي", "شركة تابعة لمؤسسة مالية أجنبية"],
+        "en": ["Saudi joint-stock company", "Local bank subsidiary", "Foreign financial institution subsidiary"]
+      }
+    },
+    {
+      "activity_id": "ACT-002",
+      "activity_name": {
+        "ar": "الحفظ",
+        "en": "Custody"
+      },
+      "description": {
+        "ar": "حفظ وإدارة الأوراق المالية",
+        "en": "Safekeeping and administration of securities"
+      },
+      "minimum_capital": {
+        "ar": "50,000,000 ريال سعودي",
+        "en": "SAR 50,000,000"
+      },
+      "legal_form_requirements": {
+        "ar": ["شركة مساهمة سعودية", "شركة تابعة لبنك محلي", "شركة تابعة لمؤسسة مالية أجنبية"],
+        "en": ["Saudi joint-stock company", "Local bank subsidiary", "Foreign financial institution subsidiary"]
+      }
+    },
+    {
+      "activity_id": "ACT-003",
+      "activity_name": {
+        "ar": "الإدارة",
+        "en": "Managing"
+      },
+      "description": {
+        "ar": "إدارة الأوراق المالية العائدة لشخص آخر بما في ذلك إدارة الاستثمارات وعمليات الصناديق",
+        "en": "Managing securities belonging to another person including investment management and fund operations"
+      },
+      "minimum_capital": {
+        "ar": "20,000,000 ريال سعودي (إدارة الاستثمارات + عمليات الصناديق) أو مصاريف التشغيل لسنة واحدة (إدارة الاستثمارات فقط)",
+        "en": "SAR 20,000,000 (investment management + fund operations) OR 1-year operating expenses (investment management only)"
+      },
+      "legal_form_requirements": {
+        "ar": ["شركة مساهمة سعودية", "شركة تابعة لبنك محلي", "شركة تابعة لمؤسسة مالية أجنبية"],
+        "en": ["Saudi joint-stock company", "Local bank subsidiary", "Foreign financial institution subsidiary"]
+      }
+    },
+    {
+      "activity_id": "ACT-004",
+      "activity_name": {
+        "ar": "الترتيب",
+        "en": "Arranging"
+      },
+      "description": {
+        "ar": "ترتيب صفقات الأوراق المالية وترتيبات الائتمان",
+        "en": "Arranging deals in securities and credit arrangements"
+      },
+      "minimum_capital": {
+        "ar": "تغطية مصاريف التشغيل لسنة واحدة",
+        "en": "1-year operating expenses coverage"
+      },
+      "legal_form_requirements": {
+        "ar": ["شركة مساهمة سعودية", "شركة تابعة لبنك محلي", "شركة تابعة لمؤسسة مالية أجنبية"],
+        "en": ["Saudi joint-stock company", "Local bank subsidiary", "Foreign financial institution subsidiary"]
+      }
+    },
+    {
+      "activity_id": "ACT-005",
+      "activity_name": {
+        "ar": "تقديم المشورة",
+        "en": "Advising"
+      },
+      "description": {
+        "ar": "تقديم المشورة بشأن معاملات الأوراق المالية",
+        "en": "Advising on securities transactions"
+      },
+      "minimum_capital": {
+        "ar": "تغطية مصاريف التشغيل لسنة واحدة",
+        "en": "1-year operating expenses coverage"
+      },
+      "legal_form_requirements": {
+        "ar": ["شركة مساهمة سعودية", "شركة تابعة لبنك محلي", "شركة تابعة لمؤسسة مالية أجنبية"],
+        "en": ["Saudi joint-stock company", "Local bank subsidiary", "Foreign financial institution subsidiary"]
+      }
+    }
+  ],
+
+  "compliance_rules": [
+    {
+      "rule_id": "LIC-001",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة السادسة",
+        "en": "Article 6"
+      },
+      "description": {
+        "ar": "متطلبات طلب الترخيص - الشكل القانوني",
+        "en": "License application requirements - Legal form"
+      },
+      "condition": {
+        "ar": "مقدم الطلب الذي يسعى للحصول على ترخيص الهيئة لأعمال الأوراق المالية",
+        "en": "Applicant seeking CMA license for securities business"
+      },
+      "required_action": {
+        "ar": "يجب أن يكون مؤسساً في المملكة العربية السعودية كأحد الأشكال التالية: (1) شركة تابعة لبنك محلي، (2) شركة مساهمة سعودية، (3) شركة تابعة لشركة خدمات مالية سعودية، (4) شركة تابعة لمؤسسة مالية أجنبية مرخصة بموجب نظام مراقبة البنوك",
+        "en": "Must be incorporated in Saudi Arabia as one of: (1) Subsidiary of local bank, (2) Saudi joint-stock company, (3) Subsidiary of Saudi financial services company, (4) Subsidiary of foreign financial institution licensed under Banking Control Law"
+      },
+      "evidence": {
+        "ar": ["شهادة التأسيس", "النظام الأساسي للشركة", "وثائق هيكل الملكية", "ترخيص الشركة الأم (إن وجد)"],
+        "en": ["Certificate of incorporation", "Company bylaws/articles", "Ownership structure documentation", "Parent company license (if applicable)"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "رفض الترخيص أو إلغاؤه",
+        "en": "License denial or revocation"
+      }
+    },
+    {
+      "rule_id": "LIC-002",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة السادسة",
+        "en": "Article 6"
+      },
+      "description": {
+        "ar": "متطلبات الحد الأدنى لرأس المال حسب نوع النشاط",
+        "en": "Minimum capital requirements by activity type"
+      },
+      "condition": {
+        "ar": "بناءً على نوع نشاط الأوراق المالية المطلوب",
+        "en": "Based on type of securities activity sought"
+      },
+      "required_action": {
+        "ar": "الحفاظ على الحد الأدنى لرأس المال: التعامل/الحفظ = 50 مليون ريال سعودي؛ الإدارة (استثمارات + صناديق) = 20 مليون ريال سعودي؛ الإدارة (استثمارات فقط) = مصاريف تشغيل سنة؛ الترتيب/المشورة = مصاريف تشغيل سنة",
+        "en": "Maintain minimum capital: Dealing/Custody = SAR 50M; Managing (investment + funds) = SAR 20M; Managing (investment only) = 1-year operating expenses; Arranging/Advising = 1-year operating expenses"
+      },
+      "evidence": {
+        "ar": ["القوائم المالية المدققة", "تأكيد البنك على رأس المال المدفوع", "توقعات مصاريف التشغيل (12 شهراً)", "حسابات كفاية رأس المال"],
+        "en": ["Audited financial statements", "Bank confirmation of paid-up capital", "Operating expense projections (12-month)", "Capital adequacy calculations"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "رفض الترخيص أو تعليقه",
+        "en": "License denial or suspension"
+      }
+    },
+    {
+      "rule_id": "LIC-003",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة السادسة",
+        "en": "Article 6"
+      },
+      "description": {
+        "ar": "متطلب موقع المقر الرئيسي والإدارة",
+        "en": "Headquarters and management location requirement"
+      },
+      "condition": {
+        "ar": "جميع المؤسسات المرخصة من الهيئة",
+        "en": "All CMA licensed institutions"
+      },
+      "required_action": {
+        "ar": "يجب أن يكون المقر الرئيسي والإدارة العليا في المملكة العربية السعودية",
+        "en": "Headquarters and senior management must be located in Saudi Arabia"
+      },
+      "evidence": {
+        "ar": ["عقد إيجار المكتب", "عنوان السجل التجاري", "وثائق إقامة الإدارة العليا", "الهيكل التنظيمي مع المواقع"],
+        "en": ["Office lease agreement", "Commercial registration address", "Senior management residence documentation", "Organizational chart with locations"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "رفض الترخيص أو إلغاؤه",
+        "en": "License denial or revocation"
+      }
+    },
+    {
+      "rule_id": "LIC-004",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة السابعة",
+        "en": "Article 7"
+      },
+      "description": {
+        "ar": "الجدول الزمني لمراجعة ترخيص الهيئة",
+        "en": "CMA license review timeline"
+      },
+      "condition": {
+        "ar": "عند استلام طلب ترخيص مكتمل",
+        "en": "Upon receipt of complete license application"
+      },
+      "required_action": {
+        "ar": "ستقوم الهيئة بالمراجعة واتخاذ القرار خلال 30 يوماً. خيارات القرار: (1) الموافقة الكاملة، (2) الموافقة الجزئية، (3) الموافقة المشروطة، (4) الرفض",
+        "en": "CMA will review and decide within 30 days. Decision options: (1) Full approval, (2) Partial approval, (3) Conditional approval, (4) Rejection"
+      },
+      "evidence": {
+        "ar": ["إيصال تقديم الطلب", "قائمة التحقق من الوثائق المكتملة", "مراسلات الهيئة"],
+        "en": ["Application submission receipt", "Complete documentation checklist", "CMA correspondence"]
+      },
+      "risk_level": {
+        "ar": "متوسط",
+        "en": "Medium"
+      },
+      "enforcement_type": {
+        "ar": "جدول زمني تنظيمي",
+        "en": "Regulatory timeline"
+      },
+      "penalty_reference": {
+        "ar": "لا ينطبق - عملية تنظيمية",
+        "en": "N/A - Regulatory process"
+      }
+    },
+    {
+      "rule_id": "LIC-005",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة التاسعة",
+        "en": "Article 9"
+      },
+      "description": {
+        "ar": "متطلبات الأهلية والملاءمة المستمرة",
+        "en": "Ongoing capability and suitability requirements"
+      },
+      "condition": {
+        "ar": "جميع المؤسسات المرخصة بشكل مستمر",
+        "en": "All licensed institutions on ongoing basis"
+      },
+      "required_action": {
+        "ar": "الحفاظ على الأهلية والملاءمة من خلال: (1) المهارات والخبرة والمؤهلات الكافية، (2) نزاهة أعضاء مجلس الإدارة والمسؤولين والموظفين والوكلاء، (3) عدم الإفلاس خلال السنوات العشر الماضية للمؤسسين/المسيطرين/الأشخاص المسجلين",
+        "en": "Maintain capability and suitability through: (1) Qualified skills/experience/qualifications, (2) Integrity of board members, officers, employees, agents, (3) No bankruptcy within past 10 years for founders/controllers/registered persons"
+      },
+      "evidence": {
+        "ar": ["سجلات مؤهلات الموظفين", "تقارير التحقق من الخلفية", "شهادات البحث عن الإفلاس", "تقييمات الكفاءة السنوية"],
+        "en": ["Staff qualification records", "Background check reports", "Bankruptcy search certificates", "Annual competency assessments"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي - مستمر",
+        "en": "Mandatory - Ongoing"
+      },
+      "penalty_reference": {
+        "ar": "تعليق الترخيص أو إلغاؤه",
+        "en": "License suspension or revocation"
+      }
+    },
+    {
+      "rule_id": "LIC-006",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة التاسعة",
+        "en": "Article 9"
+      },
+      "description": {
+        "ar": "تغييرات رأس المال تتطلب موافقة الهيئة",
+        "en": "Capital changes require CMA approval"
+      },
+      "condition": {
+        "ar": "أي تغيير في هيكل رأس مال المؤسسة المرخصة",
+        "en": "Any change to capital structure of licensed institution"
+      },
+      "required_action": {
+        "ar": "الحصول على موافقة الهيئة الكتابية قبل تنفيذ أي تغييرات في رأس المال",
+        "en": "Obtain CMA written approval before implementing any capital changes"
+      },
+      "evidence": {
+        "ar": ["خطاب موافقة الهيئة", "قرار مجلس الإدارة بتغيير رأس المال", "سجل المساهمين المحدث", "السجل التجاري المعدل"],
+        "en": ["CMA approval letter", "Board resolution for capital change", "Updated shareholder register", "Amended commercial registration"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "LIC-007",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة العاشرة",
+        "en": "Article 10"
+      },
+      "description": {
+        "ar": "نطاق الأنشطة التجارية المسموح بها",
+        "en": "Scope of permitted business activities"
+      },
+      "condition": {
+        "ar": "جميع المؤسسات المرخصة",
+        "en": "All licensed institutions"
+      },
+      "required_action": {
+        "ar": "ممارسة الأنشطة المحددة في ترخيص الهيئة فقط. الأنشطة المساندة مسموح بها فقط إذا: (1) لا تتطلب ترخيصاً تنظيمياً آخر، (2) لا تؤثر على الالتزام بالمبادئ، (3) تحافظ على الكفاية المالية",
+        "en": "Only conduct activities specified in CMA license. Ancillary activities allowed only if: (1) No other regulatory license required, (2) Does not affect compliance with principles, (3) Maintains financial adequacy"
+      },
+      "evidence": {
+        "ar": ["وثيقة ترخيص الهيئة", "سجل الأنشطة", "تفصيل الإيرادات حسب النشاط", "تقييم الامتثال للأنشطة المساندة"],
+        "en": ["CMA license document", "Activity register", "Revenue breakdown by activity", "Compliance assessment for ancillary activities"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية، قيود على الترخيص",
+        "en": "Regulatory sanctions, license restrictions"
+      }
+    },
+    {
+      "rule_id": "LIC-008",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة الحادية عشرة",
+        "en": "Article 11"
+      },
+      "description": {
+        "ar": "إشعار مسبق بـ 30 يوماً لتغييرات الترخيص",
+        "en": "30-day advance notice for license changes"
+      },
+      "condition": {
+        "ar": "أي تغييرات أو تعديلات مقترحة على الأنشطة المرخصة",
+        "en": "Any proposed changes or amendments to licensed activities"
+      },
+      "required_action": {
+        "ar": "إخطار الهيئة قبل 30 يوماً على الأقل من أي تغييرات على الأعمال المرخصة",
+        "en": "Notify CMA at least 30 days in advance of any changes to licensed business"
+      },
+      "evidence": {
+        "ar": ["خطاب إخطار التغيير للهيئة", "الطابع الزمني/إيصال الإخطار", "وصف التغييرات المقترحة", "تقييم الأثر"],
+        "en": ["Change notification letter to CMA", "Timestamp/receipt of notification", "Description of proposed changes", "Impact assessment"]
+      },
+      "risk_level": {
+        "ar": "متوسط",
+        "en": "Medium"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "LIC-009",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة الثانية عشرة",
+        "en": "Article 12"
+      },
+      "description": {
+        "ar": "إجراءات تعليق الترخيص",
+        "en": "License suspension procedures"
+      },
+      "condition": {
+        "ar": "المؤسسة التي تسعى لتعليق أنشطتها مؤقتاً",
+        "en": "Institution seeking temporary suspension of activities"
+      },
+      "required_action": {
+        "ar": "تقديم إشعار للهيئة قبل 45 يوماً (يُسمح بالإشعار الفوري للأحداث الخارجية). الحد الأقصى لفترة التعليق: 12 شهراً",
+        "en": "Provide CMA 45 days advance notice (immediate notice allowed for external events). Maximum suspension period: 12 months"
+      },
+      "evidence": {
+        "ar": ["خطاب طلب التعليق", "وثائق الأسباب", "خطة إخطار العملاء", "الجدول الزمني للاستئناف"],
+        "en": ["Suspension request letter", "Reason documentation", "Client notification plan", "Resumption timeline"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "إلغاء الترخيص تلقائياً إذا تجاوز 12 شهراً",
+        "en": "Automatic license cancellation if exceeds 12 months"
+      }
+    },
+    {
+      "rule_id": "LIC-010",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة الثانية عشرة",
+        "en": "Article 12"
+      },
+      "description": {
+        "ar": "إجراءات إلغاء الترخيص",
+        "en": "License cancellation procedures"
+      },
+      "condition": {
+        "ar": "المؤسسة التي تسعى لإلغاء ترخيصها",
+        "en": "Institution seeking to cancel license"
+      },
+      "required_action": {
+        "ar": "تقديم إشعار للهيئة قبل 3 أشهر. يجب إكمال جميع الأعمال المعلقة أو نقلها إلى مؤسسة مرخصة أخرى. تحتفظ الهيئة بالسلطة التنظيمية لمدة سنتين بعد الإلغاء",
+        "en": "Provide CMA 3 months advance notice. Must complete all pending work or transfer to another licensed institution. CMA retains regulatory authority for 2 years post-cancellation"
+      },
+      "evidence": {
+        "ar": ["خطاب طلب الإلغاء", "خطة انتقال العملاء", "حالة إكمال الأعمال المعلقة", "وثائق نقل الأصول"],
+        "en": ["Cancellation request letter", "Client transition plan", "Pending work completion status", "Asset transfer documentation"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "استمرار المسؤولية التنظيمية لمدة سنتين",
+        "en": "Continued regulatory liability for 2 years"
+      }
+    },
+    {
+      "rule_id": "LIC-011",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة الثالثة عشرة",
+        "en": "Article 13"
+      },
+      "description": {
+        "ar": "تغييرات المسيطرين تتطلب موافقة",
+        "en": "Controller changes require approval"
+      },
+      "condition": {
+        "ar": "أي تغيير في المسيطرين على المؤسسة المرخصة",
+        "en": "Any change in controllers of licensed institution"
+      },
+      "required_action": {
+        "ar": "إخطار الهيئة قبل 30 يوماً. الحصول على موافقة الهيئة الكتابية قبل تنفيذ تغييرات السيطرة",
+        "en": "Notify CMA 30 days in advance. Obtain CMA written approval before implementing control changes"
+      },
+      "evidence": {
+        "ar": ["إخطار تغيير المسيطر", "حزمة معلومات المسيطر الجديد", "خطاب موافقة الهيئة", "هيكل الملكية المحدث"],
+        "en": ["Controller change notification", "New controller information package", "CMA approval letter", "Updated ownership structure"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية، قيود على الترخيص",
+        "en": "Regulatory sanctions, license restrictions"
+      }
+    },
+    {
+      "rule_id": "LIC-012",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة الرابعة عشرة",
+        "en": "Article 14"
+      },
+      "description": {
+        "ar": "إخطار العلاقات الوثيقة",
+        "en": "Close links notification"
+      },
+      "condition": {
+        "ar": "أي تغيير في العلاقات الوثيقة مع كيانات أخرى",
+        "en": "Any change in close links with other entities"
+      },
+      "required_action": {
+        "ar": "إخطار الهيئة قبل 30 يوماً. للهيئة فرض قيود بناءً على تقييم العلاقات الوثيقة",
+        "en": "Notify CMA 30 days in advance. CMA may impose restrictions based on close links assessment"
+      },
+      "evidence": {
+        "ar": ["نموذج الإفصاح عن العلاقات الوثيقة", "خريطة الأطراف ذات العلاقة", "مخطط الهيكل التنظيمي", "إقرار الهيئة"],
+        "en": ["Close links disclosure form", "Related party mapping", "Organizational structure chart", "CMA acknowledgment"]
+      },
+      "risk_level": {
+        "ar": "متوسط",
+        "en": "Medium"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "قيود تنظيمية",
+        "en": "Regulatory restrictions"
+      }
+    },
+    {
+      "rule_id": "LIC-013",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة السادسة عشرة",
+        "en": "Article 16"
+      },
+      "description": {
+        "ar": "متطلب الاحتفاظ بالسجلات - 10 سنوات",
+        "en": "Record retention requirement - 10 years"
+      },
+      "condition": {
+        "ar": "جميع المؤسسات المرخصة",
+        "en": "All licensed institutions"
+      },
+      "required_action": {
+        "ar": "الاحتفاظ بجميع السجلات المطلوبة لمدة 10 سنوات كحد أدنى ما لم تحدد الهيئة فترة مختلفة",
+        "en": "Retain all required records for minimum 10 years unless CMA specifies different period"
+      },
+      "evidence": {
+        "ar": ["سياسة الاحتفاظ بالسجلات", "جرد الأرشيف", "سجلات إتلاف السجلات", "إجراءات النسخ الاحتياطي والاسترداد"],
+        "en": ["Record retention policy", "Archive inventory", "Record destruction logs", "Backup and recovery procedures"]
+      },
+      "risk_level": {
+        "ar": "متوسط",
+        "en": "Medium"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "LIC-014",
+      "module": {
+        "ar": "الترخيص",
+        "en": "Licensing"
+      },
+      "article_reference": {
+        "ar": "المادة السابعة عشرة",
+        "en": "Article 17"
+      },
+      "description": {
+        "ar": "رسوم الترخيص السنوية",
+        "en": "Annual licensing fees"
+      },
+      "condition": {
+        "ar": "جميع المؤسسات المرخصة",
+        "en": "All licensed institutions"
+      },
+      "required_action": {
+        "ar": "دفع الرسوم السنوية المطلوبة للهيئة حسب المحدد",
+        "en": "Pay required annual fees to CMA as specified"
+      },
+      "evidence": {
+        "ar": ["إيصالات دفع الرسوم", "جدول رسوم الهيئة", "تأكيد الدفع"],
+        "en": ["Fee payment receipts", "CMA fee schedule", "Payment confirmation"]
+      },
+      "risk_level": {
+        "ar": "متوسط",
+        "en": "Medium"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "تعليق الترخيص لعدم الدفع",
+        "en": "License suspension for non-payment"
+      }
+    },
+    {
+      "rule_id": "GOV-001",
+      "module": {
+        "ar": "الحوكمة",
+        "en": "Governance"
+      },
+      "article_reference": {
+        "ar": "المادة الخامسة",
+        "en": "Article 5"
+      },
+      "description": {
+        "ar": "الالتزام بالمبادئ الأساسية - 11 مبدأ",
+        "en": "Core principles compliance - 11 principles"
+      },
+      "condition": {
+        "ar": "جميع المؤسسات المرخصة في جميع الأوقات",
+        "en": "All licensed institutions at all times"
+      },
+      "required_action": {
+        "ar": "الالتزام بـ 11 مبدأً أساسياً: (1) النزاهة، (2) المهارة والعناية والحرص، (3) الإدارة والرقابة الفعالة، (4) الكفاية المالية، (5) السلوك المناسب في السوق، (6) حماية أصول العملاء، (7) التعاون مع الجهات الرقابية، (8) التواصل مع العملاء، (9) مراعاة مصالح العملاء، (10) إدارة تضارب المصالح، (11) الملاءمة للعملاء",
+        "en": "Comply with 11 core principles: (1) Integrity, (2) Skill/care/diligence, (3) Effective management/oversight, (4) Financial adequacy, (5) Appropriate market conduct, (6) Client asset protection, (7) Cooperation with regulators, (8) Client communication, (9) Client interest consideration, (10) Conflict of interest management, (11) Suitability for clients"
+      },
+      "evidence": {
+        "ar": ["سياسة الالتزام بالمبادئ", "إقرار الالتزام السنوي", "تقارير المراجعة الداخلية", "سجلات شكاوى العملاء"],
+        "en": ["Principles compliance policy", "Annual compliance attestation", "Internal audit reports", "Client complaint records"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي - مستمر",
+        "en": "Mandatory - Ongoing"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية، إلغاء الترخيص",
+        "en": "Regulatory sanctions, license revocation"
+      }
+    },
+    {
+      "rule_id": "GOV-002",
+      "module": {
+        "ar": "الحوكمة",
+        "en": "Governance"
+      },
+      "article_reference": {
+        "ar": "المادة الثالثة والخمسون",
+        "en": "Article 53"
+      },
+      "description": {
+        "ar": "توزيع المسؤوليات",
+        "en": "Distribution of responsibilities"
+      },
+      "condition": {
+        "ar": "جميع المؤسسات المرخصة",
+        "en": "All licensed institutions"
+      },
+      "required_action": {
+        "ar": "إنشاء ترتيبات مناسبة لتوزيع واضح للمسؤوليات الرئيسية بين الجهة الحاكمة والإدارة العليا. الجهة الحاكمة مسؤولة عن الإشراف على إنشاء وتنفيذ الأنظمة والضوابط",
+        "en": "Establish appropriate arrangements for clear distribution of key responsibilities between governing body and senior executives. Governing body responsible for overseeing systems/controls establishment and implementation"
+      },
+      "evidence": {
+        "ar": ["ميثاق مجلس الإدارة", "مصفوفة تفويض الصلاحيات", "الوصف الوظيفي للمديرين التنفيذيين", "الهيكل التنظيمي"],
+        "en": ["Board charter", "Delegation of authority matrix", "Job descriptions for senior executives", "Organizational chart"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "GOV-003",
+      "module": {
+        "ar": "الحوكمة",
+        "en": "Governance"
+      },
+      "article_reference": {
+        "ar": "المادة الثالثة والخمسون",
+        "en": "Article 53"
+      },
+      "description": {
+        "ar": "متطلبات استقلالية مجلس الإدارة",
+        "en": "Board independence requirements"
+      },
+      "condition": {
+        "ar": "المؤسسات المرخصة كشركات مساهمة",
+        "en": "Joint-stock company licensed institutions"
+      },
+      "required_action": {
+        "ar": "يجب أن يضم المجلس عضوين مستقلين كحد أدنى أو ثلث الأعضاء (أيهما أكبر). موانع الاستقلالية: (1) امتلاك ≥5% من الأسهم، (2) تمثيل كيان يمتلك ≥5%، (3) عضوية مجلس إدارة شركة من المجموعة، (4) موظف حالي أو سابق (خلال السنة) في المؤسسة/الأطراف المتعاملة/شركات المجموعة",
+        "en": "Board must include minimum 2 or one-third independent directors (whichever greater). Independence disqualifiers: (1) Owning ≥5% shares, (2) Representing entity owning ≥5%, (3) Board member of group company, (4) Current/past year employee of institution/dealing parties/group companies"
+      },
+      "evidence": {
+        "ar": ["سجل تشكيلة مجلس الإدارة", "إقرارات الاستقلالية", "سجلات المساهمة", "التحقق من تاريخ التوظيف"],
+        "en": ["Board composition register", "Independence declarations", "Shareholding records", "Employment history verification"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "GOV-004",
+      "module": {
+        "ar": "الحوكمة",
+        "en": "Governance"
+      },
+      "article_reference": {
+        "ar": "المادة السابعة والخمسون",
+        "en": "Article 57"
+      },
+      "description": {
+        "ar": "تعيين مسؤول الالتزام",
+        "en": "Compliance officer appointment"
+      },
+      "condition": {
+        "ar": "جميع المؤسسات المرخصة",
+        "en": "All licensed institutions"
+      },
+      "required_action": {
+        "ar": "تعيين مدير تنفيذي كمسؤول التزام. يجب على الجهة الحاكمة الإشراف على: (1) سياسات وإجراءات الالتزام، (2) موارد مسؤول/إدارة الالتزام والوصول للسجلات، (3) دليل الالتزام وبرنامج المراقبة، (4) قواعد السلوك، (5) تقارير وإخطارات الهيئة، (6) إجراءات التقارير الدورية للجهة الحاكمة",
+        "en": "Appoint senior executive as compliance officer. Governing body must oversee: (1) Compliance policies/procedures, (2) Compliance officer/department resources and record access, (3) Compliance manual/monitoring program, (4) Conduct rules compliance, (5) CMA reports/notifications, (6) Periodic compliance reporting to governing body"
+      },
+      "evidence": {
+        "ar": ["خطاب تعيين مسؤول الالتزام", "الوصف الوظيفي", "دليل الالتزام", "التقارير الدورية"],
+        "en": ["Compliance officer appointment letter", "Job description", "Compliance manual", "Periodic compliance reports"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "GOV-005",
+      "module": {
+        "ar": "الحوكمة",
+        "en": "Governance"
+      },
+      "article_reference": {
+        "ar": "المادة الرابعة والستون",
+        "en": "Article 64"
+      },
+      "description": {
+        "ar": "تعيين مسؤول مكافحة غسل الأموال وتمويل الإرهاب",
+        "en": "AML/CFT officer appointment"
+      },
+      "condition": {
+        "ar": "جميع المؤسسات المرخصة",
+        "en": "All licensed institutions"
+      },
+      "required_action": {
+        "ar": "تعيين موظف كبير كمسؤول الإبلاغ عن غسل الأموال مسؤول عن ضمان الالتزام بنظام مكافحة غسل الأموال ونظام مكافحة تمويل الإرهاب ورفع التقارير للجهة الحاكمة",
+        "en": "Appoint senior employee as AMLRO responsible for ensuring AML Law and CFT Law compliance and reporting to governing body"
+      },
+      "evidence": {
+        "ar": ["خطاب تعيين مسؤول الإبلاغ", "الوصف الوظيفي", "سياسة مكافحة غسل الأموال", "التقارير الدورية للجهة الحاكمة"],
+        "en": ["AMLRO appointment letter", "Job description", "AML/CFT policy", "Periodic reports to governing body"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية، مسؤولية جنائية",
+        "en": "Regulatory sanctions, criminal liability"
+      }
+    },
+    {
+      "rule_id": "GOV-006",
+      "module": {
+        "ar": "الحوكمة",
+        "en": "Governance"
+      },
+      "article_reference": {
+        "ar": "المادة الثالثة والستون",
+        "en": "Article 63"
+      },
+      "description": {
+        "ar": "إجراءات حل الشكاوى",
+        "en": "Complaint resolution procedures"
+      },
+      "condition": {
+        "ar": "جميع المؤسسات المرخصة",
+        "en": "All licensed institutions"
+      },
+      "required_action": {
+        "ar": "إنشاء إجراءات مكتوبة تضمن: (1) معالجة شكاوى العملاء بشكل مناسب وسريع، (2) اتخاذ إجراءات تصحيحية مناسبة وفورية، (3) التدخل لصالح العميل إذا كانت الشكوى تتعلق بطرف ثالث يعمل لدى المؤسسة أو أوصت به. يجب أن تضمن الإجراءات: (أ) وعي جميع موظفي خدمة العملاء، (ب) تحقيق فوري وكامل من قبل موظف غير ذي صلة، (ج) توثيق كتابي للشكوى والإجراءات",
+        "en": "Establish written procedures ensuring: (1) Appropriate/prompt client complaint handling, (2) Appropriate/immediate corrective actions, (3) Third-party intervention for client benefit if complaint involves third party working for/recommended by institution. Procedures must ensure: (a) All client-facing employees aware, (b) Immediate/complete investigation by unrelated officer, (c) Written complaint record and action documentation"
+      },
+      "evidence": {
+        "ar": ["سياسة معالجة الشكاوى", "سجل الشكاوى", "سجلات التحقيق", "وثائق الحل"],
+        "en": ["Complaint handling policy", "Complaint register", "Investigation records", "Resolution documentation"]
+      },
+      "risk_level": {
+        "ar": "متوسط",
+        "en": "Medium"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "OPS-001",
+      "module": {
+        "ar": "العمليات",
+        "en": "Operations"
+      },
+      "article_reference": {
+        "ar": "المادة السادسة والثلاثون",
+        "en": "Article 36"
+      },
+      "description": {
+        "ar": "متطلب تصنيف العملاء",
+        "en": "Client classification requirement"
+      },
+      "condition": {
+        "ar": "جميع العملاء قبل إجراء الأعمال",
+        "en": "All clients before conducting business"
+      },
+      "required_action": {
+        "ar": "تصنيف جميع العملاء كـ: تجزئة، مؤهلين، أو مؤسسات. تصنيف واحد فقط لكل عميل. الاحتفاظ بسجل التصنيف مع المعلومات الداعمة",
+        "en": "Classify all clients as: Retail, Qualified, or Institutional. Only one classification per client. Maintain classification record with supporting information"
+      },
+      "evidence": {
+        "ar": ["سجلات تصنيف العملاء", "وثائق معايير التصنيف", "الوثائق الداعمة لكل عميل"],
+        "en": ["Client classification records", "Classification criteria documentation", "Supporting documentation per client"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "OPS-002",
+      "module": {
+        "ar": "العمليات",
+        "en": "Operations"
+      },
+      "article_reference": {
+        "ar": "المادة السابعة والثلاثون",
+        "en": "Article 37"
+      },
+      "description": {
+        "ar": "الامتثال لمكافحة غسل الأموال وتمويل الإرهاب قبل العمل",
+        "en": "AML/CFT compliance before business"
+      },
+      "condition": {
+        "ar": "قبل إجراء أي أعمال مع أي عميل",
+        "en": "Before conducting business with any client"
+      },
+      "required_action": {
+        "ar": "الالتزام بمتطلبات نظام مكافحة غسل الأموال ونظام مكافحة تمويل الإرهاب",
+        "en": "Comply with AML Law and CFT Law requirements"
+      },
+      "evidence": {
+        "ar": ["سجلات تحديد هوية العميل", "وثائق العناية الواجبة", "سجلات فحص العقوبات", "وثائق تقييم المخاطر"],
+        "en": ["Client identification records", "CDD/EDD documentation", "Sanctions screening records", "Risk assessment documentation"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية، مسؤولية جنائية",
+        "en": "Regulatory sanctions, criminal liability"
+      }
+    },
+    {
+      "rule_id": "OPS-003",
+      "module": {
+        "ar": "العمليات",
+        "en": "Operations"
+      },
+      "article_reference": {
+        "ar": "المادة التاسعة والثلاثون",
+        "en": "Article 39"
+      },
+      "description": {
+        "ar": "متطلبات اعرف عميلك",
+        "en": "Know Your Client (KYC) requirements"
+      },
+      "condition": {
+        "ar": "قبل إجراء أي أعمال مع أي عميل",
+        "en": "Before conducting business with any client"
+      },
+      "required_action": {
+        "ar": "الحصول على معلومات عن: الوضع المالي، الخبرة الاستثمارية، الأهداف الاستثمارية. استخدام الحد الأدنى من المعلومات حسب الملحق 5-3(أ). طلب التحديثات عند التغييرات أو انتهاء الصلاحية أو بشكل دوري (مراجعة كل 5 سنوات كحد أدنى). إذا رفض العميل، لا يمكن إجراء الأعمال. الاحتفاظ بالسجلات",
+        "en": "Obtain information on: financial status, investment experience, investment objectives. Use minimum information per Annex 5-3(a). Request updates upon changes, expiry, or periodic intervals (minimum 5-year review). If client refuses, cannot conduct business. Maintain records"
+      },
+      "evidence": {
+        "ar": ["نماذج اعرف عميلك حسب الملحق 5-3", "سجلات طلب التحديث", "جدول المراجعة كل 5 سنوات", "سجلات العملاء الرافضين"],
+        "en": ["KYC forms per Annex 5-3", "Update request records", "5-year review schedule", "Refused client records"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "OPS-004",
+      "module": {
+        "ar": "العمليات",
+        "en": "Operations"
+      },
+      "article_reference": {
+        "ar": "المادة الثالثة والأربعون",
+        "en": "Article 43"
+      },
+      "description": {
+        "ar": "متطلب تقييم الملاءمة",
+        "en": "Suitability assessment requirement"
+      },
+      "condition": {
+        "ar": "قبل التعامل/تقديم المشورة/العرض/التوزيع/الإدارة/الحصول على ضمان",
+        "en": "Before dealing/advising/offering/distributing/managing/obtaining collateral"
+      },
+      "required_action": {
+        "ar": "التأكد من ملاءمة المشورة/المعاملة للعميل. تقديم تقرير الملاءمة قبل المشورة/المعاملة يتضمن: الأهداف/تحمل المخاطر، العيوب/المخاطر، مبررات الملاءمة. إذا كانت غير ملائمة لكن العميل يصر: يمكن المتابعة بعد الإبلاغ والحصول على إقرار. محظور: أساليب الضغط أو التصريحات المضللة. يمكن استخدام التقنية لتقييم الملاءمة بموافقة الهيئة",
+        "en": "Ensure advice/transaction suitable for client. Provide suitability report before advice/transaction containing: objectives/risk tolerance, disadvantages/risks, suitability rationale. If unsuitable but client insists: May proceed after informing and obtaining acknowledgment. Prohibited: Pressure tactics or misleading statements. May use technology for suitability assessment with CMA approval"
+      },
+      "evidence": {
+        "ar": ["تقارير الملاءمة", "إقرارات العملاء", "سجلات التجاوز مع المبررات", "موافقة الهيئة على التقنية (إن وجدت)"],
+        "en": ["Suitability reports", "Client acknowledgments", "Override records with justification", "CMA technology approval (if applicable)"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "OPS-005",
+      "module": {
+        "ar": "العمليات",
+        "en": "Operations"
+      },
+      "article_reference": {
+        "ar": "المادة الحادية والأربعون",
+        "en": "Article 41"
+      },
+      "description": {
+        "ar": "إدارة تضارب المصالح",
+        "en": "Conflict of interest management"
+      },
+      "condition": {
+        "ar": "جميع علاقات العملاء",
+        "en": "All client relationships"
+      },
+      "required_action": {
+        "ar": "حماية مصالح العميل في جميع الأوقات. إذا وجد تضارب حالي/محتمل: الإفصاح كتابياً والحصول على إقرار كتابي. إذا تسبب التضارب في خسارة للعميل: التعويض ما لم (1) تم الإفصاح و(2) وافق العميل كتابياً. الالتزام بلائحة سلوك السوق المادة 14 عند التعامل كأصيل. الاحتفاظ بسجل التضارب حسب نوع النشاط",
+        "en": "Safeguard client interests at all times. If conflict exists/potential: Disclose in writing and obtain written acknowledgment. If conflict causes client loss: Compensate unless (1) disclosed and (2) client consented in writing. Comply with Market Conduct Regulations Article 14 when dealing as principal. Maintain conflict register by activity type"
+      },
+      "evidence": {
+        "ar": ["سياسة تضارب المصالح", "سجل التضارب", "سجلات الإفصاح", "إقرارات العملاء"],
+        "en": ["Conflict of interest policy", "Conflict register", "Disclosure records", "Client acknowledgments"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية، مسؤولية التعويض",
+        "en": "Regulatory sanctions, compensation liability"
+      }
+    },
+    {
+      "rule_id": "OPS-006",
+      "module": {
+        "ar": "العمليات",
+        "en": "Operations"
+      },
+      "article_reference": {
+        "ar": "المادة الخامسة والأربعون",
+        "en": "Article 45"
+      },
+      "description": {
+        "ar": "متطلبات الهامش للأسهم المدرجة",
+        "en": "Margin requirements for listed shares"
+      },
+      "condition": {
+        "ar": "معاملات الهامش على أسهم الشركات المدرجة",
+        "en": "Margin transactions on listed company shares"
+      },
+      "required_action": {
+        "ar": "طلب هامش لا يقل عن 50% قبل التنفيذ. المراقبة اليومية والتأكد من أن الهامش لا يقل عن 25% من قيمة المركز الحالي. حظر معاملات الهامش على الأسهم ذات الخسائر المتراكمة ≥50% من رأس المال. حظر معاملات الهامش على عقود المشتقات",
+        "en": "Require minimum 50% margin before execution. Monitor daily and ensure margin does not fall below 25% of current position value. Prohibit margin transactions on shares with accumulated losses ≥50% of capital. Prohibit margin transactions on derivatives contracts"
+      },
+      "evidence": {
+        "ar": ["سجلات حساب الهامش", "تقارير المراقبة اليومية", "سجلات نداء الهامش للعملاء", "قائمة الأوراق المالية المحظورة"],
+        "en": ["Margin calculation records", "Daily monitoring reports", "Client margin call records", "Prohibited securities list"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "OPS-007",
+      "module": {
+        "ar": "العمليات",
+        "en": "Operations"
+      },
+      "article_reference": {
+        "ar": "المادة الحادية والخمسون",
+        "en": "Article 51"
+      },
+      "description": {
+        "ar": "متطلب تسجيل المكالمات الهاتفية",
+        "en": "Telephone recording requirement"
+      },
+      "condition": {
+        "ar": "جميع مكالمات العملاء/العملاء المحتملين المتعلقة بأنشطة الأوراق المالية",
+        "en": "All client/potential client calls regarding securities activities"
+      },
+      "required_action": {
+        "ar": "لا يمكن إجراء/استقبال مكالمات إلا إذا تم تسجيلها. يجب الإفصاح عن التسجيل للعملاء/العملاء المحتملين. الاحتفاظ بالتسجيلات 10 سنوات بعد تاريخ المكالمة، أو حتى حل النزاع/التحقيق إذا كان ذا صلة",
+        "en": "Cannot make/accept calls unless recorded. Must disclose recording to clients/potential clients. Retain recordings 10 years after call date, or until dispute/investigation resolution if relevant"
+      },
+      "evidence": {
+        "ar": ["وثائق نظام تسجيل المكالمات", "سجلات الاحتفاظ بالتسجيلات", "نصوص الإفصاح", "سياسة الاحتفاظ 10 سنوات"],
+        "en": ["Call recording system documentation", "Recording retention logs", "Disclosure scripts", "10-year retention policy"]
+      },
+      "risk_level": {
+        "ar": "متوسط",
+        "en": "Medium"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "CLM-001",
+      "module": {
+        "ar": "العمليات",
+        "en": "Operations"
+      },
+      "article_reference": {
+        "ar": "المادة التاسعة والستون",
+        "en": "Article 69"
+      },
+      "description": {
+        "ar": "متطلب فصل أموال/أصول العملاء",
+        "en": "Client money/asset separation requirement"
+      },
+      "condition": {
+        "ar": "جميع المؤسسات التي تتعامل مع أموال/أصول العملاء",
+        "en": "All institutions handling client money/assets"
+      },
+      "required_action": {
+        "ar": "فصل أموال/أصول المؤسسة عن أموال/أصول العملاء. استخدام أموال/أصول العملاء فقط لمصلحة العميل. المؤسسات المرخصة للحفظ فقط يمكنها الاحتفاظ بأموال/أصول العملاء. استثناء: مؤسسات الترتيب يمكنها الاحتفاظ بأموال العملاء للتمويل الجماعي (بحد أقصى 80 مليون ريال)",
+        "en": "Separate institution money/assets from client money/assets. Client money/assets used only for client benefit. Only custody-licensed institutions may hold client money/assets. Exception: Arranging institutions may hold client money for crowdfunding (maximum SAR 80M)"
+      },
+      "evidence": {
+        "ar": ["سياسة الفصل", "وثائق هيكل الحسابات", "ترخيص الحفظ (إذا كانت تحتفظ)", "الالتزام بحدود التمويل الجماعي"],
+        "en": ["Separation policy", "Account structure documentation", "Custody license (if holding)", "Crowdfunding limits compliance"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية، مسؤولية مدنية",
+        "en": "Regulatory sanctions, civil liability"
+      }
+    },
+    {
+      "rule_id": "CLM-002",
+      "module": {
+        "ar": "العمليات",
+        "en": "Operations"
+      },
+      "article_reference": {
+        "ar": "المادة الثمانون",
+        "en": "Article 80"
+      },
+      "description": {
+        "ar": "متطلب التسوية الأسبوعية",
+        "en": "Weekly reconciliation requirement"
+      },
+      "condition": {
+        "ar": "حسابات أموال/أصول العملاء",
+        "en": "Client money/asset accounts"
+      },
+      "required_action": {
+        "ar": "التسوية مرة واحدة على الأقل كل 7 أيام: (1) رصيد حساب العميل حسب سجلات المؤسسة مقابل كشف البنك، (2) أرصدة حسابات صفقات العملاء مع الأسواق/مراكز المقاصة/السماسرة/وكلاء التسوية، (3) سجلات الضمانات مقابل كشوفات أمين الحفظ. إكمال التسويات خلال 10 أيام. تصحيح أي فروقات خلال 3 أيام. إخطار الهيئة فوراً إذا تعذر إجراء التسويات. إذا تعذر تصحيح الفرق وأظهر عجزاً: افتراض صحة السجلات ودفع الفرق من أموال المؤسسة",
+        "en": "Reconcile at least once every 7 days: (1) Client account balance per institution records vs bank statement, (2) Client transaction account balances with markets/clearinghouses/brokers/settlement agents, (3) Collateral records vs custodian statements. Complete reconciliations within 10 days. Correct any discrepancies within 3 days. Notify CMA immediately if unable to perform reconciliations. If discrepancy cannot be corrected and shows shortfall: assume records correct and pay difference from own funds"
+      },
+      "evidence": {
+        "ar": ["تقارير التسوية", "سجلات الفروقات", "سجلات التصحيح", "إخطارات الهيئة (إن وجدت)"],
+        "en": ["Reconciliation reports", "Discrepancy logs", "Correction records", "CMA notifications (if any)"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي - أسبوعي",
+        "en": "Mandatory - Weekly"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "RPT-001",
+      "module": {
+        "ar": "التقارير والإخطارات",
+        "en": "Reporting & Notifications"
+      },
+      "article_reference": {
+        "ar": "الملحق 3-2",
+        "en": "Annex 3-2"
+      },
+      "description": {
+        "ar": "الإخطارات الفورية",
+        "en": "Immediate notifications"
+      },
+      "condition": {
+        "ar": "الأحداث الحرجة",
+        "en": "Critical events"
+      },
+      "required_action": {
+        "ar": "إخطار الهيئة فوراً عن: التماسات التصفية، الإعسار، الإجراءات التأديبية الرقابية، أحكام المحاكم، تغييرات وضع الشركاء، طلبات الترخيص في الخارج، عضوية الأسواق/مراكز المقاصة، تعيينات المفتشين، سوء السلوك الجسيم، الأخطاء الإجرائية المؤثرة على العملاء، القضايا المادية للأهلية/الملاءمة، القضايا الإشرافية المادية، الأحداث/التغييرات المادية في العمليات",
+        "en": "Notify CMA immediately for: Liquidation petitions, insolvency, regulatory disciplinary actions, court judgments, partner status changes, license applications abroad, market/clearinghouse membership, inspector appointments, serious misconduct, procedural errors affecting clients, material capability/suitability issues, material supervisory issues, material events/changes in operations"
+      },
+      "evidence": {
+        "ar": ["سجلات الإخطار الفوري", "وثائق الحدث", "إقرارات الهيئة", "سجلات الطوابع الزمنية"],
+        "en": ["Immediate notification records", "Event documentation", "CMA acknowledgments", "Timestamp records"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي - فوري",
+        "en": "Mandatory - Immediate"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "RPT-002",
+      "module": {
+        "ar": "التقارير والإخطارات",
+        "en": "Reporting & Notifications"
+      },
+      "article_reference": {
+        "ar": "الملحق 3-2",
+        "en": "Annex 3-2"
+      },
+      "description": {
+        "ar": "إخطارات كبار الموظفين خلال يومين",
+        "en": "2-day senior personnel notifications"
+      },
+      "condition": {
+        "ar": "تغييرات كبار الموظفين",
+        "en": "Senior personnel changes"
+      },
+      "required_action": {
+        "ar": "إخطار الهيئة خلال يومين عن: استقالة أو إنهاء خدمة الرئيس التنفيذي/عضو مجلس الإدارة/المدير المالي/المديرين التنفيذيين/مسؤول الالتزام/مسؤول الإبلاغ",
+        "en": "Notify CMA within 2 days for: CEO/board member/CFO/senior executives/compliance officer/AMLRO resignation or termination"
+      },
+      "evidence": {
+        "ar": ["إخطارات تغيير الموظفين", "خطابات الاستقالة/الإنهاء", "إقرارات الهيئة"],
+        "en": ["Personnel change notifications", "Resignation/termination letters", "CMA acknowledgments"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "RPT-003",
+      "module": {
+        "ar": "التقارير والإخطارات",
+        "en": "Reporting & Notifications"
+      },
+      "article_reference": {
+        "ar": "المادة الثامنة والسبعون",
+        "en": "Article 78"
+      },
+      "description": {
+        "ar": "تقرير المراجع السنوي لأموال العملاء",
+        "en": "Annual auditor client money report"
+      },
+      "condition": {
+        "ar": "المؤسسات التي تحتفظ بأموال العملاء",
+        "en": "Institutions holding client money"
+      },
+      "required_action": {
+        "ar": "يجب على المراجع الخارجي التحقق من الالتزام بقواعد أموال العملاء سنوياً. تقديم تقرير المراجع للهيئة خلال 4 أشهر من نهاية السنة المالية",
+        "en": "External auditor must verify client money rules compliance annually. Submit auditor report to CMA within 4 months of fiscal year-end"
+      },
+      "evidence": {
+        "ar": ["تقرير المراجع", "تأكيد التقديم للهيئة", "الالتزام بموعد 4 أشهر"],
+        "en": ["Auditor's report", "CMA submission confirmation", "4-month deadline compliance"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي - سنوي",
+        "en": "Mandatory - Annual"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "OUT-001",
+      "module": {
+        "ar": "الإسناد الخارجي والأطراف الثالثة",
+        "en": "Outsourcing & Third Parties"
+      },
+      "article_reference": {
+        "ar": "المادة التاسعة والخمسون",
+        "en": "Article 59"
+      },
+      "description": {
+        "ar": "متطلب ضمانات الإسناد الخارجي",
+        "en": "Outsourcing safeguards requirement"
+      },
+      "condition": {
+        "ar": "أي إسناد خارجي للوظائف",
+        "en": "Any outsourcing of functions"
+      },
+      "required_action": {
+        "ar": "يمكن إسناد وظائف الالتزام وغيرها خارجياً مع ضمانات مناسبة تشمل: (1) تقييم ملاءمة الطرف المُسند إليه، (2) توثيق واضح للنطاق/الحدود ومعايير السرية، (3) ترتيبات إشراف/مراقبة مناسبة تشمل حقوق التحقق ومتطلب تقديم المعلومات خلال 10 أيام، (4) إجراءات تصحيحية مناسبة لقصور الأداء. ممارسة العناية الواجبة في الاختيار. الإسناد الخارجي لا يقلل الالتزامات التنظيمية. إسناد أنشطة الأوراق المالية خارجياً يجب أن يكون لمؤسسة سوق مالية مرخصة",
+        "en": "May outsource specific compliance and other functions if appropriate safeguards including: (1) Assessment of outsourced party suitability, (2) Clear scope/limits documentation and confidentiality standards, (3) Appropriate supervision/monitoring arrangements including verification rights and 10-day information provision requirement, (4) Appropriate corrective actions for performance deficiencies. Exercise due diligence in selection. Outsourcing doesn't reduce regulatory obligations. Securities activities outsourcing must be to licensed market institution"
+      },
+      "evidence": {
+        "ar": ["سياسة الإسناد الخارجي", "تقييمات العناية الواجبة", "عقود الإسناد الخارجي", "تقارير المراقبة", "مراجعات الأداء"],
+        "en": ["Outsourcing policy", "Due diligence assessments", "Outsourcing contracts", "Monitoring reports", "Performance reviews"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "DAT-001",
+      "module": {
+        "ar": "البيانات والأمن السيبراني",
+        "en": "Data & Cybersecurity"
+      },
+      "article_reference": {
+        "ar": "المادة التاسعة والعشرون",
+        "en": "Article 29"
+      },
+      "description": {
+        "ar": "سرية معلومات العملاء",
+        "en": "Client information confidentiality"
+      },
+      "condition": {
+        "ar": "جميع معلومات العملاء",
+        "en": "All client information"
+      },
+      "required_action": {
+        "ar": "الحفاظ على سرية جميع معلومات العملاء. الإفصاح مسموح فقط عند: (1) طلب الهيئة/اللجنة/الوحدة، (2) موافقة العميل، (3) الضرورة لتقديم الخدمة، (4) المعلومات لم تعد سرية",
+        "en": "Maintain confidentiality of all client information. Disclosure only permitted for: (1) CMA/Committee/SAFIU request, (2) Client consent, (3) Necessary for service delivery, (4) Information no longer confidential"
+      },
+      "evidence": {
+        "ar": ["سياسة أمن المعلومات", "سجلات التحكم في الوصول", "سجلات تفويض الإفصاح", "مخطط تصنيف البيانات"],
+        "en": ["Information security policy", "Access control logs", "Disclosure authorization records", "Data classification scheme"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية، مسؤولية قانونية",
+        "en": "Regulatory sanctions, legal liability"
+      }
+    },
+    {
+      "rule_id": "DAT-002",
+      "module": {
+        "ar": "البيانات والأمن السيبراني",
+        "en": "Data & Cybersecurity"
+      },
+      "article_reference": {
+        "ar": "المادة الثلاثون",
+        "en": "Article 30"
+      },
+      "description": {
+        "ar": "حواجز المعلومات (الحواجز الصينية)",
+        "en": "Information barriers (Chinese walls)"
+      },
+      "condition": {
+        "ar": "المؤسسات ذات خطوط أعمال متعددة تخلق تضاربات محتملة",
+        "en": "Institutions with multiple business lines creating potential conflicts"
+      },
+      "required_action": {
+        "ar": "إنشاء حواجز صينية مناسبة لطبيعة/حجم/تعقيد المؤسسات التي تمارس الترتيب بالإضافة إلى (التعامل/المشورة/الإدارة)",
+        "en": "Establish Chinese walls appropriate to nature/size/complexity for institutions conducting arranging plus (dealing/advising/management)"
+      },
+      "evidence": {
+        "ar": ["سياسة حواجز المعلومات", "مصفوفة التحكم في الوصول", "وثائق الفصل المادي/المنطقي", "سجلات التدريب"],
+        "en": ["Information barriers policy", "Access control matrix", "Physical/logical separation documentation", "Training records"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية، مسؤولية التداول بناءً على معلومات داخلية",
+        "en": "Regulatory sanctions, insider trading liability"
+      }
+    },
+    {
+      "rule_id": "CAP-001",
+      "module": {
+        "ar": "رأس المال والشؤون المالية",
+        "en": "Capital & Financials"
+      },
+      "article_reference": {
+        "ar": "المادة الحادية والثلاثون",
+        "en": "Article 31"
+      },
+      "description": {
+        "ar": "تأمين التعويض المهني",
+        "en": "Professional indemnity insurance"
+      },
+      "condition": {
+        "ar": "جميع المؤسسات المرخصة",
+        "en": "All licensed institutions"
+      },
+      "required_action": {
+        "ar": "الحفاظ على تأمين تعويض مهني كافٍ ومناسب لطبيعة/حجم/تعقيد الأعمال. أي إعفاء/تحديد للمسؤولية يتعارض مع النظام/اللوائح يعتبر باطلاً",
+        "en": "Maintain adequate professional indemnity insurance appropriate to nature/size/complexity of business. Any exemption/limitation of liability conflicting with Law/regulations is void"
+      },
+      "evidence": {
+        "ar": ["وثيقة التأمين", "تأكيد التغطية", "وثائق التجديد السنوي", "تاريخ المطالبات"],
+        "en": ["Insurance policy", "Coverage confirmation", "Annual renewal documentation", "Claims history"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "عقوبات تنظيمية",
+        "en": "Regulatory sanctions"
+      }
+    },
+    {
+      "rule_id": "BKR-001",
+      "module": {
+        "ar": "العمليات",
+        "en": "Operations"
+      },
+      "article_reference": {
+        "ar": "المادة السادسة والتسعون",
+        "en": "Article 96"
+      },
+      "description": {
+        "ar": "أولوية العملاء في الإفلاس",
+        "en": "Client priority in bankruptcy"
+      },
+      "condition": {
+        "ar": "إجراءات إفلاس المؤسسة",
+        "en": "Institution bankruptcy proceedings"
+      },
+      "required_action": {
+        "ar": "لا يمكن ضم أموال وأصول العملاء إلى أصول التفليسة. أموال/أصول العملاء معفاة من أحكام تعليق المطالبات في نظام الإفلاس. مطالبات العملاء لأي عجز في أموال/أصول العملاء لها أولوية على جميع الدائنين الآخرين",
+        "en": "Client money and assets cannot be included in bankruptcy estate. Client money/assets exempt from bankruptcy claims suspension provisions. Client claims for any shortfall in client money/assets have priority over all other creditors"
+      },
+      "evidence": {
+        "ar": ["وثائق فصل أصول العملاء", "سجلات تقديم الإفلاس", "وثائق أولوية المطالبات"],
+        "en": ["Client asset segregation documentation", "Bankruptcy filing records", "Claims priority documentation"]
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      },
+      "enforcement_type": {
+        "ar": "إلزامي",
+        "en": "Mandatory"
+      },
+      "penalty_reference": {
+        "ar": "أحكام نظام الإفلاس",
+        "en": "Bankruptcy law provisions"
+      }
+    }
+  ],
+
+  "decision_flows": [
+    {
+      "flow_id": "DF-001",
+      "name": {
+        "ar": "مسار قرار قبول العميل",
+        "en": "Client Onboarding Decision Flow"
+      },
+      "trigger": {
+        "ar": "طلب تعامل مع عميل جديد",
+        "en": "New client engagement request"
+      },
+      "steps": [
+        {
+          "step": 1,
+          "action": {
+            "ar": "تصنيف العميل",
+            "en": "Client Classification"
+          },
+          "decision": {
+            "ar": "تصنيف العميل كتجزئة أو مؤهل أو مؤسسي",
+            "en": "Classify client as Retail, Qualified, or Institutional"
+          },
+          "reference": {
+            "ar": "المادة السادسة والثلاثون",
+            "en": "Article 36"
+          }
+        },
+        {
+          "step": 2,
+          "action": {
+            "ar": "فحص مكافحة غسل الأموال",
+            "en": "AML/CFT Check"
+          },
+          "decision": {
+            "ar": "استكمال متطلبات نظام مكافحة غسل الأموال ونظام مكافحة تمويل الإرهاب",
+            "en": "Complete AML Law and CFT Law requirements"
+          },
+          "reference": {
+            "ar": "المادة السابعة والثلاثون",
+            "en": "Article 37"
+          }
+        },
+        {
+          "step": 3,
+          "action": {
+            "ar": "جمع معلومات اعرف عميلك",
+            "en": "KYC Collection"
+          },
+          "decision": {
+            "ar": "جمع الوضع المالي والخبرة الاستثمارية والأهداف الاستثمارية حسب الملحق 5-3",
+            "en": "Collect financial status, investment experience, investment objectives per Annex 5-3"
+          },
+          "reference": {
+            "ar": "المادة التاسعة والثلاثون",
+            "en": "Article 39"
+          }
+        },
+        {
+          "step": 4,
+          "action": {
+            "ar": "اتفاقية شروط الخدمة",
+            "en": "Service Terms Agreement"
+          },
+          "decision": {
+            "ar": "تقديم اتفاقية شروط الخدمة والحصول على توقيعها",
+            "en": "Provide and obtain signed service terms agreement"
+          },
+          "reference": {
+            "ar": "المادة الثامنة والثلاثون",
+            "en": "Article 38"
+          }
+        },
+        {
+          "step": 5,
+          "action": {
+            "ar": "تقييم الملاءمة",
+            "en": "Suitability Assessment"
+          },
+          "decision": {
+            "ar": "تقييم ملاءمة المنتج/الخدمة لملف العميل",
+            "en": "Assess product/service suitability for client profile"
+          },
+          "reference": {
+            "ar": "المادة الثالثة والأربعون",
+            "en": "Article 43"
+          }
+        },
+        {
+          "step": 6,
+          "action": {
+            "ar": "الإفصاح عن المخاطر",
+            "en": "Risk Disclosure"
+          },
+          "decision": {
+            "ar": "التأكد من فهم العميل للمخاطر المناسبة لملفه",
+            "en": "Ensure client understands risks appropriate to their profile"
+          },
+          "reference": {
+            "ar": "المادة الثانية والأربعون",
+            "en": "Article 42"
+          }
+        },
+        {
+          "step": 7,
+          "action": {
+            "ar": "الإفصاح عن الرسوم",
+            "en": "Fee Disclosure"
+          },
+          "decision": {
+            "ar": "الإفصاح الكامل عن جميع الرسوم والعمولات",
+            "en": "Fully disclose all fees and commissions"
+          },
+          "reference": {
+            "ar": "المادة السادسة والأربعون",
+            "en": "Article 46"
+          }
+        },
+        {
+          "step": 8,
+          "action": {
+            "ar": "إعداد الحساب",
+            "en": "Account Setup"
+          },
+          "decision": {
+            "ar": "إكمال إعداد الحساب وإنشاء السجلات",
+            "en": "Complete account setup and record creation"
+          },
+          "reference": {
+            "ar": "المادة التاسعة والأربعون",
+            "en": "Article 49"
+          }
+        }
+      ],
+      "outcome_if_passed": {
+        "ar": "قبول العميل - يمكن المتابعة مع الأعمال",
+        "en": "Client accepted - may proceed with business"
+      },
+      "outcome_if_failed": {
+        "ar": "رفض العميل - توثيق الأسباب والاحتفاظ بالسجلات",
+        "en": "Client rejected - document reasons and retain records"
+      }
+    },
+    {
+      "flow_id": "DF-002",
+      "name": {
+        "ar": "مسار قرار طلب الترخيص",
+        "en": "License Application Decision Flow"
+      },
+      "trigger": {
+        "ar": "كيان يسعى للحصول على ترخيص الهيئة",
+        "en": "Entity seeking CMA license"
+      },
+      "steps": [
+        {
+          "step": 1,
+          "action": {
+            "ar": "التحقق من الشكل القانوني",
+            "en": "Legal Form Verification"
+          },
+          "decision": {
+            "ar": "التحقق من التأسيس السعودي بالشكل القانوني المسموح",
+            "en": "Verify Saudi incorporation in permitted legal form"
+          },
+          "reference": {
+            "ar": "المادة السادسة",
+            "en": "Article 6"
+          }
+        },
+        {
+          "step": 2,
+          "action": {
+            "ar": "فحص كفاية رأس المال",
+            "en": "Capital Adequacy Check"
+          },
+          "decision": {
+            "ar": "التحقق من الحد الأدنى لرأس المال حسب نوع النشاط",
+            "en": "Verify minimum capital per activity type"
+          },
+          "reference": {
+            "ar": "المادة السادسة",
+            "en": "Article 6"
+          }
+        },
+        {
+          "step": 3,
+          "action": {
+            "ar": "التحقق من الموقع",
+            "en": "Location Verification"
+          },
+          "decision": {
+            "ar": "التحقق من وجود المقر الرئيسي والإدارة في السعودية",
+            "en": "Verify headquarters and management in Saudi Arabia"
+          },
+          "reference": {
+            "ar": "المادة السادسة",
+            "en": "Article 6"
+          }
+        },
+        {
+          "step": 4,
+          "action": {
+            "ar": "تأهيل الموظفين",
+            "en": "Personnel Qualification"
+          },
+          "decision": {
+            "ar": "التحقق من الأشخاص المؤهلين/الملائمين للمناصب الرئيسية",
+            "en": "Verify qualified/suitable persons for key positions"
+          },
+          "reference": {
+            "ar": "المادة التاسعة",
+            "en": "Article 9"
+          }
+        },
+        {
+          "step": 5,
+          "action": {
+            "ar": "تقديم الوثائق",
+            "en": "Documentation Submission"
+          },
+          "decision": {
+            "ar": "تقديم الوثائق الكاملة حسب الملحق 3-1",
+            "en": "Submit complete documentation per Annex 3-1"
+          },
+          "reference": {
+            "ar": "الملحق 3-1",
+            "en": "Annex 3-1"
+          }
+        },
+        {
+          "step": 6,
+          "action": {
+            "ar": "مراجعة الهيئة",
+            "en": "CMA Review"
+          },
+          "decision": {
+            "ar": "الهيئة تراجع خلال 30 يوماً من التقديم الكامل",
+            "en": "CMA reviews within 30 days of complete submission"
+          },
+          "reference": {
+            "ar": "المادة السابعة",
+            "en": "Article 7"
+          }
+        },
+        {
+          "step": 7,
+          "action": {
+            "ar": "متطلبات ما قبل البدء",
+            "en": "Pre-Commencement Setup"
+          },
+          "decision": {
+            "ar": "إذا تمت الموافقة، إكمال متطلبات ما قبل البدء حسب الملحق 3-1",
+            "en": "If approved, complete pre-commencement requirements per Annex 3-1"
+          },
+          "reference": {
+            "ar": "الملحق 3-1",
+            "en": "Annex 3-1"
+          }
+        }
+      ],
+      "outcome_if_passed": {
+        "ar": "منح الترخيص - يمكن بدء العمليات بعد إكمال متطلبات ما قبل البدء",
+        "en": "License granted - may commence operations after pre-commencement completion"
+      },
+      "outcome_if_failed": {
+        "ar": "رفض الترخيص - يمكن التظلم أمام اللجنة حسب المادة الثامنة",
+        "en": "License denied - may appeal to Committee per Article 8"
+      }
+    }
+  ],
+
+  "checklists": [
+    {
+      "checklist_id": "CL-001",
+      "name": {
+        "ar": "قائمة التحقق من وثائق ما قبل الترخيص",
+        "en": "Pre-Licensing Documentation Checklist"
+      },
+      "reference": {
+        "ar": "الملحق 3-1",
+        "en": "Annex 3-1"
+      },
+      "items": [
+        {
+          "item": {
+            "ar": "قائمة المسيطرين مع نسب الملكية",
+            "en": "Controllers list with ownership percentages"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "نموذج الإفصاح عن العلاقات الوثيقة",
+            "en": "Close links disclosure form"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "قرار مجلس الإدارة بتفويض الطلب",
+            "en": "Board resolution authorizing application"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "قائمة أنشطة الأوراق المالية المقترحة",
+            "en": "List of proposed securities activities"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "خطة العمل لمدة 12 شهراً",
+            "en": "12-month business plan"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "القوائم المالية المدققة",
+            "en": "Audited financial statements"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "قائمة الأشخاص المسجلين المقترحين مع مؤهلاتهم",
+            "en": "List of proposed registered persons with qualifications"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "مسودة شروط وأحكام الخدمة",
+            "en": "Draft service terms and conditions"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "شهادة التأسيس",
+            "en": "Certificate of incorporation"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "النظام الأساسي للشركة",
+            "en": "Company bylaws/articles of association"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "مخطط هيكل الملكية",
+            "en": "Ownership structure diagram"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "الهيكل التنظيمي",
+            "en": "Organizational chart"
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "checklist_id": "CL-002",
+      "name": {
+        "ar": "قائمة التحقق من قبول العميل",
+        "en": "Client Onboarding Checklist"
+      },
+      "reference": {
+        "ar": "المواد 36-46",
+        "en": "Articles 36-46"
+      },
+      "items": [
+        {
+          "item": {
+            "ar": "إكمال تصنيف العميل (تجزئة/مؤهل/مؤسسي)",
+            "en": "Client classification completed (Retail/Qualified/Institutional)"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "إكمال التحقق من مكافحة غسل الأموال",
+            "en": "AML/CFT verification completed"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "إكمال نموذج اعرف عميلك حسب الملحق 5-3(أ)",
+            "en": "KYC form completed per Annex 5-3(a)"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "جمع معلومات الوضع المالي",
+            "en": "Financial status information collected"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "توثيق الخبرة الاستثمارية",
+            "en": "Investment experience documented"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "تسجيل الأهداف الاستثمارية",
+            "en": "Investment objectives recorded"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "توقيع اتفاقية شروط الخدمة",
+            "en": "Service terms agreement signed"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "إكمال وتوثيق تقييم الملاءمة",
+            "en": "Suitability assessment completed and documented"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "تقديم الإفصاح عن المخاطر والإقرار به",
+            "en": "Risk disclosure provided and acknowledged"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "الإفصاح عن جدول الرسوم",
+            "en": "Fee schedule disclosed"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "الإفصاح عن تضارب المصالح (إن وجد)",
+            "en": "Conflict of interest disclosure (if applicable)"
+          },
+          "required": false
+        },
+        {
+          "item": {
+            "ar": "إنشاء سجلات الحساب",
+            "en": "Account records created"
+          },
+          "required": true
+        }
+      ]
+    },
+    {
+      "checklist_id": "CL-003",
+      "name": {
+        "ar": "قائمة أحداث الإخطار",
+        "en": "Notification Events Checklist"
+      },
+      "reference": {
+        "ar": "الملحق 3-2",
+        "en": "Annex 3-2"
+      },
+      "items": [
+        {
+          "item": {
+            "ar": "30 يوماً مقدماً: تغييرات الاسم/الاسم التجاري/العنوان",
+            "en": "30 days advance: Name/trade name/address changes"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "30 يوماً مقدماً: إسناد الوظائف الحيوية خارجياً",
+            "en": "30 days advance: Critical function outsourcing"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "7 أيام: تغييرات الأشخاص المسجلين",
+            "en": "7 days: Registered person changes"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "7 أيام: إنشاء/بيع شركة تابعة",
+            "en": "7 days: Subsidiary establishment/sale"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "يومين: استقالة/إنهاء خدمة كبار الموظفين",
+            "en": "2 days: Senior personnel resignation/termination"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "فوري: أحداث الإعسار",
+            "en": "Immediate: Insolvency events"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "فوري: الإجراءات التأديبية الرقابية",
+            "en": "Immediate: Regulatory disciplinary actions"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "فوري: التغييرات التشغيلية الجوهرية",
+            "en": "Immediate: Material operational changes"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "فوري: سوء السلوك الجسيم",
+            "en": "Immediate: Serious misconduct"
+          },
+          "required": true
+        },
+        {
+          "item": {
+            "ar": "فوري: أعطال الأنظمة",
+            "en": "Immediate: System failures"
+          },
+          "required": true
+        }
+      ]
+    }
+  ],
+
+  "ambiguities_or_judgment_areas": [
+    {
+      "area_id": "AMB-001",
+      "topic": {
+        "ar": "تقييم الملاءمة لطبيعة/حجم/تعقيد المؤسسة",
+        "en": "Appropriate nature/size/complexity assessment"
+      },
+      "description": {
+        "ar": "أحكام متعددة تتطلب أنظمة/ضوابط 'مناسبة للطبيعة/الحجم/التعقيد' دون حدود كمية محددة",
+        "en": "Multiple provisions require systems/controls 'appropriate to nature/size/complexity' without specific quantitative thresholds"
+      },
+      "affected_articles": {
+        "ar": ["المادة الثلاثون", "المادة الخامسة والأربعون", "المادة الخامسة والخمسون", "المادة السادسة والستون"],
+        "en": ["Article 30", "Article 45", "Article 55", "Article 66"]
+      },
+      "recommendation": {
+        "ar": "وضع إرشادات داخلية بحدود محددة لأحجام المؤسسات ومستويات التعقيد المختلفة. توثيق مبررات جميع قرارات التناسب",
+        "en": "Develop internal guidelines with specific thresholds for different institution sizes and complexity levels. Document rationale for all proportionality decisions"
+      },
+      "risk_level": {
+        "ar": "متوسط",
+        "en": "Medium"
+      }
+    },
+    {
+      "area_id": "AMB-002",
+      "topic": {
+        "ar": "معيار الخطوات المعقولة",
+        "en": "Reasonable steps standard"
+      },
+      "description": {
+        "ar": "عدة أحكام تتطلب 'خطوات معقولة' دون تحديد ما يشكل معقولاً",
+        "en": "Several provisions require 'reasonable steps' without defining what constitutes reasonable"
+      },
+      "affected_articles": {
+        "ar": ["المادة الثانية والأربعون", "المادة الثالثة والتسعون"],
+        "en": ["Article 42", "Article 93"]
+      },
+      "recommendation": {
+        "ar": "توثيق جميع الخطوات المتخذة والاحتفاظ بأدلة على عملية صنع القرار. المقارنة مع ممارسات الصناعة",
+        "en": "Document all steps taken and maintain evidence of decision-making process. Benchmark against industry practices"
+      },
+      "risk_level": {
+        "ar": "متوسط",
+        "en": "Medium"
+      }
+    },
+    {
+      "area_id": "AMB-003",
+      "topic": {
+        "ar": "تقدير تقييم الملاءمة",
+        "en": "Suitability assessment discretion"
+      },
+      "description": {
+        "ar": "تحديد الملاءمة يتطلب حكماً يوازن بين عوامل العميل المتعددة",
+        "en": "Suitability determinations require judgment balancing multiple client factors"
+      },
+      "affected_articles": {
+        "ar": ["المادة الثالثة والأربعون"],
+        "en": ["Article 43"]
+      },
+      "recommendation": {
+        "ar": "تطوير منهجية تسجيل ملاءمة موحدة. توثيق جميع قرارات الملاءمة مع أوزان العوامل والمبررات",
+        "en": "Develop standardized suitability scoring methodology. Document all suitability decisions with factor weightings and rationale"
+      },
+      "risk_level": {
+        "ar": "عالي",
+        "en": "High"
+      }
+    }
+  ],
+
+  "implementation_notes": {
+    "priority_order": {
+      "ar": [
+        "1. متطلبات الترخيص (الأساس لجميع الأنشطة)",
+        "2. متطلبات الأشخاص المسجلين (امتثال الموظفين الرئيسيين)",
+        "3. قواعد حماية أموال وأصول العملاء (أعلى مخاطر العملاء)",
+        "4. الامتثال لمكافحة غسل الأموال (التعرض للمسؤولية القانونية)",
+        "5. الحوكمة والأنظمة/الضوابط (الأساس التشغيلي)",
+        "6. متطلبات علاقات العملاء (اعرف عميلك، الملاءمة، شروط الخدمة)",
+        "7. التزامات التقارير والإخطارات (الامتثال المستمر)",
+        "8. متطلبات الإعلان والاتصال"
+      ],
+      "en": [
+        "1. Licensing requirements (foundation for all activities)",
+        "2. Registered persons requirements (key personnel compliance)",
+        "3. Client money and asset protection rules (highest client risk)",
+        "4. AML/CFT compliance (legal liability exposure)",
+        "5. Governance and systems/controls (operational foundation)",
+        "6. Client relationship requirements (KYC, suitability, service terms)",
+        "7. Reporting and notification obligations (ongoing compliance)",
+        "8. Advertising and communication requirements"
+      ]
+    },
+    "key_dependencies": {
+      "ar": [
+        "ترخيص الحفظ مطلوب قبل الاحتفاظ بأصول العملاء",
+        "الأشخاص المسجلون يجب تسجيلهم قبل أداء الوظائف",
+        "شروط الخدمة يجب توقيعها قبل إجراء الأعمال",
+        "اعرف عميلك يجب إكماله قبل قبول أوامر العملاء",
+        "تقييم الملاءمة قبل تقديم المشورة/تنفيذ المعاملات",
+        "موافقة الهيئة قبل تغييرات رأس المال",
+        "موافقة الهيئة قبل تغييرات المسيطرين",
+        "موافقة الهيئة قبل إجراءات الإفلاس"
+      ],
+      "en": [
+        "Custody license required before holding client assets",
+        "Registered persons must be registered before performing functions",
+        "Service terms must be signed before conducting business",
+        "KYC must be completed before accepting client orders",
+        "Suitability assessment before providing advice/executing transactions",
+        "CMA approval before capital changes",
+        "CMA approval before controller changes",
+        "CMA approval before bankruptcy proceedings"
+      ]
+    },
+    "system_requirements": {
+      "ar": [
+        "نظام تصنيف العملاء وإدارة اعرف عميلك",
+        "نظام سير عمل تقييم الملاءمة",
+        "نظام احتساب أموال العملاء اليومي",
+        "نظام التسوية الأسبوعية",
+        "نظام مراقبة الهامش مع التنبيهات",
+        "نظام تسجيل المكالمات والاحتفاظ (10 سنوات)",
+        "نظام الاحتفاظ بالوثائق (10 سنوات)",
+        "نظام تتبع الإخطارات مع تنبيهات المواعيد",
+        "سجل تضارب المصالح",
+        "نظام إدارة الشكاوى",
+        "نظام مراقبة تعاملات الموظفين الشخصية"
+      ],
+      "en": [
+        "Client classification and KYC management system",
+        "Suitability assessment workflow system",
+        "Daily client money calculation system",
+        "Weekly reconciliation system",
+        "Margin monitoring system with alerts",
+        "Call recording and retention system (10-year)",
+        "Document retention system (10-year)",
+        "Notification tracking system with deadline alerts",
+        "Conflict of interest register",
+        "Complaint management system",
+        "Employee personal dealing monitoring system"
+      ]
+    }
+  }
+}
