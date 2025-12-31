@@ -145,10 +145,7 @@ function QuestionsStep({
       score,
     });
     
-    // Auto-advance to next question
-    if (currentIndex < questions.length - 1) {
-      setTimeout(() => setCurrentIndex(currentIndex + 1), 300);
-    }
+
   };
   
   if (!currentQuestion) return null;
