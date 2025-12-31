@@ -5,7 +5,7 @@ dotenv.config();
 console.log('DATABASE_URL from env:', process.env.DATABASE_URL);
 
 import { PrismaClient } from '@prisma/client';
-import { blogs, blogCategories } from '../src/services/api/mock/data/blogs.data';
+import { blogs, blogCategories } from '../src/services/api/data/blogs.data';
 
 const prisma = new PrismaClient();
 

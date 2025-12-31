@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { newsUpdates } from '@/services/api/mock/data/news.data';
+import { newsUpdates } from '@/services/api/data/news.data';
 import { LocalizedPaginatedNewsUpdates, LocalizedNewsUpdate, NewsCategory } from '@/core/types/web/news';
 
 export async function GET(request: Request) {
