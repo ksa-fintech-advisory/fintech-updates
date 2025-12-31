@@ -104,7 +104,7 @@ export default function MarketAnalysisDemoPage({ params: { locale } }: { params:
                  {isArabic ? 'رؤية الذكاء الاصطناعي' : 'AI Insight'}
               </h3>
               <p className="text-sm leading-relaxed font-light text-slate-100">
-                 "{data.insight[locale as 'en' | 'ar']}"
+                    &quot;{data.insight[locale as 'en' | 'ar']}&quot;
               </p>
            </div>
         </div>
