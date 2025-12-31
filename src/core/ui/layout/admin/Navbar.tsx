@@ -4,9 +4,6 @@ import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter, usePathname, Link } from '@/core/i18n/routing';
-import { Dropdown, DropdownItem } from '@/core/ui/admin/Dropdown';
-import { apiClient } from '@/services/api/client';
-import { useGlobalSearch } from '@/core/ui/admin/GlobalSearch';
 import { Input } from '@/core/ui/admin/Input';
 // import { useAuth } from '@/core/auth/AuthProvider';
 
