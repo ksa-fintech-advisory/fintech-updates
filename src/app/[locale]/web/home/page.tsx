@@ -253,13 +253,13 @@ export default async function HomePage({ params }: { params: { locale: string } 
             <div className="w-24 h-1.5 bg-gradient-to-r from-accent-400 to-primary-400 mx-auto rounded-full"></div>
           </AnimatedSection>
 
-          <div className="max-w-4xl mx-auto space-y-8">
+          <div className="max-w-4xl mx-auto space-y-16">
             <StaggerContainer staggerDelay={0.2}>
               {latestUpdates.map((update: any, idx: number) => (
                 <StaggerItem key={update.id} className="group relative">
                   {/* Timeline Line */}
                   {idx !== latestUpdates.length - 1 && (
-                    <div className="absolute left-[2.25rem] top-20 bottom-[-2rem] w-0.5 bg-gradient-to-b from-primary-200 to-transparent z-0"></div>
+                    <div className="absolute left-[2.25rem] top-20 bottom-[-4rem] w-0.5 bg-gradient-to-b from-primary-200 to-transparent z-0"></div>
                   )}
 
                   <Link href={`/web/updates/${update.slug}`}>
