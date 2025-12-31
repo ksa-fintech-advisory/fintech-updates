@@ -124,7 +124,7 @@ export default function MarketAnalysisPage({ params: { locale } }: { params: { l
       </div>
 
       {/* Features Grid */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-20 mb-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {t.features.map((feature, i) => (
             <div key={i} className="bg-white p-8 rounded-3xl shadow-xl border border-grey-100 hover:transform hover:-translate-y-1 transition-all duration-300">

@@ -7,6 +7,7 @@ import { blogApiService } from '@/services/api/blogs';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
+import SubscriptionForm from '@/core/components/web/home/SubscriptionForm';
 
 const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false });
 
@@ -296,6 +297,13 @@ export default async function HomePage({ params }: { params: { locale: string } 
               ))}
             </StaggerContainer>
           </div>
+        </div>
+      </section>
+
+      {/* General Subscription Section */}
+      <section className="py-20 bg-grey-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <SubscriptionForm locale={locale} />
         </div>
       </section>
     </div>
