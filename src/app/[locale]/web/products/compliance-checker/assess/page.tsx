@@ -508,23 +508,38 @@ function ReportStep({
               {result.recommendations.map((rec, i) => (
                 <div 
                   key={i}
-                  className={`p-4 rounded-xl border breakdown-avoid ${
+                  className={`p-5 rounded-xl border breakdown-avoid ${
                     rec.priority === 'high' ? 'bg-red-50 border-red-200' :
                     rec.priority === 'medium' ? 'bg-yellow-50 border-yellow-200' :
                     'bg-green-50 border-green-200'
                   }`}
                 >
-                  <div className="flex items-start gap-3">
-                    <div className={`px-2 py-0.5 rounded text-xs font-bold uppercase ${
-                      rec.priority === 'high' ? 'bg-red-200 text-red-800' :
-                      rec.priority === 'medium' ? 'bg-yellow-200 text-yellow-800' :
-                      'bg-green-200 text-green-800'
-                    }`}>
-                      {rec.priority}
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className={`px-2 py-1 rounded text-xs font-bold uppercase ${
+                        rec.priority === 'high' ? 'bg-red-200 text-red-800' :
+                        rec.priority === 'medium' ? 'bg-yellow-200 text-yellow-800' :
+                        'bg-green-200 text-green-800'
+                      }`}>
+                        {rec.priority} Priority
+                      </div>
+                      {rec.estimatedEffort && (
+                        <div className="px-2 py-1 rounded text-xs font-bold uppercase bg-grey-200 text-grey-800">
+                           {isArabic ? 'الجهد:' : 'Effort:'} {rec.estimatedEffort}
+                        </div>
+                      )}
                     </div>
-                    <p className="text-sm text-grey-700 flex-1">
+                    
+                    <p className="text-grey-900 font-medium">
                       {rec.action[locale as 'en' | 'ar']}
                     </p>
+
+                    {rec.relatedRuleIds && rec.relatedRuleIds.length > 0 && (
+                      <div className="mt-2 pt-2 border-t border-black/5 text-xs text-grey-500">
+                        <span className="font-semibold">{isArabic ? 'القواعد ذات الصلة:' : 'Related Rules:'} </span>
+                        {rec.relatedRuleIds.join(', ')}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -627,6 +642,55 @@ function ReportStep({
             ))}
           </div>
         </div>
+
+        {/* Recommendations */}
+        {result.recommendations.length > 0 && (
+          <div className="bg-white rounded-2xl p-6 border border-grey-100 mb-8">
+            <h3 className="text-lg font-bold text-grey-900 mb-4">
+              {isArabic ? 'التوصيات' : 'Recommendations'}
+            </h3>
+            <div className="space-y-3">
+              {result.recommendations.map((rec, i) => (
+                <div 
+                  key={i}
+                  className={`p-5 rounded-xl border ${
+                    rec.priority === 'high' ? 'bg-red-50 border-red-200' :
+                    rec.priority === 'medium' ? 'bg-yellow-50 border-yellow-200' :
+                    'bg-green-50 border-green-200'
+                  }`}
+                >
+                  <div className="flex flex-col gap-3">
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className={`px-2 py-1 rounded text-xs font-bold uppercase ${
+                        rec.priority === 'high' ? 'bg-red-200 text-red-800' :
+                        rec.priority === 'medium' ? 'bg-yellow-200 text-yellow-800' :
+                        'bg-green-200 text-green-800'
+                      }`}>
+                        {rec.priority} Priority
+                      </div>
+                      {rec.estimatedEffort && (
+                        <div className="px-2 py-1 rounded text-xs font-bold uppercase bg-grey-200 text-grey-800">
+                           {isArabic ? 'الجهد:' : 'Effort:'} {rec.estimatedEffort}
+                        </div>
+                      )}
+                    </div>
+                    
+                    <p className="text-grey-900 font-medium">
+                      {rec.action[locale as 'en' | 'ar']}
+                    </p>
+
+                    {rec.relatedRuleIds && rec.relatedRuleIds.length > 0 && (
+                      <div className="mt-2 pt-2 border-t border-black/5 text-xs text-grey-500">
+                        <span className="font-semibold">{isArabic ? 'القواعد ذات الصلة:' : 'Related Rules:'} </span>
+                        {rec.relatedRuleIds.join(', ')}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
       
       {/* Actions */}
