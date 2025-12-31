@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { contactService } from '@/services/api/mock';
+import { contactApiService } from '@/services/api/contactApi';
 import { useLocale } from 'next-intl';
 
 export default function ContactPage() {
@@ -21,7 +21,7 @@ export default function ContactPage() {
     setResult(null);
 
     try {
-      const response = await contactService.submitContact(formData);
+      const response = await contactApiService.submitContactForm(formData);
       setResult({
         success: response.success,
         message: locale === 'ar' ? response.message.ar : response.message.en,

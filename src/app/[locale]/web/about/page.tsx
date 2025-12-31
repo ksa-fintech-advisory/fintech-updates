@@ -1,5 +1,5 @@
 
-import { aboutUsService } from '@/services/api/mock';
+import { aboutUsApiService } from '@/services/api/aboutUsApi';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
@@ -7,8 +7,8 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/component
 const Network3D = dynamic(() => import('@/core/components/web/about/Network3D'), { ssr: false });
 
 export default async function AboutPage({ params }: { params: { locale: string } }) {
-  const content = await aboutUsService.getAboutUsContent();
   const { locale } = params;
+  const content = await aboutUsApiService.getAboutUsContent(locale);
   const isArabic = locale === 'ar';
 
   return (

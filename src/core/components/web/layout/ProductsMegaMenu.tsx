@@ -69,25 +69,38 @@ export default function ProductsMegaMenu({ closeMenu }: { closeMenu?: () => void
           ))}
           
            {/* Call to Action Box */}
-           <div className="md:col-span-2 lg:col-span-3 mt-4 pt-6 border-t border-grey-100 flex items-center justify-between bg-primary-50/50 p-4 rounded-xl">
-              <div className="flex items-center gap-3">
-                 <span className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600">
+          <div className="md:col-span-2 lg:col-span-3 mt-4 pt-6 border-t border-grey-100 flex flex-col md:flex-row items-center justify-between bg-primary-50/50 p-4 rounded-xl gap-4">
+            <div className="flex items-center gap-3 w-full md:w-auto">
+              <span className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 shrink-0">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                     </svg>
                  </span>
                  <div>
                     <p className="font-bold text-grey-900 text-sm">
-                       {isArabic ? 'هل تبحث عن حل مخصص؟' : 'Looking for a custom solution?'}
+                  {isArabic ? 'عرض جميع المنتجات والحلول' : 'View all products & solutions'}
                     </p>
                     <p className="text-xs text-grey-500">
-                       {isArabic ? 'تواصل معنا لبناء أدواتك المالية الخاصة' : 'Contact us to build your own fintech tools'}
+                  {isArabic ? 'استكشف مجموعتنا الكاملة من الأدوات' : 'Explore our complete suite of tools'}
                     </p>
                  </div>
               </div>
-              <Link href={`/${locale}/web/contact`} className="px-4 py-2 bg-white text-primary-600 text-sm font-bold rounded-lg shadow-sm hover:shadow-md transition-all border border-primary-100">
-                 {isArabic ? 'تواصل معنا' : 'Contact Us'}
+            <div className="flex gap-3 w-full md:w-auto">
+              <Link
+                href={`/${locale}/web/products`}
+                onClick={closeMenu}
+                className="px-4 py-2 bg-white text-primary-600 text-sm font-bold rounded-lg shadow-sm hover:shadow-md transition-all border border-primary-100 flex-1 md:flex-none text-center"
+              >
+                {isArabic ? 'عرض الكل' : 'View All'}
               </Link>
+              <Link
+                href={`/${locale}/web/contact`}
+                onClick={closeMenu}
+                className="px-4 py-2 bg-primary-600 text-white text-sm font-bold rounded-lg shadow-sm hover:bg-primary-700 transition-all flex-1 md:flex-none text-center"
+              >
+                {isArabic ? 'تواصل معنا' : 'Contact Us'}
+              </Link>
+            </div>
            </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { aboutUsService } from '@/services/api/mock';
 import { AboutUsContent } from '@/core/types/web/aboutUs';
 import { useLocale } from 'next-intl';
+import { aboutUsApiService } from '@/services/api/aboutUsApi';
 
 interface AboutUsModalProps {
   isOpen: boolean;
@@ -16,7 +16,7 @@ export default function AboutUsModal({ isOpen, onClose }: AboutUsModalProps) {
 
   useEffect(() => {
     if (isOpen && !content) {
-      aboutUsService.getAboutUsContent().then(setContent);
+      aboutUsApiService.getAboutUsContent().then(setContent);
     }
   }, [isOpen, content]);
 

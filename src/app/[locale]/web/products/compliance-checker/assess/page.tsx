@@ -352,9 +352,22 @@ function ModuleResultItem({
                 }`} />
                 <div className="flex-1 space-y-2">
                   <div>
-                    <span className="text-xs font-bold uppercase text-red-800 bg-red-200 px-1.5 py-0.5 rounded">
-                      {isArabic ? 'الفجوة' : 'Gap'}
-                    </span>
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs font-bold uppercase text-red-800 bg-red-200 px-1.5 py-0.5 rounded">
+                        {isArabic ? 'الفجوة' : 'Gap'}
+                      </span>
+                      <Link
+                        href={`/${locale}/web/products/compliance-checker/rules/${gap.ruleId}`}
+                        target="_blank"
+                        className="text-xs font-mono font-bold text-grey-500 hover:text-green-600 hover:underline flex items-center gap-1"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {gap.ruleId}
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </Link>
+                    </div>
                     <p className="text-sm font-medium text-grey-900 mt-1">
                       {gap.description[locale as 'en' | 'ar']}
                     </p>
@@ -682,7 +695,21 @@ function ReportStep({
                     {rec.relatedRuleIds && rec.relatedRuleIds.length > 0 && (
                       <div className="mt-2 pt-2 border-t border-black/5 text-xs text-grey-500">
                         <span className="font-semibold">{isArabic ? 'القواعد ذات الصلة:' : 'Related Rules:'} </span>
-                        {rec.relatedRuleIds.join(', ')}
+                        <div className="flex flex-wrap gap-2 mt-1">
+                          {rec.relatedRuleIds.map((ruleId) => (
+                            <Link
+                              key={ruleId}
+                              href={`/${locale}/web/products/compliance-checker/rules/${ruleId}`}
+                              className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-grey-100 hover:bg-grey-200 text-grey-700 font-mono font-medium transition-colors"
+                              target="_blank"
+                            >
+                              {ruleId}
+                              <svg className="w-3 h-3 text-grey-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                              </svg>
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>
