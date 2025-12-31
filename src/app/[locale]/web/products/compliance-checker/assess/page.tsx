@@ -376,30 +376,64 @@ function ReportStep({
             const moduleStatus = getStatusDisplay(module.status, locale as 'en' | 'ar');
             
             return (
-              <div key={module.module} className="flex items-center gap-4">
-                <div className="flex-1">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-medium text-grey-900">
-                      {module.moduleLabel[locale as 'en' | 'ar']}
-                    </span>
-                    <span className={`text-sm font-medium ${moduleStatus.color}`}>
-                      {module.score}%
-                    </span>
+              <div key={module.module} className="border-b border-grey-100 last:border-0 pb-6 last:pb-0">
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="flex-1">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-medium text-grey-900">
+                        {module.moduleLabel[locale as 'en' | 'ar']}
+                      </span>
+                      <span className={`text-sm font-medium ${moduleStatus.color}`}>
+                        {module.score}%
+                      </span>
+                    </div>
+                    <div className="h-2 bg-grey-200 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full ${module.score >= 80 ? 'bg-green-500' :
+                            module.score >= 50 ? 'bg-yellow-500' : 'bg-red-500'
+                          }`}
+                        style={{ width: `${module.score}%` }}
+                      />
+                    </div>
                   </div>
-                  <div className="h-2 bg-grey-200 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full rounded-full ${
-                        module.score >= 80 ? 'bg-green-500' :
-                        module.score >= 50 ? 'bg-yellow-500' : 'bg-red-500'
-                      }`}
-                      style={{ width: `${module.score}%` }}
-                    />
-                  </div>
+                  {module.gaps.length > 0 && (
+                    <span className="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full whitespace-nowrap">
+                      {module.gaps.length} {isArabic ? 'فجوة' : 'gaps'}
+                    </span>
+                  )}
                 </div>
+
+                {/* Gaps Detail */}
                 {module.gaps.length > 0 && (
-                  <span className="text-xs text-red-600 bg-red-50 px-2 py-1 rounded-full">
-                    {module.gaps.length} {isArabic ? 'فجوة' : 'gaps'}
-                  </span>
+                  <div className="mt-4 space-y-3">
+                    {module.gaps.map((gap, i) => (
+                      <div key={`${gap.ruleId}-${i}`} className="bg-red-50 rounded-xl p-4 border border-red-100">
+                        <div className="flex items-start gap-3">
+                          <div className={`mt-0.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${gap.severity === 'High' ? 'bg-red-500' : 'bg-yellow-500'
+                            }`} />
+                          <div className="flex-1 space-y-2">
+                            <div>
+                              <span className="text-xs font-bold uppercase text-red-800 bg-red-200 px-1.5 py-0.5 rounded">
+                                {isArabic ? 'الفجوة' : 'Gap'}
+                              </span>
+                              <p className="text-sm font-medium text-grey-900 mt-1">
+                                {gap.description[locale as 'en' | 'ar']}
+                              </p>
+                            </div>
+
+                            <div className="bg-white/60 rounded-lg p-3 text-sm">
+                              <span className="font-bold text-red-700 block mb-1">
+                                {isArabic ? 'الإجراء المطلوب:' : 'Required Action:'}
+                              </span>
+                              <p className="text-grey-700">
+                                {gap.requiredAction[locale as 'en' | 'ar']}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
             );
