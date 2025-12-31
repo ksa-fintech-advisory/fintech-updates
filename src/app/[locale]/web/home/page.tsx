@@ -8,6 +8,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
 import SubscriptionForm from '@/core/components/web/home/SubscriptionForm';
+import ProductShowcase from './components/ProductShowcase';
 
 const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false });
 
@@ -134,6 +135,9 @@ export default async function HomePage({ params }: { params: { locale: string } 
           </StaggerContainer>
         </div>
       </section>
+
+      {/* Our Products Section */}
+      <ProductShowcase locale={locale} />
 
       {/* Featured Articles with Premium Cards */}
       {featuredArticles.length > 0 && (
