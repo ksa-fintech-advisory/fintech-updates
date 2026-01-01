@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import CourseHero from '@/core/components/web/course/CourseHero';
 import CourseTimeline from '@/core/components/web/course/CourseTimeline';
 import PhaseCard from '@/core/components/web/course/PhaseCard';
+import BadgesShowcase from '@/core/components/web/course/BadgesShowcase';
 import { phasesData } from '@/data/fintechFundamentalsData';
 import Link from 'next/link';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
@@ -126,6 +127,9 @@ export default async function FintechFundamentalsPage({
           );
         })}
       </CourseTimeline>
+
+      {/* Skill Badges & Certificates */}
+      <BadgesShowcase locale={locale} />
 
       {/* About the Program Section */}
       <section className="py-20 bg-white">
