@@ -14,14 +14,14 @@ export default function middleware(request: NextRequest) {
   const publicPaths = ['/web/*'];
   const isPublicPath = publicPaths.some(path => pathname.startsWith(path));
 
-  // Protected paths (dashboard)
-  const isDashboardPath = pathname.includes('/dashboard');
+  // // Protected paths (dashboard)
+  // const isDashboardPath = pathname.includes('/dashboard');
 
-  // Redirect to login if accessing dashboard without token
-  if (isDashboardPath && !token) {
-    const locale = request.cookies.get('NEXT_LOCALE')?.value || 'ar';
-    return NextResponse.redirect(new URL(`/${locale}/web/home`, request.url));
-  }
+  // // Redirect to login if accessing dashboard without token
+  // if (isDashboardPath && !token) {
+  //   const locale = request.cookies.get('NEXT_LOCALE')?.value || 'ar';
+  //   return NextResponse.redirect(new URL(`/${locale}/web/home`, request.url));
+  // }
 
   // Redirect to dashboard if accessing login with token
   if (isPublicPath && token) {

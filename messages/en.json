@@ -6,7 +6,8 @@
     "updates": "Updates",
     "statistics": "Statistics",
     "heroes": "Heroes",
-    "products":"Products"
+    "products":"Products",
+    "courses": "Courses"
   },
   "common": {
     "appName": "FinTech Admin",
@@ -21,7 +22,8 @@
       "contact": "Contact",
       "about": "About Us",
       "updates": "Updates",
-      "products":"Products"
+      "products":"Products",
+      "courses": "Courses"
     },
     "actions": {
       "readMore": "Read More",
@@ -152,5 +154,162 @@
     "description": "Get the latest FinTech updates delivered to your inbox",
     "placeholder": "Enter your email",
     "button": "Subscribe"
+  },
+  "fintechFundamentals": {
+    "title": "Fintech Fundamentals",
+    "subtitle": "Master the Complete Journey of Financial Technology",
+    "description": "A comprehensive 11-phase program designed to take you from understanding the foundations of financial systems to building production-ready fintech solutions.",
+    "hero": {
+      "badge": "Premium Course",
+      "phases": "11 Phases",
+      "duration": "Comprehensive Program",
+      "language": "Bilingual AR/EN"
+    },
+    "cta": {
+      "enroll": "Enroll Now",
+      "learnMore": "Learn More",
+      "contact": "Contact for Details"
+    },
+    "overview": {
+      "title": "Course Overview",
+      "description": "This program covers everything from the philosophical foundations of money to practical system architecture. Whether you're a developer, entrepreneur, or finance professional, you'll gain the knowledge to innovate in the fintech space.",
+      "benefits": {
+        "comprehensive": {
+          "title": "Comprehensive Curriculum",
+          "description": "From theory to practice across all fintech domains"
+        },
+        "practical": {
+          "title": "Practical Knowledge",
+          "description": "Real-world examples and case studies from the industry"
+        },
+        "expert": {
+          "title": "Expert Insights",
+          "description": "Learn from practitioners with deep industry experience"
+        }
+      }
+    },
+    "phases": {
+      "title": "The 11 Phases",
+      "subtitle": "Your Journey Through Financial Technology",
+      "phase1": {
+        "title": "Foundation Before Money",
+        "subtitle": "Why We Need Financial Systems",
+        "description": "Explore the fundamental reasons behind the existence of financial systems. Understand the problems they solve and why they are essential for modern society.",
+        "topics": ["Economic fundamentals", "Trust systems", "Value exchange history", "Infrastructure necessity"]
+      },
+      "phase2": {
+        "title": "What is Money, Really?",
+        "subtitle": "Understanding the Nature of Money",
+        "description": "Dive deep into the concept of money - its history, evolution, and the various forms it takes today. Learn about fiat currency, digital money, and value storage.",
+        "topics": ["History of money", "Fiat currency", "Store of value", "Medium of exchange"]
+      },
+      "phase3": {
+        "title": "Ledgers & Accounting",
+        "subtitle": "The Backbone of Financial Records",
+        "description": "Master the art of financial record-keeping. Understand double-entry bookkeeping, digital ledgers, and how transactions are recorded and verified.",
+        "topics": ["Double-entry bookkeeping", "Digital ledgers", "Transaction recording", "Audit trails"]
+      },
+      "phase4": {
+        "title": "Banks from the Inside",
+        "subtitle": "How Financial Institutions Operate",
+        "description": "Get an insider's view of how banks work. Learn about their organizational structures, core operations, and the technology that powers them.",
+        "topics": ["Bank operations", "Core banking systems", "Risk management", "Regulatory compliance"]
+      },
+      "phase5": {
+        "title": "Payments",
+        "subtitle": "The Art of Moving Money",
+        "description": "Understand how money moves between parties. Learn about payment processing, clearing, settlement, and the various payment instruments used today.",
+        "topics": ["Payment processing", "Clearing & settlement", "Payment instruments", "Transaction lifecycle"]
+      },
+      "phase6": {
+        "title": "Payment Rails & Networks",
+        "subtitle": "Infrastructure That Powers Transactions",
+        "description": "Explore the underlying infrastructure of payment systems. Learn about SWIFT, card networks, real-time payments, and how they interconnect globally.",
+        "topics": ["SWIFT network", "Card networks", "Real-time payments", "Cross-border transfers"]
+      },
+      "phase7": {
+        "title": "Digital Wallets",
+        "subtitle": "The Future of Personal Finance",
+        "description": "Discover how digital wallets work. From e-wallets to mobile payment apps, understand the technology, security, and user experience design.",
+        "topics": ["E-wallets", "Mobile payments", "Stored value", "Wallet security"]
+      },
+      "phase8": {
+        "title": "Compliance & Risk",
+        "subtitle": "Navigating Regulatory Landscapes",
+        "description": "Learn the critical aspects of regulatory compliance in fintech. Master KYC, AML, data protection, and risk management frameworks.",
+        "topics": ["KYC/AML", "Regulatory frameworks", "Risk assessment", "Data protection"]
+      },
+      "phase9": {
+        "title": "Investment",
+        "subtitle": "Democratizing Wealth Building",
+        "description": "Explore investment platforms and products. Learn about robo-advisors, trading systems, and how fintech is transforming wealth management.",
+        "topics": ["Investment platforms", "Robo-advisors", "Trading systems", "Wealth management"]
+      },
+      "phase10": {
+        "title": "Cryptocurrency",
+        "subtitle": "Blockchain and Digital Assets",
+        "description": "Understand blockchain technology and cryptocurrencies. Learn about Bitcoin, Ethereum, DeFi, and the regulatory landscape of digital assets.",
+        "topics": ["Blockchain basics", "Bitcoin & Ethereum", "DeFi protocols", "Digital asset regulation"]
+      },
+      "phase11": {
+        "title": "Building Fintech Systems",
+        "subtitle": "From Concept to Production",
+        "description": "Put it all together and learn how to architect and build fintech solutions. Cover system design, API integration, security, and scaling strategies.",
+        "topics": ["System architecture", "API design", "Security best practices", "Scaling strategies"]
+      }
+    },
+    "instructor": {
+      "title": "About the Program",
+      "description": "This program is designed by fintech practitioners with years of experience in the Saudi financial technology ecosystem, combining theoretical knowledge with practical industry insights."
+    },
+    "enrollSection": {
+      "title": "Ready to Start Your Fintech Journey?",
+      "description": "Join our comprehensive program and gain the knowledge to innovate in the financial technology space.",
+      "features": ["11 comprehensive phases", "Bilingual content (AR/EN)", "Real-world case studies", "Industry expert insights"]
+    }
+  },
+  "courseRegistration": {
+    "title": "Course Registration",
+    "subtitle": "Answer a few questions to personalize your learning experience",
+    "steps": {
+      "language": {
+        "title": "What's your preferred learning language?",
+        "subtitle": "Choose the language you're most comfortable with"
+      },
+      "availability": {
+        "title": "When are you available to learn?",
+        "subtitle": "Help us understand your schedule",
+        "hoursLabel": "How many hours per week can you dedicate?",
+        "daysLabel": "Which days work best for you? (Select all that apply)"
+      },
+      "contact": {
+        "title": "Let's stay in touch",
+        "subtitle": "We'll use this info to send you important updates",
+        "nameLabel": "Full Name",
+        "namePlaceholder": "Enter your full name",
+        "emailLabel": "Email Address",
+        "emailPlaceholder": "your@email.com",
+        "phoneLabel": "Phone Number",
+        "phonePlaceholder": "+966 5XX XXX XXXX"
+      },
+      "payment": {
+        "title": "Payment Preference",
+        "subtitle": "How would you like to handle the course fee?"
+      },
+      "confirm": {
+        "title": "Almost there!",
+        "subtitle": "Review your information and confirm registration",
+        "submitButton": "Complete Registration",
+        "successTitle": "Registration Successful!",
+        "successMessage": "Thank you for registering! We'll contact you within 24 hours with next steps.",
+        "backToHome": "Back to Home"
+      }
+    },
+    "navigation": {
+      "next": "Continue",
+      "previous": "Back",
+      "step": "Step",
+      "of": "of"
+    }
   }
 }
