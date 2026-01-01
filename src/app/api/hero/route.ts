@@ -1,39 +1,20 @@
 import { NextResponse } from 'next/server';
-import prisma from '@/lib/prisma';
+import { heroService } from '@/services/server/heroService';
 
 // GET active hero
 export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const lang = searchParams.get('lang') || 'en';
+
   try {
-    const { searchParams } = new URL(request.url);
-    const lang = searchParams.get('lang') || 'en';
+    const localizedHero = await heroService.getHero(lang);
 
-    const hero = await prisma.hero.findFirst({
-      where: { active: true },
-      orderBy: { createdAt: 'desc' },
-    });
-
-    if (!hero) {
+    if (!localizedHero) {
       return NextResponse.json(
         { error: 'No active hero found' },
         { status: 404 }
       );
     }
-
-    // Parse CTA buttons
-    const ctaButtons = JSON.parse(hero.ctaButtons);
-
-    // Transform to localized format
-    const localizedHero = {
-      id: hero.id,
-      title: lang === 'ar' ? hero.titleAr : hero.titleEn,
-      subtitle: lang === 'ar' ? hero.subtitleAr : hero.subtitleEn,
-      description: lang === 'ar' ? hero.descriptionAr : hero.descriptionEn,
-      ctaButtons: ctaButtons.map((btn: any) => ({
-        label: lang === 'ar' ? btn.labelAr : btn.labelEn,
-        href: btn.href,
-        variant: btn.variant,
-      })),
-    };
 
     return NextResponse.json(localizedHero);
   } catch (error) {
