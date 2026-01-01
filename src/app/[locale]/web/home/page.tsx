@@ -7,6 +7,7 @@ import SubscriptionForm from '@/core/components/web/home/SubscriptionForm';
 import ProductShowcase from './components/ProductShowcase';
 import LatestUpdates from './components/LatestUpdates';
 import FeaturedArticles from './components/FeaturedArticles';
+import FeaturedCourses from './components/FeaturedCourses';
 
 const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false });
 
@@ -129,6 +130,9 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
       {/* Our Products Section */}
       <ProductShowcase locale={locale} />
+
+      {/* Featured Courses Section */}
+      <FeaturedCourses />
 
       <FeaturedArticles locale={locale} />
 

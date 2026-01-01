@@ -119,18 +119,18 @@ export default function CoursesMegaMenu({ closeMenu }: { closeMenu?: () => void 
             </div>
             <div className="flex gap-3 w-full md:w-auto">
               <Link
-                href={`/${locale}/web/courses/fintech-fundamentals`}
-                onClick={closeMenu}
-                className="px-4 py-2 bg-primary-600 text-white text-sm font-bold rounded-lg shadow-sm hover:bg-primary-700 transition-all flex-1 md:flex-none text-center"
-              >
-                {isArabic ? 'ابدأ الآن' : 'Start Now'}
-              </Link>
-              <Link
-                href={`/${locale}/web/contact`}
+                href={`/${locale}/web/courses`}
                 onClick={closeMenu}
                 className="px-4 py-2 bg-white text-primary-600 text-sm font-bold rounded-lg shadow-sm hover:shadow-md transition-all border border-primary-100 flex-1 md:flex-none text-center"
               >
-                {isArabic ? 'استفسار' : 'Inquire'}
+                {isArabic ? 'عرض الكل' : 'View All'}
+              </Link>
+              <Link
+                href={`/${locale}/web/courses/fintech-fundamentals/register`}
+                onClick={closeMenu}
+                className="px-4 py-2 bg-primary-600 text-white text-sm font-bold rounded-lg shadow-sm hover:bg-primary-700 transition-all flex-1 md:flex-none text-center"
+              >
+                {isArabic ? 'سجل الآن' : 'Register Now'}
               </Link>
             </div>
           </div>
