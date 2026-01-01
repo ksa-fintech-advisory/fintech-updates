@@ -6,16 +6,55 @@ import { BlogContentRenderer } from '@/core/components/web/blog/BlogContentRende
 import { AuthorBio } from '@/core/components/web/blog/AuthorBio';
 import { SocialShare } from '@/core/components/web/blog/SocialShare';
 import { RelatedPosts } from '@/core/components/web/blog/RelatedPosts';
+import { Metadata } from 'next';
+import prisma from '@/lib/prisma';
 
-interface BlogDetailPageProps {
+interface BlogPageProps {
   params: {
     slug: string;
     locale: string;
   };
 }
 
-export default async function BlogDetailPage({ params }: BlogDetailPageProps) {
-  const { slug, locale } = params;
+export async function generateMetadata({ params: { slug, locale } }: BlogPageProps): Promise<Metadata> {
+  const isArabic = locale === 'ar';
+
+  try {
+    const blog = await prisma.blog.findUnique({
+      where: { slug },
+      include: { author: true, category: true }
+    });
+
+    if (!blog) {
+      return {
+        title: isArabic ? 'المقال غير موجود' : 'Blog Not Found',
+      };
+    }
+
+    const title = isArabic ? (blog.titleAr || blog.titleEn) : blog.titleEn;
+    const description = isArabic ? (blog.excerptAr || blog.excerptEn) : blog.excerptEn;
+
+    return {
+      title,
+      description,
+      openGraph: {
+        title,
+        description,
+        type: 'article',
+        publishedTime: blog.publishedAt.toISOString(),
+        authors: [isArabic ? (blog.author.nameAr || blog.author.name) : blog.author.name],
+        images: blog.featuredImage ? [{ url: blog.featuredImage }] : [],
+      },
+    };
+  } catch (error) {
+    return {
+      title: isArabic ? 'خطأ' : 'Error',
+    };
+  }
+}
+
+export default async function BlogPage({ params: { slug, locale } }: BlogPageProps) { // Renamed from BlogDetailPage and updated params destructuring
+// const { slug, locale } = params; // This line is now redundant due to destructuring in the function signature
   const isArabic = locale === 'ar';
   
   // Get blog by slug

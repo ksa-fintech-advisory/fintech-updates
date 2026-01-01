@@ -12,15 +12,14 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('🌱 Starting seed...');
 
-  // Clear existing data
-  console.log('📦 Clearing existing data...');
-  await prisma.blog.deleteMany({});
-  await prisma.blogCategory.deleteMany({});
-  await prisma.author.deleteMany({});
-  await prisma.update.deleteMany({});
-  await prisma.statistic.deleteMany({});
-  await prisma.hero.deleteMany({});
+  // Check if seeding is already done
+  const count = await prisma.blog.count();
+  if (count > 0) {
+    console.log('🛑 Database already seeded. Skipping...');
+    return;
+  }
 
+ 
   // Seed authors
   console.log('👤 Seeding authors...');
   const authorMap = new Map<string, string>();

@@ -84,7 +84,7 @@ export default async function LocaleLayout({
     notFound();
   }
 
-  const messages = (await import(`../../../../messages/${locale}.json`)).default;
+  const messages = (await import(`../../../messages/${locale}.json`)).default;
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
