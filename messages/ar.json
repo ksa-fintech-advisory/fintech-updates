@@ -6,7 +6,8 @@
     "updates": "التحديثات",
     "statistics": "الإحصائيات",
     "heroes": "البانرات",
-    "products": "المنتجات"
+    "products": "المنتجات",
+    "courses": "الدورات"
   },
   "common": {
     "appName": "إدارة التقنية المالية",
@@ -21,8 +22,8 @@
       "contact": "اتصل بنا",
       "about": "من نحن",
       "updates": "التحديثات",
-         "products": "المنتجات"
-
+      "products": "المنتجات",
+      "courses": "الدورات"
     },
     "actions": {
       "readMore": "اقرأ المزيد",

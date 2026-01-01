@@ -6,7 +6,8 @@
     "updates": "Updates",
     "statistics": "Statistics",
     "heroes": "Heroes",
-    "products":"Products"
+    "products":"Products",
+    "courses": "Courses"
   },
   "common": {
     "appName": "FinTech Admin",
@@ -21,7 +22,8 @@
       "contact": "Contact",
       "about": "About Us",
       "updates": "Updates",
-      "products":"Products"
+      "products":"Products",
+      "courses": "Courses"
     },
     "actions": {
       "readMore": "Read More",

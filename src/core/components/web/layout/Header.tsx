@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState, useRef, useEffect } from 'react';
 import ProductsMegaMenu from './ProductsMegaMenu';
+import CoursesMegaMenu from './CoursesMegaMenu';
 
 export default function Header() {
   const t = useTranslations();
@@ -21,6 +22,7 @@ export default function Header() {
   const navItems = [
     { href: '/web/home', label: t('common.nav.home'), key: 'home' },
     { href: '/web/products', label:t("common.nav.products"), key: 'products', hasMegaMenu: true },
+    { href: '/web/courses', label: t('common.nav.courses'), key: 'courses', hasMegaMenu: true },
     { href: '/web/updates', label: t('common.nav.updates'), key: 'updates' },
     { href: '/web/blog', label: t('common.nav.blog'), key: 'blog' },
     // { href: '/web/technology', label: t('common.nav.technology')},
@@ -136,13 +138,21 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mega Menu Rendered Here for Full Width */}
+        {/* Mega Menus Rendered Here for Full Width */}
         <div
           onMouseEnter={() => handleMouseEnter('products')}
           onMouseLeave={handleMouseLeave}
         >
           {hoveredItem === 'products' && (
             <ProductsMegaMenu closeMenu={() => setHoveredItem(null)} />
+          )}
+        </div>
+        <div
+          onMouseEnter={() => handleMouseEnter('courses')}
+          onMouseLeave={handleMouseLeave}
+        >
+          {hoveredItem === 'courses' && (
+            <CoursesMegaMenu closeMenu={() => setHoveredItem(null)} />
           )}
         </div>
 
@@ -169,18 +179,30 @@ export default function Header() {
                     </button>
                     {/* Mobile Submenu for Products */}
                     <div className={`pl-4 pr-4 transition-all duration-300 overflow-hidden ${hoveredItem === item.key ? 'max-h-60' : 'max-h-0'}`}>
-                      <Link href={`/${locale}/web/products/fee-calculator`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                        {isArabic ? 'حاسبة الرسوم' : 'Fee Calculator'}
-                      </Link>
-                      <Link href={`/${locale}/web/products/compliance-checker`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                        {isArabic ? 'فاحص الامتثال' : 'Compliance Checker'}
-                      </Link>
-                      <Link href={`/${locale}/web/products/market-analysis`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                        {isArabic ? 'تحليل السوق' : 'Market Analysis'}
-                      </Link>
+                      {item.key === 'products' && (
+                        <>
+                          <Link href={`/${locale}/web/products/fee-calculator`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                            {isArabic ? 'حاسبة الرسوم' : 'Fee Calculator'}
+                          </Link>
+                          <Link href={`/${locale}/web/products/compliance-checker`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+                            {isArabic ? 'فاحص الامتثال' : 'Compliance Checker'}
+                          </Link>
+                          <Link href={`/${locale}/web/products/market-analysis`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                            {isArabic ? 'تحليل السوق' : 'Market Analysis'}
+                          </Link>
+                        </>
+                      )}
+                      {item.key === 'courses' && (
+                        <>
+                          <Link href={`/${locale}/web/courses/fintech-fundamentals`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
+                            {isArabic ? 'أساسيات التقنية المالية' : 'Fintech Fundamentals'}
+                          </Link>
+                        </>
+                      )}
                     </div>
                   </div>
                 );
