@@ -1,5 +1,6 @@
 import { updateService } from '@/services/server/updateService';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -35,6 +36,36 @@ function renderContentBlock(block: any, index: number) {
       );
     default:
       return null;
+  }
+}
+
+export async function generateMetadata({ params: { slug, locale } }: UpdateDetailPageProps): Promise<Metadata> {
+  const isArabic = locale === 'ar';
+
+  try {
+    const update = await updateService.getUpdateBySlug(slug, locale);
+
+    if (!update) {
+      return {
+        title: isArabic ? 'التحديث غير موجود' : 'Update Not Found',
+      };
+    }
+
+    return {
+      title: update.title,
+      description: update.summary || update.description,
+      openGraph: {
+        title: update.title,
+        description: update.summary || update.description,
+        type: 'article',
+        publishedTime: update.publishedAt,
+        images: update.featuredImage ? [{ url: update.featuredImage }] : [],
+      },
+    };
+  } catch (error) {
+    return {
+      title: isArabic ? 'خطأ' : 'Error',
+    };
   }
 }
 
