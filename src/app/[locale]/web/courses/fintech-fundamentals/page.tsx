@@ -129,7 +129,7 @@ export default async function FintechFundamentalsPage({
       </CourseTimeline>
 
       {/* Skill Badges & Certificates */}
-      <BadgesShowcase locale={locale} />
+      {/* <BadgesShowcase locale={locale} /> */}
 
       {/* About the Program Section */}
       <section className="py-20 bg-white">
