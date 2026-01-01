@@ -204,17 +204,18 @@ export default function CourseHero({ locale, translations }: CourseHeroProps) {
       >
         <Link
           href={`/${locale}/web/courses/fintech-fundamentals/dashboard`}
-          className={`group flex items-center gap-3 bg-gradient-to-r from-primary-600 to-accent-500 text-white px-5 py-4 shadow-2xl hover:shadow-glow-accent transition-all duration-300 ${isArabic ? 'rounded-r-2xl pr-6' : 'rounded-l-2xl pl-6'
+          className={`group flex items-center gap-3 bg-white text-grey-800 px-4 py-3 shadow-xl hover:shadow-2xl border border-grey-200 transition-all duration-300 hover:bg-grey-50 ${isArabic ? 'rounded-r-xl' : 'rounded-l-xl'
             }`}
+          aria-label={isArabic ? 'عرض لوحة التقدم' : 'View Progress Dashboard'}
         >
-          <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
+          <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 group-hover:bg-primary-200 transition-colors">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
           </div>
           <div className={`${isArabic ? 'text-right' : 'text-left'}`}>
-            <span className="block text-sm font-bold">{isArabic ? 'تقدمي' : 'My Progress'}</span>
-            <span className="block text-xs text-white/70">{isArabic ? 'عرض اللوحة' : 'View Dashboard'}</span>
+            <span className="block text-sm font-bold text-grey-900">{isArabic ? 'تقدمي' : 'My Progress'}</span>
+            <span className="block text-xs text-grey-500">{isArabic ? 'عرض اللوحة' : 'View Dashboard'}</span>
           </div>
         </Link>
       </motion.div>
