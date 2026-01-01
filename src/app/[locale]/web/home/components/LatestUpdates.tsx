@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
-import { updateApiService } from '@/services/api/updateApi';
+import { updateService } from '@/services/server/updateService';
 
 export default async function LatestUpdates({ locale }: { locale: string }) {
   const isArabic = locale === 'ar';
 
   // Fetch real updates from API
-  const latestUpdates = await updateApiService.getUpdates({
+  const latestUpdates = await updateService.getUpdates({
     featured: true,
     limit: 5,
     lang: locale,

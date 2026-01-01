@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { updateApiService } from '@/services/api/updateApi';
+import { updateService } from '@/services/server/updateService';
 
 interface UpdatesListingPageProps {
   params: {
@@ -11,7 +11,7 @@ export default async function UpdatesListingPage({ params }: UpdatesListingPageP
   const { locale } = params;
   const isArabic = locale === 'ar';
   
-    const updates = await updateApiService.getUpdates({ lang: locale });
+    const updates = await updateService.getUpdates({ lang: locale });
 
   return (
     <div className="bg-grey-50 min-h-screen pb-24">

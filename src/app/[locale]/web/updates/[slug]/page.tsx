@@ -1,4 +1,4 @@
-import { updateApiService } from '@/services/api/updateApi';
+import { updateService } from '@/services/server/updateService';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -42,11 +42,9 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
   const { slug, locale } = params;
   const isArabic = locale === 'ar';
 
-  let update;
-  try {
-    update = await updateApiService.getUpdateBySlug(slug, locale);
-    // console.log("Update data:", update); // Debug
-  } catch (error) {
+  const update = await updateService.getUpdateBySlug(slug, locale);
+
+  if (!update) {
     notFound();
   }
 

@@ -1,5 +1,5 @@
-import { statisticApiService } from '@/services/api/statisticApi';
-import { heroApiService } from '@/services/api/heroApi';
+import { statisticService } from '@/services/server/statisticService';
+import { heroService } from '@/services/server/heroService';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
@@ -15,10 +15,14 @@ export default async function HomePage({ params }: { params: { locale: string } 
   const isArabic = locale === 'ar';
 
   // Fetch real statistics from API
-  const statistics = await statisticApiService.getStatistics(locale);
+  const statistics = await statisticService.getStatistics(locale);
 
   // Fetch real hero from API
-  const hero = await heroApiService.getActiveHero(locale);
+  const hero = await heroService.getHero(locale) as any
+
+  if (!hero) {
+    return null; // or return proper Null State / 404
+  }
 
   return (
     <div className="w-full">
