@@ -138,8 +138,9 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mega Menus Rendered Here for Full Width */}
+        {/* Mega Menus Rendered Here for Full Width - Desktop Only */}
         <div
+          className="hidden md:block"
           onMouseEnter={() => handleMouseEnter('products')}
           onMouseLeave={handleMouseLeave}
         >
@@ -148,6 +149,7 @@ export default function Header() {
           )}
         </div>
         <div
+          className="hidden md:block"
           onMouseEnter={() => handleMouseEnter('courses')}
           onMouseLeave={handleMouseLeave}
         >
@@ -158,10 +160,10 @@ export default function Header() {
 
         {/* Enhanced Mobile Navigation */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0'
             }`}
         >
-          <nav className="py-4 border-t border-grey-200 space-y-1">
+          <nav className="py-4 border-t border-grey-200 space-y-1 overflow-y-auto max-h-[70vh]">
             {navItems.map((item, idx) => {
               const active = isActive(item.href);
 
@@ -170,39 +172,63 @@ export default function Header() {
                   <div key={item.key} className="space-y-1">
                     <button
                       onClick={() => setHoveredItem(hoveredItem === item.key ? null : item.key)}
-                      className="w-full flex items-center justify-between px-4 py-3 rounded-lg font-medium text-grey-700 hover:text-primary hover:bg-grey-50"
+                      className={`w-full flex items-center justify-between px-4 py-3 rounded-lg font-medium transition-colors ${hoveredItem === item.key
+                          ? 'text-primary bg-primary-50'
+                          : 'text-grey-700 hover:text-primary hover:bg-grey-50'
+                        }`}
                     >
                       <span>{item.label}</span>
                       <svg className={`w-4 h-4 transition-transform duration-300 ${hoveredItem === item.key ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
-                    {/* Mobile Submenu for Products */}
-                    <div className={`pl-4 pr-4 transition-all duration-300 overflow-hidden ${hoveredItem === item.key ? 'max-h-60' : 'max-h-0'}`}>
-                      {item.key === 'products' && (
-                        <>
-                          <Link href={`/${locale}/web/products/fee-calculator`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                            {isArabic ? 'حاسبة الرسوم' : 'Fee Calculator'}
-                          </Link>
-                          <Link href={`/${locale}/web/products/compliance-checker`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                            {isArabic ? 'فاحص الامتثال' : 'Compliance Checker'}
-                          </Link>
-                          <Link href={`/${locale}/web/products/market-analysis`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                            {isArabic ? 'تحليل السوق' : 'Market Analysis'}
-                          </Link>
-                        </>
-                      )}
-                      {item.key === 'courses' && (
-                        <>
-                          <Link href={`/${locale}/web/courses/fintech-fundamentals`} onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2 text-sm text-grey-600 hover:text-primary rounded-lg hover:bg-grey-50 mb-1 flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-primary-500"></span>
-                            {isArabic ? 'أساسيات التقنية المالية' : 'Fintech Fundamentals'}
-                          </Link>
-                        </>
-                      )}
+                    {/* Mobile Submenu */}
+                    <div className={`transition-all duration-300 overflow-hidden ${hoveredItem === item.key ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                      <div className="mx-4 py-2 bg-grey-50 rounded-xl border border-grey-100">
+                        {item.key === 'products' && (
+                          <>
+                            <Link href={`/${locale}/web/products/fee-calculator`} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 text-grey-700 hover:text-primary hover:bg-white rounded-lg mx-2 transition-colors">
+                              <span className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm">💰</span>
+                              <span className="font-medium">{isArabic ? 'حاسبة الرسوم' : 'Fee Calculator'}</span>
+                            </Link>
+                            <Link href={`/${locale}/web/products/compliance-checker`} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 text-grey-700 hover:text-primary hover:bg-white rounded-lg mx-2 transition-colors">
+                              <span className="w-8 h-8 rounded-lg bg-green-100 text-green-600 flex items-center justify-center text-sm">✓</span>
+                              <span className="font-medium">{isArabic ? 'فاحص الامتثال' : 'Compliance Checker'}</span>
+                            </Link>
+                            <Link href={`/${locale}/web/products/market-analysis`} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 text-grey-700 hover:text-primary hover:bg-white rounded-lg mx-2 transition-colors">
+                              <span className="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center text-sm">📊</span>
+                              <span className="font-medium">{isArabic ? 'تحليل السوق' : 'Market Analysis'}</span>
+                            </Link>
+                            <div className="border-t border-grey-200 mt-2 pt-2 mx-2">
+                              <Link href={`/${locale}/web/products`} onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-center gap-2 py-2 text-primary font-semibold text-sm">
+                                {isArabic ? 'عرض كل المنتجات' : 'View All Products'}
+                                <svg className={`w-4 h-4 ${isArabic ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                              </Link>
+                            </div>
+                          </>
+                        )}
+                        {item.key === 'courses' && (
+                          <>
+                            <Link href={`/${locale}/web/courses/fintech-fundamentals`} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 text-grey-700 hover:text-primary hover:bg-white rounded-lg mx-2 transition-colors">
+                              <span className="w-8 h-8 rounded-lg bg-primary-100 text-primary-600 flex items-center justify-center text-sm">📚</span>
+                              <div>
+                                <span className="font-medium block">{isArabic ? 'أساسيات التقنية المالية' : 'Fintech Fundamentals'}</span>
+                                <span className="text-xs text-grey-500">{isArabic ? '11 مرحلة • 250 ر.س' : '11 Phases • 250 SAR'}</span>
+                              </div>
+                            </Link>
+                            <div className="border-t border-grey-200 mt-2 pt-2 mx-2">
+                              <Link href={`/${locale}/web/courses`} onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-center gap-2 py-2 text-primary font-semibold text-sm">
+                                {isArabic ? 'عرض كل الدورات' : 'View All Courses'}
+                                <svg className={`w-4 h-4 ${isArabic ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                              </Link>
+                            </div>
+                          </>
+                        )}
+                      </div>
                     </div>
                   </div>
                 );
@@ -213,16 +239,15 @@ export default function Header() {
                   key={item.href}
                   href={`/${locale}${item.href}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 transform hover:translate-x-2 animate-slide-up ${active
+                  className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 ${active
                       ? 'text-primary bg-primary-50 border-l-4 border-primary'
                       : 'text-grey-700 hover:text-primary hover:bg-grey-50'
                     }`}
-                  style={{ animationDelay: `${idx * 0.05}s` }}
                 >
                   <div className="flex items-center justify-between">
                     <span>{item.label}</span>
                     {active && (
-                      <svg className="w-5 h-5 text-primary animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                     )}
