@@ -267,5 +267,49 @@
       "description": "Join our comprehensive program and gain the knowledge to innovate in the financial technology space.",
       "features": ["11 comprehensive phases", "Bilingual content (AR/EN)", "Real-world case studies", "Industry expert insights"]
     }
+  },
+  "courseRegistration": {
+    "title": "Course Registration",
+    "subtitle": "Answer a few questions to personalize your learning experience",
+    "steps": {
+      "language": {
+        "title": "What's your preferred learning language?",
+        "subtitle": "Choose the language you're most comfortable with"
+      },
+      "availability": {
+        "title": "When are you available to learn?",
+        "subtitle": "Help us understand your schedule",
+        "hoursLabel": "How many hours per week can you dedicate?",
+        "daysLabel": "Which days work best for you? (Select all that apply)"
+      },
+      "contact": {
+        "title": "Let's stay in touch",
+        "subtitle": "We'll use this info to send you important updates",
+        "nameLabel": "Full Name",
+        "namePlaceholder": "Enter your full name",
+        "emailLabel": "Email Address",
+        "emailPlaceholder": "your@email.com",
+        "phoneLabel": "Phone Number",
+        "phonePlaceholder": "+966 5XX XXX XXXX"
+      },
+      "payment": {
+        "title": "Payment Preference",
+        "subtitle": "How would you like to handle the course fee?"
+      },
+      "confirm": {
+        "title": "Almost there!",
+        "subtitle": "Review your information and confirm registration",
+        "submitButton": "Complete Registration",
+        "successTitle": "Registration Successful!",
+        "successMessage": "Thank you for registering! We'll contact you within 24 hours with next steps.",
+        "backToHome": "Back to Home"
+      }
+    },
+    "navigation": {
+      "next": "Continue",
+      "previous": "Back",
+      "step": "Step",
+      "of": "of"
+    }
   }
 }

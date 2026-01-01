@@ -160,7 +160,7 @@ export default function CourseHero({ locale, translations }: CourseHeroProps) {
             className="flex flex-wrap gap-4 justify-center"
           >
             <Link
-              href={`/${locale}/web/contact`}
+              href={`/${locale}/web/courses/fintech-fundamentals/register`}
               className="group px-8 py-4 rounded-xl font-semibold bg-accent hover:bg-accent-600 text-white shadow-lg shadow-accent/30 transition-all duration-300 transform hover:scale-105 hover:shadow-glow-accent"
             >
               <span className="flex items-center gap-2">

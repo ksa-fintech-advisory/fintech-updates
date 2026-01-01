@@ -185,10 +185,10 @@ export default async function FintechFundamentalsPage({
                 </div>
 
                 <Link
-                  href={`/${locale}/web/contact`}
+                  href={`/${locale}/web/courses/fintech-fundamentals/register`}
                   className="inline-flex items-center gap-2 bg-white text-primary-900 font-bold py-4 px-10 rounded-xl hover:bg-accent-50 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg"
                 >
-                  {t('cta.contact')}
+                  {t('cta.enroll')}
                   <svg
                     className={`w-5 h-5 ${isArabic ? 'rotate-180' : ''}`}
                     fill="none"
