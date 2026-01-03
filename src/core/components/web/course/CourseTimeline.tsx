@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { phasesData, getTotalHours } from '@/data/fintechFundamentalsData';
+import { phasesData } from '@/data/fintechFundamentalsData';
 
 interface CourseTimelineProps {
   locale: string;
@@ -17,7 +17,6 @@ export default function CourseTimeline({
   children,
 }: CourseTimelineProps) {
   const isArabic = locale === 'ar';
-  const totalHours = getTotalHours();
 
   return (
     <section id="phases" className="py-24 bg-grey-50 relative overflow-hidden">
@@ -45,16 +44,15 @@ export default function CourseTimeline({
             <div className="flex items-center gap-2 text-grey-600">
               <span className="text-2xl">📚</span>
               <span className="font-semibold">{phasesData.length}</span>
-              <span>{isArabic ? 'مراحل' : 'Phases'}</span>
-            </div>
-            <div className="flex items-center gap-2 text-grey-600">
-              <span className="text-2xl">⏱️</span>
-              <span className="font-semibold">{totalHours}+</span>
-              <span>{isArabic ? 'ساعات' : 'Hours'}</span>
+              <span>{isArabic ? 'وحدات' : 'Modules'}</span>
             </div>
             <div className="flex items-center gap-2 text-grey-600">
               <span className="text-2xl">🎯</span>
-              <span>{isArabic ? 'من مبتدئ إلى متقدم' : 'Beginner to Advanced'}</span>
+              <span>{isArabic ? 'مناسب لجميع المستويات' : 'For All Levels'}</span>
+            </div>
+            <div className="flex items-center gap-2 text-grey-600">
+              <span className="text-2xl">🇸🇦</span>
+              <span>{isArabic ? 'مخصص للسوق السعودي' : 'Saudi Market Focused'}</span>
             </div>
           </div>
         </motion.div>
@@ -89,7 +87,7 @@ export default function CourseTimeline({
         </div>
 
         {/* Phase Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {children}
         </div>
       </div>

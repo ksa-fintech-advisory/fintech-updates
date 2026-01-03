@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { PhaseData, getDifficultyLabel } from '@/data/fintechFundamentalsData';
+import { PhaseData } from '@/data/fintechFundamentalsData';
 
 interface PhaseCardProps {
   phase: PhaseData;
@@ -75,24 +75,6 @@ export default function PhaseCard({
               {topic}
             </span>
           ))}
-        </div>
-
-        {/* Footer */}
-        <div className="flex items-center justify-between pt-4 border-t border-grey-100">
-          <span
-            className={`px-3 py-1 rounded-full text-xs font-semibold ${
-              phase.difficulty === 'beginner'
-                ? 'bg-green-100 text-green-700'
-                : phase.difficulty === 'intermediate'
-                ? 'bg-amber-100 text-amber-700'
-                : 'bg-red-100 text-red-700'
-            }`}
-          >
-            {getDifficultyLabel(phase.difficulty, isArabic)}
-          </span>
-          <span className="text-sm text-grey-500">
-            {phase.estimatedHours} {isArabic ? 'ساعات' : 'hours'}
-          </span>
         </div>
 
         {/* Decorative Corner */}

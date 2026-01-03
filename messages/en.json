@@ -157,115 +157,73 @@
   },
   "fintechFundamentals": {
     "title": "Fintech Fundamentals",
-    "subtitle": "Master the Complete Journey of Financial Technology",
-    "description": "A comprehensive 11-phase program designed to take you from understanding the foundations of financial systems to building production-ready fintech solutions.",
+    "subtitle": "Your Complete Guide to Understanding Fintech in the Saudi Market",
+    "description": "A comprehensive 4-module learning journey that takes you from understanding the basics of banking and fintech to mastering regulatory compliance and Saudi financial regulations.",
     "hero": {
-      "badge": "Premium Course",
-      "phases": "11 Phases",
-      "duration": "Comprehensive Program",
+      "badge": "Saudi Market Specialized",
+      "phases": "4 Integrated Modules",
+      "duration": "Theory & Practice Combined",
       "language": "Bilingual AR/EN"
     },
     "cta": {
       "enroll": "Enroll Now",
-      "learnMore": "Learn More",
+      "learnMore": "Discover More",
       "contact": "Contact for Details"
     },
     "overview": {
-      "title": "Course Overview",
-      "description": "This program covers everything from the philosophical foundations of money to practical system architecture. Whether you're a developer, entrepreneur, or finance professional, you'll gain the knowledge to innovate in the fintech space.",
+      "title": "Why This Course?",
+      "description": "A course designed specifically for the Saudi market, combining global fintech concepts with local application. You'll learn how banks and fintech companies operate, understand Saudi regulations from SAMA and CMA, and gain practical skills that are in high demand.",
       "benefits": {
         "comprehensive": {
-          "title": "Comprehensive Curriculum",
-          "description": "From theory to practice across all fintech domains"
+          "title": "Saudi Market Focus",
+          "description": "Tailored content covering local regulations with examples from Saudi companies"
         },
         "practical": {
-          "title": "Practical Knowledge",
-          "description": "Real-world examples and case studies from the industry"
+          "title": "Practical Applications",
+          "description": "Case studies from companies like STC Pay, Tamara, and Lendo with interactive exercises"
         },
         "expert": {
-          "title": "Expert Insights",
-          "description": "Learn from practitioners with deep industry experience"
+          "title": "Field Experience",
+          "description": "Learn from specialists who have worked with banks and fintech companies in the Kingdom"
         }
       }
     },
     "phases": {
-      "title": "The 11 Phases",
-      "subtitle": "Your Journey Through Financial Technology",
+      "title": "Course Content",
+      "subtitle": "A Progressive Journey from Basics to Practical Application",
       "phase1": {
-        "title": "Foundation Before Money",
-        "subtitle": "Why We Need Financial Systems",
-        "description": "Explore the fundamental reasons behind the existence of financial systems. Understand the problems they solve and why they are essential for modern society.",
-        "topics": ["Economic fundamentals", "Trust systems", "Value exchange history", "Infrastructure necessity"]
+        "title": "Introduction to Fintech & Banking Systems",
+        "subtitle": "The Foundations Every Specialist Needs",
+        "description": "Begin your journey by understanding what fintech is and its scope. Explore the evolution of the financial sector from traditional to digital. Discover the Saudi banking system, national payment infrastructure (MADA, SADAD, SARIE), and the local fintech ecosystem.",
+        "topics": ["Definition and scope of fintech", "Global and local financial sector evolution", "Saudi banking system and regulators", "Saudi Fintech company landscape"]
       },
       "phase2": {
-        "title": "What is Money, Really?",
-        "subtitle": "Understanding the Nature of Money",
-        "description": "Dive deep into the concept of money - its history, evolution, and the various forms it takes today. Learn about fiat currency, digital money, and value storage.",
-        "topics": ["History of money", "Fiat currency", "Store of value", "Medium of exchange"]
+        "title": "Regulations & Compliance in Saudi Arabia",
+        "subtitle": "Regulatory Requirements and Frameworks",
+        "description": "Master the regulatory requirements for fintech companies in Saudi Arabia. Learn about the Personal Data Protection Law (PDPL), Anti-Money Laundering and Counter-Terrorist Financing (AML/CTF), KYC requirements, and the licensing process from SAMA and CMA.",
+        "topics": ["SAMA and CMA fintech licenses", "Personal Data Protection Law (PDPL)", "AML/CTF compliance", "Cybersecurity and consumer protection requirements"]
       },
       "phase3": {
-        "title": "Ledgers & Accounting",
-        "subtitle": "The Backbone of Financial Records",
-        "description": "Master the art of financial record-keeping. Understand double-entry bookkeeping, digital ledgers, and how transactions are recorded and verified.",
-        "topics": ["Double-entry bookkeeping", "Digital ledgers", "Transaction recording", "Audit trails"]
+        "title": "Payments & Fintech Products",
+        "subtitle": "How Fintech Actually Works",
+        "description": "Move to the practical side and learn how digital payments and e-wallets function. Understand digital lending models like BNPL (Buy Now Pay Later), Open Banking, and digital insurance and investment technologies.",
+        "topics": ["Digital payments and e-wallets", "Digital lending and BNPL models", "Open Banking", "Insurtech and Investment tech"]
       },
       "phase4": {
-        "title": "Banks from the Inside",
-        "subtitle": "How Financial Institutions Operate",
-        "description": "Get an insider's view of how banks work. Learn about their organizational structures, core operations, and the technology that powers them.",
-        "topics": ["Bank operations", "Core banking systems", "Risk management", "Regulatory compliance"]
-      },
-      "phase5": {
-        "title": "Payments",
-        "subtitle": "The Art of Moving Money",
-        "description": "Understand how money moves between parties. Learn about payment processing, clearing, settlement, and the various payment instruments used today.",
-        "topics": ["Payment processing", "Clearing & settlement", "Payment instruments", "Transaction lifecycle"]
-      },
-      "phase6": {
-        "title": "Payment Rails & Networks",
-        "subtitle": "Infrastructure That Powers Transactions",
-        "description": "Explore the underlying infrastructure of payment systems. Learn about SWIFT, card networks, real-time payments, and how they interconnect globally.",
-        "topics": ["SWIFT network", "Card networks", "Real-time payments", "Cross-border transfers"]
-      },
-      "phase7": {
-        "title": "Digital Wallets",
-        "subtitle": "The Future of Personal Finance",
-        "description": "Discover how digital wallets work. From e-wallets to mobile payment apps, understand the technology, security, and user experience design.",
-        "topics": ["E-wallets", "Mobile payments", "Stored value", "Wallet security"]
-      },
-      "phase8": {
-        "title": "Compliance & Risk",
-        "subtitle": "Navigating Regulatory Landscapes",
-        "description": "Learn the critical aspects of regulatory compliance in fintech. Master KYC, AML, data protection, and risk management frameworks.",
-        "topics": ["KYC/AML", "Regulatory frameworks", "Risk assessment", "Data protection"]
-      },
-      "phase9": {
-        "title": "Investment",
-        "subtitle": "Democratizing Wealth Building",
-        "description": "Explore investment platforms and products. Learn about robo-advisors, trading systems, and how fintech is transforming wealth management.",
-        "topics": ["Investment platforms", "Robo-advisors", "Trading systems", "Wealth management"]
-      },
-      "phase10": {
-        "title": "Cryptocurrency",
-        "subtitle": "Blockchain and Digital Assets",
-        "description": "Understand blockchain technology and cryptocurrencies. Learn about Bitcoin, Ethereum, DeFi, and the regulatory landscape of digital assets.",
-        "topics": ["Blockchain basics", "Bitcoin & Ethereum", "DeFi protocols", "Digital asset regulation"]
-      },
-      "phase11": {
-        "title": "Building Fintech Systems",
-        "subtitle": "From Concept to Production",
-        "description": "Put it all together and learn how to architect and build fintech solutions. Cover system design, API integration, security, and scaling strategies.",
-        "topics": ["System architecture", "API design", "Security best practices", "Scaling strategies"]
+        "title": "Innovation & The Future of Fintech",
+        "subtitle": "Emerging Technologies and Future Opportunities",
+        "description": "Complete your journey by exploring the latest fintech trends. Learn about blockchain and digital assets, AI in financial services, Embedded Finance, and future applications that will reshape the financial sector.",
+        "topics": ["Blockchain and digital currencies", "AI in finance", "Embedded Finance", "Super Apps and the future of financial services"]
       }
     },
     "instructor": {
       "title": "About the Program",
-      "description": "This program is designed by fintech practitioners with years of experience in the Saudi financial technology ecosystem, combining theoretical knowledge with practical industry insights."
+      "description": "This program is designed by Saudi fintech specialists who combine theoretical and practical expertise in building and operating digital financial products, with a special focus on local market requirements and Saudi regulations."
     },
     "enrollSection": {
-      "title": "Ready to Start Your Fintech Journey?",
-      "description": "Join our comprehensive program and gain the knowledge to innovate in the financial technology space.",
-      "features": ["11 comprehensive phases", "Bilingual content (AR/EN)", "Real-world case studies", "Industry expert insights"]
+      "title": "Ready to Launch into the World of Fintech?",
+      "description": "Join a growing community of fintech enthusiasts and gain the skills demanded in the Saudi job market.",
+      "features": ["Saudi market-specific content", "Local company case studies", "Certified completion certificate", "Supportive learning community"]
     }
   },
   "courseRegistration": {

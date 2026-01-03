@@ -12,21 +12,22 @@ export default function CourseShowcase() {
     {
       title: isArabic ? 'أساسيات التقنية المالية' : 'Fintech Fundamentals',
       description: isArabic
-        ? 'رحلة شاملة من 11 مرحلة لفهم وبناء أنظمة التقنية المالية من الصفر إلى الاحتراف'
-        : 'A comprehensive 11-phase journey to understand and build fintech systems from scratch to expert level',
+        ? 'رحلة شاملة من 4 وحدات رئيسية لفهم عالم التقنية المالية والنظام المصرفي السعودي، من الأساسيات إلى الامتثال والابتكار'
+        : 'A comprehensive 4-module journey to understand fintech and the Saudi banking system, from fundamentals to compliance and innovation',
       href: '/web/courses/fintech-fundamentals',
       icon: '📚',
       gradient: 'from-primary-500 to-primary-700',
-      phases: 11,
-      duration: isArabic ? '60+ ساعة' : '60+ hours',
-      level: isArabic ? 'مبتدئ إلى متقدم' : 'Beginner to Advanced',
-      badge: isArabic ? 'مميز' : 'Featured',
+      phases: 4,
+      duration: isArabic ? 'برنامج متكامل' : 'Complete Program',
+      level: isArabic ? 'مبتدئ إلى متوسط' : 'Beginner to Intermediate',
+      badge: isArabic ? 'السوق السعودي' : 'Saudi Market',
       price: 250,
       currency: isArabic ? 'ر.س' : 'SAR',
       topics: isArabic
-        ? ['البنوك', 'المدفوعات', 'الامتثال', 'العملات الرقمية']
-        : ['Banking', 'Payments', 'Compliance', 'Crypto'],
+        ? ['النظام المصرفي', 'الامتثال والتراخيص', 'المدفوعات الرقمية', 'الابتكار المالي']
+        : ['Banking System', 'Compliance & Licensing', 'Digital Payments', 'Financial Innovation'],
     },
+
     {
       title: isArabic ? 'تصميم واجهات الدفع' : 'Payment UI Design',
       description: isArabic
