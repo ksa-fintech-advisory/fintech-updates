@@ -29,13 +29,13 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold text-white mb-4">
               <span className="bg-gradient-gold bg-clip-text text-transparent">
-                {locale === 'ar' ? 'تحديثات التقنية المالية' : 'FinTech Updates'}
+                {locale === 'ar' ? 'فنتك العرب' : 'Arab Fintech'}
               </span>
             </h3>
             <p className="text-sm text-grey-400">
               {locale === 'ar' 
-                ? 'مصدرك الموثوق لأخبار التقنية المالية في السعودية'
-                : 'Your trusted source for Saudi FinTech news'}
+                ? 'بوابتك لعالم التقنية المالية العربية'
+                : 'Your gateway to Arab FinTech'}
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-grey-800 mt-8 pt-8 text-center">
           <p className="text-sm text-grey-500">
-            © {currentYear} {locale === 'ar' ?  'تحديثات التقنية المالية' : 'FinTech Updates'}. 
+            © {currentYear} {locale === 'ar' ? 'فنتك العرب' : 'Arab Fintech'}. 
             {locale === 'ar' ? ' جميع الحقوق محفوظة.' : ' All rights reserved.'}
           </p>
         </div>

@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useState, useRef } from 'react';
 import ProductsMegaMenu from './ProductsMegaMenu';
 import CoursesMegaMenu from './CoursesMegaMenu';
+import RegionDropdown from './RegionDropdown';
 import { getAllCourses } from '@/data/courseData';
 
 export default function Header() {
@@ -60,7 +61,7 @@ export default function Header() {
             className="group text-xl font-bold transition-all duration-300"
           >
             <span className="bg-gradient-saudi bg-clip-text text-transparent group-hover:scale-105 inline-block transition-transform">
-              {locale === 'ar' ? 'تحديثات التقنية المالية' : 'FinTech Updates'}
+              {locale === 'ar' ? 'فنتك العرب' : 'Arab Fintech'}
             </span>
           </Link>
 
@@ -105,8 +106,11 @@ export default function Header() {
             })}
           </nav>
 
-          {/* Right Side - Language Switcher & Mobile Menu */}
-          <div className="flex items-center gap-4">
+          {/* Right Side - Region, Language Switcher & Mobile Menu */}
+          <div className="flex items-center gap-2 md:gap-3">
+            {/* Region Dropdown */}
+            <RegionDropdown />
+
             {/* Enhanced Language Switcher */}
             <Link
               href={`/${otherLocale}${currentPath}`}

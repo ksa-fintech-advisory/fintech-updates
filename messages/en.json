@@ -49,9 +49,9 @@
   "web": {
     "home": {
       "hero": {
-        "title": "Saudi Arabia's Leading FinTech News & Insights",
-        "subtitle": "Stay Updated with the Latest in Saudi Financial Technology",
-        "description": "Your trusted source for comprehensive coverage of FinTech innovations, regulatory updates, and industry trends shaping Saudi Arabia's digital financial future.",
+        "title": "Your Gateway to Arab FinTech",
+        "subtitle": "Insights, Innovations & Trends Across the Arab World",
+        "description": "Comprehensive coverage of FinTech innovations, regulatory updates, and industry trends across the Arab world - from Saudi Arabia and the UAE to Egypt and beyond.",
         "exploreArticles": "Explore Articles",
         "aboutUs": "About Us"
       },
@@ -73,7 +73,7 @@
     },
     "about": {
       "title": "About Us",
-      "subtitle": "Your trusted source for Saudi FinTech insights and analysis",
+      "subtitle": "Your gateway to Arab FinTech insights and analysis",
       "authorName": "Mohammed Abdo",
       "authorTitle": "FinTech Expert & Industry Analyst",
       "authorBio": "A seasoned FinTech professional with extensive experience in the Saudi financial technology landscape. Specializing in regulatory compliance, digital banking innovations, and emerging payment technologies, I provide in-depth analysis and insights into the rapidly evolving FinTech ecosystem in the Kingdom and across the GCC region.",
@@ -83,7 +83,7 @@
       "expertise": "Areas of Expertise",
       "cta": {
         "title": "Stay Informed",
-        "description": "Subscribe to receive the latest FinTech updates and regulatory insights",
+        "description": "Subscribe to receive the latest Arab FinTech updates and regulatory insights",
         "button": "Subscribe Now"
       }
     },
@@ -113,9 +113,9 @@
   "pages": {
     "home": {
       "hero": {
-        "title": "Saudi Arabia's Leading FinTech News & Insights",
-        "subtitle": "Stay Updated with the Latest in Saudi Financial Technology",
-        "description": "Your trusted source for comprehensive coverage of FinTech innovations, regulatory updates, and industry trends shaping Saudi Arabia's digital financial future."
+        "title": "Your Gateway to Arab FinTech",
+        "subtitle": "Insights, Innovations & Trends Across the Arab World",
+        "description": "Comprehensive coverage of FinTech innovations, regulatory updates, and industry trends across the Arab world - from Saudi Arabia and the UAE to Egypt and beyond."
       },
       "sections": {
         "featured": "Featured Articles",
@@ -151,7 +151,7 @@
   },
   "newsletter": {
     "title": "Subscribe to our Newsletter",
-    "description": "Get the latest FinTech updates delivered to your inbox",
+    "description": "Get the latest Arab FinTech updates delivered to your inbox",
     "placeholder": "Enter your email",
     "button": "Subscribe"
   },

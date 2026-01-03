@@ -3,16 +3,16 @@ import { HomeContent } from '@/core/types/web/home';
 export const homeData: HomeContent = {
   hero: {
     title: {
-      en: 'Saudi Arabia\'s Leading FinTech News & Insights',
-      ar: 'أخبار ورؤى التقنية المالية الرائدة في السعودية',
+      en: 'Your Gateway to Arab FinTech',
+      ar: 'بوابتك لعالم التقنية المالية العربية',
     },
     subtitle: {
-      en: 'Stay Updated with the Latest in Saudi Financial Technology',
-      ar: 'ابق على اطلاع بأحدث التطورات في التكنولوجيا المالية السعودية',
+      en: 'Insights, Innovations & Trends Across the Arab World',
+      ar: 'رؤى وابتكارات واتجاهات من العالم العربي',
     },
     description: {
-      en: 'Your trusted source for comprehensive coverage of FinTech innovations, regulatory updates, and industry trends shaping Saudi Arabia\'s digital financial future.',
-      ar: 'مصدرك الموثوق للتغطية الشاملة لابتكارات التقنية المالية والتحديثات التنظيمية واتجاهات الصناعة التي تشكل مستقبل المالية الرقمية في المملكة.',
+      en: 'Comprehensive coverage of FinTech innovations, regulatory updates, and industry trends across the Arab world - from Saudi Arabia and the UAE to Egypt and beyond.',
+      ar: 'تغطية شاملة لابتكارات التقنية المالية والتحديثات التنظيمية واتجاهات الصناعة في العالم العربي - من السعودية والإمارات إلى مصر وما بعدها.',
     },
     ctaButtons: [
       {

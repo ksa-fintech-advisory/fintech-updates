@@ -42,8 +42,8 @@ export default async function AboutPage({ params }: { params: { locale: string }
             <AnimatedSection direction="up" delay={0.4}>
               <p className="text-xl md:text-3xl text-white/90 font-light max-w-3xl mx-auto leading-relaxed">
                 {isArabic
-                  ? 'مصدرك الموثوق لرؤى وتحليلات التقنية المالية السعودية'
-                  : 'Your trusted source for Saudi FinTech insights and analysis'}
+                  ? 'بوابتك لعالم التقنية المالية العربية'
+                  : 'Your gateway to Arab FinTech insights and analysis'}
               </p>
             </AnimatedSection>
           </div>
@@ -248,8 +248,8 @@ export default async function AboutPage({ params }: { params: { locale: string }
             </h3>
             <p className="text-xl md:text-2xl text-grey-300 mb-12 leading-relaxed font-light">
               {isArabic
-                ? 'اشترك لتلقي آخر تحديثات التقنية المالية والرؤى التنظيمية'
-                : 'Subscribe to receive the latest FinTech updates and regulatory insights'}
+                ? 'اشترك لتلقي آخر تحديثات التقنية المالية العربية'
+                : 'Subscribe to receive the latest Arab FinTech updates and insights'}
             </p>
             <Link
               href={`/${locale}/web/contact`}
