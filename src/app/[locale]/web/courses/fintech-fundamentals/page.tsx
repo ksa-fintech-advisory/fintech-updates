@@ -21,8 +21,10 @@ export default async function FintechFundamentalsPage({
     title: t(`phases.phase${phaseNum}.title`),
     subtitle: t(`phases.phase${phaseNum}.subtitle`),
     description: t(`phases.phase${phaseNum}.description`),
-    topics: t.raw(`phases.phase${phaseNum}.topics`) as string[],
+    topicsList: t.raw(`phases.phase${phaseNum}.topicsList`) as string[],
   });
+
+  const viewDetailsText = t('phases.viewDetails');
 
   return (
     <div className="w-full">
@@ -120,9 +122,11 @@ export default async function FintechFundamentalsPage({
               title={phaseTranslation.title}
               subtitle={phaseTranslation.subtitle}
               description={phaseTranslation.description}
-              topics={phaseTranslation.topics}
+              topicsList={phaseTranslation.topicsList}
+              viewDetailsText={viewDetailsText}
               index={index}
               isArabic={isArabic}
+              locale={locale}
             />
           );
         })}

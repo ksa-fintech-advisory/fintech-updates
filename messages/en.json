@@ -191,29 +191,30 @@
     "phases": {
       "title": "Course Content",
       "subtitle": "A Progressive Journey from Basics to Practical Application",
+      "viewDetails": "View Details",
       "phase1": {
-        "title": "Introduction to Fintech & Banking Systems",
+        "title": "Introduction to Fintech and Banking System",
         "subtitle": "The Foundations Every Specialist Needs",
-        "description": "Begin your journey by understanding what fintech is and its scope. Explore the evolution of the financial sector from traditional to digital. Discover the Saudi banking system, national payment infrastructure (MADA, SADAD, SARIE), and the local fintech ecosystem.",
-        "topics": ["Definition and scope of fintech", "Global and local financial sector evolution", "Saudi banking system and regulators", "Saudi Fintech company landscape"]
+        "description": "Begin your journey by understanding what fintech is and its scope, and explore the evolution from traditional to digital finance.",
+        "topicsList": ["What is Fintech?", "Traditional Banking System in Saudi Arabia", "Saudi Fintech Ecosystem", "Future of Saudi Financial Sector"]
       },
       "phase2": {
-        "title": "Regulations & Compliance in Saudi Arabia",
+        "title": "Regulations and Compliance in Saudi Market",
         "subtitle": "Regulatory Requirements and Frameworks",
-        "description": "Master the regulatory requirements for fintech companies in Saudi Arabia. Learn about the Personal Data Protection Law (PDPL), Anti-Money Laundering and Counter-Terrorist Financing (AML/CTF), KYC requirements, and the licensing process from SAMA and CMA.",
-        "topics": ["SAMA and CMA fintech licenses", "Personal Data Protection Law (PDPL)", "AML/CTF compliance", "Cybersecurity and consumer protection requirements"]
+        "description": "Master the regulatory requirements for fintech companies in Saudi Arabia.",
+        "topicsList": ["Regulatory Framework in Saudi Arabia", "Core Compliance Regulations", "Practical Application - Compliance Checklist"]
       },
       "phase3": {
-        "title": "Payments & Fintech Products",
+        "title": "Core Technologies and Open Banking",
         "subtitle": "How Fintech Actually Works",
-        "description": "Move to the practical side and learn how digital payments and e-wallets function. Understand digital lending models like BNPL (Buy Now Pay Later), Open Banking, and digital insurance and investment technologies.",
-        "topics": ["Digital payments and e-wallets", "Digital lending and BNPL models", "Open Banking", "Insurtech and Investment tech"]
+        "description": "Move to the practical side and learn technical architecture and Open Banking.",
+        "topicsList": ["Technical Architecture of Fintech Systems", "Open Banking", "Infrastructure and Supporting Service Companies", "Emerging Technologies"]
       },
       "phase4": {
-        "title": "Innovation & The Future of Fintech",
-        "subtitle": "Emerging Technologies and Future Opportunities",
-        "description": "Complete your journey by exploring the latest fintech trends. Learn about blockchain and digital assets, AI in financial services, Embedded Finance, and future applications that will reshape the financial sector.",
-        "topics": ["Blockchain and digital currencies", "AI in finance", "Embedded Finance", "Super Apps and the future of financial services"]
+        "title": "Building Fintech Systems and Market Opportunities",
+        "subtitle": "Practical Application and Future Opportunities",
+        "description": "Complete your journey by building a simple fintech system and exploring market opportunities.",
+        "topicsList": ["Workshop: Designing a Simple Transfer System", "Opportunities in Saudi Market", "How to Launch a Fintech Company", "Participants Presentations and Discussion"]
       }
     },
     "instructor": {
