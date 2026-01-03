@@ -1254,3 +1254,147 @@ export function getCourseInfo(): CourseInfo {
 export function getSessionsCount(): number {
   return courseData.sessions.length;
 }
+
+// =============================================================================
+// COURSE LISTING DATA (for mega menu, home page, courses page)
+// =============================================================================
+
+export interface CourseListing {
+  id: string;
+  slug: string;
+  title: LocalizedText;
+  subtitle: LocalizedText;
+  description: LocalizedText;
+  icon: string;
+  modules: number;
+  price: number;
+  currency: LocalizedText;
+  badge: LocalizedText;
+  gradient: { from: string; to: string };
+  topics: LocalizedArray;
+  isFeatured: boolean;
+  isComingSoon: boolean;
+  isActive: boolean;
+}
+
+/**
+ * All courses available on the platform
+ * Add/edit/delete courses here to update mega menu, home page, and courses page
+ */
+export const coursesListData: CourseListing[] = [
+  {
+    id: 'fintech-fundamentals',
+    slug: 'fintech-fundamentals',
+    title: {
+      ar: 'أساسيات التقنية المالية',
+      en: 'Fintech Fundamentals',
+    },
+    subtitle: {
+      ar: 'رحلتك الشاملة لفهم عالم التقنية المالية',
+      en: 'Your Complete Journey to Understanding Fintech',
+    },
+    description: {
+      ar: 'رحلة شاملة من 4 وحدات رئيسية لفهم عالم التقنية المالية والنظام المصرفي السعودي، من الأساسيات إلى الامتثال والابتكار',
+      en: 'A comprehensive 4-module journey to understand fintech and the Saudi banking system, from fundamentals to compliance and innovation',
+    },
+    icon: '📚',
+    modules: 4,
+    price: 250,
+    currency: { ar: 'ر.س', en: 'SAR' },
+    badge: { ar: 'مميز', en: 'Featured' },
+    gradient: { from: '#16a34a', to: '#15803d' }, // primary green
+    topics: {
+      ar: ['النظام المصرفي', 'الامتثال والتراخيص', 'Open Banking', 'فرص السوق'],
+      en: ['Banking System', 'Compliance & Licensing', 'Open Banking', 'Market Opportunities'],
+    },
+    isFeatured: true,
+    isComingSoon: false,
+    isActive: true,
+  },
+  {
+    id: 'payment-ui-design',
+    slug: 'payment-ui-design',
+    title: {
+      ar: 'تصميم واجهات الدفع',
+      en: 'Payment UI Design',
+    },
+    subtitle: {
+      ar: 'تصميم واجهات احترافية لتطبيقات الدفع',
+      en: 'Design Professional Payment App Interfaces',
+    },
+    description: {
+      ar: 'تعلم تصميم واجهات مستخدم احترافية لتطبيقات الدفع والخدمات المالية',
+      en: 'Learn to design professional user interfaces for payment applications and financial services',
+    },
+    icon: '🎨',
+    modules: 8,
+    price: 350,
+    currency: { ar: 'ر.س', en: 'SAR' },
+    badge: { ar: 'قريباً', en: 'Coming Soon' },
+    gradient: { from: '#ec4899', to: '#db2777' }, // pink
+    topics: {
+      ar: ['تجربة المستخدم', 'أنظمة التصميم', 'إمكانية الوصول'],
+      en: ['UX', 'Design Systems', 'Accessibility'],
+    },
+    isFeatured: false,
+    isComingSoon: true,
+    isActive: true,
+  },
+  {
+    id: 'regulatory-compliance',
+    slug: 'regulatory-compliance',
+    title: {
+      ar: 'الامتثال التنظيمي',
+      en: 'Regulatory Compliance',
+    },
+    subtitle: {
+      ar: 'دليل شامل للوائح التقنية المالية',
+      en: 'Complete Guide to Fintech Regulations',
+    },
+    description: {
+      ar: 'دليل شامل للوائح والمتطلبات التنظيمية في قطاع التقنية المالية السعودي',
+      en: 'Complete guide to regulations and compliance requirements in the Saudi fintech sector',
+    },
+    icon: '⚖️',
+    modules: 6,
+    price: 300,
+    currency: { ar: 'ر.س', en: 'SAR' },
+    badge: { ar: 'قريباً', en: 'Coming Soon' },
+    gradient: { from: '#f59e0b', to: '#d97706' }, // amber
+    topics: {
+      ar: ['ساما', 'مكافحة غسل الأموال', 'حماية البيانات'],
+      en: ['SAMA', 'AML/KYC', 'Data Protection'],
+    },
+    isFeatured: false,
+    isComingSoon: true,
+    isActive: true,
+  },
+];
+
+/**
+ * Get all active courses
+ */
+export function getAllCourses(): CourseListing[] {
+  return coursesListData.filter(course => course.isActive);
+}
+
+/**
+ * Get featured courses
+ */
+export function getFeaturedCourses(): CourseListing[] {
+  return coursesListData.filter(course => course.isFeatured && course.isActive);
+}
+
+/**
+ * Get available courses (not coming soon)
+ */
+export function getAvailableCourses(): CourseListing[] {
+  return coursesListData.filter(course => !course.isComingSoon && course.isActive);
+}
+
+/**
+ * Get course by slug
+ */
+export function getCourseBySlug(slug: string): CourseListing | null {
+  return coursesListData.find(course => course.slug === slug) || null;
+}

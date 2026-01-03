@@ -102,11 +102,11 @@ export default function PhaseCard({
         {/* View Details Button */}
         <Link
           href={`/${locale}/web/courses/fintech-fundamentals/session/${phase.id}`}
-          className="relative z-10 flex items-center justify-center gap-3 px-6 py-3 rounded-xl text-white font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+          className="relative z-10 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
           style={gradientStyle}
         >
           <span>{viewDetailsText}</span>
-          <span className={`inline-block ${isArabic ? 'transform rotate-180' : ''}`}>→</span>
+          <span>←</span>
         </Link>
 
         {/* Decorative Corner */}

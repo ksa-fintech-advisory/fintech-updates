@@ -70,18 +70,29 @@ export default function CourseTimeline({
               />
             </div>
             <div className="flex justify-between mt-2">
-              {phasesData.map((phase) => (
-                <motion.div
-                  key={phase.id}
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: phase.id * 0.1 }}
-                  className={`w-8 h-8 rounded-full bg-gradient-to-br ${phase.gradient} flex items-center justify-center text-white text-sm font-bold shadow-lg`}
-                >
-                  {phase.id}
-                </motion.div>
-              ))}
+              {phasesData.map((phase) => {
+                // Use inline styles to fix gradient rendering issue
+                const gradientColors: Record<number, { from: string; to: string }> = {
+                  1: { from: '#10b981', to: '#0d9488' }, // emerald-500 to teal-600
+                  2: { from: '#f59e0b', to: '#ea580c' }, // amber-500 to orange-600
+                  3: { from: '#3b82f6', to: '#4f46e5' }, // blue-500 to indigo-600
+                  4: { from: '#8b5cf6', to: '#9333ea' }, // violet-500 to purple-600
+                };
+                const colors = gradientColors[phase.id] || { from: '#6366f1', to: '#8b5cf6' };
+                return (
+                  <motion.div
+                    key={phase.id}
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: phase.id * 0.1 }}
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg"
+                    style={{ background: `linear-gradient(135deg, ${colors.from}, ${colors.to})` }}
+                  >
+                    {phase.id}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>

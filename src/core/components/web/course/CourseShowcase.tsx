@@ -3,66 +3,15 @@
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
+import { getAllCourses, type CourseListing } from '@/data/courseData';
 
 export default function CourseShowcase() {
   const locale = useLocale();
   const isArabic = locale === 'ar';
+  const lang = isArabic ? 'ar' : 'en';
 
-  const courses = [
-    {
-      title: isArabic ? 'أساسيات التقنية المالية' : 'Fintech Fundamentals',
-      description: isArabic
-        ? 'رحلة شاملة من 4 وحدات رئيسية لفهم عالم التقنية المالية والنظام المصرفي السعودي، من الأساسيات إلى الامتثال والابتكار'
-        : 'A comprehensive 4-module journey to understand fintech and the Saudi banking system, from fundamentals to compliance and innovation',
-      href: '/web/courses/fintech-fundamentals',
-      icon: '📚',
-      gradient: 'from-primary-500 to-primary-700',
-      phases: 4,
-      duration: isArabic ? 'برنامج متكامل' : 'Complete Program',
-      level: isArabic ? 'مبتدئ إلى متوسط' : 'Beginner to Intermediate',
-      badge: isArabic ? 'السوق السعودي' : 'Saudi Market',
-      price: 250,
-      currency: isArabic ? 'ر.س' : 'SAR',
-      topics: isArabic
-        ? ['النظام المصرفي', 'الامتثال والتراخيص', 'المدفوعات الرقمية', 'الابتكار المالي']
-        : ['Banking System', 'Compliance & Licensing', 'Digital Payments', 'Financial Innovation'],
-    },
-
-    {
-      title: isArabic ? 'تصميم واجهات الدفع' : 'Payment UI Design',
-      description: isArabic
-        ? 'تعلم تصميم واجهات مستخدم احترافية لتطبيقات الدفع والخدمات المالية'
-        : 'Learn to design professional user interfaces for payment applications and financial services',
-      href: '#',
-      icon: '🎨',
-      gradient: 'from-pink-500 to-rose-600',
-      phases: 8,
-      duration: isArabic ? '40+ ساعة' : '40+ hours',
-      level: isArabic ? 'متوسط' : 'Intermediate',
-      badge: isArabic ? 'قريباً' : 'Coming Soon',
-      comingSoon: true,
-      topics: isArabic
-        ? ['تجربة المستخدم', 'التصميم', 'إمكانية الوصول']
-        : ['UX', 'Design Systems', 'Accessibility'],
-    },
-    {
-      title: isArabic ? 'الامتثال التنظيمي' : 'Regulatory Compliance',
-      description: isArabic
-        ? 'دليل شامل للوائح والمتطلبات التنظيمية في قطاع التقنية المالية السعودي'
-        : 'Complete guide to regulations and compliance requirements in the Saudi fintech sector',
-      href: '#',
-      icon: '⚖️',
-      gradient: 'from-amber-500 to-orange-600',
-      phases: 6,
-      duration: isArabic ? '30+ ساعة' : '30+ hours',
-      level: isArabic ? 'متقدم' : 'Advanced',
-      badge: isArabic ? 'قريباً' : 'Coming Soon',
-      comingSoon: true,
-      topics: isArabic
-        ? ['ساما', 'مكافحة غسل الأموال', 'حماية البيانات']
-        : ['SAMA', 'AML/KYC', 'Data Protection'],
-    },
-  ];
+  // Get courses from data source
+  const courses = getAllCourses();
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
@@ -91,9 +40,9 @@ export default function CourseShowcase() {
 
         {/* Courses Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {courses.map((course, index) => (
+          {courses.map((course: CourseListing, index: number) => (
             <motion.div
-              key={index}
+              key={course.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -101,62 +50,59 @@ export default function CourseShowcase() {
               className="group"
             >
               <Link
-                href={course.comingSoon ? '#' : `/${locale}${course.href}`}
-                className={`block h-full ${course.comingSoon ? 'cursor-not-allowed' : ''}`}
-                onClick={course.comingSoon ? (e) => e.preventDefault() : undefined}
+                href={course.isComingSoon ? '#' : `/${locale}/web/courses/${course.slug}`}
+                className={`block h-full ${course.isComingSoon ? 'cursor-not-allowed' : ''}`}
+                onClick={course.isComingSoon ? (e) => e.preventDefault() : undefined}
               >
                 <div
                   className={`relative bg-white rounded-3xl p-8 shadow-soft hover:shadow-hard transition-all duration-500 border-2 border-grey-100 hover:border-primary-200 h-full flex flex-col ${
-                    course.comingSoon ? 'opacity-70' : ''
+                    course.isComingSoon ? 'opacity-70' : ''
                   }`}
                 >
                   {/* Badge */}
                   <div
                     className={`absolute top-4 ${isArabic ? 'left-4' : 'right-4'} px-3 py-1 rounded-full text-xs font-bold ${
-                      course.comingSoon
+                      course.isComingSoon
                         ? 'bg-grey-200 text-grey-600'
                         : 'bg-gradient-to-r from-accent-500 to-accent-600 text-white'
                     }`}
                   >
-                    {course.badge}
+                    {course.badge[lang]}
                   </div>
 
                   {/* Icon */}
                   <div
-                    className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${course.gradient} flex items-center justify-center text-3xl text-white mb-6 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300`}
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl text-white mb-6 shadow-lg transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300"
+                    style={{ background: `linear-gradient(135deg, ${course.gradient.from}, ${course.gradient.to})` }}
                   >
                     {course.icon}
                   </div>
 
                   {/* Title */}
                   <h3 className="text-2xl font-bold text-grey-900 mb-3 group-hover:text-primary transition-colors">
-                    {course.title}
+                    {course.title[lang]}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-grey-600 mb-6 flex-grow">{course.description}</p>
+                  <p className="text-grey-600 mb-6 flex-grow">{course.description[lang]}</p>
 
                   {/* Stats */}
                   <div className="flex flex-wrap gap-3 mb-6">
                     <div className="flex items-center gap-1.5 px-3 py-1.5 bg-grey-50 rounded-lg text-sm">
                       <span>📚</span>
-                      <span className="font-semibold text-grey-700">{course.phases}</span>
-                      <span className="text-grey-500">{isArabic ? 'مراحل' : 'Phases'}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-grey-50 rounded-lg text-sm">
-                      <span>⏱️</span>
-                      <span className="font-semibold text-grey-700">{course.duration}</span>
+                      <span className="font-semibold text-grey-700">{course.modules}</span>
+                      <span className="text-grey-500">{isArabic ? 'وحدات' : 'Modules'}</span>
                     </div>
                     {course.price && (
                       <div className="flex items-center gap-1.5 px-3 py-1.5 bg-accent-50 rounded-lg text-sm">
-                        <span className="font-bold text-accent-700">{course.price} {course.currency}</span>
+                        <span className="font-bold text-accent-700">{course.price} {course.currency[lang]}</span>
                       </div>
                     )}
                   </div>
 
                   {/* Topics */}
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {course.topics.map((topic, idx) => (
+                    {course.topics[lang].map((topic, idx) => (
                       <span
                         key={idx}
                         className="px-3 py-1 text-xs font-medium bg-primary-50 text-primary-700 rounded-full"
@@ -169,10 +115,10 @@ export default function CourseShowcase() {
                   {/* CTA */}
                   <div
                     className={`flex items-center gap-2 font-semibold ${
-                      course.comingSoon ? 'text-grey-400' : 'text-primary-600 group-hover:text-primary-700'
+                      course.isComingSoon ? 'text-grey-400' : 'text-primary-600 group-hover:text-primary-700'
                     }`}
                   >
-                    {course.comingSoon ? (
+                    {course.isComingSoon ? (
                       <>
                         <span>{isArabic ? 'قريباً' : 'Coming Soon'}</span>
                         <span>🔔</span>

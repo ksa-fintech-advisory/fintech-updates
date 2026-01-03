@@ -3,28 +3,20 @@
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
+import { getFeaturedCourses, type CourseListing } from '@/data/courseData';
 
 export default function FeaturedCourses() {
   const locale = useLocale();
   const isArabic = locale === 'ar';
+  const lang = isArabic ? 'ar' : 'en';
 
-  const featuredCourse = {
-    title: isArabic ? 'أساسيات التقنية المالية' : 'Fintech Fundamentals',
-    subtitle: isArabic
-      ? 'رحلتك الشاملة من الصفر إلى الاحتراف'
-      : 'Your Complete Journey from Zero to Expert',
-    description: isArabic
-      ? 'دورة تدريبية شاملة من 11 مرحلة تغطي كل ما تحتاج لمعرفته عن التقنية المالية - من أساسيات المال والبنوك إلى بناء أنظمة الدفع الحديثة.'
-      : 'A comprehensive 11-phase training program covering everything you need to know about fintech - from the fundamentals of money and banking to building modern payment systems.',
-    phases: 11,
-    hours: '60+',
-    price: 250,
-    currency: isArabic ? 'ر.س' : 'SAR',
-    gradient: 'from-primary-600 via-primary-500 to-accent-500',
-    highlights: isArabic
-      ? ['البنوك من الداخل', 'أنظمة المدفوعات', 'المحافظ الرقمية', 'العملات الرقمية', 'الامتثال التنظيمي']
-      : ['Banking Systems', 'Payment Rails', 'Digital Wallets', 'Cryptocurrency', 'Compliance'],
-  };
+  // Get featured course from data source
+  const featuredCourses = getFeaturedCourses();
+  const featuredCourse = featuredCourses[0]; // Get the first featured course
+
+  if (!featuredCourse) {
+    return null; // No featured course available
+  }
 
   return (
     <section className="py-24 bg-white relative overflow-hidden">
@@ -63,7 +55,10 @@ export default function FeaturedCourses() {
         >
           <div className="relative bg-gradient-to-br from-grey-900 via-grey-800 to-grey-900 rounded-[2rem] overflow-hidden shadow-2xl">
             {/* Background Gradient Orbs */}
-            <div className={`absolute top-0 ${isArabic ? 'left-0' : 'right-0'} w-[400px] h-[400px] bg-gradient-to-br ${featuredCourse.gradient} rounded-full blur-[100px] opacity-30`} />
+            <div
+              className={`absolute top-0 ${isArabic ? 'left-0' : 'right-0'} w-[400px] h-[400px] rounded-full blur-[100px] opacity-30`}
+              style={{ background: `linear-gradient(135deg, ${featuredCourse.gradient.from}, ${featuredCourse.gradient.to})` }}
+            />
             <div className="absolute bottom-0 left-1/2 w-80 h-80 bg-accent-500 rounded-full blur-[80px] opacity-20" />
 
             <div className="relative z-10 p-8 md:p-12 lg:p-16">
@@ -73,34 +68,29 @@ export default function FeaturedCourses() {
                   {/* Badge */}
                   <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/20 border border-accent-400/30 text-accent-300 text-sm font-semibold mb-6">
                     <span className="w-2 h-2 bg-accent-400 rounded-full animate-pulse" />
-                    {isArabic ? 'دورة مميزة' : 'Featured Course'}
+                    {featuredCourse.badge[lang]}
                   </div>
 
                   <h3 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                    {featuredCourse.title}
+                    {featuredCourse.title[lang]}
                   </h3>
                   <p className="text-xl text-white/80 font-light mb-4">
-                    {featuredCourse.subtitle}
+                    {featuredCourse.subtitle[lang]}
                   </p>
                   <p className="text-white/60 leading-relaxed mb-8">
-                    {featuredCourse.description}
+                    {featuredCourse.description[lang]}
                   </p>
 
                   {/* Stats */}
                   <div className="flex flex-wrap gap-6 mb-8">
                     <div className="text-center">
-                      <div className="text-3xl font-bold text-white">{featuredCourse.phases}</div>
-                      <div className="text-sm text-white/60">{isArabic ? 'مراحل' : 'Phases'}</div>
-                    </div>
-                    <div className="w-px bg-white/20" />
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-white">{featuredCourse.hours}</div>
-                      <div className="text-sm text-white/60">{isArabic ? 'ساعات' : 'Hours'}</div>
+                      <div className="text-3xl font-bold text-white">{featuredCourse.modules}</div>
+                      <div className="text-sm text-white/60">{isArabic ? 'وحدات' : 'Modules'}</div>
                     </div>
                     <div className="w-px bg-white/20" />
                     <div className="text-center">
                       <div className="text-3xl font-bold text-accent-400">
-                        {featuredCourse.price} <span className="text-xl">{featuredCourse.currency}</span>
+                        {featuredCourse.price} <span className="text-xl">{featuredCourse.currency[lang]}</span>
                       </div>
                       <div className="text-sm text-white/60">{isArabic ? 'السعر' : 'Price'}</div>
                     </div>
@@ -109,7 +99,7 @@ export default function FeaturedCourses() {
                   {/* CTA Buttons */}
                   <div className="flex flex-wrap gap-4">
                     <Link
-                      href={`/${locale}/web/courses/fintech-fundamentals/register`}
+                      href={`/${locale}/web/courses/${featuredCourse.slug}/register`}
                       className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold bg-accent-500 hover:bg-accent-600 text-white shadow-lg shadow-accent-500/30 transition-all duration-300 transform hover:scale-105"
                     >
                       {isArabic ? 'سجل الآن' : 'Register Now'}
@@ -123,7 +113,7 @@ export default function FeaturedCourses() {
                       </svg>
                     </Link>
                     <Link
-                      href={`/${locale}/web/courses/fintech-fundamentals`}
+                      href={`/${locale}/web/courses/${featuredCourse.slug}`}
                       className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-sm transition-all duration-300"
                     >
                       {isArabic ? 'عرض التفاصيل' : 'View Details'}
@@ -139,14 +129,18 @@ export default function FeaturedCourses() {
                     <motion.div
                       animate={{ y: [0, -10, 0] }}
                       transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                      className="w-32 h-32 mx-auto bg-gradient-to-br from-accent-400 to-accent-600 rounded-3xl flex items-center justify-center text-6xl text-white shadow-2xl shadow-accent-500/40 mb-8"
+                      className="w-32 h-32 mx-auto rounded-3xl flex items-center justify-center text-6xl text-white shadow-2xl mb-8"
+                      style={{
+                        background: `linear-gradient(135deg, ${featuredCourse.gradient.from}, ${featuredCourse.gradient.to})`,
+                        boxShadow: `0 25px 50px -12px ${featuredCourse.gradient.from}66`
+                      }}
                     >
-                      📚
+                      {featuredCourse.icon}
                     </motion.div>
 
                     {/* Topic Pills */}
                     <div className="flex flex-wrap justify-center gap-3">
-                      {featuredCourse.highlights.map((topic, index) => (
+                      {featuredCourse.topics[lang].map((topic, index) => (
                         <motion.span
                           key={index}
                           initial={{ opacity: 0, scale: 0.8 }}

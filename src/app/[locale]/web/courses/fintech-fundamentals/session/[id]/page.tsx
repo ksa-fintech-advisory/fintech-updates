@@ -203,9 +203,9 @@ export default async function SessionDetailPage({
             {sessionId > 1 ? (
               <Link
                 href={`/${locale}/web/courses/fintech-fundamentals/session/${sessionId - 1}`}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-grey-100 text-grey-700 hover:bg-grey-200 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-grey-100 text-grey-700 hover:bg-grey-200 transition-colors"
               >
-                <span className={`inline-block ${isArabic ? 'transform rotate-180' : ''}`}>←</span>
+                <span>→</span>
                 <span>{isArabic ? 'الجلسة السابقة' : 'Previous Session'}</span>
               </Link>
             ) : (
@@ -215,16 +215,16 @@ export default async function SessionDetailPage({
             {sessionId < 4 ? (
               <Link
                 href={`/${locale}/web/courses/fintech-fundamentals/session/${sessionId + 1}`}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl text-white hover:shadow-lg transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white hover:shadow-lg transition-all"
                 style={gradientStyle}
               >
                 <span>{isArabic ? 'الجلسة التالية' : 'Next Session'}</span>
-                <span className={`inline-block ${isArabic ? 'transform rotate-180' : ''}`}>→</span>
+                <span>←</span>
               </Link>
             ) : (
               <Link
                 href={`/${locale}/web/courses/fintech-fundamentals#register`}
-                className="flex items-center gap-2 px-6 py-3 rounded-xl text-white hover:shadow-lg transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white hover:shadow-lg transition-all"
                 style={gradientStyle}
               >
                 <span>{isArabic ? 'سجل الآن' : 'Register Now'}</span>
