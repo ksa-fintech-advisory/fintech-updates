@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   },
   description: 'Your gateway to Arab FinTech - covering innovations, regulations, and trends across the Arab world. From Saudi Arabia to the UAE, Egypt, and beyond. Comprehensive insights on digital banking, blockchain, payments, and financial technology.',
   keywords: ['Saudi Arabia', 'FinTech', 'Digital Banking', 'SAMA', 'Mada', 'Payment Systems', 'Blockchain', 'Financial Technology', 'Vision 2030', 'Innovation'],
-  authors: [{ name: 'Arab Fintech' }],
+  authors: [{ name: 'Arab Fintech Team' }],
   creator: 'Arab Fintech',
   publisher: 'Arab Fintech',
   formatDetection: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL as string),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://arab-fintech.com'),
   alternates: {
     canonical: '/',
     languages: {
@@ -40,12 +40,19 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
         alt: 'Arab Fintech',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Arab Fintech | فنتك العرب',
+    description: 'Your gateway to Arab FinTech - covering innovations, regulations, and trends across the Arab world.',
+    images: ['/og-image.png'],
+    creator: '@ArabFintech',
   },
   robots: {
     index: true, // Website should be indexed
