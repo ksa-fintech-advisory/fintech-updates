@@ -12,17 +12,25 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('🌱 Starting seed...');
 
-  // Check if seeding is already done
-  const count = await prisma.blog.count();
-  if (count > 0) {
-    console.log('🛑 Database already seeded. Skipping...');
-    return;
-  }
+  // // Check if seeding is already done
+  // const count = await prisma.blog.count();
+  // if (count > 0) {
+  //   console.log('🛑 Database already seeded. Skipping...');
+  //   return;
+  // }
 
  
   // Seed authors
   console.log('👤 Seeding authors...');
   const authorMap = new Map<string, string>();
+
+  await prisma.update.deleteMany();
+  await prisma.blog.deleteMany();
+  await prisma.blogCategory.deleteMany();
+  await prisma.author.deleteMany();
+  await prisma.statistic.deleteMany();
+  await prisma.hero.deleteMany();
+
   
   // Get unique authors from blogs
   const uniqueAuthors = Array.from(
@@ -287,12 +295,12 @@ async function main() {
   await prisma.hero.create({
     data: {
       name: 'Default Hero',
-      titleEn: 'Empowering Financial Innovation',
-      titleAr: 'تمكين الابتكار المالي',
-      subtitleEn: 'Expert Advisory for Saudi Fintech Companies',
-      subtitleAr: 'استشارات متخصصة لشركات التقنية المالية السعودية',
-      descriptionEn: 'Navigate regulatory compliance, optimize operations, and accelerate growth in the Saudi financial technology sector',
-      descriptionAr: 'تنقل عبر الامتثال التنظيمي، وحسّن العمليات، وسرّع النمو في قطاع التقنية المالية السعودي',
+      titleEn: 'Empowering Arab Financial Innovation',
+      titleAr: 'تمكين الابتكار المالي العربي',
+      subtitleEn: 'Expert Advisory for Arab Fintech Companies',
+      subtitleAr: 'استشارات متخصصة لشركات التقنية المالية العربية',
+      descriptionEn: 'Navigate regulatory compliance, optimize operations, and accelerate growth in the Arab financial technology sector',
+      descriptionAr: 'تنقل عبر الامتثال التنظيمي، وحسّن العمليات، وسرّع النمو في قطاع التقنية المالية العربي',
       ctaButtons: JSON.stringify([
         {
           labelEn: 'Get Started',

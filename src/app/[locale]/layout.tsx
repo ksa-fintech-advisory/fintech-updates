@@ -10,20 +10,20 @@ import '@/core/theme/globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Saudi FinTech Updates | Latest News & Insights',
-    template: '%s | Saudi FinTech Updates',
+    default: 'Arab Fintech | فنتك العرب',
+    template: '%s | Arab Fintech',
   },
-  description: 'Stay updated with the latest FinTech innovations, regulatory updates, and industry trends shaping Saudi Arabia\'s digital financial future. Comprehensive coverage of SAMA regulations, digital banking, blockchain, and payment technologies.',
+  description: 'Your gateway to Arab FinTech - covering innovations, regulations, and trends across the Arab world. From Saudi Arabia to the UAE, Egypt, and beyond. Comprehensive insights on digital banking, blockchain, payments, and financial technology.',
   keywords: ['Saudi Arabia', 'FinTech', 'Digital Banking', 'SAMA', 'Mada', 'Payment Systems', 'Blockchain', 'Financial Technology', 'Vision 2030', 'Innovation'],
-  authors: [{ name: 'FinTech Updates' }],
-  creator: 'FinTech Updates',
-  publisher: 'FinTech Updates',
+  authors: [{ name: 'Arab Fintech Team' }],
+  creator: 'Arab Fintech',
+  publisher: 'Arab Fintech',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL as string),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://arab-fintech.com'),
   alternates: {
     canonical: '/',
     languages: {
@@ -32,20 +32,27 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Saudi FinTech Updates | Latest News & Insights',
-    description: 'Your trusted source for comprehensive coverage of FinTech innovations and regulatory updates in Saudi Arabia.',
+    title: 'Arab Fintech | فنتك العرب',
+    description: 'Your gateway to Arab FinTech - covering innovations, regulations, and trends across the Arab world.',
     url: '/',
-    siteName: 'Saudi FinTech Updates',
+    siteName: 'Arab Fintech',
     locale: 'en',
     type: 'website',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Saudi FinTech Updates',
+        alt: 'Arab Fintech',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Arab Fintech | فنتك العرب',
+    description: 'Your gateway to Arab FinTech - covering innovations, regulations, and trends across the Arab world.',
+    images: ['/og-image.png'],
+    creator: '@ArabFintech',
   },
   robots: {
     index: true, // Website should be indexed

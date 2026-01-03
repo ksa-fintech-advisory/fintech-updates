@@ -27,8 +27,8 @@ export default async function UpdatesListingPage({ params }: UpdatesListingPageP
                   </h1>
                   <p className="text-xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
                       {isArabic 
-                          ? 'مصدرك الموثوق لآخر التشريعات التنظيمية وتحديثات قطاع التقنية المالية'
-                          : 'Your trusted source for the latest regulatory frameworks and fintech developments'}
+                          ? 'بوابتك لآخر التشريعات التنظيمية وتحديثات قطاع التقنية المالية العربية'
+                          : 'Your gateway to the latest regulatory frameworks and Arab fintech developments'}
                   </p>
         </div>
       </section>

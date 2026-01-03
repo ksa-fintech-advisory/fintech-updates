@@ -2,16 +2,16 @@ import { AboutUsContent } from '@/core/types/web/aboutUs';
 
 export const aboutUsData: AboutUsContent = {
   mission: {
-    en: 'To provide comprehensive, accurate, and timely coverage of the Saudi FinTech ecosystem, empowering stakeholders with the insights they need to make informed decisions.',
-    ar: 'تقديم تغطية شاملة ودقيقة وفي الوقت المناسب للنظام البيئي للتقنية المالية السعودية، وتمكين أصحاب المصلحة بالرؤى التي يحتاجونها لاتخاذ قرارات مستنيرة.',
+    en: 'To provide comprehensive, accurate, and timely coverage of the Arab FinTech ecosystem, empowering stakeholders across the Arab world with the insights they need to make informed decisions.',
+    ar: 'تقديم تغطية شاملة ودقيقة وفي الوقت المناسب للنظام البيئي للتقنية المالية العربية، وتمكين أصحاب المصلحة في العالم العربي بالرؤى التي يحتاجونها لاتخاذ قرارات مستنيرة.',
   },
   vision: {
-    en: 'To be the most trusted and authoritative source of FinTech information in Saudi Arabia, contributing to the Kingdom\'s Vision 2030 digital transformation goals.',
-    ar: 'أن نكون المصدر الأكثر موثوقية وسلطة لمعلومات التقنية المالية في المملكة العربية السعودية، مساهمين في أهداف التحول الرقمي لرؤية المملكة 2030.',
+    en: 'To be the most trusted and authoritative source of FinTech information in the Arab world, connecting innovators, regulators, and investors across the region.',
+    ar: 'أن نكون المصدر الأكثر موثوقية وسلطة لمعلومات التقنية المالية في العالم العربي، وربط المبتكرين والجهات التنظيمية والمستثمرين في جميع أنحاء المنطقة.',
   },
   description: {
-    en: 'We are a dedicated team of FinTech experts, journalists, and analysts committed to delivering high-quality content that covers the rapidly evolving landscape of financial technology in Saudi Arabia. Our deep understanding of local regulations, market dynamics, and technological trends enables us to provide unique insights that matter to industry professionals, investors, entrepreneurs, and regulators.',
-    ar: 'نحن فريق متخصص من خبراء التقنية المالية والصحفيين والمحللين الملتزمين بتقديم محتوى عالي الجودة يغطي المشهد السريع التطور للتكنولوجيا المالية في المملكة العربية السعودية. يمكننا فهمنا العميق للوائح المحلية وديناميكيات السوق والاتجاهات التكنولوجية من تقديم رؤى فريدة تهم المهنيين في الصناعة والمستثمرين ورواد الأعمال والجهات التنظيمية.',
+    en: 'We are a dedicated team of FinTech experts, journalists, and analysts committed to delivering high-quality content that covers the rapidly evolving landscape of financial technology across the Arab world. Our deep understanding of regional regulations, market dynamics, and technological trends enables us to provide unique insights that matter to industry professionals, investors, entrepreneurs, and regulators.',
+    ar: 'نحن فريق متخصص من خبراء التقنية المالية والصحفيين والمحللين الملتزمين بتقديم محتوى عالي الجودة يغطي المشهد السريع التطور للتكنولوجيا المالية في العالم العربي. يمكننا فهمنا العميق للوائح الإقليمية وديناميكيات السوق والاتجاهات التكنولوجية من تقديم رؤى فريدة تهم المهنيين في الصناعة والمستثمرين ورواد الأعمال والجهات التنظيمية.',
   },
   values: [
     {
