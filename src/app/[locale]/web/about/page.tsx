@@ -2,6 +2,7 @@
 import { aboutUsApiService } from '@/services/api/aboutUsApi';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
+import { getTranslations } from 'next-intl/server';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
 
 const Network3D = dynamic(() => import('@/core/components/web/about/Network3D'), { ssr: false });
@@ -10,6 +11,9 @@ export default async function AboutPage({ params }: { params: { locale: string }
   const { locale } = params;
   const content = await aboutUsApiService.getAboutUsContent(locale);
   const isArabic = locale === 'ar';
+
+  // Load translations
+  const t = await getTranslations('web.about');
 
   return (
     <div className="w-full">
@@ -34,16 +38,14 @@ export default async function AboutPage({ params }: { params: { locale: string }
             <AnimatedSection direction="up" delay={0.2}>
               <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
                 <span className="bg-gradient-to-r from-white via-accent-200 to-white bg-clip-text text-transparent drop-shadow-xl">
-                  {isArabic ? 'من نحن' : 'About Us'}
+                  {t('title')}
                 </span>
               </h1>
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.4}>
               <p className="text-xl md:text-3xl text-white/90 font-light max-w-3xl mx-auto leading-relaxed">
-                {isArabic
-                  ? 'بوابتك لعالم التقنية المالية العربية'
-                  : 'Your gateway to Arab FinTech insights and analysis'}
+                {t('subtitle')}
               </p>
             </AnimatedSection>
           </div>
@@ -57,7 +59,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
         </div>
       </section>
 
-      {/* Author Profile Section - Enhanced */}
+      {/* Team/Profile Section - Enhanced */}
       <section className="py-24 bg-white relative overflow-hidden">
         {/* Background Decoration */}
         <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary-50/50 to-transparent opacity-40 pointer-events-none"></div>
@@ -69,26 +71,27 @@ export default async function AboutPage({ params }: { params: { locale: string }
                 {/* Decorative Gradient Blob */}
                 <div className="absolute -top-24 -right-24 w-64 h-64 bg-accent-100 rounded-full blur-3xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
 
-                {/* Avatar with Animation */}
+                {/* Brand Logo/Icon with Animation */}
                 <div className="relative flex-shrink-0">
-                  <div className="w-48 h-48 bg-gradient-to-br from-primary-600 to-accent-600 rounded-full flex items-center justify-center text-white text-6xl font-bold shadow-2xl transform group-hover:scale-105 group-hover:rotate-3 transition-all duration-500 relative z-10 border-4 border-white">
-                    MA
+                  <div className="w-48 h-48 bg-gradient-to-br from-primary-600 to-accent-600 rounded-[2rem] flex items-center justify-center text-white text-7xl font-bold shadow-2xl transform group-hover:scale-105 group-hover:rotate-3 transition-all duration-500 relative z-10 border-4 border-white">
+                    {isArabic ? 'ف' : 'F'}
                   </div>
                   {/* Decorative Rings */}
-                  <div className="absolute inset-0 border-2 border-primary-200 rounded-full animate-ping opacity-20" style={{ animationDuration: '3s' }}></div>
-                  <div className="absolute -inset-4 border border-accent-200 rounded-full opacity-30 scale-110"></div>
+                  <div className="absolute inset-0 border-2 border-primary-200 rounded-[2rem] animate-ping opacity-20" style={{ animationDuration: '3s' }}></div>
+                  <div className="absolute -inset-4 border border-accent-200 rounded-[2.5rem] opacity-30 scale-110"></div>
                 </div>
 
                 {/* Content */}
                 <div className="flex-1 text-center md:text-left relative z-10">
-                  <h2 className="text-4xl md:text-5xl font-bold text-grey-900 mb-4 tracking-tight">Mohammed Abdo</h2>
-                  <p className="text-2xl text-accent-600 mb-6 font-semibold tracking-wide">
-                    {isArabic ? 'خبير التقنية المالية ومحلل الصناعة' : 'FinTech Expert & Industry Analyst'}
+                  <h2 className="text-4xl md:text-5xl font-bold text-grey-900 mb-4 tracking-tight">
+                    {t('authorName')}
+                  </h2>
+                  <p className="text-2xl text-accent-600 mb-8 font-semibold tracking-wide flex items-center justify-center md:justify-start gap-2">
+                    <span className="w-8 h-0.5 bg-accent-600 rounded-full"></span>
+                    {t('authorTitle')}
                   </p>
                   <p className="text-grey-600 leading-relaxed text-lg md:text-xl font-light">
-                    {isArabic
-                      ? 'محترف متمرس في مجال التقنية المالية مع خبرة واسعة في مشهد التكنولوجيا المالية السعودية. متخصص في الامتثال التنظيمي، وابتكارات الخدمات المصرفية الرقمية، وتقنيات الدفع الناشئة، أقدم تحليلات عميقة ورؤى حول النظام البيئي للتقنية المالية سريع التطور في المملكة وعبر منطقة دول مجلس التعاون الخليجي.'
-                      : 'A seasoned FinTech professional with extensive experience in the Saudi financial technology landscape. Specializing in regulatory compliance, digital banking innovations, and emerging payment technologies, I provide in-depth analysis and insights into the rapidly evolving FinTech ecosystem in the Kingdom and across the GCC region.'}
+                    {t('authorBio')}
                   </p>
                 </div>
               </div>

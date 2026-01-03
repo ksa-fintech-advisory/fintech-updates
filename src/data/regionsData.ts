@@ -15,48 +15,48 @@ export const regions: Region[] = [
     flag: '🇸🇦',
     isActive: true,
   },
-  {
-    id: 'region-ae',
-    code: 'ae',
-    name: { en: 'UAE', ar: 'الإمارات' },
-    flag: '🇦🇪',
-    isActive: false, // Coming soon
-  },
-  {
-    id: 'region-eg',
-    code: 'eg',
-    name: { en: 'Egypt', ar: 'مصر' },
-    flag: '🇪🇬',
-    isActive: false, // Coming soon
-  },
-  {
-    id: 'region-bh',
-    code: 'bh',
-    name: { en: 'Bahrain', ar: 'البحرين' },
-    flag: '🇧🇭',
-    isActive: false, // Coming soon
-  },
-  {
-    id: 'region-kw',
-    code: 'kw',
-    name: { en: 'Kuwait', ar: 'الكويت' },
-    flag: '🇰🇼',
-    isActive: false, // Coming soon
-  },
-  {
-    id: 'region-qa',
-    code: 'qa',
-    name: { en: 'Qatar', ar: 'قطر' },
-    flag: '🇶🇦',
-    isActive: false, // Coming soon
-  },
-  {
-    id: 'region-om',
-    code: 'om',
-    name: { en: 'Oman', ar: 'عمان' },
-    flag: '🇴🇲',
-    isActive: false, // Coming soon
-  },
+  // {
+  //   id: 'region-ae',
+  //   code: 'ae',
+  //   name: { en: 'UAE', ar: 'الإمارات' },
+  //   flag: '🇦🇪',
+  //   isActive: false, // Coming soon
+  // },
+  // {
+  //   id: 'region-eg',
+  //   code: 'eg',
+  //   name: { en: 'Egypt', ar: 'مصر' },
+  //   flag: '🇪🇬',
+  //   isActive: false, // Coming soon
+  // },
+  // {
+  //   id: 'region-bh',
+  //   code: 'bh',
+  //   name: { en: 'Bahrain', ar: 'البحرين' },
+  //   flag: '🇧🇭',
+  //   isActive: false, // Coming soon
+  // },
+  // {
+  //   id: 'region-kw',
+  //   code: 'kw',
+  //   name: { en: 'Kuwait', ar: 'الكويت' },
+  //   flag: '🇰🇼',
+  //   isActive: false, // Coming soon
+  // },
+  // {
+  //   id: 'region-qa',
+  //   code: 'qa',
+  //   name: { en: 'Qatar', ar: 'قطر' },
+  //   flag: '🇶🇦',
+  //   isActive: false, // Coming soon
+  // },
+  // {
+  //   id: 'region-om',
+  //   code: 'om',
+  //   name: { en: 'Oman', ar: 'عمان' },
+  //   flag: '🇴🇲',
+  //   isActive: false, // Coming soon
+  // },
 ];
 
 // Helper functions
