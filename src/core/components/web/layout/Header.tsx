@@ -3,9 +3,10 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import ProductsMegaMenu from './ProductsMegaMenu';
 import CoursesMegaMenu from './CoursesMegaMenu';
+import { getAllCourses } from '@/data/courseData';
 
 export default function Header() {
   const t = useTranslations();
@@ -18,6 +19,8 @@ export default function Header() {
   const otherLocale = locale === 'en' ? 'ar' : 'en';
   const currentPath = pathname.replace(`/${locale}`, '');
   const isArabic = locale === 'ar';
+  const lang = isArabic ? 'ar' : 'en';
+  const courses = getAllCourses();
 
   const navItems = [
     { href: '/web/home', label: t('common.nav.home'), key: 'home' },
@@ -211,13 +214,30 @@ export default function Header() {
                         )}
                         {item.key === 'courses' && (
                           <>
-                            <Link href={`/${locale}/web/courses/fintech-fundamentals`} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 text-grey-700 hover:text-primary hover:bg-white rounded-lg mx-2 transition-colors">
-                              <span className="w-8 h-8 rounded-lg bg-primary-100 text-primary-600 flex items-center justify-center text-sm">📚</span>
-                              <div>
-                                <span className="font-medium block">{isArabic ? 'أساسيات التقنية المالية' : 'Fintech Fundamentals'}</span>
-                                <span className="text-xs text-grey-500">{isArabic ? '11 مرحلة • 250 ر.س' : '11 Phases • 250 SAR'}</span>
-                              </div>
-                            </Link>
+                            {courses.filter(c => !c.isComingSoon).map(course => (
+                              <Link
+                                key={course.id}
+                                href={`/${locale}/web/courses/${course.slug}`}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="flex items-center gap-3 px-4 py-3 text-grey-700 hover:text-primary hover:bg-white rounded-lg mx-2 transition-colors"
+                              >
+                                <span
+                                  className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
+                                  style={{
+                                    backgroundColor: `${course.gradient.from}22`,
+                                    color: course.gradient.from
+                                  }}
+                                >
+                                  {course.icon}
+                                </span>
+                                <div>
+                                  <span className="font-medium block">{course.title[lang]}</span>
+                                  <span className="text-xs text-grey-500">
+                                    {course.modules} {isArabic ? 'وحدات' : 'Modules'} • {course.price} {course.currency[lang]}
+                                  </span>
+                                </div>
+                              </Link>
+                            ))}
                             <div className="border-t border-grey-200 mt-2 pt-2 mx-2">
                               <Link href={`/${locale}/web/courses`} onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-center gap-2 py-2 text-primary font-semibold text-sm">
                                 {isArabic ? 'عرض كل الدورات' : 'View All Courses'}

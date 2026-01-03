@@ -1,0 +1,1378 @@
+{
+  "courseInfo": {
+    "title": {
+      "ar": "دورة أساسيات التقنية المالية - السوق السعودي",
+      "en": "Fintech Fundamentals Course - Saudi Market"
+    },
+    "duration": {
+      "ar": "شهر واحد (4 أسابيع)",
+      "en": "One Month (4 Weeks)"
+    },
+    "sessionsCount": 4,
+    "sessionDuration": {
+      "ar": "ساعتان",
+      "en": "2 Hours"
+    },
+    "targetAudience": {
+      "ar": "خريجو المالية، المصرفية، هندسة البرمجيات",
+      "en": "Finance, Banking, Software Engineering Graduates"
+    }
+  },
+  "sessions": [
+    {
+      "sessionNumber": 1,
+      "title": {
+        "ar": "مقدمة في التقنية المالية والنظام المصرفي",
+        "en": "Introduction to Fintech and Banking System"
+      },
+      "duration": "2 hours",
+      "objectives": {
+        "ar": [
+          "فهم ماهية التقنية المالية ونطاقها",
+          "معرفة تطور القطاع المالي من التقليدي للرقمي",
+          "فهم النظام المصرفي التقليدي وتحدياته",
+          "التعرف على النظام البيئي للتقنية المالية في السعودية"
+        ],
+        "en": [
+          "Understanding what Fintech is and its scope",
+          "Learning the evolution from traditional to digital finance",
+          "Understanding traditional banking system and its challenges",
+          "Exploring the Saudi Fintech ecosystem"
+        ]
+      },
+      "topics": [
+        {
+          "title": {
+            "ar": "ما هي التقنية المالية؟",
+            "en": "What is Fintech?"
+          },
+          "duration": "30 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "التعريف والنطاق",
+                "en": "Definition and Scope"
+              },
+              "details": {
+                "ar": [
+                  "تعريف التقنية المالية",
+                  "القطاعات الرئيسية: المدفوعات، الإقراض، إدارة الثروات، الخدمات المصرفية الرقمية، التأمين الرقمي، تقنيات الاستثمار، البلوكتشين"
+                ],
+                "en": [
+                  "Fintech definition",
+                  "Main sectors: Payments, Lending, Wealth Management, Digital Banking, Insurtech, Investment Tech, Blockchain"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "التطور التاريخي",
+                "en": "Historical Evolution"
+              },
+              "details": {
+                "ar": [
+                  "Fintech 1.0 (1866-1967): البنية التحتية التقليدية",
+                  "Fintech 2.0 (1967-2008): الرقمنة - ATM، Online Banking",
+                  "Fintech 3.0 (2008-الآن): الثورة الرقمية - Smartphones، APIs، البنوك الرقمية",
+                  "التطور في السعودية (2017-2026)"
+                ],
+                "en": [
+                  "Fintech 1.0 (1866-1967): Traditional infrastructure",
+                  "Fintech 2.0 (1967-2008): Digitization - ATM, Online Banking",
+                  "Fintech 3.0 (2008-Now): Digital revolution - Smartphones, APIs, Digital Banks",
+                  "Evolution in Saudi Arabia (2017-2026)"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "حجم السوق والنمو",
+                "en": "Market Size and Growth"
+              },
+              "details": {
+                "ar": [
+                  "حجم سوق Fintech العالمي: $312 مليار",
+                  "السوق السعودي: 82+ شركة مرخصة",
+                  "حجم المعاملات الرقمية: 1.2 تريليون ريال",
+                  "مستخدمي المحافظ الرقمية: 15+ مليون"
+                ],
+                "en": [
+                  "Global Fintech market: $312 billion",
+                  "Saudi market: 82+ licensed companies",
+                  "Digital transactions: 1.2 trillion SAR",
+                  "Digital wallet users: 15+ million"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "ar": "النظام المصرفي التقليدي في السعودية",
+            "en": "Traditional Banking System in Saudi Arabia"
+          },
+          "duration": "35 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "البنية المصرفية السعودية",
+                "en": "Saudi Banking Structure"
+              },
+              "details": {
+                "ar": [
+                  "البنك المركزي السعودي (ساما - SAMA)",
+                  "هيئة السوق المالية (CMA)",
+                  "البنوك: 24 بنك (13 محلي + 11 أجنبي)",
+                  "أنظمة المدفوعات: مدى، سداد، سريع"
+                ],
+                "en": [
+                  "Saudi Central Bank (SAMA)",
+                  "Capital Market Authority (CMA)",
+                  "Banks: 24 banks (13 local + 11 foreign)",
+                  "Payment systems: MADA, SADAD, SARIE"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "البنية التقنية للبنوك التقليدية",
+                "en": "Technical Infrastructure of Traditional Banks"
+              },
+              "details": {
+                "ar": [
+                  "Core Banking Systems (Temenos, Oracle, SAP)",
+                  "أنظمة فرعية منفصلة (Silos)",
+                  "المشاكل: أنظمة قديمة، صعوبة التكامل، بطء، تكلفة عالية"
+                ],
+                "en": [
+                  "Core Banking Systems (Temenos, Oracle, SAP)",
+                  "Siloed subsystems",
+                  "Problems: Legacy systems, integration difficulty, slow, high cost"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "تحديات النموذج التقليدي",
+                "en": "Traditional Model Challenges"
+              },
+              "details": {
+                "ar": [
+                  "تكلفة تشغيل فرع: 2-4 مليون ريال/سنة",
+                  "فتح حساب: 1-3 أيام",
+                  "إطلاق منتج جديد: 12-24 شهر",
+                  "مثال عملي: الحصول على قرض (2-4 أسابيع vs 10-15 دقيقة)"
+                ],
+                "en": [
+                  "Branch operation cost: 2-4 million SAR/year",
+                  "Account opening: 1-3 days",
+                  "New product launch: 12-24 months",
+                  "Practical example: Getting a loan (2-4 weeks vs 10-15 minutes)"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "ar": "النظام البيئي للتقنية المالية في السعودية",
+            "en": "Saudi Fintech Ecosystem"
+          },
+          "duration": "40 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "رؤية 2030 والتحول الرقمي",
+                "en": "Vision 2030 and Digital Transformation"
+              },
+              "details": {
+                "ar": [
+                  "رفع نسبة المعاملات غير النقدية إلى 70%",
+                  "زيادة مساهمة القطاع المالي إلى 12%",
+                  "رفع الشمول المالي إلى 80%",
+                  "المبادرات: Fintech Saudi، SAMA Fintech Lab، برنامج التسريع"
+                ],
+                "en": [
+                  "Raise non-cash transactions to 70%",
+                  "Increase financial sector contribution to 12%",
+                  "Raise financial inclusion to 80%",
+                  "Initiatives: Fintech Saudi, SAMA Fintech Lab, Accelerator Program"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "خريطة الشركات في السعودية",
+                "en": "Saudi Companies Map"
+              },
+              "details": {
+                "ar": [
+                  "المدفوعات: STC Pay، Hala، urpay، Paylink",
+                  "BNPL: Tamara، Tabby، Spotii",
+                  "الإقراض: Lendo، Mada، Qoyod",
+                  "Insurtech: Tameeni، Salama، Najm",
+                  "Wealthtech: Wahed، Derayah، Scopeer",
+                  "البنية التحتية: Lean Technologies، Geidea، Rewaa"
+                ],
+                "en": [
+                  "Payments: STC Pay, Hala, urpay, Paylink",
+                  "BNPL: Tamara, Tabby, Spotii",
+                  "Lending: Lendo, Mada, Qoyod",
+                  "Insurtech: Tameeni, Salama, Najm",
+                  "Wealthtech: Wahed, Derayah, Scopeer",
+                  "Infrastructure: Lean Technologies, Geidea, Rewaa"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "النموذج الحالي vs المستقبل",
+                "en": "Current vs Future Model"
+              },
+              "details": {
+                "ar": [
+                  "من البنك المسيطر إلى النظام البيئي المفتوح",
+                  "من التركيز على المنتج إلى التركيز على العميل",
+                  "من المعاملات المعقدة إلى التجربة السلسة",
+                  "من ساعات العمل المحددة إلى متاح 24/7"
+                ],
+                "en": [
+                  "From controlling bank to open ecosystem",
+                  "From product-focus to customer-focus",
+                  "From complex transactions to seamless experience",
+                  "From fixed hours to 24/7 availability"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "ar": "مستقبل القطاع المالي السعودي",
+            "en": "Future of Saudi Financial Sector"
+          },
+          "duration": "15 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "الاتجاهات الرئيسية",
+                "en": "Main Trends"
+              },
+              "details": {
+                "ar": [
+                  "Open Banking (البنوك المفتوحة)",
+                  "Embedded Finance (المالية المدمجة)",
+                  "Super Apps",
+                  "AI-Powered Finance"
+                ],
+                "en": [
+                  "Open Banking",
+                  "Embedded Finance",
+                  "Super Apps",
+                  "AI-Powered Finance"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "resources": {
+        "ar": [
+          "تقرير ساما للتقنية المالية 2023",
+          "رؤية 2030 - القطاع المالي",
+          "The Saudi Fintech Ecosystem - Fintech Saudi"
+        ],
+        "en": [
+          "SAMA Fintech Report 2023",
+          "Vision 2030 - Financial Sector",
+          "The Saudi Fintech Ecosystem - Fintech Saudi"
+        ]
+      },
+      "links": [
+        "https://www.sama.gov.sa",
+        "https://cma.org.sa",
+        "https://fintechsaudi.com",
+        "https://vision2030.gov.sa"
+      ]
+    },
+    {
+      "sessionNumber": 2,
+      "title": {
+        "ar": "الأنظمة والامتثال في السوق السعودي",
+        "en": "Regulations and Compliance in Saudi Market"
+      },
+      "duration": "2 hours",
+      "objectives": {
+        "ar": [
+          "فهم المتطلبات التنظيمية لشركات التقنية المالية",
+          "معرفة الأنظمة السعودية الأساسية (PDPL, AML, CTF)",
+          "التعرف على متطلبات CMA وSAMA",
+          "فهم عملية الترخيص والامتثال"
+        ],
+        "en": [
+          "Understanding regulatory requirements for Fintech companies",
+          "Learning Saudi regulations (PDPL, AML, CTF)",
+          "Exploring CMA and SAMA requirements",
+          "Understanding licensing and compliance process"
+        ]
+      },
+      "topics": [
+        {
+          "title": {
+            "ar": "الإطار التنظيمي في السعودية",
+            "en": "Regulatory Framework in Saudi Arabia"
+          },
+          "duration": "45 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "الجهات التنظيمية وصلاحياتها",
+                "en": "Regulatory Authorities and Powers"
+              },
+              "details": {
+                "ar": [
+                  "ساما (SAMA): البنوك، المدفوعات، التحويلات، الإقراض",
+                  "هيئة السوق المالية (CMA): الأوراق المالية، التمويل الجماعي، Robo-Advisors"
+                ],
+                "en": [
+                  "SAMA: Banks, Payments, Transfers, Lending",
+                  "CMA: Securities, Crowdfunding, Robo-Advisors"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "تراخيص SAMA للتقنية المالية",
+                "en": "SAMA Fintech Licenses"
+              },
+              "details": {
+                "ar": [
+                  "ترخيص المدفوعات (PSP): رأس مال 5-50 مليون ريال، مدة 6-12 شهر",
+                  "ترخيص الإقراض: رأس مال 30-100 مليون ريال، تكامل مع SIMAH",
+                  "ترخيص الصرافة/التحويلات: رأس مال 10+ مليون ريال",
+                  "خطوات الترخيص: طلب أولي → تقييم → مستندات → مراجعة → Sandbox → ترخيص نهائي"
+                ],
+                "en": [
+                  "Payment License (PSP): Capital 5-50M SAR, duration 6-12 months",
+                  "Lending License: Capital 30-100M SAR, SIMAH integration",
+                  "Money Exchange License: Capital 10+M SAR",
+                  "Licensing steps: Initial → Assessment → Documents → Review → Sandbox → Final"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "متطلبات CMA للاستثمار والتداول",
+                "en": "CMA Requirements for Investment and Trading"
+              },
+              "details": {
+                "ar": [
+                  "التمويل الجماعي: رأس مال 5+ مليون ريال، حد استثمار 100K ريال/سنة",
+                  "Robo-Advisors: ترخيص المشورة، رأس مال 5-10 مليون ريال، خوارزميات معتمدة",
+                  "منصات مرخصة: Scopeer، Manafa، Fundable، Wahed"
+                ],
+                "en": [
+                  "Crowdfunding: Capital 5+M SAR, investment limit 100K SAR/year",
+                  "Robo-Advisors: Advisory license, capital 5-10M SAR, approved algorithms",
+                  "Licensed platforms: Scopeer, Manafa, Fundable, Wahed"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "ar": "الأنظمة الأساسية للامتثال",
+            "en": "Core Compliance Regulations"
+          },
+          "duration": "50 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "نظام حماية البيانات الشخصية (PDPL)",
+                "en": "Personal Data Protection Law (PDPL)"
+              },
+              "details": {
+                "ar": [
+                  "البيانات المحمية: هوية، مالية، موقع، رقمية، صحية، بيومترية",
+                  "المبادئ: الموافقة، الحد الأدنى، الأمان، الشفافية، حق الوصول والحذف",
+                  "المتطلبات: موافقة صريحة، تشفير، سياسة خصوصية واضحة",
+                  "العقوبات: غرامات حتى 3 مليون ريال، إيقاف الخدمة"
+                ],
+                "en": [
+                  "Protected data: Identity, Financial, Location, Digital, Health, Biometric",
+                  "Principles: Consent, Minimization, Security, Transparency, Access & Deletion rights",
+                  "Requirements: Explicit consent, encryption, clear privacy policy",
+                  "Penalties: Fines up to 3M SAR, service suspension"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "مكافحة غسل الأموال وتمويل الإرهاب (AML/CTF)",
+                "en": "Anti-Money Laundering & Counter Terrorist Financing"
+              },
+              "details": {
+                "ar": [
+                  "KYC: التحقق من الهوية (أبشر/Nafath)، معلومات الاتصال، مصدر الأموال",
+                  "مراقبة المعاملات: مبالغ كبيرة، تحويلات متكررة، دول عالية المخاطر، أنماط غير طبيعية",
+                  "SAR: الإبلاغ عن المعاملات المشبوهة خلال 15 يوم",
+                  "Sanctions Screening: فحص قوائم UN، OFAC، EU، السعودية",
+                  "العقوبات: غرامات حتى 50 مليون ريال، سحب الترخيص، سجن"
+                ],
+                "en": [
+                  "KYC: Identity verification (Absher/Nafath), contact info, source of funds",
+                  "Transaction monitoring: Large amounts, frequent transfers, high-risk countries, unusual patterns",
+                  "SAR: Report suspicious activities within 15 days",
+                  "Sanctions Screening: Check UN, OFAC, EU, Saudi lists",
+                  "Penalties: Fines up to 50M SAR, license revocation, imprisonment"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "متطلبات أخرى",
+                "en": "Other Requirements"
+              },
+              "details": {
+                "ar": [
+                  "أمن المعلومات: ISO 27001، PCI DSS، SAMA Cybersecurity Framework",
+                  "إعداد التقارير: شهرية، ربع سنوية، سنوية",
+                  "حماية المستهلك: شفافية الرسوم، آلية شكاوى، رد خلال 15 يوم"
+                ],
+                "en": [
+                  "Cybersecurity: ISO 27001, PCI DSS, SAMA Cybersecurity Framework",
+                  "Reporting: Monthly, quarterly, annual",
+                  "Consumer protection: Fee transparency, complaint mechanism, response within 15 days"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "ar": "تطبيق عملي - قائمة الامتثال",
+            "en": "Practical Application - Compliance Checklist"
+          },
+          "duration": "25 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "نشاط جماعي: بناء محفظة رقمية",
+                "en": "Group Activity: Building Digital Wallet"
+              },
+              "details": {
+                "ar": [
+                  "الترخيص: PSP من SAMA، رأس مال 10 مليون",
+                  "KYC/AML: تكامل أبشر، نظام كشف المعاملات، Sanctions Screening",
+                  "PDPL: سياسة خصوصية، نماذج موافقة، تشفير",
+                  "الأمن: ISO 27001، PCI DSS، MFA",
+                  "حماية المستهلك: شفافية، نظام شكاوى",
+                  "البنية التقنية: Cloud، Disaster Recovery، نسخ احتياطية"
+                ],
+                "en": [
+                  "Licensing: PSP from SAMA, capital 10M",
+                  "KYC/AML: Absher integration, transaction monitoring, Sanctions Screening",
+                  "PDPL: Privacy policy, consent forms, encryption",
+                  "Security: ISO 27001, PCI DSS, MFA",
+                  "Consumer protection: Transparency, complaints system",
+                  "Technical infrastructure: Cloud, Disaster Recovery, backups"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "resources": {
+        "ar": [
+          "نظام حماية البيانات PDPL - النص الكامل",
+          "SAMA Rules for Payment Service Providers",
+          "دليل مكافحة غسل الأموال - SAMA"
+        ],
+        "en": [
+          "PDPL Full Text",
+          "SAMA Rules for Payment Service Providers",
+          "AML Guide - SAMA"
+        ]
+      },
+      "links": [
+        "https://www.sama.gov.sa/ar-SA/Laws/Pages/PaymentSystemsLaw.aspx",
+        "https://sdaia.gov.sa/ar/PDPL/",
+        "https://www.my.gov.sa/wps/portal/snp/main/nafath",
+        "https://www.simah.com"
+      ]
+    },
+    {
+      "sessionNumber": 3,
+      "title": {
+        "ar": "التقنيات الأساسية والبنوك المفتوحة (Open Banking)",
+        "en": "Core Technologies and Open Banking"
+      },
+      "duration": "2 hours",
+      "objectives": {
+        "ar": [
+          "فهم البنية التقنية لأنظمة التقنية المالية",
+          "التعرف على Open Banking وتطبيقاته",
+          "فهم APIs وأهميتها",
+          "معرفة التقنيات الناشئة (AI، Blockchain)",
+          "التعرف على شركات البنية التحتية (AML، KYC)"
+        ],
+        "en": [
+          "Understanding technical architecture of Fintech systems",
+          "Learning Open Banking and its applications",
+          "Understanding APIs and their importance",
+          "Learning emerging technologies (AI, Blockchain)",
+          "Exploring infrastructure companies (AML, KYC)"
+        ]
+      },
+      "topics": [
+        {
+          "title": {
+            "ar": "البنية التقنية لأنظمة Fintech",
+            "en": "Technical Architecture of Fintech Systems"
+          },
+          "duration": "30 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "المعمارية الحديثة (Cloud-Native)",
+                "en": "Modern Architecture (Cloud-Native)"
+              },
+              "details": {
+                "ar": [
+                  "Microservices vs Monolithic",
+                  "Cloud Computing (AWS، GCP، Azure)",
+                  "الفوائد: مرونة، توسع سريع، تكلفة أقل",
+                  "مقارنة: البنية التقليدية vs السحابية"
+                ],
+                "en": [
+                  "Microservices vs Monolithic",
+                  "Cloud Computing (AWS, GCP, Azure)",
+                  "Benefits: Flexibility, rapid scaling, lower cost",
+                  "Comparison: Traditional vs Cloud architecture"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "APIs في الخدمات المالية",
+                "en": "APIs in Financial Services"
+              },
+              "details": {
+                "ar": [
+                  "ما هي APIs وأهميتها",
+                  "RESTful APIs",
+                  "أمثلة: Stripe API، Plaid API",
+                  "التكامل بين الأنظمة",
+                  "API Security (OAuth، API Keys)"
+                ],
+                "en": [
+                  "What are APIs and their importance",
+                  "RESTful APIs",
+                  "Examples: Stripe API, Plaid API",
+                  "System integration",
+                  "API Security (OAuth, API Keys)"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "الأمن السيبراني",
+                "en": "Cybersecurity"
+              },
+              "details": {
+                "ar": [
+                  "التشفير (Encryption): AES-256",
+                  "المصادقة الثنائية (MFA)",
+                  "Tokenization",
+                  "اختبار الاختراق (Penetration Testing)",
+                  "معايير: PCI DSS، ISO 27001"
+                ],
+                "en": [
+                  "Encryption: AES-256",
+                  "Multi-Factor Authentication (MFA)",
+                  "Tokenization",
+                  "Penetration Testing",
+                  "Standards: PCI DSS, ISO 27001"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "ar": "البنوك المفتوحة (Open Banking)",
+            "en": "Open Banking"
+          },
+          "duration": "35 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "ما هو Open Banking؟",
+                "en": "What is Open Banking?"
+              },
+              "details": {
+                "ar": [
+                  "التعريف: مشاركة البيانات المالية عبر APIs",
+                  "إجبار البنوك على مشاركة بيانات العملاء (بموافقتهم)",
+                  "APIs موحدة ومعيارية",
+                  "الهدف: زيادة المنافسة والابتكار"
+                ],
+                "en": [
+                  "Definition: Sharing financial data via APIs",
+                  "Forcing banks to share customer data (with consent)",
+                  "Unified and standardized APIs",
+                  "Goal: Increase competition and innovation"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "Open Banking في السعودية",
+                "en": "Open Banking in Saudi Arabia"
+              },
+              "details": {
+                "ar": [
+                  "مبادرة البيانات المفتوحة من ساما",
+                  "نظام موِّل للتمويل الرقمي",
+                  "إطار عمل APIs القياسية",
+                  "التطبيق الإلزامي تدريجياً",
+                  "شركات رائدة: Lean Technologies"
+                ],
+                "en": [
+                  "SAMA's Open Data initiative",
+                  "Mowel system for digital financing",
+                  "Standard APIs framework",
+                  "Gradual mandatory implementation",
+                  "Leading companies: Lean Technologies"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "حالات الاستخدام",
+                "en": "Use Cases"
+              },
+              "details": {
+                "ar": [
+                  "تجميع الحسابات من بنوك مختلفة في تطبيق واحد",
+                  "الحصول على قروض بناءً على البيانات الحقيقية",
+                  "مقارنة العروض المالية تلقائياً",
+                  "تحليل الإنفاق والادخار الذكي",
+                  "التحقق الفوري من الدخل للإقراض"
+                ],
+                "en": [
+                  "Aggregate accounts from different banks in one app",
+                  "Get loans based on real data",
+                  "Automatically compare financial offers",
+                  "Analyze spending and smart savings",
+                  "Instant income verification for lending"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "التأثير على السوق",
+                "en": "Market Impact"
+              },
+              "details": {
+                "ar": [
+                  "البنوك: من محتكر للبيانات إلى موفر خدمات",
+                  "Fintechs: قدرة البناء على بيانات البنوك",
+                  "العملاء: تحكم أكبر في بياناتهم، خيارات أكثر",
+                  "المنافسة: تزداد وتتحسن الخدمات"
+                ],
+                "en": [
+                  "Banks: From data monopolizer to service provider",
+                  "Fintechs: Ability to build on bank data",
+                  "Customers: Greater control over data, more options",
+                  "Competition: Increases and services improve"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "ar": "شركات البنية التحتية والخدمات المساندة",
+            "en": "Infrastructure and Supporting Service Companies"
+          },
+          "duration": "30 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "خدمات KYC/AML",
+                "en": "KYC/AML Services"
+              },
+              "details": {
+                "ar": [
+                  "شركات التحقق من الهوية: Nafath (أبشر)، Onfido، Jumio",
+                  "Sanctions Screening: Dow Jones، LexisNexis، ComplyAdvantage، Refinitiv",
+                  "Credit Scoring: SIMAH (السعودية)، Experian، Equifax",
+                  "Document Verification: OCR + AI",
+                  "Biometric Verification: Face، Fingerprint"
+                ],
+                "en": [
+                  "Identity verification: Nafath (Absher), Onfido, Jumio",
+                  "Sanctions Screening: Dow Jones, LexisNexis, ComplyAdvantage, Refinitiv",
+                  "Credit Scoring: SIMAH (Saudi), Experian, Equifax",
+                  "Document Verification: OCR + AI",
+                  "Biometric Verification: Face, Fingerprint"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "معالجة المدفوعات (Payment Processing)",
+                "en": "Payment Processing"
+              },
+              "details": {
+                "ar": [
+                  "Payment Gateways: Stripe، Checkout.com، PayTabs، Geidea، Payfort",
+                  "Card Processing: Visa، Mastercard",
+                  "المحافظ الرقمية APIs",
+                  "POS Solutions: Rewaa، Foodics",
+                  "التحويلات الدولية: Wise، Western Union APIs"
+                ],
+                "en": [
+                  "Payment Gateways: Stripe, Checkout.com, PayTabs, Geidea, Payfort",
+                  "Card Processing: Visa, Mastercard",
+                  "Digital Wallet APIs",
+                  "POS Solutions: Rewaa, Foodics",
+                  "International Transfers: Wise, Western Union APIs"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "Open Banking Providers",
+                "en": "Open Banking Providers"
+              },
+              "details": {
+                "ar": [
+                  "Lean Technologies (السعودية): الرائدة إقليمياً",
+                  "Plaid (عالمي): 11,000+ بنك",
+                  "Tink (أوروبا): Open Banking كخدمة",
+                  "Finicity: بيانات مالية آمنة",
+                  "الخدمات: Account Aggregation، Payment Initiation، Data Enrichment"
+                ],
+                "en": [
+                  "Lean Technologies (Saudi): Regional leader",
+                  "Plaid (Global): 11,000+ banks",
+                  "Tink (Europe): Open Banking as a Service",
+                  "Finicity: Secure financial data",
+                  "Services: Account Aggregation, Payment Initiation, Data Enrichment"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "البنية التحتية السحابية",
+                "en": "Cloud Infrastructure"
+              },
+              "details": {
+                "ar": [
+                  "AWS: خدمات شاملة، EC2، Lambda، RDS",
+                  "Google Cloud Platform: BigQuery، AI/ML",
+                  "Microsoft Azure: خدمات مالية متخصصة",
+                  "المتطلبات: Compliance certifications، Data residency (بيانات محلية)"
+                ],
+                "en": [
+                  "AWS: Comprehensive services, EC2, Lambda, RDS",
+                  "Google Cloud Platform: BigQuery, AI/ML",
+                  "Microsoft Azure: Specialized financial services",
+                  "Requirements: Compliance certifications, Data residency"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "خدمات الاتصالات",
+                "en": "Communication Services"
+              },
+              "details": {
+                "ar": [
+                  "SMS: Twilio، Nexmo، محلياً (STC، Mobily)",
+                  "البريد الإلكتروني: SendGrid، AWS SES",
+                  "Push Notifications: Firebase، OneSignal",
+                  "Chatbots: Dialogflow، IBM Watson"
+                ],
+                "en": [
+                  "SMS: Twilio, Nexmo, Local (STC, Mobily)",
+                  "Email: SendGrid, AWS SES",
+                  "Push Notifications: Firebase, OneSignal",
+                  "Chatbots: Dialogflow, IBM Watson"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "ar": "التقنيات الناشئة",
+            "en": "Emerging Technologies"
+          },
+          "duration": "25 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "الذكاء الاصطناعي في Fintech",
+                "en": "Artificial Intelligence in Fintech"
+              },
+              "details": {
+                "ar": [
+                  "Fraud Detection: كشف الاحتيال (Stripe Radar، FICO)",
+                  "Credit Scoring: تقييم ائتماني ذكي (Upstart)",
+                  "Chatbots: خدمة عملاء 24/7 (Erica - Bank of America)",
+                  "Robo-Advisors: إدارة استثمارات آلية",
+                  "Personalization: تخصيص العروض والنصائح"
+                ],
+                "en": [
+                  "Fraud Detection: Stripe Radar, FICO",
+                  "Credit Scoring: Smart AI scoring (Upstart)",
+                  "Chatbots: 24/7 customer service (Erica - Bank of America)",
+                  "Robo-Advisors: Automated investment management",
+                  "Personalization: Customized offers and advice"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "البلوكتشين والعملات الرقمية",
+                "en": "Blockchain and Digital Currencies"
+              },
+              "details": {
+                "ar": [
+                  "التعريف: دفتر أستاذ موزع وشفاف",
+                  "التطبيقات: التحويلات الدولية (Ripple)، Smart Contracts",
+                  "CBDCs: عملات البنوك المركزية (مشروع Aber - ساما)",
+                  "DeFi: التمويل اللامركزي",
+                  "الموقف السعودي: حذر من المشفرة، استثمار في البلوكتشين"
+                ],
+                "en": [
+                  "Definition: Distributed and transparent ledger",
+                  "Applications: International transfers (Ripple), Smart Contracts",
+                  "CBDCs: Central Bank Digital Currencies (Aber project - SAMA)",
+                  "DeFi: Decentralized Finance",
+                  "Saudi position: Cautious on crypto, investing in blockchain"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "resources": {
+        "ar": [
+          "Open Banking: What It Is and How It Works - Plaid",
+          "AI in Fintech: Use Cases - CB Insights",
+          "تقرير ساما عن البلوكتشين و CBDCs"
+        ],
+        "en": [
+          "Open Banking: What It Is and How It Works - Plaid",
+          "AI in Fintech: Use Cases - CB Insights",
+          "SAMA Report on Blockchain & CBDCs"
+        ]
+      },
+      "links": [
+        "https://stripe.com/docs/api",
+        "https://plaid.com/docs/",
+        "https://www.leantechnologies.com",
+        "https://www.simah.com"
+      ]
+    },
+    {
+      "sessionNumber": 4,
+      "title": {
+        "ar": "بناء نظام Fintech بسيط والفرص في السوق",
+        "en": "Building a Simple Fintech System and Market Opportunities"
+      },
+      "duration": "2 hours",
+      "objectives": {
+        "ar": [
+          "تطبيق عملي لبناء نظام تقنية مالية بسيط",
+          "فهم مكونات النظام الأساسية",
+          "التعرف على الفرص الاستثمارية في السوق السعودي",
+          "معرفة كيفية إطلاق شركة Fintech",
+          "عروض مشاريع المشاركين"
+        ],
+        "en": [
+          "Practical application of building a simple Fintech system",
+          "Understanding basic system components",
+          "Exploring investment opportunities in Saudi market",
+          "Learning how to launch a Fintech company",
+          "Participants' project presentations"
+        ]
+      },
+      "topics": [
+        {
+          "title": {
+            "ar": "ورشة عمل: تصميم نظام تحويلات بسيط",
+            "en": "Workshop: Designing a Simple Transfer System"
+          },
+          "duration": "45 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "تحديد المتطلبات",
+                "en": "Requirements Definition"
+              },
+              "details": {
+                "ar": [
+                  "الوظائف الأساسية: تسجيل، تحويل، سجل المعاملات",
+                  "المستخدمون المستهدفون",
+                  "حالات الاستخدام (Use Cases)"
+                ],
+                "en": [
+                  "Core features: Registration, Transfer, Transaction history",
+                  "Target users",
+                  "Use Cases"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "المعمارية التقنية",
+                "en": "Technical Architecture"
+              },
+              "details": {
+                "ar": [
+                  "Frontend: React Native / Flutter للموبايل",
+                  "Backend: Node.js / Python (FastAPI)",
+                  "Database: PostgreSQL / MongoDB",
+                  "APIs: Nafath (KYC)، Payment Gateway، SMS",
+                  "Cloud: AWS / GCP",
+                  "الأمان: تشفير، MFA، Tokenization"
+                ],
+                "en": [
+                  "Frontend: React Native / Flutter for mobile",
+                  "Backend: Node.js / Python (FastAPI)",
+                  "Database: PostgreSQL / MongoDB",
+                  "APIs: Nafath (KYC), Payment Gateway, SMS",
+                  "Cloud: AWS / GCP",
+                  "Security: Encryption, MFA, Tokenization"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "تدفق المعاملة (Transaction Flow)",
+                "en": "Transaction Flow"
+              },
+              "details": {
+                "ar": [
+                  "المستخدم يدخل المبلغ والمستفيد",
+                  "التحقق من الرصيد",
+                  "KYC/AML checks",
+                  "معالجة التحويل",
+                  "إرسال إشعارات (SMS + Push)",
+                  "تحديث الأرصدة",
+                  "تسجيل المعاملة"
+                ],
+                "en": [
+                  "User enters amount and beneficiary",
+                  "Balance verification",
+                  "KYC/AML checks",
+                  "Transfer processing",
+                  "Send notifications (SMS + Push)",
+                  "Update balances",
+                  "Log transaction"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "الامتثال والأمان",
+                "en": "Compliance and Security"
+              },
+              "details": {
+                "ar": [
+                  "ترخيص PSP من SAMA",
+                  "KYC: تكامل مع Nafath",
+                  "AML: مراقبة المعاملات",
+                  "PDPL: موافقات، تشفير",
+                  "Audit logs: سجل كامل للمعاملات"
+                ],
+                "en": [
+                  "PSP License from SAMA",
+                  "KYC: Nafath integration",
+                  "AML: Transaction monitoring",
+                  "PDPL: Consents, encryption",
+                  "Audit logs: Complete transaction records"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "التكلفة والوقت",
+                "en": "Cost and Timeline"
+              },
+              "details": {
+                "ar": [
+                  "الترخيص: 6-12 شهر، تكلفة إدارية",
+                  "التطوير: 3-6 أشهر، 500K-2M ريال",
+                  "البنية التحتية: Cloud (Pay-as-you-go)",
+                  "APIs: رسوم معاملات (1-3%)",
+                  "الفريق: 5-10 أشخاص"
+                ],
+                "en": [
+                  "Licensing: 6-12 months, administrative cost",
+                  "Development: 3-6 months, 500K-2M SAR",
+                  "Infrastructure: Cloud (Pay-as-you-go)",
+                  "APIs: Transaction fees (1-3%)",
+                  "Team: 5-10 people"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "ar": "الفرص في السوق السعودي",
+            "en": "Opportunities in Saudi Market"
+          },
+          "duration": "35 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "الفجوات الحالية",
+                "en": "Current Gaps"
+              },
+              "details": {
+                "ar": [
+                  "تمويل المنشآت الصغيرة والمتوسطة (SME Finance)",
+                  "Financial Wellness للشباب",
+                  "Embedded Finance (دمج الخدمات المالية)",
+                  "تحويلات العمالة (Cross-Border Payments)",
+                  "Insurtech (التأمين بالطلب)",
+                  "Digital Banking للنساء"
+                ],
+                "en": [
+                  "SME Finance",
+                  "Financial Wellness for youth",
+                  "Embedded Finance",
+                  "Cross-Border Payments for workers",
+                  "Insurtech (on-demand insurance)",
+                  "Digital Banking for women"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "حجم السوق والإمكانات",
+                "en": "Market Size and Potential"
+              },
+              "details": {
+                "ar": [
+                  "سوق المدفوعات الرقمية: 1.2+ تريليون ريال",
+                  "SMEs: 99% من المنشآت السعودية",
+                  "الشباب تحت 30: 65% من السكان",
+                  "العمالة الوافدة: 10+ مليون يحولون $35B سنوياً",
+                  "النساء العاملات: نمو سريع"
+                ],
+                "en": [
+                  "Digital payments market: 1.2+ trillion SAR",
+                  "SMEs: 99% of Saudi businesses",
+                  "Youth under 30: 65% of population",
+                  "Expatriate workers: 10+ million transferring $35B annually",
+                  "Working women: Rapid growth"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "النماذج التجارية الناجحة",
+                "en": "Successful Business Models"
+              },
+              "details": {
+                "ar": [
+                  "Transaction-based: رسوم على كل معاملة (مثل Stripe)",
+                  "Freemium: أساسي مجاني + اشتراكات (مثل Revolut)",
+                  "Merchant-funded: التاجر يدفع (مثل Tamara)",
+                  "Data-as-a-Service: بيع الوصول للبيانات (مثل Plaid)",
+                  "B2B SaaS: اشتراكات شهرية للشركات"
+                ],
+                "en": [
+                  "Transaction-based: Fee per transaction (like Stripe)",
+                  "Freemium: Free basic + subscriptions (like Revolut)",
+                  "Merchant-funded: Merchant pays (like Tamara)",
+                  "Data-as-a-Service: Selling data access (like Plaid)",
+                  "B2B SaaS: Monthly subscriptions for businesses"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "ar": "كيفية إطلاق شركة Fintech",
+            "en": "How to Launch a Fintech Company"
+          },
+          "duration": "20 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "الخطوات الأساسية",
+                "en": "Basic Steps"
+              },
+              "details": {
+                "ar": [
+                  "1. تحديد المشكلة والحل",
+                  "2. دراسة الجدوى والسوق",
+                  "3. بناء MVP (الحد الأدنى للمنتج)",
+                  "4. التقدم لـ SAMA Sandbox",
+                  "5. اختبار مع مستخدمين حقيقيين",
+                  "6. جمع التمويل الأولي",
+                  "7. الحصول على الترخيص الكامل",
+                  "8. التوسع والنمو"
+                ],
+                "en": [
+                  "1. Identify problem and solution",
+                  "2. Feasibility study and market research",
+                  "3. Build MVP (Minimum Viable Product)",
+                  "4. Apply for SAMA Sandbox",
+                  "5. Test with real users",
+                  "6. Raise seed funding",
+                  "7. Obtain full license",
+                  "8. Scale and grow"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "مصادر التمويل",
+                "en": "Funding Sources"
+              },
+              "details": {
+                "ar": [
+                  "Bootstrapping: التمويل الذاتي",
+                  "Accelerators: Badir، Fintech Saudi، 500 Startups",
+                  "VCs محلية: STV، Khwarizmi Ventures",
+                  "Corporate VCs: بنوك، شركات اتصالات",
+                  "المستثمرون الملائكة",
+                  "منح حكومية: منشآت"
+                ],
+                "en": [
+                  "Bootstrapping: Self-funding",
+                  "Accelerators: Badir, Fintech Saudi, 500 Startups",
+                  "Local VCs: STV, Khwarizmi Ventures",
+                  "Corporate VCs: Banks, telecom companies",
+                  "Angel investors",
+                  "Government grants: Monsha'at"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "التحديات والحلول",
+                "en": "Challenges and Solutions"
+              },
+              "details": {
+                "ar": [
+                  "التنظيم: استخدام Sandbox، شراكة مع بنك",
+                  "الثقة: الشفافية، شراكات استراتيجية",
+                  "التكلفة: MVP بسيط، استخدام APIs جاهزة",
+                  "المواهب: توظيف محلي، remote teams"
+                ],
+                "en": [
+                  "Regulation: Use Sandbox, partner with bank",
+                  "Trust: Transparency, strategic partnerships",
+                  "Cost: Simple MVP, use ready APIs",
+                  "Talent: Local hiring, remote teams"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "title": {
+            "ar": "عروض المشاركين ومناقشة",
+            "en": "Participants Presentations and Discussion"
+          },
+          "duration": "20 minutes",
+          "subtopics": [
+            {
+              "title": {
+                "ar": "عروض المشاريع",
+                "en": "Project Presentations"
+              },
+              "details": {
+                "ar": [
+                  "كل مشارك: 5 دقائق عرض + 2 دقائق أسئلة",
+                  "المشكلة والحل",
+                  "الجمهور المستهدف",
+                  "الميزة التنافسية",
+                  "التقنيات المستخدمة",
+                  "الخطوات التالية"
+                ],
+                "en": [
+                  "Each participant: 5 min presentation + 2 min Q&A",
+                  "Problem and solution",
+                  "Target audience",
+                  "Competitive advantage",
+                  "Technologies used",
+                  "Next steps"
+                ]
+              }
+            },
+            {
+              "title": {
+                "ar": "التقييم الجماعي",
+                "en": "Group Evaluation"
+              },
+              "details": {
+                "ar": [
+                  "تصويت على أفضل فكرة",
+                  "نقاش التحسينات الممكنة",
+                  "اقتراحات من المشاركين"
+                ],
+                "en": [
+                  "Vote for best idea",
+                  "Discuss possible improvements",
+                  "Suggestions from participants"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "resources": {
+        "ar": [
+          "دليل إطلاق Fintech Startup - Fintech Saudi",
+          "Saudi Venture Capital Landscape",
+          "دليل SAMA Sandbox"
+        ],
+        "en": [
+          "Fintech Startup Launch Guide - Fintech Saudi",
+          "Saudi Venture Capital Landscape",
+          "SAMA Sandbox Guide"
+        ]
+      },
+      "links": [
+        "https://fintechsaudi.com/en/programs",
+        "https://www.monshaat.gov.sa",
+        "https://badir.com.sa",
+        "https://www.sama.gov.sa/en-US/FinTech/Pages/Sandbox.aspx"
+      ]
+    }
+  ],
+  "keyTerms": {
+    "ar": [
+      "التقنية المالية (Fintech)",
+      "البنوك المفتوحة (Open Banking)",
+      "واجهات برمجة التطبيقات (APIs)",
+      "اعرف عميلك (KYC)",
+      "مكافحة غسل الأموال (AML)",
+      "مكافحة تمويل الإرهاب (CTF)",
+      "حماية البيانات الشخصية (PDPL)",
+      "البنك المركزي السعودي (SAMA)",
+      "هيئة السوق المالية (CMA)",
+      "الاشتر الآن وادفع لاحقاً (BNPL)",
+      "المحافظ الرقمية",
+      "البلوكتشين (Blockchain)",
+      "الذكاء الاصطناعي (AI)",
+      "الحوسبة السحابية (Cloud Computing)",
+      "المصادقة الثنائية (MFA)",
+      "التشفير (Encryption)",
+      "المستشار الآلي (Robo-Advisor)",
+      "التمويل الجماعي (Crowdfunding)",
+      "المعمارية الدقيقة (Microservices)"
+    ],
+    "en": [
+      "Financial Technology (Fintech)",
+      "Open Banking",
+      "Application Programming Interfaces (APIs)",
+      "Know Your Customer (KYC)",
+      "Anti-Money Laundering (AML)",
+      "Counter Terrorist Financing (CTF)",
+      "Personal Data Protection Law (PDPL)",
+      "Saudi Central Bank (SAMA)",
+      "Capital Market Authority (CMA)",
+      "Buy Now Pay Later (BNPL)",
+      "Digital Wallets",
+      "Blockchain",
+      "Artificial Intelligence (AI)",
+      "Cloud Computing",
+      "Multi-Factor Authentication (MFA)",
+      "Encryption",
+      "Robo-Advisor",
+      "Crowdfunding",
+      "Microservices"
+    ]
+  },
+  "importantLinks": {
+    "regulatory": [
+      {
+        "name": {
+          "ar": "البنك المركزي السعودي (ساما)",
+          "en": "Saudi Central Bank (SAMA)"
+        },
+        "url": "https://www.sama.gov.sa"
+      },
+      {
+        "name": {
+          "ar": "هيئة السوق المالية",
+          "en": "Capital Market Authority"
+        },
+        "url": "https://cma.org.sa"
+      },
+      {
+        "name": {
+          "ar": "نظام حماية البيانات الشخصية",
+          "en": "Personal Data Protection Law"
+        },
+        "url": "https://sdaia.gov.sa/ar/PDPL/"
+      },
+      {
+        "name": {
+          "ar": "أبشر - نفاذ",
+          "en": "Absher - Nafath"
+        },
+        "url": "https://www.my.gov.sa/wps/portal/snp/main/nafath"
+      }
+    ],
+    "ecosystem": [
+      {
+        "name": {
+          "ar": "Fintech Saudi",
+          "en": "Fintech Saudi"
+        },
+        "url": "https://fintechsaudi.com"
+      },
+      {
+        "name": {
+          "ar": "منشآت",
+          "en": "Monsha'at"
+        },
+        "url": "https://www.monshaat.gov.sa"
+      },
+      {
+        "name": {
+          "ar": "بادر",
+          "en": "Badir"
+        },
+        "url": "https://badir.com.sa"
+      },
+      {
+        "name": {
+          "ar": "الشركة السعودية للمعلومات الائتمانية",
+          "en": "SIMAH"
+        },
+        "url": "https://www.simah.com"
+      }
+    ],
+    "infrastructure": [
+      {
+        "name": "Lean Technologies",
+        "url": "https://www.leantechnologies.com"
+      },
+      {
+        "name": "Stripe Documentation",
+        "url": "https://stripe.com/docs"
+      },
+      {
+        "name": "Plaid Documentation",
+        "url": "https://plaid.com/docs/"
+      }
+    ]
+  }
+}

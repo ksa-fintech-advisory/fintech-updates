@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { phasesData, getTotalHours } from '@/data/fintechFundamentalsData';
+import { phasesData } from '@/data/fintechFundamentalsData';
 
 interface CourseTimelineProps {
   locale: string;
@@ -17,7 +17,6 @@ export default function CourseTimeline({
   children,
 }: CourseTimelineProps) {
   const isArabic = locale === 'ar';
-  const totalHours = getTotalHours();
 
   return (
     <section id="phases" className="py-24 bg-grey-50 relative overflow-hidden">
@@ -45,16 +44,15 @@ export default function CourseTimeline({
             <div className="flex items-center gap-2 text-grey-600">
               <span className="text-2xl">📚</span>
               <span className="font-semibold">{phasesData.length}</span>
-              <span>{isArabic ? 'مراحل' : 'Phases'}</span>
-            </div>
-            <div className="flex items-center gap-2 text-grey-600">
-              <span className="text-2xl">⏱️</span>
-              <span className="font-semibold">{totalHours}+</span>
-              <span>{isArabic ? 'ساعات' : 'Hours'}</span>
+              <span>{isArabic ? 'وحدات' : 'Modules'}</span>
             </div>
             <div className="flex items-center gap-2 text-grey-600">
               <span className="text-2xl">🎯</span>
-              <span>{isArabic ? 'من مبتدئ إلى متقدم' : 'Beginner to Advanced'}</span>
+              <span>{isArabic ? 'مناسب لجميع المستويات' : 'For All Levels'}</span>
+            </div>
+            <div className="flex items-center gap-2 text-grey-600">
+              <span className="text-2xl">🇸🇦</span>
+              <span>{isArabic ? 'مخصص للسوق السعودي' : 'Saudi Market Focused'}</span>
             </div>
           </div>
         </motion.div>
@@ -72,24 +70,35 @@ export default function CourseTimeline({
               />
             </div>
             <div className="flex justify-between mt-2">
-              {phasesData.map((phase) => (
-                <motion.div
-                  key={phase.id}
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: phase.id * 0.1 }}
-                  className={`w-8 h-8 rounded-full bg-gradient-to-br ${phase.gradient} flex items-center justify-center text-white text-sm font-bold shadow-lg`}
-                >
-                  {phase.id}
-                </motion.div>
-              ))}
+              {phasesData.map((phase) => {
+                // Use inline styles to fix gradient rendering issue
+                const gradientColors: Record<number, { from: string; to: string }> = {
+                  1: { from: '#10b981', to: '#0d9488' }, // emerald-500 to teal-600
+                  2: { from: '#f59e0b', to: '#ea580c' }, // amber-500 to orange-600
+                  3: { from: '#3b82f6', to: '#4f46e5' }, // blue-500 to indigo-600
+                  4: { from: '#8b5cf6', to: '#9333ea' }, // violet-500 to purple-600
+                };
+                const colors = gradientColors[phase.id] || { from: '#6366f1', to: '#8b5cf6' };
+                return (
+                  <motion.div
+                    key={phase.id}
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: phase.id * 0.1 }}
+                    className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg"
+                    style={{ background: `linear-gradient(135deg, ${colors.from}, ${colors.to})` }}
+                  >
+                    {phase.id}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>
 
         {/* Phase Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {children}
         </div>
       </div>

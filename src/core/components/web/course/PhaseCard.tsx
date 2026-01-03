@@ -1,16 +1,27 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { PhaseData, getDifficultyLabel } from '@/data/fintechFundamentalsData';
+import Link from 'next/link';
+import { PhaseData } from '@/data/fintechFundamentalsData';
+
+// Define gradient colors as CSS for each phase to avoid Tailwind compilation issues
+const phaseGradients: Record<number, { from: string; to: string }> = {
+  1: { from: '#10b981', to: '#0d9488' }, // emerald-500 to teal-600
+  2: { from: '#f59e0b', to: '#ea580c' }, // amber-500 to orange-600
+  3: { from: '#3b82f6', to: '#4f46e5' }, // blue-500 to indigo-600
+  4: { from: '#8b5cf6', to: '#9333ea' }, // violet-500 to purple-600
+};
 
 interface PhaseCardProps {
   phase: PhaseData;
   title: string;
   subtitle: string;
   description: string;
-  topics: string[];
+  topicsList: string[];
+  viewDetailsText: string;
   index: number;
   isArabic: boolean;
+  locale: string;
 }
 
 export default function PhaseCard({
@@ -18,10 +29,17 @@ export default function PhaseCard({
   title,
   subtitle,
   description,
-  topics,
+  topicsList,
+  viewDetailsText,
   index,
   isArabic,
+  locale,
 }: PhaseCardProps) {
+  const gradientColors = phaseGradients[phase.id] || { from: '#6366f1', to: '#8b5cf6' };
+  const gradientStyle = {
+    background: `linear-gradient(to right, ${gradientColors.from}, ${gradientColors.to})`,
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -31,16 +49,18 @@ export default function PhaseCard({
       className="group relative"
     >
       <div
-        className={`relative bg-white rounded-3xl p-6 md:p-8 shadow-soft hover:shadow-hard transition-all duration-500 border-2 ${phase.borderColor} hover:border-primary-300 overflow-hidden h-full`}
+        className={`relative bg-white rounded-3xl p-6 md:p-8 shadow-soft hover:shadow-hard transition-all duration-500 border-2 ${phase.borderColor} hover:border-primary-300 overflow-hidden h-full flex flex-col`}
       >
         {/* Background Gradient on Hover */}
         <div
-          className={`absolute inset-0 bg-gradient-to-br ${phase.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}
+          className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500"
+          style={gradientStyle}
         />
 
         {/* Phase Number Badge */}
         <div
-          className={`absolute top-4 ${isArabic ? 'left-4' : 'right-4'} w-10 h-10 rounded-full bg-gradient-to-br ${phase.gradient} flex items-center justify-center text-white font-bold text-lg shadow-lg`}
+          className={`absolute top-4 ${isArabic ? 'left-4' : 'right-4'} w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg z-10`}
+          style={gradientStyle}
         >
           {phase.id}
         </div>
@@ -53,9 +73,7 @@ export default function PhaseCard({
         </div>
 
         {/* Title */}
-        <h3
-          className={`text-xl md:text-2xl font-bold text-grey-900 mb-2 bg-gradient-to-r ${phase.gradient} bg-clip-text group-hover:text-transparent transition-all duration-300`}
-        >
+        <h3 className="text-xl md:text-2xl font-bold text-grey-900 mb-2 transition-all duration-300">
           {title}
         </h3>
 
@@ -65,39 +83,36 @@ export default function PhaseCard({
         {/* Description */}
         <p className="text-grey-600 mb-6 leading-relaxed">{description}</p>
 
-        {/* Topics */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {topics.map((topic, idx) => (
-            <span
+        {/* Topics List */}
+        <ul className={`flex-1 space-y-2 mb-6 ${isArabic ? 'pr-4' : 'pl-4'}`}>
+          {topicsList.map((topic, idx) => (
+            <li
               key={idx}
-              className={`px-3 py-1 text-xs font-medium rounded-full ${phase.bgColor} text-grey-700 border ${phase.borderColor}`}
+              className="flex items-start gap-2 text-grey-700"
             >
-              {topic}
-            </span>
+              <span
+                className="mt-1.5 w-2 h-2 rounded-full flex-shrink-0"
+                style={{ backgroundColor: gradientColors.from }}
+              />
+              <span className="text-sm">{topic}</span>
+            </li>
           ))}
-        </div>
+        </ul>
 
-        {/* Footer */}
-        <div className="flex items-center justify-between pt-4 border-t border-grey-100">
-          <span
-            className={`px-3 py-1 rounded-full text-xs font-semibold ${
-              phase.difficulty === 'beginner'
-                ? 'bg-green-100 text-green-700'
-                : phase.difficulty === 'intermediate'
-                ? 'bg-amber-100 text-amber-700'
-                : 'bg-red-100 text-red-700'
-            }`}
-          >
-            {getDifficultyLabel(phase.difficulty, isArabic)}
-          </span>
-          <span className="text-sm text-grey-500">
-            {phase.estimatedHours} {isArabic ? 'ساعات' : 'hours'}
-          </span>
-        </div>
+        {/* View Details Button */}
+        <Link
+          href={`/${locale}/web/courses/fintech-fundamentals/session/${phase.id}`}
+          className="relative z-10 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white font-medium transition-all duration-300 hover:shadow-lg hover:scale-105"
+          style={gradientStyle}
+        >
+          <span>{viewDetailsText}</span>
+          <span>←</span>
+        </Link>
 
         {/* Decorative Corner */}
         <div
-          className={`absolute -bottom-2 ${isArabic ? '-left-2' : '-right-2'} w-24 h-24 bg-gradient-to-br ${phase.gradient} rounded-full blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+          className={`absolute -bottom-2 ${isArabic ? '-left-2' : '-right-2'} w-24 h-24 rounded-full blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+          style={gradientStyle}
         />
       </div>
     </motion.div>
