@@ -26,13 +26,18 @@ export interface Topic {
   subtopics: SubTopic[];
 }
 
+export interface SessionLink {
+  title: LocalizedText;
+  url: string;
+}
+
 export interface Session {
   sessionNumber: number;
   title: LocalizedText;
   objectives: LocalizedArray;
   topics: Topic[];
   resources: LocalizedArray;
-  links: string[];
+  links: SessionLink[];
 }
 
 export interface CourseInfo {
@@ -310,10 +315,10 @@ export const courseData: CourseData = {
         ],
       },
       links: [
-        'https://www.sama.gov.sa',
-        'https://cma.org.sa',
-        'https://fintechsaudi.com',
-        'https://vision2030.gov.sa',
+        { title: { ar: 'البنك المركزي السعودي (ساما)', en: 'Saudi Central Bank (SAMA)' }, url: 'https://www.sama.gov.sa' },
+        { title: { ar: 'هيئة السوق المالية', en: 'Capital Market Authority' }, url: 'https://cma.org.sa' },
+        { title: { ar: 'Fintech Saudi', en: 'Fintech Saudi' }, url: 'https://fintechsaudi.com' },
+        { title: { ar: 'رؤية 2030', en: 'Vision 2030' }, url: 'https://vision2030.gov.sa' },
       ],
     },
 
@@ -492,10 +497,10 @@ export const courseData: CourseData = {
         en: ['PDPL Full Text', 'SAMA Rules for Payment Service Providers', 'AML Guide - SAMA'],
       },
       links: [
-        'https://www.sama.gov.sa/ar-SA/Laws/Pages/PaymentSystemsLaw.aspx',
-        'https://sdaia.gov.sa/ar/PDPL/',
-        'https://www.my.gov.sa/wps/portal/snp/main/nafath',
-        'https://www.simah.com',
+        { title: { ar: 'نظام المدفوعات - ساما', en: 'Payment Systems Law - SAMA' }, url: 'https://www.sama.gov.sa/ar-SA/Laws/Pages/PaymentSystemsLaw.aspx' },
+        { title: { ar: 'نظام حماية البيانات الشخصية (PDPL)', en: 'Personal Data Protection Law (PDPL)' }, url: 'https://sdaia.gov.sa/ar/PDPL/' },
+        { title: { ar: 'نفاذ - البوابة الوطنية', en: 'Nafath - National Portal' }, url: 'https://www.my.gov.sa/wps/portal/snp/main/nafath' },
+        { title: { ar: 'سمة للمعلومات الائتمانية', en: 'SIMAH Credit Bureau' }, url: 'https://www.simah.com' },
       ],
     },
 
@@ -827,10 +832,10 @@ export const courseData: CourseData = {
         ],
       },
       links: [
-        'https://stripe.com/docs/api',
-        'https://plaid.com/docs/',
-        'https://www.leantechnologies.com',
-        'https://www.simah.com',
+        { title: { ar: 'Stripe API وثائق', en: 'Stripe API Documentation' }, url: 'https://stripe.com/docs/api' },
+        { title: { ar: 'Plaid وثائق', en: 'Plaid Documentation' }, url: 'https://plaid.com/docs/' },
+        { title: { ar: 'Lean Technologies', en: 'Lean Technologies' }, url: 'https://www.leantechnologies.com' },
+        { title: { ar: 'سمة للمعلومات الائتمانية', en: 'SIMAH Credit Bureau' }, url: 'https://www.simah.com' },
       ],
     },
 
@@ -1141,10 +1146,10 @@ export const courseData: CourseData = {
         en: ['Fintech Startup Launch Guide - Fintech Saudi', 'Saudi Venture Capital Landscape', 'SAMA Sandbox Guide'],
       },
       links: [
-        'https://fintechsaudi.com/en/programs',
-        'https://www.monshaat.gov.sa',
-        'https://badir.com.sa',
-        'https://www.sama.gov.sa/en-US/FinTech/Pages/Sandbox.aspx',
+        { title: { ar: 'برامج Fintech Saudi', en: 'Fintech Saudi Programs' }, url: 'https://fintechsaudi.com/en/programs' },
+        { title: { ar: 'منشآت', en: "Monsha'at" }, url: 'https://www.monshaat.gov.sa' },
+        { title: { ar: 'بادر للابتكار', en: 'Badir Innovation' }, url: 'https://badir.com.sa' },
+        { title: { ar: 'SAMA Sandbox', en: 'SAMA Sandbox' }, url: 'https://www.sama.gov.sa/en-US/FinTech/Pages/Sandbox.aspx' },
       ],
     },
   ],

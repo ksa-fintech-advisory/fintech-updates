@@ -180,12 +180,13 @@ export default async function SessionDetailPage({
                 {session.links.map((link, idx) => (
                   <li key={idx}>
                     <a
-                      href={link}
+                      href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary-600 hover:text-primary-700 hover:underline break-all"
+                      className="flex items-center gap-2 text-primary-600 hover:text-primary-700 transition-colors group"
                     >
-                      {link}
+                      <span className="group-hover:underline">{link.title[lang]}</span>
+                      <span className="text-grey-400 text-sm">↗</span>
                     </a>
                   </li>
                 ))}
