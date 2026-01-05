@@ -7,11 +7,16 @@ import { useState, useRef } from 'react';
 import ProductsMegaMenu from './ProductsMegaMenu';
 import CoursesMegaMenu from './CoursesMegaMenu';
 import RegionDropdown from './RegionDropdown';
+import Logo from './Logo';
 import { getAllCourses } from '@/data/courseData';
+
+
+
 
 export default function Header() {
   const t = useTranslations();
   const locale = useLocale();
+  const courses = getAllCourses()
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
@@ -21,16 +26,13 @@ export default function Header() {
   const currentPath = pathname.replace(`/${locale}`, '');
   const isArabic = locale === 'ar';
   const lang = isArabic ? 'ar' : 'en';
-  const courses = getAllCourses();
 
   const navItems = [
     { href: '/web/home', label: t('common.nav.home'), key: 'home' },
-    { href: '/web/products', label:t("common.nav.products"), key: 'products', hasMegaMenu: true },
+    { href: '/web/products', label: t("common.nav.products"), key: 'products', hasMegaMenu: true },
     { href: '/web/courses', label: t('common.nav.courses'), key: 'courses', hasMegaMenu: true },
     { href: '/web/updates', label: t('common.nav.updates'), key: 'updates' },
     { href: '/web/blog', label: t('common.nav.blog'), key: 'blog' },
-    // { href: '/web/technology', label: t('common.nav.technology')},
-    // { href: '/web/compliance', label: t('common.nav.compliance')},
     { href: '/web/about', label: t('common.nav.about'), key: 'about' },
     { href: '/web/contact', label: t('common.nav.contact'), key: 'contact' },
   ];
@@ -43,29 +45,34 @@ export default function Header() {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setHoveredItem(null);
-    }, 200); // Small delay to prevent flickering
+    }, 200);
   };
 
   const isActive = (href: string) => {
-    // Check if current path matches the nav item
     return currentPath === href || currentPath.startsWith(href + '/');
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-grey-200 bg-white/90 backdrop-blur-xl shadow-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/90 backdrop-blur-xl shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo with Animation */}
-          <Link
-            href={`/${locale}/web/home`}
-            className="group text-xl font-bold transition-all duration-300"
-          >
-            <span className="bg-gradient-saudi bg-clip-text text-transparent group-hover:scale-105 inline-block transition-transform">
-              {locale === 'ar' ? 'فنتك العرب' : 'Arab Fintech'}
-            </span>
+
+          {/* --- Logo Section --- */}
+          <Link href={`/${locale}/web/home`} className="group flex items-center gap-3">
+            <div className="relative">
+              <Logo size={40} className="group-hover:scale-105 transition-transform duration-300" />
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xl font-bold text-gray-900 leading-tight group-hover:text-blue-600 transition-colors">
+                {locale === 'ar' ? 'مال تك' : 'Maal Tech'}
+              </span>
+              <span className="text-[10px] text-gray-500 font-medium tracking-wider uppercase hidden sm:block">
+                {locale === 'ar' ? 'التقنية المالية' : 'FinTech Platform'}
+              </span>
+            </div>
           </Link>
 
-          {/* Desktop Navigation with Enhanced Active States */}
+          {/* --- Desktop Navigation --- */}
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
               const active = isActive(item.href);
@@ -74,211 +81,129 @@ export default function Header() {
               return (
                 <div
                   key={item.key}
-                  className="relative group"
+                  className="relative"
                   onMouseEnter={() => handleMouseEnter(item.key)}
                   onMouseLeave={handleMouseLeave}
                 >
                   <Link
                     href={item.hasMegaMenu ? '#' : `/${locale}${item.href}`}
-                    className={`relative px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-1 ${active || isMegaMenuOpen
-                      ? 'text-primary bg-primary-50'
-                      : 'text-grey-700 hover:text-primary hover:bg-grey-50'
+                    className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 ${active || isMegaMenuOpen
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
                       }`}
                   >
                     {item.label}
                     {item.hasMegaMenu && (
-                      <svg className={`w-4 h-4 transition-transform duration-300 ${isMegaMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className={`w-3 h-3 transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     )}
-
-                    {/* Active Indicator - Animated Underline */}
-                    {active && !item.hasMegaMenu && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-saudi rounded-full animate-pulse"></span>
-                    )}
-
-                    {/* Hover Effect - Dot */}
-                    <span className={`absolute -top-1 -right-1 w-2 h-2 bg-accent rounded-full transition-all duration-300 ${active ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
-                      }`}></span>
                   </Link>
+
+                  {/* Mega Menu Portals */}
+                  {item.key === 'products' && hoveredItem === 'products' && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-screen max-w-screen-xl px-4">
+                      {/* Note: In your layout, MegaMenu is usually typically full width relative to header. 
+                           For simplicity based on your previous code, I'm keeping your absolute positioning logic 
+                           inside the MegaMenu component itself, but ensuring it triggers here. */}
+                    </div>
+                  )}
                 </div>
               );
             })}
           </nav>
 
-          {/* Right Side - Region, Language Switcher & Mobile Menu */}
-          <div className="flex items-center gap-2 md:gap-3">
-            {/* Region Dropdown */}
+          {/* --- Right Actions --- */}
+          <div className="flex items-center gap-2 md:gap-4">
             <RegionDropdown />
 
-            {/* Enhanced Language Switcher */}
             <Link
               href={`/${otherLocale}${currentPath}`}
-              className="group relative px-4 py-2 text-sm font-bold text-grey-700 hover:text-white border-2 border-primary rounded-xl hover:bg-primary transition-all duration-300 transform hover:scale-105 overflow-hidden"
+              className="hidden md:flex items-center justify-center w-9 h-9 text-sm font-bold text-gray-700 border border-gray-200 rounded-lg hover:border-blue-600 hover:text-blue-600 transition-colors"
             >
-              {/* Background Animation */}
-              <span className="absolute inset-0 bg-gradient-saudi opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              <span className="relative z-10 flex items-center gap-2">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                </svg>
-                {otherLocale.toUpperCase()}
-              </span>
+              {otherLocale.toUpperCase()}
             </Link>
 
-            {/* Enhanced Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden relative p-2 text-grey-700 hover:text-primary transition-colors group"
-              aria-label="Toggle menu"
+              className="md:hidden p-2 text-gray-600 hover:text-blue-600"
             >
-              <div className="relative w-6 h-6">
-                {/* Animated Hamburger Icon */}
-                <span className={`absolute top-1 left-0 w-full h-0.5 bg-current transform transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 top-2.5' : 'rotate-0'
-                  }`}></span>
-                <span className={`absolute top-2.5 left-0 w-full h-0.5 bg-current transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : 'opacity-100'
-                  }`}></span>
-                <span className={`absolute top-4 left-0 w-full h-0.5 bg-current transform transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 top-2.5' : 'rotate-0'
-                  }`}></span>
-              </div>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                {mobileMenuOpen ? (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                ) : (
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                )}
+              </svg>
             </button>
           </div>
         </div>
 
-        {/* Mega Menus Rendered Here for Full Width - Desktop Only */}
-        <div
-          className="hidden md:block"
-          onMouseEnter={() => handleMouseEnter('products')}
-          onMouseLeave={handleMouseLeave}
-        >
-          {hoveredItem === 'products' && (
-            <ProductsMegaMenu closeMenu={() => setHoveredItem(null)} />
-          )}
+        {/* --- Mega Menus (Rendered outside nav for layout control) --- */}
+        <div className="hidden md:block" onMouseEnter={() => handleMouseEnter('products')} onMouseLeave={handleMouseLeave}>
+          {hoveredItem === 'products' && <ProductsMegaMenu closeMenu={() => setHoveredItem(null)} />}
         </div>
-        <div
-          className="hidden md:block"
-          onMouseEnter={() => handleMouseEnter('courses')}
-          onMouseLeave={handleMouseLeave}
-        >
-          {hoveredItem === 'courses' && (
-            <CoursesMegaMenu closeMenu={() => setHoveredItem(null)} />
-          )}
+        <div className="hidden md:block" onMouseEnter={() => handleMouseEnter('courses')} onMouseLeave={handleMouseLeave}>
+          {hoveredItem === 'courses' && <CoursesMegaMenu
+            courses={courses}
+            closeMenu={() => setHoveredItem(null)} />}
         </div>
 
-        {/* Enhanced Mobile Navigation */}
-        <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0'
-            }`}
-        >
-          <nav className="py-4 border-t border-grey-200 space-y-1 overflow-y-auto max-h-[70vh]">
-            {navItems.map((item, idx) => {
-              const active = isActive(item.href);
-
-              if (item.hasMegaMenu) {
-                return (
-                  <div key={item.key} className="space-y-1">
+        {/* --- Mobile Menu --- */}
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-[85vh] opacity-100 border-t border-gray-100' : 'max-h-0 opacity-0'}`}>
+          <nav className="py-4 space-y-1 overflow-y-auto max-h-[80vh] px-2">
+            {navItems.map((item) => (
+              <div key={item.key}>
+                {item.hasMegaMenu ? (
+                  <div className="space-y-1">
                     <button
                       onClick={() => setHoveredItem(hoveredItem === item.key ? null : item.key)}
-                      className={`w-full flex items-center justify-between px-4 py-3 rounded-lg font-medium transition-colors ${hoveredItem === item.key
-                          ? 'text-primary bg-primary-50'
-                          : 'text-grey-700 hover:text-primary hover:bg-grey-50'
-                        }`}
+                      className="w-full flex items-center justify-between px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium"
                     >
-                      <span>{item.label}</span>
-                      <svg className={`w-4 h-4 transition-transform duration-300 ${hoveredItem === item.key ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
+                      {item.label}
+                      <svg className={`w-4 h-4 transition-transform ${hoveredItem === item.key ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                     </button>
-                    {/* Mobile Submenu */}
-                    <div className={`transition-all duration-300 overflow-hidden ${hoveredItem === item.key ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                      <div className="mx-4 py-2 bg-grey-50 rounded-xl border border-grey-100">
-                        {item.key === 'products' && (
-                          <>
-                            <Link href={`/${locale}/web/products/fee-calculator`} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 text-grey-700 hover:text-primary hover:bg-white rounded-lg mx-2 transition-colors">
-                              <span className="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm">💰</span>
-                              <span className="font-medium">{isArabic ? 'حاسبة الرسوم' : 'Fee Calculator'}</span>
-                            </Link>
-                            <Link href={`/${locale}/web/products/compliance-checker`} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 text-grey-700 hover:text-primary hover:bg-white rounded-lg mx-2 transition-colors">
-                              <span className="w-8 h-8 rounded-lg bg-green-100 text-green-600 flex items-center justify-center text-sm">✓</span>
-                              <span className="font-medium">{isArabic ? 'فاحص الامتثال' : 'Compliance Checker'}</span>
-                            </Link>
-                            <Link href={`/${locale}/web/products/market-analysis`} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 text-grey-700 hover:text-primary hover:bg-white rounded-lg mx-2 transition-colors">
-                              <span className="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center text-sm">📊</span>
-                              <span className="font-medium">{isArabic ? 'تحليل السوق' : 'Market Analysis'}</span>
-                            </Link>
-                            <div className="border-t border-grey-200 mt-2 pt-2 mx-2">
-                              <Link href={`/${locale}/web/products`} onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-center gap-2 py-2 text-primary font-semibold text-sm">
-                                {isArabic ? 'عرض كل المنتجات' : 'View All Products'}
-                                <svg className={`w-4 h-4 ${isArabic ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                              </Link>
-                            </div>
-                          </>
-                        )}
-                        {item.key === 'courses' && (
-                          <>
-                            {courses.filter(c => !c.isComingSoon).map(course => (
-                              <Link
-                                key={course.id}
-                                href={`/${locale}/web/courses/${course.slug}`}
-                                onClick={() => setMobileMenuOpen(false)}
-                                className="flex items-center gap-3 px-4 py-3 text-grey-700 hover:text-primary hover:bg-white rounded-lg mx-2 transition-colors"
-                              >
-                                <span
-                                  className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                                  style={{
-                                    backgroundColor: `${course.gradient.from}22`,
-                                    color: course.gradient.from
-                                  }}
-                                >
-                                  {course.icon}
-                                </span>
-                                <div>
-                                  <span className="font-medium block">{course.title[lang]}</span>
-                                  <span className="text-xs text-grey-500">
-                                    {course.modules} {isArabic ? 'وحدات' : 'Modules'} • {course.price} {course.currency[lang]}
-                                  </span>
-                                </div>
-                              </Link>
-                            ))}
-                            <div className="border-t border-grey-200 mt-2 pt-2 mx-2">
-                              <Link href={`/${locale}/web/courses`} onClick={() => setMobileMenuOpen(false)} className="flex items-center justify-center gap-2 py-2 text-primary font-semibold text-sm">
-                                {isArabic ? 'عرض كل الدورات' : 'View All Courses'}
-                                <svg className={`w-4 h-4 ${isArabic ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                              </Link>
-                            </div>
-                          </>
-                        )}
-                      </div>
+
+                    {/* Mobile Accordion */}
+                    <div className={`${hoveredItem === item.key ? 'block' : 'hidden'} pl-4 pr-2 space-y-2 pb-2`}>
+                      {item.key === 'courses' && courses.slice(0, 4).map(course => (
+                        <Link
+                          key={course.id}
+                          href={`/${locale}/web/courses/${course.slug}`}
+                          className="block p-3 rounded-lg bg-gray-50 border border-gray-100 text-sm"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <div className="font-semibold text-gray-900">{course.title[lang]}</div>
+                          <div className="text-xs text-gray-500 mt-1">{course.modules} Modules</div>
+                        </Link>
+                      ))}
+                      {/* Add simple View All link */}
+                      <Link
+                        href={`/${locale}${item.href}`}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex items-center gap-2 p-3 rounded-lg bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 hover:border-blue-300 hover:shadow-sm transition-all mt-2"
+                      >
+                        <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                        </svg>
+                        <span className="text-sm font-bold text-blue-700 flex-1">{t('common.viewAll')}</span>
+                        <svg className={`w-4 h-4 text-blue-600 ${isArabic ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </Link>
                     </div>
                   </div>
-                );
-              }
-
-              return (
-                <Link
-                  key={item.href}
-                  href={`/${locale}${item.href}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`block px-4 py-3 rounded-lg font-medium transition-all duration-300 ${active
-                      ? 'text-primary bg-primary-50 border-l-4 border-primary'
-                      : 'text-grey-700 hover:text-primary hover:bg-grey-50'
-                    }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span>{item.label}</span>
-                    {active && (
-                      <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                    )}
-                  </div>
-                </Link>
-              );
-            })}
+                ) : (
+                  <Link
+                      href={`/${locale}${item.href}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium"
+                    >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
+            ))}
           </nav>
         </div>
       </div>

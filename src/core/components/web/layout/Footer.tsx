@@ -27,14 +27,14 @@ export default function Footer() {
                   {isArabic ? 'ف' : 'F'}
                 </span>
                 <span className="bg-gradient-to-r from-white to-grey-300 bg-clip-text text-transparent">
-                  {isArabic ? 'فنتك العرب' : 'Arab Fintech'}
+                  {isArabic ? 'مال تك' : 'Maal Tech'}
                 </span>
               </h3>
             </Link>
             <p className="text-grey-400 leading-relaxed max-w-sm">
               {isArabic
-                ? 'بوابتك لعالم التقنية المالية العربية. نقدم رؤى شاملة وأخبار تنظيمية وتحليلات للسوق السعودي والخليجي والعربي.'
-                : 'Your gateway to Arab FinTech. Providing comprehensive insights, regulatory updates, and market analysis for the Saudi, GCC, and Arab world.'}
+                ? 'بوابتك لعالم التقنية المالية. مال تك تقدم رؤى شاملة وأخبار تنظيمية وتحليلات للسوق السعودي والخليجي والعربي.'
+                : 'Your gateway to Middle Eastern FinTech. Maal Tech provides comprehensive insights, regulatory updates, and market analysis for the Saudi, GCC, and Arab world.'}
             </p>
 
             {/* Social Links */}
@@ -143,7 +143,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-grey-500">
-            © {currentYear} {isArabic ? 'فنتك العرب' : 'Arab Fintech'}.
+            © {currentYear} {isArabic ? 'مال تك' : 'Maal Tech'}.
             {isArabic ? ' جميع الحقوق محفوظة.' : ' All rights reserved.'}
           </p>
           <div className="flex items-center gap-6">

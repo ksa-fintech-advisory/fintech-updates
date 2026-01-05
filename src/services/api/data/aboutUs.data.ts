@@ -2,7 +2,7 @@ import { AboutUsContent } from '@/core/types/web/aboutUs';
 
 export const aboutUsData: AboutUsContent = {
   mission: {
-    en: 'To provide comprehensive, accurate, and timely coverage of the Arab FinTech ecosystem, empowering stakeholders across the Arab world with the insights they need to make informed decisions.',
+    en: 'To provide comprehensive, accurate, and timely coverage of the Middle Eastern FinTech ecosystem, empowering stakeholders across the Arab world with the insights they need to make informed decisions.',
     ar: 'تقديم تغطية شاملة ودقيقة وفي الوقت المناسب للنظام البيئي للتقنية المالية العربية، وتمكين أصحاب المصلحة في العالم العربي بالرؤى التي يحتاجونها لاتخاذ قرارات مستنيرة.',
   },
   vision: {

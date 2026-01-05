@@ -136,4 +136,22 @@
   .highlight-block.success::before {
     @apply text-emerald-800;
   }
+
+  /* Saudi Brand Gradient */
+  .bg-gradient-saudi {
+    background: linear-gradient(135deg, #006747 0%, #10b981 50%, #D4AF37 100%);
+  }
+
+  /* Shadow utilities */
+  .shadow-medium {
+    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.06);
+  }
+
+  .shadow-hard {
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15), 0 6px 12px -4px rgba(0, 0, 0, 0.1);
+  }
+
+  .shadow-glow {
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.2), 0 8px 16px -4px rgba(0, 0, 0, 0.1);
+  }
 }

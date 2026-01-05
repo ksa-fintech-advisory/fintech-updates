@@ -10,14 +10,14 @@ import '@/core/theme/globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Arab Fintech | فنتك العرب',
-    template: '%s | Arab Fintech',
+    default: 'Maal Tech | مال تك',
+    template: '%s | Maal Tech',
   },
-  description: 'Your gateway to Arab FinTech - covering innovations, regulations, and trends across the Arab world. From Saudi Arabia to the UAE, Egypt, and beyond. Comprehensive insights on digital banking, blockchain, payments, and financial technology.',
+  description: 'Your gateway to Middle Eastern FinTech - Maal Tech covers innovations, regulations, and trends across the Arab world. From Saudi Arabia to the UAE, Egypt, and beyond. Comprehensive insights on digital banking, blockchain, payments, and financial technology.',
   keywords: ['Saudi Arabia', 'FinTech', 'Digital Banking', 'SAMA', 'Mada', 'Payment Systems', 'Blockchain', 'Financial Technology', 'Vision 2030', 'Innovation'],
-  authors: [{ name: 'Arab Fintech Team' }],
-  creator: 'Arab Fintech',
-  publisher: 'Arab Fintech',
+  authors: [{ name: 'Maal Tech Team' }],
+  creator: 'Maal Tech',
+  publisher: 'Maal Tech',
   formatDetection: {
     email: false,
     address: false,
@@ -32,10 +32,10 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Arab Fintech | فنتك العرب',
-    description: 'Your gateway to Arab FinTech - covering innovations, regulations, and trends across the Arab world.',
+    title: 'Maal Tech | مال تك',
+    description: 'Your gateway to Middle Eastern FinTech - covering innovations, regulations, and trends across the Arab world.',
     url: '/',
-    siteName: 'Arab Fintech',
+    siteName: 'Maal Tech',
     locale: 'en',
     type: 'website',
     images: [
@@ -43,16 +43,16 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Arab Fintech',
+        alt: 'Maal Tech',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Arab Fintech | فنتك العرب',
-    description: 'Your gateway to Arab FinTech - covering innovations, regulations, and trends across the Arab world.',
+    title: 'Maal Tech | مال تك',
+    description: 'Your gateway to Middle Eastern FinTech - covering innovations, regulations, and trends across the Arab world.',
     images: ['/og-image.png'],
-    creator: '@ArabFintech',
+    creator: '@MaalTech',
   },
   robots: {
     index: true, // Website should be indexed
