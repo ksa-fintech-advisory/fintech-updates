@@ -12,6 +12,7 @@
   "common": {
     "appName": "FinTech Admin",
     "adminUser": "Admin User",
+    "viewAll": "View All",
     "nav": {
       "home": "Home",
       "blogs": "Blogs",
@@ -49,7 +50,7 @@
   "web": {
     "home": {
       "hero": {
-        "title": "Your Gateway to Arab FinTech",
+        "title": "Your Gateway to Middle Eastern FinTech",
         "subtitle": "Insights, Innovations & Trends Across the Arab World",
         "description": "Comprehensive coverage of FinTech innovations, regulatory updates, and industry trends across the Arab world - from Saudi Arabia and the UAE to Egypt and beyond.",
         "exploreArticles": "Explore Articles",
@@ -73,8 +74,8 @@
     },
     "about": {
       "title": "About Us",
-      "subtitle": "Your gateway to Arab FinTech insights and analysis",
-      "authorName": "The Arab Fintech Team",
+      "subtitle": "Your gateway to Middle Eastern FinTech insights and analysis",
+      "authorName": "The Maal Tech Team",
       "authorTitle": "Pioneering Financial Innovation",
       "authorBio": "We are a collective of industry experts, analysts, and technologists dedicated to accelerating the growth of the financial technology ecosystem across the Arab world. Through in-depth analysis, regulatory guidance, and market intelligence, we empower innovators and institutions to shape the future of digital finance.",
       "mission": "Our Mission",
@@ -83,7 +84,7 @@
       "expertise": "Areas of Expertise",
       "cta": {
         "title": "Stay Informed",
-        "description": "Subscribe to receive the latest Arab FinTech updates and regulatory insights",
+        "description": "Subscribe to receive the latest Middle Eastern FinTech updates and regulatory insights",
         "button": "Subscribe Now"
       }
     },
@@ -113,7 +114,7 @@
   "pages": {
     "home": {
       "hero": {
-        "title": "Your Gateway to Arab FinTech",
+        "title": "Your Gateway to Middle Eastern FinTech",
         "subtitle": "Insights, Innovations & Trends Across the Arab World",
         "description": "Comprehensive coverage of FinTech innovations, regulatory updates, and industry trends across the Arab world - from Saudi Arabia and the UAE to Egypt and beyond."
       },
@@ -151,7 +152,7 @@
   },
   "newsletter": {
     "title": "Subscribe to our Newsletter",
-    "description": "Get the latest Arab FinTech updates delivered to your inbox",
+    "description": "Get the latest Middle Eastern FinTech updates delivered to your inbox",
     "placeholder": "Enter your email",
     "button": "Subscribe"
   },

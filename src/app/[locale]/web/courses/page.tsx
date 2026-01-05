@@ -7,7 +7,7 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
   const isArabic = locale === 'ar';
 
   return (
-    <div className="w-full">
+    <main className="w-full">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-accent-900 text-white py-24 md:py-32 overflow-hidden min-h-[50vh] flex items-center">
         {/* Background Overlay */}
@@ -174,6 +174,6 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

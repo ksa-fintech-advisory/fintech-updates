@@ -3,8 +3,8 @@ import { HomeContent } from '@/core/types/web/home';
 export const homeData: HomeContent = {
   hero: {
     title: {
-      en: 'Your Gateway to Arab FinTech',
-      ar: 'بوابتك لعالم التقنية المالية العربية',
+      en: 'Your Gateway to Middle Eastern FinTech',
+      ar: 'بوابتك لعالم التقنية المالية',
     },
     subtitle: {
       en: 'Insights, Innovations & Trends Across the Arab World',

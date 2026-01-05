@@ -297,8 +297,8 @@ async function main() {
       name: 'Default Hero',
       titleEn: 'Empowering Arab Financial Innovation',
       titleAr: 'تمكين الابتكار المالي العربي',
-      subtitleEn: 'Expert Advisory for Arab Fintech Companies',
-      subtitleAr: 'استشارات متخصصة لشركات التقنية المالية العربية',
+      subtitleEn: 'Expert Advisory for FinTech Companies',
+      subtitleAr: 'استشارات متخصصة لشركات التقنية المالية',
       descriptionEn: 'Navigate regulatory compliance, optimize operations, and accelerate growth in the Arab financial technology sector',
       descriptionAr: 'تنقل عبر الامتثال التنظيمي، وحسّن العمليات، وسرّع النمو في قطاع التقنية المالية العربي',
       ctaButtons: JSON.stringify([

@@ -2,108 +2,163 @@
 
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
+import { StaggerContainer, StaggerItem } from '../home/HomeAnimations';
 
 export default function ProductsMegaMenu({ closeMenu }: { closeMenu?: () => void }) {
   const locale = useLocale();
   const isArabic = locale === 'ar';
 
+  // --- Product Configuration ---
   const products = [
     {
+      id: 'calculator',
       title: isArabic ? 'حاسبة الرسوم' : 'Fee Calculator',
-      description: isArabic ? 'احسب رسوم المدفوعات والخدمات البنكية بسهولة' : 'Calculate banking and payment fees easily',
+      description: isArabic ? 'حساب دقيق لصافي الربح وخصم ضريبة القيمة المضافة.' : 'Precise net profit calculation with VAT deduction.',
       href: '/web/products/fee-calculator',
+      iconColor: 'text-blue-600',
+      bgColor: 'bg-blue-50',
+      borderColor: 'group-hover:border-blue-200',
       icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 4h-6m4 8h3a2 2 0 002-2V7a2 2 0 00-2-2h-3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 4h-6m4 8h3a2 2 0 002-2V7a2 2 0 00-2-2h-3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
         </svg>
-      ),
-      color: 'bg-blue-50 text-blue-600',
+      )
     },
     {
+      id: 'compliance',
       title: isArabic ? 'فاحص الامتثال' : 'Compliance Checker',
-      description: isArabic ? 'تحقق من امتثال منتجك للوائح التنظيمية' : 'Check your product compliance with regulations',
+      description: isArabic ? 'تحقق من توافق منتجك مع لوائح البنك المركزي.' : 'Check product alignment with SAMA/CBUAE regulations.',
       href: '/web/products/compliance-checker',
+      iconColor: 'text-emerald-600',
+      bgColor: 'bg-emerald-50',
+      borderColor: 'group-hover:border-emerald-200',
       icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
-      ),
-      color: 'bg-green-50 text-green-600',
+      )
     },
     {
-       title: isArabic ? 'تحليل السوق' : 'Market Analysis',
-       description: isArabic ? 'رؤى وتحليلات لسوق التقنية المالية' : 'Insights and analytics for the Fintech market',
-       href: '/web/products/market-analysis',
-       icon: (
-         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-         </svg>
-       ),
-       color: 'bg-purple-50 text-purple-600',
+      id: 'market',
+      title: isArabic ? 'راديو السوق' : 'Market Radar',
+      description: isArabic ? 'رؤى بيانية وتحليلات لقطاع التقنية المالية.' : 'Data visualization and insights for the Fintech sector.',
+      href: '/web/products/market-analysis',
+      iconColor: 'text-purple-600',
+      bgColor: 'bg-purple-50',
+      borderColor: 'group-hover:border-purple-200',
+      icon: (
+        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+      )
     }
   ];
 
   return (
-    <div className="absolute top-full left-0 w-full bg-white border-t border-grey-100 shadow-xl rounded-b-3xl overflow-hidden animate-slide-down transform origin-top z-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {products.map((product, index) => (
-            <Link
-              key={index}
-              href={`/${locale}${product.href}`}
-              onClick={closeMenu}
-              className="group flex gap-4 p-4 rounded-2xl hover:bg-grey-50 transition-all duration-300 border border-transparent hover:border-grey-100"
-            >
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-110 ${product.color}`}>
-                {product.icon}
-              </div>
-              <div>
-                <h3 className="font-bold text-grey-900 group-hover:text-primary transition-colors mb-1">
+    <div
+      className="absolute top-full left-0 w-full z-50 bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl"
+      dir={isArabic ? 'rtl' : 'ltr'}
+    >
+      <StaggerContainer className="container mx-auto px-6 py-8">
+
+        {/* Header Label */}
+        <div className="flex items-center gap-2 mb-6">
+          <span className="h-4 w-1 bg-blue-600 rounded-full"></span>
+          <span className="text-xs font-bold uppercase tracking-wider text-gray-500">
+            {isArabic ? 'الأدوات والمنتجات' : 'Products & Tools'}
+          </span>
+        </div>
+
+        {/* Products Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {products.map((product) => (
+            <StaggerItem key={product.id}>
+              <Link
+                href={`/${locale}${product.href}`}
+                onClick={closeMenu}
+                className={`group flex flex-col p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-lg hover:shadow-gray-200/50 transition-all duration-300 h-full ${product.borderColor}`}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 ${product.bgColor} ${product.iconColor}`}>
+                    {product.icon}
+                  </div>
+                  {/* Hover Arrow */}
+                  <span className={`text-gray-300 group-hover:text-gray-600 transition-all transform opacity-0 group-hover:opacity-100 group-hover:translate-x-1 ${isArabic ? 'group-hover:-translate-x-1' : ''}`}>
+                    →
+                  </span>
+                </div>
+
+                <h3 className="font-bold text-gray-900 group-hover:text-blue-700 transition-colors mb-2">
                   {product.title}
                 </h3>
-                <p className="text-sm text-grey-500 leading-relaxed font-medium">
+                <p className="text-sm text-gray-500 leading-relaxed font-medium">
                   {product.description}
                 </p>
-              </div>
-            </Link>
+              </Link>
+            </StaggerItem>
           ))}
-          
-           {/* Call to Action Box */}
-          <div className="md:col-span-2 lg:col-span-3 mt-4 pt-6 border-t border-grey-100 flex flex-col md:flex-row items-center justify-between bg-primary-50/50 p-4 rounded-xl gap-4">
-            <div className="flex items-center gap-3 w-full md:w-auto">
-              <span className="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 shrink-0">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                    </svg>
-                 </span>
-                 <div>
-                    <p className="font-bold text-grey-900 text-sm">
-                  {isArabic ? 'عرض جميع المنتجات والحلول' : 'View all products & solutions'}
-                    </p>
-                    <p className="text-xs text-grey-500">
-                  {isArabic ? 'استكشف مجموعتنا الكاملة من الأدوات' : 'Explore our complete suite of tools'}
-                    </p>
-                 </div>
+        </div>
+
+        {/* View All Products Link */}
+        <div className="mt-6 pt-6 border-t border-gray-100 flex items-center justify-end">
+          <Link
+            href={`/${locale}/web/products`}
+            onClick={closeMenu}
+            className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white border border-blue-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+            <span className="font-bold text-sm">
+              {isArabic ? 'عرض جميع المنتجات' : 'View All Products'}
+            </span>
+            <svg className={`w-4 h-4 group-hover:translate-x-1 transition-transform ${isArabic ? 'rotate-180 group-hover:-translate-x-1' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Link>
+        </div>
+
+        {/* Developer Hub Footer (Integration CTA) */}
+        {/* <div className="mt-8 pt-6 border-t border-gray-100">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-50 rounded-xl p-4 border border-slate-100">
+
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-lg bg-slate-200 flex items-center justify-center text-slate-600">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
               </div>
-            <div className="flex gap-3 w-full md:w-auto">
+              <div>
+                <h4 className="text-sm font-bold text-slate-800">
+                  {isArabic ? 'مركز المطورين' : 'Developer Hub'}
+                </h4>
+                <p className="text-xs text-slate-500">
+                  {isArabic ? 'وثائق API، بيئة التجربة (Sandbox)، ومكتبات الربط.' : 'API Docs, Sandbox environment, and SDKs.'}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
               <Link
-                href={`/${locale}/web/products`}
+                href={`/${locale}/docs`}
                 onClick={closeMenu}
-                className="px-4 py-2 bg-white text-primary-600 text-sm font-bold rounded-lg shadow-sm hover:shadow-md transition-all border border-primary-100 flex-1 md:flex-none text-center"
+                className="px-4 py-2 text-xs font-bold text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-white hover:text-blue-600 hover:border-blue-200 transition-colors shadow-sm"
               >
-                {isArabic ? 'عرض الكل' : 'View All'}
+                {isArabic ? 'قراءة الوثائق' : 'Read Documentation'}
               </Link>
               <Link
-                href={`/${locale}/web/contact`}
+                href={`/${locale}/contact`}
                 onClick={closeMenu}
-                className="px-4 py-2 bg-primary-600 text-white text-sm font-bold rounded-lg shadow-sm hover:bg-primary-700 transition-all flex-1 md:flex-none text-center"
+                className="px-4 py-2 text-xs font-bold text-white bg-slate-900 rounded-lg hover:bg-blue-600 transition-colors shadow-sm flex items-center gap-2"
               >
-                {isArabic ? 'تواصل معنا' : 'Contact Us'}
+                {isArabic ? 'تواصل مع المبيعات' : 'Contact Sales'}
               </Link>
             </div>
-           </div>
-        </div>
-      </div>
+
+          </div>
+        </div> */}
+
+      </StaggerContainer>
     </div>
   );
 }

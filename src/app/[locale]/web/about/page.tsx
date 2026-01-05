@@ -251,8 +251,8 @@ export default async function AboutPage({ params }: { params: { locale: string }
             </h3>
             <p className="text-xl md:text-2xl text-grey-300 mb-12 leading-relaxed font-light">
               {isArabic
-                ? 'اشترك لتلقي آخر تحديثات التقنية المالية العربية'
-                : 'Subscribe to receive the latest Arab FinTech updates and insights'}
+                ? 'اشترك لتلقي آخر تحديثات التقنية المالية'
+                : 'Subscribe to receive the latest FinTech updates and insights'}
             </p>
             <Link
               href={`/${locale}/web/contact`}
