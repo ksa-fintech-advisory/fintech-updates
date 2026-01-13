@@ -64,8 +64,8 @@ export default async function HomePage({ params }: { params: { locale: string } 
                     key={index}
                     href={button.href}
                     className={`group px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-glow-accent ${button.variant === 'primary'
-                        ? 'bg-accent hover:bg-accent-600 text-white shadow-lg shadow-accent/30'
-                        : 'bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md'
+                      ? 'bg-accent hover:bg-accent-600 text-white shadow-lg shadow-accent/30'
+                      : 'bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md'
                       }`}
                   >
                     <span className="flex items-center gap-2">

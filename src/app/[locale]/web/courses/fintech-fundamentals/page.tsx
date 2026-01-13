@@ -2,10 +2,10 @@ import { getTranslations } from 'next-intl/server';
 import CourseHero from '@/core/components/web/course/CourseHero';
 import CourseTimeline from '@/core/components/web/course/CourseTimeline';
 import PhaseCard from '@/core/components/web/course/PhaseCard';
-import BadgesShowcase from '@/core/components/web/course/BadgesShowcase';
 import { phasesData } from '@/data/fintechFundamentalsData';
 import Link from 'next/link';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
+import { FiLayers, FiTerminal, FiCpu, FiCheckCircle, FiArrowRight, FiArrowLeft, FiCode } from 'react-icons/fi';
 
 export default async function FintechFundamentalsPage({
   params,
@@ -16,7 +16,7 @@ export default async function FintechFundamentalsPage({
   const isArabic = locale === 'ar';
   const t = await getTranslations('fintechFundamentals');
 
-  // Get phase translations
+  // Helper for translations
   const getPhaseTranslation = (phaseNum: number) => ({
     title: t(`phases.phase${phaseNum}.title`),
     subtitle: t(`phases.phase${phaseNum}.subtitle`),
@@ -27,190 +27,229 @@ export default async function FintechFundamentalsPage({
   const viewDetailsText = t('phases.viewDetails');
 
   return (
-    <div className="w-full">
-      {/* Hero Section */}
-      <CourseHero
-        locale={locale}
-        translations={{
-          title: t('title'),
-          subtitle: t('subtitle'),
-          description: t('description'),
-          hero: {
-            badge: t('hero.badge'),
-            phases: t('hero.phases'),
-            duration: t('hero.duration'),
-            language: t('hero.language'),
-          },
-          cta: {
-            enroll: t('cta.enroll'),
-            learnMore: t('cta.learnMore'),
-            contact: t('cta.contact'),
-          },
-        }}
-      />
+    <div className="w-full bg-zinc-50 dark:bg-black min-h-screen selection:bg-primary-500/30">
 
-      {/* Course Overview Section */}
-      <section className="py-20 bg-grey-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-grey-900 mb-4">
-              {t('overview.title')}
-            </h2>
-            <p className="text-xl text-grey-600 max-w-3xl mx-auto">
-              {t('overview.description')}
-            </p>
-            <div className="w-24 h-1.5 bg-gradient-to-r from-accent-400 to-primary-400 mx-auto rounded-full mt-6" />
-          </AnimatedSection>
+      {/* Global Background Grid - Engineering Paper Feel */}
+      <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
 
-          {/* Benefits Grid */}
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <StaggerItem>
-              <div className="bg-white p-8 rounded-3xl shadow-soft hover:shadow-hard transition-all duration-300 text-center h-full">
-                <div className="w-16 h-16 mx-auto bg-primary-50 rounded-2xl flex items-center justify-center text-3xl mb-6">
-                  📚
-                </div>
-                <h3 className="text-xl font-bold text-grey-900 mb-3">
-                  {t('overview.benefits.comprehensive.title')}
-                </h3>
-                <p className="text-grey-600">
-                  {t('overview.benefits.comprehensive.description')}
-                </p>
-              </div>
-            </StaggerItem>
-            <StaggerItem>
-              <div className="bg-white p-8 rounded-3xl shadow-soft hover:shadow-hard transition-all duration-300 text-center h-full">
-                <div className="w-16 h-16 mx-auto bg-accent-50 rounded-2xl flex items-center justify-center text-3xl mb-6">
-                  💡
-                </div>
-                <h3 className="text-xl font-bold text-grey-900 mb-3">
-                  {t('overview.benefits.practical.title')}
-                </h3>
-                <p className="text-grey-600">
-                  {t('overview.benefits.practical.description')}
-                </p>
-              </div>
-            </StaggerItem>
-            <StaggerItem>
-              <div className="bg-white p-8 rounded-3xl shadow-soft hover:shadow-hard transition-all duration-300 text-center h-full">
-                <div className="w-16 h-16 mx-auto bg-green-50 rounded-2xl flex items-center justify-center text-3xl mb-6">
-                  🎓
-                </div>
-                <h3 className="text-xl font-bold text-grey-900 mb-3">
-                  {t('overview.benefits.expert.title')}
-                </h3>
-                <p className="text-grey-600">
-                  {t('overview.benefits.expert.description')}
-                </p>
-              </div>
-            </StaggerItem>
-          </StaggerContainer>
+      <div className="relative z-10">
+
+        {/* Hero Section - Keeping the component but ensuring it fits the theme via props if available, 
+            otherwise wrapping it to control context */}
+        <div className="border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm">
+          <CourseHero
+            locale={locale}
+            translations={{
+              title: t('title'),
+              subtitle: t('subtitle'),
+              description: t('description'),
+              hero: {
+                badge: t('hero.badge'),
+                phases: t('hero.phases'),
+                duration: t('hero.duration'),
+                language: t('hero.language'),
+              },
+              cta: {
+                enroll: t('cta.enroll'),
+                learnMore: t('cta.learnMore'),
+                contact: t('cta.contact'),
+              },
+            }}
+          />
         </div>
-      </section>
 
-      {/* Phases Timeline Section */}
-      <CourseTimeline
-        locale={locale}
-        phasesTitle={t('phases.title')}
-        phasesSubtitle={t('phases.subtitle')}
-      >
-        {phasesData.map((phase, index) => {
-          const phaseTranslation = getPhaseTranslation(phase.id);
-          return (
-            <PhaseCard
-              key={phase.id}
-              phase={phase}
-              title={phaseTranslation.title}
-              subtitle={phaseTranslation.subtitle}
-              description={phaseTranslation.description}
-              topicsList={phaseTranslation.topicsList}
-              viewDetailsText={viewDetailsText}
-              index={index}
-              isArabic={isArabic}
-              locale={locale}
-            />
-          );
-        })}
-      </CourseTimeline>
-
-      {/* Skill Badges & Certificates */}
-      {/* <BadgesShowcase locale={locale} /> */}
-
-      {/* About the Program Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="max-w-4xl mx-auto">
-            <div className="bg-gradient-to-br from-grey-50 to-grey-100 rounded-3xl p-10 md:p-14 relative overflow-hidden">
-              {/* Decorative Elements */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-primary-100 rounded-full blur-3xl opacity-30" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent-100 rounded-full blur-3xl opacity-30" />
-              
-              <div className="relative z-10 text-center">
-                <div className="w-20 h-20 mx-auto bg-gradient-to-br from-primary-500 to-primary-700 rounded-2xl flex items-center justify-center text-4xl text-white mb-8 shadow-lg">
-                  🎯
+        {/* Course Overview Section (Specs Sheet) */}
+        <section className="py-24 relative">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection className="mb-16">
+              <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-zinc-200 dark:border-zinc-800">
+                <div className="max-w-2xl">
+                  <span className="text-primary-600 dark:text-primary-400 font-mono text-xs uppercase tracking-widest mb-2 block">
+                    {isArabic ? '// نظرة_عامة' : '// SYSTEM_OVERVIEW'}
+                  </span>
+                  <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white">
+                    {t('overview.title')}
+                  </h2>
                 </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-grey-900 mb-6">
-                  {t('instructor.title')}
-                </h2>
-                <p className="text-lg text-grey-600 leading-relaxed">
-                  {t('instructor.description')}
+                <p className="text-zinc-600 dark:text-zinc-400 max-w-lg text-sm md:text-base leading-relaxed">
+                  {t('overview.description')}
                 </p>
               </div>
-            </div>
-          </AnimatedSection>
+            </AnimatedSection>
+
+            {/* Benefits Grid - Tech Cards style */}
+            <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Card 1: Comprehensive */}
+              <StaggerItem>
+                <div className="group h-full bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 hover:border-primary-500/50 p-8 rounded-xl transition-all duration-300 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <FiLayers className="w-24 h-24 text-primary-500" />
+                  </div>
+                  <div className="w-12 h-12 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white mb-6 group-hover:bg-primary-500 group-hover:text-white transition-colors">
+                    <FiLayers className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-3 font-mono">
+                    {t('overview.benefits.comprehensive.title')}
+                  </h3>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                    {t('overview.benefits.comprehensive.description')}
+                  </p>
+                </div>
+              </StaggerItem>
+
+              {/* Card 2: Practical */}
+              <StaggerItem>
+                <div className="group h-full bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 hover:border-primary-500/50 p-8 rounded-xl transition-all duration-300 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <FiTerminal className="w-24 h-24 text-primary-500" />
+                  </div>
+                  <div className="w-12 h-12 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white mb-6 group-hover:bg-primary-500 group-hover:text-white transition-colors">
+                    <FiTerminal className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-3 font-mono">
+                    {t('overview.benefits.practical.title')}
+                  </h3>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                    {t('overview.benefits.practical.description')}
+                  </p>
+                </div>
+              </StaggerItem>
+
+              {/* Card 3: Expert */}
+              <StaggerItem>
+                <div className="group h-full bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 hover:border-primary-500/50 p-8 rounded-xl transition-all duration-300 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                    <FiCpu className="w-24 h-24 text-primary-500" />
+                  </div>
+                  <div className="w-12 h-12 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white mb-6 group-hover:bg-primary-500 group-hover:text-white transition-colors">
+                    <FiCpu className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-3 font-mono">
+                    {t('overview.benefits.expert.title')}
+                  </h3>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                    {t('overview.benefits.expert.description')}
+                  </p>
+                </div>
+              </StaggerItem>
+            </StaggerContainer>
+          </div>
+        </section>
+
+        {/* Phases Timeline Section */}
+        <div className="border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/20">
+          <CourseTimeline
+            locale={locale}
+            phasesTitle={t('phases.title')}
+            phasesSubtitle={t('phases.subtitle')}
+          >
+            {phasesData.map((phase, index) => {
+              const phaseTranslation = getPhaseTranslation(phase.id);
+              return (
+                <PhaseCard
+                  key={phase.id}
+                  phase={phase}
+                  title={phaseTranslation.title}
+                  subtitle={phaseTranslation.subtitle}
+                  description={phaseTranslation.description}
+                  topicsList={phaseTranslation.topicsList}
+                  viewDetailsText={viewDetailsText}
+                  index={index}
+                  isArabic={isArabic}
+                  locale={locale}
+                />
+              );
+            })}
+          </CourseTimeline>
         </div>
-      </section>
 
-      {/* CTA / Enrollment Section */}
-      <section className="py-20 bg-grey-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <div className="bg-gradient-to-r from-primary-900 via-primary-800 to-primary-900 rounded-3xl p-12 md:p-16 text-center text-white relative overflow-hidden shadow-2xl">
-              {/* Background Effects */}
-              <div className="absolute top-0 right-0 w-80 h-80 bg-accent-500 rounded-full blur-[100px] opacity-20" />
-              <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary-400 rounded-full blur-[80px] opacity-20" />
-              
-              <div className="relative z-10 max-w-3xl mx-auto">
-                <h2 className="text-3xl md:text-5xl font-bold mb-6">
-                  {t('enrollSection.title')}
-                </h2>
-                <p className="text-xl text-primary-100 mb-10">
-                  {t('enrollSection.description')}
-                </p>
+        {/* Instructor / Source Section */}
+        <section className="py-24 border-t border-zinc-200 dark:border-zinc-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection className="max-w-5xl mx-auto">
+              <div className="relative rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 md:p-12 overflow-hidden">
 
-                {/* Features List */}
-                <div className="flex flex-wrap justify-center gap-4 mb-10">
-                  {(t.raw('enrollSection.features') as string[]).map((feature, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20"
-                    >
-                      <svg className="w-5 h-5 text-accent-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-white/90">{feature}</span>
+                {/* Background Tech Pattern */}
+                <div className="absolute top-0 right-0 w-full h-full opacity-[0.03] dark:opacity-[0.05] pointer-events-none"
+                  style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '20px 20px' }}
+                />
+
+                <div className="relative z-10 flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+                  <div className="shrink-0">
+                    <div className="w-24 h-24 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center border border-zinc-200 dark:border-zinc-700">
+                      <FiCode className="w-10 h-10 text-zinc-600 dark:text-zinc-400" />
                     </div>
-                  ))}
-                </div>
+                  </div>
 
-                <Link
-                  href={`/${locale}/web/courses/fintech-fundamentals/register`}
-                  className="inline-flex items-center gap-2 bg-white text-primary-900 font-bold py-4 px-10 rounded-xl hover:bg-accent-50 transition-all duration-300 transform hover:scale-105 shadow-lg text-lg"
-                >
-                  {t('cta.enroll')}
-                  <svg
-                    className={`w-5 h-5 ${isArabic ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                  </svg>
-                </Link>
+                  <div className="text-center md:text-start rtl:md:text-right">
+                    <span className="text-primary-600 dark:text-primary-400 font-mono text-xs uppercase tracking-wider mb-2 block">
+                      {isArabic ? 'بقيادة' : 'LEAD_INSTRUCTOR'}
+                    </span>
+                    <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-4">
+                      {t('instructor.title')}
+                    </h2>
+                    <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg">
+                      {t('instructor.description')}
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+            </AnimatedSection>
+          </div>
+        </section>
+
+        {/* CTA Section - The "Deploy" Bar */}
+        <section className="py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection>
+              <div className="bg-zinc-900 dark:bg-zinc-900 rounded-2xl border border-zinc-800 p-8 md:p-12 relative overflow-hidden group">
+
+                {/* Subtle Glow */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-48 bg-primary-500/20 blur-[100px] rounded-full pointer-events-none" />
+
+                <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-10">
+
+                  <div className="max-w-2xl text-center lg:text-start rtl:lg:text-right">
+                    <h2 className="text-3xl font-bold text-white mb-4 tracking-tight">
+                      {t('enrollSection.title')}
+                    </h2>
+                    <p className="text-zinc-400 mb-8 text-lg">
+                      {t('enrollSection.description')}
+                    </p>
+
+                    {/* Features List as Tags */}
+                    <div className="flex flex-wrap justify-center lg:justify-start gap-3">
+                      {(t.raw('enrollSection.features') as string[]).map((feature, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800 rounded border border-zinc-700 text-sm text-zinc-300"
+                        >
+                          <FiCheckCircle className="w-4 h-4 text-primary-500" />
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="shrink-0">
+                    <Link
+                      href={`/${locale}/web/courses/fintech-fundamentals/register`}
+                      className="group/btn inline-flex items-center gap-3 bg-white text-zinc-900 font-bold py-4 px-8 rounded-lg hover:bg-zinc-200 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+                    >
+                      <span>{t('cta.enroll')}</span>
+                      {isArabic ? <FiArrowLeft className="group-hover/btn:-translate-x-1 transition-transform" /> : <FiArrowRight className="group-hover/btn:translate-x-1 transition-transform" />}
+                    </Link>
+                    <div className="mt-3 text-center text-xs text-zinc-500 font-mono">
+                      {isArabic ? 'دفعة محدودة العدد' : 'Limited intake capacity'}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

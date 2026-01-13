@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { phasesData } from '@/data/fintechFundamentalsData';
+import { FiLayers, FiTarget, FiMapPin, FiCheckCircle } from 'react-icons/fi';
 
 interface CourseTimelineProps {
   locale: string;
@@ -19,86 +20,108 @@ export default function CourseTimeline({
   const isArabic = locale === 'ar';
 
   return (
-    <section id="phases" className="py-24 bg-grey-50 relative overflow-hidden">
-      {/* Background Decorations */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary-100 to-transparent rounded-full blur-3xl opacity-40" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-accent-100 to-transparent rounded-full blur-3xl opacity-30" />
+    <section id="phases" className="py-24 bg-zinc-50 dark:bg-black relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
+
+      {/* 1. Engineering Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
+      {/* Subtle Gradient Spot for depth */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-96 bg-primary-500/5 blur-[100px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="flex flex-col items-center text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-grey-900 mb-4">
+          <span className="text-primary-600 dark:text-primary-400 font-mono text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded bg-primary-50 dark:bg-primary-900/20 border border-primary-100 dark:border-primary-800/30">
+            {isArabic ? 'خارطة الطريق' : 'CURRICULUM_ROADMAP'}
+          </span>
+
+          <h2 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6 tracking-tight">
             {phasesTitle}
           </h2>
-          <p className="text-xl text-grey-600 mb-6">{phasesSubtitle}</p>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-accent-400 to-primary-400 mx-auto rounded-full mb-8" />
-          
-          {/* Stats Bar */}
-          <div className="flex justify-center gap-8 flex-wrap">
-            <div className="flex items-center gap-2 text-grey-600">
-              <span className="text-2xl">📚</span>
-              <span className="font-semibold">{phasesData.length}</span>
-              <span>{isArabic ? 'وحدات' : 'Modules'}</span>
+
+          <p className="text-lg text-zinc-500 dark:text-zinc-400 max-w-2xl mb-10 leading-relaxed">
+            {phasesSubtitle}
+          </p>
+
+          {/* Stats Toolbar - Clean & Unified */}
+          <div className="inline-flex flex-wrap justify-center gap-px bg-zinc-200 dark:bg-zinc-800 rounded-lg overflow-hidden border border-zinc-200 dark:border-zinc-700 shadow-sm">
+            <div className="bg-white dark:bg-zinc-900 px-6 py-3 flex items-center gap-3">
+              <FiLayers className="text-zinc-400" />
+              <div className="flex flex-col text-start">
+                <span className="text-[10px] text-zinc-400 font-mono uppercase tracking-wider">{isArabic ? 'المحتوى' : 'CONTENT'}</span>
+                <span className="text-sm font-bold text-zinc-800 dark:text-zinc-200">{phasesData.length} {isArabic ? 'وحدات' : 'Modules'}</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2 text-grey-600">
-              <span className="text-2xl">🎯</span>
-              <span>{isArabic ? 'مناسب لجميع المستويات' : 'For All Levels'}</span>
+
+            <div className="bg-white dark:bg-zinc-900 px-6 py-3 flex items-center gap-3">
+              <FiTarget className="text-zinc-400" />
+              <div className="flex flex-col text-start">
+                <span className="text-[10px] text-zinc-400 font-mono uppercase tracking-wider">{isArabic ? 'المستوى' : 'LEVEL'}</span>
+                <span className="text-sm font-bold text-zinc-800 dark:text-zinc-200">{isArabic ? 'شامل' : 'All Levels'}</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2 text-grey-600">
-              <span className="text-2xl">🇸🇦</span>
-              <span>{isArabic ? 'مخصص للسوق السعودي' : 'Saudi Market Focused'}</span>
+
+            <div className="bg-white dark:bg-zinc-900 px-6 py-3 flex items-center gap-3">
+              <FiMapPin className="text-zinc-400" />
+              <div className="flex flex-col text-start">
+                <span className="text-[10px] text-zinc-400 font-mono uppercase tracking-wider">{isArabic ? 'التركيز' : 'FOCUS'}</span>
+                <span className="text-sm font-bold text-zinc-800 dark:text-zinc-200">{isArabic ? 'السوق السعودي' : 'KSA Market'}</span>
+              </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Timeline Progress Bar (Desktop) */}
-        <div className="hidden lg:block mb-12">
+        {/* 2. Visual Pipeline (Desktop) - Replaces the thick rainbow bar */}
+        <div className="hidden lg:block mb-16 px-4">
           <div className="relative max-w-5xl mx-auto">
-            <div className="h-2 bg-grey-200 rounded-full overflow-hidden">
-              <motion.div
-                initial={{ width: 0 }}
-                whileInView={{ width: '100%' }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: 'easeOut' }}
-                className="h-full bg-gradient-to-r from-primary-500 via-accent-500 to-primary-500"
-              />
-            </div>
-            <div className="flex justify-between mt-2">
-              {phasesData.map((phase) => {
-                // Use inline styles to fix gradient rendering issue
-                const gradientColors: Record<number, { from: string; to: string }> = {
-                  1: { from: '#10b981', to: '#0d9488' }, // emerald-500 to teal-600
-                  2: { from: '#f59e0b', to: '#ea580c' }, // amber-500 to orange-600
-                  3: { from: '#3b82f6', to: '#4f46e5' }, // blue-500 to indigo-600
-                  4: { from: '#8b5cf6', to: '#9333ea' }, // violet-500 to purple-600
-                };
-                const colors = gradientColors[phase.id] || { from: '#6366f1', to: '#8b5cf6' };
-                return (
+            {/* The Line */}
+            <div className="absolute top-1/2 left-0 w-full h-px bg-zinc-200 dark:bg-zinc-800 -translate-y-1/2" />
+
+            {/* The Active Line (Animation) */}
+            <motion.div
+              initial={{ width: 0 }}
+              whileInView={{ width: '100%' }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.5, ease: 'circOut' }}
+              className="absolute top-1/2 left-0 h-px bg-primary-500 -translate-y-1/2"
+            />
+
+            {/* The Nodes */}
+            <div className="relative flex justify-between">
+              {phasesData.map((phase) => (
+                <div key={phase.id} className="relative group">
                   <motion.div
-                    key={phase.id}
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: phase.id * 0.1 }}
-                    className="w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg"
-                    style={{ background: `linear-gradient(135deg, ${colors.from}, ${colors.to})` }}
+                    transition={{ delay: phase.id * 0.2 }}
+                    className="relative z-10 w-8 h-8 rounded-full bg-white dark:bg-zinc-900 border-2 border-primary-500 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-[0_0_15px_rgba(var(--primary-rgb),0.3)]"
                   >
-                    {phase.id}
+                    {/* Inner Dot */}
+                    <div className="w-2.5 h-2.5 rounded-full bg-primary-500" />
                   </motion.div>
-                );
-              })}
+
+                  {/* Label below node */}
+                  <div className="absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                    <span className="block text-xs font-mono font-bold text-zinc-400 uppercase tracking-widest group-hover:text-primary-600 transition-colors">
+                      {isArabic ? `مرحلة 0${phase.id}` : `PHASE_0${phase.id}`}
+                    </span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Phase Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {children}
         </div>
       </div>

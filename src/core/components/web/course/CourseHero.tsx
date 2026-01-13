@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import Link from 'next/link';
+import { FiArrowRight, FiArrowLeft, FiClock, FiGlobe, FiLayers, FiTerminal } from 'react-icons/fi';
 
 interface CourseHeroProps {
   locale: string;
@@ -26,207 +27,142 @@ interface CourseHeroProps {
 export default function CourseHero({ locale, translations }: CourseHeroProps) {
   const isArabic = locale === 'ar';
 
+  const features = [
+    { icon: <FiLayers className="w-5 h-5" />, label: 'Modules', value: translations.hero.phases },
+    { icon: <FiClock className="w-5 h-5" />, label: 'Duration', value: translations.hero.duration },
+    { icon: <FiGlobe className="w-5 h-5" />, label: 'Locale', value: translations.hero.language },
+  ];
+
+  // Fix 2: Explicitly type the variants to satisfy TypeScript
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" }
+    },
+  };
+
   return (
-    <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 text-white py-24 md:py-32 overflow-hidden min-h-[85vh] flex items-center">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Orbs */}
-        <motion.div
-          animate={{
-            x: [0, 30, 0],
-            y: [0, -20, 0],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-20 right-[20%] w-96 h-96 bg-accent-500 rounded-full blur-[120px] opacity-20"
-        />
-        <motion.div
-          animate={{
-            x: [0, -20, 0],
-            y: [0, 30, 0],
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-20 left-[10%] w-80 h-80 bg-primary-400 rounded-full blur-[100px] opacity-20"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-radial from-accent-500/10 to-transparent rounded-full"
-        />
+    <section className="relative bg-white dark:bg-zinc-950 pt-28 pb-20 md:pt-36 md:pb-32 overflow-hidden min-h-[80vh] flex items-center border-b border-zinc-100 dark:border-zinc-800/50 transition-colors duration-300">
 
-        {/* Floating Icons */}
-        {['💳', '🏦', '📈', '₿', '⚖️', '🌐'].map((icon, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: [0.3, 0.6, 0.3],
-              y: [0, -15, 0],
-              rotate: [0, 5, 0],
-            }}
-            transition={{
-              duration: 4 + index,
-              repeat: Infinity,
-              delay: index * 0.5,
-            }}
-            className="absolute text-4xl md:text-5xl"
-            style={{
-              top: `${15 + (index * 13) % 70}%`,
-              left: `${5 + (index * 17) % 90}%`,
-            }}
-          >
-            {icon}
-          </motion.div>
-        ))}
-      </div>
+      {/* Fix 1: Use style prop for complex data URIs to avoid JSX quoting syntax errors */}
+      <div
+        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
+        }}
+      />
 
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[url('/patterns/grid.svg')] opacity-5" />
+      {/* Subtle top gradient glow */}
+      <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-primary-50/50 via-transparent to-transparent dark:from-primary-900/10 dark:via-transparent pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-5xl mx-auto text-center">
+        <motion.div
+          className="max-w-4xl mx-auto text-center"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+
           {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/20 border border-accent-400/30 text-accent-300 text-sm font-medium mb-8">
-              <span className="w-2 h-2 bg-accent-400 rounded-full animate-pulse" />
-              {translations.hero.badge}
-            </span>
+          <motion.div variants={itemVariants} className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 dark:bg-zinc-900/80 border border-primary-100 dark:border-zinc-700 text-xs font-medium text-primary-800 dark:text-primary-300">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary-600"></span>
+              </span>
+              <span className="tracking-wide uppercase">{translations.hero.badge}</span>
+            </div>
           </motion.div>
 
           {/* Title */}
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+            variants={itemVariants}
+            className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 tracking-tight leading-tight text-zinc-900 dark:text-white"
           >
-            <span className="bg-gradient-to-r from-white via-accent-200 to-white bg-clip-text text-transparent drop-shadow-lg">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-zinc-900 via-zinc-800 to-primary-700 dark:from-white dark:via-zinc-200 dark:to-primary-400">
               {translations.title}
             </span>
           </motion.h1>
 
           {/* Subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl mb-4 text-white/90 font-light tracking-wide"
+            variants={itemVariants}
+            className="text-xl md:text-2xl mb-6 text-zinc-600 dark:text-zinc-300 font-light max-w-3xl mx-auto"
           >
             {translations.subtitle}
           </motion.p>
 
           {/* Description */}
           <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg mb-10 text-white/70 max-w-3xl mx-auto leading-relaxed"
+            variants={itemVariants}
+            className="text-base md:text-lg mb-10 text-zinc-500 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed"
           >
             {translations.description}
           </motion.p>
 
-          {/* Feature Pills */}
+          {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-4 mb-12"
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
           >
-            {[
-              { icon: '📚', text: translations.hero.phases },
-              { icon: '⏱️', text: translations.hero.duration },
-              { icon: '🌍', text: translations.hero.language },
-            ].map((feature, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90"
-              >
-                <span>{feature.icon}</span>
-                <span className="font-medium">{feature.text}</span>
+            <Link
+              href={`/${locale}/web/courses/fintech-fundamentals/register`}
+              className="group relative w-full sm:w-auto px-8 py-3.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md shadow-primary-500/20"
+            >
+              <span>{translations.cta.enroll}</span>
+              {isArabic ? (
+                <FiArrowLeft className="group-hover:-translate-x-1 transition-transform" />
+              ) : (
+                <FiArrowRight className="group-hover:translate-x-1 transition-transform" />
+              )}
+            </Link>
+
+            <a
+              href="#phases"
+              className="group w-full sm:w-auto px-8 py-3.5 rounded-xl border-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-primary-500 dark:hover:border-primary-400 hover:text-primary-600 dark:hover:text-primary-400 bg-transparent transition-all duration-200 flex items-center justify-center gap-2 font-medium"
+            >
+              <FiTerminal className="w-5 h-5 text-zinc-400 group-hover:text-primary-500 transition-colors" />
+              <span>{translations.cta.learnMore}</span>
+            </a>
+          </motion.div>
+
+          {/* Technical Specs Row */}
+          <motion.div
+            variants={itemVariants}
+            className="inline-flex flex-wrap justify-center gap-x-12 gap-y-6 py-5 px-8 bg-white/80 dark:bg-zinc-900/80 rounded-2xl border border-zinc-100 dark:border-zinc-800 shadow-sm backdrop-blur-md"
+          >
+            {features.map((feature, index) => (
+              <div key={index} className="flex items-center gap-3 text-left rtl:text-right">
+                <div className="p-2 rounded-lg bg-zinc-50 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400">
+                  {feature.icon}
+                </div>
+                <div>
+                  <div className="text-[11px] uppercase tracking-wider text-zinc-400 dark:text-zinc-500 font-semibold hidden md:block mb-0.5">
+                    {feature.label}
+                  </div>
+                  <div className="text-zinc-900 dark:text-white font-bold text-base">
+                    {feature.value}
+                  </div>
+                </div>
               </div>
             ))}
           </motion.div>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-wrap gap-4 justify-center"
-          >
-            <Link
-              href={`/${locale}/web/courses/fintech-fundamentals/register`}
-              className="group px-8 py-4 rounded-xl font-semibold bg-accent hover:bg-accent-600 text-white shadow-lg shadow-accent/30 transition-all duration-300 transform hover:scale-105 hover:shadow-glow-accent"
-            >
-              <span className="flex items-center gap-2">
-                {translations.cta.enroll}
-                <svg
-                  className={`w-5 h-5 transition-transform ${isArabic ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-            </Link>
-            <a
-              href="#phases"
-              className="group px-8 py-4 rounded-xl font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/30 backdrop-blur-md transition-all duration-300 transform hover:scale-105"
-            >
-              <span className="flex items-center gap-2">
-                {translations.cta.learnMore}
-                <svg
-                  className="w-5 h-5 group-hover:translate-y-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-              </span>
-            </a>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Floating Progress Button - More Accessible */}
-      <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 1 }}
-        className={`fixed top-1/2 -translate-y-1/2 z-50 ${isArabic ? 'left-0' : 'right-0'}`}
-      >
-        <Link
-          href={`/${locale}/web/courses/fintech-fundamentals/dashboard`}
-          className={`group flex items-center gap-3 bg-white text-grey-800 px-4 py-3 shadow-xl hover:shadow-2xl border border-grey-200 transition-all duration-300 hover:bg-grey-50 ${isArabic ? 'rounded-r-xl' : 'rounded-l-xl'
-            }`}
-          aria-label={isArabic ? 'عرض لوحة التقدم' : 'View Progress Dashboard'}
-        >
-          <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center text-primary-600 group-hover:bg-primary-200 transition-colors">
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-            </svg>
-          </div>
-          <div className={`${isArabic ? 'text-right' : 'text-left'}`}>
-            <span className="block text-sm font-bold text-grey-900">{isArabic ? 'تقدمي' : 'My Progress'}</span>
-            <span className="block text-xs text-grey-500">{isArabic ? 'عرض اللوحة' : 'View Dashboard'}</span>
-          </div>
-        </Link>
-      </motion.div>
-
-      {/* Wave Divider */}
-      <div className="absolute bottom-0 left-0 right-0 z-10">
-        <svg viewBox="0 0 1440 120" className="w-full h-16 md:h-24 fill-grey-50">
-          <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
-        </svg>
+        </motion.div>
       </div>
     </section>
   );
 }
-

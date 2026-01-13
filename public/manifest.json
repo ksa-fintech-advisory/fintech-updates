@@ -1,7 +1,7 @@
 {
-  "name": "Admin Panel - Finance Dashboard",
-  "short_name": "Admin Panel",
-  "description": "Enterprise-level finance institution admin panel",
+  "name": "Maal Tech",
+  "short_name": "Maal Tech",
+  "description": "Maal tech platform that updates the latest fintech news and offers fintech products specialized in compliance, invvestment, and risk management",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

@@ -16,7 +16,7 @@ export const legalData: LegalContent = {
         },
         content: {
           en: 'Welcome to Maal Tech. We respect your privacy and are committed to protecting your personal data. This privacy policy will inform you as to how we look after your personal data when you visit our website (regardless of where you visit it from) and tell you about your privacy rights and how the law protects you.',
-          ar: 'مرحباً بكم في فنتك العرب. نحن نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية. ستخبرك سياسة الخصوصية هذه بكيفية اعتنائنا ببياناتك الشخصية عند زيارتك لموقعنا الإلكتروني (بغض النظر عن المكان الذي تزوره منه) وتخبرك عن حقوق الخصوصية الخاصة بك وكيف يحميك القانون.',
+          ar: 'مرحباً بكم في مال تك. نحن نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية. ستخبرك سياسة الخصوصية هذه بكيفية اعتنائنا ببياناتك الشخصية عند زيارتك لموقعنا الإلكتروني (بغض النظر عن المكان الذي تزوره منه) وتخبرك عن حقوق الخصوصية الخاصة بك وكيف يحميك القانون.',
         },
       },
       {
@@ -69,7 +69,7 @@ export const legalData: LegalContent = {
         },
         content: {
           en: 'By accessing and using Maal Tech, you accept and agree to be bound by the terms and provision of this agreement. In addition, when using these particular services, you shall be subject to any posted guidelines or rules applicable to such services.',
-          ar: 'من خلال الوصول إلى فنتك العرب واستخدامه، فإنك تقبل وتوافق على الالتزام بشروط وأحكام هذه الاتفاقية. بالإضافة إلى ذلك، عند استخدام هذه الخدمات الخاصة، ستخضع لأي إرشادات أو قواعد منشورة تنطبق على هذه الخدمات.',
+          ar: 'من خلال الوصول إلى مال تك واستخدامه، فإنك تقبل وتوافق على الالتزام بشروط وأحكام هذه الاتفاقية. بالإضافة إلى ذلك، عند استخدام هذه الخدمات الخاصة، ستخضع لأي إرشادات أو قواعد منشورة تنطبق على هذه الخدمات.',
         },
       },
       {
@@ -80,7 +80,7 @@ export const legalData: LegalContent = {
         },
         content: {
           en: 'The Site and its original content, features and functionality are owned by Maal Tech and are protected by international copyright, trademark, patent, trade secret and other intellectual property or proprietary rights laws.',
-          ar: 'الموقع ومحتواه الأصلي وميزاته ووظائفه مملوكة لفنتك العرب وهي محمية بموجب قوانين حقوق النشر والعلامات التجارية وبراءات الاختراع والأسرار التجارية وغيرها من قوانين الملكية الفكرية أو حقوق الملكية الدولية.',
+          ar: 'الموقع ومحتواه الأصلي وميزاته ووظائفه مملوكة لمال تك وهي محمية بموجب قوانين حقوق النشر والعلامات التجارية وبراءات الاختراع والأسرار التجارية وغيرها من قوانين الملكية الفكرية أو حقوق الملكية الدولية.',
         },
       },
       {
@@ -91,7 +91,7 @@ export const legalData: LegalContent = {
         },
         content: {
           en: 'In no event shall Maal Tech, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service.',
-          ar: 'في أي حال من الأحوال، لن تكون فنتك العرب، ولا مديروها أو موظفوها أو شركاؤها أو وكلاؤها أو موردوها أو الشركات التابعة لها، مسؤولة عن أي أضرار غير مباشرة أو عرضية أو خاصة أو تبعية أو عقابية، بما في ذلك على سبيل المثال لا الحصر، خسارة الأرباح أو البيانات أو الاستخدام أو الشهرة أو الخسائر غير الملموسة الأخرى، الناتجة عن وصولك إلى الخدمة أو استخدامها أو عدم قدرتك على الوصول إليها أو استخدامها.',
+          ar: 'في أي حال من الأحوال، لن تكون مال تك، ولا مديروها أو موظفوها أو شركاؤها أو وكلاؤها أو موردوها أو الشركات التابعة لها، مسؤولة عن أي أضرار غير مباشرة أو عرضية أو خاصة أو تبعية أو عقابية، بما في ذلك على سبيل المثال لا الحصر، خسارة الأرباح أو البيانات أو الاستخدام أو الشهرة أو الخسائر غير الملموسة الأخرى، الناتجة عن وصولك إلى الخدمة أو استخدامها أو عدم قدرتك على الوصول إليها أو استخدامها.',
         },
       },
       {
