@@ -1,6 +1,17 @@
 import Link from 'next/link';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
 import { blogApiService } from '@/services/api/blogs';
+import { FiArrowRight, FiArrowLeft, FiCalendar, FiUser, FiTag } from 'react-icons/fi';
+
+// Helper component for abstract pattern if no image exists
+// This keeps the "Engineering" look consistent even without assets
+const PatternPlaceholder = () => (
+  <div className="absolute inset-0 bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
+    <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px]" />
+    <div className="absolute bottom-0 right-0 w-32 h-32 bg-zinc-200 dark:bg-zinc-700 rounded-tl-full opacity-50" />
+    <div className="absolute top-0 left-0 w-24 h-24 border border-zinc-300 dark:border-zinc-600 rounded-br-full opacity-50" />
+  </div>
+);
 
 export default async function FeaturedArticles({ locale }: { locale: string }) {
   const isArabic = locale === 'ar';
@@ -13,100 +24,137 @@ export default async function FeaturedArticles({ locale }: { locale: string }) {
   }
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary-50/50 to-transparent opacity-40 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-tr from-accent-50/50 to-transparent opacity-30 pointer-events-none"></div>
+    <section className="py-24 bg-zinc-50 dark:bg-zinc-950 relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
+
+      {/* 1. Engineering Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <AnimatedSection className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-grey-900 mb-4">
-            {isArabic ? 'المقالات المميزة' : 'Featured Articles'}
-          </h2>
-          <div className="w-24 h-1.5 bg-gradient-to-r from-primary-400 to-accent-400 mx-auto rounded-full mb-6"></div>
-          <p className="text-grey-600 text-lg max-w-2xl mx-auto">
-            {isArabic
-              ? 'تحليلات عميقة ورؤى حصرية من خبراء الصناعة'
-              : 'In-depth analysis and exclusive insights from industry experts'}
-          </p>
+
+        {/* Header: Technical & Direct */}
+        <AnimatedSection className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-200 dark:border-zinc-800 pb-8">
+          <div>
+            <span className="text-primary-600 dark:text-primary-400 font-mono text-xs font-bold uppercase tracking-widest mb-3 block">
+              {isArabic ? '// سجل_الأفكار' : '// INSIGHTS_LOG'}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white tracking-tight">
+              {isArabic ? 'أحدث التحليلات المالية' : 'Latest Market Analysis'}
+            </h2>
+          </div>
+
+          <Link
+            href={`/${locale}/web/blog`}
+            className="hidden md:inline-flex items-center gap-2 text-sm font-mono font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
+          >
+            {isArabic ? 'عرض الأرشيف' : 'VIEW_ARCHIVE'}
+            {isArabic ? <FiArrowLeft /> : <FiArrowRight />}
+          </Link>
         </AnimatedSection>
 
+        {/* Articles Grid */}
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredArticles.map((article: any) => (
-            <StaggerItem key={article.id}>
+            <StaggerItem key={article.id} className="h-full">
               <Link
                 href={`/${locale}/web/blog/${article.slug}`}
-                className="group block h-full"
+                className="group block h-full outline-none"
               >
-                <article className="h-full bg-white rounded-3xl shadow-medium hover:shadow-glow transition-all duration-500 overflow-hidden transform hover:-translate-y-2 border border-grey-100 hover:border-primary-200 flex flex-col">
-                  {/* Image with Enhanced Gradient Overlay */}
-                  <div className="aspect-video bg-gradient-to-br from-primary-400 via-primary-500 to-accent-500 relative overflow-hidden">
-                    {/* Placeholder for actual image if available, using gradient for now */}
-                    <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-500"></div>
+                <article className="h-full flex flex-col bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-zinc-200/50 dark:group-hover:shadow-black/50">
 
-                    {/* Animated Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  {/* Image Area - Aspect Ratio 16:9 */}
+                  <div className="relative aspect-video overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-800">
+                    {/* Logic: Use actual image if available, else PatternPlaceholder.
+                        Assuming article.image might be null/undefined.
+                     */}
+                    {article.image ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 grayscale group-hover:grayscale-0"
+                      />
+                    ) : (
+                      <PatternPlaceholder />
+                    )}
 
-                    {/* Category Badge */}
-                    <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end">
-                      <span
-                        className="inline-block px-4 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full backdrop-blur-md shadow-lg transform group-hover:scale-105 transition-transform"
-                        style={{
-                          backgroundColor: article.category.color || '#3B82F6',
-                          color: 'white',
-                        }}
-                      >
+                    {/* Category Tag - Absolute Positioning */}
+                    <div className="absolute top-4 left-4 right-auto rtl:right-4 rtl:left-auto">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/90 dark:bg-zinc-900/90 backdrop-blur border border-zinc-200 dark:border-zinc-700 text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-800 dark:text-zinc-200 shadow-sm">
+                        <span
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{ backgroundColor: article.category.color || '#10b981' }}
+                        />
                         {article.category.name}
                       </span>
                     </div>
                   </div>
 
-                  {/* Content with Enhanced Spacing */}
+                  {/* Content Area */}
                   <div className="p-6 flex-1 flex flex-col">
-                    {/* Meta Info with Enhanced Typography */}
-                    <div className="flex items-center gap-3 text-xs font-semibold text-grey-400 mb-4">
-                      <span className="flex items-center gap-1">
-                        <svg className="w-4 h-4 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        {new Date(article.publishedAt).toLocaleDateString(isArabic ? 'ar-SA' : 'en-US', {
-                          month: 'short',
-                          day: 'numeric',
-                          year: 'numeric',
-                        })}
-                      </span>
+
+                    {/* Meta Data Row */}
+                    <div className="flex items-center gap-4 text-xs font-mono text-zinc-400 mb-4 border-b border-zinc-100 dark:border-zinc-800 pb-4 border-dashed">
+                      <div className="flex items-center gap-1.5">
+                        <FiCalendar className="w-3.5 h-3.5" />
+                        <time dateTime={article.publishedAt}>
+                          {new Date(article.publishedAt).toLocaleDateString(isArabic ? 'ar-SA' : 'en-US', {
+                            year: 'numeric',
+                            month: '2-digit',
+                            day: '2-digit',
+                          })}
+                        </time>
+                      </div>
+                      {/* Optional: Read Time */}
+                      <div className="flex items-center gap-1.5">
+                        <FiTag className="w-3.5 h-3.5" />
+                        <span>5 MIN READ</span>
+                      </div>
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-grey-900 mb-3 group-hover:text-primary-600 transition-colors line-clamp-2 leading-tight">
+                    <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-3 leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-2">
                       {article.title}
                     </h3>
 
                     {/* Excerpt */}
-                    <p className="text-grey-600 mb-6 line-clamp-3 leading-relaxed text-sm flex-1">
+                    <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed line-clamp-3 mb-6 flex-1">
                       {article.excerpt}
                     </p>
 
-                    {/* Footer with Author */}
-                    <div className="pt-6 border-t border-grey-100 mt-auto flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-accent-500 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-md">
-                          {article.author.name?.charAt(0) || 'A'}
+                    {/* Author Footer */}
+                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-zinc-100 dark:border-zinc-800">
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-6 h-6 rounded bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-xs font-bold text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
+                          <FiUser className="w-3 h-3" />
                         </div>
-                        <span className="text-sm font-semibold text-grey-700 group-hover:text-primary-600 transition-colors">
-                          {article.author.name || 'Author'}
+                        <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300 font-mono uppercase tracking-wide">
+                          {article.author.name || 'EDITOR'}
                         </span>
                       </div>
-                      <span className={`text-accent group-hover:translate-x-1 transition-transform inline-block font-bold text-lg ${isArabic ? 'rotate-180 group-hover:-translate-x-1' : ''}`}>
-                        →
-                      </span>
+
+                      <div className={`text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-all transform ${isArabic ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`}>
+                        {isArabic ? <FiArrowLeft /> : <FiArrowRight />}
+                      </div>
                     </div>
+
                   </div>
                 </article>
               </Link>
             </StaggerItem>
           ))}
         </StaggerContainer>
+
+        {/* Mobile View Archive Link */}
+        <div className="mt-8 text-center md:hidden">
+          <Link
+            href={`/${locale}/web/blog`}
+            className="inline-flex items-center gap-2 text-sm font-mono font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
+          >
+            {isArabic ? 'عرض الأرشيف الكامل' : 'VIEW_FULL_ARCHIVE'}
+            {isArabic ? <FiArrowLeft /> : <FiArrowRight />}
+          </Link>
+        </div>
+
       </div>
     </section>
   );
