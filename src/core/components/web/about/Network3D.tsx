@@ -63,7 +63,7 @@ function NetworkNodes({ count = 30 }) {
   );
 }
 
-export default function () {
+export default function Network3D() {
   return (
     <div className="absolute inset-0 z-0 w-full h-full opacity-40">
       <Canvas dpr={[1, 2]}>

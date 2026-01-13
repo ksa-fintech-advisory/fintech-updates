@@ -98,7 +98,7 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
             {/* Footer of the document */}
             <div className="bg-zinc-50 dark:bg-zinc-950 p-6 border-t border-zinc-200 dark:border-zinc-800 text-center">
               <p className="text-xs font-mono text-zinc-400">
-                 // {isArabic ? 'نهاية الوثيقة' : 'END_OF_DOCUMENT'} //
+                {'//'} {isArabic ? 'نهاية الوثيقة' : 'END_OF_DOCUMENT'} {'//'}
               </p>
             </div>
 

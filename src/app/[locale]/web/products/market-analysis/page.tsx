@@ -236,7 +236,7 @@ export default function MarketAnalysisPage({ params: { locale } }: { params: { l
                 <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> {t.bento.insight.title}
               </div>
               <p className="text-lg font-medium leading-relaxed max-w-md">
-                "{t.bento.insight.desc}"
+                &quot;{t.bento.insight.desc}&quot;
               </p>
             </div>
           </div>

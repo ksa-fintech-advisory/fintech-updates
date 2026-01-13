@@ -205,7 +205,7 @@ export default function DocsPage({ params: { locale } }: { params: { locale: str
                             <h2 className="text-2xl font-bold">Compliance Engine</h2>
                         </div>
                         <p className="text-zinc-600 dark:text-zinc-400 mb-6 leading-relaxed">
-                            Programmatically check your product's compliance status against SAMA regulations.
+                            Programmatically check your product&apos;s compliance status against SAMA regulations.
                             The engine returns a readiness score and a list of gaps.
                         </p>
 

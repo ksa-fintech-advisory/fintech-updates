@@ -5,7 +5,7 @@ import { FiUsers, FiCode, FiServer, FiGlobe, FiActivity } from 'react-icons/fi';
 
 // Helper to map generic labels to technical icons (optional, if you want to override emojis)
 const getIconForStat = (index: number) => {
-    const icons = [<FiUsers />, <FiCode />, <FiServer />, <FiGlobe />];
+    const icons = [<FiUsers key="users" />, <FiCode key="code" />, <FiServer key="server" />, <FiGlobe key="globe" />];
     return icons[index % icons.length];
 };
 

@@ -89,8 +89,9 @@ export default async function AboutPage({ params }: { params: { locale: string }
                   <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2 tracking-tight">
                     {t('authorName')}
                   </h2>
+                  {/* Fixed: Wrapped comment-like text in expression */}
                   <p className="text-sm font-mono font-bold text-primary-600 mb-6 uppercase tracking-wider">
-                    // {t('authorTitle')}
+                    {'//'} {t('authorTitle')}
                   </p>
 
                   <div className="prose prose-zinc dark:prose-invert max-w-none">
@@ -120,7 +121,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
 
           <AnimatedSection className="mb-12">
             <span className="text-primary-600 dark:text-primary-400 font-mono text-xs font-bold uppercase tracking-widest mb-2 block">
-              {isArabic ? '// التوجه_الاستراتيجي' : '// STRATEGIC_DIRECTIVES'}
+              {isArabic ? '{//}' + ' التوجه_الاستراتيجي' : '{//}' + ' STRATEGIC_DIRECTIVES'}
             </span>
             <h2 className="text-3xl font-bold text-zinc-900 dark:text-white">
               {isArabic ? 'الرؤية والمهمة' : 'Mission & Vision Statement'}
@@ -223,7 +224,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
             <div>
               <span className="text-primary-600 dark:text-primary-400 font-mono text-xs font-bold uppercase tracking-widest mb-2 block">
-                {isArabic ? '// القدرات' : '// CAPABILITIES'}
+                {isArabic ? '{//}' + ' القدرات' : '{//}' + ' CAPABILITIES'}
               </span>
               <h3 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white">
                 {isArabic ? 'مجالات الخبرة' : 'Areas of Expertise'}

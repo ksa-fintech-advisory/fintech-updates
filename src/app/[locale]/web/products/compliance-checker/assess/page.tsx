@@ -788,7 +788,7 @@ function ReportStep({
               {isPartial ? (isArabic ? 'مسودة تقرير (جزئي)' : 'DRAFT AUDIT REPORT') : (isArabic ? 'تقرير الامتثال النهائي' : 'FINAL COMPLIANCE AUDIT')}
             </h1>
             <p className="font-mono text-sm text-gray-600">
-              STATUS: {isPartial ? 'INCOMPLETE DATA' : 'COMPLETED'} // COVERAGE: {coveragePercent}%
+              STATUS: {isPartial ? 'INCOMPLETE DATA' : 'COMPLETED'} {'//'} COVERAGE: {coveragePercent}%
             </p>
           </div>
           {/* ... Rest of print template ... */}

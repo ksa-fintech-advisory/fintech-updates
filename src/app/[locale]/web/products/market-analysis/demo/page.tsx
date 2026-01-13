@@ -133,7 +133,7 @@ export default function MarketAnalysisDemoPage({ params: { locale } }: { params:
                      {isArabic ? 'تحليل الذكاء الاصطناعي' : 'AI_SYSTEM_INSIGHT'}
                   </h3>
                   <p className="text-sm leading-relaxed font-medium text-zinc-200 border-l-2 border-purple-500 pl-3">
-                     "{data.insight[locale as 'en' | 'ar']}"
+                     &quot;{data.insight[locale as 'en' | 'ar']}&quot;
                   </p>
                </div>
             </div>

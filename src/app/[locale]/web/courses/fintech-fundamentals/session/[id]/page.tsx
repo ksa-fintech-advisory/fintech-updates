@@ -139,7 +139,7 @@ export default async function SessionDetailPage({
                   {/* Topic Header */}
                   <div className="mb-6">
                     <span className="text-xs font-mono text-zinc-400 mb-1 block">
-                      0{topicIdx + 1} //
+                      0{topicIdx + 1} {'//'}
                     </span>
                     <h3 className="text-xl font-bold text-zinc-900 dark:text-white">
                       {topic.title[lang]}
