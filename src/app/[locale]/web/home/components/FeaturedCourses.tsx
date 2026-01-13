@@ -3,184 +3,177 @@
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
-import { getFeaturedCourses, type CourseListing } from '@/data/courseData';
+import { getFeaturedCourses } from '@/data/courseData';
+import { FiCpu, FiTerminal, FiArrowRight, FiArrowLeft, FiCheck, FiHash } from 'react-icons/fi';
 
 export default function FeaturedCourses() {
   const locale = useLocale();
   const isArabic = locale === 'ar';
   const lang = isArabic ? 'ar' : 'en';
 
-  // Get featured course from data source
   const featuredCourses = getFeaturedCourses();
-  const featuredCourse = featuredCourses[0]; // Get the first featured course
+  const featuredCourse = featuredCourses[0];
 
   if (!featuredCourse) {
-    return null; // No featured course available
+    return null;
   }
 
+  // Use the course gradient for subtle accents instead of full background
+  const accentColor = featuredCourse.gradient.from;
+
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gradient-to-br from-primary-50 to-transparent rounded-full blur-3xl opacity-60" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-accent-50 to-transparent rounded-full blur-3xl opacity-60" />
+    <section className="py-24 bg-zinc-50 dark:bg-zinc-950 relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
+
+      {/* 1. Engineering Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
+
+        {/* Header: Technical Label */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-12 flex flex-col items-start"
+        >
+          <span className="text-primary-600 dark:text-primary-400 font-mono text-xs font-bold uppercase tracking-widest mb-3 block">
+            {isArabic ? '// الدورة_المميزة' : '// FEATURED_COURSE'}
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white tracking-tight">
+            {isArabic ? 'المسار الموصى به' : 'Recommended Path'}
+          </h2>
+        </motion.div>
+
+        {/* The "Spec Unit" Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="relative max-w-6xl mx-auto"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 text-primary-700 text-sm font-semibold mb-4">
-            <span>🎓</span>
-            {isArabic ? 'تعلم معنا' : 'Learn With Us'}
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-grey-900 mb-4">
-            {isArabic ? 'دوراتنا التعليمية' : 'Our Courses'}
-          </h2>
-          <p className="text-xl text-grey-600 max-w-2xl mx-auto">
-            {isArabic
-              ? 'برامج تعليمية متخصصة لبناء خبراء التقنية المالية'
-              : 'Specialized programs to build fintech experts'}
-          </p>
-        </motion.div>
+          {/* Main Container */}
+          <div className="bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-xl overflow-hidden flex flex-col lg:flex-row">
 
-        {/* Featured Course Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-5xl mx-auto"
-        >
-          <div className="relative bg-gradient-to-br from-grey-900 via-grey-800 to-grey-900 rounded-[2rem] overflow-hidden shadow-2xl">
-            {/* Background Gradient Orbs */}
-            <div
-              className={`absolute top-0 ${isArabic ? 'left-0' : 'right-0'} w-[400px] h-[400px] rounded-full blur-[100px] opacity-30`}
-              style={{ background: `linear-gradient(135deg, ${featuredCourse.gradient.from}, ${featuredCourse.gradient.to})` }}
-            />
-            <div className="absolute bottom-0 left-1/2 w-80 h-80 bg-accent-500 rounded-full blur-[80px] opacity-20" />
+            {/* Left Side: Content & Context */}
+            <div className="lg:w-3/5 p-8 md:p-12 flex flex-col relative z-10">
 
-            <div className="relative z-10 p-8 md:p-12 lg:p-16">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                {/* Text Content */}
-                <div className={`${isArabic ? 'lg:order-2' : ''}`}>
-                  {/* Badge */}
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/20 border border-accent-400/30 text-accent-300 text-sm font-semibold mb-6">
-                    <span className="w-2 h-2 bg-accent-400 rounded-full animate-pulse" />
-                    {featuredCourse.badge[lang]}
+              {/* Badge: System Chip */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 w-fit mb-6">
+                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-300 uppercase tracking-wider">
+                  {featuredCourse.badge[lang]}
+                </span>
+              </div>
+
+              <h3 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-4 tracking-tight leading-tight">
+                {featuredCourse.title[lang]}
+              </h3>
+
+              <p className="text-lg text-zinc-500 dark:text-zinc-400 font-medium mb-6">
+                {featuredCourse.subtitle[lang]}
+              </p>
+
+              <p className="text-zinc-600 dark:text-zinc-500 leading-relaxed mb-10 max-w-xl">
+                {featuredCourse.description[lang]}
+              </p>
+
+              {/* Data Grid: Price & Modules */}
+              <div className="grid grid-cols-2 gap-6 mb-10 p-6 bg-zinc-50 dark:bg-black/20 rounded-lg border border-zinc-100 dark:border-zinc-800/50">
+                <div>
+                  <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1">
+                    {isArabic ? 'عدد الوحدات' : 'MODULES'}
                   </div>
-
-                  <h3 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                    {featuredCourse.title[lang]}
-                  </h3>
-                  <p className="text-xl text-white/80 font-light mb-4">
-                    {featuredCourse.subtitle[lang]}
-                  </p>
-                  <p className="text-white/60 leading-relaxed mb-8">
-                    {featuredCourse.description[lang]}
-                  </p>
-
-                  {/* Stats */}
-                  <div className="flex flex-wrap gap-6 mb-8">
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-white">{featuredCourse.modules}</div>
-                      <div className="text-sm text-white/60">{isArabic ? 'وحدات' : 'Modules'}</div>
-                    </div>
-                    <div className="w-px bg-white/20" />
-                    <div className="text-center">
-                      <div className="text-3xl font-bold text-accent-400">
-                        {featuredCourse.price} <span className="text-xl">{featuredCourse.currency[lang]}</span>
-                      </div>
-                      <div className="text-sm text-white/60">{isArabic ? 'السعر' : 'Price'}</div>
-                    </div>
-                  </div>
-
-                  {/* CTA Buttons */}
-                  <div className="flex flex-wrap gap-4">
-                    <Link
-                      href={`/${locale}/web/courses/${featuredCourse.slug}/register`}
-                      className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold bg-accent-500 hover:bg-accent-600 text-white shadow-lg shadow-accent-500/30 transition-all duration-300 transform hover:scale-105"
-                    >
-                      {isArabic ? 'سجل الآن' : 'Register Now'}
-                      <svg
-                        className={`w-5 h-5 transition-transform ${isArabic ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
-                    </Link>
-                    <Link
-                      href={`/${locale}/web/courses/${featuredCourse.slug}`}
-                      className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-sm transition-all duration-300"
-                    >
-                      {isArabic ? 'عرض التفاصيل' : 'View Details'}
-                    </Link>
+                  <div className="text-2xl font-bold text-zinc-900 dark:text-white font-mono flex items-baseline gap-1">
+                    {featuredCourse.modules}
+                    <span className="text-sm font-normal text-zinc-500">.00</span>
                   </div>
                 </div>
-
-                {/* Visual Side */}
-                <div className={`${isArabic ? 'lg:order-1' : ''}`}>
-                  {/* Phase Preview Cards */}
-                  <div className="relative">
-                    {/* Main Icon */}
-                    <motion.div
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                      className="w-32 h-32 mx-auto rounded-3xl flex items-center justify-center text-6xl text-white shadow-2xl mb-8"
-                      style={{
-                        background: `linear-gradient(135deg, ${featuredCourse.gradient.from}, ${featuredCourse.gradient.to})`,
-                        boxShadow: `0 25px 50px -12px ${featuredCourse.gradient.from}66`
-                      }}
-                    >
-                      {featuredCourse.icon}
-                    </motion.div>
-
-                    {/* Topic Pills */}
-                    <div className="flex flex-wrap justify-center gap-3">
-                      {featuredCourse.topics[lang].map((topic, index) => (
-                        <motion.span
-                          key={index}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ delay: index * 0.1 }}
-                          className="px-4 py-2 bg-white/10 border border-white/20 rounded-full text-sm text-white/80 font-medium backdrop-blur-sm"
-                        >
-                          {topic}
-                        </motion.span>
-                      ))}
-                    </div>
+                <div>
+                  <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1">
+                    {isArabic ? 'الاستثمار' : 'INVESTMENT'}
+                  </div>
+                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400 font-mono flex items-baseline gap-1">
+                    {featuredCourse.price}
+                    <span className="text-sm font-normal text-zinc-500">{featuredCourse.currency[lang]}</span>
                   </div>
                 </div>
               </div>
+
+              {/* Actions */}
+              <div className="mt-auto flex flex-wrap gap-4">
+                <Link
+                  href={`/${locale}/web/courses/${featuredCourse.slug}/register`}
+                  className="group inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all duration-200 shadow-lg shadow-zinc-500/10"
+                >
+                  {isArabic ? 'حجز مقعد' : 'Start Learning'}
+                  {isArabic ? <FiArrowLeft className="group-hover:-translate-x-1 transition-transform" /> : <FiArrowRight className="group-hover:translate-x-1 transition-transform" />}
+                </Link>
+
+                <Link
+                  href={`/${locale}/web/courses/${featuredCourse.slug}`}
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 font-medium hover:border-zinc-400 dark:hover:border-zinc-500 transition-colors"
+                >
+                  <FiTerminal className="w-5 h-5" />
+                  {isArabic ? 'تفاصيل المنهج' : 'View Syllabus'}
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Side: Visual Spec Sheet */}
+            <div className="lg:w-2/5 bg-zinc-50 dark:bg-zinc-950/50 border-t lg:border-t-0 lg:border-l border-zinc-200 dark:border-zinc-800 p-8 md:p-12 flex flex-col justify-center relative overflow-hidden">
+
+              {/* Background accent glow */}
+              <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-[100px] opacity-10 pointer-events-none"
+                style={{ backgroundColor: accentColor }}
+              />
+
+              {/* Icon Container */}
+              <div className="relative z-10 w-24 h-24 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm flex items-center justify-center text-5xl mb-10 mx-auto lg:mx-0">
+                {/* Render icon with accent color */}
+                <div style={{ color: accentColor }}>
+                  {featuredCourse.icon}
+                </div>
+              </div>
+
+              {/* Topics List: "Code Stack" Look */}
+              <div className="relative z-10">
+                <div className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-widest mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+                  {isArabic ? 'التقنيات المستخدمة' : 'TECH_STACK'}
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  {featuredCourse.topics[lang].slice(0, 5).map((topic, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-3 text-sm text-zinc-600 dark:text-zinc-400 font-mono"
+                    >
+                      <FiCheck className="w-4 h-4 text-emerald-500" />
+                      <span>{topic}</span>
+                    </div>
+                  ))}
+                  {featuredCourse.topics[lang].length > 5 && (
+                    <div className="flex items-center gap-3 text-sm text-zinc-400 font-mono pl-7">
+                      <span>+ {featuredCourse.topics[lang].length - 5} more libraries...</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
             </div>
           </div>
-        </motion.div>
 
-        {/* View All Courses Link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <Link
-            href={`/${locale}/web/courses`}
-            className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold transition-colors group"
-          >
-            {isArabic ? 'عرض جميع الدورات' : 'View All Courses'}
-            <svg
-              className={`w-5 h-5 transition-transform ${isArabic ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          {/* Bottom Link */}
+          <div className="mt-8 text-center lg:text-start">
+            <Link
+              href={`/${locale}/web/courses`}
+              className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors border-b border-transparent hover:border-zinc-500 pb-0.5"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
+              {isArabic ? 'تصفح الأرشيف الكامل' : 'Browse full curriculum'}
+              {isArabic ? <FiArrowLeft /> : <FiArrowRight />}
+            </Link>
+          </div>
+
         </motion.div>
       </div>
     </section>

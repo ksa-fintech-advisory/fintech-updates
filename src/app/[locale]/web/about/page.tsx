@@ -1,10 +1,12 @@
-
 import { aboutUsApiService } from '@/services/api/aboutUsApi';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { getTranslations } from 'next-intl/server';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
+import { FiTarget, FiEye, FiCpu, FiShield, FiBriefcase, FiAward, FiArrowRight, FiArrowLeft, FiCheckSquare } from 'react-icons/fi';
 
+// Keep the 3D element but ensure it fits the new dark theme logic inside the component if possible,
+// or we wrap it in a container that blends it well.
 const Network3D = dynamic(() => import('@/core/components/web/about/Network3D'), { ssr: false });
 
 export default async function AboutPage({ params }: { params: { locale: string } }) {
@@ -16,256 +18,278 @@ export default async function AboutPage({ params }: { params: { locale: string }
   const t = await getTranslations('web.about');
 
   return (
-    <div className="w-full">
-      {/* Enhanced Hero Section with Animation */}
-      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-accent-900 text-white py-24 md:py-32 overflow-hidden min-h-[70vh] flex items-center">
-        {/* 3D Network Background */}
-        <Network3D />
+    <div className="w-full bg-zinc-50 dark:bg-black selection:bg-primary-500/30">
 
-        {/* Overlay Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary-900/60 to-primary-900 z-0 pointer-events-none"></div>
+      {/* 1. Global Engineering Grid */}
+      <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+
+      {/* Hero Section: The "Firm" Introduction */}
+      <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm">
+
+        {/* 3D Background Wrapper - darker context */}
+        <div className="absolute inset-0 z-0 opacity-40 mix-blend-multiply dark:mix-blend-screen grayscale">
+          <Network3D />
+        </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <AnimatedSection direction="down">
-              <div className="inline-block px-6 py-2 bg-white/10 rounded-full backdrop-blur-md mb-8 border border-white/20 shadow-lg">
-                <span className="text-sm font-bold tracking-wider uppercase text-accent-300">
-                  {isArabic ? '👋 تعرف علينا' : '👋 Get to Know Us'}
+          <div className="max-w-4xl mx-auto">
+
+            <AnimatedSection direction="up">
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
+                <span className="w-2 h-2 rounded-full bg-primary-600 animate-pulse" />
+                <span className="text-xs font-mono font-bold uppercase tracking-widest">
+                  {isArabic ? 'هوية الشركة' : 'CORPORATE_PROFILE'}
                 </span>
               </div>
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.2}>
-              <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-                <span className="bg-gradient-to-r from-white via-accent-200 to-white bg-clip-text text-transparent drop-shadow-xl">
-                  {t('title')}
-                </span>
+              <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-zinc-900 dark:text-white leading-tight">
+                {t('title')}
               </h1>
             </AnimatedSection>
 
-            <AnimatedSection direction="up" delay={0.4}>
-              <p className="text-xl md:text-3xl text-white/90 font-light max-w-3xl mx-auto leading-relaxed">
-                {t('subtitle')}
-              </p>
-            </AnimatedSection>
-          </div>
-        </div>
-
-        {/* Wave Decoration */}
-        <div className="absolute bottom-0 left-0 right-0 z-10">
-          <svg viewBox="0 0 1440 120" className="w-full h-16 md:h-24 fill-white">
-            <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
-          </svg>
-        </div>
-      </section>
-
-      {/* Team/Profile Section - Enhanced */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        {/* Background Decoration */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-primary-50/50 to-transparent opacity-40 pointer-events-none"></div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-5xl mx-auto">
-            <AnimatedSection className="relative">
-              <div className="flex flex-col md:flex-row gap-12 items-center p-10 md:p-14 bg-white/80 backdrop-blur-xl rounded-[2.5rem] shadow-hard border border-white/50 relative overflow-hidden group hover:shadow-glow transition-all duration-700">
-                {/* Decorative Gradient Blob */}
-                <div className="absolute -top-24 -right-24 w-64 h-64 bg-accent-100 rounded-full blur-3xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
-
-                {/* Brand Logo/Icon with Animation */}
-                <div className="relative flex-shrink-0">
-                  <div className="w-48 h-48 bg-gradient-to-br from-primary-600 to-accent-600 rounded-[2rem] flex items-center justify-center text-white text-7xl font-bold shadow-2xl transform group-hover:scale-105 group-hover:rotate-3 transition-all duration-500 relative z-10 border-4 border-white">
-                    {isArabic ? 'ف' : 'F'}
-                  </div>
-                  {/* Decorative Rings */}
-                  <div className="absolute inset-0 border-2 border-primary-200 rounded-[2rem] animate-ping opacity-20" style={{ animationDuration: '3s' }}></div>
-                  <div className="absolute -inset-4 border border-accent-200 rounded-[2.5rem] opacity-30 scale-110"></div>
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 text-center md:text-left relative z-10">
-                  <h2 className="text-4xl md:text-5xl font-bold text-grey-900 mb-4 tracking-tight">
-                    {t('authorName')}
-                  </h2>
-                  <p className="text-2xl text-accent-600 mb-8 font-semibold tracking-wide flex items-center justify-center md:justify-start gap-2">
-                    <span className="w-8 h-0.5 bg-accent-600 rounded-full"></span>
-                    {t('authorTitle')}
-                  </p>
-                  <p className="text-grey-600 leading-relaxed text-lg md:text-xl font-light">
-                    {t('authorBio')}
-                  </p>
-                </div>
-              </div>
-            </AnimatedSection>
-          </div>
-        </div>
-      </section>
-
-      {/* Mission & Vision - Side by Side with Cards */}
-      <section className="py-24 bg-grey-50 relative overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-100 rounded-full blur-3xl opacity-20 pointer-events-none"></div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-              {/* Mission Card */}
-              <StaggerItem>
-                <div className="group h-full p-10 bg-white rounded-[2rem] shadow-medium hover:shadow-glow transition-all duration-500 transform hover:-translate-y-2 border border-grey-100 hover:border-primary-200 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-bl-[4rem] -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-
-                  <div className="text-7xl mb-8 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 relative z-10">🎯</div>
-                  <h3 className="text-3xl font-bold text-grey-900 mb-6 group-hover:text-primary-600 transition-colors relative z-10">
-                    {isArabic ? 'مهمتنا' : 'Our Mission'}
-                  </h3>
-                  <p className="text-grey-600 leading-relaxed text-lg relative z-10">
-                    {isArabic ? content.mission.ar : content.mission.en}
-                  </p>
-                </div>
-              </StaggerItem>
-
-              {/* Vision Card */}
-              <StaggerItem>
-                <div className="group h-full p-10 bg-white rounded-[2rem] shadow-medium hover:shadow-glow transition-all duration-500 transform hover:-translate-y-2 border border-grey-100 hover:border-primary-200 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-accent-50 rounded-bl-[4rem] -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
-
-                  <div className="text-7xl mb-8 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 relative z-10">🔭</div>
-                  <h3 className="text-3xl font-bold text-grey-900 mb-6 group-hover:text-primary-600 transition-colors relative z-10">
-                    {isArabic ? 'رؤيتنا' : 'Our Vision'}
-                  </h3>
-                  <p className="text-grey-600 leading-relaxed text-lg relative z-10">
-                    {isArabic ? content.vision.ar : content.vision.en}
-                  </p>
-                </div>
-              </StaggerItem>
-            </StaggerContainer>
-
-            {/* Description Highlight */}
-            <AnimatedSection delay={0.4}>
-              <div className="p-10 md:p-14 bg-gradient-to-r from-primary-700 to-accent-700 rounded-[2.5rem] text-white shadow-glow relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/patterns/circuit.svg')] opacity-10"></div>
-                <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl"></div>
-
-                <p className="text-xl md:text-2xl leading-relaxed text-center font-medium relative z-10 max-w-4xl mx-auto">
-                  {isArabic ? content.description.ar : content.description.en}
+            <AnimatedSection direction="up" delay={0.3}>
+              <div className="pl-6 md:pl-8 border-l-2 border-primary-500 relative">
+                <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-300 font-light leading-relaxed">
+                  {t('subtitle')}
                 </p>
               </div>
             </AnimatedSection>
+
           </div>
         </div>
       </section>
 
-      {/* Core Values - Enhanced Grid */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-accent-100 to-transparent rounded-full blur-3xl opacity-30 pointer-events-none"></div>
+      {/* Executive Summary (Founder / Team) */}
+      <section className="py-24 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection>
+            <div className="max-w-5xl mx-auto bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 md:p-12 rounded-xl shadow-lg relative overflow-hidden group">
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <AnimatedSection className="text-center mb-20">
-              <h3 className="text-4xl md:text-5xl font-bold text-grey-900 mb-6">
-                {isArabic ? 'قيمنا الأساسية' : 'Our Core Values'}
-              </h3>
-              <div className="w-24 h-1.5 bg-gradient-to-r from-primary-400 to-accent-400 mx-auto rounded-full"></div>
-            </AnimatedSection>
+              {/* Abstract decorative line */}
+              <div className="absolute top-0 right-0 w-32 h-1 bg-primary-500" />
 
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {content.values.map((value) => (
-                <StaggerItem key={value.id}>
-                  <div
-                    className="group p-8 bg-gradient-to-br from-white to-grey-50 border border-grey-200 rounded-3xl hover:border-primary-300 hover:shadow-hard transition-all duration-500 transform hover:-translate-y-2 hover:scale-[1.02]"
-                  >
-                    <div className="flex items-start gap-6">
-                      <div className="text-6xl transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-300 filter drop-shadow-md">
-                        {value.icon}
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-bold text-grey-900 text-2xl mb-3 group-hover:text-primary-600 transition-colors">
-                          {isArabic ? value.title.ar : value.title.en}
-                        </h4>
-                        <p className="text-grey-600 leading-relaxed text-lg">
-                          {isArabic ? value.description.ar : value.description.en}
-                        </p>
-                      </div>
-                    </div>
+              <div className="flex flex-col md:flex-row gap-12 items-start">
+
+                {/* Visual Identity / Avatar Placeholder */}
+                <div className="shrink-0 relative">
+                  <div className="w-40 h-40 bg-zinc-100 dark:bg-zinc-800 rounded-lg border border-zinc-200 dark:border-zinc-700 flex items-center justify-center text-6xl font-black text-zinc-300 dark:text-zinc-600">
+                    {/* Using the first letter of the name or logo */}
+                    {t('authorName').charAt(0)}
                   </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </div>
-        </div>
-      </section>
-
-      {/* Areas of Expertise - Premium Cards */}
-      <section className="py-24 bg-grey-50 relative overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-r from-primary-50 to-transparent opacity-30 pointer-events-none"></div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            <AnimatedSection className="text-center mb-20">
-              <h3 className="text-4xl md:text-5xl font-bold text-grey-900 mb-6">
-                {isArabic ? 'مجالات الخبرة' : 'Areas of Expertise'}
-              </h3>
-              <div className="w-24 h-1.5 bg-gradient-to-r from-accent-400 to-primary-400 mx-auto rounded-full"></div>
-            </AnimatedSection>
-
-            <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {content.expertise.map((area) => (
-                <StaggerItem key={area.id}>
-                  <div
-                    className="group p-10 bg-white rounded-[2rem] border border-grey-100 hover:border-primary-300 shadow-medium hover:shadow-glow transition-all duration-500 transform hover:-translate-y-2 hover:scale-[1.02] relative overflow-hidden"
-                  >
-                    {/* Hover Gradient Background */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary-50/50 via-transparent to-accent-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                    <div className="flex items-start gap-6 relative z-10">
-                      <div className="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center text-4xl transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 text-primary-600 shadow-sm">
-                        {area.icon}
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-bold text-grey-900 text-2xl mb-3 group-hover:text-primary-700 transition-colors">
-                          {isArabic ? area.title.ar : area.title.en}
-                        </h4>
-                        <p className="text-grey-600 leading-relaxed text-lg">
-                          {isArabic ? area.description.ar : area.description.en}
-                        </p>
-                      </div>
-                    </div>
+                  {/* Badge */}
+                  <div className="absolute -bottom-3 -right-3 bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-700 px-3 py-1 rounded text-xs font-mono font-bold text-zinc-500">
+                    FOUNDER
                   </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </div>
-        </div>
-      </section>
+                </div>
 
-      {/* Enhanced CTA Section */}
-      <section className="relative py-32 bg-gradient-to-br from-grey-900 via-primary-900 to-grey-900 text-white overflow-hidden">
-        {/* Animated Background */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-accent-500 rounded-full blur-[100px] animate-pulse"></div>
-          <div className="absolute bottom-0 left-0 w-[40rem] h-[40rem] bg-primary-500 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-        </div>
+                {/* Content */}
+                <div className="flex-1">
+                  <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-2 tracking-tight">
+                    {t('authorName')}
+                  </h2>
+                  {/* Fixed: Wrapped comment-like text in expression */}
+                  <p className="text-sm font-mono font-bold text-primary-600 mb-6 uppercase tracking-wider">
+                    {'//'} {t('authorTitle')}
+                  </p>
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <AnimatedSection className="max-w-4xl mx-auto text-center">
-            <h3 className="text-5xl md:text-6xl font-bold mb-8 tracking-tight">
-              {isArabic ? 'ابق على اطلاع' : 'Stay Informed'}
-            </h3>
-            <p className="text-xl md:text-2xl text-grey-300 mb-12 leading-relaxed font-light">
-              {isArabic
-                ? 'اشترك لتلقي آخر تحديثات التقنية المالية'
-                : 'Subscribe to receive the latest FinTech updates and insights'}
-            </p>
-            <Link
-              href={`/${locale}/web/contact`}
-              className="group inline-flex items-center gap-3 px-12 py-5 bg-accent hover:bg-accent-400 text-grey-900 font-bold rounded-2xl transition-all duration-300 transform hover:scale-105 hover:shadow-glow-accent text-xl"
-            >
-              <span>{isArabic ? 'تواصل معنا' : 'Contact Us'}</span>
-              <svg className={`w-6 h-6 transition-transform ${isArabic ? 'group-hover:-translate-x-2 rotate-180' : 'group-hover:translate-x-2'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </Link>
+                  <div className="prose prose-zinc dark:prose-invert max-w-none">
+                    <p className="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                      {t('authorBio')}
+                    </p>
+                  </div>
+
+                  {/* Signature-like element */}
+                  <div className="mt-8 pt-6 border-t border-zinc-100 dark:border-zinc-800 flex items-center gap-4">
+                    <div className="h-px flex-1 bg-zinc-200 dark:bg-zinc-800" />
+                    <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest">
+                      {isArabic ? 'الرئيس التنفيذي' : 'EXECUTIVE_OFFICE'}
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Strategic Directives (Mission & Vision) */}
+      <section className="py-20 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+          <AnimatedSection className="mb-12">
+            <span className="text-primary-600 dark:text-primary-400 font-mono text-xs font-bold uppercase tracking-widest mb-2 block">
+              {isArabic ? '{//}' + ' التوجه_الاستراتيجي' : '{//}' + ' STRATEGIC_DIRECTIVES'}
+            </span>
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-white">
+              {isArabic ? 'الرؤية والمهمة' : 'Mission & Vision Statement'}
+            </h2>
+          </AnimatedSection>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            {/* Mission Protocol */}
+            <StaggerItem>
+              <div className="group h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-lg hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-zinc-100 dark:bg-zinc-800 rounded text-zinc-900 dark:text-white">
+                    <FiTarget className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-bold font-mono uppercase tracking-wide text-zinc-900 dark:text-white">
+                    {isArabic ? 'المهمة' : 'MISSION_PROTOCOL'}
+                  </h3>
+                </div>
+                <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-base border-l-2 border-zinc-200 dark:border-zinc-800 pl-4">
+                  {isArabic ? content.mission.ar : content.mission.en}
+                </p>
+              </div>
+            </StaggerItem>
+
+            {/* Vision Protocol */}
+            <StaggerItem>
+              <div className="group h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-8 rounded-lg hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-zinc-100 dark:bg-zinc-800 rounded text-zinc-900 dark:text-white">
+                    <FiEye className="w-5 h-5" />
+                  </div>
+                  <h3 className="text-lg font-bold font-mono uppercase tracking-wide text-zinc-900 dark:text-white">
+                    {isArabic ? 'الرؤية' : 'VISION_SCOPE'}
+                  </h3>
+                </div>
+                <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-base border-l-2 border-zinc-200 dark:border-zinc-800 pl-4">
+                  {isArabic ? content.vision.ar : content.vision.en}
+                </p>
+              </div>
+            </StaggerItem>
+
+          </StaggerContainer>
+
+          {/* Core Description */}
+          <AnimatedSection delay={0.4} className="mt-8">
+            <div className="bg-zinc-900 dark:bg-black text-zinc-300 p-8 rounded-lg border border-zinc-800 font-mono text-sm leading-relaxed relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-primary-600" />
+              <p className="relative z-10">
+                <span className="text-primary-500 mr-2">$ cat</span>
+                description.txt
+              </p>
+              <p className="mt-4 text-white">
+                {isArabic ? content.description.ar : content.description.en}
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Core Values (Operating Principles) */}
+      <section className="py-24 relative z-10 border-t border-zinc-200 dark:border-zinc-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+          <AnimatedSection className="mb-16 text-center">
+            <h3 className="text-3xl font-bold text-zinc-900 dark:text-white mb-4">
+              {isArabic ? 'قيم العمل' : 'Core Operating Principles'}
+            </h3>
+            <div className="h-1 w-20 bg-zinc-200 dark:bg-zinc-800 mx-auto" />
+          </AnimatedSection>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {content.values.map((value, idx) => (
+              <StaggerItem key={value.id}>
+                <div className="h-full bg-white dark:bg-zinc-900/50 p-6 border border-zinc-200 dark:border-zinc-800 hover:border-primary-500 dark:hover:border-primary-500 transition-colors duration-300 group">
+                  <div className="text-xs font-mono text-zinc-400 mb-4 block">
+                    0{idx + 1}
+                  </div>
+                  <div className="mb-4 text-zinc-900 dark:text-white group-hover:text-primary-600 transition-colors">
+                    {/* Assuming value.icon is a string/emoji, we replace it with a generic CheckSquare for cleaner look if needed, or keep it if it's already an icon component */}
+                    <FiCheckSquare className="w-6 h-6" />
+                  </div>
+                  <h4 className="font-bold text-zinc-900 dark:text-white text-lg mb-2">
+                    {isArabic ? value.title.ar : value.title.en}
+                  </h4>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                    {isArabic ? value.description.ar : value.description.en}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Expertise Matrix */}
+      <section className="py-24 bg-zinc-50 dark:bg-zinc-900 relative z-10 border-t border-zinc-200 dark:border-zinc-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+              <span className="text-primary-600 dark:text-primary-400 font-mono text-xs font-bold uppercase tracking-widest mb-2 block">
+                {isArabic ? '{//}' + ' القدرات' : '{//}' + ' CAPABILITIES'}
+              </span>
+              <h3 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white">
+                {isArabic ? 'مجالات الخبرة' : 'Areas of Expertise'}
+              </h3>
+            </div>
+          </div>
+
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {content.expertise.map((area, idx) => (
+              <StaggerItem key={area.id}>
+                <div className="group flex items-start gap-6 p-6 bg-white dark:bg-black border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all">
+                  <div className="shrink-0 w-12 h-12 flex items-center justify-center bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-white group-hover:bg-primary-50 dark:group-hover:bg-primary-900/20 group-hover:text-primary-600 transition-colors">
+                    {/* Mapping generic icons based on index or keeping generic */}
+                    {idx === 0 ? <FiBriefcase className="w-5 h-5" /> :
+                      idx === 1 ? <FiCpu className="w-5 h-5" /> :
+                        idx === 2 ? <FiShield className="w-5 h-5" /> :
+                          <FiAward className="w-5 h-5" />}
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-zinc-900 dark:text-white mb-2 font-mono tracking-tight">
+                      {isArabic ? area.title.ar : area.title.en}
+                    </h4>
+                    <p className="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">
+                      {isArabic ? area.description.ar : area.description.en}
+                    </p>
+                  </div>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Footer CTA - The "Terminal" Command */}
+      <section className="py-20 bg-white dark:bg-zinc-950 border-t border-zinc-200 dark:border-zinc-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="bg-zinc-900 dark:bg-black text-white rounded-xl p-10 md:p-16 text-center border border-zinc-800 shadow-2xl relative overflow-hidden">
+
+            {/* Background decorative code */}
+            <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none font-mono text-[10px] leading-3 overflow-hidden text-left p-4">
+              {Array(20).fill('010101011010010101110101010').join(' ')}
+            </div>
+
+            <div className="relative z-10 max-w-2xl mx-auto">
+              <h3 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
+                {isArabic ? 'جاهز للبدء؟' : 'Initialize Partnership'}
+              </h3>
+              <p className="text-zinc-400 mb-10 text-lg">
+                {isArabic
+                  ? 'اشترك لتلقي آخر تحديثات التقنية المالية وبناء مستقبلك.'
+                  : 'Subscribe to ecosystem updates and start building your fintech infrastructure.'}
+              </p>
+
+              <Link
+                href={`/${locale}/web/contact`}
+                className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors"
+              >
+                <span>{isArabic ? 'تواصل معنا' : 'EXECUTE_CONTACT'}</span>
+                {isArabic ? <FiArrowLeft /> : <FiArrowRight />}
+              </Link>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
     </div>
   );
 }

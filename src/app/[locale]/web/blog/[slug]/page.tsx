@@ -8,6 +8,7 @@ import { SocialShare } from '@/core/components/web/blog/SocialShare';
 import { RelatedPosts } from '@/core/components/web/blog/RelatedPosts';
 import { Metadata } from 'next';
 import prisma from '@/lib/prisma';
+import { FiCalendar, FiClock, FiUser, FiFolder, FiHash, FiArrowLeft, FiArrowRight, FiHome } from 'react-icons/fi';
 
 interface BlogPageProps {
   params: {
@@ -53,13 +54,12 @@ export async function generateMetadata({ params: { slug, locale } }: BlogPagePro
   }
 }
 
-export default async function BlogPage({ params: { slug, locale } }: BlogPageProps) { // Renamed from BlogDetailPage and updated params destructuring
-// const { slug, locale } = params; // This line is now redundant due to destructuring in the function signature
+export default async function BlogPage({ params: { slug, locale } }: BlogPageProps) {
   const isArabic = locale === 'ar';
-  
+
   // Get blog by slug
   const blog = await blogApiService.getBlogBySlug(slug, locale);
-  
+
   if (!blog) {
     notFound();
   }
@@ -67,117 +67,146 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
   const title = blog.title;
   const excerpt = blog.excerpt;
   const content = blog.content;
-
-  // Ideally, get the current URL properly
   const currentUrl = `https://fintech-updates.sa/${locale}/web/blog/${slug}`;
 
   return (
-    <div className="w-full">
-      {/* Hero Section */}
-      <section className="bg-grey-900 text-white pt-20 pb-24 relative overflow-hidden">
-        {/* Background pattern or subtle gradient could be added here */}
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary-900/20 to-transparent pointer-events-none" />
+    <div className="w-full bg-zinc-50 dark:bg-black min-h-screen font-sans selection:bg-primary-500/30">
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            {/* Category Badge */}
-            <div className="inline-flex items-center gap-2 mb-8 bg-grey-800/50 backdrop-blur-sm px-4 py-2 rounded-full border border-grey-700">
-              <span
-                className="w-3 h-3 rounded-full"
-                style={{ backgroundColor: blog.category.color }}
-              />
-              <span className="font-semibold text-sm tracking-wide uppercase text-grey-200">
-                {blog.category.name}
-              </span>
+      {/* 1. Global Engineering Grid */}
+      <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+
+      {/* Header Section: "File Header" Style */}
+      <section className="relative pt-32 pb-12 border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm z-10">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
+
+          {/* Breadcrumb: Terminal Path Style */}
+          <div className="flex items-center gap-2 text-xs font-mono text-zinc-500 mb-8 overflow-x-auto whitespace-nowrap">
+            <Link href={`/${locale}/web/home`} className="hover:text-primary-600 transition-colors">
+              <FiHome className="mb-1" />
+            </Link>
+            <span className="text-zinc-300">/</span>
+            <Link href={`/${locale}/web/blog`} className="hover:text-primary-600 transition-colors">
+              blog
+            </Link>
+            <span className="text-zinc-300">/</span>
+            <span className="text-primary-600 dark:text-primary-400 font-bold">
+              {blog.category.name.toLowerCase().replace(/\s+/g, '-')}
+            </span>
+            <span className="text-zinc-300">/</span>
+            <span className="text-zinc-400 truncate max-w-[200px]">{slug}</span>
+          </div>
+
+          {/* Title Area */}
+          <div className="mb-10">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-zinc-900 dark:text-white leading-tight tracking-tight mb-6">
+              {title}
+            </h1>
+            <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-light leading-relaxed max-w-3xl border-l-4 border-primary-500 pl-6">
+              {excerpt}
+            </p>
+          </div>
+
+          {/* Meta Data Grid: The "Spec Sheet" */}
+          <div className="grid grid-cols-2 md:grid-cols-4 border-y border-zinc-200 dark:border-zinc-800">
+
+            {/* Author */}
+            <div className="p-4 border-b md:border-b-0 border-r border-zinc-200 dark:border-zinc-800 flex items-center gap-3">
+              <div className="w-8 h-8 rounded bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500">
+                <FiUser />
+              </div>
+              <div>
+                <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">{isArabic ? 'المؤلف' : 'AUTHOR'}</div>
+                <div className="text-sm font-bold text-zinc-900 dark:text-white truncate">{blog?.author?.name}</div>
+              </div>
             </div>
 
-            {/* Title */}
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-8 leading-tight">{title}</h1>
-
-            {/* Excerpt */}
-            <p className="text-xl md:text-2xl text-grey-300 mb-10 max-w-2xl mx-auto leading-relaxed">{excerpt}</p>
-
-            {/* Meta Info */}
-            <div className="flex flex-wrap items-center justify-center gap-6 text-grey-400">
-              <div className="flex items-center gap-3">
-                {blog.author.avatar ? (
-                  <SafeImage
-                    src={blog.author.avatar}
-                    alt={blog?.author?.name||""}
-                    width={48}
-                    height={48}
-                    className="rounded-full border-2 border-grey-700"
-                  />
-                ) : (
-                  <div className="w-12 h-12 bg-grey-700 rounded-full flex items-center justify-center text-white font-bold text-lg">
-                    {blog?.author?.name?.charAt(0)}
-                  </div>
-                )}
-                <div className="text-left">
-                  <div className="font-bold text-white text-base">{blog?.author?.name}</div>
-                  <div className="text-xs text-grey-400">{blog?.author?.role}</div>
+            {/* Date */}
+            <div className="p-4 border-b md:border-b-0 md:border-r border-zinc-200 dark:border-zinc-800 flex items-center gap-3">
+              <div className="w-8 h-8 rounded bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500">
+                <FiCalendar />
+              </div>
+              <div>
+                <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">{isArabic ? 'تاريخ النشر' : 'PUBLISHED'}</div>
+                <div className="text-sm font-bold text-zinc-900 dark:text-white font-mono">
+                  {new Date(blog.publishedAt).toLocaleDateString(isArabic ? 'en-US' : 'en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}
                 </div>
               </div>
+            </div>
 
-              <span className="hidden sm:inline w-1.5 h-1.5 rounded-full bg-grey-600"></span>
-
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                <span className="font-medium">
-                  {new Date(blog.publishedAt).toLocaleDateString(isArabic ? 'ar-SA' : 'en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
-                </span>
+            {/* Read Time */}
+            <div className="p-4 border-r border-zinc-200 dark:border-zinc-800 flex items-center gap-3">
+              <div className="w-8 h-8 rounded bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500">
+                <FiClock />
               </div>
-
-              <span className="hidden sm:inline w-1.5 h-1.5 rounded-full bg-grey-600"></span>
-
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                <span className="font-medium">
-                  {blog.readTime} {isArabic ? 'دقيقة قراءة' : 'min read'}
-                </span>
+              <div>
+                <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">{isArabic ? 'وقت القراءة' : 'TIME_EST'}</div>
+                <div className="text-sm font-bold text-zinc-900 dark:text-white font-mono">{blog.readTime} MIN</div>
               </div>
             </div>
+
+            {/* Category */}
+            <div className="p-4 flex items-center gap-3">
+              <div className="w-8 h-8 rounded bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500">
+                <FiFolder />
+              </div>
+              <div>
+                <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">{isArabic ? 'التصنيف' : 'CATEGORY'}</div>
+                <div className="text-sm font-bold text-primary-600 dark:text-primary-400">{blog.category.name}</div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* Featured Image */}
-      <section className="relative px-4 sm:px-6 lg:px-8 -mt-16 mb-16">
-        <div className="max-w-5xl mx-auto relative h-[400px] md:h-[500px] w-full shadow-2xl rounded-2xl overflow-hidden border-4 border-white">
-          <SafeImage
-            src={blog.featuredImage}
-            alt={title}
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-      </section>
+      {/* Featured Image: "Cinema Mode" */}
+      {blog.featuredImage && (
+        <section className="relative z-0 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 mb-16">
+          <div className="relative aspect-[21/9] w-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-2xl">
+            <SafeImage
+              src={blog.featuredImage}
+              alt={title}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
+        </section>
+      )}
 
-      {/* Blog Content */}
-      <article className="pb-24 bg-white">
+      {/* Main Content Area */}
+      <article className="pb-24 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            {/* Social Share (Top) */}
-            <div className="mb-8 pb-8 border-b border-grey-100 flex justify-between items-center">
+
+            {/* Social Share Bar (Floating or Top) */}
+            <div className="mb-10 py-4 border-y border-zinc-100 dark:border-zinc-800 flex justify-between items-center">
+              <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest">
+                {isArabic ? 'مشاركة_المقال' : 'SHARE_PROTOCOL'}
+              </span>
               <SocialShare title={title} url={currentUrl} />
             </div>
 
-            <div className="prose prose-lg prose-indigo md:prose-xl max-w-none">
+            {/* The Content */}
+            <div className="prose prose-zinc dark:prose-invert prose-lg max-w-none 
+              prose-headings:font-bold prose-headings:tracking-tight 
+              prose-a:text-primary-600 dark:prose-a:text-primary-400 
+              prose-img:rounded-xl prose-img:border prose-img:border-zinc-200 dark:prose-img:border-zinc-800
+              prose-code:text-primary-600 dark:prose-code:text-primary-400 prose-code:bg-zinc-100 dark:prose-code:bg-zinc-900 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:before:content-none prose-code:after:content-none"
+            >
               <BlogContentRenderer content={content} />
             </div>
 
-            {/* Tags */}
-            <div className="mt-12 mb-12">
+            {/* Tags: "Keywords" */}
+            <div className="mt-16 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+              <h4 className="text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+                <FiHash /> {isArabic ? 'الكلمات_المفتاحية' : 'KEYWORDS'}
+              </h4>
               <div className="flex flex-wrap gap-2">
                 {blog.tags.map((tag: string) => (
                   <span
                     key={tag}
-                    className="px-4 py-1.5 bg-grey-50 text-grey-600 rounded-full text-sm font-medium border border-grey-200"
+                    className="px-3 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 rounded text-xs font-mono border border-zinc-200 dark:border-zinc-700"
                   >
                     #{tag}
                   </span>
@@ -185,37 +214,37 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
               </div>
             </div>
 
-            {/* Author Bio */}
-            <div className="mb-12">
+            {/* Author Bio Card */}
+            <div className="mt-12">
               <AuthorBio author={blog?.author as any} />
             </div>
 
-            {/* Related Posts */}
-            <RelatedPosts posts={blog?.relatedPosts} locale={locale} />
-
-
-            {/* Back to Blog */}
-            <div className="mt-16 text-center">
+            {/* Navigation to Index */}
+            <div className="mt-16 pt-10 border-t border-zinc-200 dark:border-zinc-800 flex justify-center">
               <Link
                 href={`/${locale}/web/blog`}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-grey-300 rounded-lg text-grey-700 font-semibold hover:bg-grey-50 transition-colors shadow-sm"
+                className="group inline-flex items-center gap-3 px-6 py-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg text-zinc-600 dark:text-zinc-300 font-medium hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-zinc-900 dark:hover:text-white transition-all shadow-sm"
               >
-                {isArabic ? (
-                  <>
-                    <svg className="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7 7-7m8 14l-7-7 7-7" /></svg>
-                    <span>العودة إلى المدونة</span>
-                  </>
-                ) : (
-                  <>
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7 7-7m8 14l-7-7 7-7" /></svg>
-                    <span>Back to Blog</span>
-                  </>
-                )}
+                {isArabic ? <FiArrowRight className="group-hover:-translate-x-1 transition-transform" /> : <FiArrowLeft className="group-hover:-translate-x-1 transition-transform" />}
+                <span className="font-mono text-sm uppercase tracking-wide">{isArabic ? 'العودة للأرشيف' : 'RETURN_TO_INDEX'}</span>
               </Link>
             </div>
           </div>
         </div>
       </article>
+
+      {/* Related Posts Section */}
+      <section className="bg-zinc-100 dark:bg-zinc-900/50 py-20 border-t border-zinc-200 dark:border-zinc-800">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-10 text-center flex items-center justify-center gap-3">
+            <span className="w-8 h-px bg-zinc-300 dark:bg-zinc-700"></span>
+            {isArabic ? 'مقالات ذات صلة' : 'Related Documentation'}
+            <span className="w-8 h-px bg-zinc-300 dark:bg-zinc-700"></span>
+          </h3>
+          <RelatedPosts posts={blog?.relatedPosts} locale={locale} />
+        </div>
+      </section>
+
     </div>
   );
 }
