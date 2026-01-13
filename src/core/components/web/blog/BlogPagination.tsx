@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 interface BlogPaginationProps {
   currentPage: number;
@@ -20,49 +21,57 @@ export function BlogPagination({ currentPage, totalPages, isArabic }: BlogPagina
     const params = new URLSearchParams(searchParams.toString());
     params.set('page', page.toString());
     router.push(`${pathname}?${params.toString()}`);
-    // Scroll to top handled by standard navigation usually, but we can force it if needed
-    // In server components, a scroll to top usually happens on navigation unless prevented.
-    // We can add logic here if needed, but router.push should be enough.
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <AnimatedSection delay={0.3}>
-      <div className="flex justify-center items-center gap-3 mt-16">
+    <AnimatedSection delay={0.1}>
+      <div className="flex justify-center items-center gap-2 mt-16 select-none">
+
+        {/* Previous Button - Command Style */}
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="px-5 py-3 rounded-xl bg-white text-grey-700 hover:bg-primary hover:text-white font-semibold transition-all duration-300 shadow-soft hover:shadow-medium disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-grey-700 transform hover:scale-105"
+          className="group h-10 px-4 flex items-center justify-center gap-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-zinc-900 dark:hover:text-white disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-zinc-200 transition-all"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isArabic ? "M9 5l7 7-7 7" : "M15 19l-7-7 7-7"} />
-          </svg>
+          {isArabic ? <FiChevronRight /> : <FiChevronLeft />}
+          <span className="hidden sm:inline font-mono text-xs uppercase tracking-wider">
+            {isArabic ? 'السابق' : 'PREV'}
+          </span>
         </button>
 
-        <div className="flex gap-2">
-          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-            <button
-              key={page}
-              onClick={() => handlePageChange(page)}
-              className={`w-12 h-12 rounded-xl font-bold transition-all duration-300 transform hover:scale-105 ${
-                currentPage === page
-                  ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-lg shadow-primary/30'
-                  : 'bg-white text-grey-700 hover:bg-grey-100 shadow-soft'
-              }`}
-            >
-              {page}
-            </button>
-          ))}
+        {/* Page Numbers - Keycap Style */}
+        <div className="flex gap-2 mx-2">
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
+            const isActive = currentPage === page;
+            return (
+              <button
+                key={page}
+                onClick={() => handlePageChange(page)}
+                className={`
+                  w-10 h-10 flex items-center justify-center rounded-md border text-sm font-mono transition-all duration-200
+                  ${isActive
+                    ? 'border-zinc-900 dark:border-white bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold shadow-sm'
+                    : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-500 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-zinc-900 dark:hover:text-white'
+                  }
+                `}
+              >
+                {page}
+              </button>
+            );
+          })}
         </div>
 
+        {/* Next Button - Command Style */}
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="px-5 py-3 rounded-xl bg-white text-grey-700 hover:bg-primary hover:text-white font-semibold transition-all duration-300 shadow-soft hover:shadow-medium disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-grey-700 transform hover:scale-105"
+          className="group h-10 px-4 flex items-center justify-center gap-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-zinc-900 dark:hover:text-white disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-zinc-200 transition-all"
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={isArabic ? "M15 19l-7-7 7-7" : "M9 5l7 7-7 7"} />
-          </svg>
+          <span className="hidden sm:inline font-mono text-xs uppercase tracking-wider">
+            {isArabic ? 'التالي' : 'NEXT'}
+          </span>
+          {isArabic ? <FiChevronLeft /> : <FiChevronRight />}
         </button>
       </div>
     </AnimatedSection>

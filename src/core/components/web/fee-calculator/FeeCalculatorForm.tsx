@@ -1,6 +1,15 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
+import {
+  FiServer,
+  FiDollarSign,
+  FiPieChart,
+  FiActivity,
+  FiAlertCircle,
+  FiCheck,
+  FiTrendingUp
+} from 'react-icons/fi';
 
 interface Provider {
   name: string;
@@ -31,46 +40,44 @@ interface FeeCalculatorFormProps {
 // Translations
 const t = {
   en: {
-    selectProvider: 'Select Payment Provider',
-    chooseProvider: 'Choose a provider...',
-    monthlyVolume: 'Monthly Processing Volume (SAR)',
-    monthlyVolumePlaceholder: 'e.g., 100000',
-    avgTransaction: 'Average Transaction Value (SAR)',
-    avgTransactionPlaceholder: 'e.g., 250',
-    paymentMix: 'Payment Method Mix',
-    mada: 'Mada',
+    sectionProvider: 'Service Provider',
+    sectionMetrics: 'Transaction Metrics',
+    sectionMix: 'Payment Channel Mix',
+    selectProvider: 'Select PSP',
+    chooseProvider: 'Select a provider...',
+    monthlyVolume: 'Monthly Volume',
+    monthlyVolumePlaceholder: 'e.g. 100,000',
+    avgTransaction: 'Avg. Ticket Size',
+    avgTransactionPlaceholder: 'e.g. 250',
+    mada: 'Mada (Debit)',
     visaLocal: 'Visa/MC (Local)',
-    visaIntl: 'Visa/MC (International)',
-    total: 'Total',
-    mixError: 'Payment mix must total 100%',
-    calculate: 'Calculate Fees',
-    calculating: 'Calculating...',
-    confidence: {
-      high: 'High confidence pricing',
-      medium: 'Medium confidence pricing',
-      low: 'Low confidence - estimates only',
-    },
+    visaIntl: 'Visa/MC (Intl)',
+    total: 'Allocation',
+    mixError: 'Total allocation must equal 100%',
+    calculate: 'Run Simulation',
+    calculating: 'Processing...',
+    confidence: { high: 'High Accuracy', medium: 'Est. Accuracy', low: 'Low Accuracy' },
+    currency: 'SAR',
   },
   ar: {
-    selectProvider: 'اختر مزود الدفع',
-    chooseProvider: 'اختر مزوداً...',
-    monthlyVolume: 'حجم المعالجة الشهري (ريال)',
-    monthlyVolumePlaceholder: 'مثال: 100000',
-    avgTransaction: 'متوسط قيمة المعاملة (ريال)',
+    sectionProvider: 'مزود الخدمة',
+    sectionMetrics: 'مؤشرات العمليات',
+    sectionMix: 'توزيع قنوات الدفع',
+    selectProvider: 'اختر بوابة الدفع',
+    chooseProvider: 'اختر المزود...',
+    monthlyVolume: 'حجم المبيعات الشهري',
+    monthlyVolumePlaceholder: 'مثال: 100,000',
+    avgTransaction: 'متوسط قيمة السلة',
     avgTransactionPlaceholder: 'مثال: 250',
-    paymentMix: 'توزيع طرق الدفع',
-    mada: 'مدى',
-    visaLocal: 'فيزا/ماستركارد (محلي)',
-    visaIntl: 'فيزا/ماستركارد (دولي)',
-    total: 'المجموع',
-    mixError: 'يجب أن يكون مجموع التوزيع 100%',
-    calculate: 'احسب الرسوم',
+    mada: 'مدى (Debit)',
+    visaLocal: 'فيزا/ماستر (محلي)',
+    visaIntl: 'فيزا/ماستر (دولي)',
+    total: 'الإجمالي',
+    mixError: 'يجب أن يكون مجموع النسب 100%',
+    calculate: 'بدء المحاكاة',
     calculating: 'جاري الحساب...',
-    confidence: {
-      high: 'ثقة عالية في الأسعار',
-      medium: 'ثقة متوسطة في الأسعار',
-      low: 'ثقة منخفضة - تقديرات فقط',
-    },
+    confidence: { high: 'دقة عالية', medium: 'دقة متوسطة', low: 'دقة منخفضة' },
+    currency: 'ر.س',
   },
 };
 
@@ -89,14 +96,10 @@ export default function FeeCalculatorForm({
     provider: '',
     monthlyVolume: '',
     averageTransactionValue: '',
-    paymentMix: {
-      mada: 60,
-      visa_mc_local: 30,
-      visa_mc_international: 10,
-    },
+    paymentMix: { mada: 60, visa_mc_local: 30, visa_mc_international: 10 },
   });
 
-  // Fetch providers on mount
+  // Fetch providers
   useEffect(() => {
     const fetchProviders = async () => {
       try {
@@ -112,7 +115,7 @@ export default function FeeCalculatorForm({
     fetchProviders();
   }, []);
 
-  // Calculate payment mix total
+  // Validation Logic
   const mixTotal = useMemo(() => {
     return (
       formData.paymentMix.mada +
@@ -123,7 +126,6 @@ export default function FeeCalculatorForm({
 
   const isMixValid = Math.abs(mixTotal - 100) < 0.01;
 
-  // Form validation
   const isFormValid = useMemo(() => {
     return (
       formData.provider !== '' &&
@@ -133,24 +135,15 @@ export default function FeeCalculatorForm({
     );
   }, [formData, isMixValid]);
 
-  // Get selected provider
   const selectedProvider = providers.find((p) => p.name === formData.provider);
 
-  // Handle payment mix change
-  const handleMixChange = (
-    method: keyof PaymentMix,
-    value: number
-  ) => {
+  const handleMixChange = (method: keyof PaymentMix, value: number) => {
     setFormData((prev) => ({
       ...prev,
-      paymentMix: {
-        ...prev.paymentMix,
-        [method]: Math.max(0, Math.min(100, value)),
-      },
+      paymentMix: { ...prev.paymentMix, [method]: Math.max(0, Math.min(100, value)) },
     }));
   };
 
-  // Handle form submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (isFormValid && !isLoading) {
@@ -159,196 +152,198 @@ export default function FeeCalculatorForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
-      {/* Provider Selection */}
-      <div>
-        <label className="block text-sm font-semibold text-grey-700 mb-2">
-          {labels.selectProvider}
+    <form onSubmit={handleSubmit} className="space-y-8 font-sans">
+
+      {/* 1. Provider Selection */}
+      <div className="space-y-3">
+        <label className="flex items-center gap-2 text-xs font-bold text-zinc-500 uppercase tracking-widest">
+          <FiServer className="text-primary-500" /> {labels.sectionProvider}
         </label>
-        <select
-          value={formData.provider}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, provider: e.target.value }))
-          }
-          className="w-full px-4 py-3 rounded-xl border border-grey-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all bg-white text-grey-900"
-          disabled={loadingProviders}
-        >
-          <option value="">{labels.chooseProvider}</option>
-          {providers.map((provider) => (
-            <option key={provider.name} value={provider.name}>
-              {provider.name}
-            </option>
-          ))}
-        </select>
-        {selectedProvider && (
-          <p
-            className={`mt-2 text-sm ${
-              selectedProvider.confidenceLevel === 'high'
-                ? 'text-green-600'
-                : selectedProvider.confidenceLevel === 'medium'
-                ? 'text-yellow-600'
-                : 'text-red-600'
-            }`}
+
+        <div className="relative">
+          <select
+            value={formData.provider}
+            onChange={(e) => setFormData((prev) => ({ ...prev, provider: e.target.value }))}
+            disabled={loadingProviders}
+            className="w-full pl-4 pr-10 py-3 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white font-medium focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all appearance-none"
           >
-            {labels.confidence[selectedProvider.confidenceLevel]}
-          </p>
+            <option value="">{labels.chooseProvider}</option>
+            {providers.map((provider) => (
+              <option key={provider.name} value={provider.name}>
+                {provider.name}
+              </option>
+            ))}
+          </select>
+          <div className={`absolute top-1/2 -translate-y-1/2 pointer-events-none ${isArabic ? 'left-4' : 'right-4'}`}>
+            <svg className="w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </div>
+
+        {selectedProvider && (
+          <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-bold uppercase tracking-wide border ${selectedProvider.confidenceLevel === 'high'
+              ? 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border-emerald-100 dark:border-emerald-900'
+              : selectedProvider.confidenceLevel === 'medium'
+                ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 border-amber-100 dark:border-amber-900'
+                : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 border-red-100 dark:border-red-900'
+            }`}>
+            <FiActivity /> {labels.confidence[selectedProvider.confidenceLevel]}
+          </div>
         )}
       </div>
 
-      {/* Volume Inputs */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label className="block text-sm font-semibold text-grey-700 mb-2">
-            {labels.monthlyVolume}
-          </label>
-          <input
-            type="number"
-            value={formData.monthlyVolume}
-            onChange={(e) =>
-              setFormData((prev) => ({ ...prev, monthlyVolume: e.target.value }))
-            }
-            placeholder={labels.monthlyVolumePlaceholder}
-            className="w-full px-4 py-3 rounded-xl border border-grey-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
-            min="0"
-            step="1000"
-          />
-        </div>
-        <div>
-          <label className="block text-sm font-semibold text-grey-700 mb-2">
-            {labels.avgTransaction}
-          </label>
-          <input
-            type="number"
-            value={formData.averageTransactionValue}
-            onChange={(e) =>
-              setFormData((prev) => ({
-                ...prev,
-                averageTransactionValue: e.target.value,
-              }))
-            }
-            placeholder={labels.avgTransactionPlaceholder}
-            className="w-full px-4 py-3 rounded-xl border border-grey-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all"
-            min="0"
-            step="10"
-          />
+      <div className="h-px bg-zinc-200 dark:bg-zinc-800" />
+
+      {/* 2. Volume Inputs */}
+      <div className="space-y-4">
+        <label className="flex items-center gap-2 text-xs font-bold text-zinc-500 uppercase tracking-widest">
+          <FiTrendingUp className="text-primary-500" /> {labels.sectionMetrics}
+        </label>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="group relative">
+            <label className="block text-xs font-medium text-zinc-500 mb-1.5 ml-1">{labels.monthlyVolume}</label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
+                <FiDollarSign />
+              </div>
+              <input
+                type="number"
+                value={formData.monthlyVolume}
+                onChange={(e) => setFormData((prev) => ({ ...prev, monthlyVolume: e.target.value }))}
+                placeholder="100000"
+                className="w-full pl-9 pr-12 py-3 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white font-mono placeholder-zinc-400 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
+                min="0"
+              />
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-xs font-bold text-zinc-400">
+                {labels.currency}
+              </div>
+            </div>
+          </div>
+
+          <div className="group relative">
+            <label className="block text-xs font-medium text-zinc-500 mb-1.5 ml-1">{labels.avgTransaction}</label>
+            <div className="relative">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
+                <FiPieChart />
+              </div>
+              <input
+                type="number"
+                value={formData.averageTransactionValue}
+                onChange={(e) => setFormData((prev) => ({ ...prev, averageTransactionValue: e.target.value }))}
+                placeholder="250"
+                className="w-full pl-9 pr-12 py-3 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white font-mono placeholder-zinc-400 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
+                min="0"
+              />
+              <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-xs font-bold text-zinc-400">
+                {labels.currency}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Payment Mix */}
-      <div>
-        <label className="block text-sm font-semibold text-grey-700 mb-4">
-          {labels.paymentMix}
-        </label>
-        <div className="space-y-4">
-          {/* Mada */}
-          <div className="flex items-center gap-4">
-            <div className="w-32 text-sm text-grey-600">{labels.mada}</div>
+      <div className="h-px bg-zinc-200 dark:bg-zinc-800" />
+
+      {/* 3. Payment Mix (Interactive) */}
+      <div className="space-y-4">
+        <div className="flex justify-between items-end">
+          <label className="flex items-center gap-2 text-xs font-bold text-zinc-500 uppercase tracking-widest">
+            <FiPieChart className="text-primary-500" /> {labels.sectionMix}
+          </label>
+          <span className={`text-xs font-mono font-bold ${isMixValid ? 'text-emerald-600' : 'text-red-600'}`}>
+            {mixTotal.toFixed(0)}% / 100%
+          </span>
+        </div>
+
+        {/* Visual Mix Bar */}
+        <div className="h-2 w-full bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden flex">
+          <div className="h-full bg-blue-500 transition-all duration-300" style={{ width: `${formData.paymentMix.mada}%` }} />
+          <div className="h-full bg-amber-500 transition-all duration-300" style={{ width: `${formData.paymentMix.visa_mc_local}%` }} />
+          <div className="h-full bg-purple-500 transition-all duration-300" style={{ width: `${formData.paymentMix.visa_mc_international}%` }} />
+        </div>
+
+        <div className="space-y-5 pt-2">
+          {/* Mada Slider */}
+          <div className="space-y-2">
+            <div className="flex justify-between text-sm">
+              <span className="font-medium text-zinc-700 dark:text-zinc-300 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-blue-500"></span> {labels.mada}
+              </span>
+              <span className="font-mono font-bold text-zinc-900 dark:text-white">{formData.paymentMix.mada}%</span>
+            </div>
             <input
               type="range"
               value={formData.paymentMix.mada}
               onChange={(e) => handleMixChange('mada', Number(e.target.value))}
-              className="flex-1 h-2 bg-grey-200 rounded-lg appearance-none cursor-pointer accent-green-500"
-              min="0"
-              max="100"
+              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
+              min="0" max="100"
             />
-            <div className="w-16 text-right">
-              <input
-                type="number"
-                value={formData.paymentMix.mada}
-                onChange={(e) =>
-                  handleMixChange('mada', Number(e.target.value))
-                }
-                className="w-full px-2 py-1 rounded border border-grey-200 text-center text-sm"
-                min="0"
-                max="100"
-              />
-            </div>
-            <span className="text-grey-500 text-sm">%</span>
           </div>
 
-          {/* Visa/MC Local */}
-          <div className="flex items-center gap-4">
-            <div className="w-32 text-sm text-grey-600">{labels.visaLocal}</div>
+          {/* Visa Local Slider */}
+          <div className="space-y-2">
+            <div className="flex justify-between text-sm">
+              <span className="font-medium text-zinc-700 dark:text-zinc-300 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-amber-500"></span> {labels.visaLocal}
+              </span>
+              <span className="font-mono font-bold text-zinc-900 dark:text-white">{formData.paymentMix.visa_mc_local}%</span>
+            </div>
             <input
               type="range"
               value={formData.paymentMix.visa_mc_local}
-              onChange={(e) =>
-                handleMixChange('visa_mc_local', Number(e.target.value))
-              }
-              className="flex-1 h-2 bg-grey-200 rounded-lg appearance-none cursor-pointer accent-blue-500"
-              min="0"
-              max="100"
+              onChange={(e) => handleMixChange('visa_mc_local', Number(e.target.value))}
+              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-amber-500"
+              min="0" max="100"
             />
-            <div className="w-16 text-right">
-              <input
-                type="number"
-                value={formData.paymentMix.visa_mc_local}
-                onChange={(e) =>
-                  handleMixChange('visa_mc_local', Number(e.target.value))
-                }
-                className="w-full px-2 py-1 rounded border border-grey-200 text-center text-sm"
-                min="0"
-                max="100"
-              />
-            </div>
-            <span className="text-grey-500 text-sm">%</span>
           </div>
 
-          {/* Visa/MC International */}
-          <div className="flex items-center gap-4">
-            <div className="w-32 text-sm text-grey-600">{labels.visaIntl}</div>
+          {/* Visa Intl Slider */}
+          <div className="space-y-2">
+            <div className="flex justify-between text-sm">
+              <span className="font-medium text-zinc-700 dark:text-zinc-300 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-purple-500"></span> {labels.visaIntl}
+              </span>
+              <span className="font-mono font-bold text-zinc-900 dark:text-white">{formData.paymentMix.visa_mc_international}%</span>
+            </div>
             <input
               type="range"
               value={formData.paymentMix.visa_mc_international}
-              onChange={(e) =>
-                handleMixChange('visa_mc_international', Number(e.target.value))
-              }
-              className="flex-1 h-2 bg-grey-200 rounded-lg appearance-none cursor-pointer accent-purple-500"
-              min="0"
-              max="100"
+              onChange={(e) => handleMixChange('visa_mc_international', Number(e.target.value))}
+              className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-lg appearance-none cursor-pointer accent-purple-500"
+              min="0" max="100"
             />
-            <div className="w-16 text-right">
-              <input
-                type="number"
-                value={formData.paymentMix.visa_mc_international}
-                onChange={(e) =>
-                  handleMixChange('visa_mc_international', Number(e.target.value))
-                }
-                className="w-full px-2 py-1 rounded border border-grey-200 text-center text-sm"
-                min="0"
-                max="100"
-              />
-            </div>
-            <span className="text-grey-500 text-sm">%</span>
           </div>
         </div>
 
-        {/* Total indicator */}
-        <div
-          className={`mt-4 flex items-center justify-between px-4 py-2 rounded-lg ${
-            isMixValid ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
-          }`}
-        >
-          <span className="text-sm font-medium">{labels.total}</span>
-          <span className="text-lg font-bold">{mixTotal.toFixed(0)}%</span>
-        </div>
         {!isMixValid && (
-          <p className="mt-2 text-sm text-red-600">{labels.mixError}</p>
+          <div className="flex items-center gap-2 text-red-600 bg-red-50 dark:bg-red-900/10 p-3 rounded-lg text-xs font-bold border border-red-100 dark:border-red-900/30">
+            <FiAlertCircle /> {labels.mixError}
+          </div>
         )}
       </div>
 
       {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={!isFormValid || isLoading}
-        className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all transform ${
-          isFormValid && !isLoading
-            ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 hover:scale-[1.02] shadow-lg hover:shadow-xl'
-            : 'bg-grey-200 text-grey-500 cursor-not-allowed'
-        }`}
-      >
-        {isLoading ? labels.calculating : labels.calculate}
-      </button>
+      <div className="pt-4">
+        <button
+          type="submit"
+          disabled={!isFormValid || isLoading}
+          className={`
+            w-full py-4 px-6 rounded-xl font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all
+            ${isFormValid && !isLoading
+              ? 'bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-lg hover:shadow-xl translate-y-0'
+              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed'
+            }
+          `}
+        >
+          {isLoading ? (
+            <span className="animate-pulse">{labels.calculating}</span>
+          ) : (
+            <>
+              {labels.calculate} <FiActivity />
+            </>
+          )}
+        </button>
+      </div>
     </form>
   );
 }

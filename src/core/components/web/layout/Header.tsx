@@ -9,14 +9,12 @@ import CoursesMegaMenu from './CoursesMegaMenu';
 import RegionDropdown from './RegionDropdown';
 import Logo from './Logo';
 import { getAllCourses } from '@/data/courseData';
-
-
-
+import { FiChevronDown, FiMenu, FiX, FiGlobe, FiCommand, FiArrowRight } from 'react-icons/fi';
 
 export default function Header() {
   const t = useTranslations();
   const locale = useLocale();
-  const courses = getAllCourses()
+  const courses = getAllCourses();
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
@@ -45,7 +43,7 @@ export default function Header() {
   const handleMouseLeave = () => {
     timeoutRef.current = setTimeout(() => {
       setHoveredItem(null);
-    }, 200);
+    }, 150);
   };
 
   const isActive = (href: string) => {
@@ -53,160 +51,204 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white/90 backdrop-blur-xl shadow-sm">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+    <>
+      {/* Engineering Header: 
+        - Sticky
+        - Blurry (Glassmorphism)
+        - High Contrast Borders 
+      */}
+      <header className="sticky top-0 z-50 w-full border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-black/80 backdrop-blur-xl">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
 
-          {/* --- Logo Section --- */}
-          <Link href={`/${locale}/web/home`} className="group flex items-center gap-3">
-            <div className="relative">
-              <Logo size={40} className="group-hover:scale-105 transition-transform duration-300" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold text-gray-900 leading-tight group-hover:text-blue-600 transition-colors">
-                {locale === 'ar' ? 'مال تك' : 'Maal Tech'}
-              </span>
-              <span className="text-[10px] text-gray-500 font-medium tracking-wider uppercase hidden sm:block">
-                {locale === 'ar' ? 'التقنية المالية' : 'FinTech Platform'}
-              </span>
-            </div>
-          </Link>
-
-          {/* --- Desktop Navigation --- */}
-          <nav className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => {
-              const active = isActive(item.href);
-              const isMegaMenuOpen = item.hasMegaMenu && hoveredItem === item.key;
-
-              return (
-                <div
-                  key={item.key}
-                  className="relative"
-                  onMouseEnter={() => handleMouseEnter(item.key)}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <Link
-                    href={item.hasMegaMenu ? '#' : `/${locale}${item.href}`}
-                    className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-1 ${active || isMegaMenuOpen
-                      ? 'text-blue-600 bg-blue-50'
-                      : 'text-gray-600 hover:text-blue-600 hover:bg-gray-50'
-                      }`}
-                  >
-                    {item.label}
-                    {item.hasMegaMenu && (
-                      <svg className={`w-3 h-3 transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                      </svg>
-                    )}
-                  </Link>
-
-                  {/* Mega Menu Portals */}
-                  {item.key === 'products' && hoveredItem === 'products' && (
-                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-screen max-w-screen-xl px-4">
-                      {/* Note: In your layout, MegaMenu is usually typically full width relative to header. 
-                           For simplicity based on your previous code, I'm keeping your absolute positioning logic 
-                           inside the MegaMenu component itself, but ensuring it triggers here. */}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </nav>
-
-          {/* --- Right Actions --- */}
-          <div className="flex items-center gap-2 md:gap-4">
-            <RegionDropdown />
-
-            <Link
-              href={`/${otherLocale}${currentPath}`}
-              className="hidden md:flex items-center justify-center w-9 h-9 text-sm font-bold text-gray-700 border border-gray-200 rounded-lg hover:border-blue-600 hover:text-blue-600 transition-colors"
-            >
-              {otherLocale.toUpperCase()}
+            {/* --- Logo Section: Technical Brand --- */}
+            <Link href={`/${locale}/web/home`} className="group flex items-center gap-3 outline-none">
+              <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black shadow-sm group-hover:scale-105 transition-transform duration-200">
+                {/* Simplified Logo Concept if Component not available, else use <Logo /> */}
+                <span className="font-bold text-lg">{isArabic ? 'ف' : 'F'}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-lg font-bold text-zinc-900 dark:text-white leading-none tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+                  {isArabic ? 'مال تك' : 'Maal Tech'}
+                </span>
+                <span className="text-[9px] text-zinc-500 font-mono tracking-widest uppercase mt-0.5">
+                  {isArabic ? 'بنية تحتية' : 'INFRASTRUCTURE'}
+                </span>
+              </div>
             </Link>
 
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-gray-600 hover:text-blue-600"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {mobileMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
+            {/* --- Desktop Navigation: The "Toolbar" --- */}
+            <nav className="hidden md:flex items-center gap-1">
+              {navItems.map((item) => {
+                const active = isActive(item.href);
+                const isMegaMenuOpen = item.hasMegaMenu && hoveredItem === item.key;
+
+                return (
+                  <div
+                    key={item.key}
+                    className="relative group/nav"
+                    onMouseEnter={() => handleMouseEnter(item.key)}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <Link
+                      href={item.hasMegaMenu ? '#' : `/${locale}${item.href}`}
+                      className={`
+                        relative px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-1.5 outline-none
+                        ${active || isMegaMenuOpen
+                          ? 'text-zinc-900 dark:text-white bg-zinc-100 dark:bg-zinc-800'
+                          : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-50 dark:hover:bg-zinc-900'
+                        }
+                      `}
+                    >
+                      {item.label}
+                      {item.hasMegaMenu && (
+                        <FiChevronDown
+                          className={`w-3.5 h-3.5 opacity-50 transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`}
+                        />
+                      )}
+                    </Link>
+
+                    {/* Active Indicator Dot */}
+                    {active && (
+                      <span className="absolute bottom-[-18px] left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary-600 dark:bg-primary-400 block" />
+                    )}
+                  </div>
+                );
+              })}
+            </nav>
+
+            {/* --- Right Actions: System Controls --- */}
+            <div className="flex items-center gap-3 pl-4 border-l border-zinc-200 dark:border-zinc-800">
+
+              <div className="hidden md:block">
+                <RegionDropdown />
+              </div>
+
+              <Link
+                href={`/${otherLocale}${currentPath}`}
+                className="hidden md:flex items-center gap-2 px-3 py-1.5 text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all"
+                aria-label="Switch Language"
+              >
+                <FiGlobe className="w-3.5 h-3.5" />
+                <span>{otherLocale.toUpperCase()}</span>
+              </Link>
+
+              {/* Mobile Toggle */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="md:hidden p-2 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
+              >
+                {mobileMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+              </button>
+            </div>
+          </div>
+
+          {/* --- Mega Menus (Desktop Overlay) --- */}
+          <div className="hidden md:block relative z-50">
+            {/* Positioning context wrapper */}
+            <div className="absolute top-0 left-0 w-full" onMouseEnter={() => handleMouseEnter('products')} onMouseLeave={handleMouseLeave}>
+              {hoveredItem === 'products' && (
+                <div className="pt-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <ProductsMegaMenu closeMenu={() => setHoveredItem(null)} />
+                </div>
+              )}
+            </div>
+            <div className="absolute top-0 left-0 w-full" onMouseEnter={() => handleMouseEnter('courses')} onMouseLeave={handleMouseLeave}>
+              {hoveredItem === 'courses' && (
+                <div className="pt-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                  <CoursesMegaMenu courses={courses} closeMenu={() => setHoveredItem(null)} />
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* --- Mega Menus (Rendered outside nav for layout control) --- */}
-        <div className="hidden md:block" onMouseEnter={() => handleMouseEnter('products')} onMouseLeave={handleMouseLeave}>
-          {hoveredItem === 'products' && <ProductsMegaMenu closeMenu={() => setHoveredItem(null)} />}
-        </div>
-        <div className="hidden md:block" onMouseEnter={() => handleMouseEnter('courses')} onMouseLeave={handleMouseLeave}>
-          {hoveredItem === 'courses' && <CoursesMegaMenu
-            courses={courses}
-            closeMenu={() => setHoveredItem(null)} />}
-        </div>
-
-        {/* --- Mobile Menu --- */}
-        <div className={`md:hidden overflow-hidden transition-all duration-300 ${mobileMenuOpen ? 'max-h-[85vh] opacity-100 border-t border-gray-100' : 'max-h-0 opacity-0'}`}>
-          <nav className="py-4 space-y-1 overflow-y-auto max-h-[80vh] px-2">
+        {/* --- Mobile Menu (Drawer) --- */}
+        <div
+          className={`
+            md:hidden fixed inset-x-0 top-[65px] bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800
+            transition-all duration-300 ease-in-out origin-top overflow-hidden
+            ${mobileMenuOpen ? 'max-h-[85vh] opacity-100 shadow-xl' : 'max-h-0 opacity-0'}
+          `}
+        >
+          <nav className="p-4 space-y-1 overflow-y-auto max-h-[80vh]">
             {navItems.map((item) => (
               <div key={item.key}>
                 {item.hasMegaMenu ? (
-                  <div className="space-y-1">
+                  <div className="space-y-1 mb-2">
                     <button
                       onClick={() => setHoveredItem(hoveredItem === item.key ? null : item.key)}
-                      className="w-full flex items-center justify-between px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium"
+                      className={`
+                        w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-bold
+                        ${hoveredItem === item.key ? 'bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900'}
+                      `}
                     >
                       {item.label}
-                      <svg className={`w-4 h-4 transition-transform ${hoveredItem === item.key ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                      <FiChevronDown className={`w-4 h-4 transition-transform ${hoveredItem === item.key ? 'rotate-180' : ''}`} />
                     </button>
 
-                    {/* Mobile Accordion */}
-                    <div className={`${hoveredItem === item.key ? 'block' : 'hidden'} pl-4 pr-2 space-y-2 pb-2`}>
-                      {item.key === 'courses' && courses.slice(0, 4).map(course => (
+                    {/* Mobile Accordion Content */}
+                    <div className={`${hoveredItem === item.key ? 'block' : 'hidden'} pl-4 pr-2 space-y-2 border-l-2 border-zinc-100 dark:border-zinc-800 ml-4`}>
+
+                      {/* Products Sub-items (Manual or Map) */}
+                      {item.key === 'products' && (
+                        <>
+                          <Link href={`/${locale}/web/products/compliance-checker`} onClick={() => setMobileMenuOpen(false)} className="block p-3 rounded hover:bg-zinc-50 dark:hover:bg-zinc-900 text-sm text-zinc-600 dark:text-zinc-300">
+                            {isArabic ? 'فاحص الامتثال' : 'Compliance Checker'}
+                          </Link>
+                          <Link href={`/${locale}/web/products/fee-calculator`} onClick={() => setMobileMenuOpen(false)} className="block p-3 rounded hover:bg-zinc-50 dark:hover:bg-zinc-900 text-sm text-zinc-600 dark:text-zinc-300">
+                            {isArabic ? 'حاسبة الرسوم' : 'Fee Calculator'}
+                          </Link>
+                        </>
+                      )}
+
+                      {/* Courses Sub-items */}
+                      {item.key === 'courses' && courses.slice(0, 3).map(course => (
                         <Link
                           key={course.id}
                           href={`/${locale}/web/courses/${course.slug}`}
-                          className="block p-3 rounded-lg bg-gray-50 border border-gray-100 text-sm"
+                          className="block p-3 rounded hover:bg-zinc-50 dark:hover:bg-zinc-900 group"
                           onClick={() => setMobileMenuOpen(false)}
                         >
-                          <div className="font-semibold text-gray-900">{course.title[lang]}</div>
-                          <div className="text-xs text-gray-500 mt-1">{course.modules} Modules</div>
+                          <div className="text-sm font-bold text-zinc-800 dark:text-zinc-200 group-hover:text-primary-600">{course.title[lang]}</div>
+                          <div className="text-xs text-zinc-400 font-mono mt-0.5">{course.modules} Modules</div>
                         </Link>
                       ))}
-                      {/* Add simple View All link */}
+
                       <Link
                         href={`/${locale}${item.href}`}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="flex items-center gap-2 p-3 rounded-lg bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 hover:border-blue-300 hover:shadow-sm transition-all mt-2"
+                        className="flex items-center gap-2 p-3 text-xs font-bold text-primary-600 uppercase tracking-wide"
                       >
-                        <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                        </svg>
-                        <span className="text-sm font-bold text-blue-700 flex-1">{t('common.viewAll')}</span>
-                        <svg className={`w-4 h-4 text-blue-600 ${isArabic ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
+                        {t('common.viewAll')} <FiArrowRight />
                       </Link>
                     </div>
                   </div>
                 ) : (
                   <Link
-                      href={`/${locale}${item.href}`}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-3 text-gray-700 hover:bg-gray-50 rounded-lg font-medium"
-                    >
+                    href={`/${locale}${item.href}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-4 py-3 rounded-lg text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-50 dark:hover:bg-zinc-900"
+                  >
                     {item.label}
                   </Link>
                 )}
               </div>
             ))}
+
+            {/* Mobile Actions Footer */}
+            <div className="pt-4 mt-4 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between px-4">
+              <Link
+                href={`/${otherLocale}${currentPath}`}
+                className="flex items-center gap-2 text-sm font-mono font-bold text-zinc-500"
+              >
+                <FiGlobe /> {otherLocale.toUpperCase()}
+              </Link>
+            </div>
+
           </nav>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   );
 }

@@ -3,6 +3,16 @@
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
 import { StaggerContainer, StaggerItem } from '../home/HomeAnimations';
+import {
+  FiDollarSign,
+  FiShield,
+  FiActivity,
+  FiArrowRight,
+  FiArrowLeft,
+  FiBox,
+  FiCode,
+  FiCpu
+} from 'react-icons/fi';
 
 export default function ProductsMegaMenu({ closeMenu }: { closeMenu?: () => void }) {
   const locale = useLocale();
@@ -13,150 +23,139 @@ export default function ProductsMegaMenu({ closeMenu }: { closeMenu?: () => void
     {
       id: 'calculator',
       title: isArabic ? 'حاسبة الرسوم' : 'Fee Calculator',
-      description: isArabic ? 'حساب دقيق لصافي الربح وخصم ضريبة القيمة المضافة.' : 'Precise net profit calculation with VAT deduction.',
+      description: isArabic ? 'محاكاة دقيقة لصافي التسوية والضرائب.' : 'Precise net settlement & VAT simulation.',
       href: '/web/products/fee-calculator',
-      iconColor: 'text-blue-600',
-      bgColor: 'bg-blue-50',
-      borderColor: 'group-hover:border-blue-200',
-      icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 4h-6m4 8h3a2 2 0 002-2V7a2 2 0 00-2-2h-3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      )
+      // Colors for Dark/Light mode
+      colorClass: 'text-blue-600 dark:text-blue-400',
+      bgClass: 'bg-blue-50 dark:bg-blue-900/20',
+      borderHover: 'group-hover:border-blue-500/50',
+      icon: <FiDollarSign className="w-6 h-6" />
     },
     {
       id: 'compliance',
-      title: isArabic ? 'فاحص الامتثال' : 'Compliance Checker',
-      description: isArabic ? 'تحقق من توافق منتجك مع لوائح البنك المركزي.' : 'Check product alignment with SAMA/CBUAE regulations.',
+      title: isArabic ? 'رادار الامتثال' : 'Compliance Radar',
+      description: isArabic ? 'فحص التوافق مع تشريعات البنك المركزي.' : 'SAMA/CBUAE regulatory alignment check.',
       href: '/web/products/compliance-checker',
-      iconColor: 'text-emerald-600',
-      bgColor: 'bg-emerald-50',
-      borderColor: 'group-hover:border-emerald-200',
-      icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      )
+      colorClass: 'text-emerald-600 dark:text-emerald-400',
+      bgClass: 'bg-emerald-50 dark:bg-emerald-900/20',
+      borderHover: 'group-hover:border-emerald-500/50',
+      icon: <FiShield className="w-6 h-6" />
     },
     {
       id: 'market',
-      title: isArabic ? 'راديو السوق' : 'Market Radar',
-      description: isArabic ? 'رؤى بيانية وتحليلات لقطاع التقنية المالية.' : 'Data visualization and insights for the Fintech sector.',
+      title: isArabic ? 'ذكاء السوق' : 'Market Intelligence',
+      description: isArabic ? 'تحليل المشهد التنافسي والنمو.' : 'Landscape analysis & growth forecasting.',
       href: '/web/products/market-analysis',
-      iconColor: 'text-purple-600',
-      bgColor: 'bg-purple-50',
-      borderColor: 'group-hover:border-purple-200',
-      icon: (
-        <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-      )
+      colorClass: 'text-purple-600 dark:text-purple-400',
+      bgClass: 'bg-purple-50 dark:bg-purple-900/20',
+      borderHover: 'group-hover:border-purple-500/50',
+      icon: <FiActivity className="w-6 h-6" />
     }
   ];
 
   return (
     <div
-      className="absolute top-full left-0 w-full z-50 bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl"
+      className="absolute top-full left-0 w-full z-50 border-t border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl shadow-2xl"
       dir={isArabic ? 'rtl' : 'ltr'}
     >
-      <StaggerContainer className="container mx-auto px-6 py-8">
+      {/* Gradient Top Border */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 opacity-50"></div>
+
+      <StaggerContainer className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
 
         {/* Header Label */}
-        <div className="flex items-center gap-2 mb-6">
-          <span className="h-4 w-1 bg-blue-600 rounded-full"></span>
-          <span className="text-xs font-bold uppercase tracking-wider text-gray-500">
-            {isArabic ? 'الأدوات والمنتجات' : 'Products & Tools'}
-          </span>
+        <div className="flex items-center gap-3 mb-8 pb-4 border-b border-zinc-100 dark:border-zinc-800">
+          <div className="p-2 rounded bg-zinc-100 dark:bg-zinc-800 text-zinc-500">
+            <FiBox />
+          </div>
+          <div>
+            <h2 className="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-wider">
+              {isArabic ? 'منصة المنتجات' : 'PRODUCT_SUITE_V1'}
+            </h2>
+            <p className="text-[10px] text-zinc-500 font-mono">
+              {isArabic ? 'أدوات التشغيل والامتثال' : 'OPERATIONAL & COMPLIANCE TOOLS'}
+            </p>
+          </div>
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
           {products.map((product) => (
-            <StaggerItem key={product.id}>
+            <StaggerItem key={product.id} className="h-full">
               <Link
                 href={`/${locale}${product.href}`}
                 onClick={closeMenu}
-                className={`group flex flex-col p-5 rounded-2xl border border-gray-100 bg-white hover:shadow-lg hover:shadow-gray-200/50 transition-all duration-300 h-full ${product.borderColor}`}
+                className={`
+                  group flex flex-col p-5 h-full rounded-2xl border transition-all duration-300 relative overflow-hidden
+                  bg-zinc-50 dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 
+                  ${product.borderHover} hover:shadow-xl hover:-translate-y-1
+                `}
               >
-                <div className="flex items-start justify-between mb-4">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-105 ${product.bgColor} ${product.iconColor}`}>
+                {/* Background Pattern on Hover */}
+                <div className="absolute inset-0 bg-[url('/patterns/grid.svg')] opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
+
+                <div className="flex items-start justify-between mb-4 relative z-10">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${product.bgClass} ${product.colorClass}`}>
                     {product.icon}
                   </div>
-                  {/* Hover Arrow */}
-                  <span className={`text-gray-300 group-hover:text-gray-600 transition-all transform opacity-0 group-hover:opacity-100 group-hover:translate-x-1 ${isArabic ? 'group-hover:-translate-x-1' : ''}`}>
-                    →
+
+                  {/* Arrow Icon */}
+                  <span className={`text-zinc-300 dark:text-zinc-600 group-hover:text-zinc-900 dark:group-hover:text-white transition-all transform opacity-50 group-hover:opacity-100 group-hover:translate-x-1 ${isArabic ? 'group-hover:-translate-x-1' : ''}`}>
+                    {isArabic ? <FiArrowLeft /> : <FiArrowRight />}
                   </span>
                 </div>
 
-                <h3 className="font-bold text-gray-900 group-hover:text-blue-700 transition-colors mb-2">
-                  {product.title}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed font-medium">
-                  {product.description}
-                </p>
+                <div className="relative z-10">
+                  <h3 className="font-bold text-lg text-zinc-900 dark:text-white group-hover:text-primary-600 transition-colors mb-2">
+                    {product.title}
+                  </h3>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed font-medium">
+                    {product.description}
+                  </p>
+                </div>
               </Link>
             </StaggerItem>
           ))}
         </div>
 
-        {/* View All Products Link */}
-        <div className="mt-6 pt-6 border-t border-gray-100 flex items-center justify-end">
-          <Link
-            href={`/${locale}/web/products`}
-            onClick={closeMenu}
-            className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white border border-blue-700 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 hover:scale-105"
-          >
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-            </svg>
-            <span className="font-bold text-sm">
-              {isArabic ? 'عرض جميع المنتجات' : 'View All Products'}
-            </span>
-            <svg className={`w-4 h-4 group-hover:translate-x-1 transition-transform ${isArabic ? 'rotate-180 group-hover:-translate-x-1' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
-        </div>
-
-        {/* Developer Hub Footer (Integration CTA) */}
-        {/* <div className="mt-8 pt-6 border-t border-gray-100">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-slate-50 rounded-xl p-4 border border-slate-100">
+        {/* Developer Hub Footer (Revived & Modernized) */}
+        <div className="mt-8 pt-6 border-t border-zinc-100 dark:border-zinc-800">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 bg-zinc-100 dark:bg-zinc-900/50 rounded-xl p-4 border border-zinc-200 dark:border-zinc-800">
 
             <div className="flex items-center gap-4">
-              <div className="w-10 h-10 rounded-lg bg-slate-200 flex items-center justify-center text-slate-600">
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
+              <div className="w-10 h-10 rounded-lg bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-zinc-600 dark:text-zinc-400">
+                <FiCode />
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-800">
-                  {isArabic ? 'مركز المطورين' : 'Developer Hub'}
+                <h4 className="text-sm font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+                  {isArabic ? 'بوابة المطورين' : 'Developer Hub'}
+                  <span className="text-[10px] bg-zinc-200 dark:bg-zinc-800 text-zinc-500 px-1.5 py-0.5 rounded border border-zinc-300 dark:border-zinc-700 font-mono">API v2</span>
                 </h4>
-                <p className="text-xs text-slate-500">
-                  {isArabic ? 'وثائق API، بيئة التجربة (Sandbox)، ومكتبات الربط.' : 'API Docs, Sandbox environment, and SDKs.'}
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                  {isArabic ? 'وثائق الربط، البيئة التجريبية (Sandbox)، والمكتبات.' : 'Integration docs, Sandbox keys & SDKs.'}
                 </p>
               </div>
             </div>
 
             <div className="flex gap-3">
               <Link
-                href={`/${locale}/docs`}
+                href={`/${locale}/web/docs`}
                 onClick={closeMenu}
-                className="px-4 py-2 text-xs font-bold text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-white hover:text-blue-600 hover:border-blue-200 transition-colors shadow-sm"
+                className="px-4 py-2 text-xs font-bold text-zinc-600 dark:text-zinc-300 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg hover:border-primary-500 hover:text-primary-600 transition-colors shadow-sm"
               >
-                {isArabic ? 'قراءة الوثائق' : 'Read Documentation'}
+                {isArabic ? 'الوثائق التقنية' : 'Read Docs'}
               </Link>
               <Link
-                href={`/${locale}/contact`}
+                href={`/${locale}/web/products`}
                 onClick={closeMenu}
-                className="px-4 py-2 text-xs font-bold text-white bg-slate-900 rounded-lg hover:bg-blue-600 transition-colors shadow-sm flex items-center gap-2"
+                className="px-4 py-2 text-xs font-bold text-white bg-zinc-900 dark:bg-white dark:text-black rounded-lg hover:bg-primary-600 dark:hover:bg-zinc-200 transition-colors shadow-sm flex items-center gap-2"
               >
-                {isArabic ? 'تواصل مع المبيعات' : 'Contact Sales'}
+                <FiCpu /> {isArabic ? 'جميع المنتجات' : 'All Products'}
               </Link>
             </div>
 
           </div>
-        </div> */}
+        </div>
 
       </StaggerContainer>
     </div>
