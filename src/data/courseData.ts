@@ -944,6 +944,7 @@ export const courseData: CourseData = {
                   'Audit logs: Complete transaction records',
                 ],
               },
+
             },
             {
               title: { ar: 'التكلفة والوقت', en: 'Cost and Timeline' },
