@@ -245,17 +245,17 @@ export const courseData: CourseData = {
               title: { ar: 'خريطة الشركات في السعودية', en: 'Saudi Companies Map' },
               details: {
                 ar: [
-                  'المدفوعات: STC Pay، Hala، urpay، Paylink',
+                  'المدفوعات: STC Pay، Hala، urpay، Paylink، مدى (Mada)',
                   'BNPL: Tamara، Tabby، Spotii',
-                  'الإقراض: Lendo، Mada، Qoyod',
+                  'الإقراض: Lendo ومنصات تمويل أخرى',
                   'Insurtech: Tameeni، Salama، Najm',
                   'Wealthtech: Wahed، Derayah، Scopeer',
                   'البنية التحتية: Lean Technologies، Geidea، Rewaa',
                 ],
                 en: [
-                  'Payments: STC Pay, Hala, urpay, Paylink',
+                  'Payments: STC Pay, Hala, urpay, Paylink, Mada',
                   'BNPL: Tamara, Tabby, Spotii',
-                  'Lending: Lendo, Mada, Qoyod',
+                  'Lending: Lendo and other licensed lending platforms',
                   'Insurtech: Tameeni, Salama, Najm',
                   'Wealthtech: Wahed, Derayah, Scopeer',
                   'Infrastructure: Lean Technologies, Geidea, Rewaa',
