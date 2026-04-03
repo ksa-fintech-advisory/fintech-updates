@@ -65,8 +65,10 @@ export default function FintechRoadmapSection() {
                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white">
                       <Icon className="h-5 w-5" aria-hidden />
                     </div>
-                    <h3 className="mb-2 text-lg font-bold text-zinc-900 dark:text-white">{phase.title[lang]}</h3>
-                    <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">{phase.summary[lang]}</p>
+                    <h3 className="mb-2 line-clamp-2 text-lg font-bold leading-snug text-zinc-900 dark:text-white">
+                      {phase.title[lang]}
+                    </h3>
+                    <p className="line-clamp-3 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">{phase.summary[lang]}</p>
                   </article>
                 </StaggerItem>
               );
@@ -96,8 +98,10 @@ export default function FintechRoadmapSection() {
                     <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white">
                       <Icon className="h-4 w-4" aria-hidden />
                     </div>
-                    <h3 className="mb-2 text-base font-bold text-zinc-900 dark:text-white">{phase.title[lang]}</h3>
-                    <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">{phase.summary[lang]}</p>
+                    <h3 className="mb-2 line-clamp-2 text-base font-bold leading-snug text-zinc-900 dark:text-white">
+                      {phase.title[lang]}
+                    </h3>
+                    <p className="line-clamp-3 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">{phase.summary[lang]}</p>
                   </div>
                 </article>
               </StaggerItem>

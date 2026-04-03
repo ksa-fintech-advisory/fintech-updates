@@ -148,7 +148,12 @@
       "opensNewTab": "opens in new tab",
       "disclaimer": "This roadmap is a curated study guide—not a certificate, university course, or job guarantee. Laws and products change; always confirm with primary sources and your own counsel.",
       "ctaBlog": "Read the blog",
-      "ctaContact": "Ask a question"
+      "ctaContact": "Ask a question",
+      "topicCount": "{count} topics",
+      "expandPhase": "Expand phase",
+      "collapsePhase": "Collapse phase",
+      "expandTopic": "Show details",
+      "collapseTopic": "Hide details"
     },
     "blog": {
       "title": "Blog",
