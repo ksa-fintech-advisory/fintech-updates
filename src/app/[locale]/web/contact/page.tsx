@@ -6,6 +6,7 @@ import type { ContactFormData } from '@/core/types/web/contact';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   FiMail,
+  FiPhone,
   FiSend,
   FiCheckCircle,
   FiAlertCircle,
@@ -15,7 +16,7 @@ import {
 } from 'react-icons/fi';
 import { SiWhatsapp } from 'react-icons/si';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
-import { PUBLIC_CONTACT_EMAIL, getWhatsAppWaMeUrl } from '@/core/data/publicContact';
+import { PUBLIC_CONTACT_EMAIL, getPublicMailtoHref, getWhatsAppWaMeUrl } from '@/core/data/publicContact';
 
 export default function ContactPage() {
   const locale = useLocale();
@@ -28,6 +29,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
+    phone: '',
     subject: '',
     message: '',
   });
@@ -47,7 +49,7 @@ export default function ContactPage() {
       });
 
       if (response.success) {
-        setFormData({ name: '', email: '', subject: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
       }
     } catch {
       setResult({
@@ -94,7 +96,7 @@ export default function ContactPage() {
               </h2>
 
               <a
-                href={`mailto:${PUBLIC_CONTACT_EMAIL}`}
+                href={getPublicMailtoHref()}
                 className="group flex gap-4 rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition-all hover:border-primary-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-primary-500/30"
               >
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-500/10 text-primary-600 dark:text-primary-400">
@@ -200,6 +202,27 @@ export default function ContactPage() {
                         placeholder={tf('emailPlaceholder')}
                       />
                     </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label htmlFor="phone" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                      <span className="inline-flex items-center gap-2">
+                        <FiPhone className="h-3.5 w-3.5 text-zinc-400" aria-hidden />
+                        {tf('phone')}
+                      </span>{' '}
+                      <span className="font-normal text-zinc-400">{tf('optional')}</span>
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      autoComplete="tel"
+                      inputMode="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className={fieldClass}
+                      placeholder={tf('phonePlaceholder')}
+                    />
+                    <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">{tf('phoneHint')}</p>
                   </div>
 
                   <div className="space-y-2">

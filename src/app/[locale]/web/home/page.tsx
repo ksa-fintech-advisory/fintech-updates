@@ -48,12 +48,24 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative isolate mx-auto max-w-5xl text-center">
-            {/* Title — box-decoration-clone fixes multi-line bg-clip-text; drop-shadow on transparent text causes overlay glitches */}
+            {/* Title — light gradient end (no to-zinc-500): dark stops sit on the bottom of each glyph and read like a muddy overlay on Arabic descenders */}
             <AnimatedSection direction="up" delay={0.2} distance={20}>
-              <h1 className="mb-8 text-5xl font-bold leading-[1.08] tracking-tight md:text-7xl lg:text-8xl">
-                <span className="box-decoration-clone bg-gradient-to-b from-white via-zinc-200 to-zinc-500 bg-clip-text px-1 py-0.5 text-transparent [-webkit-box-decoration-break:clone]">
-                  {hero.title}
-                </span>
+              <h1
+                className={
+                  isArabic
+                    ? 'mb-8 max-w-4xl mx-auto text-5xl font-black leading-[1.14] tracking-normal text-white md:text-6xl md:leading-[1.12] lg:text-7xl lg:leading-[1.1] xl:text-8xl [text-shadow:0_2px_28px_rgba(0,0,0,0.55),0_1px_0_rgba(255,255,255,0.06)]'
+                    : 'mb-8 text-5xl font-bold leading-[1.08] tracking-tight text-white md:text-7xl lg:text-8xl'
+                }
+              >
+                {isArabic ? (
+                  <span lang="ar" className="block px-1">
+                    {hero.title}
+                  </span>
+                ) : (
+                  <span className="box-decoration-clone bg-gradient-to-b from-white via-zinc-100 to-zinc-300 bg-clip-text px-1 py-0.5 text-transparent [-webkit-box-decoration-break:clone]">
+                    {hero.title}
+                  </span>
+                )}
               </h1>
             </AnimatedSection>
 

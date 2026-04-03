@@ -1,8 +1,17 @@
 import type { IconType } from 'react-icons';
-import { FiBookOpen, FiCpu, FiCreditCard, FiShield, FiTarget, FiZap } from 'react-icons/fi';
+import {
+  FiAnchor,
+  FiBookOpen,
+  FiCpu,
+  FiCreditCard,
+  FiShield,
+  FiTarget,
+  FiZap,
+} from 'react-icons/fi';
 
 /** Visual cue per learner phase (roadmap.sh–style sections). */
 export const phaseIcons = {
+  'getting-started': FiAnchor,
   foundations: FiBookOpen,
   rails: FiCreditCard,
   regulation: FiShield,

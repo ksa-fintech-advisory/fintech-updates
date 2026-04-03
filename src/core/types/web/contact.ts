@@ -12,6 +12,8 @@ export type LocalizedMessage = {
 export interface ContactFormData {
   name: string;
   email: string;
+  /** Optional — if the sender prefers a call or SMS/WhatsApp follow-up */
+  phone: string;
   subject: string;
   message: string;
 }

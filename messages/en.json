@@ -26,7 +26,7 @@
       "technology": "Technology",
       "compliance": "Compliance",
       "contact": "Contact",
-      "about": "About Us",
+      "about": "About me",
       "updates": "Updates",
       "products":"Products",
       "courses": "Courses",
@@ -57,6 +57,7 @@
       "platform": "Explore",
       "platformLead": "Content and learning paths",
       "company": "Connect",
+      "companyLead": "About & contact",
       "interestTitle": "Interested in working together?",
       "interestBody": "Share what you are building or exploring — consulting, architecture, or mentorship. I read every message.",
       "interestCta": "Start a conversation",
@@ -94,15 +95,15 @@
             "description": "I help you shape flows, integrations, and boundaries so security and scale are part of the design—not a panic after launch."
           },
           "mentorship": {
-            "title": "Mentorship",
-            "description": "For individuals and small teams: career moves, reading the regional market, and shipping in FinTech without burning out."
+            "title": "Private mentorship sessions",
+            "description": "One-to-one time for FinTech employees who want to grow in their role, and for students who want structured help studying the field—tailored to your goals, not generic tips, with regional market context when it matters."
           }
         }
       },
       "roadmap": {
         "kicker": "// LEARN_FINTECH",
         "title": "FinTech learner roadmap",
-        "intro": "A structured path—similar in spirit to backend or DevOps roadmaps—with phases from foundations to shipping. Below is the start of the map; open the full page for every topic node.",
+        "intro": "Seven phases from zero background to go-live thinking—on the full page each topic has explanations, outcomes, and curated references you can open and study.",
         "viewFull": "Open full roadmap"
       },
       "blogFeature": {
@@ -132,14 +133,20 @@
     },
     "roadmapPage": {
       "metaTitle": "FinTech learner roadmap",
-      "metaDescription": "A self-paced FinTech study map: foundations, rails, regulation, product, systems, and shipping—with topic nodes to guide reading and projects.",
+      "metaDescription": "A full beginner-to-practice FinTech study path: phases, learning outcomes, topic explanations, and curated references—plus links to blog and contact for help.",
       "kicker": "// LEARN_FINTECH",
       "title": "FinTech learner roadmap",
-      "subtitle": "Use this map to orient your learning—whether you are switching careers, upskilling, or connecting product decisions to how money and regulation actually work.",
+      "subtitle": "A practical journey if you are starting from zero: what FinTech is, how money moves, how rules shape products, and what to study next—with readings and official references under each topic.",
+      "journeyNote": "Work through the phases in order once, then revisit the sections that match your role. Open the references, take notes, and connect ideas to one real product or regulator you follow.",
       "backHome": "Back to home",
       "phaseLabel": "Phase {n}",
-      "topicsHeading": "Topics to explore",
-      "disclaimer": "This is an orientation guide—not a formal certificate or hiring guarantee. Pair it with courses, documentation, and real builds.",
+      "outcomesHeading": "After this phase you can",
+      "topicsHeading": "Topics & study notes",
+      "topicsSub": "Each block explains the idea in plain language. Expand “References” for articles, regulators, and courses—verify anything critical before you rely on it in production.",
+      "resourcesHeading": "References & further reading",
+      "resourcesHint": "External sites open in a new tab. Official sources (central banks, FATF, schemes) beat random blogs for compliance questions.",
+      "opensNewTab": "opens in new tab",
+      "disclaimer": "This roadmap is a curated study guide—not a certificate, university course, or job guarantee. Laws and products change; always confirm with primary sources and your own counsel.",
       "ctaBlog": "Read the blog",
       "ctaContact": "Ask a question"
     },
@@ -187,7 +194,7 @@
       "whatsappOpen": "Open WhatsApp",
       "whatsappHint": "Short questions and quick coordination",
       "formCardTitle": "Send a message",
-      "formCardHint": "All fields are required. I read everything that lands here.",
+      "formCardHint": "Name, email, subject, and message are required. Phone is optional—add it if you prefer I reach you there instead of email.",
       "successTitle": "Message sent",
       "errorTitle": "Could not send",
       "form": {
@@ -195,6 +202,10 @@
         "namePlaceholder": "Full name",
         "email": "Your email",
         "emailPlaceholder": "you@example.com",
+        "phone": "Phone",
+        "phoneHint": "Optional — if you’d rather I follow up by call or message",
+        "phonePlaceholder": "+966 5X XXX XXXX",
+        "optional": "(optional)",
         "subject": "Subject",
         "subjectPlaceholder": "What is this about?",
         "message": "Message",

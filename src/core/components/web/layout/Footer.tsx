@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { FiTwitter, FiLinkedin, FiArrowRight, FiArrowLeft, FiCommand, FiMail, FiChevronRight } from 'react-icons/fi';
 import { SiWhatsapp } from 'react-icons/si';
-import { PUBLIC_CONTACT_EMAIL, getWhatsAppWaMeUrl } from '@/core/data/publicContact';
+import { PUBLIC_CONTACT_EMAIL, getPublicMailtoHref, getWhatsAppWaMeUrl } from '@/core/data/publicContact';
 import { ProfileAvatar } from '@/core/components/web/layout/ProfileAvatar';
 
 export default function Footer() {
@@ -63,7 +63,7 @@ export default function Footer() {
 
             <div className="flex flex-wrap items-center gap-2.5">
               <a
-                href={`mailto:${PUBLIC_CONTACT_EMAIL}`}
+                href={getPublicMailtoHref()}
                 className={socialBase}
                 aria-label="Email"
                 title={PUBLIC_CONTACT_EMAIL}
@@ -102,25 +102,32 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Explore */}
-          <div className="lg:col-span-2">
-            <h4 className="mb-1 flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-zinc-900 dark:text-white">
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary-600" />
-              {t('platform')}
-            </h4>
-            <p className="mb-6 text-[11px] font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
-              {t('platformLead')}
-            </p>
-            <ul className="space-y-1">
+          {/* Explore — flex-row-reverse on links broke RTL: row-reverse puts main-start on physical left while headers use row (main-start = inline-start = right). Use dir + normal row so headers and links share the same edge. */}
+          <div className="flex min-w-0 flex-col items-stretch text-start lg:col-span-2">
+            <div className="mb-6 w-full">
+              <h4 className="flex w-full items-start justify-start gap-2 text-zinc-900 dark:text-white">
+                <span
+                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-600"
+                  aria-hidden
+                />
+                <span className="flex min-w-0 flex-col gap-1 leading-tight">
+                  <span className="font-mono text-xs font-bold uppercase tracking-widest">{t('platform')}</span>
+                  <span className="text-[11px] font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                    {t('platformLead')}
+                  </span>
+                </span>
+              </h4>
+            </div>
+            <ul className="w-full space-y-1">
               {footerLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="w-full">
                   <Link
                     href={`/${locale}${link.href}`}
-                    className={`group flex items-center gap-1.5 py-1.5 text-sm text-zinc-600 transition-colors hover:text-primary-600 dark:text-zinc-400 dark:hover:text-primary-400 ${isArabic ? 'flex-row-reverse' : ''}`}
+                    className="group flex w-full items-center justify-start gap-1.5 py-1.5 text-sm text-zinc-600 transition-colors hover:text-primary-600 dark:text-zinc-400 dark:hover:text-primary-400"
                   >
-                    <span>{link.label}</span>
+                    <span className="min-w-0">{link.label}</span>
                     <FiChevronRight
-                      className={`h-3.5 w-3.5 shrink-0 text-zinc-400 opacity-0 transition-all group-hover:opacity-100 dark:text-zinc-500 ${isArabic ? 'rotate-180 group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'}`}
+                      className="h-3.5 w-3.5 shrink-0 text-zinc-400 opacity-0 transition-all group-hover:opacity-100 ltr:group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5 dark:text-zinc-500"
                       aria-hidden
                     />
                   </Link>
@@ -130,21 +137,31 @@ export default function Footer() {
           </div>
 
           {/* Connect */}
-          <div className="lg:col-span-2">
-            <h4 className="mb-6 flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-zinc-900 dark:text-white">
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-500" />
-              {t('company')}
-            </h4>
-            <ul className="space-y-1">
+          <div className="flex min-w-0 flex-col items-stretch text-start lg:col-span-2">
+            <div className="mb-6 w-full">
+              <h4 className="flex w-full items-start justify-start gap-2 text-zinc-900 dark:text-white">
+                <span
+                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-500"
+                  aria-hidden
+                />
+                <span className="flex min-w-0 flex-col gap-1 leading-tight">
+                  <span className="font-mono text-xs font-bold uppercase tracking-widest">{t('company')}</span>
+                  <span className="text-[11px] font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                    {t('companyLead')}
+                  </span>
+                </span>
+              </h4>
+            </div>
+            <ul className="w-full space-y-1">
               {companyLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="w-full">
                   <Link
                     href={`/${locale}${link.href}`}
-                    className={`group flex items-center gap-1.5 py-1.5 text-sm text-zinc-600 transition-colors hover:text-primary-600 dark:text-zinc-400 dark:hover:text-primary-400 ${isArabic ? 'flex-row-reverse' : ''}`}
+                    className="group flex w-full items-center justify-start gap-1.5 py-1.5 text-sm text-zinc-600 transition-colors hover:text-primary-600 dark:text-zinc-400 dark:hover:text-primary-400"
                   >
-                    <span>{link.label}</span>
+                    <span className="min-w-0">{link.label}</span>
                     <FiChevronRight
-                      className={`h-3.5 w-3.5 shrink-0 text-zinc-400 opacity-0 transition-all group-hover:opacity-100 dark:text-zinc-500 ${isArabic ? 'rotate-180 group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'}`}
+                      className="h-3.5 w-3.5 shrink-0 text-zinc-400 opacity-0 transition-all group-hover:opacity-100 ltr:group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5 dark:text-zinc-500"
                       aria-hidden
                     />
                   </Link>
