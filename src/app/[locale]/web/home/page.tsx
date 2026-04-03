@@ -1,30 +1,33 @@
-import { statisticService } from '@/services/server/statisticService';
-import { heroService } from '@/services/server/heroService';
 import Link from 'next/link';
+import { homeData } from '@/services/api/data/home.data';
+import type { HeroSection } from '@/core/types/web/home';
 import dynamic from 'next/dynamic';
-import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
-import SubscriptionForm from '@/core/components/web/home/SubscriptionForm';
-import ProductShowcase from './components/ProductShowcase';
-import LatestUpdates from './components/LatestUpdates';
-import FeaturedArticles from './components/FeaturedArticles';
-import FeaturedCourses from './components/FeaturedCourses';
-import StatisticsSection from './components/Statics';
+import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
+import ServicesSection from './components/ServicesSection';
+import FintechRoadmapSection from './components/FintechRoadmapSection';
+import BlogFeatureSection from './components/BlogFeatureSection';
 
 const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false });
+
+function localizedHero(hero: HeroSection, locale: string) {
+  const lang = locale === 'ar' ? 'ar' : 'en';
+  return {
+    title: hero.title[lang],
+    subtitle: hero.subtitle[lang],
+    description: hero.description[lang],
+    ctaButtons: hero.ctaButtons.map((btn) => ({
+      label: btn.label[lang],
+      href: btn.href.startsWith('#') ? btn.href : `/${locale}${btn.href}`,
+      variant: btn.variant,
+    })),
+  };
+}
 
 export default async function HomePage({ params }: { params: { locale: string } }) {
   const locale = params.locale;
   const isArabic = locale === 'ar';
 
-  // Fetch real statistics from API
-  const statistics = await statisticService.getStatistics(locale);
-
-  // Fetch real hero from API
-  const hero = await heroService.getHero(locale) as any
-
-  if (!hero) {
-    return null; // or return proper Null State / 404
-  }
+  const hero = localizedHero(homeData.hero, locale);
 
   return (
     <div className="w-full">
@@ -71,7 +74,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
             {/* Buttons - Command Line Style */}
             <AnimatedSection direction="up" delay={0.6} distance={20}>
               <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                {hero.ctaButtons.map((button: any, index: number) => (
+                {hero.ctaButtons.map((button, index) => (
                   <Link
                     key={index}
                     href={button.href}
@@ -99,22 +102,6 @@ export default async function HomePage({ params }: { params: { locale: string } 
                 ))}
               </div>
             </AnimatedSection>
-
-            {/* Optional: Trusted by / Tech Stack hint at bottom of hero */}
-            <AnimatedSection direction="up" delay={0.8} distance={10}>
-              <div className="mt-16 pt-8 border-t border-zinc-800/50 inline-flex flex-col items-center">
-                <span className="text-[10px] uppercase tracking-widest text-zinc-600 font-mono mb-4">
-                  {isArabic ? 'متوافق مع المعايير:' : 'COMPLIANT WITH:'}
-                </span>
-                <div className="flex gap-6 opacity-50 grayscale mix-blend-screen">
-                  {/* You can replace these with actual SVGs later */}
-                  <div className="h-6 w-auto text-zinc-500 font-bold font-mono">PCI-DSS</div>
-                  <div className="h-6 w-auto text-zinc-500 font-bold font-mono">ISO-27001</div>
-                  <div className="h-6 w-auto text-zinc-500 font-bold font-mono">SAMA</div>
-                </div>
-              </div>
-            </AnimatedSection>
-
           </div>
         </div>
 
@@ -122,21 +109,23 @@ export default async function HomePage({ params }: { params: { locale: string } 
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none z-20" />
       </section>
       {/* Statistics Section with Enhanced Cards */}
-      <StatisticsSection statistics={statistics} />
-      {/* Our Products Section */}
-      <ProductShowcase locale={locale} />
+      
+      {/* Services */}
+      <ServicesSection />
+
+      <FintechRoadmapSection />
+
+      <BlogFeatureSection />
 
       {/* Featured Courses Section */}
-      <FeaturedCourses />
+      {/* <FeaturedCourses /> */}
 
-      <FeaturedArticles locale={locale} />
-
-      <LatestUpdates locale={locale} />
+      {/* <LatestUpdates locale={locale} /> */}
 
       {/* General Subscription Section */}
       <section className="py-20 bg-grey-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <SubscriptionForm locale={locale} />
+          {/* <SubscriptionForm locale={locale} /> */}
         </div>
       </section>
     </div>

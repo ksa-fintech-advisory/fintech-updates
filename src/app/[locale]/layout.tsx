@@ -4,8 +4,8 @@ import { notFound } from 'next/navigation';
 import { locales } from '@/core/i18n/config';
 import { ThemeProvider } from '@/core/theme/ThemeProvider';
 import { NotificationProvider } from '@/core/notifications/NotificationProvider';
-// import Header from '@/core/components/web/layout/Header';
-// import Footer from '@/core/components/web/layout/Footer';
+import Header from '@/core/components/web/layout/Header';
+import Footer from '@/core/components/web/layout/Footer';
 import '@/core/theme/globals.css';
 
 export const metadata: Metadata = {
@@ -100,11 +100,11 @@ export default async function LocaleLayout({
         <ThemeProvider>
           <NotificationProvider>
             <NextIntlClientProvider messages={messages} locale={locale}>
-              {/* <Header /> */}
+              <Header />
               <main className="flex-1">
                 {children}
               </main>
-              {/* <Footer /> */}
+              <Footer />
             </NextIntlClientProvider>
           </NotificationProvider>
         </ThemeProvider>

@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import CourseRegistrationForm from '@/core/components/web/course/CourseRegistrationForm';
 import Link from 'next/link';
+import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
 export default async function CourseRegistrationPage({
   params,
@@ -58,6 +59,7 @@ export default async function CourseRegistrationPage({
       payment: {
         title: t('steps.payment.title'),
         subtitle: t('steps.payment.subtitle'),
+        priceLabel: t('steps.payment.priceLabel'),
         options: [
           {
             value: 'full',
@@ -67,21 +69,9 @@ export default async function CourseRegistrationPage({
           },
           {
             value: 'installments',
-            label: isArabic ? 'أقساط شهرية' : 'Monthly Installments',
-            description: isArabic ? 'قسط الدفع على 3 أشهر' : 'Split payment over 3 months',
+            label: isArabic ? 'دفعتان: بداية ونهاية الدورة' : 'Two payments: start and end of course',
+            description: isArabic ? 'دفعة عند بداية الدورة ودفعة عند نهايتها' : 'One payment at course start, one at course end',
             icon: '📅',
-          },
-          {
-            value: 'corporate',
-            label: isArabic ? 'تمويل الشركة' : 'Corporate Sponsorship',
-            description: isArabic ? 'شركتك تتكفل بالرسوم' : 'Your company covers the fees',
-            icon: '🏢',
-          },
-          {
-            value: 'scholarship',
-            label: isArabic ? 'منحة دراسية' : 'Scholarship',
-            description: isArabic ? 'تقدم لبرنامج المنح الدراسية' : 'Apply for scholarship program',
-            icon: '🎓',
           },
         ],
       },
@@ -103,49 +93,42 @@ export default async function CourseRegistrationPage({
   };
 
   return (
-    <div className="w-full">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 text-white py-16 overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-[url('/patterns/grid.svg')] opacity-5" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-accent-500 rounded-full blur-[120px] opacity-15" />
-        
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            {/* Back Link */}
+    <div className="w-full bg-zinc-50 dark:bg-black min-h-screen selection:bg-primary-500/30">
+      {/* Global Background Grid - same as course */}
+      <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+
+      <div className="relative z-10">
+        {/* Hero strip - course style */}
+        <div className="border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm pt-28 pb-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <Link
               href={`/${locale}/web/courses/fintech-fundamentals`}
-              className="inline-flex items-center gap-2 text-white/70 hover:text-white mb-6 transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white mb-8 transition-colors uppercase tracking-widest"
             >
-              <svg className={`w-5 h-5 ${isArabic ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              {isArabic ? 'العودة للدورة' : 'Back to Course'}
+              {isArabic ? <FiArrowRight className="w-4 h-4" /> : <FiArrowLeft className="w-4 h-4" />}
+              <span>{isArabic ? '../العودة_للدورة' : '../BACK_TO_COURSE'}</span>
             </Link>
-            
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-white via-accent-200 to-white bg-clip-text text-transparent">
-                {translations.title}
+            <div className="max-w-3xl">
+              <span className="text-primary-600 dark:text-primary-400 font-mono text-xs uppercase tracking-widest mb-2 block">
+                {isArabic ? '// التسجيل' : '// REGISTRATION'}
               </span>
-            </h1>
-            <p className="text-xl text-white/80">{translations.subtitle}</p>
+              <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-3">
+                {translations.title}
+              </h1>
+              <p className="text-zinc-600 dark:text-zinc-400 text-lg">
+                {translations.subtitle}
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Wave Divider */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 120" className="w-full h-12 fill-white">
-            <path d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"></path>
-          </svg>
-        </div>
-      </section>
-
-      {/* Form Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <CourseRegistrationForm locale={locale} translations={translations} />
-        </div>
-      </section>
+        {/* Form Section - same bg as course content */}
+        <section className="py-16 md:py-24">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <CourseRegistrationForm locale={locale} translations={translations} />
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

@@ -295,23 +295,25 @@ async function main() {
   await prisma.hero.create({
     data: {
       name: 'Default Hero',
-      titleEn: 'Empowering Arab Financial Innovation',
-      titleAr: 'تمكين الابتكار المالي العربي',
-      subtitleEn: 'Expert Advisory for FinTech Companies',
-      subtitleAr: 'استشارات متخصصة لشركات التقنية المالية',
-      descriptionEn: 'Navigate regulatory compliance, optimize operations, and accelerate growth in the Arab financial technology sector',
-      descriptionAr: 'تنقل عبر الامتثال التنظيمي، وحسّن العمليات، وسرّع النمو في قطاع التقنية المالية العربي',
+      titleEn: 'FinTech clarity, built with you',
+      titleAr: 'تقنية مالية أوضح — معك في البناء',
+      subtitleEn: 'Writing, consulting, and system architecture for teams and builders across the Arab world',
+      subtitleAr: 'محتوى واستشارات وهندسة أنظمة للفرق والمبدعين في العالم العربي',
+      descriptionEn:
+        'I help you cut through noise—product and technical choices, compliance context, and pragmatic architecture—so you ship with confidence.',
+      descriptionAr:
+        'أساعدك على تقليل الضجيج: قرارات المنتج والتقنية، سياق الامتثال، وهندسة عملية — لتطلق بثقة.',
       ctaButtons: JSON.stringify([
         {
-          labelEn: 'Get Started',
-          labelAr: 'ابدأ الآن',
+          labelEn: 'Get in touch',
+          labelAr: 'تواصل معي',
           href: '/web/contact',
           variant: 'primary',
         },
         {
-          labelEn: 'Learn More',
-          labelAr: 'اعرف المزيد',
-          href: '/web/about',
+          labelEn: 'Read the blog',
+          labelAr: 'اقرأ المدونة',
+          href: '/web/blog',
           variant: 'secondary',
         },
       ]),

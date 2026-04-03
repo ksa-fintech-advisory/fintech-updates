@@ -7,12 +7,13 @@ import { useState, useRef } from 'react';
 import ProductsMegaMenu from './ProductsMegaMenu';
 import CoursesMegaMenu from './CoursesMegaMenu';
 import RegionDropdown from './RegionDropdown';
-import Logo from './Logo';
 import { getAllCourses } from '@/data/courseData';
-import { FiChevronDown, FiMenu, FiX, FiGlobe, FiCommand, FiArrowRight } from 'react-icons/fi';
+import { ProfileAvatar } from '@/core/components/web/layout/ProfileAvatar';
+import { FiChevronDown, FiMenu, FiX, FiGlobe, FiArrowRight } from 'react-icons/fi';
 
 export default function Header() {
   const t = useTranslations();
+  const th = useTranslations('common.header');
   const locale = useLocale();
   const courses = getAllCourses();
   const pathname = usePathname();
@@ -25,11 +26,11 @@ export default function Header() {
   const isArabic = locale === 'ar';
   const lang = isArabic ? 'ar' : 'en';
 
-  const navItems = [
+  const navItems:any = [
     { href: '/web/home', label: t('common.nav.home'), key: 'home' },
-    { href: '/web/products', label: t("common.nav.products"), key: 'products', hasMegaMenu: true },
-    { href: '/web/courses', label: t('common.nav.courses'), key: 'courses', hasMegaMenu: true },
-    { href: '/web/updates', label: t('common.nav.updates'), key: 'updates' },
+    // { href: '/web/products', label: t("common.nav.products"), key: 'products', hasMegaMenu: true },
+    // { href: '/web/courses', label: t('common.nav.courses'), key: 'courses', hasMegaMenu: true },
+    // { href: '/web/updates', label: t('common.nav.updates'), key: 'updates' },
     { href: '/web/blog', label: t('common.nav.blog'), key: 'blog' },
     { href: '/web/about', label: t('common.nav.about'), key: 'about' },
     { href: '/web/contact', label: t('common.nav.contact'), key: 'contact' },
@@ -63,23 +64,27 @@ export default function Header() {
 
             {/* --- Logo Section: Technical Brand --- */}
             <Link href={`/${locale}/web/home`} className="group flex items-center gap-3 outline-none">
-              <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black shadow-sm group-hover:scale-105 transition-transform duration-200">
-                {/* Simplified Logo Concept if Component not available, else use <Logo /> */}
-                <span className="font-bold text-lg">{isArabic ? 'ف' : 'F'}</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-zinc-900 dark:text-white leading-none tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+              <ProfileAvatar
+                size={40}
+                alt={th('avatarAlt')}
+                fallbackText={th('displayName')}
+                variant="circle"
+                className="shadow-sm transition-transform duration-200 group-hover:scale-105"
+                priority
+              />
+              <div className="flex flex-col min-w-0">
+                <span className="text-lg font-bold text-zinc-900 dark:text-white leading-none tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors truncate">
                   {isArabic ? 'مال تك' : 'Maal Tech'}
                 </span>
-                <span className="text-[9px] text-zinc-500 font-mono tracking-widest uppercase mt-0.5">
-                  {isArabic ? 'بنية تحتية' : 'INFRASTRUCTURE'}
+                <span className="text-[9px] text-zinc-500 font-mono tracking-widest uppercase mt-0.5 truncate max-w-[10rem] sm:max-w-none">
+                  {th('tagline')}
                 </span>
               </div>
             </Link>
 
             {/* --- Desktop Navigation: The "Toolbar" --- */}
             <nav className="hidden md:flex items-center gap-1">
-              {navItems.map((item) => {
+              {navItems.map((item:any) => {
                 const active = isActive(item.href);
                 const isMegaMenuOpen = item.hasMegaMenu && hoveredItem === item.key;
 
@@ -172,7 +177,7 @@ export default function Header() {
           `}
         >
           <nav className="p-4 space-y-1 overflow-y-auto max-h-[80vh]">
-            {navItems.map((item) => (
+            {navItems.map((item:any) => (
               <div key={item.key}>
                 {item.hasMegaMenu ? (
                   <div className="space-y-1 mb-2">

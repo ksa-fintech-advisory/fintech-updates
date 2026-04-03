@@ -2,15 +2,30 @@
 
 import { useState } from 'react';
 import { contactApiService } from '@/services/api/contactApi';
-import { useLocale } from 'next-intl';
-import { FiMail, FiMapPin, FiClock, FiSend, FiTerminal, FiCheckCircle, FiAlertCircle, FiMessageSquare } from 'react-icons/fi';
+import type { ContactFormData } from '@/core/types/web/contact';
+import { useLocale, useTranslations } from 'next-intl';
+import {
+  FiMail,
+  FiSend,
+  FiCheckCircle,
+  FiAlertCircle,
+  FiMessageSquare,
+  FiTwitter,
+  FiLinkedin,
+} from 'react-icons/fi';
+import { SiWhatsapp } from 'react-icons/si';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
+import { PUBLIC_CONTACT_EMAIL, getWhatsAppWaMeUrl } from '@/core/data/publicContact';
 
 export default function ContactPage() {
   const locale = useLocale();
   const isArabic = locale === 'ar';
+  const t = useTranslations('web.contact');
+  const tf = useTranslations('web.contact.form');
 
-  const [formData, setFormData] = useState({
+  const whatsappUrl = getWhatsAppWaMeUrl();
+
+  const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
     subject: '',
@@ -34,232 +49,230 @@ export default function ContactPage() {
       if (response.success) {
         setFormData({ name: '', email: '', subject: '', message: '' });
       }
-    } catch (error) {
+    } catch {
       setResult({
         success: false,
-        message: locale === 'ar' ? 'فشل الاتصال بالخادم. حاول مرة أخرى.' : 'Connection refused. Please retry.',
+        message: tf('error'),
       });
     } finally {
       setLoading(false);
     }
   };
 
+  const fieldClass =
+    'w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-900 shadow-sm transition-all placeholder:text-zinc-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-600';
+
   return (
-    <div className="w-full min-h-screen bg-zinc-50 dark:bg-black selection:bg-primary-500/30 font-sans">
+    <div className="min-h-screen w-full bg-zinc-50 font-sans selection:bg-primary-500/30 dark:bg-zinc-950">
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px]" />
 
-      {/* 1. Global Engineering Grid */}
-      <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
-
-      {/* Header Section */}
-      <section className="relative pt-32 pb-16 border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm z-10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative z-10 border-b border-zinc-200/80 bg-white/80 pt-28 pb-14 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900/80 md:pt-36 md:pb-20">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
-                <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse" />
-                <span className="text-xs font-mono font-bold uppercase tracking-widest">
-                  {isArabic ? 'قنوات_الاتصال' : 'COMMUNICATION_UPLINK'}
-                </span>
-              </div>
-
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight text-zinc-900 dark:text-white leading-tight">
-                {isArabic ? 'تواصل مع الخبراء' : 'Initialize Contact'}
+              <p className="mb-4 font-mono text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+                {t('kicker')}
+              </p>
+              <h1 className="mb-5 text-4xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-5xl lg:text-6xl">
+                {t('title')}
               </h1>
-
-              <p className="text-xl text-zinc-500 dark:text-zinc-400 font-light max-w-2xl leading-relaxed border-l-4 border-primary-500 pl-6">
-                {isArabic
-                  ? 'هل لديك استفسار تقني أو تجاري؟ فريقنا جاهز للرد على استفساراتك وتقديم المشورة.'
-                  : 'Have a technical or commercial query? Our engineers are on standby to process your request.'}
+              <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-xl">
+                {t('subtitle')}
               </p>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Main Content Split */}
-      <section className="py-20 relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+      <section className="relative z-10 py-16 md:py-24">
+        <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+            {/* Channels */}
+            <div className="space-y-6 lg:col-span-4">
+              <h2 className="font-mono text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
+                {t('channelsHeading')}
+              </h2>
 
-          {/* Left Column: Contact Coordinates (4 Cols) */}
-          <div className="lg:col-span-4 space-y-12">
+              <a
+                href={`mailto:${PUBLIC_CONTACT_EMAIL}`}
+                className="group flex gap-4 rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition-all hover:border-primary-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-primary-500/30"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-500/10 text-primary-600 dark:text-primary-400">
+                  <FiMail className="h-6 w-6" />
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">{t('emailTitle')}</p>
+                  <p className="mt-1 break-all font-mono text-sm font-semibold text-zinc-900 group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
+                    {PUBLIC_CONTACT_EMAIL}
+                  </p>
+                  <p className="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">{t('emailHint')}</p>
+                </div>
+              </a>
 
-            <div>
-              <h3 className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-widest mb-6 flex items-center gap-2">
-                <FiMapPin /> {isArabic ? 'المقر_الرئيسي' : 'PHYSICAL_COORDINATES'}
-              </h3>
-              <div className="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors group">
-                <p className="text-zinc-900 dark:text-white font-bold text-lg mb-2">Riyadh HQ</p>
-                <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-sm font-mono">
-                  King Fahd Road, Olaya<br />
-                  Unit No: 42<br />
-                  Riyadh 12214, KSA
-                </p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-widest mb-6 flex items-center gap-2">
-                <FiMail /> {isArabic ? 'القنوات_الرقمية' : 'DIGITAL_CHANNELS'}
-              </h3>
-              <div className="space-y-4">
-                <a href="mailto:hello@fintech.sa" className="block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg hover:border-primary-500 transition-colors group">
-                  <span className="text-xs font-mono text-zinc-400 mb-1 block uppercase">General Inquiries</span>
-                  <span className="text-zinc-900 dark:text-white font-bold text-lg font-mono group-hover:text-primary-600 transition-colors">hello@fintech.sa</span>
+              {whatsappUrl ? (
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex gap-4 rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm transition-all hover:border-emerald-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
+                >
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-[#25D366]">
+                    <SiWhatsapp className="h-6 w-6" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                      {t('whatsappTitle')}
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-zinc-900 group-hover:text-emerald-600 dark:text-white dark:group-hover:text-emerald-400">
+                      {t('whatsappOpen')}
+                    </p>
+                    <p className="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">{t('whatsappHint')}</p>
+                  </div>
                 </a>
-                <a href="mailto:support@fintech.sa" className="block p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg hover:border-primary-500 transition-colors group">
-                  <span className="text-xs font-mono text-zinc-400 mb-1 block uppercase">Technical Support</span>
-                  <span className="text-zinc-900 dark:text-white font-bold text-lg font-mono group-hover:text-primary-600 transition-colors">support@fintech.sa</span>
+              ) : null}
+
+              <div className="flex flex-wrap gap-3 pt-2">
+                <a
+                  href="https://x.com/mohfintech"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-800 dark:hover:border-zinc-600 dark:hover:text-white"
+                  aria-label="X (Twitter)"
+                >
+                  <FiTwitter className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/mohfintech/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-800 dark:hover:border-zinc-600 dark:hover:text-white"
+                  aria-label="LinkedIn"
+                >
+                  <FiLinkedin className="h-5 w-5" />
                 </a>
               </div>
             </div>
 
-            <div>
-              <h3 className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-widest mb-6 flex items-center gap-2">
-                <FiClock /> {isArabic ? 'ساعات_العمل' : 'OPERATING_WINDOW'}
-              </h3>
-              <div className="p-6 bg-zinc-100 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 rounded-lg">
-                <div className="flex justify-between mb-2">
-                  <span className="text-zinc-600 dark:text-zinc-400 text-sm">Sun - Thu</span>
-                  <span className="text-zinc-900 dark:text-white font-mono font-bold text-sm">09:00 - 18:00</span>
+            {/* Form */}
+            <div className="lg:col-span-8">
+              <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+                <div className="border-b border-zinc-100 bg-zinc-50/80 px-6 py-5 dark:border-zinc-800 dark:bg-zinc-900/80 md:px-8">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-lg bg-primary-500/10 text-primary-600 dark:text-primary-400">
+                      <FiMessageSquare className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <h2 className="text-lg font-bold text-zinc-900 dark:text-white">{t('formCardTitle')}</h2>
+                      <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{t('formCardHint')}</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-zinc-600 dark:text-zinc-400 text-sm">Fri - Sat</span>
-                  <span className="text-zinc-500 dark:text-zinc-500 font-mono font-bold text-sm">CLOSED</span>
-                </div>
-              </div>
-            </div>
 
-          </div>
-
-          {/* Right Column: The "Terminal" Form (8 Cols) */}
-          <div className="lg:col-span-8">
-            <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-2xl overflow-hidden">
-
-              {/* Fake Terminal Header */}
-              <div className="bg-zinc-100 dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800 px-4 py-3 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-green-500/80" />
-                </div>
-                <div className="text-xs font-mono text-zinc-400">
-                  user@fintech:~/{isArabic ? 'contact-form' : 'new-message'}
-                </div>
-                <div className="w-10" /> {/* Spacer */}
-              </div>
-
-              <div className="p-8 md:p-10">
-                <form onSubmit={handleSubmit} className="space-y-8">
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="space-y-2 group">
-                      <label htmlFor="name" className="block text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest group-focus-within:text-primary-600 transition-colors">
-                        {isArabic ? 'الاسم_الكامل' : 'FULL_NAME'} <span className="text-red-500">*</span>
+                <form onSubmit={handleSubmit} className="space-y-6 p-6 md:space-y-7 md:p-8">
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    <div className="space-y-2">
+                      <label htmlFor="name" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                        {tf('name')} <span className="text-red-500">{tf('required')}</span>
                       </label>
                       <input
                         type="text"
                         id="name"
                         required
+                        autoComplete="name"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-transparent border-b-2 border-zinc-200 dark:border-zinc-700 px-0 py-2 text-zinc-900 dark:text-white font-bold focus:outline-none focus:border-primary-500 transition-colors placeholder:text-zinc-300 dark:placeholder:text-zinc-700"
-                        placeholder={isArabic ? 'الاسم...' : 'Enter identifier...'}
+                        className={fieldClass}
+                        placeholder={tf('namePlaceholder')}
                       />
                     </div>
-
-                    <div className="space-y-2 group">
-                      <label htmlFor="email" className="block text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest group-focus-within:text-primary-600 transition-colors">
-                        {isArabic ? 'البريد_الإلكتروني' : 'EMAIL_ADDRESS'} <span className="text-red-500">*</span>
+                    <div className="space-y-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                        {tf('email')} <span className="text-red-500">{tf('required')}</span>
                       </label>
                       <input
                         type="email"
                         id="email"
                         required
+                        autoComplete="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-transparent border-b-2 border-zinc-200 dark:border-zinc-700 px-0 py-2 text-zinc-900 dark:text-white font-bold focus:outline-none focus:border-primary-500 transition-colors placeholder:text-zinc-300 dark:placeholder:text-zinc-700"
-                        placeholder="name@company.com"
+                        className={fieldClass}
+                        placeholder={tf('emailPlaceholder')}
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-2 group">
-                    <label htmlFor="subject" className="block text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest group-focus-within:text-primary-600 transition-colors">
-                      {isArabic ? 'الموضوع' : 'SUBJECT_LINE'} <span className="text-red-500">*</span>
+                  <div className="space-y-2">
+                    <label htmlFor="subject" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                      {tf('subject')} <span className="text-red-500">{tf('required')}</span>
                     </label>
-                    <div className="relative">
-                      <FiTerminal className="absolute top-3 left-0 rtl:right-0 text-zinc-400" />
-                      <input
-                        type="text"
-                        id="subject"
-                        required
-                        value={formData.subject}
-                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                        className="w-full bg-zinc-50 dark:bg-zinc-800/50 rounded border border-zinc-200 dark:border-zinc-700 px-8 py-3 text-zinc-900 dark:text-white font-medium focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all placeholder:text-zinc-400"
-                        placeholder={isArabic ? 'عنوان الرسالة...' : 'Technical Inquiry...'}
-                      />
-                    </div>
+                    <input
+                      type="text"
+                      id="subject"
+                      required
+                      value={formData.subject}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                      className={fieldClass}
+                      placeholder={tf('subjectPlaceholder')}
+                    />
                   </div>
 
-                  <div className="space-y-2 group">
-                    <label htmlFor="message" className="block text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest group-focus-within:text-primary-600 transition-colors">
-                      {isArabic ? 'الرسالة' : 'MESSAGE_PAYLOAD'} <span className="text-red-500">*</span>
+                  <div className="space-y-2">
+                    <label htmlFor="message" className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                      {tf('message')} <span className="text-red-500">{tf('required')}</span>
                     </label>
-                    <div className="relative">
-                      <FiMessageSquare className="absolute top-3 left-0 rtl:right-0 text-zinc-400" />
-                      <textarea
-                        id="message"
-                        required
-                        rows={6}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        className="w-full bg-zinc-50 dark:bg-zinc-800/50 rounded border border-zinc-200 dark:border-zinc-700 px-8 py-3 text-zinc-900 dark:text-white font-medium focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all resize-none placeholder:text-zinc-400"
-                        placeholder={isArabic ? 'اكتب تفاصيل طلبك هنا...' : '// Write your request details here...'}
-                      />
-                    </div>
+                    <textarea
+                      id="message"
+                      required
+                      rows={6}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className={`${fieldClass} min-h-[168px] resize-y`}
+                      placeholder={tf('messagePlaceholder')}
+                    />
                   </div>
 
-                  {/* Status Message Area */}
-                  {result && (
-                    <div className={`p-4 rounded-md flex items-start gap-3 border ${result.success
-                        ? 'bg-emerald-50 dark:bg-emerald-900/20 border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200'
-                        : 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800 text-red-800 dark:text-red-200'
-                      }`}>
-                      <div className="mt-0.5">
-                        {result.success ? <FiCheckCircle /> : <FiAlertCircle />}
+                  {result ? (
+                    <div
+                      role="status"
+                      className={`flex gap-3 rounded-xl border p-4 ${
+                        result.success
+                          ? 'border-emerald-200 bg-emerald-50 text-emerald-900 dark:border-emerald-900/50 dark:bg-emerald-950/40 dark:text-emerald-100'
+                          : 'border-red-200 bg-red-50 text-red-900 dark:border-red-900/50 dark:bg-red-950/40 dark:text-red-100'
+                      }`}
+                    >
+                      <div className="shrink-0 pt-0.5">
+                        {result.success ? <FiCheckCircle className="h-5 w-5" /> : <FiAlertCircle className="h-5 w-5" />}
                       </div>
-                      <div className="text-sm font-mono">
-                        <span className="font-bold block mb-1">
-                          {result.success ? 'TRANSMISSION SUCCESS' : 'TRANSMISSION ERROR'}
-                        </span>
-                        {result.message}
+                      <div>
+                        <p className="text-sm font-semibold">
+                          {result.success ? t('successTitle') : t('errorTitle')}
+                        </p>
+                        <p className="mt-1 text-sm opacity-90">{result.message}</p>
                       </div>
                     </div>
-                  )}
+                  ) : null}
 
-                  {/* Submit Action */}
-                  <div className="pt-4 flex items-center justify-end">
+                  <div className="flex flex-col-reverse gap-3 pt-2 sm:flex-row sm:justify-end">
                     <button
                       type="submit"
                       disabled={loading}
-                      className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-black font-bold text-sm uppercase tracking-wider hover:bg-primary-600 dark:hover:bg-zinc-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-all hover:bg-primary-600 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 sm:w-auto"
                     >
                       {loading ? (
-                        <span className="font-mono animate-pulse">{isArabic ? 'جاري الإرسال...' : 'SENDING_PACKETS...'}</span>
+                        <span className="animate-pulse">{tf('sending')}</span>
                       ) : (
                         <>
-                          <span>{isArabic ? 'إرسال الرسالة' : 'EXECUTE_SEND'}</span>
-                          <FiSend className={`transition-transform duration-300 ${isArabic ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`} />
+                          {tf('submit')}
+                          <FiSend className={`h-4 w-4 ${isArabic ? 'rotate-180' : ''}`} />
                         </>
                       )}
                     </button>
                   </div>
-
                 </form>
               </div>
             </div>
           </div>
-
         </div>
       </section>
     </div>

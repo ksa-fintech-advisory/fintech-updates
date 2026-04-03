@@ -3,26 +3,26 @@ import { HomeContent } from '@/core/types/web/home';
 export const homeData: HomeContent = {
   hero: {
     title: {
-      en: 'Your Gateway to Middle Eastern FinTech',
-      ar: 'بوابتك لعالم التقنية المالية',
+      en: 'FinTech clarity, built with you',
+      ar: 'تقنية مالية أوضح — معك في البناء',
     },
     subtitle: {
-      en: 'Insights, Innovations & Trends Across the Arab World',
-      ar: 'رؤى وابتكارات واتجاهات من العالم العربي',
+      en: 'Writing, consulting, and system architecture for teams and builders across the Arab world',
+      ar: 'محتوى واستشارات وهندسة أنظمة للفرق والمبدعين في العالم العربي',
     },
     description: {
-      en: 'Comprehensive coverage of FinTech innovations, regulatory updates, and industry trends across the Arab world - from Saudi Arabia and the UAE to Egypt and beyond.',
-      ar: 'تغطية شاملة لابتكارات التقنية المالية والتحديثات التنظيمية واتجاهات الصناعة في العالم العربي - من السعودية والإمارات إلى مصر وما بعدها.',
+      en: 'I help you cut through noise—product and technical choices, compliance context, and pragmatic architecture—so you ship with confidence.',
+      ar: 'أساعدك على تقليل الضجيج: قرارات المنتج والتقنية، سياق الامتثال، وهندسة عملية — لتطلق بثقة.',
     },
     ctaButtons: [
       {
-        label: { en: 'Explore Articles', ar: 'استكشف المقالات' },
-        href: '/blog',
+        label: { en: 'Get in touch', ar: 'تواصل معي' },
+        href: '/web/contact',
         variant: 'primary',
       },
       {
-        label: { en: 'About Us', ar: 'من نحن' },
-        href: '#about',
+        label: { en: 'Read the blog', ar: 'اقرأ المدونة' },
+        href: '/web/blog',
         variant: 'secondary',
       },
     ],
