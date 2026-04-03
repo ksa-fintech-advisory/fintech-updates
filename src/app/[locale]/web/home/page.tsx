@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { homeData } from '@/services/api/data/home.data';
 import type { HeroSection } from '@/core/types/web/home';
 import dynamic from 'next/dynamic';
@@ -28,6 +29,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
   const isArabic = locale === 'ar';
 
   const hero = localizedHero(homeData.hero, locale);
+  const tHome = await getTranslations('web.home');
 
   return (
     <div className="w-full">
@@ -44,14 +46,12 @@ export default async function HomePage({ params }: { params: { locale: string } 
         {/* 3. Vignette/Spotlight Effect to focus on text */}
         <div className="absolute inset-0 bg-radial-gradient from-transparent via-zinc-950/60 to-zinc-950 z-0 pointer-events-none" />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
-
-            {/* Title */}
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative isolate mx-auto max-w-5xl text-center">
+            {/* Title — box-decoration-clone fixes multi-line bg-clip-text; drop-shadow on transparent text causes overlay glitches */}
             <AnimatedSection direction="up" delay={0.2} distance={20}>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight">
-                {/* Metallic Text Gradient */}
-                <span className="bg-gradient-to-b from-white via-zinc-200 to-zinc-500 bg-clip-text text-transparent drop-shadow-2xl">
+              <h1 className="mb-8 text-5xl font-bold leading-[1.08] tracking-tight md:text-7xl lg:text-8xl">
+                <span className="box-decoration-clone bg-gradient-to-b from-white via-zinc-200 to-zinc-500 bg-clip-text px-1 py-0.5 text-transparent [-webkit-box-decoration-break:clone]">
                   {hero.title}
                 </span>
               </h1>
@@ -102,6 +102,12 @@ export default async function HomePage({ params }: { params: { locale: string } 
                 ))}
               </div>
             </AnimatedSection>
+
+            <AnimatedSection direction="up" delay={0.65} distance={12}>
+              <p className="mt-12 text-center font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+                {tHome('heroSignoff')}
+              </p>
+            </AnimatedSection>
           </div>
         </div>
 
@@ -122,10 +128,23 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
       {/* <LatestUpdates locale={locale} /> */}
 
-      {/* General Subscription Section */}
-      <section className="py-20 bg-grey-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          {/* <SubscriptionForm locale={locale} /> */}
+      <section className="border-t border-zinc-200 bg-zinc-100/80 py-16 dark:border-zinc-800 dark:bg-zinc-950/80">
+        <div className="container mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+          <p className="mb-6 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">{tHome('closingLead')}</p>
+          <Link
+            href={`/${locale}/web/contact`}
+            className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+          >
+            {tHome('closingCta')}
+            <svg
+              className={`h-4 w-4 ${isArabic ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </Link>
         </div>
       </section>
     </div>

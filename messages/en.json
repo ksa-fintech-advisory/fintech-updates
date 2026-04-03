@@ -15,8 +15,8 @@
     "viewAll": "View All",
     "header": {
       "tagline": "FinTech · Engineering · Writing",
-      "displayName": "Mohammed Alhoomaidi",
-      "avatarAlt": "Mohammed Alhoomaidi"
+      "displayName": "Mohammed Abdo",
+      "avatarAlt": "Mohammed Abdo"
     },
     "nav": {
       "home": "Home",
@@ -29,7 +29,8 @@
       "about": "About Us",
       "updates": "Updates",
       "products":"Products",
-      "courses": "Courses"
+      "courses": "Courses",
+      "roadmap": "Roadmap"
     },
     "actions": {
       "readMore": "Read More",
@@ -53,21 +54,24 @@
     },
     "footer": {
       "tagline": "FinTech insights and hands-on experience — through writing and consulting — for anyone building digital financial products or going deeper on market and regulatory context.",
-      "platform": "Platform",
-      "company": "Company",
+      "platform": "Explore",
+      "platformLead": "Content and learning paths",
+      "company": "Connect",
       "interestTitle": "Interested in working together?",
       "interestBody": "Share what you are building or exploring — consulting, architecture, or mentorship. I read every message.",
       "interestCta": "Start a conversation",
-      "copyright": "© {year} Maal Tech",
-      "status": "All systems operational"
+      "copyright": "© {year} Maal Tech · Mohammed Abdo"
     }
   },
   "web": {
     "home": {
+      "heroSignoff": "Mohammed Abdo · Maal Tech",
+      "closingLead": "If something here resonated, tell me what you are building—I answer every serious note myself.",
+      "closingCta": "Say hello",
       "hero": {
-        "title": "FinTech clarity, built with you",
-        "subtitle": "Writing, consulting, and system architecture for teams and builders across the Arab world",
-        "description": "I help you cut through noise—product and technical choices, compliance context, and pragmatic architecture—so you ship with confidence.",
+        "title": "FinTech clarity—you're at the heart of what matters",
+        "subtitle": "I'm Mohammed Abdo. Consulting, architecture, and writing for teams shipping regulated products in the Arab world.",
+        "description": "Part field notes, part front door: I share what I learn in public, and work hands-on when we are a good match—fewer guesses on product, compliance, and systems.",
         "exploreArticles": "Read the blog",
         "aboutUs": "About me"
       },
@@ -77,51 +81,34 @@
         "stats": "By The Numbers"
       },
       "services": {
-        "kicker": "// EXPERT_SERVICES",
-        "title": "What I Offer",
-        "intro": "Hands-on consulting, system design, and mentorship to sharpen your FinTech product and move to market with confidence.",
+        "kicker": "// HOW_I_HELP",
+        "title": "What you can hire me for",
+        "intro": "Three ways I usually plug in—solo or combined—depending on whether you need judgment, blueprints, or a steady sounding board.",
         "items": {
           "consulting": {
             "title": "Technical consulting",
-            "description": "Guidance on requirements, technology choices, and risk reduction before and after launch — grounded in real-world FinTech and compliance experience."
+            "description": "I sit with you on requirements, stack choices, and risk: what to prove first, what to defer, and how to talk about it with compliance and partners."
           },
           "architecture": {
             "title": "FinTech system architecture",
-            "description": "Secure, scalable designs aligned with operational and regulatory needs, from prototype through production."
+            "description": "I help you shape flows, integrations, and boundaries so security and scale are part of the design—not a panic after launch."
           },
           "mentorship": {
             "title": "Mentorship",
-            "description": "Structured sessions for teams and individuals: career path, market context, and navigating product delivery in FinTech."
+            "description": "For individuals and small teams: career moves, reading the regional market, and shipping in FinTech without burning out."
           }
         }
       },
       "roadmap": {
-        "kicker": "// FINTECH_ROADMAP",
-        "title": "From idea to regulated product",
-        "intro": "A practical sequence teams use to de-risk FinTech delivery: clarity first, then architecture, then compliance depth, then sustainable launch.",
-        "items": {
-          "foundation": {
-            "title": "Discovery & positioning",
-            "description": "Define the problem, customer, and economics; sketch the regulatory perimeter (licensing, sandbox, or partnership models) before major build commitments."
-          },
-          "architecture": {
-            "title": "Product & systems design",
-            "description": "Shape the MVP, core flows, and integrations—payments, identity, ledgering—so security and scalability are designed in, not bolted on late."
-          },
-          "compliance": {
-            "title": "Compliance & risk",
-            "description": "Align AML/KYC, data protection, and supervisory expectations with your operating model; prepare evidence and controls auditors and partners expect."
-          },
-          "launch": {
-            "title": "Launch & iteration",
-            "description": "Go live with observability and incident readiness, then tighten the loop: metrics, feedback, and roadmap updates as the product and rules evolve."
-          }
-        }
+        "kicker": "// LEARN_FINTECH",
+        "title": "FinTech learner roadmap",
+        "intro": "A structured path—similar in spirit to backend or DevOps roadmaps—with phases from foundations to shipping. Below is the start of the map; open the full page for every topic node.",
+        "viewFull": "Open full roadmap"
       },
       "blogFeature": {
-        "kicker": "// FIELD_NOTES",
+        "kicker": "// MY_FIELD_NOTES",
         "title": "The blog — how I write",
-        "intro": "Not a news ticker: long-form notes you can use when you are designing products, systems, or compliance posture in FinTech.",
+        "intro": "I write long-form pieces for people designing products, systems, or compliance posture—not a news ticker, and not content for content’s sake.",
         "cta": "OPEN_THE_BLOG",
         "items": {
           "regulatory": {
@@ -143,6 +130,19 @@
         }
       }
     },
+    "roadmapPage": {
+      "metaTitle": "FinTech learner roadmap",
+      "metaDescription": "A self-paced FinTech study map: foundations, rails, regulation, product, systems, and shipping—with topic nodes to guide reading and projects.",
+      "kicker": "// LEARN_FINTECH",
+      "title": "FinTech learner roadmap",
+      "subtitle": "Use this map to orient your learning—whether you are switching careers, upskilling, or connecting product decisions to how money and regulation actually work.",
+      "backHome": "Back to home",
+      "phaseLabel": "Phase {n}",
+      "topicsHeading": "Topics to explore",
+      "disclaimer": "This is an orientation guide—not a formal certificate or hiring guarantee. Pair it with courses, documentation, and real builds.",
+      "ctaBlog": "Read the blog",
+      "ctaContact": "Ask a question"
+    },
     "blog": {
       "title": "Blog",
       "subtitle": "Insights and updates from the FinTech world",
@@ -155,12 +155,12 @@
     },
     "about": {
       "title": "About me",
-      "subtitle": "I'm Mohammed. I spend most of my time where regulated FinTech meets real engineering—helping teams make clearer product calls, tighter architecture, and calmer compliance conversations.",
+      "subtitle": "I'm Mohammed Abdo. I spend most of my time where regulated FinTech meets real engineering—helping teams make clearer product calls, tighter architecture, and calmer compliance conversations.",
       "heroBadge": "// ABOUT_ME",
-      "authorName": "Mohammed Alhoomaidi",
+      "authorName": "Mohammed Abdo",
       "authorTitle": "FinTech advisor & engineer · Maal Tech",
       "authorBio": "I didn't start from slides—I started from delivery pressure, ambiguous requirements, and regulators who expect evidence, not vibes. Today I consult, architect, and write so founders and operators waste less time guessing. Maal Tech is my umbrella for that work: the blog is my public notebook; the rest is direct collaboration when we're a good fit.",
-      "avatarAlt": "Portrait of Mohammed Alhoomaidi",
+      "avatarAlt": "Portrait of Mohammed Abdo",
       "founderBadge": "ME",
       "signatureLine": "You work with me—not a faceless team",
       "strategicKicker": "// WHY_I_DO_THIS",
@@ -213,9 +213,9 @@
   "pages": {
     "home": {
       "hero": {
-        "title": "FinTech clarity, built with you",
-        "subtitle": "Writing, consulting, and system architecture for teams and builders across the Arab world",
-        "description": "I help you cut through noise—product and technical choices, compliance context, and pragmatic architecture—so you ship with confidence."
+        "title": "FinTech clarity—you're at the heart of what matters",
+        "subtitle": "I'm Mohammed Abdo. Consulting, architecture, and writing for teams shipping regulated products in the Arab world.",
+        "description": "Part field notes, part front door: I share what I learn in public, and work hands-on when we are a good match—fewer guesses on product, compliance, and systems."
       },
       "sections": {
         "featured": "Featured Articles",

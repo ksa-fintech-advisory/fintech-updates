@@ -3,16 +3,16 @@ import { HomeContent } from '@/core/types/web/home';
 export const homeData: HomeContent = {
   hero: {
     title: {
-      en: 'FinTech clarity, built with you',
-      ar: 'تقنية مالية أوضح — معك في البناء',
+      en: "FinTech clarity—you're at the heart of what matters",
+      ar: 'وضوحٌ في التقنية المالية — وأنت في جوهر الموضوع',
     },
     subtitle: {
-      en: 'Writing, consulting, and system architecture for teams and builders across the Arab world',
-      ar: 'محتوى واستشارات وهندسة أنظمة للفرق والمبدعين في العالم العربي',
+      en: "I'm Mohammed Abdo. Consulting, architecture, and writing for teams shipping regulated products in the Arab world.",
+      ar: 'أنا محمد عبده — استشارات وهندسة وكتابة لفرق تطلق منتجات خاضعة للتنظيم في العالم العربي.',
     },
     description: {
-      en: 'I help you cut through noise—product and technical choices, compliance context, and pragmatic architecture—so you ship with confidence.',
-      ar: 'أساعدك على تقليل الضجيج: قرارات المنتج والتقنية، سياق الامتثال، وهندسة عملية — لتطلق بثقة.',
+      en: 'Part field notes, part front door: I share what I learn in public, and work hands-on when we are a good match—fewer guesses on product, compliance, and systems.',
+      ar: 'جزء مذكرات ميدانية، جزء باب للتواصل: أشارك ما أتعلمه علناً، وأعمل معك مباشرة عندما يكون التوافق مناسباً — تخمين أقل في المنتج والامتثال والأنظمة.',
     },
     ctaButtons: [
       {

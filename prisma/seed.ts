@@ -295,8 +295,8 @@ async function main() {
   await prisma.hero.create({
     data: {
       name: 'Default Hero',
-      titleEn: 'FinTech clarity, built with you',
-      titleAr: 'تقنية مالية أوضح — معك في البناء',
+      titleEn: "FinTech clarity—you're at the heart of what matters",
+      titleAr: 'وضوحٌ في التقنية المالية — وأنت في جوهر الموضوع',
       subtitleEn: 'Writing, consulting, and system architecture for teams and builders across the Arab world',
       subtitleAr: 'محتوى واستشارات وهندسة أنظمة للفرق والمبدعين في العالم العربي',
       descriptionEn:

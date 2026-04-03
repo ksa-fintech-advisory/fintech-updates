@@ -6,7 +6,6 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useState, useRef } from 'react';
 import ProductsMegaMenu from './ProductsMegaMenu';
 import CoursesMegaMenu from './CoursesMegaMenu';
-import RegionDropdown from './RegionDropdown';
 import { getAllCourses } from '@/data/courseData';
 import { ProfileAvatar } from '@/core/components/web/layout/ProfileAvatar';
 import { FiChevronDown, FiMenu, FiX, FiGlobe, FiArrowRight } from 'react-icons/fi';
@@ -28,6 +27,7 @@ export default function Header() {
 
   const navItems:any = [
     { href: '/web/home', label: t('common.nav.home'), key: 'home' },
+    { href: '/web/roadmap', label: t('common.nav.roadmap'), key: 'roadmap' },
     // { href: '/web/products', label: t("common.nav.products"), key: 'products', hasMegaMenu: true },
     // { href: '/web/courses', label: t('common.nav.courses'), key: 'courses', hasMegaMenu: true },
     // { href: '/web/updates', label: t('common.nav.updates'), key: 'updates' },
@@ -122,26 +122,23 @@ export default function Header() {
               })}
             </nav>
 
-            {/* --- Right Actions: System Controls --- */}
-            <div className="flex items-center gap-3 pl-4 border-l border-zinc-200 dark:border-zinc-800">
-
-              <div className="hidden md:block">
-                <RegionDropdown />
-              </div>
-
+            {/* --- Right: language + mobile menu (region picker hidden) --- */}
+            <div className="flex shrink-0 items-center gap-2 md:ml-2 md:gap-3 md:pl-4 md:border-l md:border-zinc-200 md:dark:border-zinc-800">
               <Link
                 href={`/${otherLocale}${currentPath}`}
-                className="hidden md:flex items-center gap-2 px-3 py-1.5 text-xs font-mono font-bold text-zinc-600 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-900 rounded border border-zinc-200 dark:border-zinc-800 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all"
+                className="hidden md:inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-100 px-3 py-1.5 text-xs font-mono font-bold text-zinc-600 transition-all hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:border-zinc-600"
                 aria-label="Switch Language"
               >
-                <FiGlobe className="w-3.5 h-3.5" />
+                <FiGlobe className="h-3.5 w-3.5 shrink-0" aria-hidden />
                 <span>{otherLocale.toUpperCase()}</span>
               </Link>
 
-              {/* Mobile Toggle */}
               <button
+                type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden p-2 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg transition-colors"
+                className="md:hidden rounded-lg p-2 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+                aria-expanded={mobileMenuOpen}
+                aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               >
                 {mobileMenuOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
               </button>
