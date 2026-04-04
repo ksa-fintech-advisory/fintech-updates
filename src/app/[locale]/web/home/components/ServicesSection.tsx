@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
 import { FiTool, FiLayers, FiUsers, FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
-const SERVICE_IDS = ['consulting', 'mentorship', 'architecture'] as const;
+const SERVICE_IDS = ['architecture', 'consulting', 'mentorship'] as const;
 
 const SERVICE_ICONS = {
   consulting: FiTool,
@@ -19,7 +19,10 @@ export default function ServicesSection() {
   const isArabic = locale === 'ar';
 
   return (
-    <section className="relative overflow-hidden border-b border-zinc-200 bg-zinc-50 py-16 dark:border-zinc-800 dark:bg-zinc-950 md:py-20">
+    <section
+      id="services"
+      className="relative overflow-hidden scroll-mt-24 border-b border-zinc-200 bg-zinc-50 py-16 dark:border-zinc-800 dark:bg-zinc-950 md:py-20"
+    >
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <div className="container relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:max-w-6xl lg:px-8">

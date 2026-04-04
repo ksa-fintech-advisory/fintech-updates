@@ -39,19 +39,24 @@ const r = (
 export const fintechLearnerPhases: RoadmapPhase[] = [
   {
     id: 'getting-started',
-    title: { en: 'Start here — zero FinTech background', ar: 'ابدأ من هنا — بلا خلفية مسبقة في الفنتك' },
+    title: {
+      en: 'Starting point: framing the mindset (no prior background)',
+      ar: 'البداية: تأسيس العقلية (بلا خلفية مسبقة)',
+    },
     summary: {
-      en: 'If the word “FinTech” is new, start here. You’ll get a plain-language map of what it is, who the players are, and how to study without drowning in jargon.',
-      ar: 'إن كانت «التقنية المالية» جديدة عليك، ابدأ من هذه المرحلة: خريطة بلغة بسيطة لما هي، من الفاعلون، وكيف تدرس دون أن تغرق في المصطلحات.',
+      en: 'If FinTech is new to you, this is the on-ramp. We establish a shared vocabulary and a clear picture of the whole board—who holds real power in the market, and how banks, regulators, and startups connect—without getting lost in heavy jargon first.',
+      ar: 'إذا كان عالم التقنية المالية جديداً عليك، فهنا نقطة الانطلاق. في هذه المرحلة نؤسس لغة مشتركة ونبني تصوراً واضحاً للصورة الكبرى؛ من هم اللاعبون في السوق؟ وكيف تترابط البنوك مع المشرّعين والشركات الناشئة؟ كل ذلك دون الغرق في المصطلحات التقنية المعقدة.',
     },
     outcomes: {
       en: [
-        'Explain FinTech to a friend in under a minute',
-        'Recognise regulators, banks, payment firms, and startups in a typical flow',
+        'Deconstruct what “FinTech” means and explain it clearly in under a minute',
+        'Sketch a mental map of the actors—regulators, banks, and payment providers',
+        'Choose the next stretch of this roadmap that best fits your role and project',
       ],
       ar: [
-        'شرح الفنتك لشخص آخر في أقل من دقيقة',
-        'تمييز الجهات الرقابية والمصارف وشركات المدفوعات والناشئين في مسار نموذجي',
+        'تفكيك مفهوم التقنية المالية وشرحه بوضوح وفي أقل من دقيقة',
+        'رسم خريطة ذهنية للأطراف الفاعلة (الجهات الرقابية، البنوك، مزودي المدفوعات)',
+        'تحديد المسار الأنسب لك لاستكمال رحلة التعلم',
       ],
     },
     topics: [

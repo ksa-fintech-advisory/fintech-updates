@@ -120,7 +120,7 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
 
           {/* Title Area */}
           <div className="mb-10">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-zinc-900 dark:text-white leading-tight tracking-tight mb-6">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-zinc-900 dark:text-white leading-[1.2] md:leading-[1.16] lg:leading-[1.12] tracking-tight mb-6">
               {title}
             </h1>
             <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 font-light leading-relaxed max-w-3xl border-l-4 border-primary-500 pl-6">

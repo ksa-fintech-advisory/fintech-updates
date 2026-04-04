@@ -502,7 +502,7 @@ export default function AssessPage({ params: { locale } }: { params: { locale: s
               {isArabic ? 'أداة_التقييم' : 'COMPLIANCE_ENGINE_V1'}
             </span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-black text-zinc-900 dark:text-white tracking-tight">
+          <h1 className="text-3xl md:text-5xl font-black text-zinc-900 dark:text-white tracking-tight leading-[1.16] md:leading-[1.14]">
             {isArabic ? 'مدقق الامتثال الذكي' : 'Regulatory Compliance Engine'}
           </h1>
         </div>

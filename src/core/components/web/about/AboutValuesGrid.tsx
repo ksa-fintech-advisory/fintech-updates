@@ -1,6 +1,6 @@
 import type { AboutUsContent } from '@/core/types/web/aboutUs';
+import { ABOUT_VALUE_ICONS } from '@/core/components/web/about/aboutUsIconMaps';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
-import { FiCheckSquare } from 'react-icons/fi';
 
 type Props = {
   content: AboutUsContent;
@@ -17,19 +17,15 @@ export function AboutValuesGrid({ content, isArabic, principlesHeading }: Props)
           <div className="mx-auto h-1 w-20 bg-zinc-200 dark:bg-zinc-800" />
         </AnimatedSection>
 
-        <StaggerContainer className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {content.values.map((value, idx) => (
+        <StaggerContainer className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
+          {content.values.map((value, idx) => {
+            const ValueIcon = ABOUT_VALUE_ICONS[value.iconKey];
+            return (
             <StaggerItem key={value.id}>
               <div className="group h-full border border-zinc-200 bg-white p-6 transition-colors duration-300 hover:border-primary-500 dark:border-zinc-800 dark:bg-zinc-900/50 dark:hover:border-primary-500">
                 <span className="mb-4 block font-mono text-xs text-zinc-400">0{idx + 1}</span>
                 <div className="mb-4 text-zinc-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
-                  {value.icon ? (
-                    <span className="text-2xl" aria-hidden>
-                      {value.icon}
-                    </span>
-                  ) : (
-                    <FiCheckSquare className="h-6 w-6" />
-                  )}
+                  <ValueIcon className="h-6 w-6" aria-hidden />
                 </div>
                 <h4 className="mb-2 text-lg font-bold text-zinc-900 dark:text-white">
                   {isArabic ? value.title.ar : value.title.en}
@@ -39,7 +35,8 @@ export function AboutValuesGrid({ content, isArabic, principlesHeading }: Props)
                 </p>
               </div>
             </StaggerItem>
-          ))}
+          );
+          })}
         </StaggerContainer>
       </div>
     </section>

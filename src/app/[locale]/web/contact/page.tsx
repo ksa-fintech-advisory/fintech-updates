@@ -75,7 +75,7 @@ export default function ContactPage() {
               <p className="mb-4 font-mono text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
                 {t('kicker')}
               </p>
-              <h1 className="mb-5 text-4xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-5xl lg:text-6xl">
+              <h1 className="mb-5 text-4xl font-bold leading-[1.18] tracking-tight text-zinc-900 dark:text-white md:text-5xl md:leading-[1.15] lg:text-6xl lg:leading-[1.12]">
                 {t('title')}
               </h1>
               <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-xl">

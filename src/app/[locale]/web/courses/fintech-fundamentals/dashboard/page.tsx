@@ -36,7 +36,7 @@ export default function DashboardPage({
               {isArabic ? 'العودة للدورة' : 'Back to Course'}
             </Link>
 
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-[1.16] md:leading-[1.14]">
               <span className="bg-gradient-to-r from-white via-accent-200 to-white bg-clip-text text-transparent">
                 {isArabic ? 'لوحة التعلم الخاصة بك' : 'Your Learning Dashboard'}
               </span>

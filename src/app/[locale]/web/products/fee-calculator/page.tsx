@@ -98,7 +98,7 @@ export default function FeeCalculatorPage({
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <h1 className="text-3xl md:text-5xl font-black text-zinc-900 dark:text-white tracking-tight mb-2">
+              <h1 className="text-3xl md:text-5xl font-black text-zinc-900 dark:text-white tracking-tight leading-[1.16] md:leading-[1.14] mb-2">
                 {isArabic ? 'محاكي تكاليف الدفع' : 'Payment Fee Simulator'}
               </h1>
               <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl text-lg">

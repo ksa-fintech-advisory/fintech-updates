@@ -110,7 +110,7 @@ export default function CourseHero({ locale, translations }: CourseHeroProps) {
           {/* Title: Sharp & Metallic */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight leading-none text-zinc-900 dark:text-white"
+            className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 tracking-tight leading-[1.14] md:leading-[1.12] lg:leading-[1.1] text-zinc-900 dark:text-white"
           >
             {translations.title}
           </motion.h1>

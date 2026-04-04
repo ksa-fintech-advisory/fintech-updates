@@ -72,11 +72,11 @@ export default function Header() {
                 className="shadow-sm transition-transform duration-200 group-hover:scale-105"
                 priority
               />
-              <div className="flex flex-col min-w-0">
-                <span className="text-lg font-bold text-zinc-900 dark:text-white leading-none tracking-tight group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors truncate">
+              <div className="flex min-w-0 flex-col gap-1.5 sm:gap-2">
+                <span className="truncate text-lg font-bold leading-snug tracking-tight text-zinc-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
                   {isArabic ? 'مال تك' : 'Maal Tech'}
                 </span>
-                <span className="text-[9px] text-zinc-500 font-mono tracking-widest uppercase mt-0.5 truncate max-w-[10rem] sm:max-w-none">
+                <span className="max-w-[10rem] truncate text-[9px] font-mono uppercase leading-relaxed tracking-widest text-zinc-500 sm:max-w-none">
                   {th('tagline')}
                 </span>
               </div>

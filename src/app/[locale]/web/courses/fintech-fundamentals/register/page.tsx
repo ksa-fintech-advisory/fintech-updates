@@ -112,7 +112,7 @@ export default async function CourseRegistrationPage({
               <span className="text-primary-600 dark:text-primary-400 font-mono text-xs uppercase tracking-widest mb-2 block">
                 {isArabic ? '// التسجيل' : '// REGISTRATION'}
               </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-3">
+              <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-3 leading-[1.16] md:leading-[1.14]">
                 {translations.title}
               </h1>
               <p className="text-zinc-600 dark:text-zinc-400 text-lg">

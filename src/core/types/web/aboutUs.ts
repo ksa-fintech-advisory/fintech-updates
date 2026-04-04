@@ -1,3 +1,9 @@
+/** Feather icon id for principles grid (no emoji). */
+export type AboutValueIconKey = 'candor' | 'lean' | 'partner' | 'depth';
+
+/** Feather icon id for expertise grid. */
+export type AboutExpertiseIconKey = 'sandbox' | 'systems' | 'local';
+
 export interface AboutUsContent {
   mission: {
     en: string;
@@ -25,7 +31,7 @@ export interface Value {
     en: string;
     ar: string;
   };
-  icon?: string;
+  iconKey: AboutValueIconKey;
 }
 
 export interface ExpertiseArea {
@@ -38,5 +44,5 @@ export interface ExpertiseArea {
     en: string;
     ar: string;
   };
-  icon?: string;
+  iconKey: AboutExpertiseIconKey;
 }

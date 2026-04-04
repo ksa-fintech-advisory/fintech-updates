@@ -31,7 +31,7 @@ export default async function UpdatesListingPage({ params }: UpdatesListingPageP
                             </span>
                         </div>
 
-                        <h1 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight text-zinc-900 dark:text-white leading-tight">
+                        <h1 className="mb-6 text-3xl font-bold leading-[1.18] tracking-tight text-zinc-900 dark:text-white md:text-5xl md:leading-[1.14]">
                             {isArabic ? 'آخر التحديثات التنظيمية' : 'Regulatory & System Updates'}
                         </h1>
 

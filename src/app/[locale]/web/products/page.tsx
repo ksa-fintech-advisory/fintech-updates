@@ -28,7 +28,7 @@ export default function ProductsPage({ params }: { params: { locale: string } })
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.1}>
-              <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight tracking-tight text-zinc-900 dark:text-white">
+              <h1 className="mb-8 text-5xl font-bold leading-[1.14] tracking-tight text-zinc-900 dark:text-white md:text-7xl md:leading-[1.1]">
                 {isArabic ? 'الأدوات الرقمية' : 'Digital Utilities'}
               </h1>
             </AnimatedSection>

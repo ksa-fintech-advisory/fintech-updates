@@ -70,8 +70,8 @@ export default async function HomePage({ params }: { params: { locale: string } 
               <h1
                 className={
                   isArabic
-                    ? 'mb-8 max-w-4xl mx-auto text-4xl font-bold leading-[1.2] tracking-normal text-zinc-50 sm:text-5xl md:text-6xl md:leading-[1.15] lg:text-6xl lg:leading-[1.12] [text-shadow:0_2px_20px_rgba(0,0,0,0.45)]'
-                    : 'mb-8 text-5xl font-bold leading-[1.08] tracking-tight text-white md:text-7xl lg:text-8xl'
+                    ? 'mb-8 max-w-4xl mx-auto text-4xl font-bold leading-[1.28] tracking-normal text-zinc-50 sm:text-5xl md:text-6xl md:leading-[1.22] lg:text-6xl lg:leading-[1.18] [text-shadow:0_2px_20px_rgba(0,0,0,0.45)]'
+                    : 'mb-8 text-5xl font-bold leading-[1.14] tracking-tight text-white md:text-7xl md:leading-[1.12] lg:text-8xl lg:leading-[1.1]'
                 }
               >
                 {isArabic ? (
@@ -159,6 +159,9 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
       <section className="border-t border-zinc-200 bg-zinc-100/80 py-16 dark:border-zinc-800 dark:bg-zinc-950/80">
         <div className="container mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+          <h2 className="mb-4 text-xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-2xl">
+            {tHome('closingTitle')}
+          </h2>
           <p className="mb-6 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">{tHome('closingLead')}</p>
           <Link
             href={`/${locale}/web/contact`}

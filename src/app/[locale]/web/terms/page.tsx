@@ -26,7 +26,7 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
                   </span>
                 </div>
 
-                <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-tight leading-tight">
+                <h1 className="mb-4 text-4xl font-bold leading-[1.18] tracking-tight md:text-5xl md:leading-[1.14]">
                   {isArabic ? data.title.ar : data.title.en}
                 </h1>
 

@@ -74,7 +74,7 @@ export default async function BlogPage({
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.2}>
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight text-zinc-900 dark:text-white leading-tight">
+              <h1 className="mb-6 text-5xl font-bold leading-[1.14] tracking-tight text-zinc-900 dark:text-white md:text-7xl md:leading-[1.1]">
                 {isArabic ? 'المدونة التقنية' : 'Engineering Blog'}
               </h1>
             </AnimatedSection>

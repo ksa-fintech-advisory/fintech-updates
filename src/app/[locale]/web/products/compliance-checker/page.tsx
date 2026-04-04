@@ -358,7 +358,7 @@ export default function ComplianceCheckerPage({ params: { locale } }: { params: 
                   {isArabic ? 'نظام_الامتثال_الآلي' : 'COMPLIANCE_ENGINE_V2'}
                 </span>
               </div>
-              <h1 className="text-3xl md:text-5xl font-black mb-4 tracking-tight text-zinc-900 dark:text-white">
+              <h1 className="text-3xl md:text-5xl font-black mb-4 tracking-tight leading-[1.16] md:leading-[1.14] text-zinc-900 dark:text-white">
                 {isArabic ? 'فاحص الامتثال التنظيمي' : 'Regulatory Compliance Checker'}
               </h1>
               <p className="text-lg text-zinc-500 dark:text-zinc-400 font-light max-w-2xl leading-relaxed">

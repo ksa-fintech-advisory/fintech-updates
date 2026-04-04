@@ -140,7 +140,7 @@ export default function DocsPage({ params: { locale } }: { params: { locale: str
 
                     {/* Hero Section */}
                     <div className="mb-12 border-b border-zinc-200 dark:border-zinc-800 pb-10">
-                        <h1 className="text-4xl md:text-5xl font-black mb-4 tracking-tight">
+                        <h1 className="mb-4 text-4xl font-black leading-[1.18] tracking-tight md:text-5xl md:leading-[1.14]">
                             {isArabic ? 'وثائق المطورين' : 'Developer Documentation'}
                         </h1>
                         <p className="text-lg text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl">
