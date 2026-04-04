@@ -3,14 +3,18 @@ import { blogApiService } from '@/services/api/blogs';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { buildPageMetadata } from '@/core/seo/buildPageMetadata';
-import dynamic from 'next/dynamic';
+import nextDynamic from 'next/dynamic';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
 import { BlogFilters } from '@/core/components/web/blog/BlogFilters';
 import { BlogPagination } from '@/core/components/web/blog/BlogPagination';
-import { FiBookOpen, FiCalendar, FiClock, FiUser, FiArrowRight, FiArrowLeft, FiSlash } from 'react-icons/fi';
+import { FiBookOpen, FiCalendar, FiUser, FiArrowRight, FiArrowLeft, FiSlash } from 'react-icons/fi';
+import { blogCardImageUrl } from '@/core/constants/blogMedia';
 
 // WaveField3D can be kept if it fits the theme (e.g., monochrome particles), otherwise consider a simpler grid
-const WaveField3D = dynamic(() => import('@/core/components/web/blog/WaveField3D'), { ssr: false });
+const WaveField3D = nextDynamic(() => import('@/core/components/web/blog/WaveField3D'), { ssr: false });
+
+/** SearchParams must always re-fetch (pagination / filters); avoid cached empty shell on client navigation. */
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({
   params,
@@ -37,15 +41,28 @@ export default async function BlogPage({
   const { locale } = params;
   const isArabic = locale === 'ar';
 
-  const currentPage = Number(searchParams?.page) || 1;
+  const currentPage = Math.max(1, Number(searchParams?.page) || 1);
   const categorySlug = typeof searchParams?.category === 'string' ? searchParams.category : '';
+  const qRaw = searchParams?.q ?? searchParams?.search;
+  const searchQuery = typeof qRaw === 'string' ? qRaw.trim() : '';
   const limit = 9;
 
-  const filters = categorySlug ? { category: categorySlug } : undefined;
+  const filters = {
+    ...(categorySlug ? { category: categorySlug } : {}),
+    ...(searchQuery ? { search: searchQuery } : {}),
+  };
+  const hasFilters = Boolean(categorySlug || searchQuery);
 
-  // Fetch data on the server
-  const data = await blogApiService.paginateBlogs(currentPage, limit, filters, locale);
+  const data = await blogApiService.paginateBlogs(
+    currentPage,
+    limit,
+    hasFilters ? filters : undefined,
+    locale,
+  );
   const { blogs, categories, totalPages } = data;
+
+  /** Remount stagger animation after client navigation (page/category/search); avoids stuck opacity 0 from whileInView once:true. */
+  const blogGridKey = `blog-grid-${currentPage}-${categorySlug}-${searchQuery}`;
 
   return (
     <div className="w-full bg-zinc-50 dark:bg-black selection:bg-primary-500/30">
@@ -103,7 +120,7 @@ export default async function BlogPage({
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
           {blogs.length === 0 ? (
-            <AnimatedSection>
+            <AnimatedSection key={blogGridKey}>
               <div className="text-center py-32 bg-zinc-100 dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 border-dashed">
                 <div className="text-4xl mb-4 text-zinc-400">
                   <FiSlash className="mx-auto" />
@@ -112,14 +129,18 @@ export default async function BlogPage({
                   {isArabic ? 'لا توجد نتائج' : 'NO_DATA_FOUND'}
                 </h3>
                 <p className="text-zinc-500 font-mono text-sm">
-                  {isArabic ? 'لم يتم العثور على مقالات في هذا التصنيف.' : 'Query returned 0 results for this filter.'}
+                  {isArabic
+                    ? 'لا توجد مقالات مطابقة للتصنيف أو البحث.'
+                    : 'No posts match this category or search.'}
                 </p>
               </div>
             </AnimatedSection>
           ) : (
             <>
-                <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                  {blogs.map((blog) => (
+                <StaggerContainer key={blogGridKey} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                  {blogs.map((blog) => {
+                    const cardImg = blogCardImageUrl(blog.featuredImage);
+                    return (
                   <StaggerItem key={blog.id} className="h-full">
                     <Link
                       href={`/${locale}/web/blog/${blog.slug}`}
@@ -127,17 +148,24 @@ export default async function BlogPage({
                     >
                       <article className="h-full flex flex-col bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-zinc-200/50 dark:group-hover:shadow-black/50 overflow-hidden">
 
-                        {/* Image Container - Technical Aspect Ratio */}
-                        <div className="relative aspect-[3/2] overflow-hidden bg-zinc-100 dark:bg-zinc-800 border-b border-zinc-200 dark:border-zinc-800">
-                          {/* Grayscale on idle, Color on hover */}
-                          <div
-                            className="absolute inset-0 bg-cover bg-center transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
-                            // Assuming blog.image exists, otherwise a pattern placeholder logic similar to previous examples
-                            style={{ backgroundImage: `url(${blog?.featuredImage || '/patterns/placeholder-grid.svg'})` }}
-                          />
-
-                          {/* Overlay Gradient for Text readability if needed, but we keep text outside mostly */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        {/* Cover: real photo only — no default branded poster */}
+                        <div className="relative aspect-[3/2] overflow-hidden bg-gradient-to-br from-zinc-200 via-zinc-100 to-zinc-300 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 border-b border-zinc-200 dark:border-zinc-800">
+                          {cardImg ? (
+                            <>
+                              <div
+                                className="absolute inset-0 bg-cover bg-center transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105 bg-zinc-900"
+                                style={{ backgroundImage: `url(${cardImg})` }}
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            </>
+                          ) : (
+                            <div
+                              className="absolute inset-0 opacity-[0.12] dark:opacity-[0.2]"
+                              style={{
+                                backgroundImage: `repeating-linear-gradient(-12deg, transparent, transparent 12px, ${blog.category.color}33 12px, ${blog.category.color}33 13px)`,
+                              }}
+                            />
+                          )}
 
                           {/* Category Tag - Absolute Top Left */}
                           <div className="absolute top-4 left-4">
@@ -162,10 +190,6 @@ export default async function BlogPage({
                                   year: 'numeric', month: '2-digit', day: '2-digit'
                                 })}
                               </time>
-                            </div>
-                            <div className="flex items-center gap-1.5">
-                              <FiClock className="w-3.5 h-3.5" />
-                              <span>{blog.readTime} MIN</span>
                             </div>
                           </div>
 
@@ -199,7 +223,8 @@ export default async function BlogPage({
                       </article>
                     </Link>
                   </StaggerItem>
-                ))}
+                    );
+                  })}
                 </StaggerContainer>
 
                 {/* Pagination (Client Component) - Ensure passing styles props or update internal styles */}

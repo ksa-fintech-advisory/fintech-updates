@@ -1,15 +1,14 @@
-import { blogApiService } from '@/services/api/blogs';
+import { getStaticBlogBySlug } from '@/services/blog/staticBlogs';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import SafeImage from '@/core/components/common/SafeImage';
 import { BlogContentRenderer } from '@/core/components/web/blog/BlogContentRenderer';
-import { AuthorBio } from '@/core/components/web/blog/AuthorBio';
 import { SocialShare } from '@/core/components/web/blog/SocialShare';
+import { blogDetailHeroSrc } from '@/core/constants/blogMedia';
 import { RelatedPosts } from '@/core/components/web/blog/RelatedPosts';
 import { Metadata } from 'next';
-import prisma from '@/lib/prisma';
 import { getSiteUrl, SITE_NAME } from '@/core/seo/site';
-import { FiCalendar, FiClock, FiUser, FiFolder, FiHash, FiArrowLeft, FiArrowRight, FiHome } from 'react-icons/fi';
+import { FiCalendar, FiUser, FiFolder, FiHash, FiArrowLeft, FiArrowRight, FiHome } from 'react-icons/fi';
 
 interface BlogPageProps {
   params: {
@@ -21,66 +20,55 @@ interface BlogPageProps {
 export async function generateMetadata({ params: { slug, locale } }: BlogPageProps): Promise<Metadata> {
   const isArabic = locale === 'ar';
 
-  try {
-    const blog = await prisma.blog.findUnique({
-      where: { slug },
-      include: { author: true, category: true }
-    });
+  const blog = getStaticBlogBySlug(slug, locale);
 
-    if (!blog) {
-      return {
-        title: isArabic ? 'المقال غير موجود' : 'Blog Not Found',
-      };
-    }
-
-    const title = isArabic ? (blog.titleAr || blog.titleEn) : blog.titleEn;
-    const description = isArabic ? (blog.excerptAr || blog.excerptEn) : blog.excerptEn;
-    const path = `/web/blog/${slug}`;
-    const base = getSiteUrl();
-    const authorName = isArabic ? (blog.author.nameAr || blog.author.name) : blog.author.name;
-
+  if (!blog) {
     return {
-      title,
-      description,
-      alternates: {
-        canonical: `/${locale}${path}`,
-        languages: {
-          en: `${base}/en${path}`,
-          ar: `${base}/ar${path}`,
-          'x-default': `${base}/en${path}`,
-        },
-      },
-      openGraph: {
-        title,
-        description,
-        type: 'article',
-        url: `/${locale}${path}`,
-        siteName: SITE_NAME,
-        locale: isArabic ? 'ar_SA' : 'en_US',
-        alternateLocale: isArabic ? ['en_US'] : ['ar_SA'],
-        publishedTime: blog.publishedAt.toISOString(),
-        authors: [authorName],
-        images: blog.featuredImage ? [{ url: blog.featuredImage }] : [],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        title,
-        description,
-        images: blog.featuredImage ? [blog.featuredImage] : ['/og-image.png'],
-      },
-    };
-  } catch (error) {
-    return {
-      title: isArabic ? 'خطأ' : 'Error',
+      title: isArabic ? 'المقال غير موجود' : 'Blog Not Found',
     };
   }
+
+  const path = `/web/blog/${slug}`;
+  const base = getSiteUrl();
+  const authorName = blog.author?.name ?? '';
+  const ogImage = `${base}${blogDetailHeroSrc(blog.featuredImage)}`;
+
+  return {
+    title: blog.title,
+    description: blog.excerpt,
+    alternates: {
+      canonical: `/${locale}${path}`,
+      languages: {
+        en: `${base}/en${path}`,
+        ar: `${base}/ar${path}`,
+        'x-default': `${base}/en${path}`,
+      },
+    },
+    openGraph: {
+      title: blog.title,
+      description: blog.excerpt,
+      type: 'article',
+      url: `/${locale}${path}`,
+      siteName: SITE_NAME,
+      locale: isArabic ? 'ar_SA' : 'en_US',
+      alternateLocale: isArabic ? ['en_US'] : ['ar_SA'],
+      publishedTime: blog.publishedAt,
+      authors: authorName ? [authorName] : [],
+      images: [{ url: ogImage }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: blog.title,
+      description: blog.excerpt,
+      images: [ogImage],
+    },
+  };
 }
 
 export default async function BlogPage({ params: { slug, locale } }: BlogPageProps) {
   const isArabic = locale === 'ar';
 
-  // Get blog by slug
-  const blog = await blogApiService.getBlogBySlug(slug, locale);
+  const blog = getStaticBlogBySlug(slug, locale);
 
   if (!blog) {
     notFound();
@@ -90,6 +78,7 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
   const excerpt = blog.excerpt;
   const content = blog.content;
   const currentUrl = `https://fintech-updates.sa/${locale}/web/blog/${slug}`;
+  const heroImageSrc = blogDetailHeroSrc(blog.featuredImage);
 
   return (
     <div className="w-full bg-zinc-50 dark:bg-black min-h-screen font-sans selection:bg-primary-500/30">
@@ -129,10 +118,10 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
           </div>
 
           {/* Meta Data Grid: The "Spec Sheet" */}
-          <div className="grid grid-cols-2 md:grid-cols-4 border-y border-zinc-200 dark:border-zinc-800">
+          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-zinc-200 dark:divide-zinc-800 border-y border-zinc-200 dark:border-zinc-800">
 
             {/* Author */}
-            <div className="p-4 border-b md:border-b-0 border-r border-zinc-200 dark:border-zinc-800 flex items-center gap-3">
+            <div className="p-4 flex items-center gap-3">
               <div className="w-8 h-8 rounded bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500">
                 <FiUser />
               </div>
@@ -143,7 +132,7 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
             </div>
 
             {/* Date */}
-            <div className="p-4 border-b md:border-b-0 md:border-r border-zinc-200 dark:border-zinc-800 flex items-center gap-3">
+            <div className="p-4 flex items-center gap-3">
               <div className="w-8 h-8 rounded bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500">
                 <FiCalendar />
               </div>
@@ -152,17 +141,6 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
                 <div className="text-sm font-bold text-zinc-900 dark:text-white font-mono">
                   {new Date(blog.publishedAt).toLocaleDateString(isArabic ? 'en-US' : 'en-US', { year: 'numeric', month: '2-digit', day: '2-digit' })}
                 </div>
-              </div>
-            </div>
-
-            {/* Read Time */}
-            <div className="p-4 border-r border-zinc-200 dark:border-zinc-800 flex items-center gap-3">
-              <div className="w-8 h-8 rounded bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-500">
-                <FiClock />
-              </div>
-              <div>
-                <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">{isArabic ? 'وقت القراءة' : 'TIME_EST'}</div>
-                <div className="text-sm font-bold text-zinc-900 dark:text-white font-mono">{blog.readTime} MIN</div>
               </div>
             </div>
 
@@ -181,20 +159,18 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
         </div>
       </section>
 
-      {/* Featured Image: "Cinema Mode" */}
-      {blog.featuredImage && (
-        <section className="relative z-0 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 mb-16">
-          <div className="relative aspect-[21/9] w-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-2xl">
-            <SafeImage
-              src={blog.featuredImage}
-              alt={title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-        </section>
-      )}
+      {/* Cover image: featured photo or neutral grid fallback */}
+      <section className="relative z-0 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 mb-16">
+        <div className="relative aspect-[21/9] w-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 shadow-2xl bg-zinc-900">
+          <SafeImage
+            src={heroImageSrc}
+            alt={title}
+            fill
+            className="object-cover object-center"
+            priority
+          />
+        </div>
+      </section>
 
       {/* Main Content Area */}
       <article className="pb-24 relative z-10">
@@ -236,11 +212,6 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
               </div>
             </div>
 
-            {/* Author Bio Card */}
-            <div className="mt-12">
-              <AuthorBio author={blog?.author as any} />
-            </div>
-
             {/* Navigation to Index */}
             <div className="mt-16 pt-10 border-t border-zinc-200 dark:border-zinc-800 flex justify-center">
               <Link
@@ -255,17 +226,18 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
         </div>
       </article>
 
-      {/* Related Posts Section */}
-      <section className="bg-zinc-100 dark:bg-zinc-900/50 py-20 border-t border-zinc-200 dark:border-zinc-800">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-10 text-center flex items-center justify-center gap-3">
-            <span className="w-8 h-px bg-zinc-300 dark:bg-zinc-700"></span>
-            {isArabic ? 'مقالات ذات صلة' : 'Related Documentation'}
-            <span className="w-8 h-px bg-zinc-300 dark:bg-zinc-700"></span>
-          </h3>
-          <RelatedPosts posts={blog?.relatedPosts} locale={locale} />
-        </div>
-      </section>
+      {blog.relatedPosts && blog.relatedPosts.length > 0 ? (
+        <section className="bg-zinc-100 dark:bg-zinc-900/50 py-20 border-t border-zinc-200 dark:border-zinc-800">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-10 text-center flex items-center justify-center gap-3">
+              <span className="w-8 h-px bg-zinc-300 dark:bg-zinc-700"></span>
+              {isArabic ? 'مقالات ذات صلة' : 'Related Documentation'}
+              <span className="w-8 h-px bg-zinc-300 dark:bg-zinc-700"></span>
+            </h3>
+            <RelatedPosts posts={blog.relatedPosts} locale={locale} />
+          </div>
+        </section>
+      ) : null}
 
     </div>
   );

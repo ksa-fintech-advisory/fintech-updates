@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import prisma from '@/lib/prisma';
 import { getSiteUrl } from '@/core/seo/site';
+import { getAllBlogSlugs } from '@/services/blog/staticBlogs';
 
 type Freq = MetadataRoute.Sitemap[number]['changeFrequency'];
 
@@ -74,12 +75,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ),
   ];
 
-  const blogs = await prisma.blog.findMany({
-    select: { slug: true, publishedAt: true },
-  });
-
-  const blogRoutes = blogs.flatMap((blog) =>
-    localizedUrls(`/web/blog/${blog.slug}`, blog.publishedAt, 'weekly', 0.7),
+  const staticBlogs = getAllBlogSlugs();
+  const blogRoutes = staticBlogs.flatMap((blog) =>
+    localizedUrls(`/web/blog/${blog.slug}`, new Date(blog.publishedAt), 'weekly', 0.7),
   );
 
   const updates = await prisma.update.findMany({

@@ -6,7 +6,7 @@
     "updates": "Updates",
     "statistics": "Statistics",
     "heroes": "Heroes",
-    "products":"Products",
+    "products": "Products",
     "courses": "Courses"
   },
   "common": {
@@ -28,7 +28,7 @@
       "contact": "Contact",
       "about": "About me",
       "updates": "Updates",
-      "products":"Products",
+      "products": "Products",
       "courses": "Courses",
       "roadmap": "Roadmap"
     },
@@ -85,23 +85,18 @@
         "stats": "By The Numbers"
       },
       "services": {
-        "kicker": "// BUILD_TOGETHER",
-        "title": "How can we build the financial future together?",
-        "intro": "Whether you're launching a new financial product or raising your engineering bar, I bring hands-on depth in leading teams and architecting systems—so releases stay smooth and safe.",
+        "kicker": "// PROFESSIONAL_SERVICES",
+        "title": "Professional services",
         "items": {
           "consulting": {
-            "title": "Technical consulting for financial products",
-            "description": "From payments and wallets to automated investing flows—I help you analyse requirements, surface technical risk, and align the product direction with local regulation so you can ship with confidence."
+            "title": "Consulting & systems architecture ",
+            "description": "We review requirements together and shape system architecture. The goal is direct: choose the right technologies, reduce risk, and build a financial system that survives real load and holds up with supervisors—without engineering complexity you do not need.",
+            "cta": "Request technical consulting"
           },
-          "architecture": {
-            "title": "Software architecture for FinTech",
-            "description": "I help you define solid, adaptable software architecture. We focus on scalability, sensible technology choices, and strong security and identity patterns—so the platform can grow without stumbling."
-          },
-          "mentorship": {
-            "badge": "For developers & tech leads",
-            "title": "Mentorship & capability building",
-            "description": "Focused 1:1 sessions for developers and engineering leads. I pass on practical patterns for building FinTech platforms—so your team makes calmer architecture calls and moves through hard engineering problems with confidence.",
-            "cta": "Ask about mentorship"
+          "enablement": {
+            "title": "Upskilling & one-to-one mentoring ",
+            "description": "Live one-to-one sessions for developers and technical teams. We focus on how the market actually works—financial systems and compliance in practice—so the team gains judgement and makes sound engineering calls in day-to-day delivery, not only writing code.",
+            "cta": "Book a mentoring session"
           }
         }
       },
@@ -329,25 +324,47 @@
         "title": "Introduction to Fintech and Banking System",
         "subtitle": "The Foundations Every Specialist Needs",
         "description": "Begin your journey by understanding what fintech is and its scope, and explore the evolution from traditional to digital finance.",
-        "topicsList": ["What is Fintech?", "Traditional Banking System in Saudi Arabia", "Saudi Fintech Ecosystem", "Future of Saudi Financial Sector"]
+        "topicsList": [
+          "What is Fintech?",
+          "Traditional Banking System in Saudi Arabia",
+          "Saudi Fintech Ecosystem",
+          "Future of Saudi Financial Sector"
+        ]
       },
       "phase2": {
         "title": "Regulations and Compliance in Saudi Market",
         "subtitle": "Regulatory Requirements and Frameworks",
         "description": "Master the regulatory requirements for fintech companies in Saudi Arabia.",
-        "topicsList": ["Regulatory Framework in Saudi Arabia", "Core Compliance Regulations", "Practical Application - Compliance Checklist"]
+        "topicsList": [
+          "Regulatory Framework in Saudi Arabia",
+          "Core Compliance Regulations",
+          "Practical Application - Compliance Checklist"
+        ]
       },
       "phase3": {
         "title": "Core Technologies and Open Banking",
         "subtitle": "How Fintech Actually Works",
         "description": "Move to the practical side and learn technical architecture and Open Banking.",
-        "topicsList": ["Technical Architecture of Fintech Systems", "Open Banking", "Infrastructure and Supporting Service Companies", "Emerging Technologies"]
+        "topicsList": [
+          "Technical Architecture of Fintech Systems",
+          "Open Banking",
+          "Infrastructure and Supporting Service Companies",
+          "Emerging Technologies"
+        ]
       },
       "phase4": {
         "title": "Real Use Cases and Market Opportunities",
         "subtitle": "Discussion of real-world applications and future opportunities",
         "description": "Complete your journey by discussing real use cases across neobanks, robo-advisory, crowdfunding, and other fintech models, and discover market opportunities.",
-        "topicsList": ["Neobanks: models and real use cases", "Robo-advisory and digital wealth management", "Crowdfunding and alternative finance", "Other fintech use cases", "Opportunities in Saudi Market", "How to Launch a Fintech Company", "Participants discussion"]
+        "topicsList": [
+          "Neobanks: models and real use cases",
+          "Robo-advisory and digital wealth management",
+          "Crowdfunding and alternative finance",
+          "Other fintech use cases",
+          "Opportunities in Saudi Market",
+          "How to Launch a Fintech Company",
+          "Participants discussion"
+        ]
       }
     },
     "instructor": {
@@ -357,7 +374,11 @@
     "enrollSection": {
       "title": "Ready to Launch into the World of Fintech?",
       "description": "Join a growing community of fintech enthusiasts and gain the skills demanded in the Saudi job market.",
-      "features": ["Saudi market-specific content", "Local company case studies", "Supportive learning community"]
+      "features": [
+        "Saudi market-specific content",
+        "Local company case studies",
+        "Supportive learning community"
+      ]
     }
   },
   "courseRegistration": {
