@@ -1,5 +1,7 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
+import { buildPageMetadata } from '@/core/seo/buildPageMetadata';
 import { homeData } from '@/services/api/data/home.data';
 import type { HeroSection } from '@/core/types/web/home';
 import dynamic from 'next/dynamic';
@@ -9,6 +11,21 @@ import FintechRoadmapSection from './components/FintechRoadmapSection';
 import BlogFeatureSection from './components/BlogFeatureSection';
 
 const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false });
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const { locale } = params;
+  const t = await getTranslations({ locale, namespace: 'web.home' });
+  return buildPageMetadata({
+    locale,
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+    path: '/web/home',
+  });
+}
 
 function localizedHero(hero: HeroSection, locale: string) {
   const lang = locale === 'ar' ? 'ar' : 'en';

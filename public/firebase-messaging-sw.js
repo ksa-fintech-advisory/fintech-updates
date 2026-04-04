@@ -23,8 +23,8 @@ messaging.onBackgroundMessage((payload) => {
   const notificationTitle = payload.notification?.title || 'New Notification';
   const notificationOptions = {
     body: payload.notification?.body || '',
-    icon: '/icon-192x192.png',
-    badge: '/icon-192x192.png',
+    icon: '/favicon_io/android-chrome-192x192.png',
+    badge: '/favicon_io/android-chrome-192x192.png',
     data: {
       url: payload.data?.url || '/dashboard/notifications',
     },

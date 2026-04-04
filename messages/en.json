@@ -66,6 +66,8 @@
   },
   "web": {
     "home": {
+      "metaTitle": "FinTech consulting, blog & learner roadmap",
+      "metaDescription": "Mohammed Abdo (Maal Tech): FinTech consulting, system architecture, and mentorship for teams in Saudi Arabia and the Arab world. Free learner roadmap, regulatory insights, and contact.",
       "heroSignoff": "Mohammed Abdo · Maal Tech",
       "closingLead": "If something here resonated, tell me what you are building—I answer every serious note myself.",
       "closingCta": "Say hello",
@@ -160,6 +162,8 @@
       "collapseTopic": "Hide details"
     },
     "blog": {
+      "metaTitle": "Blog — FinTech, regulation & product",
+      "metaDescription": "Long-form articles on FinTech, supervision, product, and engineering—for practitioners and newcomers in Saudi Arabia and the wider Arab region.",
       "title": "Blog",
       "subtitle": "Insights and updates from the FinTech world",
       "noResults": "No blog posts found"
@@ -170,6 +174,8 @@
       "noUpdates": "No updates found"
     },
     "about": {
+      "metaTitle": "About Mohammed Abdo — FinTech advisor & engineer",
+      "metaDescription": "Who I am, how I work with regulated FinTech teams, and what to expect from consulting, architecture, and writing at Maal Tech.",
       "title": "About me",
       "subtitle": "I'm Mohammed Abdo. I spend most of my time where regulated FinTech meets real engineering—helping teams make clearer product calls, tighter architecture, and calmer compliance conversations.",
       "heroBadge": "// ABOUT_ME",
@@ -193,6 +199,8 @@
       "ctaButton": "Get in touch"
     },
     "contact": {
+      "metaTitle": "Contact — consulting, architecture & mentorship",
+      "metaDescription": "Reach Mohammed Abdo for FinTech consulting, architecture reviews, or mentorship. Email, WhatsApp, or the contact form.",
       "title": "Get in touch",
       "subtitle": "Consulting, architecture questions, or mentorship — send a note and I’ll reply by email.",
       "kicker": "// CONTACT",

@@ -1,11 +1,28 @@
+import type { Metadata } from 'next';
 import { aboutUsApiService } from '@/services/api/aboutUsApi';
 import { getTranslations } from 'next-intl/server';
+import { buildPageMetadata } from '@/core/seo/buildPageMetadata';
 import { AboutHero } from '@/core/components/web/about/AboutHero';
 import { AboutProfileCard } from '@/core/components/web/about/AboutProfileCard';
 import { AboutMissionVision } from '@/core/components/web/about/AboutMissionVision';
 import { AboutValuesGrid } from '@/core/components/web/about/AboutValuesGrid';
 import { AboutExpertiseGrid } from '@/core/components/web/about/AboutExpertiseGrid';
 import { AboutClosingCta } from '@/core/components/web/about/AboutClosingCta';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const { locale } = params;
+  const t = await getTranslations({ locale, namespace: 'web.about' });
+  return buildPageMetadata({
+    locale,
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+    path: '/web/about',
+  });
+}
 
 export default async function AboutPage({ params }: { params: { locale: string } }) {
   const { locale } = params;
