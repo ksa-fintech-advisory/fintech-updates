@@ -7,18 +7,21 @@ type BuildOpts = {
   description: string;
   /** Path after locale, e.g. `/web/home` */
   path: string;
+  /** Extra phrases for crawlers / answer engines (optional). */
+  keywords?: string[];
 };
 
 /**
  * Per-locale page metadata with hreflang-style alternates and Open Graph.
  */
-export function buildPageMetadata({ locale, title, description, path }: BuildOpts): Metadata {
+export function buildPageMetadata({ locale, title, description, path, keywords }: BuildOpts): Metadata {
   const base = getSiteUrl();
   const canonicalPath = `/${locale}${path}`;
 
   return {
     title,
     description,
+    ...(keywords?.length ? { keywords } : {}),
     alternates: {
       canonical: canonicalPath,
       languages: {

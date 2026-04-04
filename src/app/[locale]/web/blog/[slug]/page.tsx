@@ -8,6 +8,8 @@ import { blogDetailHeroSrc } from '@/core/constants/blogMedia';
 import { RelatedPosts } from '@/core/components/web/blog/RelatedPosts';
 import { Metadata } from 'next';
 import { getSiteUrl, SITE_NAME } from '@/core/seo/site';
+import { JsonLd } from '@/core/seo/JsonLd';
+import { blogArticleGraphJsonLd } from '@/core/seo/structuredData';
 import { FiCalendar, FiUser, FiFolder, FiHash, FiArrowLeft, FiArrowRight, FiHome } from 'react-icons/fi';
 
 interface BlogPageProps {
@@ -36,6 +38,8 @@ export async function generateMetadata({ params: { slug, locale } }: BlogPagePro
   return {
     title: blog.title,
     description: blog.excerpt,
+    keywords: blog.tags,
+    authors: authorName ? [{ name: authorName }] : undefined,
     alternates: {
       canonical: `/${locale}${path}`,
       languages: {
@@ -62,6 +66,9 @@ export async function generateMetadata({ params: { slug, locale } }: BlogPagePro
       description: blog.excerpt,
       images: [ogImage],
     },
+    other: {
+      'article:section': blog.category.name,
+    },
   };
 }
 
@@ -77,11 +84,20 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
   const title = blog.title;
   const excerpt = blog.excerpt;
   const content = blog.content;
-  const currentUrl = `https://fintech-updates.sa/${locale}/web/blog/${slug}`;
+  const base = getSiteUrl();
+  const currentUrl = `${base}/${locale}/web/blog/${slug}`;
   const heroImageSrc = blogDetailHeroSrc(blog.featuredImage);
 
   return (
     <div className="w-full bg-zinc-50 dark:bg-black min-h-screen font-sans selection:bg-primary-500/30">
+      <JsonLd
+        data={blogArticleGraphJsonLd({
+          base,
+          locale,
+          slug,
+          blog,
+        })}
+      />
 
       {/* 1. Global Engineering Grid */}
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />

@@ -9,6 +9,9 @@ import { BlogFilters } from '@/core/components/web/blog/BlogFilters';
 import { BlogPagination } from '@/core/components/web/blog/BlogPagination';
 import { FiBookOpen, FiCalendar, FiUser, FiArrowRight, FiArrowLeft, FiSlash } from 'react-icons/fi';
 import { blogCardImageUrl } from '@/core/constants/blogMedia';
+import { getSiteUrl } from '@/core/seo/site';
+import { JsonLd } from '@/core/seo/JsonLd';
+import { blogCollectionPageJsonLd } from '@/core/seo/structuredData';
 
 // WaveField3D can be kept if it fits the theme (e.g., monochrome particles), otherwise consider a simpler grid
 const WaveField3D = nextDynamic(() => import('@/core/components/web/blog/WaveField3D'), { ssr: false });
@@ -64,8 +67,26 @@ export default async function BlogPage({
   /** Remount stagger animation after client navigation (page/category/search); avoids stuck opacity 0 from whileInView once:true. */
   const blogGridKey = `blog-grid-${currentPage}-${categorySlug}-${searchQuery}`;
 
+  const t = await getTranslations({ locale, namespace: 'web.blog' });
+  const qs = new URLSearchParams();
+  if (currentPage > 1) qs.set('page', String(currentPage));
+  if (categorySlug) qs.set('category', categorySlug);
+  if (searchQuery) qs.set('q', searchQuery);
+  const pathWithQuery = `/${locale}/web/blog${qs.toString() ? `?${qs}` : ''}`;
+
   return (
     <div className="w-full bg-zinc-50 dark:bg-black selection:bg-primary-500/30">
+      <JsonLd
+        data={blogCollectionPageJsonLd({
+          base: getSiteUrl(),
+          locale,
+          pathWithQuery,
+          name: t('metaTitle'),
+          description: t('metaDescription'),
+          blogs,
+          listStartIndex: (currentPage - 1) * limit + 1,
+        })}
+      />
 
       {/* 1. Global Engineering Grid */}
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
