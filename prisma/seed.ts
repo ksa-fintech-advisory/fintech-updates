@@ -295,20 +295,21 @@ async function main() {
   await prisma.hero.create({
     data: {
       name: 'Default Hero',
-      titleEn: 'FinTech and regulation, in clearer terms for product teams',
-      titleAr: 'تقنية مالية وتنظيم، بلغة أوضح لفرق المنتج',
-      subtitleEn: "I'm Mohammed Abdo—I consult, design systems, and write for teams building regulated FinTech across the Arab world.",
+      titleEn: 'FinTech systems engineering—from idea to compliance.',
+      titleAr: 'هندسة أنظمة التقنية المالية، من الفكرة إلى الامتثال.',
+      subtitleEn:
+        "I'm Mohammed Abdo, a software engineer and systems architect. I help teams and companies design and build secure financial platforms aligned with Saudi and Arab market expectations.",
       subtitleAr:
-        'أنا محمد عبده؛ أستشير وأصمّم الأنظمة وأكتب مع فرق تبني في التقنية المالية حيث يلتقي المنتج بالتنظيم — في العالم العربي.',
+        'أنا محمد عبده، مهندس برمجيات ومهندس أنظمة (Software Architect). أساعد الفرق والشركات في تصميم وبناء منصات مالية مبتكرة وآمنة، تلبي تطلعات السوق السعودي والعربي.',
       descriptionEn:
-        'I help you cut through noise—product and technical choices, compliance context, and pragmatic architecture—so you ship with confidence.',
+        'Here I distill field lessons from building real products—and I work with you to turn complex ideas into reliable, scalable systems.',
       descriptionAr:
-        'أساعدك على تقليل الضجيج: قرارات المنتج والتقنية، سياق الامتثال، وهندسة عملية — لتطلق بثقة.',
+        'هنا، أشاركك خلاصة تجاربي العملية في بناء المنتجات، وأرافقك في رحلة تحويل الأفكار المعقدة إلى أنظمة موثوقة وقابلة للتوسع.',
       ctaButtons: JSON.stringify([
         {
-          labelEn: 'Get in touch',
-          labelAr: 'تواصل معي',
-          href: '/web/contact',
+          labelEn: 'How I can help',
+          labelAr: 'كيف أساعدك؟',
+          href: '#services',
           variant: 'primary',
         },
         {

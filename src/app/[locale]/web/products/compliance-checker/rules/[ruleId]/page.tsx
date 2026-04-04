@@ -54,7 +54,7 @@ export default function RuleDetailsPage({
                   {rule.risk_level[locale as 'en' | 'ar']} RISK
                 </span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-black text-zinc-900 dark:text-white tracking-tight">
+              <h1 className="text-3xl md:text-4xl font-black text-zinc-900 dark:text-white tracking-tight leading-[1.2] md:leading-[1.16]">
                 {isArabic ? 'تفاصيل القاعدة التنظيمية' : 'Regulatory Rule Details'}
               </h1>
             </div>

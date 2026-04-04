@@ -164,7 +164,7 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
                 </span>
               </div>
 
-              <h1 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">
+              <h1 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-[1.2] md:leading-[1.14]">
                 {update.title}
               </h1>
 

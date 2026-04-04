@@ -1,6 +1,6 @@
 import type { AboutUsContent } from '@/core/types/web/aboutUs';
+import { ABOUT_EXPERTISE_ICONS } from '@/core/components/web/about/aboutUsIconMaps';
 import { StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
-import { FiBriefcase, FiCpu, FiShield, FiAward } from 'react-icons/fi';
 
 type Props = {
   content: AboutUsContent;
@@ -8,8 +8,6 @@ type Props = {
   expertiseKicker: string;
   expertiseHeading: string;
 };
-
-const FALLBACK_ICONS = [FiBriefcase, FiCpu, FiShield, FiAward] as const;
 
 export function AboutExpertiseGrid({ content, isArabic, expertiseKicker, expertiseHeading }: Props) {
   return (
@@ -24,9 +22,9 @@ export function AboutExpertiseGrid({ content, isArabic, expertiseKicker, experti
           </div>
         </div>
 
-        <StaggerContainer className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {content.expertise.map((area, idx) => {
-            const Icon = FALLBACK_ICONS[idx % FALLBACK_ICONS.length];
+        <StaggerContainer className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {content.expertise.map((area) => {
+            const Icon = ABOUT_EXPERTISE_ICONS[area.iconKey];
             return (
               <StaggerItem key={area.id}>
                 <div className="group flex items-start gap-6 border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-400 dark:border-zinc-800 dark:bg-black dark:hover:border-zinc-600">

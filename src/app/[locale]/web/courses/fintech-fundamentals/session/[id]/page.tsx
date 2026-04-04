@@ -87,7 +87,7 @@ export default async function SessionDetailPage({
                 
               </div>
 
-              <h1 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+              <h1 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight leading-[1.2] md:leading-[1.14]">
                 {session.title[lang]}
               </h1>
 

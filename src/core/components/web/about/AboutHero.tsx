@@ -26,7 +26,7 @@ export function AboutHero({ heroBadge, title, subtitle }: Props) {
           </AnimatedSection>
 
           <AnimatedSection direction="up" delay={0.2}>
-            <h1 className="mb-8 text-5xl font-bold leading-tight tracking-tight text-zinc-900 dark:text-white md:text-7xl">
+            <h1 className="mb-8 text-5xl font-bold leading-[1.16] tracking-tight text-zinc-900 dark:text-white md:text-7xl md:leading-[1.12]">
               {title}
             </h1>
           </AnimatedSection>

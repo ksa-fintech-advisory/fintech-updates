@@ -7,6 +7,8 @@ import { NotificationProvider } from '@/core/notifications/NotificationProvider'
 import Header from '@/core/components/web/layout/Header';
 import Footer from '@/core/components/web/layout/Footer';
 import { getSiteUrl } from '@/core/seo/site';
+import { JsonLd } from '@/core/seo/JsonLd';
+import { siteWideGraphJsonLd } from '@/core/seo/structuredData';
 import '@/core/theme/globals.css';
 
 const fav = '/favicon_io';
@@ -119,6 +121,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={direction} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col bg-grey-50">
+        <JsonLd data={siteWideGraphJsonLd(getSiteUrl())} />
         <ThemeProvider>
           <NotificationProvider>
             <NextIntlClientProvider messages={messages} locale={locale}>

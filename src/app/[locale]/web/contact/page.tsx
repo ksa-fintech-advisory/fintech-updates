@@ -11,6 +11,7 @@ import {
   FiCheckCircle,
   FiAlertCircle,
   FiMessageSquare,
+  FiShield,
   FiTwitter,
   FiLinkedin,
 } from 'react-icons/fi';
@@ -75,7 +76,7 @@ export default function ContactPage() {
               <p className="mb-4 font-mono text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
                 {t('kicker')}
               </p>
-              <h1 className="mb-5 text-4xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-5xl lg:text-6xl">
+              <h1 className="mb-5 text-4xl font-bold leading-[1.18] tracking-tight text-zinc-900 dark:text-white md:text-5xl md:leading-[1.15] lg:text-6xl lg:leading-[1.12]">
                 {t('title')}
               </h1>
               <p className="max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-xl">
@@ -167,6 +168,15 @@ export default function ContactPage() {
                       <h2 className="text-lg font-bold text-zinc-900 dark:text-white">{t('formCardTitle')}</h2>
                       <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{t('formCardHint')}</p>
                     </div>
+                  </div>
+                </div>
+
+                <div className="border-b border-zinc-100 bg-zinc-50/90 px-6 py-4 dark:border-zinc-800 dark:bg-zinc-950/50 md:px-8">
+                  <div className="flex gap-3">
+                    <div className="mt-0.5 shrink-0 text-primary-600 dark:text-primary-400" aria-hidden>
+                      <FiShield className="h-5 w-5" />
+                    </div>
+                    <p className="text-sm leading-relaxed text-zinc-700 dark:text-zinc-300">{t('privacyNote')}</p>
                   </div>
                 </div>
 

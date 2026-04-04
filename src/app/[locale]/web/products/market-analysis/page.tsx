@@ -108,7 +108,7 @@ export default function MarketAnalysisPage({ params: { locale } }: { params: { l
                 {t.hero.badge}
               </div>
 
-              <h1 className="text-4xl md:text-6xl font-black text-zinc-900 dark:text-white mb-6 tracking-tight leading-tight">
+              <h1 className="text-4xl md:text-6xl font-black text-zinc-900 dark:text-white mb-6 tracking-tight leading-[1.16] md:leading-[1.12]">
                 {t.hero.title}
               </h1>
 

@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { AboutUsContent } from '@/core/types/web/aboutUs';
 import { useLocale } from 'next-intl';
 import { aboutUsApiService } from '@/services/api/aboutUsApi';
+import { ABOUT_EXPERTISE_ICONS, ABOUT_VALUE_ICONS } from '@/core/components/web/about/aboutUsIconMaps';
+import { FiEye, FiTarget } from 'react-icons/fi';
 
 interface AboutUsModalProps {
   isOpen: boolean;
@@ -55,7 +57,7 @@ export default function AboutUsModal({ isOpen, onClose }: AboutUsModalProps) {
           {/* Mission */}
           <section>
             <h3 className="text-xl font-bold text-grey-900 mb-3 flex items-center gap-2">
-              <span className="text-2xl">🎯</span>
+              <FiTarget className="h-6 w-6 shrink-0 text-primary-600" aria-hidden />
               {locale === 'ar' ? 'مهمتنا' : 'Our Mission'}
             </h3>
             <p className="text-grey-700 leading-relaxed">
@@ -66,7 +68,7 @@ export default function AboutUsModal({ isOpen, onClose }: AboutUsModalProps) {
           {/* Vision */}
           <section>
             <h3 className="text-xl font-bold text-grey-900 mb-3 flex items-center gap-2">
-              <span className="text-2xl">🔭</span>
+              <FiEye className="h-6 w-6 shrink-0 text-primary-600" aria-hidden />
               {locale === 'ar' ? 'رؤيتنا' : 'Our Vision'}
             </h3>
             <p className="text-grey-700 leading-relaxed">
@@ -87,10 +89,12 @@ export default function AboutUsModal({ isOpen, onClose }: AboutUsModalProps) {
               {locale === 'ar' ? 'قيمنا' : 'Our Values'}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {content.values.map((value) => (
+              {content.values.map((value) => {
+                const VIcon = ABOUT_VALUE_ICONS[value.iconKey];
+                return (
                 <div key={value.id} className="p-4 bg-grey-50 rounded-lg">
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl">{value.icon}</span>
+                    <VIcon className="h-6 w-6 shrink-0 text-grey-700" aria-hidden />
                     <div>
                       <h4 className="font-bold text-grey-900 mb-1">
                         {locale === 'ar' ? value.title.ar : value.title.en}
@@ -101,7 +105,8 @@ export default function AboutUsModal({ isOpen, onClose }: AboutUsModalProps) {
                     </div>
                   </div>
                 </div>
-              ))}
+              );
+              })}
             </div>
           </section>
 
@@ -111,10 +116,12 @@ export default function AboutUsModal({ isOpen, onClose }: AboutUsModalProps) {
               {locale === 'ar' ? 'خبرتنا' : 'Our Expertise'}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {content.expertise.map((area) => (
+              {content.expertise.map((area) => {
+                const EIcon = ABOUT_EXPERTISE_ICONS[area.iconKey];
+                return (
                 <div key={area.id} className="p-4 bg-primary-50 rounded-lg border border-primary-200">
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl">{area.icon}</span>
+                    <EIcon className="h-6 w-6 shrink-0 text-primary-800" aria-hidden />
                     <div>
                       <h4 className="font-bold text-primary-900 mb-1">
                         {locale === 'ar' ? area.title.ar : area.title.en}
@@ -125,7 +132,8 @@ export default function AboutUsModal({ isOpen, onClose }: AboutUsModalProps) {
                     </div>
                   </div>
                 </div>
-              ))}
+              );
+              })}
             </div>
           </section>
         </div>

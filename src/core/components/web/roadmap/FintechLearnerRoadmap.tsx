@@ -14,6 +14,7 @@ import {
   FiChevronDown,
   FiExternalLink,
   FiLayers,
+  FiShield,
 } from 'react-icons/fi';
 
 /** Per-phase accent (one entry per phase index). */
@@ -360,53 +361,77 @@ export default function FintechLearnerRoadmap() {
           aria-hidden
         />
 
-        <div className="container relative z-10 mx-auto max-w-3xl px-4 pb-16 pt-10 sm:px-6 lg:max-w-4xl lg:pb-20 lg:pt-12">
-          <AnimatedSection>
-            <Link
-              href={`/${locale}/web/home`}
-              className="mb-8 inline-flex items-center gap-2 rounded-md border border-zinc-700/80 bg-zinc-900/50 px-3 py-2 text-[11px] font-mono font-bold uppercase tracking-widest text-zinc-400 backdrop-blur transition-colors hover:border-zinc-600 hover:text-white sm:text-xs"
-            >
-              {isArabic ? <FiArrowRight className="h-3.5 w-3.5" aria-hidden /> : <FiArrowLeft className="h-3.5 w-3.5" aria-hidden />}
-              {t('backHome')}
-            </Link>
-
-            <div className="mb-3 inline-flex items-center gap-2 rounded border border-primary-500/25 bg-primary-500/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary-300">
-              <FiLayers className="h-3 w-3 text-primary-400" aria-hidden />
-              {t('kicker')}
+        <div className="container relative z-10 mx-auto max-w-5xl px-4 pb-20 pt-8 sm:px-6 sm:pb-24 sm:pt-10 lg:max-w-6xl lg:pb-28 lg:pt-14 xl:max-w-7xl">
+          <AnimatedSection className="flex flex-col">
+            <div className="mb-8 sm:mb-10">
+              <Link
+                href={`/${locale}/web/home`}
+                className="inline-flex items-center gap-2 rounded-md border border-zinc-700/80 bg-zinc-900/50 px-3 py-2 text-[11px] font-mono font-bold uppercase tracking-widest text-zinc-400 backdrop-blur transition-colors hover:border-zinc-600 hover:text-white sm:text-xs"
+              >
+                {isArabic ? <FiArrowRight className="h-3.5 w-3.5" aria-hidden /> : <FiArrowLeft className="h-3.5 w-3.5" aria-hidden />}
+                {t('backHome')}
+              </Link>
             </div>
 
-            <h1 className="text-3xl font-bold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-              <span className="bg-gradient-to-b from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent">
-                {t('title')}
-              </span>
-            </h1>
-            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-zinc-400 sm:text-base">{t('subtitle')}</p>
-            <p className="mt-4 max-w-2xl border-s-2 border-primary-500/45 ps-3 text-xs leading-relaxed text-zinc-500 sm:text-sm">
-              {t('journeyNote')}
-            </p>
+            <header className="flex w-full flex-col gap-6 sm:gap-7">
+              <div className="inline-flex w-fit items-center gap-2 rounded border border-primary-500/25 bg-primary-500/10 px-2.5 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary-300 sm:px-3">
+                <FiLayers className="h-3 w-3 shrink-0 text-primary-400" aria-hidden />
+                {t('kicker')}
+              </div>
 
-            <nav className="mt-8 flex flex-wrap gap-1.5 border-t border-zinc-800/80 pt-8" aria-label="Phases">
-              {phaseAnchors.map(({ phase, i, accent }) => (
-                <a
-                  key={phase.id}
-                  href={`#${phase.id}`}
-                  className="inline-flex max-w-full items-center gap-1.5 rounded border border-zinc-700/90 bg-zinc-900/40 px-2.5 py-1 text-[11px] font-medium text-zinc-300 transition-colors hover:border-zinc-600 hover:text-white sm:gap-2 sm:px-3 sm:py-1.5 sm:text-xs"
-                >
-                  <span className={`h-1 w-1 shrink-0 rounded-full sm:h-1.5 sm:w-1.5 ${accent.rail}`} aria-hidden />
-                  <span className="font-mono text-[10px] text-zinc-500">{String(i + 1).padStart(2, '0')}</span>
-                  <span className="truncate">{phase.title[lang]}</span>
-                </a>
-              ))}
-            </nav>
+              <h1
+                className={`text-3xl font-bold tracking-tight sm:text-4xl sm:leading-[1.2] lg:text-[2.75rem] lg:leading-[1.16] ${
+                  isArabic ? 'leading-[1.34]' : 'leading-[1.18]'
+                }`}
+              >
+                <span className="bg-gradient-to-b from-white via-zinc-100 to-zinc-400 bg-clip-text text-transparent">
+                  {t('title')}
+                </span>
+              </h1>
+
+              <p className="w-full text-base leading-[1.65] text-zinc-400 sm:text-lg sm:leading-relaxed">
+                {t('subtitle')}
+              </p>
+
+              <div className="w-full rounded-xl border border-primary-500/25 bg-primary-500/[0.07] px-4 py-4 sm:px-5 sm:py-5">
+                <p className="text-sm leading-[1.65] text-zinc-300 sm:text-base sm:leading-relaxed">{t('journeyNote')}</p>
+              </div>
+            </header>
+
+            <div className="mt-12 border-t border-zinc-800/70 pt-10 sm:mt-14 sm:pt-12">
+              <p className="mb-4 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 sm:mb-5">
+                {t('phasesNavLabel')}
+              </p>
+              <nav className="flex flex-wrap gap-2 sm:gap-2.5" aria-label={t('phasesNavLabel')}>
+                {phaseAnchors.map(({ phase, i, accent }) => (
+                  <a
+                    key={phase.id}
+                    href={`#${phase.id}`}
+                    className="inline-flex max-w-full min-h-[2.5rem] items-center gap-2 rounded-lg border border-zinc-700/90 bg-zinc-900/45 px-3 py-2 text-start text-[11px] font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:bg-zinc-900/70 hover:text-white sm:min-h-0 sm:px-3.5 sm:py-2 sm:text-xs"
+                  >
+                    <span className={`h-1.5 w-1.5 shrink-0 rounded-full sm:h-2 sm:w-2 ${accent.rail}`} aria-hidden />
+                    <span className="font-mono text-[10px] tabular-nums text-zinc-500">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="min-w-0 truncate">{phase.title[lang]}</span>
+                  </a>
+                ))}
+              </nav>
+            </div>
           </AnimatedSection>
         </div>
       </section>
 
-      <div className="relative z-10 -mt-6 px-4 pb-16 sm:px-6 lg:pb-24">
-        <div className="container mx-auto max-w-3xl lg:max-w-4xl">
-          <p className="mb-6 text-center text-xs leading-relaxed text-zinc-500 dark:text-zinc-500 sm:text-start sm:text-sm">
-            {t('topicsSub')}
-          </p>
+      <div className="relative z-10 px-4 pb-16 sm:px-6 lg:pb-24">
+        <div className="container mx-auto max-w-5xl pt-10 sm:pt-12 lg:max-w-6xl lg:pt-14 xl:max-w-7xl">
+          <div className="mb-10 sm:mb-12">
+            <div className="rounded-2xl border border-zinc-200 bg-white px-5 py-5 shadow-sm dark:border-zinc-700/90 dark:bg-zinc-900/85 sm:px-7 sm:py-6">
+              <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+                {t('topicsSubLabel')}
+              </p>
+              <p className="text-sm leading-[1.7] text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-relaxed">
+                {t('topicsSub')}
+              </p>
+            </div>
+          </div>
 
           <div className="flex flex-col gap-3 sm:gap-4">
             {fintechLearnerPhases.map((phase, index) => {
@@ -428,31 +453,48 @@ export default function FintechLearnerRoadmap() {
             })}
           </div>
 
-          <AnimatedSection className="mt-10 sm:mt-14">
-            <div className="relative overflow-hidden rounded-xl p-px shadow-sm sm:rounded-2xl">
-              <div
-                className="absolute inset-0 bg-gradient-to-br from-primary-500/25 via-zinc-300/15 to-accent-500/20 dark:from-primary-500/15 dark:via-zinc-600/10 dark:to-accent-500/15"
-                aria-hidden
-              />
-              <div className="relative rounded-[11px] bg-white px-5 py-8 text-center dark:rounded-[15px] dark:bg-zinc-950 sm:rounded-[15px] sm:px-8 sm:py-10 dark:sm:rounded-[19px]">
-                <p className="mx-auto max-w-xl text-xs leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-sm md:text-base">
-                  {t('disclaimer')}
-                </p>
-                <div className="mt-6 flex flex-col items-stretch justify-center gap-2.5 sm:mt-8 sm:flex-row sm:items-center sm:gap-3">
-                  <Link
-                    href={`/${locale}/web/blog`}
-                    className="inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-200 bg-zinc-50 px-5 py-3 text-sm font-bold text-zinc-800 transition-all hover:border-primary-500/40 hover:bg-white dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-primary-400/40"
+          <AnimatedSection className="mt-12 sm:mt-16">
+            <aside
+              aria-labelledby="roadmap-disclaimer-title"
+              className="overflow-hidden rounded-sm border border-zinc-300 bg-zinc-100/90 shadow-sm dark:border-zinc-600 dark:bg-zinc-900/80 sm:rounded-md"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-stretch">
+                <div
+                  className="flex items-center justify-center border-b border-zinc-300 bg-zinc-200/95 px-4 py-4 dark:border-zinc-600 dark:bg-zinc-800/95 sm:w-[4.5rem] sm:shrink-0 sm:flex-col sm:border-b-0 sm:border-e sm:px-2 sm:py-8"
+                  aria-hidden
+                >
+                  <FiShield className="h-7 w-7 text-zinc-600 dark:text-zinc-400" />
+                </div>
+                <div className="min-w-0 flex-1 px-5 py-6 sm:px-8 sm:py-8">
+                  <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.26em] text-zinc-500 dark:text-zinc-400">
+                    {t('disclaimerKicker')}
+                  </p>
+                  <h2
+                    id="roadmap-disclaimer-title"
+                    className="mt-2.5 text-lg font-semibold leading-snug tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-xl"
                   >
-                    {t('ctaBlog')}
-                  </Link>
-                  <Link
-                    href={`/${locale}/web/contact`}
-                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-zinc-900 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-primary-100"
-                  >
-                    {t('ctaContact')}
-                  </Link>
+                    {t('disclaimerTitle')}
+                  </h2>
+                  <p className="mt-4 text-sm leading-[1.85] text-zinc-800 dark:text-zinc-300 sm:text-[0.9375rem] sm:leading-[1.8]">
+                    {t('disclaimerBody')}
+                  </p>
                 </div>
               </div>
+            </aside>
+
+            <div className="mt-8 flex flex-col gap-2.5 border-t border-zinc-200 pt-8 dark:border-zinc-800 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3 sm:pt-10">
+              <Link
+                href={`/${locale}/web/blog`}
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-zinc-300 bg-white px-5 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-950 dark:text-zinc-100 dark:hover:border-zinc-500 dark:hover:bg-zinc-900"
+              >
+                {t('ctaBlog')}
+              </Link>
+              <Link
+                href={`/${locale}/web/contact`}
+                className="inline-flex items-center justify-center gap-2 rounded-md border border-zinc-800 bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:border-zinc-300 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+              >
+                {t('ctaContact')}
+              </Link>
             </div>
           </AnimatedSection>
         </div>
