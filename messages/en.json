@@ -212,6 +212,7 @@
       "whatsappHint": "Suited to quick questions, scheduling calls, and first-touch coordination.",
       "formCardTitle": "Tell me what you’re working on",
       "formCardHint": "Please share enough detail about your project or question so I can respond in the most useful way.",
+      "privacyNote": "Privacy note: Your message goes straight to my personal inbox—it is not routed through assistants or a team. Whether you are sharing an early-stage project idea or sensitive technical details, I guarantee full confidentiality: your information stays between us only.",
       "successTitle": "Message sent",
       "errorTitle": "Could not send",
       "form": {
