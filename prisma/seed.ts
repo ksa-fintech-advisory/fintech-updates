@@ -295,10 +295,11 @@ async function main() {
   await prisma.hero.create({
     data: {
       name: 'Default Hero',
-      titleEn: "FinTech clarity—you're at the heart of what matters",
-      titleAr: 'وضوحٌ في التقنية المالية — وأنت في جوهر الموضوع',
-      subtitleEn: 'Writing, consulting, and system architecture for teams and builders across the Arab world',
-      subtitleAr: 'محتوى واستشارات وهندسة أنظمة للفرق والمبدعين في العالم العربي',
+      titleEn: 'FinTech and regulation, in clearer terms for product teams',
+      titleAr: 'تقنية مالية وتنظيم، بلغة أوضح لفرق المنتج',
+      subtitleEn: "I'm Mohammed Abdo—I consult, design systems, and write for teams building regulated FinTech across the Arab world.",
+      subtitleAr:
+        'أنا محمد عبده؛ أستشير وأصمّم الأنظمة وأكتب مع فرق تبني في التقنية المالية حيث يلتقي المنتج بالتنظيم — في العالم العربي.',
       descriptionEn:
         'I help you cut through noise—product and technical choices, compliance context, and pragmatic architecture—so you ship with confidence.',
       descriptionAr:

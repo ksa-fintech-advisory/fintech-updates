@@ -1,10 +1,11 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
-import { FiTool, FiLayers, FiUsers } from 'react-icons/fi';
+import { FiTool, FiLayers, FiUsers, FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
-const SERVICE_IDS = ['consulting', 'architecture', 'mentorship'] as const;
+const SERVICE_IDS = ['consulting', 'mentorship', 'architecture'] as const;
 
 const SERVICE_ICONS = {
   consulting: FiTool,
@@ -14,48 +15,88 @@ const SERVICE_ICONS = {
 
 export default function ServicesSection() {
   const t = useTranslations('web.home.services');
+  const locale = useLocale();
+  const isArabic = locale === 'ar';
 
   return (
-    <section className="py-24 bg-zinc-50 dark:bg-zinc-950 relative overflow-hidden border-b border-zinc-200 dark:border-zinc-800">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+    <section className="relative overflow-hidden border-b border-zinc-200 bg-zinc-50 py-16 dark:border-zinc-800 dark:bg-zinc-950 md:py-20">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <AnimatedSection className="mb-16">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div className="max-w-2xl">
-              <span className="text-primary-600 dark:text-primary-400 font-mono text-xs font-bold uppercase tracking-widest mb-3 block">
-                {t('kicker')}
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white tracking-tight">
-                {t('title')}
-              </h2>
-            </div>
-            <p className="text-zinc-500 dark:text-zinc-400 max-w-md text-sm leading-relaxed">
-              {t('intro')}
-            </p>
-          </div>
+      <div className="container relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:max-w-6xl lg:px-8">
+        <AnimatedSection className="mb-8 md:mb-10">
+          <p className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
+            {t('kicker')}
+          </p>
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-3xl">
+            {t('title')}
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            {t('intro')}
+          </p>
         </AnimatedSection>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {SERVICE_IDS.map((id) => {
-            const Icon = SERVICE_ICONS[id];
-            return (
-              <StaggerItem key={id} className="h-full">
-                <article className="h-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 flex flex-col transition-all duration-300 relative overflow-hidden hover:border-zinc-400 dark:hover:border-zinc-600">
-                  <div className="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-800 text-zinc-900 dark:text-white w-fit mb-6">
-                    <Icon className="w-6 h-6" aria-hidden />
-                  </div>
-                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-3">
-                    {t(`items.${id}.title`)}
-                  </h3>
-                  <p className="text-zinc-500 dark:text-zinc-400 text-sm leading-relaxed">
-                    {t(`items.${id}.description`)}
-                  </p>
-                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-100/50 to-transparent dark:from-zinc-800/20 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
-                </article>
-              </StaggerItem>
-            );
-          })}
+        {/* One panel, three lanes — spec-sheet feel instead of separate cards */}
+        <StaggerContainer>
+          <StaggerItem>
+            <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-950 dark:shadow-none">
+              <div className="grid divide-y divide-zinc-200 dark:divide-zinc-800 md:grid-cols-3 md:divide-x md:divide-y-0">
+                {SERVICE_IDS.map((id, index) => {
+                  const Icon = SERVICE_ICONS[id];
+                  const isMentorship = id === 'mentorship';
+                  const step = String(index + 1).padStart(2, '0');
+
+                  return (
+                    <article
+                      key={id}
+                      className={
+                        isMentorship
+                          ? 'relative bg-primary-500/[0.06] px-5 py-7 dark:bg-primary-500/[0.08] md:px-6 md:py-8 lg:px-8'
+                          : 'px-5 py-7 md:px-6 md:py-8 lg:px-8'
+                      }
+                    >
+                      {isMentorship ? (
+                        <span className="mb-3 inline-block font-mono text-[10px] font-bold uppercase tracking-widest text-primary-700 dark:text-primary-300">
+                          {t('items.mentorship.badge')}
+                        </span>
+                      ) : null}
+
+                      <div className="flex gap-3">
+                        <div className="flex shrink-0 items-center gap-2 pt-0.5" aria-hidden>
+                          <span className="font-mono text-sm font-bold tabular-nums text-zinc-300 dark:text-zinc-600">
+                            {step}
+                          </span>
+                          <Icon
+                            className={`h-4 w-4 ${isMentorship ? 'text-primary-600 dark:text-primary-400' : 'text-zinc-400 dark:text-zinc-500'}`}
+                          />
+                        </div>
+                        <h3 className="min-w-0 flex-1 text-base font-bold leading-snug text-zinc-900 dark:text-white">
+                          {t(`items.${id}.title`)}
+                        </h3>
+                      </div>
+
+                      <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                        {t(`items.${id}.description`)}
+                      </p>
+
+                      {isMentorship ? (
+                        <Link
+                          href={`/${locale}/web/contact`}
+                          className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary-700 hover:underline dark:text-primary-300"
+                        >
+                          {t('items.mentorship.cta')}
+                          {isArabic ? (
+                            <FiArrowLeft className="h-3.5 w-3.5" aria-hidden />
+                          ) : (
+                            <FiArrowRight className="h-3.5 w-3.5" aria-hidden />
+                          )}
+                        </Link>
+                      ) : null}
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          </StaggerItem>
         </StaggerContainer>
       </div>
     </section>

@@ -34,7 +34,7 @@ export default function BlogFeatureSection() {
                 {t('title')}
               </h2>
             </div>
-            <p className="max-w-md text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">{t('intro')}</p>
+            <p className="max-w-xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-base">{t('intro')}</p>
           </div>
         </AnimatedSection>
 
@@ -72,10 +72,12 @@ export default function BlogFeatureSection() {
           </StaggerContainer>
         </div>
 
-        <StaggerContainer className="relative space-y-0 ps-1 md:hidden">
+        {/* Mobile timeline: step rail always first in DOM so it sits on inline-start (LTR=left, RTL=right).
+            Do not use flex-row-reverse here — it moved badges away from the line in RTL. */}
+        <StaggerContainer className="relative space-y-0 md:hidden">
           <div
             className="absolute top-3 bottom-3 w-0.5 rounded-full bg-gradient-to-b from-zinc-200 via-primary-500/40 to-zinc-200 dark:from-zinc-800 dark:via-primary-400/30 dark:to-zinc-800"
-            style={{ insetInlineStart: '1.125rem' }}
+            style={{ insetInlineStart: 'calc(1.125rem - 1px)' }}
             aria-hidden
           />
           {STEP_IDS.map((id, index) => {
@@ -83,13 +85,13 @@ export default function BlogFeatureSection() {
             const step = String(index + 1).padStart(2, '0');
             return (
               <StaggerItem key={id}>
-                <article
-                  className={`relative flex gap-4 pb-10 ${isArabic ? 'flex-row-reverse text-right' : ''}`}
-                >
-                  <div className="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-white bg-zinc-900 font-mono text-[10px] font-bold text-white dark:border-zinc-900 dark:bg-white dark:text-black">
-                    {step}
+                <article className="relative flex items-start gap-4 pb-10">
+                  <div className="relative z-10 flex w-9 shrink-0 justify-center">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-zinc-900 font-mono text-[10px] font-bold text-white dark:border-zinc-900 dark:bg-white dark:text-black">
+                      {step}
+                    </div>
                   </div>
-                  <div className="min-w-0 flex-1 pt-0.5">
+                  <div className="min-w-0 flex-1 pt-0.5 text-start">
                     <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white">
                       <Icon className="h-4 w-4" aria-hidden />
                     </div>
@@ -107,13 +109,13 @@ export default function BlogFeatureSection() {
         <AnimatedSection className="mt-12 flex justify-center md:mt-16">
           <Link
             href={`/${locale}/web/blog`}
-            className="group inline-flex items-center gap-2 font-mono text-sm font-bold text-zinc-600 transition-colors hover:text-primary-600 dark:text-zinc-400 dark:hover:text-primary-400"
+            className="group inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-6 py-3 text-sm font-bold text-zinc-900 shadow-sm transition-all hover:border-primary-500/50 hover:text-primary-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:border-primary-400/50 dark:hover:text-primary-300"
           >
             {t('cta')}
             {isArabic ? (
-              <FiArrowLeft className="transition-transform group-hover:-translate-x-0.5" />
+              <FiArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" aria-hidden />
             ) : (
-              <FiArrowRight className="transition-transform group-hover:translate-x-0.5" />
+              <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
             )}
           </Link>
         </AnimatedSection>

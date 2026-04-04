@@ -198,6 +198,110 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
     ],
   },
   {
+    id: 'fintech-domains',
+    title: { en: 'FinTech applications & domains', ar: 'تطبيقات الفنتك والمجالات' },
+    summary: {
+      en: 'FinTech is not only checkout. Map the main product lanes—lending, wealth, crypto, treasury, insurance—so you know where your interest fits and which regulators usually show up.',
+      ar: 'الفنتك ليس مجرد دفع في المتجر. ارسم مسارات المنتج الرئيسة — الإقراض، الثروة، الأصول الرقمية، الخزينة، التأمين — لتعرف أين يقع اهتمامك وأي جهات تنظيمية تظهر عادة.',
+    },
+    outcomes: {
+      en: [
+        'Name at least six FinTech application areas and one example product in each',
+        'Explain why the same payment rail can power different “apps” (wallet vs merchant vs payroll)',
+      ],
+      ar: [
+        'ذكر ستة مجالات تطبيقية للفنتك على الأقل مع مثال منتج في كل منها',
+        'شرح لماذا قناة دفع واحدة قد تخدم «تطبيقات» مختلفة (محفظة مقابل تاجر مقابل رواتب)',
+      ],
+    },
+    topics: [
+      {
+        id: 'fd1',
+        title: { en: 'Payments, acquiring & merchant services', ar: 'المدفوعات والاستحواذ وخدمات التاجر' },
+        description: {
+          en: 'One important lane—but only one: gateways, POS, subscriptions, payouts, and embedded checkout. Understand it as infrastructure other apps sit on top of.',
+          ar: 'مسار مهم — لكنه واحد فقط: بوابات الدفع، نقاط البيع، الاشتراكات، المدفوعات للأطراف، والدفع المدمج. افهمه كبنية يبني فوقها تطبيقات أخرى.',
+        },
+        resources: [
+          r('fd1a', 'McKinsey: Global Payments', 'ماكينزي: المدفوعات العالمية', 'https://www.mckinsey.com/industries/financial-services/our-insights'),
+          r('fd1b', 'BIS: Retail payments', 'بنك التسويات: مدفوعات التجزئة', 'https://www.bis.org/cpmi/publ/d207.pdf'),
+        ],
+      },
+      {
+        id: 'fd2',
+        title: { en: 'Lending, credit & BNPL', ar: 'الإقراض والائتمان والدفع لاحقاً' },
+        description: {
+          en: 'Balance-sheet lending vs marketplace models, credit scoring, collections ethics, and why BNPL is regulated as credit in many jurisdictions.',
+          ar: 'الإقراض من الميزانية مقابل الأسواق، تسجيل الائتمان، أخلاقيات التحصيل، ولماذا يُعامل الدفع لاحقاً كائتمان في كثير من الأنظمة.',
+        },
+        resources: [
+          r('fd2a', 'CFPB: BNPL market (US)', 'مكتب الحماية المالية: سوق الدفع لاحقاً', 'https://www.consumerfinance.gov/about-us/newsroom/cfpb-research-releases-buy-now-pay-later-report/'),
+          r('fd2b', 'World Bank: Digital credit', 'البنك الدولي: الائتمان الرقمي', 'https://www.worldbank.org/en/topic/financialsector/brief/digital-credit'),
+        ],
+      },
+      {
+        id: 'fd3',
+        title: { en: 'Wealth, trading & robo-advisory', ar: 'الثروة والتداول والاستشارة الآلية' },
+        description: {
+          en: 'Brokerage stacks, fee compression, suitability rules, and how algorithms allocate across ETFs—ties to portfolio science in the “engines” phase.',
+          ar: 'بنية الوساطة، ضغط العمولات، قواعد الملاءمة، وكيف توزع الخوارزميات على صناديق المؤشرات — يرتبط بعلم المحافظ في مرحلة «المحركات».',
+        },
+        resources: [
+          r('fd3a', 'SEC: Robo-advisers (investor bulletin)', 'هيئة الأوراق الأمريكية: الروبو-مستشار', 'https://www.sec.gov/oiea/investor-alerts-bulletins/ib_robo-advisers'),
+          r('fd3b', 'IOSCO: Retail market conduct', 'أيوسكو: سلوك سوق التجزئة', 'https://www.iosco.org/'),
+        ],
+      },
+      {
+        id: 'fd4',
+        title: { en: 'Digital assets, custody & market structure', ar: 'الأصول الرقمية والحفظ وهيكل السوق' },
+        description: {
+          en: 'Trading venues vs brokers, cold/hot custody, stablecoins vs CBDC narratives, and why “crypto FinTech” still intersects payments and securities law.',
+          ar: 'منصات التداول مقابل الوسطاء، الحفظ البارد/الساخن، العملات المستقرة مقابل سرد العملة الرقمية للبنك المركزي، ولماذا «فنتك الكريبتو» يتقاطع مع قانون المدفوعات والأوراق.',
+        },
+        resources: [
+          r('fd4a', 'FATF: Virtual assets guidance', 'فاتف: إرشادات الأصول الافتراضية', 'https://www.fatf-gafi.org/en/publications/Fatfrecommendations/Guidance-rba-virtual-assets-vasps.html'),
+          r('fd4b', 'BIS: CBDC tracker', 'بنك التسويات: تتبع العملة الرقمية للبنك المركزي', 'https://www.bis.org/about/bisih/topics/cbdc.htm'),
+        ],
+      },
+      {
+        id: 'fd5',
+        title: { en: 'Crowdfunding & alternative finance', ar: 'التمويل الجماعي والتمويل البديل' },
+        description: {
+          en: 'Equity vs reward vs debt crowdfunding, platform due diligence, and regional limits on public solicitation.',
+          ar: 'تمويل جماعي بالأسهم مقابل المكافأة مقابل الدين، العناية الواجبة على المنصات، وحدود الطرح العلني إقليمياً.',
+        },
+        resources: [
+          r('fd5a', 'Cambridge: Alternative finance reports', 'كامبريدج: تقارير التمويل البديل', 'https://www.jbs.cam.ac.uk/faculty-research/centres/alternative-finance/publications/'),
+          r('fd5b', 'EC: Crowdfunding regulation (EU context)', 'المفوضية الأوروبية: تنظيم التمويل الجماعي', 'https://finance.ec.europa.eu/crowdfunding_en'),
+        ],
+      },
+      {
+        id: 'fd6',
+        title: { en: 'Corporate, treasury & embedded B2B finance', ar: 'الشركات والخزينة والتمويل المدمج B2B' },
+        description: {
+          en: 'AP/AR automation, supply-chain finance, FX hedging tools, and APIs that embed invoices, credit lines, or insurance into ERP and marketplaces.',
+          ar: 'أتمتة الذمم الدائنة/المدينة، تمويل سلسلة الإمداد، أدوات تحوط الصرف، وواجهات تدمج الفواتير أو خطوط الائتمان أو التأمين في أنظمة تخطيط الموارد والأسواق.',
+        },
+        resources: [
+          r('fd6a', 'WEF: Trade tech / supply chain finance', 'المنتدى الاقتصادي: تكنولوجيا التجارة', 'https://www.weforum.org/stories/'),
+          r('fd6b', 'ICC: Trade finance register', 'الغرفة الدولية: سجل تمويل التجارة', 'https://iccwbo.org/'),
+        ],
+      },
+      {
+        id: 'fd7',
+        title: { en: 'InsurTech & embedded insurance', ar: 'التأمين التقني والتأمين المدمج' },
+        description: {
+          en: 'Parametric products, usage-based models, distribution through non-insurance apps, and conduct expectations when insurance is sold in three taps.',
+          ar: 'منتجات شبهية، نماذج حسب الاستخدام، التوزيع عبر تطبيقات ليست تأمينية، وتوقعات السلوك عند بيع التأمين في ثلاث نقرات.',
+        },
+        resources: [
+          r('fd7a', 'IAIS: FinTech / InsurTech', 'الجمعية الدولية للإشراف التأميني', 'https://www.iaisweb.org/page/supervision/fintech'),
+          r('fd7b', 'OECD: Technology in insurance', 'منظمة التعاون: التكنولوجيا في التأمين', 'https://www.oecd.org/finance/insurance/'),
+        ],
+      },
+    ],
+  },
+  {
     id: 'rails',
     title: { en: 'Rails & money movement', ar: 'القنوات وحركة الأموال' },
     summary: {
@@ -278,20 +382,126 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
     ],
   },
   {
+    id: 'protocols-engines',
+    title: { en: 'Networks, protocols & quant engines', ar: 'الشبكات والبروتوكولات والمحركات الكمية' },
+    summary: {
+      en: 'Under the product screens: messaging networks (SWIFT), national instant stacks (UPI-style), standards like ISO 20022, and the math that powers portfolios and trading systems—not exhaustive, but enough to speak credibly with engineers and quants.',
+      ar: 'تحت واجهات المنتج: شبكات الرسائل (سويفت)، البنى الفورية الوطنية (أسلوب يو بي آي)، معايير مثل ISO 20022، والرياضيات التي تشغل المحافظ وأنظمة التداول — ليس شاملاً، لكن يكفي للحديث بجدية مع المهندسين ومحللي الكمّ.',
+    },
+    outcomes: {
+      en: [
+        'Contrast messaging rails (e.g. SWIFT) with clearing/settlement layers in one diagram',
+        'Name where portfolio optimisation and matching engines sit in wealth and trading stacks',
+      ],
+      ar: [
+        'مقارنة قنوات الرسائل (مثل سويفت) مع طبقات المقاصة/التسوية في مخطط واحد',
+        'تحديد مكان تحسين المحافظ ومحركات المطابقة في بنى الثروة والتداول',
+      ],
+    },
+    topics: [
+      {
+        id: 'pe1',
+        title: { en: 'SWIFT, MT/MX & ISO 20022', ar: 'سويفت وMT/MX وISO 20022' },
+        description: {
+          en: 'Financial messaging—not “a blockchain”—carrying payment instructions between institutions. Understand MT vs MX, the ISO 20022 migration, and where SWIFT gpi fits in transparency.',
+          ar: 'رسائل مالية — ليست «بلوكشين» — تحمل تعليمات الدفع بين المؤسسات. افهم MT مقابل MX، انتقال ISO 20022، ومكان سويفت جي بي آي في الشفافية.',
+        },
+        resources: [
+          r('pe1a', 'SWIFT: About us & standards', 'سويفت: من نحن والمعايير', 'https://www.swift.com/about-us'),
+          r('pe1b', 'ISO 20022 (official)', 'ISO 20022', 'https://www.iso20022.org/'),
+        ],
+      },
+      {
+        id: 'pe2',
+        title: { en: 'UPI & national instant payment stacks', ar: 'يو بي آي والبنى الوطنية للدفع الفوري' },
+        description: {
+          en: 'India’s Unified Payments Interface as a reference: single identity, multi-bank apps, real-time debits. Compare mentally to Faster Payments, PIX, or regional instant schemes—common pattern, different governance.',
+          ar: 'الواجهة الموحدة للمدفوعات في الهند كمرجع: هوية واحدة، تطبيقات متعددة للبنوك، خصم فوري. قارن ذهنياً بـ Faster Payments أو بيكس أو المخططات الفورية الإقليمية — نمط مشابه وحوكمة مختلفة.',
+        },
+        resources: [
+          r('pe2a', 'NPCI: UPI product overview', 'NPCI: نظرة على يو بي آي', 'https://www.npci.org.in/what-we-do/upi/product-overview'),
+          r('pe2b', 'BIS CPMI: Fast retail payments', 'بنك التسويات: المدفوعات السريعة للتجزئة', 'https://www.bis.org/cpmi/publ/d409.pdf'),
+        ],
+      },
+      {
+        id: 'pe3',
+        title: { en: 'Card networks vs domestic schemes', ar: 'شبكات البطاقات مقابل المخططات المحلية' },
+        description: {
+          en: 'Four-party model, interchange caps, tokenisation, and how national switches (e.g. Mada) coexist with global brands in many countries.',
+          ar: 'نموذج الأربعة أطراف، سقوف التبادل، الرمز المميز، وكيف تعيش المفاتيح الوطنية (مثل مدى) مع العلامات العالمية في كثير من الدول.',
+        },
+        resources: [
+          r('pe3a', 'Visa: How network operates (basics)', 'فيزا: كيف تعمل الشبكة', 'https://usa.visa.com/run-your-business/small-business-tools/payment-technology.html'),
+          r('pe3b', 'EU: Interchange regulation context', 'الاتحاد الأوروبي: سياق تنظيم التبادل', 'https://finance.ec.europa.eu/consumer-finance-and-payments/payment-services/interchange-fees_en'),
+        ],
+      },
+      {
+        id: 'pe4',
+        title: { en: 'RTGS, ACH & correspondent banking', ar: 'التسوية الإجمالية الفورية وACH والمراسلة المصرفية' },
+        description: {
+          en: 'High-value gross settlement vs batch retail rails, liquidity timing, nostro/vostro, and why cross-border still feels slow even when domestic is instant.',
+          ar: 'التسوية الإجمالية للقيم العالية مقابل قنوات التجزئة الدفعية، توقيت السيولة، نسترو/فوسترو، ولماذا العابر للحدود ما زال بطيئاً حين يكون المحلي فورياً.',
+        },
+        resources: [
+          r('pe4a', 'BIS: Payment, clearing & settlement', 'بنك التسويات: الدفع والمقاصة والتسوية', 'https://www.bis.org/cpmi/publ/d174.pdf'),
+          r('pe4b', 'New York Fed: Large-value systems', 'الاحتياطي الفيدرالي نيويورك: أنظمة القيم الكبيرة', 'https://www.newyorkfed.org/financial-services-and-infrastructure'),
+        ],
+      },
+      {
+        id: 'pe5',
+        title: { en: 'Modern portfolio theory & robo allocation', ar: 'نظرية المحافظ الحديثة والتوزيع الآلي' },
+        description: {
+          en: 'Mean-variance intuition, efficient frontier, risk parity flavours, and how consumer apps implement “set and forget” portfolios under regulatory constraints—not personal investment advice.',
+          ar: 'حدس المتوسط-التباين، الحدود الفعالة، أشكال توازن المخاطر، وكيف تطبق تطبيقات الاستهلاك محافظ «اضبط وانسَ» تحت قيود تنظيمية — وليس نصيحة استثمارية شخصية.',
+        },
+        resources: [
+          r('pe5a', 'Investopedia: Modern Portfolio Theory', 'إنفستوبيديا: نظرية المحافظ الحديثة', 'https://www.investopedia.com/terms/m/modernportfoliotheory.asp'),
+          r('pe5b', 'CFA Institute: Portfolio management basics', 'معهد CFA: أساسيات إدارة المحافظ', 'https://www.cfainstitute.org/en/research/foundation/2015/portfolio-management-concepts'),
+        ],
+      },
+      {
+        id: 'pe6',
+        title: { en: 'Matching engines & market microstructure', ar: 'محركات المطابقة وبنية السوق الدقيقة' },
+        description: {
+          en: 'Order books, price-time priority, latency fairness, and where FinTech trading apps plug into exchanges or internalisers—useful context for engineering and product roles.',
+          ar: 'دفاتر الأوامر، أولوية السعر-الزمن، عدالة التأخير، وأين تتصل تطبيقات تداول الفنتك بالبورصات أو المعالجات الداخلية — سياق مفيد لأدوار الهندسة والمنتج.',
+        },
+        resources: [
+          r('pe6a', 'SEC: National market system (US overview)', 'هيئة الأوراق: النظام الوطني للسوق', 'https://www.sec.gov/rules-regulations/study-and-reports-on-regulatory-system/national-market-system'),
+          r('pe6b', 'BIS: Market liquidity & structure', 'بنك التسويات: سيولة السوق والبنية', 'https://www.bis.org/publ/work405.pdf'),
+        ],
+      },
+      {
+        id: 'pe7',
+        title: { en: 'FIX, APIs & connectivity layers', ar: 'FIX وواجهات البرمجة وطبقات الربط' },
+        description: {
+          en: 'FIX protocol culture in institutional trading vs REST/JSON in banking APIs; webhooks, streaming market data, and operational differences between “screen” and “machine” workflows.',
+          ar: 'ثقافة بروتوكول FIX في التداول المؤسسي مقابل REST/JSON في واجهات المصارف؛ خطافات الويب، بث بيانات السوق، والفروق التشغيلية بين سير عمل «الشاشة» و«الآلة».',
+        },
+        resources: [
+          r('pe7a', 'FIX Trading Community', 'مجتمع تداول FIX', 'https://www.fixtrading.org/'),
+          r('pe7b', 'OpenAPI Initiative', 'مبادرة OpenAPI', 'https://www.openapis.org/'),
+        ],
+      },
+    ],
+  },
+  {
     id: 'regulation',
     title: { en: 'Regulation, risk & trust', ar: 'التنظيم والمخاطر والثقة' },
     summary: {
-      en: 'Licences, AML/KYC, fraud, and privacy—how rules shape what you can ship and what evidence you must keep.',
-      ar: 'التراخيص، مكافحة غسل الأموال واعرف عميلك، الاحتيال، والخصوصية — كيف تشكل القواعد ما يمكن إطلاقه والأدلة التي يجب الإبقاء عليها.',
+      en: 'Licences, AML/KYC, fraud, and privacy—including PDPL, GDPR, CCPA/CPRA, and how other data laws layer on what you can ship and what evidence you must keep.',
+      ar: 'التراخيص، مكافحة غسل الأموال واعرف عميلك، الاحتيال، والخصوصية — بما فيها نظام حماية البيانات السعودي وGDPR وCCPA/CPRA، وكيف تتراكب قوانين البيانات على ما يمكن إطلاقه والأدلة المطلوبة.',
     },
     outcomes: {
       en: [
         'List three artefacts a compliance team usually asks for before go-live',
         'Explain why KYC is both UX and risk problem',
+        'Contrast PDPL, GDPR, and CCPA/CPRA on notices, consent, and cross-border transfers at a headline level',
       ],
       ar: [
         'ذكر ثلاثة مستندات عادةً يطلبها فريق الامتثال قبل الإطلاق',
         'شرح لماذا اعرف عميلك مسألة تجربة مستخدم ومخاطر معاً',
+        'مقارنة عناوينية بين نظام حماية البيانات السعودي وGDPR وCCPA/CPRA في الإشعارات والموافقة والنقل عبر الحدود',
       ],
     },
     topics: [
@@ -345,14 +555,63 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
       },
       {
         id: 'g5',
-        title: { en: 'Privacy & data residency', ar: 'الخصوصية وإقامة البيانات' },
+        title: { en: 'Privacy principles (any jurisdiction)', ar: 'مبادئ الخصوصية (أي اختصاص قضائي)' },
         description: {
-          en: 'PDPL in KSA mindset, purpose limitation, cross-border transfers, DPIAs, and vendor subprocessors.',
-          ar: 'منطق نظام حماية البيانات في السعودية، حدود الغرض، النقل عبر الحدود، تقييمات أثر الخصوصية، والمعالجون من البائعين.',
+          en: 'Ideas that show up everywhere: purpose limitation, data minimisation, retention, records of processing, DPIAs/PIAs, subprocessors, and breach playbooks. Learn the pattern once, then map it to PDPL, GDPR, CCPA, and others.',
+          ar: 'أفكار تتكرر في كل مكان: حدود الغرض، تقليل البيانات، الاحتفاظ، سجلات المعالجة، تقييمات أثر الخصوصية، المعالجون الفرعيون، وخطط الاختراق. افهم النمط مرة ثم طبّقه على نظام حماية البيانات السعودي وGDPR وCCPA وغيرها.',
         },
         resources: [
-          r('g5a', 'SDAIA: PDPL portal (KSA)', 'سدايا: نظام حماية البيانات', 'https://sdaia.gov.sa/'),
-          r('g5b', 'ICO UK: Guide to GDPR', 'مكتب مفوض المعلومات UK', 'https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/'),
+          r('g5a', 'OECD: Privacy principles', 'منظمة التعاون: مبادئ الخصوصية', 'https://www.oecd.org/digital/privacy/'),
+          r('g5b', 'ENISA: Data protection engineering', 'إنيسا: هندسة حماية البيانات', 'https://www.enisa.europa.eu/topics/data-protection'),
+        ],
+      },
+      {
+        id: 'g6',
+        title: { en: 'Saudi PDPL & national data governance', ar: 'نظام حماية البيانات الشخصية السعودي وحوكمة البيانات الوطنية' },
+        description: {
+          en: 'KSA Personal Data Protection Law: lawful processing, rights of data subjects, cross-border transfer rules, and how SDAIA/NDMO guidance fits FinTech (cloud, analytics, open banking). Always read the official Arabic legal text and your counsel’s memo—not blog summaries alone.',
+          ar: 'نظام حماية البيانات الشخصية في المملكة: المعالجة المشروعة، حقوق أصحاب البيانات، قواعد النقل عبر الحدود، وكيف تتكامل إرشادات سدايا/المركز الوطني لإدارة البيانات مع الفنتك (السحابة، التحليلات، المصرفية المفتوحة). اقرأ النص القانوني الرسمي ومذكرة مستشارك — لا تعتمد على المدونات وحدها.',
+        },
+        resources: [
+          r('g6a', 'SDAIA — Saudi data & AI authority', 'سدايا', 'https://sdaia.gov.sa/en'),
+          r('g6b', 'NDMO — National Data Management Office (KSA)', 'المركز الوطني لإدارة البيانات', 'https://ndmo.gov.sa/en'),
+        ],
+      },
+      {
+        id: 'g7',
+        title: { en: 'EU GDPR & UK GDPR', ar: 'اللائحة العامة لحماية البيانات في الاتحاد الأوروبي والمملكة المتحدة' },
+        description: {
+          en: 'Lawful bases (consent, contract, legitimate interests), data subject rights, DPO triggers, SCCs/IDT for third-country transfers, and headline fines. EU GDPR and UK GDPR are similar but not identical—treat UK as a separate regime post-Brexit.',
+          ar: 'الأسس القانونية (الموافقة، العقد، المصالح المشروعة)، حقوق أصحاب البيانات، متى يلزم مسؤول حماية البيانات، البنود التعاقدية/آليات النقل لدول ثالثة، والغرامات البارزة. اللائحة الأوروبية والبريطانية متقاربتان لكنهما ليستا متطابقتين — عالج المملكة المتحدة كنظام مستقل بعد بريكست.',
+        },
+        resources: [
+          r('g7a', 'EUR-Lex: GDPR (legal text)', 'يور-لكس: نص GDPR', 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679'),
+          r('g7b', 'ICO UK: Guide to data protection', 'مكتب مفوض المعلومات UK', 'https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/'),
+        ],
+      },
+      {
+        id: 'g8',
+        title: { en: 'US: CCPA, CPRA & state privacy patchwork', ar: 'الولايات المتحدة: CCPA وCPRA وتشريعات الولايات' },
+        description: {
+          en: 'California led with CCPA; CPRA added a “sensitive data” layer and the CPPA. Other states (VA, CO, CT, UT, and more) have their own acts—FinTechs often need a matrix of rights, opt-outs, and definitions. Federal sector rules (GLBA for financial data) still matter alongside state law.',
+          ar: 'كاليفورنيا قادت بـCCPA؛ وأضافت CPRA طبقة «البيانات الحساسة» وهيئة CPPA. ولايات أخرى لديها قوانينها — غالباً تحتاج جدولاً لحقوق النسيان/الإلغاء والتعاريف. القواعد الفيدرالية القطاعية (مثل GLBA للبيانات المالية) ما زالت مهمة إلى جانب قوانين الولايات.',
+        },
+        resources: [
+          r('g8a', 'California AG: CCPA overview', 'النائب العام لكاليفورنيا: نظرة على CCPA', 'https://oag.ca.gov/privacy/ccpa'),
+          r('g8b', 'California CPPA', 'هيئة حماية خصوصية المستهلك كاليفورنيا', 'https://cppa.ca.gov/'),
+        ],
+      },
+      {
+        id: 'g9',
+        title: { en: 'Global snapshot: LGPD, DPDP, PIPL & more', ar: 'لمحة عالمية: LGPD وDPDP وPIPL وغيرها' },
+        description: {
+          en: 'Brazil LGPD, India DPDP Act, China PIPL, Canada PIPEDA/Privacy Act reforms—useful when your FinTech serves expats, processes vendor data abroad, or runs multi-region marketing. Goal is to know what to ask legal, not to self-diagnose every statute.',
+          ar: 'البرازيل LGPD، الهند DPDP، الصين PIPL، وإصلاحات كندا — مفيد عندما يخدم فنتك الجاليات، أو يعالج بيانات عبر الحدود، أو يتسوّق في أكثر من إقليم. الهدف أن تعرف ماذا تسأل القانوني، لا أن تُصدر حكماً على كل نص بنفسك.',
+        },
+        resources: [
+          r('g9a', 'Brazil LGPD (gov portal)', 'البرازيل: LGPD', 'https://www.gov.br/cidadania/pt-br/acesso-a-informacao/lgpd'),
+          r('g9b', 'India: Digital Personal Data Protection', 'الهند: حماية البيانات الشخصية الرقمية', 'https://www.meity.gov.in/data-protection-framework'),
+          r('g9c', 'IAPP: Global privacy legislation directory', 'IAPP: دليل التشريعات', 'https://iapp.org/resources/global-privacy-directory/'),
         ],
       },
     ],

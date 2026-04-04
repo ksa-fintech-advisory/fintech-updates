@@ -53,7 +53,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
               <h1
                 className={
                   isArabic
-                    ? 'mb-8 max-w-4xl mx-auto text-5xl font-black leading-[1.14] tracking-normal text-white md:text-6xl md:leading-[1.12] lg:text-7xl lg:leading-[1.1] xl:text-8xl [text-shadow:0_2px_28px_rgba(0,0,0,0.55),0_1px_0_rgba(255,255,255,0.06)]'
+                    ? 'mb-8 max-w-4xl mx-auto text-4xl font-bold leading-[1.2] tracking-normal text-zinc-50 sm:text-5xl md:text-6xl md:leading-[1.15] lg:text-6xl lg:leading-[1.12] [text-shadow:0_2px_20px_rgba(0,0,0,0.45)]'
                     : 'mb-8 text-5xl font-bold leading-[1.08] tracking-tight text-white md:text-7xl lg:text-8xl'
                 }
               >

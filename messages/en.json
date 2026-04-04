@@ -70,8 +70,8 @@
       "closingLead": "If something here resonated, tell me what you are building—I answer every serious note myself.",
       "closingCta": "Say hello",
       "hero": {
-        "title": "FinTech clarity—you're at the heart of what matters",
-        "subtitle": "I'm Mohammed Abdo. Consulting, architecture, and writing for teams shipping regulated products in the Arab world.",
+        "title": "FinTech and regulation, in clearer terms for product teams",
+        "subtitle": "I'm Mohammed Abdo—I consult, design systems, and write for teams building regulated FinTech across the Arab world.",
         "description": "Part field notes, part front door: I share what I learn in public, and work hands-on when we are a good match—fewer guesses on product, compliance, and systems.",
         "exploreArticles": "Read the blog",
         "aboutUs": "About me"
@@ -84,7 +84,7 @@
       "services": {
         "kicker": "// HOW_I_HELP",
         "title": "What you can hire me for",
-        "intro": "Three ways I usually plug in—solo or combined—depending on whether you need judgment, blueprints, or a steady sounding board.",
+        "intro": "Consulting and architecture for delivery; 1:1 mentorship when your people need to learn FinTech properly. Mix or choose one.",
         "items": {
           "consulting": {
             "title": "Technical consulting",
@@ -95,38 +95,42 @@
             "description": "I help you shape flows, integrations, and boundaries so security and scale are part of the design—not a panic after launch."
           },
           "mentorship": {
-            "title": "Private mentorship sessions",
-            "description": "One-to-one time for FinTech employees who want to grow in their role, and for students who want structured help studying the field—tailored to your goals, not generic tips, with regional market context when it matters."
+            "badge": "For employees, teams & students",
+            "title": "One-to-one FinTech mentorship",
+            "description": "For bank/FinTech staff and students: private sessions on product, compliance, or engineering judgment—built around your role and market (KSA, GCC, region). Managers: upskill without signing a giant training contract first.",
+            "cta": "Ask about mentorship"
           }
         }
       },
       "roadmap": {
         "kicker": "// LEARN_FINTECH",
         "title": "FinTech learner roadmap",
-        "intro": "Seven phases from zero background to go-live thinking—on the full page each topic has explanations, outcomes, and curated references you can open and study.",
-        "viewFull": "Open full roadmap"
+        "intro": "Start from zero and build a practical picture of FinTech: product, regulation, rails, and privacy. The full path—with phases, expandable topics, and hand-picked references—is on the dedicated roadmap page.",
+        "teaserNote": "This is only a nudge to explore; the roadmap page holds the full detail—nothing is repeated here.",
+        "statsLine": "{phases} phases · {topics} topics",
+        "viewFull": "Browse the roadmap"
       },
       "blogFeature": {
-        "kicker": "// MY_FIELD_NOTES",
-        "title": "The blog — how I write",
-        "intro": "I write long-form pieces for people designing products, systems, or compliance posture—not a news ticker, and not content for content’s sake.",
-        "cta": "OPEN_THE_BLOG",
+        "kicker": "// THE_BLOG",
+        "title": "Writing to grow FinTech literacy in our region—in plain language",
+        "intro": "Not a news ticker or ad copy. I publish long articles on FinTech, regulation, and product in wording newcomers and practitioners can both use—because my aim is clearer understanding across Saudi Arabia and the Arab world, without drowning readers in jargon.",
+        "cta": "Read the blog",
         "items": {
           "regulatory": {
-            "title": "Regulatory context",
-            "description": "What rule changes imply for product scope, controls, and timelines—without drowning in jargon."
+            "title": "Rules & supervision",
+            "description": "What a regulatory change usually means for your plan and your controls—explained straight, to inform not overwhelm."
           },
           "product": {
-            "title": "Product & delivery",
-            "description": "Shipping in regulated environments: trade-offs, milestones, and what “good enough” looks like before scale."
+            "title": "Product & go-to-market",
+            "description": "How to think about launch when legal and risk sit at the table: what waits, what you prove first, and when “ready” is fair before you scale."
           },
           "engineering": {
-            "title": "Systems & integration",
-            "description": "Architecture patterns, rails, identity, and operational reality behind the slides."
+            "title": "Systems & day-two ops",
+            "description": "APIs, identity, payments, reliability—what runs behind the screen and matters to anyone who builds or depends on the product."
           },
           "region": {
-            "title": "Arab world lens",
-            "description": "KSA, Gulf, and Arabic-speaking markets—local expectations plus transferable ideas."
+            "title": "Saudi Arabia & the Arab world",
+            "description": "Our local context—schemes, regulators, how people expect things to work—because literacy starts with “how it works here,” plus ideas that still travel."
           }
         }
       }
@@ -229,8 +233,8 @@
   "pages": {
     "home": {
       "hero": {
-        "title": "FinTech clarity—you're at the heart of what matters",
-        "subtitle": "I'm Mohammed Abdo. Consulting, architecture, and writing for teams shipping regulated products in the Arab world.",
+        "title": "FinTech and regulation, in clearer terms for product teams",
+        "subtitle": "I'm Mohammed Abdo—I consult, design systems, and write for teams building regulated FinTech across the Arab world.",
         "description": "Part field notes, part front door: I share what I learn in public, and work hands-on when we are a good match—fewer guesses on product, compliance, and systems."
       },
       "sections": {

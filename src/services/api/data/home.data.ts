@@ -3,12 +3,12 @@ import { HomeContent } from '@/core/types/web/home';
 export const homeData: HomeContent = {
   hero: {
     title: {
-      en: "FinTech clarity—you're at the heart of what matters",
-      ar: 'وضوحٌ في التقنية المالية — وأنت في جوهر الموضوع',
+      en: 'FinTech and regulation, in clearer terms for product teams',
+      ar: 'تقنية مالية وتنظيم، بلغة أوضح لفرق المنتج',
     },
     subtitle: {
-      en: "I'm Mohammed Abdo. Consulting, architecture, and writing for teams shipping regulated products in the Arab world.",
-      ar: 'أنا محمد عبده — استشارات وهندسة وكتابة لفرق تطلق منتجات خاضعة للتنظيم في العالم العربي.',
+      en: "I'm Mohammed Abdo—I consult, design systems, and write for teams building regulated FinTech across the Arab world.",
+      ar: 'أنا محمد عبده؛ أستشير وأصمّم الأنظمة وأكتب مع فرق تبني في التقنية المالية حيث يلتقي المنتج بالتنظيم — في العالم العربي.',
     },
     description: {
       en: 'Part field notes, part front door: I share what I learn in public, and work hands-on when we are a good match—fewer guesses on product, compliance, and systems.',

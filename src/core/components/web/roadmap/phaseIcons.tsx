@@ -1,9 +1,11 @@
 import type { IconType } from 'react-icons';
 import {
+  FiActivity,
   FiAnchor,
   FiBookOpen,
   FiCpu,
   FiCreditCard,
+  FiGrid,
   FiShield,
   FiTarget,
   FiZap,
@@ -13,7 +15,9 @@ import {
 export const phaseIcons = {
   'getting-started': FiAnchor,
   foundations: FiBookOpen,
+  'fintech-domains': FiGrid,
   rails: FiCreditCard,
+  'protocols-engines': FiActivity,
   regulation: FiShield,
   product: FiTarget,
   systems: FiCpu,
