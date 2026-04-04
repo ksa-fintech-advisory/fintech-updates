@@ -8,6 +8,7 @@ import { SocialShare } from '@/core/components/web/blog/SocialShare';
 import { RelatedPosts } from '@/core/components/web/blog/RelatedPosts';
 import { Metadata } from 'next';
 import prisma from '@/lib/prisma';
+import { getSiteUrl, SITE_NAME } from '@/core/seo/site';
 import { FiCalendar, FiClock, FiUser, FiFolder, FiHash, FiArrowLeft, FiArrowRight, FiHome } from 'react-icons/fi';
 
 interface BlogPageProps {
@@ -34,17 +35,38 @@ export async function generateMetadata({ params: { slug, locale } }: BlogPagePro
 
     const title = isArabic ? (blog.titleAr || blog.titleEn) : blog.titleEn;
     const description = isArabic ? (blog.excerptAr || blog.excerptEn) : blog.excerptEn;
+    const path = `/web/blog/${slug}`;
+    const base = getSiteUrl();
+    const authorName = isArabic ? (blog.author.nameAr || blog.author.name) : blog.author.name;
 
     return {
       title,
       description,
+      alternates: {
+        canonical: `/${locale}${path}`,
+        languages: {
+          en: `${base}/en${path}`,
+          ar: `${base}/ar${path}`,
+          'x-default': `${base}/en${path}`,
+        },
+      },
       openGraph: {
         title,
         description,
         type: 'article',
+        url: `/${locale}${path}`,
+        siteName: SITE_NAME,
+        locale: isArabic ? 'ar_SA' : 'en_US',
+        alternateLocale: isArabic ? ['en_US'] : ['ar_SA'],
         publishedTime: blog.publishedAt.toISOString(),
-        authors: [isArabic ? (blog.author.nameAr || blog.author.name) : blog.author.name],
+        authors: [authorName],
         images: blog.featuredImage ? [{ url: blog.featuredImage }] : [],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title,
+        description,
+        images: blog.featuredImage ? [blog.featuredImage] : ['/og-image.png'],
       },
     };
   } catch (error) {

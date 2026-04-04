@@ -13,6 +13,11 @@
     "appName": "FinTech Admin",
     "adminUser": "Admin User",
     "viewAll": "View All",
+    "header": {
+      "tagline": "FinTech · Engineering · Writing",
+      "displayName": "Mohammed Abdo",
+      "avatarAlt": "Mohammed Abdo"
+    },
     "nav": {
       "home": "Home",
       "blogs": "Blogs",
@@ -21,10 +26,11 @@
       "technology": "Technology",
       "compliance": "Compliance",
       "contact": "Contact",
-      "about": "About Us",
+      "about": "About me",
       "updates": "Updates",
       "products":"Products",
-      "courses": "Courses"
+      "courses": "Courses",
+      "roadmap": "Roadmap"
     },
     "actions": {
       "readMore": "Read More",
@@ -45,24 +51,119 @@
       "learnMore": "Learn More →",
       "allRegions": "All Regions",
       "allCategories": "All Categories"
+    },
+    "footer": {
+      "tagline": "FinTech insights and hands-on experience — through writing and consulting — for anyone building digital financial products or going deeper on market and regulatory context.",
+      "platform": "Explore",
+      "platformLead": "Content and learning paths",
+      "company": "Connect",
+      "companyLead": "About & contact",
+      "interestTitle": "Interested in working together?",
+      "interestBody": "Share what you are building or exploring — consulting, architecture, or mentorship. I read every message.",
+      "interestCta": "Start a conversation",
+      "copyright": "© {year} Maal Tech · Mohammed Abdo"
     }
   },
   "web": {
     "home": {
+      "metaTitle": "FinTech consulting, blog & learner roadmap",
+      "metaDescription": "Mohammed Abdo (Maal Tech): FinTech consulting, system architecture, and mentorship for teams in Saudi Arabia and the Arab world. Free learner roadmap, regulatory insights, and contact.",
+      "heroSignoff": "Mohammed Abdo · Maal Tech",
+      "closingLead": "If something here resonated, tell me what you are building—I answer every serious note myself.",
+      "closingCta": "Say hello",
       "hero": {
-        "title": "Your Gateway to Middle Eastern FinTech",
-        "subtitle": "Insights, Innovations & Trends Across the Arab World",
-        "description": "Comprehensive coverage of FinTech innovations, regulatory updates, and industry trends across the Arab world - from Saudi Arabia and the UAE to Egypt and beyond.",
-        "exploreArticles": "Explore Articles",
-        "aboutUs": "About Us"
+        "title": "FinTech and regulation, in clearer terms for product teams",
+        "subtitle": "I'm Mohammed Abdo—I consult, design systems, and write for teams building regulated FinTech across the Arab world.",
+        "description": "Part field notes, part front door: I share what I learn in public, and work hands-on when we are a good match—fewer guesses on product, compliance, and systems.",
+        "exploreArticles": "Read the blog",
+        "aboutUs": "About me"
       },
       "sections": {
         "featured": "Featured Articles",
         "latest": "Latest Updates",
         "stats": "By The Numbers"
+      },
+      "services": {
+        "kicker": "// HOW_I_HELP",
+        "title": "What you can hire me for",
+        "intro": "Consulting and architecture for delivery; 1:1 mentorship when your people need to learn FinTech properly. Mix or choose one.",
+        "items": {
+          "consulting": {
+            "title": "Technical consulting",
+            "description": "I sit with you on requirements, stack choices, and risk: what to prove first, what to defer, and how to talk about it with compliance and partners."
+          },
+          "architecture": {
+            "title": "FinTech system architecture",
+            "description": "I help you shape flows, integrations, and boundaries so security and scale are part of the design—not a panic after launch."
+          },
+          "mentorship": {
+            "badge": "For employees, teams & students",
+            "title": "One-to-one FinTech mentorship",
+            "description": "For bank/FinTech staff and students: private sessions on product, compliance, or engineering judgment—built around your role and market (KSA, GCC, region). Managers: upskill without signing a giant training contract first.",
+            "cta": "Ask about mentorship"
+          }
+        }
+      },
+      "roadmap": {
+        "kicker": "// LEARN_FINTECH",
+        "title": "FinTech learner roadmap",
+        "intro": "Start from zero and build a practical picture of FinTech: product, regulation, rails, and privacy. The full path—with phases, expandable topics, and hand-picked references—is on the dedicated roadmap page.",
+        "teaserNote": "This is only a nudge to explore; the roadmap page holds the full detail—nothing is repeated here.",
+        "statsLine": "{phases} phases · {topics} topics",
+        "viewFull": "Browse the roadmap"
+      },
+      "blogFeature": {
+        "kicker": "// THE_BLOG",
+        "title": "Writing to grow FinTech literacy in our region—in plain language",
+        "intro": "Not a news ticker or ad copy. I publish long articles on FinTech, regulation, and product in wording newcomers and practitioners can both use—because my aim is clearer understanding across Saudi Arabia and the Arab world, without drowning readers in jargon.",
+        "cta": "Read the blog",
+        "items": {
+          "regulatory": {
+            "title": "Rules & supervision",
+            "description": "What a regulatory change usually means for your plan and your controls—explained straight, to inform not overwhelm."
+          },
+          "product": {
+            "title": "Product & go-to-market",
+            "description": "How to think about launch when legal and risk sit at the table: what waits, what you prove first, and when “ready” is fair before you scale."
+          },
+          "engineering": {
+            "title": "Systems & day-two ops",
+            "description": "APIs, identity, payments, reliability—what runs behind the screen and matters to anyone who builds or depends on the product."
+          },
+          "region": {
+            "title": "Saudi Arabia & the Arab world",
+            "description": "Our local context—schemes, regulators, how people expect things to work—because literacy starts with “how it works here,” plus ideas that still travel."
+          }
+        }
       }
     },
+    "roadmapPage": {
+      "metaTitle": "FinTech learner roadmap",
+      "metaDescription": "A full beginner-to-practice FinTech study path: phases, learning outcomes, topic explanations, and curated references—plus links to blog and contact for help.",
+      "kicker": "// LEARN_FINTECH",
+      "title": "FinTech learner roadmap",
+      "subtitle": "A practical journey if you are starting from zero: what FinTech is, how money moves, how rules shape products, and what to study next—with readings and official references under each topic.",
+      "journeyNote": "Work through the phases in order once, then revisit the sections that match your role. Open the references, take notes, and connect ideas to one real product or regulator you follow.",
+      "backHome": "Back to home",
+      "phaseLabel": "Phase {n}",
+      "outcomesHeading": "After this phase you can",
+      "topicsHeading": "Topics & study notes",
+      "topicsSub": "Each block explains the idea in plain language. Expand “References” for articles, regulators, and courses—verify anything critical before you rely on it in production.",
+      "resourcesHeading": "References & further reading",
+      "resourcesHint": "External sites open in a new tab. Official sources (central banks, FATF, schemes) beat random blogs for compliance questions.",
+      "opensNewTab": "opens in new tab",
+      "disclaimer": "This roadmap is a curated study guide—not a certificate, university course, or job guarantee. Laws and products change; always confirm with primary sources and your own counsel.",
+      "ctaBlog": "Read the blog",
+      "ctaContact": "Ask a question",
+      "topicCount": "{count} topics",
+      "expandPhase": "Expand phase",
+      "collapsePhase": "Collapse phase",
+      "expandTopic": "Show details",
+      "collapseTopic": "Hide details"
+    },
     "blog": {
+      "metaTitle": "Blog — FinTech, regulation & product",
+      "metaDescription": "Long-form articles on FinTech, supervision, product, and engineering—for practitioners and newcomers in Saudi Arabia and the wider Arab region.",
       "title": "Blog",
       "subtitle": "Insights and updates from the FinTech world",
       "noResults": "No blog posts found"
@@ -73,38 +174,64 @@
       "noUpdates": "No updates found"
     },
     "about": {
-      "title": "About Us",
-      "subtitle": "Your gateway to Middle Eastern FinTech insights and analysis",
-      "authorName": "The Maal Tech Team",
-      "authorTitle": "Pioneering Financial Innovation",
-      "authorBio": "We are a collective of industry experts, analysts, and technologists dedicated to accelerating the growth of the financial technology ecosystem across the Arab world. Through in-depth analysis, regulatory guidance, and market intelligence, we empower innovators and institutions to shape the future of digital finance.",
-      "mission": "Our Mission",
-      "vision": "Our Vision",
-      "values": "Our Core Values",
-      "expertise": "Areas of Expertise",
-      "cta": {
-        "title": "Stay Informed",
-        "description": "Subscribe to receive the latest Middle Eastern FinTech updates and regulatory insights",
-        "button": "Subscribe Now"
-      }
+      "metaTitle": "About Mohammed Abdo — FinTech advisor & engineer",
+      "metaDescription": "Who I am, how I work with regulated FinTech teams, and what to expect from consulting, architecture, and writing at Maal Tech.",
+      "title": "About me",
+      "subtitle": "I'm Mohammed Abdo. I spend most of my time where regulated FinTech meets real engineering—helping teams make clearer product calls, tighter architecture, and calmer compliance conversations.",
+      "heroBadge": "// ABOUT_ME",
+      "authorName": "Mohammed Abdo",
+      "authorTitle": "FinTech advisor & engineer · Maal Tech",
+      "authorBio": "I didn't start from slides—I started from delivery pressure, ambiguous requirements, and regulators who expect evidence, not vibes. Today I consult, architect, and write so founders and operators waste less time guessing. Maal Tech is my umbrella for that work: the blog is my public notebook; the rest is direct collaboration when we're a good fit.",
+      "avatarAlt": "Portrait of Mohammed Abdo",
+      "founderBadge": "ME",
+      "signatureLine": "You work with me—not a faceless team",
+      "strategicKicker": "// WHY_I_DO_THIS",
+      "missionVisionHeading": "What keeps me oriented",
+      "missionLabel": "North star",
+      "visionLabel": "Direction",
+      "terminalPrompt": "$ cat",
+      "terminalFile": "journal.txt",
+      "principlesHeading": "What you can expect from me",
+      "expertiseKicker": "// THEMES",
+      "expertiseHeading": "Problems I keep returning to",
+      "ctaTitle": "Want to go deeper?",
+      "ctaSubtitle": "Reach out for consulting, architecture reviews, or mentorship—or keep reading the blog.",
+      "ctaButton": "Get in touch"
     },
     "contact": {
-      "title": "Contact Us",
-      "subtitle": "Get in touch with our team",
+      "metaTitle": "Contact — consulting, architecture & mentorship",
+      "metaDescription": "Reach Mohammed Abdo for FinTech consulting, architecture reviews, or mentorship. Email, WhatsApp, or the contact form.",
+      "title": "Get in touch",
+      "subtitle": "Consulting, architecture questions, or mentorship — send a note and I’ll reply by email.",
+      "kicker": "// CONTACT",
+      "channelsHeading": "Direct channels",
+      "emailTitle": "Email",
+      "emailHint": "Best for detail, attachments, and follow-up",
+      "whatsappTitle": "WhatsApp",
+      "whatsappOpen": "Open WhatsApp",
+      "whatsappHint": "Short questions and quick coordination",
+      "formCardTitle": "Send a message",
+      "formCardHint": "Name, email, subject, and message are required. Phone is optional—add it if you prefer I reach you there instead of email.",
+      "successTitle": "Message sent",
+      "errorTitle": "Could not send",
       "form": {
-        "name": "Name",
-        "namePlaceholder": "Enter your name",
-        "email": "Email",
-        "emailPlaceholder": "Enter your email",
+        "name": "Your name",
+        "namePlaceholder": "Full name",
+        "email": "Your email",
+        "emailPlaceholder": "you@example.com",
+        "phone": "Phone",
+        "phoneHint": "Optional — if you’d rather I follow up by call or message",
+        "phonePlaceholder": "+966 5X XXX XXXX",
+        "optional": "(optional)",
         "subject": "Subject",
-        "subjectPlaceholder": "Enter subject",
+        "subjectPlaceholder": "What is this about?",
         "message": "Message",
-        "messagePlaceholder": "Write your message here",
+        "messagePlaceholder": "Context, timeline, and what you’d like help with…",
         "required": "*",
-        "submit": "Send Message",
-        "sending": "Sending...",
-        "success": "Thank you! We'll get back to you soon.",
-        "error": "Something went wrong. Please try again."
+        "submit": "Send message",
+        "sending": "Sending…",
+        "success": "Thank you — I’ll get back to you as soon as I can.",
+        "error": "Something went wrong. Please try again or email me directly."
       }
     },
     "article": {
@@ -114,9 +241,9 @@
   "pages": {
     "home": {
       "hero": {
-        "title": "Your Gateway to Middle Eastern FinTech",
-        "subtitle": "Insights, Innovations & Trends Across the Arab World",
-        "description": "Comprehensive coverage of FinTech innovations, regulatory updates, and industry trends across the Arab world - from Saudi Arabia and the UAE to Egypt and beyond."
+        "title": "FinTech and regulation, in clearer terms for product teams",
+        "subtitle": "I'm Mohammed Abdo—I consult, design systems, and write for teams building regulated FinTech across the Arab world.",
+        "description": "Part field notes, part front door: I share what I learn in public, and work hands-on when we are a good match—fewer guesses on product, compliance, and systems."
       },
       "sections": {
         "featured": "Featured Articles",
@@ -184,8 +311,8 @@
           "description": "Case studies from companies like STC Pay, Tamara, and Lendo with interactive exercises"
         },
         "expert": {
-          "title": "Field Experience",
-          "description": "Learn from specialists who have worked with banks and fintech companies in the Kingdom"
+          "title": "Real market experience",
+          "description": "Gain practical exposure to how fintech and banking work in the real market"
         }
       }
     },
@@ -212,20 +339,20 @@
         "topicsList": ["Technical Architecture of Fintech Systems", "Open Banking", "Infrastructure and Supporting Service Companies", "Emerging Technologies"]
       },
       "phase4": {
-        "title": "Building Fintech Systems and Market Opportunities",
-        "subtitle": "Practical Application and Future Opportunities",
-        "description": "Complete your journey by building a simple fintech system and exploring market opportunities.",
-        "topicsList": ["Workshop: Designing a Simple Transfer System", "Opportunities in Saudi Market", "How to Launch a Fintech Company", "Participants Presentations and Discussion"]
+        "title": "Real Use Cases and Market Opportunities",
+        "subtitle": "Discussion of real-world applications and future opportunities",
+        "description": "Complete your journey by discussing real use cases across neobanks, robo-advisory, crowdfunding, and other fintech models, and discover market opportunities.",
+        "topicsList": ["Neobanks: models and real use cases", "Robo-advisory and digital wealth management", "Crowdfunding and alternative finance", "Other fintech use cases", "Opportunities in Saudi Market", "How to Launch a Fintech Company", "Participants discussion"]
       }
     },
     "instructor": {
-      "title": "About the Program",
-      "description": "This program is designed by Saudi fintech specialists who combine theoretical and practical expertise in building and operating digital financial products, with a special focus on local market requirements and Saudi regulations."
+      "title": "About the instructor",
+      "description": "This program is designed and delivered by a fintech expert with hands-on experience building and operating digital financial products, and a strong focus on local market requirements and Saudi regulations."
     },
     "enrollSection": {
       "title": "Ready to Launch into the World of Fintech?",
       "description": "Join a growing community of fintech enthusiasts and gain the skills demanded in the Saudi job market.",
-      "features": ["Saudi market-specific content", "Local company case studies", "Certified completion certificate", "Supportive learning community"]
+      "features": ["Saudi market-specific content", "Local company case studies", "Supportive learning community"]
     }
   },
   "courseRegistration": {
@@ -254,7 +381,8 @@
       },
       "payment": {
         "title": "Payment Preference",
-        "subtitle": "How would you like to handle the course fee?"
+        "subtitle": "Choose one of the two supported payment options",
+        "priceLabel": "Course fee: 299 SAR"
       },
       "confirm": {
         "title": "Almost there!",

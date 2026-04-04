@@ -1,6 +1,7 @@
 import { updateService } from '@/services/server/updateService';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { getSiteUrl, SITE_NAME } from '@/core/seo/site';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiArrowLeft, FiArrowRight, FiCalendar, FiDownload, FiExternalLink, FiFileText, FiHash, FiTag, FiUser } from 'react-icons/fi';
@@ -47,15 +48,36 @@ export async function generateMetadata({ params: { slug, locale } }: UpdateDetai
   try {
     const update = await updateService.getUpdateBySlug(slug, locale);
     if (!update) return { title: isArabic ? 'التحديث غير موجود' : 'Update Not Found' };
+    const description = update.summary || update.description;
+    const path = `/web/updates/${slug}`;
+    const base = getSiteUrl();
     return {
       title: update.title,
-      description: update.summary || update.description,
+      description,
+      alternates: {
+        canonical: `/${locale}${path}`,
+        languages: {
+          en: `${base}/en${path}`,
+          ar: `${base}/ar${path}`,
+          'x-default': `${base}/en${path}`,
+        },
+      },
       openGraph: {
         title: update.title,
-        description: update.summary || update.description,
+        description,
         type: 'article',
+        url: `/${locale}${path}`,
+        siteName: SITE_NAME,
+        locale: isArabic ? 'ar_SA' : 'en_US',
+        alternateLocale: isArabic ? ['en_US'] : ['ar_SA'],
         publishedTime: update.publishedAt,
         images: update.featuredImage ? [{ url: update.featuredImage }] : [],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: update.title,
+        description,
+        images: update.featuredImage ? [update.featuredImage] : ['/og-image.png'],
       },
     };
   } catch (error) {

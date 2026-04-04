@@ -3,26 +3,26 @@ import { HomeContent } from '@/core/types/web/home';
 export const homeData: HomeContent = {
   hero: {
     title: {
-      en: 'Your Gateway to Middle Eastern FinTech',
-      ar: 'بوابتك لعالم التقنية المالية',
+      en: 'FinTech and regulation, in clearer terms for product teams',
+      ar: 'تقنية مالية وتنظيم، بلغة أوضح لفرق المنتج',
     },
     subtitle: {
-      en: 'Insights, Innovations & Trends Across the Arab World',
-      ar: 'رؤى وابتكارات واتجاهات من العالم العربي',
+      en: "I'm Mohammed Abdo—I consult, design systems, and write for teams building regulated FinTech across the Arab world.",
+      ar: 'أنا محمد عبده؛ أستشير وأصمّم الأنظمة وأكتب مع فرق تبني في التقنية المالية حيث يلتقي المنتج بالتنظيم — في العالم العربي.',
     },
     description: {
-      en: 'Comprehensive coverage of FinTech innovations, regulatory updates, and industry trends across the Arab world - from Saudi Arabia and the UAE to Egypt and beyond.',
-      ar: 'تغطية شاملة لابتكارات التقنية المالية والتحديثات التنظيمية واتجاهات الصناعة في العالم العربي - من السعودية والإمارات إلى مصر وما بعدها.',
+      en: 'Part field notes, part front door: I share what I learn in public, and work hands-on when we are a good match—fewer guesses on product, compliance, and systems.',
+      ar: 'جزء مذكرات ميدانية، جزء باب للتواصل: أشارك ما أتعلمه علناً، وأعمل معك مباشرة عندما يكون التوافق مناسباً — تخمين أقل في المنتج والامتثال والأنظمة.',
     },
     ctaButtons: [
       {
-        label: { en: 'Explore Articles', ar: 'استكشف المقالات' },
-        href: '/blog',
+        label: { en: 'Get in touch', ar: 'تواصل معي' },
+        href: '/web/contact',
         variant: 'primary',
       },
       {
-        label: { en: 'About Us', ar: 'من نحن' },
-        href: '#about',
+        label: { en: 'Read the blog', ar: 'اقرأ المدونة' },
+        href: '/web/blog',
         variant: 'secondary',
       },
     ],

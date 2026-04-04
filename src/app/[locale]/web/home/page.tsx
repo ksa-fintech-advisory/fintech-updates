@@ -1,30 +1,52 @@
-import { statisticService } from '@/services/server/statisticService';
-import { heroService } from '@/services/server/heroService';
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
+import { buildPageMetadata } from '@/core/seo/buildPageMetadata';
+import { homeData } from '@/services/api/data/home.data';
+import type { HeroSection } from '@/core/types/web/home';
 import dynamic from 'next/dynamic';
-import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
-import SubscriptionForm from '@/core/components/web/home/SubscriptionForm';
-import ProductShowcase from './components/ProductShowcase';
-import LatestUpdates from './components/LatestUpdates';
-import FeaturedArticles from './components/FeaturedArticles';
-import FeaturedCourses from './components/FeaturedCourses';
-import StatisticsSection from './components/Statics';
+import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
+import ServicesSection from './components/ServicesSection';
+import FintechRoadmapSection from './components/FintechRoadmapSection';
+import BlogFeatureSection from './components/BlogFeatureSection';
 
 const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false });
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const { locale } = params;
+  const t = await getTranslations({ locale, namespace: 'web.home' });
+  return buildPageMetadata({
+    locale,
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+    path: '/web/home',
+  });
+}
+
+function localizedHero(hero: HeroSection, locale: string) {
+  const lang = locale === 'ar' ? 'ar' : 'en';
+  return {
+    title: hero.title[lang],
+    subtitle: hero.subtitle[lang],
+    description: hero.description[lang],
+    ctaButtons: hero.ctaButtons.map((btn) => ({
+      label: btn.label[lang],
+      href: btn.href.startsWith('#') ? btn.href : `/${locale}${btn.href}`,
+      variant: btn.variant,
+    })),
+  };
+}
 
 export default async function HomePage({ params }: { params: { locale: string } }) {
   const locale = params.locale;
   const isArabic = locale === 'ar';
 
-  // Fetch real statistics from API
-  const statistics = await statisticService.getStatistics(locale);
-
-  // Fetch real hero from API
-  const hero = await heroService.getHero(locale) as any
-
-  if (!hero) {
-    return null; // or return proper Null State / 404
-  }
+  const hero = localizedHero(homeData.hero, locale);
+  const tHome = await getTranslations('web.home');
 
   return (
     <div className="w-full">
@@ -41,16 +63,26 @@ export default async function HomePage({ params }: { params: { locale: string } 
         {/* 3. Vignette/Spotlight Effect to focus on text */}
         <div className="absolute inset-0 bg-radial-gradient from-transparent via-zinc-950/60 to-zinc-950 z-0 pointer-events-none" />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
-
-            {/* Title */}
+        <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative isolate mx-auto max-w-5xl text-center">
+            {/* Title — light gradient end (no to-zinc-500): dark stops sit on the bottom of each glyph and read like a muddy overlay on Arabic descenders */}
             <AnimatedSection direction="up" delay={0.2} distance={20}>
-              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight">
-                {/* Metallic Text Gradient */}
-                <span className="bg-gradient-to-b from-white via-zinc-200 to-zinc-500 bg-clip-text text-transparent drop-shadow-2xl">
-                  {hero.title}
-                </span>
+              <h1
+                className={
+                  isArabic
+                    ? 'mb-8 max-w-4xl mx-auto text-4xl font-bold leading-[1.2] tracking-normal text-zinc-50 sm:text-5xl md:text-6xl md:leading-[1.15] lg:text-6xl lg:leading-[1.12] [text-shadow:0_2px_20px_rgba(0,0,0,0.45)]'
+                    : 'mb-8 text-5xl font-bold leading-[1.08] tracking-tight text-white md:text-7xl lg:text-8xl'
+                }
+              >
+                {isArabic ? (
+                  <span lang="ar" className="block px-1">
+                    {hero.title}
+                  </span>
+                ) : (
+                  <span className="box-decoration-clone bg-gradient-to-b from-white via-zinc-100 to-zinc-300 bg-clip-text px-1 py-0.5 text-transparent [-webkit-box-decoration-break:clone]">
+                    {hero.title}
+                  </span>
+                )}
               </h1>
             </AnimatedSection>
 
@@ -71,7 +103,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
             {/* Buttons - Command Line Style */}
             <AnimatedSection direction="up" delay={0.6} distance={20}>
               <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-                {hero.ctaButtons.map((button: any, index: number) => (
+                {hero.ctaButtons.map((button, index) => (
                   <Link
                     key={index}
                     href={button.href}
@@ -100,21 +132,11 @@ export default async function HomePage({ params }: { params: { locale: string } 
               </div>
             </AnimatedSection>
 
-            {/* Optional: Trusted by / Tech Stack hint at bottom of hero */}
-            <AnimatedSection direction="up" delay={0.8} distance={10}>
-              <div className="mt-16 pt-8 border-t border-zinc-800/50 inline-flex flex-col items-center">
-                <span className="text-[10px] uppercase tracking-widest text-zinc-600 font-mono mb-4">
-                  {isArabic ? 'متوافق مع المعايير:' : 'COMPLIANT WITH:'}
-                </span>
-                <div className="flex gap-6 opacity-50 grayscale mix-blend-screen">
-                  {/* You can replace these with actual SVGs later */}
-                  <div className="h-6 w-auto text-zinc-500 font-bold font-mono">PCI-DSS</div>
-                  <div className="h-6 w-auto text-zinc-500 font-bold font-mono">ISO-27001</div>
-                  <div className="h-6 w-auto text-zinc-500 font-bold font-mono">SAMA</div>
-                </div>
-              </div>
+            <AnimatedSection direction="up" delay={0.65} distance={12}>
+              <p className="mt-12 text-center font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
+                {tHome('heroSignoff')}
+              </p>
             </AnimatedSection>
-
           </div>
         </div>
 
@@ -122,21 +144,36 @@ export default async function HomePage({ params }: { params: { locale: string } 
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none z-20" />
       </section>
       {/* Statistics Section with Enhanced Cards */}
-      <StatisticsSection statistics={statistics} />
-      {/* Our Products Section */}
-      <ProductShowcase locale={locale} />
+      
+      {/* Services */}
+      <ServicesSection />
+
+      <FintechRoadmapSection />
+
+      <BlogFeatureSection />
 
       {/* Featured Courses Section */}
-      <FeaturedCourses />
+      {/* <FeaturedCourses /> */}
 
-      <FeaturedArticles locale={locale} />
+      {/* <LatestUpdates locale={locale} /> */}
 
-      <LatestUpdates locale={locale} />
-
-      {/* General Subscription Section */}
-      <section className="py-20 bg-grey-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <SubscriptionForm locale={locale} />
+      <section className="border-t border-zinc-200 bg-zinc-100/80 py-16 dark:border-zinc-800 dark:bg-zinc-950/80">
+        <div className="container mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+          <p className="mb-6 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">{tHome('closingLead')}</p>
+          <Link
+            href={`/${locale}/web/contact`}
+            className="inline-flex items-center gap-2 rounded-xl bg-zinc-900 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-primary-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+          >
+            {tHome('closingCta')}
+            <svg
+              className={`h-4 w-4 ${isArabic ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </Link>
         </div>
       </section>
     </div>

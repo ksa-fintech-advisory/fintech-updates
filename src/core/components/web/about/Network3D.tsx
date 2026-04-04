@@ -5,41 +5,50 @@ import { Float, PerspectiveCamera, Stars, Line } from '@react-three/drei';
 import { useRef, useMemo } from 'react';
 import * as THREE from 'three';
 
-function NetworkNodes({ count = 30 }) {
-  const points = useMemo(() => {
-    const p = [];
-    for (let i = 0; i < count; i++) {
-      p.push(new THREE.Vector3(
-        (Math.random() - 0.5) * 10,
-        (Math.random() - 0.5) * 10,
-        (Math.random() - 0.5) * 10
-      ));
-    }
-    return p;
-  }, [count]);
+/** Deterministic pseudo-random in [0, 1) — stable across SSR/hydration */
+function rnd(i: number, salt: number): number {
+  const x = Math.sin(i * 12.9898 + salt * 78.233) * 43758.5453;
+  return x - Math.floor(x);
+}
 
-  const group = useRef<THREE.Group>(null);
+function makePoints(count: number, seed: number): THREE.Vector3[] {
+  const out: THREE.Vector3[] = [];
+  for (let i = 0; i < count; i++) {
+    out.push(
+      new THREE.Vector3(
+        (rnd(i * 3, seed) - 0.5) * 10,
+        (rnd(i * 3 + 1, seed) - 0.5) * 10,
+        (rnd(i * 3 + 2, seed) - 0.5) * 10
+      )
+    );
+  }
+  return out;
+}
 
-  useFrame((state) => {
-    if (group.current) {
-      group.current.rotation.y += 0.002;
-      group.current.rotation.x += 0.001;
-    }
-  });
+function NetworkNodes({ count = 36, seed = 42 }: { count?: number; seed?: number }) {
+  const points = useMemo(() => makePoints(count, seed), [count, seed]);
 
-  // Create connections between close points
   const connections = useMemo(() => {
-    const lines = [];
+    const lines: [THREE.Vector3, THREE.Vector3][] = [];
+    const maxDist = 4;
     for (let i = 0; i < points.length; i++) {
       for (let j = i + 1; j < points.length; j++) {
-        const dist = points[i].distanceTo(points[j]);
-        if (dist < 4) {
+        if (points[i].distanceTo(points[j]) < maxDist) {
           lines.push([points[i], points[j]]);
         }
       }
     }
     return lines;
   }, [points]);
+
+  const group = useRef<THREE.Group>(null);
+
+  useFrame(() => {
+    if (group.current) {
+      group.current.rotation.y += 0.002;
+      group.current.rotation.x += 0.001;
+    }
+  });
 
   return (
     <group ref={group}>
@@ -50,14 +59,7 @@ function NetworkNodes({ count = 30 }) {
         </mesh>
       ))}
       {connections.map((line, i) => (
-        <Line
-          key={i}
-          points={line}
-          color="#34D399"
-          transparent
-          opacity={0.2}
-          lineWidth={1}
-        />
+        <Line key={i} points={line} color="#34D399" transparent opacity={0.2} lineWidth={1} />
       ))}
     </group>
   );
@@ -65,18 +67,16 @@ function NetworkNodes({ count = 30 }) {
 
 export default function Network3D() {
   return (
-    <div className="absolute inset-0 z-0 w-full h-full opacity-40">
+    <div className="absolute inset-0 z-0 h-full w-full opacity-40">
       <Canvas dpr={[1, 2]}>
         <PerspectiveCamera makeDefault position={[0, 0, 12]} fov={60} />
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} color="#34D399" />
-        
-        <NetworkNodes />
-        <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-           <NetworkNodes count={15} />
+        <Float speed={2} rotationIntensity={0.35} floatIntensity={0.8}>
+          <NetworkNodes />
         </Float>
-        
-        <fog attach="fog" args={['#0f172a', 5, 25]} />
+        <Stars radius={80} depth={40} count={800} factor={3} saturation={0} fade speed={0.4} />
+        <fog attach="fog" args={['#0f172a', 6, 22]} />
       </Canvas>
     </div>
   );

@@ -1,31 +1,17 @@
+import type { ContactFormData, ContactFormResponse } from '@/core/types/web/contact';
 
-export interface ContactFormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
-export interface ContactResponse {
-  success: boolean;
-  message: {
-    en: string;
-    ar: string;
-  };
-}
+export type { ContactFormData, ContactFormResponse };
 
 export const contactApiService = {
-  submitContactForm: async (data: ContactFormData): Promise<ContactResponse> => {
-    // Simulate API delay
+  submitContactForm: async (data: ContactFormData): Promise<ContactFormResponse> => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // Simulate success
     return {
       success: true,
       message: {
-        en: "Thank you for contacting us. We will get back to you shortly.",
-        ar: "شكراً لتواصلك معنا. سنقوم بالرد عليك قريباً."
-      }
+        en: 'Thank you for your message. I will get back to you shortly.',
+        ar: 'شكراً لرسالتك. سأعود إليك قريباً.',
+      },
     };
-  }
+  },
 };

@@ -245,17 +245,17 @@ export const courseData: CourseData = {
               title: { ar: 'خريطة الشركات في السعودية', en: 'Saudi Companies Map' },
               details: {
                 ar: [
-                  'المدفوعات: STC Pay، Hala، urpay، Paylink',
+                  'المدفوعات: STC Pay، Hala، urpay، Paylink، مدى (Mada)',
                   'BNPL: Tamara، Tabby، Spotii',
-                  'الإقراض: Lendo، Mada، Qoyod',
+                  'الإقراض: Lendo ومنصات تمويل أخرى',
                   'Insurtech: Tameeni، Salama، Najm',
                   'Wealthtech: Wahed، Derayah، Scopeer',
                   'البنية التحتية: Lean Technologies، Geidea، Rewaa',
                 ],
                 en: [
-                  'Payments: STC Pay, Hala, urpay, Paylink',
+                  'Payments: STC Pay, Hala, urpay, Paylink, Mada',
                   'BNPL: Tamara, Tabby, Spotii',
-                  'Lending: Lendo, Mada, Qoyod',
+                  'Lending: Lendo and other licensed lending platforms',
                   'Insurtech: Tameeni, Salama, Najm',
                   'Wealthtech: Wahed, Derayah, Scopeer',
                   'Infrastructure: Lean Technologies, Geidea, Rewaa',
@@ -318,7 +318,7 @@ export const courseData: CourseData = {
         { title: { ar: 'البنك المركزي السعودي (ساما)', en: 'Saudi Central Bank (SAMA)' }, url: 'https://www.sama.gov.sa' },
         { title: { ar: 'هيئة السوق المالية', en: 'Capital Market Authority' }, url: 'https://cma.org.sa' },
         { title: { ar: 'Fintech Saudi', en: 'Fintech Saudi' }, url: 'https://fintechsaudi.com' },
-        { title: { ar: 'رؤية 2030', en: 'Vision 2030' }, url: 'https://vision2030.gov.sa' },
+        { title: { ar: 'رؤية 2030', en: 'Vision 2030' }, url: 'https://www.vision2030.gov.sa' },
       ],
     },
 
@@ -840,127 +840,190 @@ export const courseData: CourseData = {
     },
 
     // =========================================================================
-    // SESSION 4: Building Fintech System and Market Opportunities
+    // SESSION 4: Real Use Cases and Market Opportunities
     // =========================================================================
     {
       sessionNumber: 4,
       title: {
-        ar: 'بناء نظام Fintech بسيط والفرص في السوق',
-        en: 'Building a Simple Fintech System and Market Opportunities',
+        ar: 'حالات استخدام حقيقية والفرص في السوق',
+        en: 'Real Use Cases and Market Opportunities',
       },
       objectives: {
         ar: [
-          'تطبيق عملي لبناء نظام تقنية مالية بسيط',
-          'فهم مكونات النظام الأساسية',
-          'التعرف على الفرص الاستثمارية في السوق السعودي',
+          'فهم حالات استخدام حقيقية: البنوك الرقمية، الاستشارات الآلية، التمويل الجماعي',
+          'مناقشة نماذج أعمال وتطبيقات واقعية',
+          'التعرف على الفرص في السوق السعودي',
           'معرفة كيفية إطلاق شركة Fintech',
-          'عروض مشاريع المشاركين',
+          'مناقشة المشاركين وتبادل الآراء',
         ],
         en: [
-          'Practical application of building a simple Fintech system',
-          'Understanding basic system components',
-          'Exploring investment opportunities in Saudi market',
-          'Learning how to launch a Fintech company',
-          "Participants' project presentations",
+          'Understand real use cases: neobanks, robo-advisory, crowdfunding',
+          'Discuss business models and real-world applications',
+          'Explore opportunities in Saudi market',
+          'Learn how to launch a Fintech company',
+          'Participants discussion and exchange',
         ],
       },
       topics: [
         {
           title: {
-            ar: 'ورشة عمل: تصميم نظام تحويلات بسيط',
-            en: 'Workshop: Designing a Simple Transfer System',
+            ar: 'البنوك الرقمية (Neobanks): نماذج وحالات استخدام',
+            en: 'Neobanks: Models and Real Use Cases',
           },
           subtopics: [
             {
-              title: { ar: 'تحديد المتطلبات', en: 'Requirements Definition' },
+              title: { ar: 'ما هي البنوك الرقمية؟', en: 'What are Neobanks?' },
               details: {
                 ar: [
-                  'الوظائف الأساسية: تسجيل، تحويل، سجل المعاملات',
-                  'المستخدمون المستهدفون',
-                  'حالات الاستخدام (Use Cases)',
-                ],
-                en: ['Core features: Registration, Transfer, Transaction history', 'Target users', 'Use Cases'],
-              },
-            },
-            {
-              title: { ar: 'المعمارية التقنية', en: 'Technical Architecture' },
-              details: {
-                ar: [
-                  'Frontend: React Native / Flutter للموبايل',
-                  'Backend: Node.js / Python (FastAPI)',
-                  'Database: PostgreSQL / MongoDB',
-                  'APIs: Nafath (KYC)، Payment Gateway، SMS',
-                  'Cloud: AWS / GCP',
-                  'الأمان: تشفير، MFA، Tokenization',
+                  'بنوك رقمية بالكامل بدون فروع تقليدية',
+                  'تجربة مستخدم موجهة للموبايل',
+                  'خدمات أساسية: حسابات، مدفوعات، تحويلات',
+                  'الفرق بين Neobank وبنك تقليدي رقمن',
                 ],
                 en: [
-                  'Frontend: React Native / Flutter for mobile',
-                  'Backend: Node.js / Python (FastAPI)',
-                  'Database: PostgreSQL / MongoDB',
-                  'APIs: Nafath (KYC), Payment Gateway, SMS',
-                  'Cloud: AWS / GCP',
-                  'Security: Encryption, MFA, Tokenization',
+                  'Fully digital banks with no traditional branches',
+                  'Mobile-first user experience',
+                  'Core services: Accounts, payments, transfers',
+                  'Neobank vs traditional bank digital offering',
                 ],
               },
             },
             {
-              title: { ar: 'تدفق المعاملة (Transaction Flow)', en: 'Transaction Flow' },
+              title: { ar: 'نماذج وأمثلة عالمية ومحلية', en: 'Models and Examples (Global and Local)' },
               details: {
                 ar: [
-                  'المستخدم يدخل المبلغ والمستفيد',
-                  'التحقق من الرصيد',
-                  'KYC/AML checks',
-                  'معالجة التحويل',
-                  'إرسال إشعارات (SMS + Push)',
-                  'تحديث الأرصدة',
-                  'تسجيل المعاملة',
+                  'Revolut، N26، Chime: نماذج عالمية',
+                  'STC Pay، مدى: تجارب في السوق السعودي والخليجي',
+                  'B2C و B2B: أفراد مقابل شركات ومنشآت صغيرة',
+                  'الإيرادات: رسوم، اشتراكات، فوائد',
                 ],
                 en: [
-                  'User enters amount and beneficiary',
-                  'Balance verification',
-                  'KYC/AML checks',
-                  'Transfer processing',
-                  'Send notifications (SMS + Push)',
-                  'Update balances',
-                  'Log transaction',
+                  'Revolut, N26, Chime: Global models',
+                  'STC Pay, Mada: Saudi and GCC examples',
+                  'B2C vs B2B: Retail vs SMEs',
+                  'Revenue: Fees, subscriptions, interest',
                 ],
               },
             },
             {
-              title: { ar: 'الامتثال والأمان', en: 'Compliance and Security' },
+              title: { ar: 'الامتثال والترخيص', en: 'Compliance and Licensing' },
               details: {
                 ar: [
-                  'ترخيص PSP من SAMA',
-                  'KYC: تكامل مع Nafath',
-                  'AML: مراقبة المعاملات',
-                  'PDPL: موافقات، تشفير',
-                  'Audit logs: سجل كامل للمعاملات',
+                  'تراخيص SAMA: بنك رقمي، PSP، إلخ',
+                  'KYC/AML وNafath',
+                  'التكامل مع مدى والبنوك التقليدية',
                 ],
                 en: [
-                  'PSP License from SAMA',
-                  'KYC: Nafath integration',
-                  'AML: Transaction monitoring',
-                  'PDPL: Consents, encryption',
-                  'Audit logs: Complete transaction records',
+                  'SAMA licensing: Digital bank, PSP, etc.',
+                  'KYC/AML and Nafath',
+                  'Integration with Mada and traditional banks',
+                ],
+              },
+            },
+          ],
+        },
+        {
+          title: {
+            ar: 'الاستشارات الآلية وإدارة الثروات الرقمية (Robo-advisory)',
+            en: 'Robo-advisory and Digital Wealth Management',
+          },
+          subtopics: [
+            {
+              title: { ar: 'ما هو Robo-advisory؟', en: 'What is Robo-advisory?' },
+              details: {
+                ar: [
+                  'استشارة استثمارية آلية مبنية على الخوارزميات',
+                  'تخصيص المحفظة حسب المخاطر والأهداف',
+                  'إدارة تلقائية وإعادة توازن',
+                  'تكلفة أقل من المستشار البشري',
+                ],
+                en: [
+                  'Algorithm-based automated investment advice',
+                  'Portfolio allocation by risk and goals',
+                  'Automated management and rebalancing',
+                  'Lower cost than human advisors',
                 ],
               },
             },
             {
-              title: { ar: 'التكلفة والوقت', en: 'Cost and Timeline' },
+              title: { ar: 'حالات استخدام وأمثلة', en: 'Use Cases and Examples' },
               details: {
                 ar: [
-                  'الترخيص: 6-12 شهر، تكلفة إدارية',
-                  'التطوير: 3-6 أشهر، 500K-2M ريال',
-                  'البنية التحتية: Cloud (Pay-as-you-go)',
-                  'APIs: رسوم معاملات (1-3%)',
-                  'الفريق: 5-10 أشخاص',
+                  'الاستثمار للشباب والمدخرات الصغيرة',
+                  'صناديق ETF والصناديق المشتركة',
+                  'أمثلة: Betterment، Wealthfront؛ محلياً في المنطقة',
+                  'التنظيم: CMA وهيئات رقابة الأسواق',
                 ],
                 en: [
-                  'Licensing: 6-12 months, administrative cost',
-                  'Development: 3-6 months, 500K-2M SAR',
-                  'Infrastructure: Cloud (Pay-as-you-go)',
-                  'APIs: Transaction fees (1-3%)',
-                  'Team: 5-10 people',
+                  'Investing for youth and small savers',
+                  'ETFs and mutual funds',
+                  'Examples: Betterment, Wealthfront; local players',
+                  'Regulation: CMA and securities regulators',
+                ],
+              },
+            },
+          ],
+        },
+        {
+          title: {
+            ar: 'التمويل الجماعي والتمويل البديل (Crowdfunding)',
+            en: 'Crowdfunding and Alternative Finance',
+          },
+          subtopics: [
+            {
+              title: { ar: 'أنواع التمويل الجماعي', en: 'Types of Crowdfunding' },
+              details: {
+                ar: [
+                  'Donation-based: تبرعات بدون عائد',
+                  'Reward-based: مكافآت أو منتجات',
+                  'Equity crowdfunding: استثمار في شركات',
+                  'Lending (P2P): قروض بين الأفراد والمنشآت',
+                ],
+                en: [
+                  'Donation-based: No financial return',
+                  'Reward-based: Rewards or products',
+                  'Equity crowdfunding: Investment in companies',
+                  'Lending (P2P): Loans between individuals and SMEs',
+                ],
+              },
+            },
+            {
+              title: { ar: 'حالات استخدام وتنظيم', en: 'Use Cases and Regulation' },
+              details: {
+                ar: [
+                  'تمويل المشاريع الصغيرة والشركات الناشئة',
+                  'تمويل ديون (Lendo، مشابهاتها)',
+                  'دور CMA ولوائح التمويل الجماعي',
+                  'فرص في السوق السعودي',
+                ],
+                en: [
+                  'Funding SMEs and startups',
+                  'Debt financing (Lendo and similar)',
+                  'CMA role and crowdfunding regulations',
+                  'Opportunities in Saudi market',
+                ],
+              },
+            },
+          ],
+        },
+        {
+          title: {
+            ar: 'حالات استخدام أخرى في التقنية المالية',
+            en: 'Other Fintech Use Cases',
+          },
+          subtopics: [
+            {
+              title: { ar: 'Insurtech وEmbedded Finance', en: 'Insurtech and Embedded Finance' },
+              details: {
+                ar: [
+                  'Insurtech: تأمين بالطلب، مقارنات، تبسيط المطالبات',
+                  'Embedded Finance: دمج الدفع والائتمان داخل منصات غير مالية',
+                  'Buy Now Pay Later (BNPL) والتجارة الإلكترونية',
+                ],
+                en: [
+                  'Insurtech: On-demand insurance, comparison, claims',
+                  'Embedded Finance: Payments and credit inside non-financial platforms',
+                  'Buy Now Pay Later (BNPL) and e-commerce',
                 ],
               },
             },
@@ -1106,44 +1169,33 @@ export const courseData: CourseData = {
         },
         {
           title: {
-            ar: 'عروض المشاركين ومناقشة',
-            en: 'Participants Presentations and Discussion',
+            ar: 'مناقشة المشاركين',
+            en: 'Participants Discussion',
           },
           subtopics: [
             {
-              title: { ar: 'عروض المشاريع', en: 'Project Presentations' },
+              title: { ar: 'تبادل الآراء والأسئلة', en: 'Q&A and Exchange' },
               details: {
                 ar: [
-                  'كل مشارك: 5 دقائق عرض + 2 دقائق أسئلة',
-                  'المشكلة والحل',
-                  'الجمهور المستهدف',
-                  'الميزة التنافسية',
-                  'التقنيات المستخدمة',
-                  'الخطوات التالية',
+                  'مناقشة حالات الاستخدام التي تم طرحها',
+                  'أسئلة حول Neobanks، Robo-advisory، Crowdfunding',
+                  'ربط المحتوى بالواقع المحلي والسوق السعودي',
+                  'اقتراحات وملاحظات المشاركين',
                 ],
                 en: [
-                  'Each participant: 5 min presentation + 2 min Q&A',
-                  'Problem and solution',
-                  'Target audience',
-                  'Competitive advantage',
-                  'Technologies used',
-                  'Next steps',
+                  'Discuss the use cases covered',
+                  'Questions on neobanks, robo-advisory, crowdfunding',
+                  'Link content to local reality and Saudi market',
+                  'Participants suggestions and feedback',
                 ],
-              },
-            },
-            {
-              title: { ar: 'التقييم الجماعي', en: 'Group Evaluation' },
-              details: {
-                ar: ['تصويت على أفضل فكرة', 'نقاش التحسينات الممكنة', 'اقتراحات من المشاركين'],
-                en: ['Vote for best idea', 'Discuss possible improvements', 'Suggestions from participants'],
               },
             },
           ],
         },
       ],
       resources: {
-        ar: ['دليل إطلاق Fintech Startup - Fintech Saudi', 'Saudi Venture Capital Landscape', 'دليل SAMA Sandbox'],
-        en: ['Fintech Startup Launch Guide - Fintech Saudi', 'Saudi Venture Capital Landscape', 'SAMA Sandbox Guide'],
+        ar: ['أمثلة Neobanks عالمية ومحلية', 'أدلة Robo-advisory والاستثمار الرقمي', 'دليل إطلاق Fintech - Fintech Saudi', 'دليل SAMA Sandbox'],
+        en: ['Neobanks and robo-advisory examples', 'Digital wealth and crowdfunding guides', 'Fintech Startup Launch Guide - Fintech Saudi', 'SAMA Sandbox Guide'],
       },
       links: [
         { title: { ar: 'برامج Fintech Saudi', en: 'Fintech Saudi Programs' }, url: 'https://fintechsaudi.com/en/programs' },

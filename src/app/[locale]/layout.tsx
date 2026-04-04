@@ -6,37 +6,57 @@ import { ThemeProvider } from '@/core/theme/ThemeProvider';
 import { NotificationProvider } from '@/core/notifications/NotificationProvider';
 import Header from '@/core/components/web/layout/Header';
 import Footer from '@/core/components/web/layout/Footer';
+import { getSiteUrl } from '@/core/seo/site';
 import '@/core/theme/globals.css';
+
+const fav = '/favicon_io';
 
 export const metadata: Metadata = {
   title: {
     default: 'Maal Tech | مال تك',
     template: '%s | Maal Tech',
   },
-  description: 'Your gateway to Middle Eastern FinTech - Maal Tech covers innovations, regulations, and trends across the Arab world. From Saudi Arabia to the UAE, Egypt, and beyond. Comprehensive insights on digital banking, blockchain, payments, and financial technology.',
-  keywords: ['Saudi Arabia', 'FinTech', 'Digital Banking', 'SAMA', 'Mada', 'Payment Systems', 'Blockchain', 'Financial Technology', 'Vision 2030', 'Innovation'],
-  authors: [{ name: 'Maal Tech Team' }],
-  creator: 'Maal Tech',
+  description:
+    'Maal Tech — Mohammed Abdo: FinTech consulting, architecture, and mentorship for Saudi Arabia and the Arab world. Blog, free learner roadmap, PDPL/GCC regulatory context, and contact.',
+  keywords: [
+    'FinTech',
+    'Saudi Arabia',
+    'KSA',
+    'SAMA',
+    'PDPL',
+    'GCC',
+    'digital banking',
+    'payments',
+    'compliance',
+    'FinTech consulting',
+    'مال تك',
+    'التقنية المالية',
+  ],
+  authors: [{ name: 'Mohammed Abdo', url: 'https://www.linkedin.com/in/mohfintech/' }],
+  creator: 'Mohammed Abdo',
   publisher: 'Maal Tech',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'https://arab-fintech.com'),
+  metadataBase: new URL(getSiteUrl()),
   alternates: {
     canonical: '/',
     languages: {
-      'en': '/en',
-      'ar': '/ar',
+      en: '/en',
+      ar: '/ar',
+      'x-default': '/en',
     },
   },
   openGraph: {
     title: 'Maal Tech | مال تك',
-    description: 'Your gateway to Middle Eastern FinTech - covering innovations, regulations, and trends across the Arab world.',
+    description:
+      'FinTech consulting, writing, and a free learner roadmap — for teams building regulated products in the Arab world.',
     url: '/',
     siteName: 'Maal Tech',
-    locale: 'en',
+    locale: 'en_US',
+    alternateLocale: ['ar_SA'],
     type: 'website',
     images: [
       {
@@ -50,9 +70,10 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Maal Tech | مال تك',
-    description: 'Your gateway to Middle Eastern FinTech - covering innovations, regulations, and trends across the Arab world.',
+    description:
+      'FinTech consulting, writing, and a free learner roadmap — for teams building regulated products in the Arab world.',
     images: ['/og-image.png'],
-    creator: '@MaalTech',
+    creator: '@mohfintech',
   },
   robots: {
     index: true, // Website should be indexed
@@ -64,13 +85,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.png' },
-      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-512x512.png', sizes: '512x512', type: 'image/png' },
+      { url: '/favicon.ico' },
+      { url: `${fav}/favicon-16x16.png`, sizes: '16x16', type: 'image/png' },
+      { url: `${fav}/favicon-32x32.png`, sizes: '32x32', type: 'image/png' },
+      { url: `${fav}/android-chrome-192x192.png`, sizes: '192x192', type: 'image/png' },
+      { url: `${fav}/android-chrome-512x512.png`, sizes: '512x512', type: 'image/png' },
     ],
-    apple: [
-      { url: '/icon-192x192.png' },
-    ],
+    apple: [{ url: `${fav}/apple-touch-icon.png`, type: 'image/png', sizes: '180x180' }],
+    shortcut: [{ url: '/favicon.ico' }],
   },
   manifest: '/manifest.json',
 };

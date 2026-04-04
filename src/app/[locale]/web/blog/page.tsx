@@ -1,5 +1,8 @@
+import type { Metadata } from 'next';
 import { blogApiService } from '@/services/api/blogs';
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
+import { buildPageMetadata } from '@/core/seo/buildPageMetadata';
 import dynamic from 'next/dynamic';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
 import { BlogFilters } from '@/core/components/web/blog/BlogFilters';
@@ -8,6 +11,21 @@ import { FiBookOpen, FiCalendar, FiClock, FiUser, FiArrowRight, FiArrowLeft, FiS
 
 // WaveField3D can be kept if it fits the theme (e.g., monochrome particles), otherwise consider a simpler grid
 const WaveField3D = dynamic(() => import('@/core/components/web/blog/WaveField3D'), { ssr: false });
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const { locale } = params;
+  const t = await getTranslations({ locale, namespace: 'web.blog' });
+  return buildPageMetadata({
+    locale,
+    title: t('metaTitle'),
+    description: t('metaDescription'),
+    path: '/web/blog',
+  });
+}
 
 export default async function BlogPage({
   params,

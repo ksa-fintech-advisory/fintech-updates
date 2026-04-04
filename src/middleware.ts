@@ -4,6 +4,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const intlMiddleware = createMiddleware(routing);
 
+const FINTECH_FUNDAMENTALS_PATH = '/web/courses/fintech-fundamentals';
+
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
