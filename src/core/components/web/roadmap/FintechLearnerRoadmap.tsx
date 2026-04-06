@@ -79,38 +79,46 @@ function ResourceRow({
   lang: 'en' | 'ar';
   locale: string;
 }) {
-  const t = useTranslations('web.roadmapPage');
   const label = resource.label[lang];
-  const internal = resource.href.startsWith('internal:');
-  const path = internal ? resource.href.replace(/^internal:/, '') : resource.href;
-
-  if (internal) {
-    return (
-      <li>
-        <Link
-          href={`/${locale}${path}`}
-          className="group inline-flex items-center gap-2 text-xs font-medium text-primary-600 underline-offset-2 hover:text-primary-700 hover:underline dark:text-primary-400 dark:hover:text-primary-300 sm:text-sm"
-        >
-          <span>{label}</span>
-          <FiArrowRight className="h-3 w-3 opacity-60 rtl:hidden" aria-hidden />
-          <FiArrowLeft className="hidden h-3 w-3 opacity-60 rtl:inline" aria-hidden />
-        </Link>
-      </li>
-    );
-  }
 
   return (
-    <li>
-      <a
-        href={resource.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group inline-flex items-center gap-2 text-xs font-medium text-zinc-600 underline-offset-2 hover:text-primary-600 hover:underline dark:text-zinc-400 dark:hover:text-primary-400 sm:text-sm"
-      >
-        <span>{label}</span>
-        <FiExternalLink className="h-3 w-3 shrink-0 opacity-50 transition-opacity group-hover:opacity-100" aria-hidden />
-        <span className="sr-only">{t('opensNewTab')}</span>
-      </a>
+    <li className="text-xs font-medium leading-snug text-zinc-600 dark:text-zinc-400 sm:text-sm">
+      <span className="select-text">{label}</span>
+      {/*
+      const t = useTranslations('web.roadmapPage');
+      const internal = resource.href.startsWith('internal:');
+      const path = internal ? resource.href.replace(/^internal:/, '') : resource.href;
+
+      if (internal) {
+        return (
+          <li>
+            <Link
+              href={`/${locale}${path}`}
+              className="group inline-flex items-center gap-2 text-xs font-medium text-primary-600 underline-offset-2 hover:text-primary-700 hover:underline dark:text-primary-400 dark:hover:text-primary-300 sm:text-sm"
+            >
+              <span>{label}</span>
+              <FiArrowRight className="h-3 w-3 opacity-60 rtl:hidden" aria-hidden />
+              <FiArrowLeft className="hidden h-3 w-3 opacity-60 rtl:inline" aria-hidden />
+            </Link>
+          </li>
+        );
+      }
+
+      return (
+        <li>
+          <a
+            href={resource.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 text-xs font-medium text-zinc-600 underline-offset-2 hover:text-primary-600 hover:underline dark:text-zinc-400 dark:hover:text-primary-400 sm:text-sm"
+          >
+            <span>{label}</span>
+            <FiExternalLink className="h-3 w-3 shrink-0 opacity-50 transition-opacity group-hover:opacity-100" aria-hidden />
+            <span className="sr-only">{t('opensNewTab')}</span>
+          </a>
+        </li>
+      );
+      */}
     </li>
   );
 }
