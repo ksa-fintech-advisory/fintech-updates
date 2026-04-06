@@ -382,10 +382,10 @@ export default function FintechLearnerRoadmap() {
             </div>
 
             <header className="flex w-full flex-col gap-6 sm:gap-7">
-              <div className="inline-flex w-fit items-center gap-2 rounded border border-primary-500/25 bg-primary-500/10 px-2.5 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary-300 sm:px-3">
+              {/* <div className="inline-flex w-fit items-center gap-2 rounded border border-primary-500/25 bg-primary-500/10 px-2.5 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary-300 sm:px-3">
                 <FiLayers className="h-3 w-3 shrink-0 text-primary-400" aria-hidden />
                 {t('kicker')}
-              </div>
+              </div> */}
 
               <h1
                 className={`text-3xl font-bold tracking-tight sm:text-4xl sm:leading-[1.2] lg:text-[2.75rem] lg:leading-[1.16] ${
