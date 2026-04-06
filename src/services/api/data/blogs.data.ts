@@ -1313,20 +1313,74 @@ export const blogs: Blog[] = [
     excerpt: { en: 'Amazon focused on e-commerce, while Apple focused on the ecosystem. Innovation needs market understanding.', ar: 'ركزت أمازون على تجارتها، بينما بنت آبل منظومة. الابتكار يحتاج فهم السوق.' },
     content: {
       ar: [
-        { type: 'paragraph', text: 'ليش Amazon Pay ما صارت زي Apple Pay؟ أمازون ركزت على الدفع داخل منصتها وما اهتمت بالتجربة الخارجة.' },
-        { type: 'quote', text: 'الابتكار ما يكفي إذا ما فهمت السوق وسلوك المستخدم.' }
+        { type: 'paragraph', text: 'يش Amazon Pay ما صارت لاعب قوي في عالم المدفوعات مثل Apple Pay وGoogle Pay؟' },
+        { type: 'paragraph', text: 'كلنا نعرف أمازون عملاق التجارة الالكترونية وحتى الحوسبة السحابية.' },
+        { type: 'paragraph', text: 'لما أطلقت Amazon Pay كثير توقعوا إنها خلاص بتسيطر على سوق المدفوعات.' },
+        { type: 'paragraph', text: 'وليش لا وهي عندها كل شيء' },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'مئات الملايين من العملاء',
+            'بطاقات مسجّلة',
+            'ثقة قوية',
+            'حضور عالمي',
+          ],
+        },
+        { type: 'paragraph', text: 'لكن اللي حصل في الواقع أن Amazon Pay ما صارت جزء يومي من تجربة الدفع مثل ما سوت Apple Pay أو Google Pay.' },
+        { type: 'header', level: 3, text: 'ليش ؟' },
+        { type: 'paragraph', text: 'عقلية التجارة مش هي عقلية الفنتك.' },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'أمازون ركزت على الدفع داخل منصتها، مو خارجها',
+            'ما اهتمت بتجربة المستخدم في المتاجر أو التطبيقات الأخرى',
+            'ما بنت شبكة شراكات مع البنوك أو الأنظمة المحلية مثل ما فعلت Apple',
+          ],
+        },
+        { type: 'header', level: 3, text: 'والنتيجة؟' },
+        { type: 'paragraph', text: 'الناس ما حسّوا إن Amazon Pay هو الطريقة الأسهل للدفع — بل مجرد خيار إضافي.' },
+        { type: 'quote', text: 'الابتكار ما يكفي إذا ما فهمت السوق، وسلوك المستخدم، والبيئة التنظيمية.' },
       ],
       en: [
-        { type: 'paragraph', text: 'Why isn\'t Amazon Pay like Apple Pay? Amazon focused inside its platform, ignoring the outside.' },
-        { type: 'quote', text: 'Innovation isn\'t enough without understanding the market.' }
-      ]
+        { type: 'paragraph', text: 'Why hasn’t Amazon Pay become a major player in payments like Apple Pay and Google Pay?' },
+        { type: 'paragraph', text: 'We all know Amazon as a giant of e-commerce—and cloud computing too.' },
+        { type: 'paragraph', text: 'When Amazon Pay launched, many expected it to take over the payments market.' },
+        { type: 'paragraph', text: 'Why wouldn’t it? It had everything going for it:' },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'Hundreds of millions of customers',
+            'Cards already on file',
+            'Strong trust',
+            'Global reach',
+          ],
+        },
+        { type: 'paragraph', text: 'Yet in practice, Amazon Pay never became part of everyday checkout the way Apple Pay or Google Pay did.' },
+        { type: 'header', level: 3, text: 'Why?' },
+        { type: 'paragraph', text: 'A commerce mindset is not the same as a fintech mindset.' },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'Amazon focused on payments inside its own platform, not outside it',
+            'It did not prioritize the user experience at other merchants or in third-party apps',
+            'It did not build the bank and local-rails partnerships that Apple did',
+          ],
+        },
+        { type: 'header', level: 3, text: 'The result?' },
+        { type: 'paragraph', text: 'People never felt that Amazon Pay was the easiest way to pay—just another optional method.' },
+        { type: 'quote', text: 'Innovation is not enough if you do not understand the market, user behavior, and the regulatory environment.' },
+      ],
     },
     featuredImage: '/images/blogs/amazon.jpg',
     category: blogCategories[3],
     tags: ['FinTech', 'Payments', 'Strategy'],
     author: { id: 'auth-1', name: { en: 'Fintech Poster', ar: 'Fintech Poster' } },
     publishedAt: '2024-10-20T10:00:00Z',
-    readTime: 2,
+    readTime: 3,
     relatedPosts: []
   },
 
@@ -1578,20 +1632,54 @@ export const blogs: Blog[] = [
     excerpt: { en: 'Bitcoin uses UTXO (Unspent Transaction Outputs) instead of balances. This design ensures validity and privacy.', ar: 'البتكوين يستخدم UTXO بدلاً من الأرصدة. هذا التصميم يضمن الصحة والخصوصية.' },
     content: {
       ar: [
-        { type: 'paragraph', text: 'البتكوين ما يستخدم "الرصيد". يستخدم UTXO.' },
-        { type: 'paragraph', text: 'كل مرة تستقبل بتكوين، تستقبل وحدة مستقلة. هذا يسهل التحقق ويمنع الإنفاق المزدوج.' }
+        { type: 'paragraph', text: 'من أكثر الحاجات اللي ممكن تدهشك فعلاً في البتكوين أنها ما تستخدم "الرصيد" أو الحسابات بالطريقة اللي متعودين عليها.' },
+        { type: 'paragraph', text: 'بدل ما يقول النظام "محمد عنده 2 BTC"، يروح يستخدم مبدأ عبقري اسمه UTXO — Unspent Transaction Output (مخرجات المعاملات غير المصروفة).' },
+        { type: 'header', level: 3, text: 'كيف؟' },
+        { type: 'paragraph', text: 'كل مرة تستقبل فيها بتكوين، أنت ما تستقبل "رصيد" بل تستقبل وحدة كاملة مستقلة من البتكوين، اسمها UTXO.' },
+        { type: 'paragraph', text: 'فرضًا أنت تريد ترسل لأي شخص 1 BTC، وأنت معاك بمحفظتك 10 BTC.' },
+        { type: 'paragraph', text: 'بناءً على هذا المبدأ اللي ماشي عليه البتكوين أنت ما تقدر ترسل للشخص ذا 1 BTC فقط. إنما لازم تصرف الـ UTXO كامل وتسوي معاملة جديدة فيها:' },
+        {
+          type: 'list',
+          style: 'ordered',
+          items: [
+            '1 BTC للشخص المرسل له',
+            'والباقي، 9 BTC، يرجع لك كـ UTXO جديد',
+          ],
+        },
+        { type: 'paragraph', text: 'لو نأخذ مثال واقعي أكثر: تخيل عندك عملة من فئة 100 ريال، وتريد تشتري شيء بـ 30 ريال. فأنت بتروح تعطي البائع 100 كاملة، وهو ياخذ 30 ويرجع لك 70 كعملة جديدة مستقلة.' },
+        { type: 'paragraph', text: 'نفس الشيء يصير في البتكوين بالضبط.' },
+        { type: 'header', level: 3, text: 'طيب ليش هذا التصميم؟' },
+        { type: 'paragraph', text: 'بناءً على الفلسفة القائمة عليها البتكوين، هذا التصميم وجد عشان يسهل التحقق من صحة كل معاملة بشكل بسيط وتقدر تعرف هل الـ UTXO انصرف من قبل ولا لا. ويسمح بتنفيذ المعاملات بشكل متوازي بمعنى أنه ما تحتاج تعمل عمليات حسابية دائن ومدين (زي اللي نسويها في الأنظمة البنكية الحالية) عشان تعرف رصيد المحفظة، بالإضافة إلى أنه يدعم الخصوصية لأنك تقدر تستخدم عنوانًا جديدًا لكل UTXO.' },
+        { type: 'quote', text: 'البتكوين مش بس عملة رقمية بقدر ما هو نظام مالي ذكي ومبني على مبادئ قوية عبقرية وبسيطة في نفس الوقت.' },
       ],
       en: [
-        { type: 'paragraph', text: 'Bitcoin doesn\'t use balances; it uses UTXO.' },
-        { type: 'paragraph', text: 'Receiving Bitcoin means receiving a distinct chunk. This prevents double-spending.' }
-      ]
+        { type: 'paragraph', text: 'One of Bitcoin’s genuinely surprising traits is that it does not use “balances” or accounts the way we are used to.' },
+        { type: 'paragraph', text: 'Instead of the system saying “Mohammed has 2 BTC,” it relies on an elegant idea called UTXO — Unspent Transaction Output.' },
+        { type: 'header', level: 3, text: 'How does that work?' },
+        { type: 'paragraph', text: 'Whenever you receive bitcoin, you are not credited an abstract balance; you receive a discrete chunk of bitcoin called a UTXO.' },
+        { type: 'paragraph', text: 'Suppose you want to send someone 1 BTC and your wallet holds 10 BTC in one UTXO.' },
+        { type: 'paragraph', text: 'Under Bitcoin’s rules you cannot send only 1 BTC out of that UTXO. You must spend the whole UTXO and build a new transaction that splits it:' },
+        {
+          type: 'list',
+          style: 'ordered',
+          items: [
+            '1 BTC to the recipient',
+            'The remainder, 9 BTC, returned to you as a new UTXO (change)',
+          ],
+        },
+        { type: 'paragraph', text: 'A concrete analogy: you have a 100-riyal bill and want to buy something for 30. You hand over the 100; the merchant keeps 30 and gives you 70 back as separate change.' },
+        { type: 'paragraph', text: 'Bitcoin behaves the same way.' },
+        { type: 'header', level: 3, text: 'Why design it this way?' },
+        { type: 'paragraph', text: 'Grounded in Bitcoin’s philosophy, this model makes it straightforward to verify each transaction: you only need to check whether a UTXO was already spent. It also allows parallel validation without running debit-and-credit ledger math like traditional banking to infer a wallet balance, and it supports privacy because you can use a fresh address per UTXO if you choose.' },
+        { type: 'quote', text: 'Bitcoin is not just digital cash — it is a financial system built on principles that are powerful, clever, and simple at the same time.' },
+      ],
     },
     featuredImage: '/images/blogs/utxo.jpg',
     category: blogCategories[4],
     tags: ['Fintech', 'Cryptocurrency'],
     author: { id: 'auth-1', name: { en: 'Fintech Poster', ar: 'Fintech Poster' } },
     publishedAt: '2024-12-05T10:00:00Z',
-    readTime: 2,
+    readTime: 4,
     relatedPosts: []
   },
 
@@ -1603,20 +1691,130 @@ export const blogs: Blog[] = [
     excerpt: { en: 'Mining is solving a Proof of Work puzzle using Hash and Nonce to secure the network.', ar: 'التعدين هو حل لغز Proof of Work باستخدام الهاش والـ Nonce لتأمين الشبكة.' },
     content: {
       ar: [
-        { type: 'paragraph', text: 'التعدين هو حل لغز رياضي (Proof of Work) للبحث عن Nonce.' },
-        { type: 'paragraph', text: 'الهاش يربط البلوك بالسابق. هذا النظام يضمن الأمان واللامركزية.' }
+        { type: 'paragraph', text: 'اليوم بعدما ربطت الصورة عن التعدين في البتكوين، حبيت أشرحها بأسلوبي — يمكن أحد يمر بنفس الأسئلة اللي كانت تدور في بالي.' },
+        { type: 'paragraph', text: 'طبعاً لقبل فترة وأنا عندي لخبطة كبيرة بخصوص تعدين البيتكوين. ودائما أسمع إن المعدّن يحل لغز ويكسب عملات، بس ما كنت فاهم:' },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'ليش لازم في لغز؟',
+            'ليش هو اللي يكسب؟',
+            'وإيش دور الهاش، والـ nonce، وشبكة البيتكوين كلها؟',
+          ],
+        },
+        { type: 'paragraph', text: 'طيب أول حاجة هي إن شبكة البيتكوين ما فيها بنك ولا جهة تشرف على المعاملات. لما "علي" يحوّل لـ "سارة" ما في أحد في النص يشيّك ويأكّد العملية نفس اللي يحصل في المعاملات البنكية الحالية زي ال check أو ال ACH.' },
+        { type: 'paragraph', text: 'بدل كذا، كل حاجة تحصل على شبكة اسمها البلوكشين (Blockchain) واللي هي عبارة سجل عام موزّع على آلاف الأجهزة حول العالم (أو نقدر نتخيّلها أنها عبارة عن Linked list زي اللي درسناها في data structure).' },
+        { type: 'paragraph', text: 'كل جهاز من هذه الأجهزة اسمه Node (عقدة)، واللي يشارك في توثيق المعاملات اسمه Miner (معدّن).' },
+        { type: 'header', level: 3, text: 'طيب إيش يسوي المعدّن بالضبط؟' },
+        { type: 'paragraph', text: 'لما علي يقرر يرسل لمحفظة سارة 1 Bitcoin عبر الشبكة بيحدد كم رسوم العملية. بعدين بتصير ذي العملية وتنتقل للشبكة وتنتظر أحد يضيفها داخل Block جديد.' },
+        { type: 'paragraph', text: 'المعدّنين يتسابقون، كل واحد منهم يجمع مجموعة عمليات داخل block مؤقت يكون مخزن على جهازه لأنه لسا مش موثق عشان يكون على الشبكة. وعشان يضيفه للشبكة في شرط وهو اللي يضمن إن الشبكة ما تكون فوضى.' },
+        { type: 'paragraph', text: 'لازم أي block جديد يتم قبوله فقط إذا قدر المعدّن يحل "لغز رياضي" يسمّى Proof of Work.' },
+        { type: 'paragraph', text: 'اللُغز باختصار: لازم تلاقي رقم يسمّى nonce، لما تدمجه مع بيانات الـ block وتدخلهم في دالة هاش (SHA-256)، لازم الناتج يبدأ بعدد معين من الأصفار.' },
+        { type: 'paragraph', text: 'طيب من اللي يحدد كم صفر؟ الشبكة نفسها، بناءً على شيء يُسمّى الصعوبة (Difficulty)، ويتم تحديثه كل 2016 block تقريبًا (يعني كل أسبوعين).' },
+        { type: 'paragraph', text: 'من هنا تبدأ اللعبة: ما في معادلة سحرية توصلك للنتيجة. كل المعدنين حول العالم يجربوا مليارات القيم للـ nonce في الثانية، إلى أن يطلع الهاش الصحيح.' },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'أول واحد ينجح يرسل الـ block للشبكة',
+            'كل العقد على الشبكة تتأكد من صحة المعاملات والتوقيع',
+            'إذا كل شيء سليم، يتم إضافته للسلسلة رسميًا',
+          ],
+        },
+        { type: 'header', level: 3, text: 'والمكافأة؟' },
+        { type: 'paragraph', text: 'يحصل المعدّن على عدد من عملات البيتكوين الجديدة (حاليًا 6.25 BTC)، بالإضافة إلى كل رسوم العمليات اللي ضمّنها داخل الـ block.' },
+        { type: 'paragraph', text: 'طبعاً القوة الحقيقية في البلوكشين مش بس في التعدين إنما في ربط الـ blocks ببعض عن طريق الهاشات. بحيث إن كل block يحتوي على:' },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'المعاملات',
+            'nonce',
+            'هاش الـ block السابق',
+          ],
+        },
+        { type: 'paragraph', text: 'يعني أي تغيير في أي block قديم → يؤدي لتغيير الهاش → مما يؤدي إلى رفض كل الـ blocks اللي بعده. زي سلسلة حديد مربوطة، لو كسرت حلقة، كل اللي بعدها يطيح.' },
+        { type: 'paragraph', text: 'فلو أحد حاول يعدل معاملة قديمة، لازم يعيد حساب كل شيء من ذاك الـ block حتى آخر block في السلسلة… وبسرعة تفوق كل المعدنين في العالم. وهذا طبعاً شبه مستحيل إلا لو امتلك أكثر من (51%) من العقد الموجودة في الشبكة.' },
+        { type: 'header', level: 3, text: 'خلاصة الموضوع' },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'المعدّن هو من يحل اللغز ويكسب المكافأة',
+            'الهاش يربط كل block باللي قبله ويكشف أي تلاعب',
+            'الـ nonce هو الرقم اللي يُجرَّب ملايين المرات حتى ينطبق الشرط',
+            'Proof of Work هو اللي يخلي النظام لامركزي وآمن بدون أي جهة تحكم',
+          ],
+        },
+        { type: 'quote', text: 'تعدين البيتكوين هو مزيج عبقري من الحوافز، والأمان، والشفافية… بدون أي طرف مركزي.' },
+        { type: 'paragraph', text: 'لو فهمته صح، بتفهم كيف ممكن النظام المالي يتغير بالكامل في المستقبل.' },
       ],
       en: [
-        { type: 'paragraph', text: 'Mining is solving a Proof of Work puzzle to find a Nonce.' },
-        { type: 'paragraph', text: 'Hashes link blocks. This ensures security and decentralization.' }
-      ]
+        { type: 'paragraph', text: 'After tying the image to Bitcoin mining, I wanted to explain it in my own words — maybe someone is asking the same questions I used to have.' },
+        { type: 'paragraph', text: 'For a long time I was genuinely confused about Bitcoin mining. I kept hearing that miners solve a puzzle and earn coins, but I did not really get:' },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'Why there has to be a puzzle',
+            'Why they are the ones who get paid',
+            'What hash, nonce, and the Bitcoin network actually do',
+          ],
+        },
+        { type: 'paragraph', text: 'First: the Bitcoin network has no bank and no central party clearing transactions. When "Ali" sends to "Sara," nobody in the middle verifies the payment the way banks do today with checks or ACH.' },
+        { type: 'paragraph', text: 'Instead, everything happens on a network called the blockchain — a public ledger spread across thousands of machines worldwide. You can picture it like a linked list from data structures class.' },
+        { type: 'paragraph', text: 'Each machine is a node; participants who help record transactions are miners.' },
+        { type: 'header', level: 3, text: 'So what does a miner actually do?' },
+        { type: 'paragraph', text: 'When Ali sends Sara 1 BTC over the network, he sets a fee for the transaction. The transaction propagates and waits for someone to include it in a new block.' },
+        { type: 'paragraph', text: 'Miners race: each bundles transactions into a provisional block on their own machine because it is not yet part of the chain. To attach it to the network, there is a rule that keeps the system from turning into chaos.' },
+        { type: 'paragraph', text: 'A new block is accepted only if the miner solves a mathematical puzzle called Proof of Work.' },
+        { type: 'paragraph', text: 'In short: find a number called a nonce; combine it with the block data and run it through a hash function (SHA-256); the output must start with a required number of leading zeros.' },
+        { type: 'paragraph', text: 'Who picks how many zeros? The network itself, via difficulty, which adjusts about every 2,016 blocks (roughly every two weeks).' },
+        { type: 'paragraph', text: 'That is where the "game" starts: there is no magic formula. Miners around the world try billions of nonce values per second until someone produces a valid hash.' },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'The first to succeed broadcasts the block',
+            'Every node checks signatures and transaction validity',
+            'If all is well, the block is added to the chain',
+          ],
+        },
+        { type: 'header', level: 3, text: 'The reward?' },
+        { type: 'paragraph', text: 'The miner receives newly issued bitcoin (6.25 BTC) plus all transaction fees included in that block.' },
+        { type: 'paragraph', text: 'The real power of blockchain is not only mining but chaining blocks together with hashes. Each block contains:' },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'Transactions',
+            'The nonce',
+            'The previous block’s hash',
+          ],
+        },
+        { type: 'paragraph', text: 'Change anything in an old block → its hash changes → every later block breaks. Like a steel chain: break one link and everything after it falls apart.' },
+        { type: 'paragraph', text: 'To rewrite an old payment, an attacker would have to recompute from that block to the tip of the chain — faster than the entire honest mining world. That is practically impossible unless they control more than about 51% of the network.' },
+        { type: 'header', level: 3, text: 'Bottom line' },
+        {
+          type: 'list',
+          style: 'unordered',
+          items: [
+            'The miner solves the puzzle and earns the reward',
+            'The hash links each block to the last and exposes tampering',
+            'The nonce is the number tried millions of times until the rule is satisfied',
+            'Proof of Work keeps the system decentralized and secure without a central authority',
+          ],
+        },
+        { type: 'quote', text: 'Bitcoin mining is a clever mix of incentives, security, and transparency — with no central counterparty.' },
+        { type: 'paragraph', text: 'Once you see that clearly, you start to see how finance itself could change down the road.' },
+      ],
     },
     featuredImage: '/images/blogs/mining.jpg',
     category: blogCategories[4],
     tags: ['Bitcoin', 'Blockchain', 'Fintech'],
     author: { id: 'auth-1', name: { en: 'Fintech Poster', ar: 'Fintech Poster' } },
     publishedAt: '2024-12-10T10:00:00Z',
-    readTime: 3,
+    readTime: 8,
     relatedPosts: []
   }
 ];

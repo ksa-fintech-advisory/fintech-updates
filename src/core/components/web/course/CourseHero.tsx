@@ -137,8 +137,8 @@ export default function CourseHero({ locale, translations }: CourseHeroProps) {
             className="flex flex-col sm:flex-row gap-5 justify-center items-center mb-20"
           >
             <Link
-              href={`/${locale}/web/courses/fintech-fundamentals/register`}
-              className="group relative w-full sm:w-auto px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-black font-bold uppercase tracking-wider text-sm rounded transition-all duration-300 hover:bg-primary-600 dark:hover:bg-zinc-200 flex items-center justify-center gap-3 shadow-lg"
+              href={`/${locale}/courses/fintech-fundamentals/register`}
+              className="group relative w-full sm:w-auto px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-black font-bold uppercase tracking-wider text-sm rounded transition-all duration-300 hover:bg-zinc-800 dark:hover:bg-zinc-200 flex items-center justify-center gap-3 shadow-lg"
             >
               <FiHash className="w-4 h-4" />
               <span>{translations.cta.enroll}</span>

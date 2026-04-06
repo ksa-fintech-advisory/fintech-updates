@@ -26,14 +26,14 @@ export default function Header() {
   const lang = isArabic ? 'ar' : 'en';
 
   const navItems:any = [
-    { href: '/web/home', label: t('common.nav.home'), key: 'home' },
-    { href: '/web/roadmap', label: t('common.nav.roadmap'), key: 'roadmap' },
-    // { href: '/web/products', label: t("common.nav.products"), key: 'products', hasMegaMenu: true },
-    // { href: '/web/courses', label: t('common.nav.courses'), key: 'courses', hasMegaMenu: true },
-    // { href: '/web/updates', label: t('common.nav.updates'), key: 'updates' },
-    { href: '/web/blog', label: t('common.nav.blog'), key: 'blog' },
-    { href: '/web/about', label: t('common.nav.about'), key: 'about' },
-    { href: '/web/contact', label: t('common.nav.contact'), key: 'contact' },
+    { href: '', label: t('common.nav.home'), key: 'home' },
+    { href: '/roadmap', label: t('common.nav.roadmap'), key: 'roadmap' },
+    // { href: '/products', label: t("common.nav.products"), key: 'products', hasMegaMenu: true },
+    // { href: '/courses', label: t('common.nav.courses'), key: 'courses', hasMegaMenu: true },
+    // { href: '/updates', label: t('common.nav.updates'), key: 'updates' },
+    { href: '/blog', label: t('common.nav.blog'), key: 'blog' },
+    { href: '/about', label: t('common.nav.about'), key: 'about' },
+    { href: '/contact', label: t('common.nav.contact'), key: 'contact' },
   ];
 
   const handleMouseEnter = (key: string) => {
@@ -48,7 +48,10 @@ export default function Header() {
   };
 
   const isActive = (href: string) => {
-    return currentPath === href || currentPath.startsWith(href + '/');
+    if (href === '') {
+      return currentPath === '' || currentPath === '/';
+    }
+    return currentPath === href || currentPath.startsWith(`${href}/`);
   };
 
   return (
@@ -63,7 +66,7 @@ export default function Header() {
           <div className="flex h-16 items-center justify-between">
 
             {/* --- Logo Section: Technical Brand --- */}
-            <Link href={`/${locale}/web/home`} className="group flex items-center gap-3 outline-none">
+            <Link href={`/${locale}`} className="group flex items-center gap-3 outline-none">
               <ProfileAvatar
                 size={40}
                 alt={th('avatarAlt')}
@@ -195,10 +198,10 @@ export default function Header() {
                       {/* Products Sub-items (Manual or Map) */}
                       {item.key === 'products' && (
                         <>
-                          <Link href={`/${locale}/web/products/compliance-checker`} onClick={() => setMobileMenuOpen(false)} className="block p-3 rounded hover:bg-zinc-50 dark:hover:bg-zinc-900 text-sm text-zinc-600 dark:text-zinc-300">
+                          <Link href={`/${locale}/products/compliance-checker`} onClick={() => setMobileMenuOpen(false)} className="block p-3 rounded hover:bg-zinc-50 dark:hover:bg-zinc-900 text-sm text-zinc-600 dark:text-zinc-300">
                             {isArabic ? 'فاحص الامتثال' : 'Compliance Checker'}
                           </Link>
-                          <Link href={`/${locale}/web/products/fee-calculator`} onClick={() => setMobileMenuOpen(false)} className="block p-3 rounded hover:bg-zinc-50 dark:hover:bg-zinc-900 text-sm text-zinc-600 dark:text-zinc-300">
+                          <Link href={`/${locale}/products/fee-calculator`} onClick={() => setMobileMenuOpen(false)} className="block p-3 rounded hover:bg-zinc-50 dark:hover:bg-zinc-900 text-sm text-zinc-600 dark:text-zinc-300">
                             {isArabic ? 'حاسبة الرسوم' : 'Fee Calculator'}
                           </Link>
                         </>
@@ -208,7 +211,7 @@ export default function Header() {
                       {item.key === 'courses' && courses.slice(0, 3).map(course => (
                         <Link
                           key={course.id}
-                          href={`/${locale}/web/courses/${course.slug}`}
+                          href={`/${locale}/courses/${course.slug}`}
                           className="block p-3 rounded hover:bg-zinc-50 dark:hover:bg-zinc-900 group"
                           onClick={() => setMobileMenuOpen(false)}
                         >

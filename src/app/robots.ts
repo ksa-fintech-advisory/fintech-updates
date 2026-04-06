@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { getSiteUrl } from '@/core/seo/site';
 
-const disallow = ['/admin/', '/api/'];
+const disallow: string[] = [];
 
 export default function robots(): MetadataRoute.Robots {
   const base = getSiteUrl();

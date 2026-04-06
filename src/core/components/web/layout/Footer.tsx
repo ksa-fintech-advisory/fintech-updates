@@ -20,14 +20,14 @@ export default function Footer() {
     'flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200 text-zinc-500 transition-all hover:border-zinc-400 hover:bg-white hover:text-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 dark:hover:text-white';
 
   const footerLinks = [
-    { href: '/web/home', label: tNav('home') },
-    { href: '/web/roadmap', label: tNav('roadmap') },
-    { href: '/web/blog', label: tNav('blog') },
+    { href: '', label: tNav('home') },
+    { href: '/roadmap', label: tNav('roadmap') },
+    { href: '/blog', label: tNav('blog') },
   ];
 
   const companyLinks = [
-    { href: '/web/about', label: tNav('about') },
-    { href: '/web/contact', label: tNav('contact') },
+    { href: '/about', label: tNav('about') },
+    { href: '/contact', label: tNav('contact') },
   ];
 
   return (
@@ -41,7 +41,7 @@ export default function Footer() {
         <div className="mb-14 grid grid-cols-1 gap-12 md:grid-cols-2 lg:mb-16 lg:grid-cols-12 lg:gap-10">
           {/* Brand */}
           <div className="space-y-6 lg:col-span-4">
-            <Link href={`/${locale}/web/home`} className="group flex w-fit items-center gap-3 outline-none">
+            <Link href={`/${locale}`} className="group flex w-fit items-center gap-3 outline-none">
               <ProfileAvatar
                 size={48}
                 alt={th('avatarAlt')}
@@ -120,7 +120,7 @@ export default function Footer() {
             </div>
             <ul className="w-full space-y-1">
               {footerLinks.map((link) => (
-                <li key={link.href} className="w-full">
+                <li key={link.href || 'home'} className="w-full">
                   <Link
                     href={`/${locale}${link.href}`}
                     className="group flex w-full items-center justify-start gap-1.5 py-1.5 text-sm text-zinc-600 transition-colors hover:text-primary-600 dark:text-zinc-400 dark:hover:text-primary-400"
@@ -183,8 +183,8 @@ export default function Footer() {
               </h4>
               <p className="relative mb-6 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">{t('interestBody')}</p>
               <Link
-                href={`/${locale}/web/contact`}
-                className="relative inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-4 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-primary-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                href={`/${locale}/contact`}
+                className="relative inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-4 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
                 {t('interestCta')}
                 {isArabic ? <FiArrowLeft className="h-4 w-4" aria-hidden /> : <FiArrowRight className="h-4 w-4" aria-hidden />}

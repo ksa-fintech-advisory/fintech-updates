@@ -71,7 +71,7 @@ export default function CourseShowcase() {
                 className="group h-full"
               >
                 <Link
-                  href={course.isComingSoon ? '#' : `/${locale}/web/courses/${course.slug}`}
+                  href={course.isComingSoon ? '#' : `/${locale}/courses/${course.slug}`}
                   className={`block h-full relative ${course.isComingSoon ? 'cursor-not-allowed' : ''}`}
                   onClick={course.isComingSoon ? (e) => e.preventDefault() : undefined}
                 >
@@ -158,7 +158,7 @@ export default function CourseShowcase() {
                            w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300
                            ${course.isComingSoon
                             ? 'bg-grey-100 dark:bg-grey-800 text-grey-400'
-                            : 'bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 group-hover:bg-primary-500 group-hover:text-white'}
+                            : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 group-hover:bg-zinc-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-zinc-900'}
                          `}>
                           {isArabic ? <FiChevronLeft /> : <FiChevronRight />}
                         </div>
@@ -166,7 +166,7 @@ export default function CourseShowcase() {
                     </div>
 
                     {/* Decorative Hover Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-br from-zinc-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none dark:from-zinc-400/10" />
 
                   </article>
                 </Link>

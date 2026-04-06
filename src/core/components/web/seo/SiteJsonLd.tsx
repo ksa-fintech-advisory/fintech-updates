@@ -36,7 +36,7 @@ export default function SiteJsonLd() {
         name: 'Mohammed Abdo',
         alternateName: 'محمد عبده',
         jobTitle: 'FinTech advisor & engineer',
-        url: `${base}/en/web/about`,
+        url: `${base}/en/about`,
         worksFor: { '@id': `${base}/#organization` },
         sameAs: [TWITTER, LINKEDIN],
       },

@@ -64,7 +64,7 @@ export default function CoursesMegaMenu({ closeMenu }: CoursesMegaMenuProps) {
             </div>
           </div>
           <Link
-            href={`/${locale}/web/courses`}
+            href={`/${locale}/courses`}
             onClick={closeMenu}
             className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
           >
@@ -78,7 +78,7 @@ export default function CoursesMegaMenu({ closeMenu }: CoursesMegaMenuProps) {
           {courses.map((course) => (
             <StaggerItem key={course.id} className="h-full">
               <Link
-                href={course.isComingSoon ? '#' : `/${locale}/web/courses/${course.slug}`}
+                href={course.isComingSoon ? '#' : `/${locale}/courses/${course.slug}`}
                 onClick={course.isComingSoon ? (e) => e.preventDefault() : closeMenu}
                 className={`
                   group relative flex flex-col p-5 h-full rounded-2xl border transition-all duration-300
@@ -154,7 +154,7 @@ export default function CoursesMegaMenu({ closeMenu }: CoursesMegaMenuProps) {
           </div>
 
           <Link
-            href={`/${locale}/web/courses`}
+            href={`/${locale}/courses`}
             onClick={closeMenu}
             className="group px-6 py-2.5 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-bold uppercase tracking-wider hover:bg-blue-600 dark:hover:bg-blue-100 transition-all flex items-center gap-2"
           >

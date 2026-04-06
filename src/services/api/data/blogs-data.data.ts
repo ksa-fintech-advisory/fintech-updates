@@ -1,4 +1,5 @@
 import { Blog, BlogCategory } from '@/core/types/web/blog';
+import { linkedInSharesBlogs } from './linkedin-shares.blogs';
 
 // ==========================================
 // 1. Categories (Expanded to fit all content)
@@ -341,5 +342,6 @@ export const blogs: Blog[] = [
     readTime: 3,
     relatedPosts: ['blog-kafka-fintech-hype'],
   },
+  ...linkedInSharesBlogs,
 ];
 

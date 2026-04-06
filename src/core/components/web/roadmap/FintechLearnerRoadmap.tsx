@@ -31,7 +31,7 @@ const PHASE_ACCENTS = [
     rail: 'bg-primary-500/70 dark:bg-primary-400/60',
     iconTint: 'text-primary-600 dark:text-primary-400',
     dot: 'border-primary-500 dark:border-primary-400',
-    topicHover: 'hover:bg-primary-500/[0.04] dark:hover:bg-primary-400/[0.06]',
+    topicHover: 'hover:bg-zinc-500/[0.08] dark:hover:bg-zinc-400/[0.08]',
   },
   {
     border: 'border-s-sky-500 dark:border-s-sky-400',
@@ -365,7 +365,7 @@ export default function FintechLearnerRoadmap() {
           <AnimatedSection className="flex flex-col">
             <div className="mb-8 sm:mb-10">
               <Link
-                href={`/${locale}/web/home`}
+                href={`/${locale}`}
                 className="inline-flex items-center gap-2 rounded-md border border-zinc-700/80 bg-zinc-900/50 px-3 py-2 text-[11px] font-mono font-bold uppercase tracking-widest text-zinc-400 backdrop-blur transition-colors hover:border-zinc-600 hover:text-white sm:text-xs"
               >
                 {isArabic ? <FiArrowRight className="h-3.5 w-3.5" aria-hidden /> : <FiArrowLeft className="h-3.5 w-3.5" aria-hidden />}
@@ -484,13 +484,13 @@ export default function FintechLearnerRoadmap() {
 
             <div className="mt-8 flex flex-col gap-2.5 border-t border-zinc-200 pt-8 dark:border-zinc-800 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3 sm:pt-10">
               <Link
-                href={`/${locale}/web/blog`}
+                href={`/${locale}/blog`}
                 className="inline-flex items-center justify-center gap-2 rounded-md border border-zinc-300 bg-white px-5 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-950 dark:text-zinc-100 dark:hover:border-zinc-500 dark:hover:bg-zinc-900"
               >
                 {t('ctaBlog')}
               </Link>
               <Link
-                href={`/${locale}/web/contact`}
+                href={`/${locale}/contact`}
                 className="inline-flex items-center justify-center gap-2 rounded-md border border-zinc-800 bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:border-zinc-300 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
                 {t('ctaContact')}

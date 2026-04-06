@@ -1,6 +1,8 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
+import type { PricingData } from '@/services/fee-calculator/types';
+import pricingDataJson from '@/data/saudi_psp_pricing.json';
 import {
   FiServer,
   FiDollarSign,
@@ -10,6 +12,8 @@ import {
   FiCheck,
   FiTrendingUp
 } from 'react-icons/fi';
+
+const pricingData = pricingDataJson as PricingData;
 
 interface Provider {
   name: string;
@@ -89,8 +93,15 @@ export default function FeeCalculatorForm({
   const isArabic = locale === 'ar';
   const labels = isArabic ? t.ar : t.en;
 
-  const [providers, setProviders] = useState<Provider[]>([]);
-  const [loadingProviders, setLoadingProviders] = useState(true);
+  const [providers] = useState<Provider[]>(() =>
+    pricingData.providers.map((p) => ({
+      name: p.provider,
+      confidenceLevel: p.confidence_level,
+      hasSetupFee: p.pricing.setup_fee.max > 0,
+      hasMonthlyFee: p.pricing.monthly_fee.max > 0,
+    })),
+  );
+  const loadingProviders = false;
 
   const [formData, setFormData] = useState<FormData>({
     provider: '',
@@ -98,22 +109,6 @@ export default function FeeCalculatorForm({
     averageTransactionValue: '',
     paymentMix: { mada: 60, visa_mc_local: 30, visa_mc_international: 10 },
   });
-
-  // Fetch providers
-  useEffect(() => {
-    const fetchProviders = async () => {
-      try {
-        const response = await fetch('/api/fee-calculator');
-        const data = await response.json();
-        setProviders(data.providers || []);
-      } catch (error) {
-        console.error('Failed to fetch providers:', error);
-      } finally {
-        setLoadingProviders(false);
-      }
-    };
-    fetchProviders();
-  }, []);
 
   // Validation Logic
   const mixTotal = useMemo(() => {

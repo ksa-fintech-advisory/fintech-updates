@@ -13,7 +13,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
       attribute="class"
       defaultTheme="light"
       enableSystem={false}
-      storageKey="admin-panel-theme"
+      storageKey="maal-tech-theme"
     >
       {children}
     </NextThemesProvider>

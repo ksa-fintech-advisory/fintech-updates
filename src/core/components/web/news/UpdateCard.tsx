@@ -43,7 +43,7 @@ export const UpdateCard: React.FC<UpdateCardProps> = ({ update, locale }) => {
       </div>
 
       <h3 className="text-2xl font-bold text-grey-900 mb-4 group-hover:text-primary-600 transition-colors leading-tight">
-        <Link href={`/${locale}/web/updates/${update.slug}`} className="before:absolute before:inset-0">
+        <Link href={`/${locale}/updates/${update.slug}`} className="before:absolute before:inset-0">
           {update.title}
         </Link>
       </h3>

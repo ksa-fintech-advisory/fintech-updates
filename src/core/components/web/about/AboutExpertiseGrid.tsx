@@ -28,7 +28,7 @@ export function AboutExpertiseGrid({ content, isArabic, expertiseKicker, experti
             return (
               <StaggerItem key={area.id}>
                 <div className="group flex items-start gap-6 border border-zinc-200 bg-white p-6 transition-all hover:border-zinc-400 dark:border-zinc-800 dark:bg-black dark:hover:border-zinc-600">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-zinc-200 bg-zinc-100 text-zinc-900 transition-colors group-hover:bg-primary-50 group-hover:text-primary-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:group-hover:bg-primary-900/20 dark:group-hover:text-primary-400">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center border border-zinc-200 bg-zinc-100 text-zinc-900 transition-colors group-hover:bg-zinc-200 group-hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:group-hover:bg-zinc-800 dark:group-hover:text-white">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div className="min-w-0">

@@ -282,7 +282,7 @@ export default function FeeCalculatorResults({
                 <tr key={index} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors group">
                   <td className="px-6 py-4 font-bold text-zinc-800 dark:text-zinc-200">
                     <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-600 group-hover:bg-primary-500 transition-colors"></span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 dark:bg-zinc-600 group-hover:bg-zinc-900 dark:group-hover:bg-white transition-colors"></span>
                       {method.methodLabel}
                     </div>
                   </td>

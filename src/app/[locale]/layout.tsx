@@ -9,6 +9,7 @@ import Footer from '@/core/components/web/layout/Footer';
 import { getSiteUrl } from '@/core/seo/site';
 import { JsonLd } from '@/core/seo/JsonLd';
 import { siteWideGraphJsonLd } from '@/core/seo/structuredData';
+import SiteJsonLd from '@/core/components/web/seo/SiteJsonLd';
 import '@/core/theme/globals.css';
 
 const fav = '/favicon_io';
@@ -122,6 +123,7 @@ export default async function LocaleLayout({
     <html lang={locale} dir={direction} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col bg-grey-50">
         <JsonLd data={siteWideGraphJsonLd(getSiteUrl())} />
+        <SiteJsonLd />
         <ThemeProvider>
           <NotificationProvider>
             <NextIntlClientProvider messages={messages} locale={locale}>

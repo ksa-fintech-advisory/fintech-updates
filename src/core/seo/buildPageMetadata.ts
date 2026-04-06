@@ -5,7 +5,7 @@ type BuildOpts = {
   locale: string;
   title: string;
   description: string;
-  /** Path after locale, e.g. `/web/home` */
+  /** Path after locale; use `''` for the locale home (canonical `/en`, `/ar`). */
   path: string;
   /** Extra phrases for crawlers / answer engines (optional). */
   keywords?: string[];

@@ -6,6 +6,20 @@ const withNextIntl = createNextIntlPlugin('./src/core/i18n/request.ts');
 const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
+  async redirects() {
+    return [
+      {
+        source: '/:locale(en|ar)/web/home',
+        destination: '/:locale',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ar)/web/:path*',
+        destination: '/:locale/:path*',
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

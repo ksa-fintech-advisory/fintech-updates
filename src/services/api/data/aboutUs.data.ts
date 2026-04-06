@@ -5,13 +5,13 @@ export const aboutUsData: AboutUsContent = {
     en:
       "My experience didn't start in slide decks—it was forged under delivery pressure: distributed systems (including microservices), payment stacks, and automated investing platforms (robo-advisory). I've seen how fuzzy requirements sink programmes—and how supervisors expect hardened infrastructure, not promises.",
     ar:
-      'لم تبدأ خبرتي من قاعات العروض التقديمية، بل وُلدت من وسط ضغط التسليم، وهندسة الأنظمة الموزّعة (ومنها Microservices)، وبناء منصات الدفع والاستثمار الآلي (Robo-advisors). اختبرت شخصياً كيف يمكن للمتطلبات الضبابية أن تهدم مشروعاً، وكيف تتوقع الجهات الرقابية بنية تحتية صلبة لا مجرد وعود.',
+      'خبرتي جات من الشغل الفعلي تحت ضغط التسليم. اشتغلت على هندسة الأنظمة الموزعة (Microservices)، وبنيت منصات دفع وتطبيقات استثمار آلي (Robo-advisors). من واقع تجربة، شفت بنفسي كيف المتطلبات غير الواضحة ممكن تعطل المشروع، وكيف المشرّع والجهات الرقابية يهمها تشوف بنية تحتية مبنية صح، مو مجرد وعود على ورق.',
   },
   vision: {
     en:
       'Through Maal Tech I put that field experience to work for you: the blog is my engineering notebook in public, the roadmap is your guide, and my consulting is where we reduce guesswork in your programme—so financial systems do not fall apart after launch week.',
     ar:
-      'اليوم، من خلال «مال تك»، أضع هذه الخبرة بين يديك: المدونة هي مذكراتي الهندسية العلنية، وخارطة التعلم هي دليلك، أما عملي الاستشاري فهو مساحتنا المباشرة لتقليل التخمين في مشروعك، وبناء أنظمة مالية لا تنهار بعد أسبوع الإطلاق.',
+      'عشان كذا أسست «مال تك». المدونة أشارك فيها ملاحظاتي وحلولي التقنية، وخارطة التعلم صممتها كدليل للي يحب يبدأ بالمجال. أما الاستشارات، فهي المساحة اللي نشتغل فيها مع بعض عشان نشيل التخمين من مشروعك، ونبني نظام مالي ثابت ما يطيح بعد أول أسبوع من الإطلاق.',
   },
   description: {
     en:
@@ -85,13 +85,13 @@ export const aboutUsData: AboutUsContent = {
       iconKey: 'systems',
       title: {
         en: 'Distributed, security-minded architecture',
-        ar: 'معمارية موزّعة وآمنة',
+        ar: 'بنية تحتية مرنة وآمنة',
       },
       description: {
         en:
           'Design grounded in ideas such as Zero Trust and hexagonal boundaries—systems that stay isolable, integrate cleanly with gateways and partners, and remain operable at scale.',
         ar:
-          'تصميم يستند إلى مفاهيم مثل Zero Trust والمعمارية السداسية (Hexagonal Architecture)، لتكون منتجاتك آمنة، معزولة حيث يلزم، وقادرة على التكامل مع بوابات الدفع والخدمات الخارجية بكفاءة.',
+          'تصميم يعتمد على مبدأ الـ Zero Trust وعزل نواة النظام عن الخدمات الخارجية. الهدف هو ضمان أن منتجك آمن، معزول في الأماكن الحساسة، وجاهز للتكامل مع الأطراف الخارجية بدون تعقيد',
       },
     },
     {
