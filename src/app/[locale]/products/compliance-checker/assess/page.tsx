@@ -127,7 +127,7 @@ function ActivitySelectionStep({
           className={`
             px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-wider flex items-center gap-3 transition-all
             ${hasSelection
-              ? 'bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-primary-600 dark:hover:bg-zinc-200 shadow-lg hover:shadow-xl translate-y-0'
+              ? 'bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-lg hover:shadow-xl translate-y-0'
               : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed'
             }
           `}
@@ -714,7 +714,7 @@ function AssessmentHub({
               ${!hasStarted
               ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed'
               : isComplete
-                ? 'bg-emerald-600 text-white hover:bg-emerald-700 shadow-lg shadow-emerald-900/20'
+                ? 'bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-lg shadow-zinc-900/10 dark:shadow-zinc-900/20'
                 : 'bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-zinc-700 dark:hover:bg-zinc-200'
             }
             `}

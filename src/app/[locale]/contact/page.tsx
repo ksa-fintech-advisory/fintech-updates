@@ -290,7 +290,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-all hover:bg-primary-600 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 sm:w-auto"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-all hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 sm:w-auto"
                     >
                       {loading ? (
                         <span className="animate-pulse">{tf('sending')}</span>

@@ -148,7 +148,7 @@ export default function ProductsMegaMenu({ closeMenu }: { closeMenu?: () => void
               <Link
                 href={`/${locale}/products`}
                 onClick={closeMenu}
-                className="px-4 py-2 text-xs font-bold text-white bg-zinc-900 dark:bg-white dark:text-black rounded-lg hover:bg-primary-600 dark:hover:bg-zinc-200 transition-colors shadow-sm flex items-center gap-2"
+                className="px-4 py-2 text-xs font-bold text-white bg-zinc-900 dark:bg-white dark:text-black rounded-lg hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm flex items-center gap-2"
               >
                 <FiCpu /> {isArabic ? 'جميع المنتجات' : 'All Products'}
               </Link>

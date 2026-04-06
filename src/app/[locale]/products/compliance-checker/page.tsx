@@ -170,7 +170,7 @@ function RuleRow({
       className="group relative bg-white dark:bg-zinc-900 border-b border-zinc-100 dark:border-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 cursor-pointer transition-colors p-4 flex flex-col sm:flex-row gap-4 items-start sm:items-center"
     >
       {/* Indicator Line */}
-      <div className="absolute left-0 top-0 bottom-0 w-1 bg-transparent group-hover:bg-primary-500 transition-colors" />
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-transparent group-hover:bg-zinc-900 dark:group-hover:bg-white transition-colors" />
 
       {/* ID & Meta */}
       <div className="min-w-[140px] shrink-0">
@@ -372,7 +372,7 @@ export default function ComplianceCheckerPage({ params: { locale } }: { params: 
             <div>
               <Link
                 href={`/${locale}/products/compliance-checker/assess`}
-                className="group inline-flex items-center gap-3 px-6 py-3 bg-zinc-900 dark:bg-white text-white dark:text-black font-bold text-sm uppercase tracking-wider rounded hover:bg-primary-600 dark:hover:bg-zinc-200 transition-all shadow-lg"
+                className="group inline-flex items-center gap-3 px-6 py-3 bg-zinc-900 dark:bg-white text-white dark:text-black font-bold text-sm uppercase tracking-wider rounded hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all shadow-lg"
               >
                 <span>{isArabic ? 'بدء التقييم الآلي' : 'RUN_AUTO_ASSESSMENT'}</span>
                 {isArabic ? <FiArrowLeft /> : <FiArrowRight />}

@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <div className="min-h-[70vh] flex flex-col items-center justify-center relative overflow-hidden bg-gradient-to-b from-grey-50 to-white">
       {/* Background Decorative Elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-100/30 rounded-full blur-3xl -z-10 animate-pulse" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-200/40 rounded-full blur-3xl -z-10 animate-pulse dark:bg-zinc-800/30" />
       <div className="absolute top-1/4 right-1/4 w-[300px] h-[300px] bg-accent-100/20 rounded-full blur-3xl -z-10" />
 
       {/* Main Content */}
@@ -27,7 +27,7 @@ export default function NotFound() {
         <div className="space-y-6 animate-slide-up">
           <h2 className="text-3xl md:text-4xl font-bold text-grey-900 tracking-tight">
             Page Not Found
-            <span className="block text-2xl md:text-3xl text-primary-600 mt-2 font-arabic">الصفحة غير موجودة</span>
+            <span className="block text-2xl md:text-3xl text-zinc-700 dark:text-zinc-300 mt-2 font-arabic">الصفحة غير موجودة</span>
           </h2>
           
           <p className="text-lg text-grey-600 max-w-md mx-auto leading-relaxed">
@@ -41,7 +41,7 @@ export default function NotFound() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 pt-4">
             <Link
               href="/en"
-              className="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white transition-all duration-200 bg-primary-600 rounded-full hover:bg-primary-700 hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 overflow-hidden"
+              className="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white transition-all duration-200 bg-zinc-900 rounded-full hover:bg-zinc-800 hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-900 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 dark:focus:ring-zinc-400 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
                 <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -49,12 +49,12 @@ export default function NotFound() {
                 </svg>
                 Return Home
               </span>
-              <div className="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-primary-700/50"></div>
+              <div className="absolute inset-0 h-full w-full scale-0 rounded-full transition-all duration-300 group-hover:scale-100 group-hover:bg-zinc-800/40 dark:group-hover:bg-zinc-200/60"></div>
             </Link>
 
             <Link
               href="/ar"
-              className="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-primary-700 transition-all duration-200 bg-primary-50 rounded-full border border-primary-100 hover:bg-white hover:border-primary-200 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 font-arabic"
+              className="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-zinc-900 transition-all duration-200 bg-zinc-50 rounded-full border border-zinc-200 hover:bg-white hover:border-zinc-300 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-400 dark:bg-zinc-900 dark:text-white dark:border-zinc-700 dark:hover:border-zinc-600 font-arabic"
             >
               <span className="relative z-10 flex items-center gap-2">
                 العودة للرئيسية

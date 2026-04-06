@@ -1,7 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import SafeImage from '@/core/components/common/SafeImage';
-import { blogCardImageUrl } from '@/core/constants/blogMedia';
 import { LocalizedBlog } from '@/core/types/web/blog';
 
 interface RelatedPostsProps {
@@ -18,47 +16,25 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts, locale }) => 
         {locale === 'ar' ? 'مقالات ذات صلة' : 'Related Posts'}
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {posts.map((post) => {
-          const img = blogCardImageUrl(post.featuredImage);
-          return (
-          <Link 
-            key={post.id} 
+        {posts.map((post) => (
+          <Link
+            key={post.id}
             href={`/${locale}/blog/${post.slug}`}
-            className="group flex flex-col gap-4"
+            className="group flex flex-col gap-3 rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-600"
           >
-            <div className="relative h-48 w-full overflow-hidden rounded-xl bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-900">
-              {img ? (
-                <SafeImage
-                  src={img}
-                  alt={post.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-              ) : (
-                <div
-                  className="absolute inset-0 opacity-25"
-                  style={{
-                    backgroundImage: `repeating-linear-gradient(-12deg, transparent, transparent 10px, ${post.category.color}40 10px, ${post.category.color}40 11px)`,
-                  }}
-                />
-              )}
+            <div className="flex items-center gap-2">
+              <span
+                className="text-xs font-semibold px-2 py-1 rounded-full"
+                style={{ backgroundColor: `${post.category.color}15`, color: post.category.color }}
+              >
+                {post.category.name}
+              </span>
             </div>
-            <div>
-              <div className="flex items-center gap-2 mb-2">
-                <span 
-                  className="text-xs font-semibold px-2 py-1 rounded-full"
-                  style={{ backgroundColor: `${post.category.color}15`, color: post.category.color }}
-                >
-                  {post.category.name}
-                </span>
-              </div>
-              <h4 className="text-lg font-bold text-grey-900 group-hover:text-primary transition-colors line-clamp-2">
-                {post.title}
-              </h4>
-            </div>
+            <h4 className="text-lg font-bold text-grey-900 group-hover:text-primary transition-colors line-clamp-2">
+              {post.title}
+            </h4>
           </Link>
-        );
-        })}
+        ))}
       </div>
     </div>
   );

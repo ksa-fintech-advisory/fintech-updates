@@ -61,7 +61,7 @@ export default function FintechRoadmapSection() {
                   </div>
                   <Link
                     href={roadmapHref}
-                    className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-primary-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-primary-100"
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
                   >
                     {t('viewFull')}
                     {isArabic ? (

@@ -184,7 +184,7 @@ export default function Footer() {
               <p className="relative mb-6 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">{t('interestBody')}</p>
               <Link
                 href={`/${locale}/contact`}
-                className="relative inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-4 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-primary-600 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                className="relative inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-4 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
                 {t('interestCta')}
                 {isArabic ? <FiArrowLeft className="h-4 w-4" aria-hidden /> : <FiArrowRight className="h-4 w-4" aria-hidden />}

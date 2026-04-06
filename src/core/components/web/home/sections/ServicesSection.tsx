@@ -87,7 +87,7 @@ export default function ServicesSection() {
                           href={whatsappUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`${btnBase} border border-zinc-300 text-zinc-900 hover:border-emerald-500/50 hover:bg-emerald-50/80 hover:text-emerald-800 dark:border-zinc-600 dark:text-white dark:hover:border-emerald-500/40 dark:hover:bg-emerald-950/30 dark:hover:text-emerald-300`}
+                          className={`${btnBase} border border-zinc-300 text-zinc-900 hover:border-zinc-400 hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-600 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-800/80 dark:hover:text-white`}
                         >
                           <SiWhatsapp className="h-4 w-4 shrink-0 text-[#25D366]" aria-hidden />
                           {t('items.enablement.ctaWhatsApp')}
@@ -97,7 +97,7 @@ export default function ServicesSection() {
                   ) : (
                     <Link
                       href={contactHref}
-                      className={`${btnBase} mt-auto border border-zinc-300 text-zinc-900 hover:border-primary-500/40 hover:bg-zinc-50 dark:border-zinc-600 dark:text-white dark:hover:border-primary-400/40 dark:hover:bg-zinc-900/80`}
+                      className={`${btnBase} mt-auto border border-zinc-300 text-zinc-900 hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-900/80`}
                     >
                       {t(`items.${id}.cta`)}
                       {ctaArrow}

@@ -56,7 +56,6 @@ export function blogPostingJsonLd(params: {
   const { base, locale, slug, blog } = params;
   const pageUrl = `${base}/${locale}/blog/${slug}`;
   const imageUrl = `${base}${blogDetailHeroSrc(blog.featuredImage)}`;
-  const authorName = blog.author?.name;
 
   const node: Record<string, unknown> = {
     '@type': 'BlogPosting',
@@ -72,18 +71,6 @@ export function blogPostingJsonLd(params: {
     articleSection: blog.category.name,
     inLanguage: locale,
   };
-
-  if (authorName) {
-    node.author = {
-      '@type': 'Person',
-      name: authorName,
-      sameAs: 'https://www.linkedin.com/in/mohfintech/',
-    };
-  }
-
-  if (blog.tags.length > 0) {
-    node.keywords = blog.tags.join(', ');
-  }
 
   return node;
 }

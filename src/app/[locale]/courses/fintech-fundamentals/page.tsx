@@ -85,7 +85,7 @@ export default async function FintechFundamentalsPage({
                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                     <FiLayers className="w-24 h-24 text-primary-500" />
                   </div>
-                  <div className="w-12 h-12 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white mb-6 group-hover:bg-primary-500 group-hover:text-white transition-colors">
+                  <div className="w-12 h-12 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white mb-6 group-hover:bg-zinc-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-zinc-900 transition-colors">
                     <FiLayers className="w-6 h-6" />
                   </div>
                   <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-3 font-mono">
@@ -103,7 +103,7 @@ export default async function FintechFundamentalsPage({
                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                     <FiTerminal className="w-24 h-24 text-primary-500" />
                   </div>
-                  <div className="w-12 h-12 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white mb-6 group-hover:bg-primary-500 group-hover:text-white transition-colors">
+                  <div className="w-12 h-12 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white mb-6 group-hover:bg-zinc-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-zinc-900 transition-colors">
                     <FiTerminal className="w-6 h-6" />
                   </div>
                   <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-3 font-mono">
@@ -121,7 +121,7 @@ export default async function FintechFundamentalsPage({
                   <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                     <FiCpu className="w-24 h-24 text-primary-500" />
                   </div>
-                  <div className="w-12 h-12 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white mb-6 group-hover:bg-primary-500 group-hover:text-white transition-colors">
+                  <div className="w-12 h-12 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white mb-6 group-hover:bg-zinc-900 group-hover:text-white dark:group-hover:bg-white dark:group-hover:text-zinc-900 transition-colors">
                     <FiCpu className="w-6 h-6" />
                   </div>
                   <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-3 font-mono">

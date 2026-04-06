@@ -31,7 +31,7 @@ const PHASE_ACCENTS = [
     rail: 'bg-primary-500/70 dark:bg-primary-400/60',
     iconTint: 'text-primary-600 dark:text-primary-400',
     dot: 'border-primary-500 dark:border-primary-400',
-    topicHover: 'hover:bg-primary-500/[0.04] dark:hover:bg-primary-400/[0.06]',
+    topicHover: 'hover:bg-zinc-500/[0.08] dark:hover:bg-zinc-400/[0.08]',
   },
   {
     border: 'border-s-sky-500 dark:border-s-sky-400',

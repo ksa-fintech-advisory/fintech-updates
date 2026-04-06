@@ -148,7 +148,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
         </div>
         <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-4">{translations.steps.confirm.successTitle}</h2>
         <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-8 max-w-md mx-auto">{translations.steps.confirm.successMessage}</p>
-        <Link href={`/${locale}/courses/fintech-fundamentals`} className="inline-flex items-center gap-2 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold rounded-lg transition-all hover:bg-primary-600 dark:hover:bg-zinc-200">
+        <Link href={`/${locale}/courses/fintech-fundamentals`} className="inline-flex items-center gap-2 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold rounded-lg transition-all hover:bg-zinc-800 dark:hover:bg-zinc-200">
           {translations.steps.confirm.backToHome}
         </Link>
       </motion.div>
@@ -427,7 +427,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
             <button
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-8 py-3 rounded-lg font-bold font-mono text-sm uppercase tracking-wider flex items-center gap-2 transition-all hover:bg-primary-600 dark:hover:bg-zinc-200"
+              className="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-8 py-3 rounded-lg font-bold font-mono text-sm uppercase tracking-wider flex items-center gap-2 transition-all hover:bg-zinc-800 dark:hover:bg-zinc-200"
             >
               {isSubmitting ? (
                 <>
@@ -448,7 +448,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
               className={`
                 flex items-center gap-2 px-8 py-3 rounded-lg font-bold font-mono text-sm uppercase tracking-wider transition-all
                 ${canProceed()
-                  ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 hover:bg-primary-600 dark:hover:bg-zinc-200'
+                  ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200'
                   : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed'}
               `}
             >

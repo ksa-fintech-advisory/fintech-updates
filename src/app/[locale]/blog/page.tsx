@@ -7,8 +7,7 @@ import nextDynamic from 'next/dynamic';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
 import { BlogFilters } from '@/core/components/web/blog/BlogFilters';
 import { BlogPagination } from '@/core/components/web/blog/BlogPagination';
-import { FiBookOpen, FiCalendar, FiUser, FiArrowRight, FiArrowLeft, FiSlash } from 'react-icons/fi';
-import { blogCardImageUrl } from '@/core/constants/blogMedia';
+import { FiBookOpen, FiCalendar, FiArrowRight, FiArrowLeft, FiSlash } from 'react-icons/fi';
 import { getSiteUrl } from '@/core/seo/site';
 import { JsonLd } from '@/core/seo/JsonLd';
 import { blogCollectionPageJsonLd } from '@/core/seo/structuredData';
@@ -120,7 +119,7 @@ export default async function BlogPage({
             <AnimatedSection direction="up" delay={0.3}>
               <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 font-light max-w-2xl leading-relaxed">
                 {isArabic
-                  ? 'مقالات متعمقة حول هندسة البرمجيات المالية، والامتثال، والبنية التحتية.'
+                  ? 'أكتب هنا بتفصيل عن الفنتك. وعشان توصل للي تبحث عنه بسرعة، رتبت المحتوى في تصنيفات واضحة؛ تقدر تستخدم البحث أو تفلتر المقالات حسب الموضوع اللي يهمك.'
                   : 'Deep dives into fintech engineering, compliance protocols, and infrastructure.'}
               </p>
             </AnimatedSection>
@@ -158,10 +157,8 @@ export default async function BlogPage({
             </AnimatedSection>
           ) : (
             <>
-                <StaggerContainer key={blogGridKey} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-                  {blogs.map((blog) => {
-                    const cardImg = blogCardImageUrl(blog.featuredImage);
-                    return (
+              <StaggerContainer key={blogGridKey} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                {blogs.map((blog) => (
                   <StaggerItem key={blog.id} className="h-full">
                     <Link
                       href={`/${locale}/blog/${blog.slug}`}
@@ -169,38 +166,15 @@ export default async function BlogPage({
                     >
                       <article className="h-full flex flex-col bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300 group-hover:shadow-lg group-hover:shadow-zinc-200/50 dark:group-hover:shadow-black/50 overflow-hidden">
 
-                        {/* Cover: real photo only — no default branded poster */}
-                        <div className="relative aspect-[3/2] overflow-hidden bg-gradient-to-br from-zinc-200 via-zinc-100 to-zinc-300 dark:from-zinc-800 dark:via-zinc-900 dark:to-zinc-800 border-b border-zinc-200 dark:border-zinc-800">
-                          {cardImg ? (
-                            <>
-                              <div
-                                className="absolute inset-0 bg-cover bg-center transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105 bg-zinc-900"
-                                style={{ backgroundImage: `url(${cardImg})` }}
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                            </>
-                          ) : (
-                            <div
-                              className="absolute inset-0 opacity-[0.12] dark:opacity-[0.2]"
-                              style={{
-                                backgroundImage: `repeating-linear-gradient(-12deg, transparent, transparent 12px, ${blog.category.color}33 12px, ${blog.category.color}33 13px)`,
-                              }}
-                            />
-                          )}
-
-                          {/* Category Tag - Absolute Top Left */}
-                          <div className="absolute top-4 left-4">
+                        <div className="p-6 flex-1 flex flex-col">
+                          <div className="mb-4">
                             <span
-                              className="inline-flex items-center gap-1.5 px-2 py-1 bg-white/90 dark:bg-black/90 backdrop-blur border border-zinc-200 dark:border-zinc-700 text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-900 dark:text-white shadow-sm"
+                              className="inline-flex items-center gap-1.5 px-2 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-900 dark:text-white"
                             >
                               <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: blog.category.color }} />
                               {blog.category.name}
                             </span>
                           </div>
-                        </div>
-
-                        {/* Content */}
-                        <div className="p-6 flex-1 flex flex-col">
 
                           {/* Meta Info Row */}
                           <div className="flex items-center gap-4 text-xs font-mono text-zinc-400 mb-4 border-b border-zinc-100 dark:border-zinc-800 pb-4 border-dashed">
@@ -224,35 +198,25 @@ export default async function BlogPage({
                             {blog.excerpt}
                           </p>
 
-                          {/* Author Footer */}
-                          <div className="mt-auto flex items-center justify-between pt-4 border-t border-zinc-100 dark:border-zinc-800">
-                            <div className="flex items-center gap-2.5">
-                              <div className="w-6 h-6 rounded bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-[10px] font-bold text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
-                                <FiUser className="w-3 h-3" />
-                              </div>
-                              <span className="text-xs font-bold text-zinc-700 dark:text-zinc-300 font-mono uppercase tracking-wide truncate max-w-[120px]">
-                                {blog?.author?.name || 'EDITOR'}
-                              </span>
-                            </div>
-
-                            <div className={`text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-all transform ${isArabic ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`}>
-                              {isArabic ? <FiArrowLeft /> : <FiArrowRight />}
-                            </div>
+                          <div
+                            className={`mt-auto flex justify-end pt-4 border-t border-zinc-100 dark:border-zinc-800 text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-white transition-all transform ${isArabic ? 'group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`}
+                            aria-hidden
+                          >
+                            {isArabic ? <FiArrowLeft /> : <FiArrowRight />}
                           </div>
 
                         </div>
                       </article>
                     </Link>
                   </StaggerItem>
-                    );
-                  })}
-                </StaggerContainer>
+                ))}
+              </StaggerContainer>
 
-                {/* Pagination (Client Component) - Ensure passing styles props or update internal styles */}
-                <div className="border-t border-zinc-200 dark:border-zinc-800 pt-8">
+              {/* Pagination (Client Component) - Ensure passing styles props or update internal styles */}
+              <div className="border-t border-zinc-200 dark:border-zinc-800 pt-8">
                 <BlogPagination currentPage={currentPage} totalPages={totalPages} isArabic={isArabic} />
-                </div>
-              </>
+              </div>
+            </>
           )}
         </div>
       </section>

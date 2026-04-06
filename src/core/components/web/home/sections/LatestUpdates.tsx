@@ -67,7 +67,7 @@ export default async function LatestUpdates({ locale }: { locale: string }) {
 
                   {/* The Node (Git Commit Dot) */}
                   <div className="absolute left-[-5px] md:left-[8.7rem] top-1.5 z-10 bg-zinc-50 dark:bg-zinc-950 p-1">
-                    <div className="w-3 h-3 rounded-full border-2 border-zinc-300 dark:border-zinc-600 group-hover:border-primary-500 group-hover:bg-primary-500 transition-colors duration-300" />
+                    <div className="w-3 h-3 rounded-full border-2 border-zinc-300 dark:border-zinc-600 group-hover:border-zinc-900 group-hover:bg-zinc-900 dark:group-hover:border-white dark:group-hover:bg-white transition-colors duration-300" />
                   </div>
 
 

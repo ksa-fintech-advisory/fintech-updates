@@ -211,7 +211,7 @@ export default async function SessionDetailPage({
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-4 text-sm text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors group"
+                      className="flex items-center justify-between p-4 text-sm text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800/50 transition-colors group"
                     >
                       <span className="font-medium">{link.title[lang]}</span>
                       <span className="text-xs opacity-50 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform">↗</span>
@@ -257,7 +257,7 @@ export default async function SessionDetailPage({
                   href={`/${locale}/courses/fintech-fundamentals/session/${sessionId + 1}`}
                   className="group flex flex-col md:flex-row-reverse items-end md:items-center gap-3 text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors"
                 >
-                  <div className="w-10 h-10 rounded border border-zinc-200 dark:border-zinc-800 flex items-center justify-center bg-zinc-50 dark:bg-zinc-900 group-hover:border-primary-500 group-hover:text-primary-500 transition-colors">
+                  <div className="w-10 h-10 rounded border border-zinc-200 dark:border-zinc-800 flex items-center justify-center bg-zinc-50 dark:bg-zinc-900 group-hover:border-zinc-500 group-hover:text-zinc-900 dark:group-hover:border-zinc-500 dark:group-hover:text-white transition-colors">
                     {isArabic ? <FiArrowLeft /> : <FiArrowRight />}
                   </div>
                   <div className="flex flex-col">
@@ -268,9 +268,9 @@ export default async function SessionDetailPage({
               ) : (
                 <Link
                   href={`/${locale}/courses/fintech-fundamentals#register`}
-                  className="group flex flex-col md:flex-row-reverse items-end md:items-center gap-3 text-primary-600 dark:text-primary-400"
+                  className="group flex flex-col md:flex-row-reverse items-end md:items-center gap-3 text-zinc-900 dark:text-white"
                 >
-                  <div className="w-10 h-10 rounded border border-primary-200 dark:border-primary-800 flex items-center justify-center bg-primary-50 dark:bg-primary-900/20">
+                  <div className="w-10 h-10 rounded border border-zinc-200 dark:border-zinc-700 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800">
                     <FiCheckCircle />
                   </div>
                   <div className="flex flex-col">
