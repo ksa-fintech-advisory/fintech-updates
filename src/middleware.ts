@@ -4,17 +4,14 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const intlMiddleware = createMiddleware(routing);
 
-const FINTECH_FUNDAMENTALS_PATH = '/web/courses/fintech-fundamentals';
-
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Check for auth token
   const token = request.cookies.get('auth-token')?.value;
 
-  // Public paths that don't require auth
-  const publicPaths = ['/web/*'];
-  const isPublicPath = publicPaths.some(path => pathname.startsWith(path));
+  // All locale-prefixed marketing routes are public
+  const isPublicPath = /^\/(en|ar)(\/|$)/.test(pathname);
 
   // // Protected paths (dashboard)
   // const isDashboardPath = pathname.includes('/dashboard');
@@ -22,13 +19,13 @@ export default function middleware(request: NextRequest) {
   // // Redirect to login if accessing dashboard without token
   // if (isDashboardPath && !token) {
   //   const locale = request.cookies.get('NEXT_LOCALE')?.value || 'ar';
-  //   return NextResponse.redirect(new URL(`/${locale}/web/home`, request.url));
+  //   return NextResponse.redirect(new URL(`/${locale}`, request.url));
   // }
 
   // Redirect to dashboard if accessing login with token
   if (isPublicPath && token) {
     const locale = request.cookies.get('NEXT_LOCALE')?.value || 'ar';
-    return NextResponse.redirect(new URL(`/${locale}/web/home`, request.url));
+    return NextResponse.redirect(new URL(`/${locale}`, request.url));
   }
 
   return intlMiddleware(request);

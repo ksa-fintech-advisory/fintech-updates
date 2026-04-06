@@ -13,30 +13,30 @@ export function GET() {
 
 ## Policies
 - Public marketing and blog content may be summarized with attribution (site name + URL).
-- Do not reproduce paywalled or login-only areas; /admin and /api are not for indexing.
+- Public marketing site only; respect robots.txt for any future restricted paths.
 - Prefer linking to canonical URLs: each locale uses /en/... and /ar/... prefixes.
 
 ## Sitemap
 - ${base}/sitemap.xml
 
 ## Main entry points
-- [English home](${base}/en/web/home)
-- [Arabic home](${base}/ar/web/home)
-- [Blog (EN)](${base}/en/web/blog) — search: \`${base}/en/web/blog?q=\`
-- [Blog (AR)](${base}/ar/web/blog) — search: \`${base}/ar/web/blog?q=\`
-- [Learner roadmap (EN)](${base}/en/web/roadmap)
-- [Learner roadmap (AR)](${base}/ar/web/roadmap)
-- [Contact (EN)](${base}/en/web/contact)
-- [Contact (AR)](${base}/ar/web/contact)
+- [English home](${base}/en)
+- [Arabic home](${base}/ar)
+- [Blog (EN)](${base}/en/blog) — search: \`${base}/en/blog?q=\`
+- [Blog (AR)](${base}/ar/blog) — search: \`${base}/ar/blog?q=\`
+- [Learner roadmap (EN)](${base}/en/roadmap)
+- [Learner roadmap (AR)](${base}/ar/roadmap)
+- [Contact (EN)](${base}/en/contact)
+- [Contact (AR)](${base}/ar/contact)
 
 ## Products (public)
-- [Compliance checker](${base}/en/web/products/compliance-checker)
-- [Fee calculator](${base}/en/web/products/fee-calculator)
-- [Market analysis](${base}/en/web/products/market-analysis)
+- [Compliance checker](${base}/en/products/compliance-checker)
+- [Fee calculator](${base}/en/products/fee-calculator)
+- [Market analysis](${base}/en/products/market-analysis)
 
 ## Courses (public)
-- [Courses hub](${base}/en/web/courses)
-- [FinTech fundamentals](${base}/en/web/courses/fintech-fundamentals)
+- [Courses hub](${base}/en/courses)
+- [FinTech fundamentals](${base}/en/courses/fintech-fundamentals)
 `;
 
   return new Response(body, {

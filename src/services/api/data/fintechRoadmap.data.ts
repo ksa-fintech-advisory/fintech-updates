@@ -117,7 +117,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('gs5a', 'Roadmap.sh (study method inspiration)', 'Roadmap.sh (أسلوب التعلم)', 'https://roadmap.sh/'),
-          r('gs5b', 'This site — blog (regional notes)', 'هذا الموقع — المدونة', 'internal:/web/blog'),
+          r('gs5b', 'This site — blog (regional notes)', 'هذا الموقع — المدونة', 'internal:/blog'),
         ],
       },
     ],

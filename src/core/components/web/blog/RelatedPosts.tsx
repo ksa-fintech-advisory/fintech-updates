@@ -23,7 +23,7 @@ export const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts, locale }) => 
           return (
           <Link 
             key={post.id} 
-            href={`/${locale}/web/blog/${post.slug}`}
+            href={`/${locale}/blog/${post.slug}`}
             className="group flex flex-col gap-4"
           >
             <div className="relative h-48 w-full overflow-hidden rounded-xl bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-900">

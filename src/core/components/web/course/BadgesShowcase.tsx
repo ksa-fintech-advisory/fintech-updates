@@ -137,7 +137,7 @@ export default function BadgesShowcase({ locale }: BadgesShowcaseProps) {
           className="text-center mt-12"
         >
           <Link
-            href={`/${locale}/web/courses/fintech-fundamentals/register`}
+            href={`/${locale}/courses/fintech-fundamentals/register`}
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-bold rounded-xl shadow-lg shadow-primary-200 hover:from-primary-700 hover:to-primary-800 transition-all transform hover:scale-105"
           >
             {isArabic ? 'ابدأ رحلتك واكسب الشارات' : 'Start Your Journey & Earn Badges'}

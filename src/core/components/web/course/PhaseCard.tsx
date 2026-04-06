@@ -48,7 +48,7 @@ export default function PhaseCard({
       className="h-full"
     >
       <Link
-        href={`/${locale}/web/courses/fintech-fundamentals/session/${phase.id}`}
+        href={`/${locale}/courses/fintech-fundamentals/session/${phase.id}`}
         className="block h-full outline-none group"
       >
         <article className="relative flex flex-col h-full bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-lg hover:shadow-zinc-200/50 dark:hover:shadow-black/50">

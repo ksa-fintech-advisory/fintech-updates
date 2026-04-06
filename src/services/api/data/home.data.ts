@@ -22,7 +22,7 @@ export const homeData: HomeContent = {
       },
       {
         label: { en: 'Read the blog', ar: 'اقرأ المدونة' },
-        href: '/web/blog',
+        href: '/blog',
         variant: 'secondary',
       },
     ],

@@ -24,7 +24,7 @@ export default function ProductsMegaMenu({ closeMenu }: { closeMenu?: () => void
       id: 'calculator',
       title: isArabic ? 'حاسبة الرسوم' : 'Fee Calculator',
       description: isArabic ? 'محاكاة دقيقة لصافي التسوية والضرائب.' : 'Precise net settlement & VAT simulation.',
-      href: '/web/products/fee-calculator',
+      href: '/products/fee-calculator',
       // Colors for Dark/Light mode
       colorClass: 'text-blue-600 dark:text-blue-400',
       bgClass: 'bg-blue-50 dark:bg-blue-900/20',
@@ -35,7 +35,7 @@ export default function ProductsMegaMenu({ closeMenu }: { closeMenu?: () => void
       id: 'compliance',
       title: isArabic ? 'رادار الامتثال' : 'Compliance Radar',
       description: isArabic ? 'فحص التوافق مع تشريعات البنك المركزي.' : 'SAMA/CBUAE regulatory alignment check.',
-      href: '/web/products/compliance-checker',
+      href: '/products/compliance-checker',
       colorClass: 'text-emerald-600 dark:text-emerald-400',
       bgClass: 'bg-emerald-50 dark:bg-emerald-900/20',
       borderHover: 'group-hover:border-emerald-500/50',
@@ -45,7 +45,7 @@ export default function ProductsMegaMenu({ closeMenu }: { closeMenu?: () => void
       id: 'market',
       title: isArabic ? 'ذكاء السوق' : 'Market Intelligence',
       description: isArabic ? 'تحليل المشهد التنافسي والنمو.' : 'Landscape analysis & growth forecasting.',
-      href: '/web/products/market-analysis',
+      href: '/products/market-analysis',
       colorClass: 'text-purple-600 dark:text-purple-400',
       bgClass: 'bg-purple-50 dark:bg-purple-900/20',
       borderHover: 'group-hover:border-purple-500/50',
@@ -139,14 +139,14 @@ export default function ProductsMegaMenu({ closeMenu }: { closeMenu?: () => void
 
             <div className="flex gap-3">
               <Link
-                href={`/${locale}/web/docs`}
+                href={`/${locale}/docs`}
                 onClick={closeMenu}
                 className="px-4 py-2 text-xs font-bold text-zinc-600 dark:text-zinc-300 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg hover:border-primary-500 hover:text-primary-600 transition-colors shadow-sm"
               >
                 {isArabic ? 'الوثائق التقنية' : 'Read Docs'}
               </Link>
               <Link
-                href={`/${locale}/web/products`}
+                href={`/${locale}/products`}
                 onClick={closeMenu}
                 className="px-4 py-2 text-xs font-bold text-white bg-zinc-900 dark:bg-white dark:text-black rounded-lg hover:bg-primary-600 dark:hover:bg-zinc-200 transition-colors shadow-sm flex items-center gap-2"
               >

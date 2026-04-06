@@ -131,7 +131,7 @@ export default function LearningProgressDashboard({
             </p>
           </div>
           <Link
-            href={`/${locale}/web/courses/fintech-fundamentals#phase-${currentPhase}`}
+            href={`/${locale}/courses/fintech-fundamentals#phase-${currentPhase}`}
             className="px-4 py-2 bg-primary-600 text-white text-sm font-semibold rounded-lg hover:bg-primary-700 transition-colors"
           >
             {isArabic ? 'متابعة' : 'Continue'}

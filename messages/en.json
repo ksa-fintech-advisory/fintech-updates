@@ -10,8 +10,7 @@
     "courses": "Courses"
   },
   "common": {
-    "appName": "FinTech Admin",
-    "adminUser": "Admin User",
+    "appName": "Maal Tech",
     "viewAll": "View All",
     "header": {
       "tagline": "FinTech · Engineering · Writing",
@@ -96,7 +95,8 @@
           "enablement": {
             "title": "Upskilling & one-to-one mentoring ",
             "description": "Live one-to-one sessions for developers and technical teams. We focus on how the market actually works—financial systems and compliance in practice—so the team gains judgement and makes sound engineering calls in day-to-day delivery, not only writing code.",
-            "cta": "Book a mentoring session"
+            "ctaCalendar": "Book a 1:1 session",
+            "ctaWhatsApp": "Message on WhatsApp"
           }
         }
       },
@@ -104,7 +104,7 @@
         "kicker": "// FIELD_GUIDE",
         "title": "A field guide to reading FinTech end to end",
         "intro": "Shipping financial products takes more than code—it's where technology meets accounting discipline and regulatory reality. This roadmap walks you step by step—from core concepts to how integrated financial systems are actually shaped. A gradual path that keeps you pointed in the right direction.",
-        "teaserNote": "This is only a nudge to explore; the roadmap page holds the full detail—nothing is repeated here.",
+        "teaserNote": "This is only a nudge to explore",
         "statsLine": "{phases} phases · {topics} topics",
         "viewFull": "Open the learning roadmap"
       },

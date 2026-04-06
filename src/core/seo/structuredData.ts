@@ -33,7 +33,7 @@ export function webSiteJsonLd(base: string) {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${base}/en/web/blog?q={search_term_string}`,
+        urlTemplate: `${base}/en/blog?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },
@@ -54,7 +54,7 @@ export function blogPostingJsonLd(params: {
   blog: LocalizedBlog;
 }) {
   const { base, locale, slug, blog } = params;
-  const pageUrl = `${base}/${locale}/web/blog/${slug}`;
+  const pageUrl = `${base}/${locale}/blog/${slug}`;
   const imageUrl = `${base}${blogDetailHeroSrc(blog.featuredImage)}`;
   const authorName = blog.author?.name;
 
@@ -104,19 +104,19 @@ export function breadcrumbBlogJsonLd(params: {
         '@type': 'ListItem',
         position: 1,
         name: homeLabel,
-        item: `${base}/${locale}/web/home`,
+        item: `${base}/${locale}`,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Blog',
-        item: `${base}/${locale}/web/blog`,
+        item: `${base}/${locale}/blog`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: title,
-        item: `${base}/${locale}/web/blog/${slug}`,
+        item: `${base}/${locale}/blog/${slug}`,
       },
     ],
   };
@@ -172,7 +172,7 @@ export function blogCollectionPageJsonLd(params: {
           itemListElement: blogs.map((b, i) => ({
             '@type': 'ListItem',
             position: listStartIndex + i,
-            url: `${base}/${locale}/web/blog/${b.slug}`,
+            url: `${base}/${locale}/blog/${b.slug}`,
             name: b.title,
           })),
         },

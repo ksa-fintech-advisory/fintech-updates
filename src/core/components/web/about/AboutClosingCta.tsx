@@ -24,7 +24,7 @@ export function AboutClosingCta({ locale, isArabic, title, subtitle, buttonLabel
             <p className="mb-10 text-lg text-zinc-400">{subtitle}</p>
 
             <Link
-              href={`/${locale}/web/contact`}
+              href={`/${locale}/contact`}
               className="inline-flex items-center gap-3 bg-white px-8 py-4 text-sm font-bold uppercase tracking-wider text-black transition-colors hover:bg-zinc-200"
             >
               <span>{buttonLabel}</span>

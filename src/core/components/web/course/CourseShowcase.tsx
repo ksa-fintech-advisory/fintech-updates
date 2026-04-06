@@ -71,7 +71,7 @@ export default function CourseShowcase() {
                 className="group h-full"
               >
                 <Link
-                  href={course.isComingSoon ? '#' : `/${locale}/web/courses/${course.slug}`}
+                  href={course.isComingSoon ? '#' : `/${locale}/courses/${course.slug}`}
                   className={`block h-full relative ${course.isComingSoon ? 'cursor-not-allowed' : ''}`}
                   onClick={course.isComingSoon ? (e) => e.preventDefault() : undefined}
                 >

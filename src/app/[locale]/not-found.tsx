@@ -40,7 +40,7 @@ export default function NotFound() {
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8 pt-4">
             <Link
-              href="/en/web/home"
+              href="/en"
               className="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-white transition-all duration-200 bg-primary-600 rounded-full hover:bg-primary-700 hover:shadow-lg hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-600 overflow-hidden"
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -53,7 +53,7 @@ export default function NotFound() {
             </Link>
 
             <Link
-              href="/ar/web/home"
+              href="/ar"
               className="group relative inline-flex items-center justify-center px-8 py-3.5 text-base font-semibold text-primary-700 transition-all duration-200 bg-primary-50 rounded-full border border-primary-100 hover:bg-white hover:border-primary-200 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 font-arabic"
             >
               <span className="relative z-10 flex items-center gap-2">
