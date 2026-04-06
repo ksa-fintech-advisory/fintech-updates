@@ -7,6 +7,7 @@ import type {
   LocalizedPaginatedBlogs,
 } from '@/core/types/web/blog';
 import { blogs as allBlogs, blogCategories } from '@/services/api/data/blogs.data';
+import { linkedInSharesBlogs } from '@/services/api/data/linkedin-shares.blogs';
 
 type Locale = 'en' | 'ar';
 
@@ -75,7 +76,7 @@ export function localizeBlog(blog: Blog, locale: string, options?: { omitContent
   };
 }
 
-const sortedBlogs: Blog[] = [...allBlogs].sort(
+const sortedBlogs: Blog[] = [...linkedInSharesBlogs].sort(
   (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
 );
 
@@ -119,6 +120,11 @@ function applyFilters(list: Blog[], filters?: BlogFilters): Blog[] {
   }
 
   return out;
+}
+
+/** Total posts after optional category/search filters (same logic as list pagination). */
+export function countStaticBlogsMatching(filters?: BlogFilters): number {
+  return applyFilters(sortedBlogs, filters).length;
 }
 
 export function getStaticCategoriesLocalized(locale: string): LocalizedBlogCategory[] {

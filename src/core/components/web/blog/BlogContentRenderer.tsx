@@ -1,7 +1,17 @@
 import React from 'react';
 import Image from 'next/image'; // FIX: Missing import caused the TS error
 import { BlogContentBlock } from '@/core/types/web/blog';
-import { FiAlertCircle, FiCheckCircle, FiInfo, FiHash, FiCpu } from 'react-icons/fi';
+import { FiAlertCircle, FiCheckCircle, FiInfo, FiHash, FiCpu, FiExternalLink } from 'react-icons/fi';
+
+/** LinkedIn import highlight: text is `منشور أصلي على LinkedIn: <url>` */
+function parseLinkedInOriginalPostUrl(text: string): string | null {
+  const raw = text.replace(/<[^>]*>/g, '').trim();
+  const m = raw.match(/^منشور أصلي على LinkedIn:\s*(https:\/\/www\.linkedin\.com\/\S+)/i);
+  if (!m) return null;
+  const url = m[1].replace(/[.,;)\]>'"]+$/, '');
+  if (url.startsWith('https://www.linkedin.com/')) return url;
+  return null;
+}
 
 /* -------------------------------------------------------------------------- */
 /* Text Block                                 */
@@ -95,10 +105,61 @@ export const BlogListBlock: React.FC<BlogListBlockProps> = ({ block }) => {
 /* -------------------------------------------------------------------------- */
 interface BlogHighlightBlockProps {
   block: Extract<BlogContentBlock, { type: 'highlight' }>;
+  locale?: string;
 }
 
-export const BlogHighlightBlock: React.FC<BlogHighlightBlockProps> = ({ block }) => {
+function LinkedInSourceCallout({ url, locale }: { url: string; locale: string }) {
+  const isAr = locale === 'ar';
+  return (
+    <div
+      className="not-prose my-8 rounded-xl border border-[#0A66C2]/25 dark:border-[#0A66C2]/35 bg-gradient-to-br from-[#0A66C2]/[0.07] via-blue-50/40 to-transparent dark:from-[#0A66C2]/15 dark:via-blue-950/20 dark:to-transparent pl-4 pr-5 py-5 sm:pl-5 sm:pr-6 sm:py-6 shadow-sm"
+      dir={isAr ? 'rtl' : 'ltr'}
+    >
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex items-start gap-3 min-w-0">
+          <div
+            className="shrink-0 flex h-11 w-11 items-center justify-center rounded-lg bg-[#0A66C2] text-white shadow-md shadow-[#0A66C2]/25"
+            aria-hidden
+          >
+            <svg className="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </div>
+          <div className="min-w-0 pt-0.5">
+            <p className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0A66C2] dark:text-[#70b7f9] mb-1">
+              LinkedIn
+            </p>
+            <p className="text-base font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
+              {isAr ? 'مصدر المنشور' : 'Original source'}
+            </p>
+            <p className="mt-1.5 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-xl">
+              {isAr
+                ? 'هذا المحتوى نُشر أصلًا كمنشور على LinkedIn. يمكنك فتحه في تبويب جديد.'
+                : 'This content was originally published as a LinkedIn post. Open it in a new tab.'}
+            </p>
+          </div>
+        </div>
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group/btn inline-flex shrink-0 items-center justify-center gap-2 rounded-lg border border-[#004182]/30 bg-[#0A66C2] px-5 py-3 text-sm font-semibold !text-white no-underline shadow-md shadow-[#0A66C2]/35 transition hover:border-[#003d6b] hover:bg-[#004182] hover:!text-white hover:shadow-lg hover:shadow-[#0A66C2]/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0A66C2] active:scale-[0.98] sm:px-6"
+        >
+          <span className="!text-white">{isAr ? 'فتح على LinkedIn' : 'Open on LinkedIn'}</span>
+          <FiExternalLink className="h-4 w-4 shrink-0 !text-white opacity-95 group-hover/btn:opacity-100" aria-hidden />
+        </a>
+      </div>
+    </div>
+  );
+}
+
+export const BlogHighlightBlock: React.FC<BlogHighlightBlockProps> = ({ block, locale = 'ar' }) => {
   const { title, text, variant = 'info' } = block;
+
+  const linkedInUrl = variant === 'info' ? parseLinkedInOriginalPostUrl(text) : null;
+  if (linkedInUrl) {
+    return <LinkedInSourceCallout url={linkedInUrl} locale={locale} />;
+  }
 
   const variants = {
     info: {
@@ -269,9 +330,11 @@ const BlogImageBlock: React.FC<BlogImageBlockProps> = ({ block }) => {
 /* -------------------------------------------------------------------------- */
 interface BlogContentRendererProps {
   content: BlogContentBlock[];
+  /** Used for LinkedIn source callout copy (ar vs en). */
+  locale?: string;
 }
 
-export const BlogContentRenderer: React.FC<BlogContentRendererProps> = ({ content }) => {
+export const BlogContentRenderer: React.FC<BlogContentRendererProps> = ({ content, locale = 'ar' }) => {
   return (
     <div className="blog-content space-y-2">
       {content.map((block, index) => {
@@ -287,7 +350,7 @@ export const BlogContentRenderer: React.FC<BlogContentRendererProps> = ({ conten
           case 'quote':
             return <BlogQuoteBlock key={index} block={block} />;
           case 'highlight':
-            return <BlogHighlightBlock key={index} block={block} />;
+            return <BlogHighlightBlock key={index} block={block} locale={locale} />;
           case 'timeline':
             return <BlogTimelineBlock key={index} block={block} />;
           default:

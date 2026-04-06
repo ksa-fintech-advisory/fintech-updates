@@ -7,10 +7,11 @@ import nextDynamic from 'next/dynamic';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
 import { BlogFilters } from '@/core/components/web/blog/BlogFilters';
 import { BlogPagination } from '@/core/components/web/blog/BlogPagination';
-import { FiBookOpen, FiCalendar, FiArrowRight, FiArrowLeft, FiSlash } from 'react-icons/fi';
+import { FiBookOpen, FiCalendar, FiArrowRight, FiArrowLeft, FiSlash, FiLayers } from 'react-icons/fi';
 import { getSiteUrl } from '@/core/seo/site';
 import { JsonLd } from '@/core/seo/JsonLd';
 import { blogCollectionPageJsonLd } from '@/core/seo/structuredData';
+import { countStaticBlogsMatching } from '@/services/blog/staticBlogs';
 
 // WaveField3D can be kept if it fits the theme (e.g., monochrome particles), otherwise consider a simpler grid
 const WaveField3D = nextDynamic(() => import('@/core/components/web/blog/WaveField3D'), { ssr: false });
@@ -61,7 +62,10 @@ export default async function BlogPage({
     hasFilters ? filters : undefined,
     locale,
   );
-  const { blogs, categories, totalPages } = data;
+  const { blogs, categories, totalPages, total: totalMatching } = data;
+  const totalAll = countStaticBlogsMatching(undefined);
+  const rangeStart = totalMatching === 0 ? 0 : (currentPage - 1) * limit + 1;
+  const rangeEnd = totalMatching === 0 ? 0 : Math.min(currentPage * limit, totalMatching);
 
   /** Remount stagger animation after client navigation (page/category/search); avoids stuck opacity 0 from whileInView once:true. */
   const blogGridKey = `blog-grid-${currentPage}-${categorySlug}-${searchQuery}`;
@@ -132,6 +136,62 @@ export default async function BlogPage({
       <div className="border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 sticky top-[65px] z-30">
         <div className="container mx-auto px-4">
           <BlogFilters categories={categories} isArabic={isArabic} />
+        </div>
+      </div>
+
+      {/* Post counts (after filters / pagination window) */}
+      <div className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-950/80 backdrop-blur-sm">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <div
+            className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between text-sm text-zinc-600 dark:text-zinc-400"
+            dir={isArabic ? 'rtl' : 'ltr'}
+          >
+            <div className="flex items-center gap-2 font-mono">
+              <FiLayers className="w-4 h-4 shrink-0 text-zinc-400" aria-hidden />
+              <span>
+                {isArabic ? (
+                  <>
+                    <span className="font-bold text-zinc-900 dark:text-zinc-100 tabular-nums">{totalMatching}</span>
+                    {totalMatching === 1 ? ' مقال' : ' مقالات'}
+                    {hasFilters ? (
+                      <>
+                        {' · '}
+                        <span className="text-zinc-500 dark:text-zinc-500">
+                          من أصل <span className="tabular-nums">{totalAll}</span>
+                        </span>
+                      </>
+                    ) : null}
+                  </>
+                ) : (
+                  <>
+                    <span className="font-bold text-zinc-900 dark:text-zinc-100 tabular-nums">{totalMatching}</span>
+                    {totalMatching === 1 ? ' post' : ' posts'}
+                    {hasFilters ? (
+                      <span className="text-zinc-500 dark:text-zinc-500">
+                        {' '}
+                        · <span className="tabular-nums">{totalAll}</span> total
+                      </span>
+                    ) : null}
+                  </>
+                )}
+              </span>
+            </div>
+            {totalMatching > 0 ? (
+              <p className="text-xs font-mono text-zinc-500 dark:text-zinc-500 tabular-nums sm:text-right rtl:sm:text-left">
+                {isArabic ? (
+                  <>
+                    عرض <span className="text-zinc-700 dark:text-zinc-300">{rangeStart}</span>–
+                    <span className="text-zinc-700 dark:text-zinc-300">{rangeEnd}</span>
+                  </>
+                ) : (
+                  <>
+                    Showing <span className="text-zinc-700 dark:text-zinc-300">{rangeStart}</span>–
+                    <span className="text-zinc-700 dark:text-zinc-300">{rangeEnd}</span>
+                  </>
+                )}
+              </p>
+            ) : null}
+          </div>
         </div>
       </div>
 
