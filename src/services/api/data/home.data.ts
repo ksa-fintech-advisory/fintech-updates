@@ -23,8 +23,8 @@ export const homeData: HomeContent = {
         variant: 'primary',
       },
       {
-        label: { en: 'Read the blog', ar: 'اقرأ المدونة' },
-        href: '/blog',
+        label: { en: 'About me', ar: 'نبذة عني' },
+        href: '/about',
         variant: 'secondary',
       },
     ],

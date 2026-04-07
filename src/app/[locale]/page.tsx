@@ -9,6 +9,7 @@ import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
 import ServicesSection from '@/core/components/web/home/sections/ServicesSection';
 import FintechRoadmapSection from '@/core/components/web/home/sections/FintechRoadmapSection';
 import BlogFeatureSection from '@/core/components/web/home/sections/BlogFeatureSection';
+import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
 const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false });
 
@@ -49,13 +50,15 @@ export default async function HomePage({ params }: { params: { locale: string } 
   const hero = localizedHero(homeData.hero, locale);
   const tHome = await getTranslations('web.home');
 
+  const ArrowIcon = isArabic ? FiArrowLeft : FiArrowRight;
+
   return (
     <div className="w-full">
+      {/* ─── Hero ─── */}
       <section className="relative flex min-h-[88vh] items-center overflow-hidden border-b border-zinc-800 bg-zinc-950 py-28 text-white sm:py-32 md:min-h-[90vh] md:py-36">
         <Hero3D />
 
         <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
-
         <div className="pointer-events-none absolute inset-0 z-0 bg-radial-gradient from-transparent via-zinc-950/60 to-zinc-950" />
 
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
@@ -105,25 +108,21 @@ export default async function HomePage({ params }: { params: { locale: string } 
                       key={index}
                       href={button.href}
                       className={`
-                      group relative flex min-h-[44px] w-full max-w-[220px] items-center justify-center gap-2 rounded-button px-4 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 sm:px-5
-                      ${
-                        button.variant === 'primary'
-                          ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:bg-zinc-200 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]'
-                          : 'border border-zinc-800 bg-zinc-900 text-zinc-400 hover:border-zinc-600 hover:text-white'
-                      }
-                    `}
+                        press-scale group flex h-12 w-full max-w-[220px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-bold tracking-wide transition-all duration-300 sm:w-auto
+                        ${
+                          button.variant === 'primary'
+                            ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:bg-zinc-100 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]'
+                            : 'border border-zinc-700 bg-zinc-900/80 text-zinc-300 hover:border-zinc-500 hover:text-white'
+                        }
+                      `}
                     >
                       <span>{button.label}</span>
-                      <svg
-                        className={`h-4 w-4 transition-transform duration-300 ${
-                          isArabic ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'
+                      <ArrowIcon
+                        className={`h-4 w-4 shrink-0 transition-transform duration-300 ${
+                          isArabic ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'
                         }`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                      </svg>
+                        aria-hidden
+                      />
                     </Link>
                   ))}
                 </div>
@@ -132,35 +131,37 @@ export default async function HomePage({ params }: { params: { locale: string } 
           </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-zinc-950 to-transparent pointer-events-none z-20" />
+        <div className="pointer-events-none absolute bottom-0 inset-x-0 z-20 h-32 bg-gradient-to-t from-zinc-950 to-transparent" />
       </section>
 
+      {/* ─── Sections ─── */}
       <ServicesSection />
-
       <FintechRoadmapSection />
-
       <BlogFeatureSection />
 
-      <section className="border-t border-zinc-200 bg-zinc-100/80 py-16 dark:border-zinc-800 dark:bg-zinc-950/80">
+      {/* ─── Closing CTA ─── */}
+      <section className="relative border-t border-zinc-200 bg-zinc-100/80 py-20 dark:border-zinc-800 dark:bg-zinc-950/80 md:py-24">
         <div className="container mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="mb-4 text-xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-2xl">
-            {tHome('closingTitle')}
-          </h2>
-          <p className="mb-6 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">{tHome('closingLead')}</p>
-          <Link
-            href={`/${locale}/contact`}
-            className="inline-flex items-center gap-2 rounded-button bg-zinc-900 px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
-          >
-            {tHome('closingCta')}
-            <svg
-              className={`h-4 w-4 ${isArabic ? 'rotate-180' : ''}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <AnimatedSection>
+            <h2 className="mb-4 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-3xl">
+              {tHome('closingTitle')}
+            </h2>
+            <p className="mb-8 text-base leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-lg">
+              {tHome('closingLead')}
+            </p>
+            <Link
+              href={`/${locale}/contact`}
+              className="press-scale group inline-flex h-12 items-center gap-2 rounded-xl bg-zinc-900 px-7 text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-zinc-800 hover:shadow-md dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
+              {tHome('closingCta')}
+              <ArrowIcon
+                className={`h-4 w-4 shrink-0 transition-transform ${
+                  isArabic ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'
+                }`}
+                aria-hidden
+              />
+            </Link>
+          </AnimatedSection>
         </div>
       </section>
     </div>

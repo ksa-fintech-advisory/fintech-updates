@@ -18,9 +18,10 @@ export default function BlogFeatureSection() {
   const t = useTranslations('web.home.blogFeature');
   const locale = useLocale();
   const isArabic = locale === 'ar';
+  const ArrowIcon = isArabic ? FiArrowLeft : FiArrowRight;
 
   return (
-    <section className="relative overflow-hidden border-b border-zinc-200 bg-zinc-50 py-24 dark:border-zinc-800 dark:bg-zinc-950">
+    <section className="relative overflow-hidden border-b border-zinc-200 bg-zinc-50 py-20 dark:border-zinc-800 dark:bg-zinc-950 md:py-24">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,6 +39,7 @@ export default function BlogFeatureSection() {
           </div>
         </AnimatedSection>
 
+        {/* Desktop timeline */}
         <div className="relative hidden pb-4 md:block">
           <div
             className="absolute h-0.5 rounded-full bg-gradient-to-r from-zinc-200 via-primary-500/40 to-zinc-200 dark:from-zinc-800 dark:via-primary-400/30 dark:to-zinc-800"
@@ -72,8 +74,7 @@ export default function BlogFeatureSection() {
           </StaggerContainer>
         </div>
 
-        {/* Mobile timeline: step rail always first in DOM so it sits on inline-start (LTR=left, RTL=right).
-            Do not use flex-row-reverse here — it moved badges away from the line in RTL. */}
+        {/* Mobile timeline */}
         <StaggerContainer className="relative space-y-0 md:hidden">
           <div
             className="absolute top-3 bottom-3 w-0.5 rounded-full bg-gradient-to-b from-zinc-200 via-primary-500/40 to-zinc-200 dark:from-zinc-800 dark:via-primary-400/30 dark:to-zinc-800"
@@ -109,14 +110,15 @@ export default function BlogFeatureSection() {
         <AnimatedSection className="mt-12 flex justify-center md:mt-16">
           <Link
             href={`/${locale}/blog`}
-            className="group inline-flex items-center gap-2 rounded-button border border-zinc-200 bg-white px-6 py-3 text-sm font-bold text-zinc-900 shadow-sm transition-all hover:border-primary-500/50 hover:text-primary-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:border-primary-400/50 dark:hover:text-primary-300"
+            className="press-scale group inline-flex h-12 items-center gap-2 rounded-xl border border-zinc-200 bg-white px-6 text-sm font-bold text-zinc-900 shadow-sm transition-all hover:border-primary-500/50 hover:shadow-md hover:text-primary-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:border-primary-400/50 dark:hover:text-primary-300"
           >
             {t('cta')}
-            {isArabic ? (
-              <FiArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" aria-hidden />
-            ) : (
-              <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
-            )}
+            <ArrowIcon
+              className={`h-4 w-4 shrink-0 transition-transform ${
+                isArabic ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'
+              }`}
+              aria-hidden
+            />
           </Link>
         </AnimatedSection>
       </div>

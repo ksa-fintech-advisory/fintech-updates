@@ -24,14 +24,7 @@ export default function ServicesSection() {
   const contactHref = `/${locale}/contact`;
   const whatsappUrl = getWhatsAppWaMeUrl();
 
-  const ctaArrow = isArabic ? (
-    <FiArrowLeft className="h-4 w-4 shrink-0" aria-hidden />
-  ) : (
-    <FiArrowRight className="h-4 w-4 shrink-0" aria-hidden />
-  );
-
-  const btnBase =
-    'inline-flex w-fit items-center justify-center gap-2 rounded-button px-5 py-3 text-sm font-bold transition-colors';
+  const ArrowIcon = isArabic ? FiArrowLeft : FiArrowRight;
 
   return (
     <section
@@ -60,8 +53,8 @@ export default function ServicesSection() {
             const Icon = SERVICE_ICONS[id];
             return (
               <StaggerItem key={id}>
-                <article className="flex h-full flex-col gap-4 rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-950 md:p-8">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white">
+                <article className="group flex h-full flex-col gap-5 rounded-2xl border border-zinc-200 bg-white p-6 transition-all duration-300 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-700 md:p-8">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 transition-colors group-hover:bg-primary-500/10 group-hover:text-primary-600 dark:bg-zinc-800 dark:text-white dark:group-hover:bg-primary-500/10 dark:group-hover:text-primary-400">
                     <Icon className="h-5 w-5" aria-hidden />
                   </div>
                   <h3 className="text-lg font-bold leading-snug text-zinc-900 dark:text-white md:text-xl">
@@ -77,7 +70,7 @@ export default function ServicesSection() {
                         href={MENTORING_CALENDAR_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`${btnBase} border border-zinc-900 bg-zinc-900 text-white hover:bg-zinc-800 dark:border-white dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200`}
+                        className="press-scale inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-zinc-900 px-5 text-sm font-bold text-white transition-all hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
                       >
                         <FiCalendar className="h-4 w-4 shrink-0" aria-hidden />
                         {t('items.enablement.ctaCalendar')}
@@ -87,7 +80,7 @@ export default function ServicesSection() {
                           href={whatsappUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className={`${btnBase} border border-zinc-300 text-zinc-900 hover:border-zinc-400 hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-600 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-800/80 dark:hover:text-white`}
+                          className="press-scale inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-zinc-300 px-5 text-sm font-bold text-zinc-900 transition-all hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-800/80"
                         >
                           <SiWhatsapp className="h-4 w-4 shrink-0 text-[#25D366]" aria-hidden />
                           {t('items.enablement.ctaWhatsApp')}
@@ -97,10 +90,15 @@ export default function ServicesSection() {
                   ) : (
                     <Link
                       href={contactHref}
-                      className={`${btnBase} mt-auto border border-zinc-300 text-zinc-900 hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-900/80`}
+                      className="press-scale group/btn mt-auto inline-flex h-12 w-fit items-center justify-center gap-2 rounded-xl border border-zinc-300 px-5 text-sm font-bold text-zinc-900 transition-all hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-900/80"
                     >
                       {t(`items.${id}.cta`)}
-                      {ctaArrow}
+                      <ArrowIcon
+                        className={`h-4 w-4 shrink-0 transition-transform ${
+                          isArabic ? 'group-hover/btn:-translate-x-0.5' : 'group-hover/btn:translate-x-0.5'
+                        }`}
+                        aria-hidden
+                      />
                     </Link>
                   )}
                 </article>
