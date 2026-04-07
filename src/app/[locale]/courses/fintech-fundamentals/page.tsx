@@ -234,7 +234,7 @@ export default async function FintechFundamentalsPage({
                   <div className="shrink-0">
                     <Link
                       href={`/${locale}/courses/fintech-fundamentals/register`}
-                      className="group/btn inline-flex items-center gap-3 bg-white text-zinc-900 font-bold py-4 px-8 rounded-lg hover:bg-zinc-200 transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
+                      className="group/btn inline-flex items-center gap-3 rounded-button bg-white px-8 py-4 font-bold text-zinc-900 shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300 hover:bg-zinc-200 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]"
                     >
                       <span>{t('cta.enroll')}</span>
                       {isArabic ? <FiArrowLeft className="group-hover/btn:-translate-x-1 transition-transform" /> : <FiArrowRight className="group-hover/btn:translate-x-1 transition-transform" />}

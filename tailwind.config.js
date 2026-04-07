@@ -12,7 +12,7 @@ module.exports = {
       // 1. Typography: Engineering Stack
       fontFamily: {
         sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
-        arabic: ['var(--font-tajawal)', 'Tajawal', ...defaultTheme.fontFamily.sans],
+        arabic: ['var(--font-ibm-plex-sans-arabic)', 'Tahoma', ...defaultTheme.fontFamily.sans],
         // Monospace for Financial Data, APIs, and Version numbers
         mono: ['var(--font-ibm-plex-mono)', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
       },
@@ -77,6 +77,11 @@ module.exports = {
         'hard': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)', // For elevations
         'glow': '0 0 20px rgba(16, 185, 129, 0.15)', // Primary glow
         'glow-accent': '0 0 20px rgba(245, 158, 11, 0.15)', // Accent glow
+      },
+
+      // Shared corner radius for primary buttons and button-styled links sitewide (pill / capsule)
+      borderRadius: {
+        button: '9999px',
       },
 
       // 4. Animation Utilities

@@ -36,7 +36,7 @@ function visiblePageButtons(current: number, total: number): number[] {
 
 const pageBtnClass = (active: boolean) =>
   `
-                  w-10 h-10 flex items-center justify-center rounded-md border text-sm font-mono transition-all duration-200
+                  flex h-10 w-10 items-center justify-center rounded-button border font-mono text-sm transition-all duration-200
                   ${active
                     ? 'border-zinc-900 dark:border-white bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold shadow-sm'
                     : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-500 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-zinc-900 dark:hover:text-white'
@@ -53,7 +53,7 @@ export function BlogPagination({ currentPage, totalPages, isArabic }: BlogPagina
   const buttons = visiblePageButtons(currentPage, totalPages);
 
   const navClass =
-    'group h-10 px-4 flex items-center justify-center gap-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-zinc-900 dark:hover:text-white transition-all';
+    'group flex h-10 items-center justify-center gap-2 rounded-button border border-zinc-200 bg-white px-4 text-sm font-medium text-zinc-600 transition-all hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:text-white';
 
   return (
     <AnimatedSection key={`pg-${pathname}-${searchParams.toString()}`} delay={0.1}>

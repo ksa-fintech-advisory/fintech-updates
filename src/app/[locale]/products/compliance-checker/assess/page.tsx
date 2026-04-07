@@ -81,7 +81,7 @@ function ActivitySelectionStep({
               key={key}
               onClick={() => onUpdate({ ...activities, [key]: !isSelected })}
               className={`
-                group relative p-6 rounded-xl border-2 text-start transition-all duration-200 flex flex-col h-full
+                group relative flex h-full flex-col rounded-button border-2 p-6 text-start transition-all duration-200
                 ${isSelected
                   ? 'border-primary-600 bg-zinc-50 dark:bg-zinc-900/50 shadow-lg shadow-primary-900/5'
                   : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md'
@@ -125,7 +125,7 @@ function ActivitySelectionStep({
           onClick={onNext}
           disabled={!hasSelection}
           className={`
-            px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-wider flex items-center gap-3 transition-all
+            flex items-center gap-3 rounded-button px-8 py-4 text-sm font-bold uppercase tracking-wider transition-all
             ${hasSelection
               ? 'bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-lg hover:shadow-xl translate-y-0'
               : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed'
@@ -220,7 +220,7 @@ function ModuleInspector({
                 key={q.id}
                 onClick={() => setCurrentIndex(idx)}
                 className={`
-                  w-full text-start p-3 rounded-lg text-sm flex items-start gap-3 transition-colors
+                  flex w-full items-start gap-3 rounded-button p-3 text-start text-sm transition-colors
                   ${isActive
                     ? 'bg-white dark:bg-zinc-900 shadow-sm border border-zinc-200 dark:border-zinc-700'
                     : 'text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-900'
@@ -291,7 +291,7 @@ function ModuleInspector({
                   key={option.value}
                   onClick={() => handleAnswerSelect(option.value)}
                   className={`
-                      w-full p-5 rounded-xl border-2 text-start transition-all duration-200 flex items-center gap-4 group
+                      group flex w-full items-center gap-4 rounded-button border-2 p-5 text-start transition-all duration-200
                       ${isSelected
                       ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/10'
                       : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:border-zinc-300 dark:hover:border-zinc-700'
@@ -321,7 +321,7 @@ function ModuleInspector({
           <button
             onClick={() => currentIndex > 0 ? setCurrentIndex(prev => prev - 1) : null}
             disabled={currentIndex === 0}
-            className="px-4 py-2 rounded text-sm font-bold text-zinc-500 disabled:opacity-30 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            className="rounded-button px-4 py-2 text-sm font-bold text-zinc-500 transition-colors hover:bg-zinc-100 disabled:opacity-30 dark:hover:bg-zinc-800"
           >
             {isArabic ? 'السابق' : 'PREV'}
           </button>
@@ -332,7 +332,7 @@ function ModuleInspector({
 
           <button
             onClick={() => currentIndex < questions.length - 1 ? setCurrentIndex(prev => prev + 1) : onReturn()}
-            className="px-6 py-2 rounded bg-zinc-900 dark:bg-white text-white dark:text-black text-sm font-bold hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors"
+            className="rounded-button bg-zinc-900 px-6 py-2 text-sm font-bold text-white transition-colors hover:bg-zinc-700 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
           >
             {currentIndex === questions.length - 1 ? (isArabic ? 'إنهاء الوحدة' : 'FINISH_MODULE') : (isArabic ? 'التالي' : 'NEXT')}
           </button>
@@ -633,7 +633,7 @@ function AssessmentHub({
               key={moduleName}
               onClick={() => onSelectModule(moduleName)}
               className={`
-                group flex flex-col text-start p-6 rounded-xl border transition-all duration-300 hover:-translate-y-1 relative overflow-hidden
+                group relative flex flex-col overflow-hidden rounded-button border p-6 text-start transition-all duration-300 hover:-translate-y-1
                 ${isModuleComplete
                   ? 'bg-zinc-50 dark:bg-zinc-900/30 border-zinc-200 dark:border-zinc-800'
                   : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow-xl hover:shadow-primary-900/5'
@@ -710,7 +710,7 @@ function AssessmentHub({
           onClick={onComplete}
           disabled={!hasStarted}
           className={`
-              px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider flex items-center gap-3 transition-all
+              flex items-center gap-3 rounded-button px-10 py-4 text-sm font-bold uppercase tracking-wider transition-all
               ${!hasStarted
               ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed'
               : isComplete
@@ -830,7 +830,7 @@ function ReportStep({
             </div>
             <button
               onClick={handleExportPDF}
-              className="bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-zinc-700 px-4 py-2 rounded-lg font-bold text-sm flex items-center gap-2 transition-colors"
+              className="flex items-center gap-2 rounded-button bg-zinc-900 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-zinc-700 dark:bg-white dark:text-black"
             >
               <FiDownload /> {isArabic ? 'PDF' : 'Export'}
             </button>
@@ -925,7 +925,7 @@ function ReportStep({
 
           {/* Footer Action */}
           <div className="flex justify-center mt-12 gap-4">
-            <button onClick={onRestart} className="text-sm font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300 flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors">
+            <button onClick={onRestart} className="flex items-center gap-2 rounded-button px-4 py-2 text-sm font-bold text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-900 dark:hover:text-zinc-300">
               <FiRefreshCw /> {isArabic ? 'بدء فحص جديد' : 'Start New Audit'}
             </button>
           </div>

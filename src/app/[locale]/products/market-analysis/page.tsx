@@ -119,12 +119,12 @@ export default function MarketAnalysisPage({ params: { locale } }: { params: { l
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
-              <button className="px-6 py-4 rounded-xl border border-zinc-200 dark:border-zinc-800 font-bold text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors flex items-center justify-center gap-2">
+              <button className="flex items-center justify-center gap-2 rounded-button border border-zinc-200 px-6 py-4 text-sm font-bold transition-colors hover:bg-zinc-100 dark:border-zinc-800 dark:hover:bg-zinc-800">
                 <FiTarget /> {t.hero.secondary}
               </button>
               <Link
                 href={`/${locale}/products/market-analysis/demo`}
-                className="px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-xl font-bold text-sm hover:bg-purple-600 dark:hover:bg-purple-200 transition-all shadow-xl shadow-purple-900/10 flex items-center justify-center gap-2 group"
+                className="group flex items-center justify-center gap-2 rounded-button bg-zinc-900 px-8 py-4 text-sm font-bold text-white shadow-xl shadow-purple-900/10 transition-all hover:bg-purple-600 dark:bg-white dark:text-black dark:hover:bg-purple-200"
               >
                 {t.hero.cta}
                 {isArabic ? <FiArrowLeft className="group-hover:-translate-x-1 transition-transform" /> : <FiArrowRight className="group-hover:translate-x-1 transition-transform" />}

@@ -156,7 +156,7 @@ export default function CoursesMegaMenu({ closeMenu }: CoursesMegaMenuProps) {
           <Link
             href={`/${locale}/courses`}
             onClick={closeMenu}
-            className="group px-6 py-2.5 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-black text-xs font-bold uppercase tracking-wider hover:bg-blue-600 dark:hover:bg-blue-100 transition-all flex items-center gap-2"
+            className="group flex items-center gap-2 rounded-button bg-zinc-900 px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white transition-all hover:bg-blue-600 dark:bg-white dark:text-black dark:hover:bg-blue-100"
           >
             {isArabic ? 'استعراض الكتالوج الكامل' : 'Browse Full Catalog'}
             {isArabic ? <FiArrowLeft className="group-hover:-translate-x-1 transition-transform" /> : <FiArrowRight className="group-hover:translate-x-1 transition-transform" />}

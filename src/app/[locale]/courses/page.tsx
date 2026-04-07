@@ -204,14 +204,14 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
                   href={`/${locale}/courses/fintech-fundamentals`}
-                  className="inline-flex items-center justify-center gap-3 bg-white text-black font-bold py-4 px-8 rounded text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors"
+                  className="inline-flex items-center justify-center gap-3 rounded-button bg-white px-8 py-4 text-sm font-bold uppercase tracking-wider text-black transition-colors hover:bg-zinc-200"
                 >
                   <FiHash />
                   {isArabic ? 'ابدأ الآن' : 'START_COURSE'}
                 </Link>
                 <Link
                   href={`/${locale}/contact`}
-                  className="inline-flex items-center justify-center gap-3 bg-transparent text-white font-bold py-4 px-8 rounded text-sm uppercase tracking-wider border border-zinc-700 hover:border-white transition-colors"
+                  className="inline-flex items-center justify-center gap-3 rounded-button border border-zinc-700 bg-transparent px-8 py-4 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:border-white"
                 >
                   {isArabic ? 'تواصل معنا' : 'CONTACT_SUPPORT'}
                   {isArabic ? <FiArrowLeft /> : <FiArrowRight />}

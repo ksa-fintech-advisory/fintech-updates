@@ -141,14 +141,14 @@ export default function ProductsMegaMenu({ closeMenu }: { closeMenu?: () => void
               <Link
                 href={`/${locale}/docs`}
                 onClick={closeMenu}
-                className="px-4 py-2 text-xs font-bold text-zinc-600 dark:text-zinc-300 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg hover:border-primary-500 hover:text-primary-600 transition-colors shadow-sm"
+                className="rounded-button border border-zinc-200 bg-white px-4 py-2 text-xs font-bold text-zinc-600 shadow-sm transition-colors hover:border-primary-500 hover:text-primary-600 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
               >
                 {isArabic ? 'الوثائق التقنية' : 'Read Docs'}
               </Link>
               <Link
                 href={`/${locale}/products`}
                 onClick={closeMenu}
-                className="px-4 py-2 text-xs font-bold text-white bg-zinc-900 dark:bg-white dark:text-black rounded-lg hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm flex items-center gap-2"
+                className="flex items-center gap-2 rounded-button bg-zinc-900 px-4 py-2 text-xs font-bold text-white shadow-sm transition-colors hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
               >
                 <FiCpu /> {isArabic ? 'جميع المنتجات' : 'All Products'}
               </Link>

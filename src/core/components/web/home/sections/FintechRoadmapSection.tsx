@@ -36,16 +36,13 @@ export default function FintechRoadmapSection() {
         <AnimatedSection>
           <div className="flex flex-col items-stretch gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
             <div className="max-w-xl text-center lg:text-start">
-              <span className="mb-3 block font-mono text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
-                {t('kicker')}
-              </span>
+              
               <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
                 {t('title')}
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400 md:text-base">
                 {t('intro')}
               </p>
-              <p className="mt-3 text-xs leading-relaxed text-zinc-400 dark:text-zinc-500 md:text-sm">{t('teaserNote')}</p>
             </div>
 
             <div className="mx-auto w-full max-w-sm shrink-0 lg:mx-0 lg:max-w-xs">
@@ -61,7 +58,7 @@ export default function FintechRoadmapSection() {
                   </div>
                   <Link
                     href={roadmapHref}
-                    className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-button bg-zinc-900 px-5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
                   >
                     {t('viewFull')}
                     {isArabic ? (

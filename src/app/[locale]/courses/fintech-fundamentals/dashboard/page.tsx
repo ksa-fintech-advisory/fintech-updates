@@ -94,7 +94,7 @@ export default function DashboardPage({
           </p>
           <Link
             href={`/${locale}/courses/fintech-fundamentals/register`}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-zinc-900 text-white font-bold rounded-xl hover:bg-zinc-800 transition-all shadow-lg dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+            className="inline-flex items-center gap-2 rounded-button bg-zinc-900 px-8 py-4 font-bold text-white shadow-lg transition-all hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
             {isArabic ? 'سجل الآن' : 'Register Now'}
             <svg className={`w-5 h-5 ${isArabic ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">

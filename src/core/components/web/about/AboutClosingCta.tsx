@@ -25,7 +25,7 @@ export function AboutClosingCta({ locale, isArabic, title, subtitle, buttonLabel
 
             <Link
               href={`/${locale}/contact`}
-              className="inline-flex items-center gap-3 bg-white px-8 py-4 text-sm font-bold uppercase tracking-wider text-black transition-colors hover:bg-zinc-200"
+              className="inline-flex items-center gap-3 rounded-button bg-white px-8 py-4 text-sm font-bold uppercase tracking-wider text-black transition-colors hover:bg-zinc-200"
             >
               <span>{buttonLabel}</span>
               {isArabic ? <FiArrowLeft /> : <FiArrowRight />}

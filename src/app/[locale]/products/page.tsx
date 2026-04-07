@@ -140,7 +140,7 @@ export default function ProductsPage({ params }: { params: { locale: string } })
 
               <Link
                 href={`/${locale}/contact`}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors rounded"
+                className="inline-flex items-center gap-3 rounded-button bg-white px-8 py-4 text-sm font-bold uppercase tracking-wider text-black transition-colors hover:bg-zinc-200"
               >
                 <FiTerminal />
                 <span>{isArabic ? 'تواصل معنا' : 'CONTACT_SALES'}</span>

@@ -31,7 +31,7 @@ export default function ServicesSection() {
   );
 
   const btnBase =
-    'inline-flex w-fit items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold transition-colors';
+    'inline-flex w-fit items-center justify-center gap-2 rounded-button px-5 py-3 text-sm font-bold transition-colors';
 
   return (
     <section

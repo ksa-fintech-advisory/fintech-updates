@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { IBM_Plex_Sans_Arabic, Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { locales } from '@/core/i18n/config';
@@ -11,6 +12,19 @@ import { JsonLd } from '@/core/seo/JsonLd';
 import { siteWideGraphJsonLd } from '@/core/seo/structuredData';
 import SiteJsonLd from '@/core/components/web/seo/SiteJsonLd';
 import '@/core/theme/globals.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
+  subsets: ['arabic'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-ibm-plex-sans-arabic',
+  display: 'swap',
+});
 
 const fav = '/favicon_io';
 
@@ -120,7 +134,12 @@ export default async function LocaleLayout({
   const direction = locale === 'ar' ? 'rtl' : 'ltr';
 
   return (
-    <html lang={locale} dir={direction} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={direction}
+      suppressHydrationWarning
+      className={`${inter.variable} ${ibmPlexSansArabic.variable}`}
+    >
       <body className="min-h-screen flex flex-col bg-grey-50">
         <JsonLd data={siteWideGraphJsonLd(getSiteUrl())} />
         <SiteJsonLd />

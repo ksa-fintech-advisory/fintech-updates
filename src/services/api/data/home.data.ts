@@ -6,14 +6,16 @@ export const homeData: HomeContent = {
       en: 'FinTech systems engineering—from idea to compliance.',
       ar: 'نفهم الفنتك.. ونبنيه صح.',
     },
+    titleArParts: {
+      before: 'نفهم ',
+      emphasis: 'الفنتك',
+      after: '.. ونبنيه صح.',
+    },
     subtitle: {
-      en: "I'm Mohammed Abdo, a software engineer and systems architect. I help teams and companies design and build secure financial platforms aligned with Saudi and Arab market expectations.",
-      ar: 'أنا محمد عبده، مهندس برمجيات مختص بالتقنية المالية. أساعد الشركات تبني منصات مالية قوية وموثوقة، ولو كنت موظف أو طالب وحاس إن التخصص متشعب أنا هنا عشان أوجهك لخطوتك الأولى الصح.',
+      en: 'Mohammed Abdo | FinTech systems engineer\n• Building system architecture and preparing it for compliance.\n• Technical guidance for developers on the FinTech path.',
+      ar: 'محمد عبده | مهندس أنظمة تقنية مالية\n• بناء معمارية الأنظمة وتجهيزها للامتثال.\n• إرشاد تقني للمطورين في مسار الفنتك.',
     },
-    description: {
-      en: 'Here I distill field lessons from building real products—and I work with you to turn complex ideas into reliable, scalable systems.',
-      ar: 'هنا، أشاركك خلاصة تجاربي العملية في بناء المنتجات، وأرافقك في رحلة تحويل الأفكار المعقدة إلى أنظمة موثوقة وقابلة للتوسع.',
-    },
+   
     ctaButtons: [
       {
         label: { en: 'How I can help', ar: 'كيف أساعدك؟' },
