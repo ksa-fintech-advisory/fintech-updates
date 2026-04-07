@@ -32,7 +32,7 @@ function localizedHero(hero: HeroSection, locale: string) {
   return {
     title: hero.title[lang],
     subtitle: hero.subtitle[lang],
-    description: hero.description[lang],
+ 
     ctaButtons: hero.ctaButtons.map((btn) => ({
       label: btn.label[lang],
       href: btn.href.startsWith('#') ? btn.href : `/${locale}${btn.href}`,
@@ -80,16 +80,15 @@ export default async function HomePage({ params }: { params: { locale: string } 
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.4} distance={20}>
-              <p className="text-xl md:text-2xl mb-6 text-zinc-300 font-light max-w-3xl mx-auto">
+              <p
+                lang={isArabic ? 'ar' : undefined}
+                className="text-xl md:text-2xl mb-6 text-zinc-300 font-light max-w-3xl mx-auto whitespace-pre-line leading-relaxed"
+              >
                 {hero.subtitle}
               </p>
             </AnimatedSection>
 
-            <AnimatedSection direction="up" delay={0.5} distance={20}>
-              <p className="text-base md:text-lg mb-12 text-zinc-500 max-w-2xl mx-auto leading-relaxed">
-                {hero.description}
-              </p>
-            </AnimatedSection>
+            
 
             <AnimatedSection direction="up" delay={0.6} distance={20}>
               <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
@@ -122,11 +121,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
               </div>
             </AnimatedSection>
 
-            <AnimatedSection direction="up" delay={0.65} distance={12}>
-              <p className="mt-12 text-center font-mono text-xs uppercase tracking-[0.2em] text-zinc-500">
-                {tHome('heroSignoff')}
-              </p>
-            </AnimatedSection>
+            
           </div>
         </div>
 

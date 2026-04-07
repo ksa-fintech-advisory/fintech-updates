@@ -12,7 +12,7 @@ module.exports = {
       // 1. Typography: Engineering Stack
       fontFamily: {
         sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
-        arabic: ['var(--font-tajawal)', 'Tajawal', ...defaultTheme.fontFamily.sans],
+        arabic: ['var(--font-ibm-plex-sans-arabic)', 'Tahoma', ...defaultTheme.fontFamily.sans],
         // Monospace for Financial Data, APIs, and Version numbers
         mono: ['var(--font-ibm-plex-mono)', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
       },

@@ -16,10 +16,7 @@ export interface HeroSection {
     en: string;
     ar: string;
   };
-  description: {
-    en: string;
-    ar: string;
-  };
+  
   ctaButtons: CTAButton[];
   backgroundImage?: string;
 }

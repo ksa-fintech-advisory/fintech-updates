@@ -2,64 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-@font-face {
-  font-family: 'Tajawal';
-  src: url('/fonts/Tajawal/Tajawal-Light.ttf') format('truetype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Tajawal';
-  src: url('/fonts/Tajawal/Tajawal-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Tajawal';
-  src: url('/fonts/Tajawal/Tajawal-Medium.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Tajawal';
-  src: url('/fonts/Tajawal/Tajawal-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Tajawal';
-  src: url('/fonts/Tajawal/Tajawal-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Tajawal';
-  src: url('/fonts/Tajawal/Tajawal-Black.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
+/* Inter + IBM Plex Sans Arabic: next/font in src/app/[locale]/layout.tsx (--font-inter, --font-ibm-plex-sans-arabic). */
 
 @layer base {
   body {
     @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-50;
-    font-family: 'Tajawal', 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  html[dir='rtl'] {
+    font-family: var(--font-ibm-plex-sans-arabic), Tahoma, ui-sans-serif, system-ui, sans-serif;
+    /* Slightly looser lines suit Arabic script and diacritics */
+    line-height: 1.8;
+  }
+
+  html[dir='ltr'] {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.65;
   }
 }
 
 @layer utilities {
+  /* Pages use font-sans for “UI” text; map it to IBM Plex Sans Arabic when the document is RTL. */
+  html[dir='rtl'] .font-sans {
+    font-family: var(--font-ibm-plex-sans-arabic), Tahoma, ui-sans-serif, system-ui, sans-serif;
+  }
+
   /* RTL Support */
   [dir='rtl'] {
     direction: rtl;
