@@ -85,7 +85,7 @@ export function BlogInfiniteGrid({ allBlogs }: Props) {
 
                     {/* Excerpt */}
                     <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-3 mb-5 flex-1">
-                      {blog.excerpt}
+                      {blog.listingExcerpt}
                     </p>
 
                     {/* Read indicator */}

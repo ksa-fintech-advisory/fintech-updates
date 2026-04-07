@@ -119,7 +119,7 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
             </div>
             <button
               type="submit"
-              className="h-10 shrink-0 rounded-button border border-zinc-200 bg-zinc-900 px-3 font-mono text-xs font-bold uppercase tracking-wide text-white transition-opacity hover:opacity-90 dark:border-zinc-700 dark:bg-zinc-100 dark:text-zinc-900"
+              className="h-10 shrink-0 rounded-xl border border-zinc-200 bg-zinc-900 px-3 font-mono text-xs font-bold uppercase tracking-wide text-white transition-opacity hover:opacity-90 dark:border-zinc-700 dark:bg-zinc-100 dark:text-zinc-900"
             >
               {isArabic ? 'بحث' : 'GO'}
             </button>

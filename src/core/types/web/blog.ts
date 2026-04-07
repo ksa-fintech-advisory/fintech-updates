@@ -19,6 +19,11 @@ export interface Blog {
     en: string;
     ar: string;
   };
+  /** Short line for listing cards; when omitted, cards use `excerpt`. */
+  cardSummary?: {
+    en: string;
+    ar: string;
+  };
   content: {
     en: BlogContentBlock[];
     ar: BlogContentBlock[];
@@ -78,6 +83,8 @@ export interface LocalizedBlog {
   slug: string;
   title: string;
   excerpt: string;
+  /** Card/grid teaser; equals `cardSummary` when present, else `excerpt`. */
+  listingExcerpt: string;
   content: BlogContentBlock[];
   featuredImage: string;
   category: LocalizedBlogCategory;

@@ -19,9 +19,18 @@ function resolveLocale(locale: string): Locale {
   return isLocale(locale) ? locale : 'ar';
 }
 
-function textForBlog(blog: Blog, locale: Locale, field: 'title' | 'excerpt'): string {
+function textForBlog(blog: Blog, locale: Locale, field: 'title' | 'excerpt' | 'cardSummary'): string {
   const v = blog[field];
+  if (!v) return '';
   return locale === 'ar' ? v.ar || v.en : v.en || v.ar;
+}
+
+function listingExcerptForBlog(blog: Blog, lang: Locale): string {
+  if (blog.cardSummary) {
+    const s = textForBlog(blog, lang, 'cardSummary');
+    if (s) return s;
+  }
+  return textForBlog(blog, lang, 'excerpt');
 }
 
 function categoryName(cat: BlogCategory, locale: Locale): string {
@@ -59,6 +68,7 @@ export function localizeBlog(blog: Blog, locale: string, options?: { omitContent
     slug: blog.slug,
     title: textForBlog(blog, lang, 'title'),
     excerpt: textForBlog(blog, lang, 'excerpt'),
+    listingExcerpt: listingExcerptForBlog(blog, lang),
     content,
     featuredImage: blog.featuredImage,
     category: localizeCategory(blog.category, locale),
@@ -92,6 +102,8 @@ function matchesSearch(blog: Blog, query: string): boolean {
     blog.title.ar,
     blog.excerpt.en,
     blog.excerpt.ar,
+    blog.cardSummary?.en,
+    blog.cardSummary?.ar,
     blog.slug,
     ...blog.tags,
     blog.category.slug,

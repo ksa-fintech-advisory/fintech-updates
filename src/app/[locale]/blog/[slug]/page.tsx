@@ -199,7 +199,7 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
             <div className="mt-16 pt-10 border-t border-zinc-200 dark:border-zinc-800 flex justify-center">
               <Link
                 href={`/${locale}/blog`}
-                className="group inline-flex items-center gap-3 rounded-button border border-zinc-200 bg-white px-6 py-3.5 font-medium text-zinc-600 shadow-sm transition-all hover:border-primary-500/40 hover:text-primary-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-primary-500/30 dark:hover:text-primary-400"
+                className="group inline-flex items-center gap-3 rounded-xl border border-zinc-200 bg-white px-6 py-3.5 font-medium text-zinc-600 shadow-sm transition-all hover:border-primary-500/40 hover:text-primary-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-primary-500/30 dark:hover:text-primary-400"
               >
                 {isArabic ? (
                   <FiArrowRight className="group-hover:-translate-x-1 transition-transform" aria-hidden />

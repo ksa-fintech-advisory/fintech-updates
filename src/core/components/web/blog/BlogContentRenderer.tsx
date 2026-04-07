@@ -143,7 +143,7 @@ function LinkedInSourceCallout({ url, locale }: { url: string; locale: string })
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group/btn inline-flex shrink-0 items-center justify-center gap-2 rounded-button border border-[#004182]/30 bg-[#0A66C2] px-5 py-3 text-sm font-semibold !text-white no-underline shadow-md shadow-[#0A66C2]/35 transition hover:border-[#003d6b] hover:bg-[#004182] hover:!text-white hover:shadow-lg hover:shadow-[#0A66C2]/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0A66C2] active:scale-[0.98] sm:px-6"
+          className="group/btn inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-[#004182]/30 bg-[#0A66C2] px-5 py-3 text-sm font-semibold !text-white no-underline shadow-md shadow-[#0A66C2]/35 transition hover:border-[#003d6b] hover:bg-[#004182] hover:!text-white hover:shadow-lg hover:shadow-[#0A66C2]/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0A66C2] active:scale-[0.98] sm:px-6"
         >
           <span className="!text-white">{isAr ? 'فتح على LinkedIn' : 'Open on LinkedIn'}</span>
           <FiExternalLink className="h-4 w-4 shrink-0 !text-white opacity-95 group-hover/btn:opacity-100" aria-hidden />
