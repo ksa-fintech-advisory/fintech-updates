@@ -162,7 +162,20 @@
       "expandPhase": "Expand phase",
       "collapsePhase": "Collapse phase",
       "expandTopic": "Show details",
-      "collapseTopic": "Hide details"
+      "collapseTopic": "Hide details",
+      "overviewLabel": "At a glance",
+      "statPhases": "{count} phases",
+      "statTopics": "{count} topics",
+      "statRefs": "{count} references",
+      "resourcesCount": "{count} links",
+      "expandAllTopics": "Expand all topics",
+      "collapseAllTopics": "Collapse all topics",
+      "tocLabel": "On this page",
+      "tocHint": "Jump to a section while you scroll.",
+      "continueReading": "Continue reading",
+      "nextPhase": "Next phase",
+      "nextTopic": "Next topic",
+      "mobilePathHint": "Tap a step to jump — or scroll and use the buttons at the end of each section."
     },
     "blog": {
       "metaTitle": "Blog — FinTech, regulation & product",

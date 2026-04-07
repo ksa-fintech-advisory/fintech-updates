@@ -160,7 +160,20 @@
       "expandPhase": "عرض المرحلة",
       "collapsePhase": "طي المرحلة",
       "expandTopic": "عرض التفاصيل",
-      "collapseTopic": "إخفاء التفاصيل"
+      "collapseTopic": "إخفاء التفاصيل",
+      "overviewLabel": "نظرة سريعة",
+      "statPhases": "{count} مراحل",
+      "statTopics": "{count} موضوعاً",
+      "statRefs": "{count} مرجعاً",
+      "resourcesCount": "{count} روابط",
+      "expandAllTopics": "توسيع كل المواضيع",
+      "collapseAllTopics": "طي كل المواضيع",
+      "tocLabel": "في هذه الصفحة",
+      "tocHint": "انتقل لقسم أثناء التمرير.",
+      "continueReading": "متابعة القراءة",
+      "nextPhase": "المرحلة التالية",
+      "nextTopic": "الموضوع التالي",
+      "mobilePathHint": "اضغط خطوة للانتقال — أو مرّر واستخدم الأزرار في نهاية كل قسم."
     },
     "blog": {
       "metaTitle": "المدونة — تقنية مالية، تنظيم، ومنتج",
