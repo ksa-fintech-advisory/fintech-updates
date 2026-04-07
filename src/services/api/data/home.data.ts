@@ -6,6 +6,11 @@ export const homeData: HomeContent = {
       en: 'FinTech systems engineering—from idea to compliance.',
       ar: 'نفهم الفنتك.. ونبنيه صح.',
     },
+    titleArParts: {
+      before: 'نفهم ',
+      emphasis: 'الفنتك',
+      after: '.. ونبنيه صح.',
+    },
     subtitle: {
       en: 'Mohammed Abdo | FinTech systems engineer\n• Building system architecture and preparing it for compliance.\n• Technical guidance for developers on the FinTech path.',
       ar: 'محمد عبده | مهندس أنظمة تقنية مالية\n• بناء معمارية الأنظمة وتجهيزها للامتثال.\n• إرشاد تقني للمطورين في مسار الفنتك.',

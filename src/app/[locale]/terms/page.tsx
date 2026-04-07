@@ -41,10 +41,10 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
 
               {/* Action Buttons (Mock) */}
               <div className="flex gap-3">
-                <button className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors rounded">
+                <button className="flex items-center gap-2 rounded-button border border-zinc-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800">
                   <FiPrinter /> {isArabic ? 'طباعة' : 'PRINT'}
                 </button>
-                <button className="flex items-center gap-2 px-4 py-2 text-xs font-bold uppercase tracking-wider border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors rounded">
+                <button className="flex items-center gap-2 rounded-button border border-zinc-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-800">
                   <FiDownload /> PDF
                 </button>
               </div>

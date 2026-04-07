@@ -103,7 +103,7 @@ export default function FeaturedCourses() {
               <div className="mt-auto flex flex-wrap gap-4">
                 <Link
                   href={`/${locale}/courses/${featuredCourse.slug}/register`}
-                  className="group inline-flex items-center gap-3 px-8 py-4 rounded-lg bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all duration-200 shadow-lg shadow-zinc-500/10"
+                  className="group inline-flex items-center gap-3 px-8 py-4 rounded-button bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all duration-200 shadow-lg shadow-zinc-500/10"
                 >
                   {isArabic ? 'حجز مقعد' : 'Start Learning'}
                   {isArabic ? <FiArrowLeft className="group-hover:-translate-x-1 transition-transform" /> : <FiArrowRight className="group-hover:translate-x-1 transition-transform" />}
@@ -111,7 +111,7 @@ export default function FeaturedCourses() {
 
                 <Link
                   href={`/${locale}/courses/${featuredCourse.slug}`}
-                  className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 font-medium hover:border-zinc-400 dark:hover:border-zinc-500 transition-colors"
+                  className="inline-flex items-center gap-2 px-8 py-4 rounded-button border border-zinc-200 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 font-medium hover:border-zinc-400 dark:hover:border-zinc-500 transition-colors"
                 >
                   <FiTerminal className="w-5 h-5" />
                   {isArabic ? 'تفاصيل المنهج' : 'View Syllabus'}

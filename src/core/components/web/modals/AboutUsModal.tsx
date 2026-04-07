@@ -42,7 +42,7 @@ export default function AboutUsModal({ isOpen, onClose }: AboutUsModalProps) {
             </h2>
             <button
               onClick={onClose}
-              className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+              className="rounded-button p-2 transition-colors hover:bg-white/10"
               aria-label="Close"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

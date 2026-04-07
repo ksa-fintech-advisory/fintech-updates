@@ -97,7 +97,7 @@ export default function DocsPage({ params: { locale } }: { params: { locale: str
                         <Link href="#" className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                             {isArabic ? 'حالة النظام' : 'Status'}
                         </Link>
-                        <button className="px-4 py-2 bg-zinc-900 dark:bg-white text-white dark:text-black rounded-lg text-xs font-bold uppercase tracking-wider hover:opacity-90 transition-opacity">
+                        <button className="rounded-button bg-zinc-900 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white transition-opacity hover:opacity-90 dark:bg-white dark:text-black">
                             {isArabic ? 'تسجيل الدخول' : 'Login'}
                         </button>
                     </div>
@@ -119,7 +119,7 @@ export default function DocsPage({ params: { locale } }: { params: { locale: str
                                         <li key={item.id}>
                                             <button
                                                 onClick={() => setActiveSection(item.id)}
-                                                className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-all ${activeSection === item.id
+                                                className={`flex w-full items-center gap-3 rounded-button px-3 py-2 text-sm font-medium transition-all ${activeSection === item.id
                                                         ? 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
                                                         : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-900'
                                                     }`}
@@ -149,10 +149,10 @@ export default function DocsPage({ params: { locale } }: { params: { locale: str
                                 : 'Integrate our compliance engines and fee calculators directly into your financial applications using our unified REST APIs.'}
                         </p>
                         <div className="flex gap-4 mt-8">
-                            <button className="px-6 py-3 bg-blue-600 text-white rounded-xl font-bold text-sm hover:bg-blue-700 transition-colors shadow-lg shadow-blue-600/20">
+                            <button className="rounded-button bg-blue-600 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-blue-600/20 transition-colors hover:bg-blue-700">
                                 {isArabic ? 'الحصول على مفتاح API' : 'Get API Key'}
                             </button>
-                            <button className="px-6 py-3 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300 rounded-xl font-bold text-sm hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors">
+                            <button className="rounded-button border border-zinc-200 px-6 py-3 text-sm font-bold text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-900">
                                 {isArabic ? 'تجربة في Postman' : 'Run in Postman'}
                             </button>
                         </div>
@@ -175,13 +175,13 @@ export default function DocsPage({ params: { locale } }: { params: { locale: str
                                 <div className="flex gap-2">
                                     <button
                                         onClick={() => setCodeLang('curl')}
-                                        className={`px-3 py-1 rounded text-xs font-bold transition-colors ${codeLang === 'curl' ? 'bg-blue-600 text-white' : 'text-zinc-400 hover:text-white'}`}
+                                        className={`rounded-button px-3 py-1 text-xs font-bold transition-colors ${codeLang === 'curl' ? 'bg-blue-600 text-white' : 'text-zinc-400 hover:text-white'}`}
                                     >
                                         cURL
                                     </button>
                                     <button
                                         onClick={() => setCodeLang('node')}
-                                        className={`px-3 py-1 rounded text-xs font-bold transition-colors ${codeLang === 'node' ? 'bg-blue-600 text-white' : 'text-zinc-400 hover:text-white'}`}
+                                        className={`rounded-button px-3 py-1 text-xs font-bold transition-colors ${codeLang === 'node' ? 'bg-blue-600 text-white' : 'text-zinc-400 hover:text-white'}`}
                                     >
                                         Node.js
                                     </button>
@@ -266,7 +266,7 @@ export default function DocsPage({ params: { locale } }: { params: { locale: str
                         <p className="text-xs text-blue-600 dark:text-blue-400 mb-3">
                             Join our Slack community for direct support from our engineers.
                         </p>
-                        <button className="text-xs font-bold bg-blue-600 text-white px-3 py-1.5 rounded-lg hover:bg-blue-700 w-full">
+                        <button className="w-full rounded-button bg-blue-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-blue-700">
                             Join Community
                         </button>
                     </div>

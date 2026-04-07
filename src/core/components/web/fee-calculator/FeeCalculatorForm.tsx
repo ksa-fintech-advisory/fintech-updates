@@ -323,7 +323,7 @@ export default function FeeCalculatorForm({
           type="submit"
           disabled={!isFormValid || isLoading}
           className={`
-            w-full py-4 px-6 rounded-xl font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-all
+            flex w-full items-center justify-center gap-2 rounded-button px-6 py-4 text-sm font-bold uppercase tracking-wider transition-all
             ${isFormValid && !isLoading
               ? 'bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-lg hover:shadow-xl translate-y-0'
               : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed'

@@ -61,7 +61,7 @@ export default function SubscriptionForm({ locale }: { locale: string }) {
             <button
               type="button"
               onClick={() => setPlan('pro')}
-              className={`w-full text-start p-4 rounded-xl border transition-all ${
+              className={`w-full rounded-button border p-4 text-start transition-all ${
                 plan === 'pro' 
                   ? 'bg-purple-600 border-purple-500 shadow-lg' 
                   : 'bg-white/5 border-white/10 hover:bg-white/10'
@@ -78,7 +78,7 @@ export default function SubscriptionForm({ locale }: { locale: string }) {
             <button
               type="button"
               onClick={() => setPlan('enterprise')}
-              className={`w-full text-start p-4 rounded-xl border transition-all ${
+              className={`w-full rounded-button border p-4 text-start transition-all ${
                 plan === 'enterprise' 
                   ? 'bg-purple-600 border-purple-500 shadow-lg' 
                   : 'bg-white/5 border-white/10 hover:bg-white/10'
@@ -157,7 +157,7 @@ export default function SubscriptionForm({ locale }: { locale: string }) {
           <button
             type="submit"
             disabled={isLoading}
-            className={`w-full py-4 text-white font-bold rounded-xl shadow-lg transition-all transform hover:scale-[1.02] ${
+            className={`w-full rounded-button py-4 font-bold text-white shadow-lg transition-all transform hover:scale-[1.02] ${
               isLoading ? 'bg-purple-400 cursor-wait' : 'bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700'
             }`}
           >

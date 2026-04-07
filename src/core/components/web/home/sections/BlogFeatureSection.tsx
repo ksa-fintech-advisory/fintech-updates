@@ -109,7 +109,7 @@ export default function BlogFeatureSection() {
         <AnimatedSection className="mt-12 flex justify-center md:mt-16">
           <Link
             href={`/${locale}/blog`}
-            className="group inline-flex items-center gap-2 rounded-xl border border-zinc-200 bg-white px-6 py-3 text-sm font-bold text-zinc-900 shadow-sm transition-all hover:border-primary-500/50 hover:text-primary-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:border-primary-400/50 dark:hover:text-primary-300"
+            className="group inline-flex items-center gap-2 rounded-button border border-zinc-200 bg-white px-6 py-3 text-sm font-bold text-zinc-900 shadow-sm transition-all hover:border-primary-500/50 hover:text-primary-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:border-primary-400/50 dark:hover:text-primary-300"
           >
             {t('cta')}
             {isArabic ? (

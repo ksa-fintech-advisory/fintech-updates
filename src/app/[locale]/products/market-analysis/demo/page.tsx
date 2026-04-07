@@ -58,7 +58,7 @@ export default function MarketAnalysisDemoPage({ params: { locale } }: { params:
                         <button
                            key={v}
                            onClick={() => setActiveVertical(v)}
-                           className={`px-4 py-1.5 rounded-md text-xs font-bold transition-all whitespace-nowrap ${activeVertical === v
+                            className={`rounded-button px-4 py-1.5 text-xs font-bold whitespace-nowrap transition-all ${activeVertical === v
                                  ? 'bg-zinc-800 text-white shadow-sm border border-zinc-700'
                                  : 'text-zinc-500 hover:text-zinc-300'
                               }`}
@@ -223,7 +223,7 @@ export default function MarketAnalysisDemoPage({ params: { locale } }: { params:
                            ? 'قم بتحميل التقرير بصيغة PDF للحصول على تحليل تفصيلي لـ 50+ شركة ومقارنة الرسوم.'
                            : 'Download the full PDF report for detailed analysis on 50+ companies and fee benchmarks.'}
                      </p>
-                     <button className="w-full py-3 bg-zinc-100 text-black text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-white transition-colors flex items-center justify-center gap-2">
+                     <button className="flex w-full items-center justify-center gap-2 rounded-button bg-zinc-100 py-3 text-xs font-bold uppercase tracking-wider text-black transition-colors hover:bg-white">
                         <FiTarget /> {isArabic ? 'تحميل التقرير' : 'Access Full Report'}
                      </button>
                   </div>

@@ -139,7 +139,7 @@ export default function ContactPage() {
                   href="https://x.com/mohfintech"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-800 dark:hover:border-zinc-600 dark:hover:text-white"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-button border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-800 dark:hover:border-zinc-600 dark:hover:text-white"
                   aria-label="X (Twitter)"
                 >
                   <FiTwitter className="h-5 w-5" />
@@ -148,7 +148,7 @@ export default function ContactPage() {
                   href="https://www.linkedin.com/in/mohfintech/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-800 dark:hover:border-zinc-600 dark:hover:text-white"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-button border border-zinc-200 text-zinc-500 transition-colors hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-800 dark:hover:border-zinc-600 dark:hover:text-white"
                   aria-label="LinkedIn"
                 >
                   <FiLinkedin className="h-5 w-5" />
@@ -290,7 +290,7 @@ export default function ContactPage() {
                     <button
                       type="submit"
                       disabled={loading}
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-all hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 sm:w-auto"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-button bg-zinc-900 px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-all hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 sm:w-auto"
                     >
                       {loading ? (
                         <span className="animate-pulse">{tf('sending')}</span>

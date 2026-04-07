@@ -40,7 +40,7 @@ export default function RegionDropdown({ className = '' }: RegionDropdownProps) 
       {/* Dropdown Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="group flex items-center gap-2 px-3 py-2 text-sm font-medium text-grey-700 hover:text-primary bg-grey-50 hover:bg-grey-100 border border-grey-200 hover:border-primary-200 rounded-xl transition-all duration-300"
+        className="group flex items-center gap-2 rounded-button border border-grey-200 bg-grey-50 px-3 py-2 text-sm font-medium text-grey-700 transition-all duration-300 hover:border-primary-200 hover:bg-grey-100 hover:text-primary"
         aria-expanded={isOpen}
         aria-haspopup="listbox"
       >

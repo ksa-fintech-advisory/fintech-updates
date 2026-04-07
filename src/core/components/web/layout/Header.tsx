@@ -101,7 +101,7 @@ export default function Header() {
                     <Link
                       href={item.hasMegaMenu ? '#' : `/${locale}${item.href}`}
                       className={`
-                        relative px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200 flex items-center gap-1.5 outline-none
+                        relative px-3 py-1.5 rounded-button text-sm font-medium transition-all duration-200 flex items-center gap-1.5 outline-none
                         ${active || isMegaMenuOpen
                           ? 'text-zinc-900 dark:text-white bg-zinc-100 dark:bg-zinc-800'
                           : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-50 dark:hover:bg-zinc-900'
@@ -129,7 +129,7 @@ export default function Header() {
             <div className="flex shrink-0 items-center gap-2 md:ml-2 md:gap-3 md:pl-4 md:border-l md:border-zinc-200 md:dark:border-zinc-800">
               <Link
                 href={`/${otherLocale}${currentPath}`}
-                className="hidden md:inline-flex items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-100 px-3 py-1.5 text-xs font-mono font-bold text-zinc-600 transition-all hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:border-zinc-600"
+                className="hidden md:inline-flex items-center gap-2 rounded-button border border-zinc-200 bg-zinc-100 px-3 py-1.5 text-xs font-mono font-bold text-zinc-600 transition-all hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:border-zinc-600"
                 aria-label="Switch Language"
               >
                 <FiGlobe className="h-3.5 w-3.5 shrink-0" aria-hidden />
@@ -139,7 +139,7 @@ export default function Header() {
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="md:hidden rounded-lg p-2 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
+                className="md:hidden rounded-button p-2 text-zinc-600 transition-colors hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
                 aria-expanded={mobileMenuOpen}
                 aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               >
@@ -184,7 +184,7 @@ export default function Header() {
                     <button
                       onClick={() => setHoveredItem(hoveredItem === item.key ? null : item.key)}
                       className={`
-                        w-full flex items-center justify-between px-4 py-3 rounded-lg text-sm font-bold
+                        w-full flex items-center justify-between px-4 py-3 rounded-button text-sm font-bold
                         ${hoveredItem === item.key ? 'bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900'}
                       `}
                     >
@@ -198,10 +198,10 @@ export default function Header() {
                       {/* Products Sub-items (Manual or Map) */}
                       {item.key === 'products' && (
                         <>
-                          <Link href={`/${locale}/products/compliance-checker`} onClick={() => setMobileMenuOpen(false)} className="block p-3 rounded hover:bg-zinc-50 dark:hover:bg-zinc-900 text-sm text-zinc-600 dark:text-zinc-300">
+                          <Link href={`/${locale}/products/compliance-checker`} onClick={() => setMobileMenuOpen(false)} className="block rounded-button p-3 hover:bg-zinc-50 dark:hover:bg-zinc-900 text-sm text-zinc-600 dark:text-zinc-300">
                             {isArabic ? 'فاحص الامتثال' : 'Compliance Checker'}
                           </Link>
-                          <Link href={`/${locale}/products/fee-calculator`} onClick={() => setMobileMenuOpen(false)} className="block p-3 rounded hover:bg-zinc-50 dark:hover:bg-zinc-900 text-sm text-zinc-600 dark:text-zinc-300">
+                          <Link href={`/${locale}/products/fee-calculator`} onClick={() => setMobileMenuOpen(false)} className="block rounded-button p-3 hover:bg-zinc-50 dark:hover:bg-zinc-900 text-sm text-zinc-600 dark:text-zinc-300">
                             {isArabic ? 'حاسبة الرسوم' : 'Fee Calculator'}
                           </Link>
                         </>
@@ -212,7 +212,7 @@ export default function Header() {
                         <Link
                           key={course.id}
                           href={`/${locale}/courses/${course.slug}`}
-                          className="block p-3 rounded hover:bg-zinc-50 dark:hover:bg-zinc-900 group"
+                          className="block rounded-button p-3 hover:bg-zinc-50 dark:hover:bg-zinc-900 group"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           <div className="text-sm font-bold text-zinc-800 dark:text-zinc-200 group-hover:text-primary-600">{course.title[lang]}</div>
@@ -233,7 +233,7 @@ export default function Header() {
                   <Link
                     href={`/${locale}${item.href}`}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block px-4 py-3 rounded-lg text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-50 dark:hover:bg-zinc-900"
+                    className="block rounded-button px-4 py-3 text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-50 dark:hover:bg-zinc-900"
                   >
                     {item.label}
                   </Link>

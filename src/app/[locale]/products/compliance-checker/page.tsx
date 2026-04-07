@@ -116,7 +116,7 @@ function ModuleSelector({
         <button
           onClick={() => onSelectModule(null)}
           className={`
-            px-3 py-2 rounded-md text-xs font-bold font-mono uppercase tracking-wide border transition-all
+            rounded-button border px-3 py-2 font-mono text-xs font-bold uppercase tracking-wide transition-all
             ${!selectedModule
               ? 'bg-zinc-900 dark:bg-white text-white dark:text-black border-zinc-900 dark:border-white'
               : 'bg-white dark:bg-zinc-900 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300'
@@ -130,7 +130,7 @@ function ModuleSelector({
             key={module.module}
             onClick={() => onSelectModule(selectedModule === module.module ? null : module.module)}
             className={`
-              px-3 py-2 rounded-md text-xs font-bold uppercase tracking-wide border transition-all flex items-center gap-2
+              flex items-center gap-2 rounded-button border px-3 py-2 text-xs font-bold uppercase tracking-wide transition-all
               ${selectedModule === module.module
                 ? 'bg-primary-50 dark:bg-primary-900/20 text-primary-700 dark:text-primary-400 border-primary-200 dark:border-primary-800 shadow-sm'
                 : 'bg-white dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700'
@@ -236,7 +236,7 @@ function RuleInspector({
               {rule.article_reference[lang]}
             </h2>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg text-zinc-500 transition-colors">
+          <button onClick={onClose} className="rounded-button p-2 text-zinc-500 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800">
             <FiX className="w-5 h-5" />
           </button>
         </div>
@@ -372,7 +372,7 @@ export default function ComplianceCheckerPage({ params: { locale } }: { params: 
             <div>
               <Link
                 href={`/${locale}/products/compliance-checker/assess`}
-                className="group inline-flex items-center gap-3 px-6 py-3 bg-zinc-900 dark:bg-white text-white dark:text-black font-bold text-sm uppercase tracking-wider rounded hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-all shadow-lg"
+                className="group inline-flex items-center gap-3 rounded-button bg-zinc-900 px-6 py-3 text-sm font-bold uppercase tracking-wider text-white shadow-lg transition-all hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
               >
                 <span>{isArabic ? 'بدء التقييم الآلي' : 'RUN_AUTO_ASSESSMENT'}</span>
                 {isArabic ? <FiArrowLeft /> : <FiArrowRight />}
@@ -415,7 +415,7 @@ export default function ComplianceCheckerPage({ params: { locale } }: { params: 
                 key={level}
                 onClick={() => setSelectedRisk(selectedRisk === level ? null : level as RiskLevel)}
                 className={`
-                  px-3 py-2 rounded text-xs font-bold uppercase tracking-wide border transition-all whitespace-nowrap
+                  rounded-button border px-3 py-2 text-xs font-bold uppercase tracking-wide whitespace-nowrap transition-all
                   ${selectedRisk === level
                     ? 'bg-zinc-800 text-white border-zinc-800'
                     : 'bg-white dark:bg-zinc-900 text-zinc-500 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300'

@@ -132,7 +132,7 @@ export default function LearningProgressDashboard({
           </div>
           <Link
             href={`/${locale}/courses/fintech-fundamentals#phase-${currentPhase}`}
-            className="px-4 py-2 bg-zinc-900 text-white text-sm font-semibold rounded-lg hover:bg-zinc-800 transition-colors dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+            className="rounded-button bg-zinc-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
             {isArabic ? 'متابعة' : 'Continue'}
           </Link>

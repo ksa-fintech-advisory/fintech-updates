@@ -166,7 +166,7 @@ function RoadmapTopicRow({
           type="button"
           onClick={onToggle}
           aria-expanded={isOpen}
-          className="flex w-full items-start gap-2 rounded-md py-2 pe-2 text-start outline-none ring-primary-500 focus-visible:ring-2"
+          className="flex w-full items-start gap-2 rounded-button py-2 pe-2 text-start outline-none ring-primary-500 focus-visible:ring-2"
         >
           <span className="mt-0.5 font-mono text-[11px] font-bold tabular-nums text-zinc-400">{topicIndex + 1}</span>
           <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-zinc-900 dark:text-white sm:text-base">
@@ -374,7 +374,7 @@ export default function FintechLearnerRoadmap() {
             <div className="mb-8 sm:mb-10">
               <Link
                 href={`/${locale}`}
-                className="inline-flex items-center gap-2 rounded-md border border-zinc-700/80 bg-zinc-900/50 px-3 py-2 text-[11px] font-mono font-bold uppercase tracking-widest text-zinc-400 backdrop-blur transition-colors hover:border-zinc-600 hover:text-white sm:text-xs"
+                className="inline-flex items-center gap-2 rounded-button border border-zinc-700/80 bg-zinc-900/50 px-3 py-2 text-[11px] font-mono font-bold uppercase tracking-widest text-zinc-400 backdrop-blur transition-colors hover:border-zinc-600 hover:text-white sm:text-xs"
               >
                 {isArabic ? <FiArrowRight className="h-3.5 w-3.5" aria-hidden /> : <FiArrowLeft className="h-3.5 w-3.5" aria-hidden />}
                 {t('backHome')}
@@ -415,7 +415,7 @@ export default function FintechLearnerRoadmap() {
                   <a
                     key={phase.id}
                     href={`#${phase.id}`}
-                    className="inline-flex max-w-full min-h-[2.5rem] items-center gap-2 rounded-lg border border-zinc-700/90 bg-zinc-900/45 px-3 py-2 text-start text-[11px] font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:bg-zinc-900/70 hover:text-white sm:min-h-0 sm:px-3.5 sm:py-2 sm:text-xs"
+                    className="inline-flex max-w-full min-h-[2.5rem] items-center gap-2 rounded-button border border-zinc-700/90 bg-zinc-900/45 px-3 py-2 text-start text-[11px] font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:bg-zinc-900/70 hover:text-white sm:min-h-0 sm:px-3.5 sm:py-2 sm:text-xs"
                   >
                     <span className={`h-1.5 w-1.5 shrink-0 rounded-full sm:h-2 sm:w-2 ${accent.rail}`} aria-hidden />
                     <span className="font-mono text-[10px] tabular-nums text-zinc-500">{String(i + 1).padStart(2, '0')}</span>
@@ -493,13 +493,13 @@ export default function FintechLearnerRoadmap() {
             <div className="mt-8 flex flex-col gap-2.5 border-t border-zinc-200 pt-8 dark:border-zinc-800 sm:mt-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-3 sm:pt-10">
               <Link
                 href={`/${locale}/blog`}
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-zinc-300 bg-white px-5 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-950 dark:text-zinc-100 dark:hover:border-zinc-500 dark:hover:bg-zinc-900"
+                className="inline-flex items-center justify-center gap-2 rounded-button border border-zinc-300 bg-white px-5 py-3 text-sm font-semibold text-zinc-900 transition-colors hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-950 dark:text-zinc-100 dark:hover:border-zinc-500 dark:hover:bg-zinc-900"
               >
                 {t('ctaBlog')}
               </Link>
               <Link
                 href={`/${locale}/contact`}
-                className="inline-flex items-center justify-center gap-2 rounded-md border border-zinc-800 bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:border-zinc-300 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                className="inline-flex items-center justify-center gap-2 rounded-button border border-zinc-800 bg-zinc-900 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:border-zinc-300 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
               >
                 {t('ctaContact')}
               </Link>

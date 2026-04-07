@@ -79,6 +79,11 @@ module.exports = {
         'glow-accent': '0 0 20px rgba(245, 158, 11, 0.15)', // Accent glow
       },
 
+      // Shared corner radius for primary buttons and button-styled links sitewide (pill / capsule)
+      borderRadius: {
+        button: '9999px',
+      },
+
       // 4. Animation Utilities
       animation: {
         'fade-in': 'fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1)',

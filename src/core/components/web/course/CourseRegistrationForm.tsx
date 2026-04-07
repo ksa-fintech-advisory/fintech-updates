@@ -148,7 +148,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
         </div>
         <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-4">{translations.steps.confirm.successTitle}</h2>
         <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-8 max-w-md mx-auto">{translations.steps.confirm.successMessage}</p>
-        <Link href={`/${locale}/courses/fintech-fundamentals`} className="inline-flex items-center gap-2 px-8 py-4 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold rounded-lg transition-all hover:bg-zinc-800 dark:hover:bg-zinc-200">
+        <Link href={`/${locale}/courses/fintech-fundamentals`} className="inline-flex items-center gap-2 rounded-button bg-zinc-900 px-8 py-4 font-bold text-white transition-all hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200">
           {translations.steps.confirm.backToHome}
         </Link>
       </motion.div>
@@ -241,7 +241,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
                             key={option.value}
                             onClick={() => updateFormData('hoursPerWeek', option.value)}
                             className={`
-                              px-6 py-3 rounded-lg border-2 font-medium text-sm transition-all duration-300 bg-transparent
+                              rounded-button border-2 bg-transparent px-6 py-3 text-sm font-medium transition-all duration-300
                               ${isSelected
                                 ? 'border-primary-500 text-primary-600 dark:text-primary-400'
                                 : 'border-zinc-300 dark:border-zinc-600 text-zinc-600 dark:text-zinc-400 hover:border-zinc-500 hover:text-zinc-900 dark:hover:text-white'}
@@ -267,7 +267,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
                             key={option.value}
                             onClick={() => toggleDay(option.value)}
                             className={`
-                              flex items-center gap-2 px-5 py-3 rounded-lg border-2 font-medium text-sm transition-all duration-300 bg-transparent
+                              flex items-center gap-2 rounded-button border-2 bg-transparent px-5 py-3 text-sm font-medium transition-all duration-300
                               ${isSelected
                                 ? 'border-primary-500 text-primary-600 dark:text-primary-400'
                                 : 'border-zinc-300 dark:border-zinc-600 text-zinc-600 dark:text-zinc-400 hover:border-zinc-500 hover:text-zinc-900 dark:hover:text-white'}
@@ -342,7 +342,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
                         key={option.value}
                         onClick={() => updateFormData('paymentPreference', option.value)}
                         className={`
-                          group relative p-6 rounded-xl border-2 text-start transition-all duration-300
+                          group relative rounded-button border-2 p-6 text-start transition-all duration-300
                           ${formData.paymentPreference === option.value
                             ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
                             : 'border-zinc-200 dark:border-zinc-800 hover:border-primary-500/50 bg-white dark:bg-zinc-900/40'}
@@ -427,7 +427,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
             <button
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-8 py-3 rounded-lg font-bold font-mono text-sm uppercase tracking-wider flex items-center gap-2 transition-all hover:bg-zinc-800 dark:hover:bg-zinc-200"
+              className="flex items-center gap-2 rounded-button bg-zinc-900 px-8 py-3 font-mono text-sm font-bold uppercase tracking-wider text-white transition-all hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
               {isSubmitting ? (
                 <>
@@ -446,7 +446,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
               onClick={goToNext}
               disabled={!canProceed()}
               className={`
-                flex items-center gap-2 px-8 py-3 rounded-lg font-bold font-mono text-sm uppercase tracking-wider transition-all
+                flex items-center gap-2 rounded-button px-8 py-3 font-mono text-sm font-bold uppercase tracking-wider transition-all
                 ${canProceed()
                   ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200'
                   : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed'}

@@ -12,6 +12,12 @@ export interface HeroSection {
     en: string;
     ar: string;
   };
+  /** Arabic hero title split: only `emphasis` is bold; rest stays regular weight. */
+  titleArParts?: {
+    before: string;
+    emphasis: string;
+    after: string;
+  };
   subtitle: {
     en: string;
     ar: string;
