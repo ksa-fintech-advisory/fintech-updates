@@ -46,6 +46,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
         avatarAlt={t('avatarAlt')}
         founderBadge={t('founderBadge')}
         signatureLine={t('signatureLine')}
+        isArabic={isArabic}
       />
 
       <AboutMissionVision
