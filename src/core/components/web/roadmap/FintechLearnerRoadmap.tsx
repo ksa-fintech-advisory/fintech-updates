@@ -402,7 +402,23 @@ export default function FintechLearnerRoadmap() {
               </p>
 
               <div className="w-full rounded-xl border border-primary-500/25 bg-primary-500/[0.07] px-4 py-4 sm:px-5 sm:py-5">
-                <p className="text-sm leading-[1.65] text-zinc-300 sm:text-base sm:leading-relaxed">{t('journeyNote')}</p>
+                <h2 className="mb-3 text-base font-semibold leading-snug text-zinc-100 sm:mb-4 sm:text-lg">
+                  {t('journeyHeading')}
+                </h2>
+                <ul className="list-none space-y-3 text-sm leading-[1.65] text-zinc-300 sm:space-y-3.5 sm:text-base sm:leading-relaxed">
+                  <li className="flex gap-3">
+                    <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-400/90" aria-hidden />
+                    <span>{t('journeyStep1')}</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-400/90" aria-hidden />
+                    <span>{t('journeyStep2')}</span>
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-400/90" aria-hidden />
+                    <span>{t('journeyStep3')}</span>
+                  </li>
+                </ul>
               </div>
             </header>
 

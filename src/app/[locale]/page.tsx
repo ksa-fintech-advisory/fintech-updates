@@ -99,13 +99,13 @@ export default async function HomePage({ params }: { params: { locale: string } 
               </AnimatedSection>
 
               <AnimatedSection direction="up" delay={0.5} distance={16}>
-                <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
+                <div className="mx-auto flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
                   {hero.ctaButtons.map((button, index) => (
                     <Link
                       key={index}
                       href={button.href}
                       className={`
-                      group relative flex items-center gap-3 rounded-button px-8 py-4 text-sm font-semibold tracking-wide transition-all duration-300
+                      group relative flex min-h-[44px] w-full max-w-[220px] items-center justify-center gap-2 rounded-button px-4 py-2.5 text-sm font-semibold tracking-wide transition-all duration-300 sm:px-5
                       ${
                         button.variant === 'primary'
                           ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:bg-zinc-200 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]'
