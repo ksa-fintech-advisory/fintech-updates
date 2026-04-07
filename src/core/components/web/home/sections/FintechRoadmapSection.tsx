@@ -21,6 +21,7 @@ export default function FintechRoadmapSection() {
   }, []);
 
   const roadmapHref = `/${locale}/roadmap`;
+  const ArrowIcon = isArabic ? FiArrowLeft : FiArrowRight;
 
   return (
     <section
@@ -36,7 +37,6 @@ export default function FintechRoadmapSection() {
         <AnimatedSection>
           <div className="flex flex-col items-stretch gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
             <div className="max-w-xl text-center lg:text-start">
-              
               <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
                 {t('title')}
               </h2>
@@ -58,14 +58,15 @@ export default function FintechRoadmapSection() {
                   </div>
                   <Link
                     href={roadmapHref}
-                    className="group inline-flex w-full items-center justify-center gap-2 rounded-button bg-zinc-900 px-5 py-3.5 text-sm font-bold text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                    className="press-scale group inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-5 text-sm font-bold text-white transition-all hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
                   >
                     {t('viewFull')}
-                    {isArabic ? (
-                      <FiArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" aria-hidden />
-                    ) : (
-                      <FiArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
-                    )}
+                    <ArrowIcon
+                      className={`h-4 w-4 shrink-0 transition-transform ${
+                        isArabic ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'
+                      }`}
+                      aria-hidden
+                    />
                   </Link>
                 </div>
               </div>
