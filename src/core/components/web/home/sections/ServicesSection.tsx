@@ -53,55 +53,57 @@ export default function ServicesSection() {
             const Icon = SERVICE_ICONS[id];
             return (
               <StaggerItem key={id}>
-                <article className="group flex h-full flex-col gap-5 rounded-2xl border border-zinc-200 bg-white p-6 transition-all duration-300 hover:border-zinc-300 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-zinc-700 md:p-8">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 transition-colors group-hover:bg-primary-500/10 group-hover:text-primary-600 dark:bg-zinc-800 dark:text-white dark:group-hover:bg-primary-500/10 dark:group-hover:text-primary-400">
-                    <Icon className="h-5 w-5" aria-hidden />
-                  </div>
-                  <h3 className="text-lg font-bold leading-snug text-zinc-900 dark:text-white md:text-xl">
-                    {t(`items.${id}.title`)}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                    {t(`items.${id}.description`)}
-                  </p>
+                <div className="group h-full">
+                  <article className="press-scale flex h-full flex-col gap-5 overflow-hidden rounded-xl border border-zinc-200 bg-white p-6 transition-all duration-300 hover:border-zinc-400 hover:shadow-lg hover:shadow-zinc-200/50 focus-within:ring-2 focus-within:ring-primary-500/40 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-600 dark:hover:shadow-black/50 md:p-8">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-zinc-200 bg-zinc-100 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white">
+                      <Icon className="h-5 w-5" aria-hidden />
+                    </div>
+                    <h3 className="text-lg font-bold leading-snug text-zinc-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400 md:text-xl">
+                      {t(`items.${id}.title`)}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                      {t(`items.${id}.description`)}
+                    </p>
 
-                  {id === 'enablement' ? (
-                    <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                      <a
-                        href={MENTORING_CALENDAR_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="press-scale inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-zinc-900 px-5 text-sm font-bold text-white transition-all hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
-                      >
-                        <FiCalendar className="h-4 w-4 shrink-0" aria-hidden />
-                        {t('items.enablement.ctaCalendar')}
-                      </a>
-                      {whatsappUrl ? (
+                    {id === 'enablement' ? (
+                      <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                         <a
-                          href={whatsappUrl}
+                          href={MENTORING_CALENDAR_URL}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="press-scale inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-zinc-300 px-5 text-sm font-bold text-zinc-900 transition-all hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-800/80"
+                          className="press-scale inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-zinc-900 px-5 text-sm font-bold text-white transition-all hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
                         >
-                          <SiWhatsapp className="h-4 w-4 shrink-0 text-[#25D366]" aria-hidden />
-                          {t('items.enablement.ctaWhatsApp')}
+                          <FiCalendar className="h-4 w-4 shrink-0" aria-hidden />
+                          {t('items.enablement.ctaCalendar')}
                         </a>
-                      ) : null}
-                    </div>
-                  ) : (
-                    <Link
-                      href={contactHref}
-                      className="press-scale group/btn mt-auto inline-flex h-12 w-fit items-center justify-center gap-2 rounded-xl border border-zinc-300 px-5 text-sm font-bold text-zinc-900 transition-all hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-900/80"
-                    >
-                      {t(`items.${id}.cta`)}
-                      <ArrowIcon
-                        className={`h-4 w-4 shrink-0 transition-transform ${
-                          isArabic ? 'group-hover/btn:-translate-x-0.5' : 'group-hover/btn:translate-x-0.5'
-                        }`}
-                        aria-hidden
-                      />
-                    </Link>
-                  )}
-                </article>
+                        {whatsappUrl ? (
+                          <a
+                            href={whatsappUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="press-scale inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-zinc-300 px-5 text-sm font-bold text-zinc-900 transition-all hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-800/80"
+                          >
+                            <SiWhatsapp className="h-4 w-4 shrink-0 text-[#25D366]" aria-hidden />
+                            {t('items.enablement.ctaWhatsApp')}
+                          </a>
+                        ) : null}
+                      </div>
+                    ) : (
+                      <Link
+                        href={contactHref}
+                        className="press-scale group/btn mt-auto inline-flex h-12 w-fit items-center justify-center gap-2 rounded-xl border border-zinc-300 px-5 text-sm font-bold text-zinc-900 transition-all hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-900/80"
+                      >
+                        {t(`items.${id}.cta`)}
+                        <ArrowIcon
+                          className={`h-4 w-4 shrink-0 transition-transform ${
+                            isArabic ? 'group-hover/btn:-translate-x-0.5' : 'group-hover/btn:translate-x-0.5'
+                          }`}
+                          aria-hidden
+                        />
+                      </Link>
+                    )}
+                  </article>
+                </div>
               </StaggerItem>
             );
           })}
