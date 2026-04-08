@@ -17,7 +17,7 @@ export function AboutValuesGrid({ content, isArabic, principlesHeading }: Props)
           <div className="mx-auto h-1 w-16 rounded-full bg-primary-500/40" />
         </AnimatedSection>
 
-        <StaggerContainer className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <StaggerContainer className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {content.values.map((value, idx) => {
             const ValueIcon = ABOUT_VALUE_ICONS[value.iconKey];
             return (

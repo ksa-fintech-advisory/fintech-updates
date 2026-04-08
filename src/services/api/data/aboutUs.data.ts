@@ -23,7 +23,7 @@ export const aboutUsData: AboutUsContent = {
     {
       id: '1',
       iconKey: 'candor',
-      title: { en: 'Radical candor', ar: 'الوضوح الجذري' },
+      title: { en: 'Radical candor', ar: 'الوضوح من البداية' },
       description: {
         en:
           'I will be direct when proposed architecture is fragile, or when deferring technical debt will cost far more later. I sell you the sound path—not the easy story.',
@@ -50,20 +50,20 @@ export const aboutUsData: AboutUsContent = {
         en:
           'Not a "PDF and goodbye" handoff. I step into planning, architecture review, and steering technical conversations only when the programme actually needs that depth.',
         ar:
-          'ليس نموذج «تقرير ثم انصراف». عند الحاجة فقط: مشاركة في التخطيط، ومراجعة المعمارية، والنقاش الفني الذي يوجّه القرار.',
+          'عند الحاجة، ممكن أشارك مع الفريق بالتخطيط، مراجعة المعمارية والنقاش الفني اللي يوجّه القرار  ',
       },
     },
-    {
-      id: '4',
-      iconKey: 'depth',
-      title: { en: 'Depth on sensitive surfaces', ar: 'التركيز على المناطق الحساسة' },
-      description: {
-        en:
-          'Extra rigour where failures cluster: digital identity (IAM), payment integration, data protection, and designs that auditors and risk teams can actually inspect.',
-        ar:
-          'عناية إضافية حيث يتكدّس الخطر: الهوية الرقمية (IAM)، تكامل المدفوعات، أمان البيانات، وتصميم يتحمّل تدقيق المخاطر.',
-      },
-    },
+    // {
+    //   id: '4',
+    //   iconKey: 'depth',
+    //   title: { en: 'Depth on sensitive surfaces', ar: 'التركيز على المناطق الحساسة' },
+    //   description: {
+    //     en:
+    //       'Extra rigour where failures cluster: digital identity (IAM), payment integration, data protection, and designs that auditors and risk teams can actually inspect.',
+    //     ar:
+    //       'عناية إضافية حيث يتكدّس الخطر: الهوية الرقمية (IAM)، تكامل المدفوعات، أمان البيانات، وتصميم يتحمّل تدقيق المخاطر.',
+    //   },
+    // },
   ],
   expertise: [
     {
