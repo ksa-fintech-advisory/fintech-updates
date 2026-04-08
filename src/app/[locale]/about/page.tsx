@@ -37,8 +37,6 @@ export default async function AboutPage({ params }: { params: { locale: string }
     <div className="w-full bg-zinc-50 selection:bg-primary-500/30 dark:bg-black">
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-      <AboutHero heroBadge={t('heroBadge')} title={t('title')} subtitle={t('subtitle')} />
-
       <AboutProfileCard
         authorName={t('authorName')}
         authorTitle={t('authorTitle')}
@@ -48,6 +46,10 @@ export default async function AboutPage({ params }: { params: { locale: string }
         signatureLine={t('signatureLine')}
         isArabic={isArabic}
       />
+
+      {/* <AboutHero heroBadge={t('heroBadge')} title={t('title')} subtitle={t('subtitle')} /> */}
+
+     
 
       <AboutMissionVision
         content={content}
@@ -62,12 +64,12 @@ export default async function AboutPage({ params }: { params: { locale: string }
 
       <AboutValuesGrid content={content} isArabic={isArabic} principlesHeading={t('principlesHeading')} />
 
-      <AboutExpertiseGrid
+      {/* <AboutExpertiseGrid
         content={content}
         isArabic={isArabic}
         expertiseKicker={t('expertiseKicker')}
         expertiseHeading={t('expertiseHeading')}
-      />
+      /> */}
 
       <AboutClosingCta
         locale={locale}
