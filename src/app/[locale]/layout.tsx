@@ -4,7 +4,6 @@ import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { locales } from '@/core/i18n/config';
 import { ThemeProvider } from '@/core/theme/ThemeProvider';
-import { NotificationProvider } from '@/core/notifications/NotificationProvider';
 import Header from '@/core/components/web/layout/Header';
 import Footer from '@/core/components/web/layout/Footer';
 import { getSiteUrl } from '@/core/seo/site';
@@ -144,15 +143,13 @@ export default async function LocaleLayout({
         <JsonLd data={siteWideGraphJsonLd(getSiteUrl())} />
         <SiteJsonLd />
         <ThemeProvider>
-          <NotificationProvider>
-            <NextIntlClientProvider messages={messages} locale={locale}>
-              <Header />
-              <main className="flex-1">
-                {children}
-              </main>
-              <Footer />
-            </NextIntlClientProvider>
-          </NotificationProvider>
+          <NextIntlClientProvider messages={messages} locale={locale}>
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </NextIntlClientProvider>
         </ThemeProvider>
       </body>
     </html>

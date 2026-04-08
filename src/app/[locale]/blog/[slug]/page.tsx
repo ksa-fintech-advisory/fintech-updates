@@ -86,7 +86,6 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
   }
 
   const title = blog.title;
-  const excerpt = blog.excerpt;
   const content = blog.content;
   const base = getSiteUrl();
   const publishedLabel = formatPublishedAt(blog.publishedAt, locale);
@@ -175,9 +174,6 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
               <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-zinc-900 dark:text-white leading-[1.15] md:leading-[1.12] tracking-tight">
                 {title}
               </h1>
-              <p className="mt-6 text-lg md:text-xl text-zinc-600 dark:text-zinc-400 font-light leading-relaxed border-s-[3px] border-primary-500 ps-5 md:ps-6">
-                {excerpt}
-              </p>
             </div>
           </header>
         </div>

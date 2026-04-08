@@ -6,7 +6,7 @@ const cat = (slug: string) => blogCategories.find((c) => c.slug === slug)!;
 const linkedInAuthor = { id: 'auth-mohammed', name: { en: 'Mohammed Gamal', ar: 'محمد جمال' } };
 
 /**
- * Sourced from LinkedIn export Shares.csv. `title` and `cardSummary` are editorial; `excerpt` retains the original hook for the article hero and SEO.
+ * Sourced from LinkedIn export Shares.csv. `title` and `cardSummary` are editorial; `excerpt` retains the original hook for SEO and meta (not shown as a subtitle on the article page).
  */
 export const linkedInSharesBlogs: Blog[] = [
   {

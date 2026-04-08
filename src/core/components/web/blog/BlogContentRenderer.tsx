@@ -112,7 +112,7 @@ function LinkedInSourceCallout({ url, locale }: { url: string; locale: string })
   const isAr = locale === 'ar';
   return (
     <div
-      className="not-prose my-8 rounded-xl border border-[#0A66C2]/25 dark:border-[#0A66C2]/35 bg-gradient-to-br from-[#0A66C2]/[0.07] via-blue-50/40 to-transparent dark:from-[#0A66C2]/15 dark:via-blue-950/20 dark:to-transparent pl-4 pr-5 py-5 sm:pl-5 sm:pr-6 sm:py-6 shadow-sm"
+      className="not-prose mt-16 mb-10 md:mt-24 rounded-xl border border-[#0A66C2]/25 dark:border-[#0A66C2]/35 bg-gradient-to-br from-[#0A66C2]/[0.07] via-blue-50/40 to-transparent dark:from-[#0A66C2]/15 dark:via-blue-950/20 dark:to-transparent pl-4 pr-5 py-5 sm:pl-5 sm:pr-6 sm:py-6 shadow-sm"
       dir={isAr ? 'rtl' : 'ltr'}
     >
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -336,7 +336,7 @@ interface BlogContentRendererProps {
 
 export const BlogContentRenderer: React.FC<BlogContentRendererProps> = ({ content, locale = 'ar' }) => {
   return (
-    <div className="blog-content space-y-2">
+    <div className="blog-content">
       {content.map((block, index) => {
         switch (block.type) {
           case 'header':
