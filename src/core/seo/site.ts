@@ -8,3 +8,6 @@ export function getSiteUrl(): string {
 
 export const SITE_NAME = 'Maal Tech';
 export const SITE_NAME_AR = 'مال تك';
+
+/** Share preview + JSON-LD logo; only assets under `public/favicon_io/`. */
+export const SITE_DEFAULT_OG_IMAGE = '/favicon_io/android-chrome-512x512.png';

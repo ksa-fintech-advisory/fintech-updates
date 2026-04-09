@@ -1,4 +1,4 @@
-import { getSiteUrl, SITE_NAME } from '@/core/seo/site';
+import { getSiteUrl, SITE_DEFAULT_OG_IMAGE, SITE_NAME } from '@/core/seo/site';
 
 const TWITTER = 'https://x.com/mohfintech';
 const LINKEDIN = 'https://www.linkedin.com/in/mohfintech/';
@@ -27,7 +27,7 @@ export default function SiteJsonLd() {
         name: SITE_NAME,
         alternateName: 'مال تك',
         url: base,
-        logo: `${base}/og-image.png`,
+        logo: `${base}${SITE_DEFAULT_OG_IMAGE}`,
         sameAs: [TWITTER, LINKEDIN],
       },
       {

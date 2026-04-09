@@ -6,11 +6,12 @@ import { locales } from '@/core/i18n/config';
 import { ThemeProvider } from '@/core/theme/ThemeProvider';
 import Header from '@/core/components/web/layout/Header';
 import Footer from '@/core/components/web/layout/Footer';
-import { getSiteUrl } from '@/core/seo/site';
+import { getSiteUrl, SITE_DEFAULT_OG_IMAGE } from '@/core/seo/site';
 import { JsonLd } from '@/core/seo/JsonLd';
 import { siteWideGraphJsonLd } from '@/core/seo/structuredData';
 import SiteJsonLd from '@/core/components/web/seo/SiteJsonLd';
 import '@/core/theme/globals.css';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -84,9 +85,9 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
+        url: SITE_DEFAULT_OG_IMAGE,
+        width: 512,
+        height: 512,
         alt: 'Maal Tech',
       },
     ],
@@ -96,7 +97,7 @@ export const metadata: Metadata = {
     title: 'Maal Tech | مال تك',
     description:
       'FinTech consulting, writing, and a free learner roadmap — for teams building regulated products in the Arab world.',
-    images: ['/og-image.png'],
+    images: [SITE_DEFAULT_OG_IMAGE],
     creator: '@mohfintech',
   },
   robots: {
@@ -109,14 +110,14 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico' },
+      { url: `${fav}/favicon.ico` },
       { url: `${fav}/favicon-16x16.png`, sizes: '16x16', type: 'image/png' },
       { url: `${fav}/favicon-32x32.png`, sizes: '32x32', type: 'image/png' },
       { url: `${fav}/android-chrome-192x192.png`, sizes: '192x192', type: 'image/png' },
       { url: `${fav}/android-chrome-512x512.png`, sizes: '512x512', type: 'image/png' },
     ],
     apple: [{ url: `${fav}/apple-touch-icon.png`, type: 'image/png', sizes: '180x180' }],
-    shortcut: [{ url: '/favicon.ico' }],
+    shortcut: [{ url: `${fav}/favicon.ico` }],
   },
   manifest: '/manifest.json',
 };
@@ -160,6 +161,7 @@ export default async function LocaleLayout({
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
+      <GoogleAnalytics gaId="G-P5RJEKNZ9F" />
     </html>
   );
 }

@@ -9,6 +9,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/favicon.ico',
+        destination: '/favicon_io/favicon.ico',
+        permanent: true,
+      },
+      {
         source: '/:locale(en|ar)/web/home',
         destination: '/:locale',
         permanent: true,

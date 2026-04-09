@@ -1,6 +1,6 @@
 import { blogDetailHeroSrc } from '@/core/constants/blogMedia';
 import type { LocalizedBlog } from '@/core/types/web/blog';
-import { SITE_NAME, SITE_NAME_AR } from './site';
+import { SITE_DEFAULT_OG_IMAGE, SITE_NAME, SITE_NAME_AR } from './site';
 
 const CTX = 'https://schema.org';
 
@@ -13,7 +13,7 @@ export function organizationJsonLd(base: string) {
     url: base,
     logo: {
       '@type': 'ImageObject',
-      url: `${base}/og-image.png`,
+      url: `${base}${SITE_DEFAULT_OG_IMAGE}`,
     },
     sameAs: ['https://www.linkedin.com/in/mohfintech/'],
   };
@@ -129,7 +129,59 @@ export function blogArticleGraphJsonLd(params: {
   };
 }
 
-/** Listing page: current slice of posts as an ItemList for discovery. */
+export function updateArticleGraphJsonLd(params: {
+  base: string;
+  locale: string;
+  slug: string;
+  update: any;
+}) {
+  const { base, locale, slug, update } = params;
+  const pageUrl = `${base}/${locale}/updates/${slug}`;
+  const imageUrl = update.featuredImage ? `${base}${update.featuredImage}` : `${base}${SITE_DEFAULT_OG_IMAGE}`;
+
+  return {
+    '@context': CTX,
+    '@graph': [
+      {
+        '@type': 'NewsArticle',
+        '@id': `${pageUrl}#article`,
+        url: pageUrl,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': pageUrl },
+        headline: update.title,
+        description: update.summary || update.description,
+        image: [imageUrl],
+        datePublished: update.publishedAt,
+        dateModified: update.publishedAt,
+        publisher: { '@id': `${base}/#organization` },
+        articleSection: update.category,
+        inLanguage: locale,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: locale === 'ar' ? 'الرئيسية' : 'Home',
+            item: `${base}/${locale}`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: locale === 'ar' ? 'التحديثات' : 'Updates',
+            item: `${base}/${locale}/updates`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: update.title,
+            item: pageUrl,
+          },
+        ],
+      },
+    ],
+  };
+}
 export function blogCollectionPageJsonLd(params: {
   base: string;
   locale: string;

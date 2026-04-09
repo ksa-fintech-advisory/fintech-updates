@@ -14,7 +14,7 @@ interface SafeImageProps {
   sizes?: string;
 }
 
-const PLACEHOLDER_IMAGE = '/placeholder-image.svg';
+const PLACEHOLDER_IMAGE = '/favicon_io/android-chrome-192x192.png';
 
 export default function SafeImage({ 
   src, 
