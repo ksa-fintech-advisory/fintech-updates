@@ -13,7 +13,7 @@ export function AboutValuesGrid({ content, isArabic, principlesHeading, sectionK
   return (
     <section
       id="about-methodology"
-      className="scroll-mt-28 relative z-10 py-20 md:py-32 border-t border-zinc-200/50 dark:border-zinc-800/50"
+      className="scroll-mt-28 relative z-10 py-20 md:py-32 border-t border-zinc-200/50 dark:border-zinc-800/50 bg-zinc-50/50 dark:bg-zinc-900/20"
     >
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="mb-16 md:mb-20">

@@ -13,7 +13,7 @@ export function AboutExpertiseGrid({ content, isArabic, expertiseKicker, experti
   return (
     <section
       id="about-expertise"
-      className="scroll-mt-28 relative z-10 py-24 md:py-32"
+      className="scroll-mt-28 relative z-10 py-24 md:py-32 bg-[#fcfcfc] dark:bg-black"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
@@ -43,7 +43,7 @@ export function AboutExpertiseGrid({ content, isArabic, expertiseKicker, experti
                         <span className="font-mono text-xs font-bold text-zinc-300 transition-colors group-hover:text-primary-500 dark:text-zinc-700 dark:group-hover:text-primary-400">
                           {String(idx + 1).padStart(2, '0')}
                         </span>
-                        <div className="flex h-12 w-12 items-center justify-center rounded-full border border-zinc-200/50 bg-zinc-50 text-zinc-500 transition-colors group-hover:border-primary-500/20 group-hover:bg-primary-500/10 group-hover:text-primary-600 dark:border-zinc-800/50 dark:bg-zinc-900 dark:text-zinc-500 dark:group-hover:border-primary-500/20 dark:group-hover:bg-primary-500/10 dark:group-hover:text-primary-400">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full border border-zinc-200/50 bg-white text-zinc-500 transition-colors group-hover:border-primary-500/20 group-hover:bg-primary-50 group-hover:text-primary-600 dark:border-zinc-800/50 dark:bg-zinc-900 dark:text-zinc-500 dark:group-hover:border-primary-500/20 dark:group-hover:bg-primary-500/10 dark:group-hover:text-primary-400">
                           <Icon className="h-5 w-5" />
                         </div>
                       </div>

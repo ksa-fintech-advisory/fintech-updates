@@ -55,18 +55,18 @@ export function BlogInfiniteGrid({ allBlogs }: Props) {
                 href={`/${locale}/blog/${blog.slug}`}
                 className="group block h-full outline-none"
               >
-                <article className="press-scale h-full flex flex-col bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden transition-all duration-300 hover:border-zinc-400 dark:hover:border-zinc-600 group-hover:shadow-lg group-hover:shadow-zinc-200/50 dark:group-hover:shadow-black/50 group-focus-visible:ring-2 group-focus-visible:ring-primary-500/40">
+                <article className="press-scale h-full flex flex-col bg-[#0a0a0b] border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:border-emerald-500/30 hover:bg-white/[0.02] group-hover:shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)] group-focus-visible:ring-2 group-focus-visible:ring-emerald-500/40">
                   <div className="p-5 sm:p-6 flex-1 flex flex-col">
                     {/* Category + Date row */}
                     <div className="flex items-center justify-between gap-3 mb-4">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-900 dark:text-white">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-300">
                         <span
                           className="w-1.5 h-1.5 rounded-full shrink-0"
                           style={{ backgroundColor: blog.category.color }}
                         />
                         {blog.category.name}
                       </span>
-                      <div className="flex items-center gap-1.5 text-[11px] font-mono text-zinc-400 shrink-0">
+                      <div className="flex items-center gap-1.5 text-[11px] font-mono text-zinc-500 shrink-0">
                         <FiCalendar className="w-3 h-3" />
                         <time>
                           {new Date(blog.publishedAt).toLocaleDateString('en-US', {
@@ -79,18 +79,18 @@ export function BlogInfiniteGrid({ allBlogs }: Props) {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-white mb-2.5 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors leading-snug line-clamp-2">
+                    <h3 className="text-base sm:text-lg font-bold text-zinc-100 mb-2.5 group-hover:text-white transition-colors leading-snug line-clamp-2">
                       {blog.title}
                     </h3>
 
                     {/* Excerpt */}
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed line-clamp-3 mb-5 flex-1">
+                    <p className="text-sm text-zinc-400 leading-relaxed line-clamp-3 mb-5 flex-1">
                       {blog.listingExcerpt}
                     </p>
 
                     {/* Read indicator */}
                     <div
-                      className={`mt-auto flex items-center gap-2 pt-4 border-t border-zinc-100 dark:border-zinc-800 text-xs font-mono font-medium text-zinc-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-all ${isArabic ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'}`}
+                      className={`mt-auto flex items-center gap-2 pt-4 border-t border-white/10 text-xs font-mono font-medium text-zinc-500 group-hover:text-emerald-400 transition-all ${isArabic ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'}`}
                       aria-hidden
                     >
                       <span className="uppercase tracking-wider">
@@ -116,7 +116,7 @@ export function BlogInfiniteGrid({ allBlogs }: Props) {
           <button
             onClick={loadMore}
             disabled={loading}
-            className="press-scale inline-flex items-center gap-2.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-7 py-3.5 text-sm font-semibold text-zinc-700 dark:text-zinc-300 shadow-sm transition-all hover:border-zinc-400 dark:hover:border-zinc-600 hover:shadow-md disabled:opacity-60 disabled:cursor-wait"
+            className="press-scale inline-flex items-center gap-2.5 rounded-xl border border-white/10 bg-[#0a0a0b] px-7 py-3.5 text-sm font-semibold text-zinc-300 shadow-[0_0_20px_rgba(16,185,129,0.05)] transition-all hover:border-emerald-500/30 hover:bg-white/[0.02] hover:text-emerald-400 disabled:opacity-60 disabled:cursor-wait"
           >
             {loading ? (
               <>
@@ -127,7 +127,7 @@ export function BlogInfiniteGrid({ allBlogs }: Props) {
               <span>{isArabic ? 'عرض المزيد' : 'Load more'}</span>
             )}
           </button>
-          <p className="text-xs font-mono text-zinc-400 tabular-nums">
+          <p className="text-xs font-mono text-zinc-500 tabular-nums">
             {shown.length} / {allBlogs.length}
           </p>
         </div>

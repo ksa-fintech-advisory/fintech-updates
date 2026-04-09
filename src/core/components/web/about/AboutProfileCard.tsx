@@ -31,7 +31,7 @@ export function AboutProfileCard({
   isArabic,
 }: Props) {
   return (
-    <section id="about-profile" className="scroll-mt-28 relative z-10 py-16 md:py-24 border-b border-zinc-200/50 dark:border-zinc-800/50">
+    <section id="about-profile" className="scroll-mt-28 relative z-10 py-16 md:py-24 border-b border-zinc-200/50 dark:border-zinc-800/50 bg-[#fcfcfc] dark:bg-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
           
@@ -63,8 +63,8 @@ export function AboutProfileCard({
               
               <div className="mb-6 h-px w-12 bg-zinc-200 dark:bg-zinc-800" />
               
-              <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-500">
-                <FiMail className="h-4 w-4" />
+              <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400">
+                <FiMail className="h-4 w-4 text-zinc-400" />
                 <span className="font-mono text-[10px] uppercase tracking-widest">
                   {isArabic ? 'متاح للاستشارة' : 'Available for consulting'}
                 </span>
@@ -75,11 +75,11 @@ export function AboutProfileCard({
           {/* Right Column Content */}
           <div className="lg:col-span-8 lg:pt-4">
             <AnimatedSection delay={0.1}>
-              <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-600">
+              <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
                 {isArabic ? '// النبذة' : '// PROFILE'}
               </h3>
               
-              <p className="mb-16 text-xl font-medium leading-[1.7] text-zinc-900 dark:text-zinc-100 md:text-2xl md:leading-[1.7]">
+              <p className="mb-16 text-xl font-medium leading-[1.7] text-zinc-800 dark:text-zinc-200 md:text-2xl md:leading-[1.7]">
                 {authorBio}
               </p>
               
@@ -87,12 +87,12 @@ export function AboutProfileCard({
                 <h3 className="mb-4 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
                   {principleHeading}
                 </h3>
-                <blockquote className="mb-10 text-2xl font-medium leading-snug tracking-tight text-zinc-800 dark:text-zinc-200 md:text-3xl md:leading-[1.3]">
+                <blockquote className="mb-10 text-2xl font-medium leading-snug tracking-tight text-zinc-900 dark:text-zinc-100 md:text-3xl md:leading-[1.3]">
                   &quot;{principleStatement}&quot;
                 </blockquote>
                 
                 <div className="space-y-8">
-                  <div>
+                  <div className="rounded-2xl border border-zinc-200/60 bg-zinc-50/50 p-6 dark:border-zinc-800/60 dark:bg-zinc-900/30">
                     <div className="mb-3 font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-900 dark:text-zinc-100">
                       01 / {isArabic ? 'للشركات' : 'Organisations'}
                     </div>
@@ -100,7 +100,7 @@ export function AboutProfileCard({
                       {audienceCompanies}
                     </p>
                   </div>
-                  <div>
+                  <div className="rounded-2xl border border-zinc-200/60 bg-zinc-50/50 p-6 dark:border-zinc-800/60 dark:bg-zinc-900/30">
                     <div className="mb-3 font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-900 dark:text-zinc-100">
                       02 / {isArabic ? 'للمطورين' : 'Developers'}
                     </div>
@@ -113,7 +113,7 @@ export function AboutProfileCard({
 
               <div className="mt-16 flex items-center gap-4">
                 <div className="h-px w-8 bg-zinc-200 dark:bg-zinc-800" />
-                <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 dark:text-zinc-600">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
                   {signatureLine}
                 </span>
               </div>

@@ -29,20 +29,20 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden scroll-mt-24 border-b border-zinc-200 bg-zinc-50 py-16 dark:border-zinc-800 dark:bg-zinc-950 md:py-24"
+      className="relative overflow-hidden scroll-mt-24 border-b border-white/10 bg-[#030303] py-20 md:py-28"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px]"
         aria-hidden
       />
 
       <div className="container relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:max-w-6xl lg:px-8">
         <AnimatedSection className="mb-12 md:mb-16">
           <div className="max-w-3xl">
-            <span className="mb-3 block font-mono text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+            <span className="mb-3 block font-mono text-[10px] font-bold uppercase tracking-widest text-emerald-400/90">
               {t('kicker')}
             </span>
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
               {t('title')}
             </h2>
           </div>
@@ -54,14 +54,14 @@ export default function ServicesSection() {
             return (
               <StaggerItem key={id}>
                 <div className="group h-full">
-                  <article className="press-scale flex h-full flex-col gap-5 overflow-hidden rounded-xl border border-zinc-200 bg-white p-6 transition-all duration-300 hover:border-zinc-400 hover:shadow-lg hover:shadow-zinc-200/50 focus-within:ring-2 focus-within:ring-primary-500/40 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-600 dark:hover:shadow-black/50 md:p-8">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-zinc-200 bg-zinc-100 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white">
+                  <article className="press-scale flex h-full flex-col gap-5 overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0b] p-6 shadow-[0_0_40px_-20px_rgba(16,185,129,0.1)] transition-all duration-300 hover:border-emerald-500/30 hover:bg-white/[0.02] md:p-8">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-900 ring-1 ring-white/10 text-emerald-400 transition-colors group-hover:ring-emerald-500/50">
                       <Icon className="h-5 w-5" aria-hidden />
                     </div>
-                    <h3 className="text-lg font-bold leading-snug text-zinc-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400 md:text-xl">
+                    <h3 className="text-lg font-bold leading-snug text-zinc-100 transition-colors group-hover:text-white md:text-xl">
                       {t(`items.${id}.title`)}
                     </h3>
-                    <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    <p className="text-sm leading-relaxed text-zinc-400">
                       {t(`items.${id}.description`)}
                     </p>
 
@@ -71,7 +71,7 @@ export default function ServicesSection() {
                           href={MENTORING_CALENDAR_URL}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="press-scale inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-zinc-900 px-5 text-sm font-bold text-white transition-all hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                          className="press-scale inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 text-sm font-bold text-zinc-950 transition-all hover:bg-emerald-400"
                         >
                           <FiCalendar className="h-4 w-4 shrink-0" aria-hidden />
                           {t('items.enablement.ctaCalendar')}
@@ -81,7 +81,7 @@ export default function ServicesSection() {
                             href={whatsappUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="press-scale inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-zinc-300 px-5 text-sm font-bold text-zinc-900 transition-all hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-800/80"
+                            className="press-scale inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 text-sm font-bold text-white transition-all hover:border-white/20 hover:bg-white/10"
                           >
                             <SiWhatsapp className="h-4 w-4 shrink-0 text-[#25D366]" aria-hidden />
                             {t('items.enablement.ctaWhatsApp')}
@@ -91,7 +91,7 @@ export default function ServicesSection() {
                     ) : (
                       <Link
                         href={contactHref}
-                        className="press-scale group/btn mt-auto inline-flex h-12 w-fit items-center justify-center gap-2 rounded-xl border border-zinc-300 px-5 text-sm font-bold text-zinc-900 transition-all hover:border-zinc-400 hover:bg-zinc-50 dark:border-zinc-600 dark:text-white dark:hover:border-zinc-500 dark:hover:bg-zinc-900/80"
+                        className="press-scale group/btn mt-auto inline-flex h-12 w-fit items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 text-sm font-bold text-white transition-all hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-300"
                       >
                         {t(`items.${id}.cta`)}
                         <ArrowIcon

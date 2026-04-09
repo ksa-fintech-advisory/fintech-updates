@@ -84,10 +84,11 @@ export default async function BlogPage({
         })}
       />
 
-      <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
+      <div className="fixed inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none z-0" />
+      <div className="pointer-events-none fixed right-0 top-0 h-[500px] w-[500px] -translate-y-1/2 translate-x-1/2 rounded-full bg-emerald-500/5 blur-[120px] z-0" />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden border-b border-white/10 bg-[#050505] backdrop-blur-sm">
         <div className="absolute inset-0 z-0 opacity-30 grayscale">
           <WaveField3D />
         </div>
@@ -95,7 +96,7 @@ export default async function BlogPage({
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
             <AnimatedSection direction="up">
-              <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
+              <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">
                 <FiBookOpen className="w-4 h-4" />
                 <span className="text-xs font-mono font-bold uppercase tracking-widest">
                   {isArabic ? 'مركز المعرفة' : 'KNOWLEDGE_BASE'}
@@ -104,13 +105,13 @@ export default async function BlogPage({
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.2}>
-              <h1 className="mb-6 text-4xl sm:text-5xl font-bold leading-[1.14] tracking-tight text-zinc-900 dark:text-white md:text-7xl md:leading-[1.1]">
+              <h1 className="mb-6 text-4xl sm:text-5xl font-bold leading-[1.14] tracking-tight text-white md:text-7xl md:leading-[1.1]">
                 {isArabic ? 'المدونة التقنية' : 'Engineering Blog'}
               </h1>
             </AnimatedSection>
 
             <AnimatedSection direction="up" delay={0.3}>
-              <p className="text-lg sm:text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 font-light max-w-2xl leading-relaxed">
+              <p className="text-lg sm:text-xl md:text-2xl text-zinc-400 font-light max-w-2xl leading-relaxed">
                 {isArabic
                   ? 'أكتب هنا بتفصيل عن الفنتك. وعشان توصل للي تبحث عنه بسرعة، رتبت المحتوى في تصنيفات واضحة؛ تقدر تستخدم البحث أو تفلتر المقالات حسب الموضوع اللي يهمك.'
                   : 'Deep dives into fintech engineering, compliance protocols, and infrastructure.'}
@@ -121,35 +122,35 @@ export default async function BlogPage({
       </section>
 
       {/* Filters */}
-      <div className="border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 sticky top-[65px] z-30">
+      <div className="border-b border-white/10 bg-[#030303]/80 backdrop-blur-xl sticky top-[65px] z-30">
         <div className="container mx-auto px-4">
           <BlogFilters categories={categories} isArabic={isArabic} />
         </div>
       </div>
 
       {/* Post count bar */}
-      <div className="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50/80 dark:bg-zinc-950/80 backdrop-blur-sm">
+      <div className="border-b border-white/10 bg-[#050505]/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div
-            className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 font-mono"
+            className="flex items-center gap-2 text-sm text-zinc-500 font-mono"
             dir={isArabic ? 'rtl' : 'ltr'}
           >
-            <FiLayers className="w-4 h-4 shrink-0 text-zinc-400" aria-hidden />
+            <FiLayers className="w-4 h-4 shrink-0 text-emerald-400/70" aria-hidden />
             <span>
               {isArabic ? (
                 <>
-                  <span className="font-bold text-zinc-900 dark:text-zinc-100 tabular-nums">{totalMatching}</span>
+                  <span className="font-bold text-zinc-100 tabular-nums">{totalMatching}</span>
                   {totalMatching === 1 ? ' مقال' : ' مقالات'}
                   {hasFilters ? (
-                    <span className="text-zinc-500"> · من أصل <span className="tabular-nums">{totalAll}</span></span>
+                    <span className="text-zinc-600"> · من أصل <span className="tabular-nums">{totalAll}</span></span>
                   ) : null}
                 </>
               ) : (
                 <>
-                  <span className="font-bold text-zinc-900 dark:text-zinc-100 tabular-nums">{totalMatching}</span>
+                  <span className="font-bold text-zinc-100 tabular-nums">{totalMatching}</span>
                   {totalMatching === 1 ? ' post' : ' posts'}
                   {hasFilters ? (
-                    <span className="text-zinc-500"> · <span className="tabular-nums">{totalAll}</span> total</span>
+                    <span className="text-zinc-600"> · <span className="tabular-nums">{totalAll}</span> total</span>
                   ) : null}
                 </>
               )}
@@ -159,15 +160,15 @@ export default async function BlogPage({
       </div>
 
       {/* Blog Grid with Infinite Scroll */}
-      <section className="py-16 md:py-20 relative z-10">
+      <section className="py-20 md:py-28 relative z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {blogs.length === 0 ? (
             <AnimatedSection key={blogGridKey}>
-              <div className="text-center py-32 bg-zinc-100 dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 border-dashed">
-                <div className="text-4xl mb-4 text-zinc-400">
+              <div className="text-center py-32 bg-white/5 rounded-xl border border-white/10 border-dashed backdrop-blur-sm">
+                <div className="text-4xl mb-4 text-emerald-500/50">
                   <FiSlash className="mx-auto" />
                 </div>
-                <h3 className="text-zinc-900 dark:text-white text-lg font-bold mb-2">
+                <h3 className="text-zinc-100 text-lg font-bold mb-2">
                   {isArabic ? 'لا توجد نتائج' : 'NO_DATA_FOUND'}
                 </h3>
                 <p className="text-zinc-500 font-mono text-sm">

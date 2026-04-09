@@ -17,7 +17,7 @@ import {
   FiArrowUpRight,
 } from 'react-icons/fi';
 import { SiWhatsapp } from 'react-icons/si';
-import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
+import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
 import { PUBLIC_CONTACT_EMAIL, getPublicMailtoHref, getWhatsAppWaMeUrl } from '@/core/data/publicContact';
 
 export default function ContactPage() {
@@ -64,11 +64,12 @@ export default function ContactPage() {
   };
 
   const fieldClass =
-    'w-full rounded-xl border border-zinc-200 bg-white px-4 py-3.5 text-sm text-zinc-900 shadow-sm transition-all duration-200 placeholder:text-zinc-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-white dark:placeholder:text-zinc-600';
+    'w-full rounded-xl border border-white/10 bg-[#0a0a0b] px-4 py-3.5 text-sm text-zinc-100 shadow-[0_0_20px_rgba(16,185,129,0.05)] transition-all duration-200 placeholder:text-zinc-600 focus:border-emerald-500/50 focus:outline-none focus:ring-2 focus:ring-emerald-500/20';
 
   return (
-    <div className="min-h-screen w-full bg-zinc-50 font-sans selection:bg-primary-500/30 dark:bg-zinc-950">
-      <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:32px_32px]" />
+    <div className="min-h-screen w-full bg-[#030303] font-sans selection:bg-emerald-500/30 text-zinc-100">
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:32px_32px]" />
+      <div className="pointer-events-none fixed left-0 top-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/5 blur-[120px] z-0" />
 
       {/* Hero */}
       {/* <section className="relative z-10 border-b border-zinc-200/80 bg-white/80 pt-28 pb-14 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900/80 md:pt-36 md:pb-20">
@@ -90,118 +91,107 @@ export default function ContactPage() {
       </section> */}
 
       {/* Main content */}
-      <section className="relative z-10 py-14 md:py-24">
+      <section className="relative z-10 py-20 md:py-28">
         <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-12 lg:gap-12">
             {/* Channels sidebar */}
-            <div className="lg:col-span-4">
-              <StaggerContainer className="space-y-5">
-                <StaggerItem>
-                  <h2 className="mb-1 font-mono text-xs font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-400">
-                    {t('channelsHeading')}
-                  </h2>
-                </StaggerItem>
-
-                {/* Email card */}
-                <StaggerItem>
-                  <a
-                    href={getPublicMailtoHref()}
-                    className="press-scale group flex gap-4 rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition-all duration-300 hover:border-primary-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-primary-500/30"
-                  >
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary-500/10 text-primary-600 dark:text-primary-400">
-                      <FiMail className="h-5 w-5" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center justify-between">
-                        <p className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">{t('emailTitle')}</p>
-                        <FiArrowUpRight className="h-3.5 w-3.5 text-zinc-300 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary-500 dark:text-zinc-600" />
-                      </div>
-                      <p className="mt-1 break-all font-mono text-sm font-semibold text-zinc-900 group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
-                        {PUBLIC_CONTACT_EMAIL}
-                      </p>
-                      <p className="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">{t('emailHint')}</p>
-                    </div>
-                  </a>
-                </StaggerItem>
-
-                {/* WhatsApp card */}
-                {whatsappUrl ? (
-                  <StaggerItem>
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="press-scale group flex gap-4 rounded-xl border border-zinc-200 bg-white p-5 shadow-sm transition-all duration-300 hover:border-emerald-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900"
-                    >
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-emerald-500/10 text-[#25D366]">
-                        <SiWhatsapp className="h-5 w-5" />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center justify-between">
-                          <p className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
-                            {t('whatsappTitle')}
-                          </p>
-                          <FiArrowUpRight className="h-3.5 w-3.5 text-zinc-300 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-emerald-500 dark:text-zinc-600" />
-                        </div>
-                        <p className="mt-1 text-sm font-semibold text-zinc-900 group-hover:text-emerald-600 dark:text-white dark:group-hover:text-emerald-400">
-                          {t('whatsappOpen')}
-                        </p>
-                        <p className="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">{t('whatsappHint')}</p>
-                      </div>
-                    </a>
-                  </StaggerItem>
-                ) : null}
-
-                {/* Social links */}
-                <StaggerItem>
-                  <div className="flex flex-wrap gap-3 pt-1">
-                    <a
-                      href="https://x.com/mohfintech"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="press-scale inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 text-zinc-500 transition-all duration-200 hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-800 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-white"
-                      aria-label="X (Twitter)"
-                    >
-                      <FiTwitter className="h-4.5 w-4.5" />
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/in/mohfintech/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="press-scale inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-200 text-zinc-500 transition-all duration-200 hover:border-zinc-300 hover:bg-zinc-50 hover:text-zinc-900 dark:border-zinc-800 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:hover:text-white"
-                      aria-label="LinkedIn"
-                    >
-                      <FiLinkedin className="h-4.5 w-4.5" />
-                    </a>
+            <div className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
+              <AnimatedSection>
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0b] shadow-[0_0_80px_-30px_rgba(16,185,129,0.25)] backdrop-blur-xl">
+                  {/* Glowing background */}
+                  <div className="absolute -inset-10 z-0 pointer-events-none">
+                    <div className="absolute left-0 top-0 h-40 w-40 rounded-full bg-emerald-500/10 blur-[60px]" />
                   </div>
-                </StaggerItem>
-              </StaggerContainer>
+                  
+                  <div className="relative z-10">
+                    {/* Header */}
+                    <div className="border-b border-white/5 bg-white/[0.02] px-5 py-4">
+                      <div className="flex items-center justify-between">
+                         <h2 className="font-mono text-[10px] font-bold uppercase tracking-widest text-emerald-400/90">
+                           {t('channelsHeading')}
+                         </h2>
+                         <div className="flex gap-1.5">
+                            <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
+                            <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
+                            <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
+                         </div>
+                      </div>
+                    </div>
+
+                    {/* Body/Links */}
+                    <div className="p-2">
+                      <a
+                        href={getPublicMailtoHref()}
+                        className="group flex items-center justify-between gap-3 rounded-xl px-4 py-3.5 text-sm text-zinc-300 transition-colors hover:bg-white/[0.06] hover:text-white"
+                      >
+                        <div className="flex items-center gap-3">
+                           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 ring-1 ring-white/10 text-emerald-400 group-hover:bg-emerald-500/10 group-hover:text-emerald-300 transition-colors">
+                             <FiMail className="h-4.5 w-4.5" />
+                           </div>
+                           <span className="font-mono font-medium">{PUBLIC_CONTACT_EMAIL}</span>
+                        </div>
+                        <FiArrowUpRight className={`h-4 w-4 shrink-0 text-zinc-600 transition-transform group-hover:text-emerald-400 ${isArabic ? 'rotate-[270deg] group-hover:-translate-x-0.5 group-hover:translate-y-0.5' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'}`} />
+                      </a>
+
+                      {whatsappUrl ? (
+                        <a
+                          href={whatsappUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group flex items-center justify-between gap-3 rounded-xl px-4 py-3.5 text-sm text-zinc-300 transition-colors hover:bg-white/[0.06] hover:text-white"
+                        >
+                          <div className="flex items-center gap-3">
+                             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 ring-1 ring-white/10 text-[#25D366] group-hover:bg-[#25D366]/10 transition-colors">
+                               <SiWhatsapp className="h-4.5 w-4.5" />
+                             </div>
+                             <span className={`font-medium ${isArabic ? 'font-arabic' : 'font-mono'}`}>{t('whatsappTitle')}</span>
+                          </div>
+                          <FiArrowUpRight className={`h-4 w-4 shrink-0 text-zinc-600 transition-transform group-hover:text-emerald-400 ${isArabic ? 'rotate-[270deg] group-hover:-translate-x-0.5 group-hover:translate-y-0.5' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'}`} />
+                        </a>
+                      ) : null}
+                    </div>
+                    
+                    {/* Social footer */}
+                    <div className="border-t border-white/5 bg-white/[0.01] px-6 py-4 flex items-center justify-between">
+                      <span className="text-xs font-mono text-zinc-500">PING_ME</span>
+                      <div className="flex gap-4">
+                        <a href="https://x.com/mohfintech" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-emerald-400 transition-colors">
+                          <FiTwitter className="h-4.5 w-4.5" />
+                        </a>
+                        <a href="https://www.linkedin.com/in/mohfintech/" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-emerald-400 transition-colors">
+                          <FiLinkedin className="h-4.5 w-4.5" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </AnimatedSection>
             </div>
 
             {/* Form card */}
             <div className="lg:col-span-8">
               <AnimatedSection delay={0.15}>
-                <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition-shadow duration-500 dark:border-zinc-800 dark:bg-zinc-900">
+                <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0b] shadow-[0_0_40px_-20px_rgba(16,185,129,0.1)] transition-shadow duration-500 hover:border-emerald-500/30">
                   {/* Card header */}
-                  <div className="border-b border-zinc-100 bg-zinc-50/80 px-6 py-5 dark:border-zinc-800 dark:bg-zinc-900/80 md:px-8">
+                  <div className="border-b border-white/5 bg-white/[0.02] px-6 py-5 md:px-8">
                     <div className="flex items-start gap-3">
-                      <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-lg bg-primary-500/10 text-primary-600 dark:text-primary-400">
+                      <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 text-emerald-400 ring-1 ring-white/10">
                         <FiMessageSquare className="h-4 w-4" />
                       </div>
                       <div>
-                        <h2 className="text-lg font-bold text-zinc-900 dark:text-white">{t('formCardTitle')}</h2>
-                        <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{t('formCardHint')}</p>
+                        <h2 className="text-lg font-bold text-zinc-100">{t('formCardTitle')}</h2>
+                        <p className="mt-1 text-sm text-zinc-500">{t('formCardHint')}</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Privacy notice */}
-                  <div className="border-b border-zinc-100 bg-zinc-50/90 px-6 py-4 dark:border-zinc-800 dark:bg-zinc-950/50 md:px-8">
+                  <div className="border-b border-white/5 bg-white/[0.01] px-6 py-4 md:px-8">
                     <div className="flex gap-3">
-                      <div className="mt-0.5 shrink-0 text-primary-600 dark:text-primary-400" aria-hidden>
+                      <div className="mt-0.5 shrink-0 text-emerald-400/80" aria-hidden>
                         <FiShield className="h-5 w-5" />
                       </div>
-                      <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{t('privacyNote')}</p>
+                      <p className="text-sm leading-relaxed text-zinc-500">{t('privacyNote')}</p>
                     </div>
                   </div>
 
@@ -318,11 +308,11 @@ export default function ContactPage() {
                       <button
                         type="submit"
                         disabled={loading}
-                        className="press-scale inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-8 py-3.5 text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-zinc-800 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200 sm:w-auto"
+                        className="press-scale inline-flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-8 py-3.5 text-sm font-bold text-zinc-950 shadow-[0_0_20px_rgba(16,185,129,0.2)] transition-all duration-200 hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
                       >
                         {loading ? (
                           <span className="flex items-center gap-2">
-                            <span className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white animate-spin-smooth dark:border-zinc-900/30 dark:border-t-zinc-900" />
+                            <span className="h-4 w-4 rounded-full border-2 border-zinc-900/30 border-t-zinc-900 animate-spin-smooth" />
                             {tf('sending')}
                           </span>
                         ) : (

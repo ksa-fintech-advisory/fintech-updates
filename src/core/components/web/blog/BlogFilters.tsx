@@ -49,11 +49,11 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
   };
 
   return (
-    <section className="sticky top-[64px] z-30 bg-white/90 dark:bg-black/90 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 transition-all duration-300">
+    <section className="sticky top-[64px] z-30 bg-[#030303]/80 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-4">
 
-          <div className="hidden lg:flex items-center gap-2 text-xs font-mono font-bold text-zinc-400 uppercase tracking-widest pl-2 border-l border-zinc-200 dark:border-zinc-800 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-2 shrink-0">
+          <div className="hidden lg:flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest pl-2 border-l border-white/10 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-2 shrink-0">
             <FiFilter className="w-3.5 h-3.5" />
             <span>{isArabic ? 'تصفية' : 'FILTER'}</span>
           </div>
@@ -64,8 +64,8 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
               scroll={false}
               className={`${pillBase}
                 ${selectedCategory === ''
-                  ? 'bg-zinc-900 dark:bg-white border-zinc-900 dark:border-white text-white dark:text-zinc-900 shadow-sm'
-                  : 'bg-transparent border-transparent text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-white'
+                  ? 'bg-zinc-100 border-zinc-100 text-zinc-900 shadow-sm'
+                  : 'bg-transparent border-transparent text-zinc-500 hover:bg-white/[0.04] hover:text-zinc-100'
                 }
               `}
             >
@@ -73,7 +73,7 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
               <span>{isArabic ? 'الكل' : 'ALL'}</span>
             </Link>
 
-            <div className="w-px h-6 bg-zinc-200 dark:bg-zinc-800 mx-1 self-center shrink-0" />
+            <div className="w-px h-6 bg-white/10 mx-1 self-center shrink-0" />
 
             {categories.map((category) => {
               const isActive = selectedCategory === category.slug;
@@ -84,17 +84,17 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
                   scroll={false}
                   className={`${pillBase} gap-1.5
                     ${isActive
-                      ? 'bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-600 text-zinc-900 dark:text-white shadow-sm'
-                      : 'bg-transparent border-zinc-200 dark:border-zinc-800 text-zinc-500 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-zinc-700 dark:hover:text-zinc-300'
+                      ? 'bg-white/10 border-white/20 text-white shadow-sm'
+                      : 'bg-transparent border-white/10 text-zinc-400 hover:border-white/20 hover:text-zinc-300'
                     }
                   `}
                 >
-                  <span className={`text-[10px] ${isActive ? 'text-primary-600' : 'text-zinc-400 group-hover:text-zinc-500'}`}>
+                  <span className={`text-[10px] ${isActive ? 'text-emerald-400' : 'text-zinc-500 group-hover:text-zinc-400'}`}>
                     <FiHash />
                   </span>
                   <span>{category.name}</span>
                   {isActive && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary-500 ms-1 animate-pulse" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 ms-1 animate-pulse" />
                   )}
                 </Link>
               );
@@ -106,20 +106,20 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
             className="flex items-center gap-2 shrink-0 w-full lg:w-auto lg:max-w-xs"
           >
             <div className="relative flex-1 min-w-0">
-              <FiSearch className="absolute start-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-400 pointer-events-none" />
+              <FiSearch className="absolute start-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-zinc-500 pointer-events-none" />
               <input
                 type="search"
                 name="blog-search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={isArabic ? 'بحث في العناوين والوسوم…' : 'Search titles & tags…'}
-                className="w-full h-10 ps-9 pe-3 rounded-md border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500/50"
+                className="w-full h-10 ps-9 pe-3 rounded-md border border-white/10 bg-[#0a0a0b] text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500/50 transition-all"
                 autoComplete="off"
               />
             </div>
             <button
               type="submit"
-              className="h-10 shrink-0 rounded-xl border border-zinc-200 bg-zinc-900 px-3 font-mono text-xs font-bold uppercase tracking-wide text-white transition-opacity hover:opacity-90 dark:border-zinc-700 dark:bg-zinc-100 dark:text-zinc-900"
+              className="h-10 shrink-0 rounded-xl border border-white/10 bg-white/5 px-3 font-mono text-xs font-bold uppercase tracking-wide text-zinc-300 transition-colors hover:bg-emerald-500 hover:text-zinc-950 hover:border-emerald-400"
             >
               {isArabic ? 'بحث' : 'GO'}
             </button>
@@ -127,7 +127,7 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
               <button
                 type="button"
                 onClick={clearSearch}
-                className="h-10 px-2 text-xs font-mono text-zinc-500 hover:text-zinc-900 dark:hover:text-white shrink-0"
+                className="h-10 px-2 text-xs font-mono text-zinc-500 hover:text-zinc-300 shrink-0"
               >
                 {isArabic ? 'مسح' : 'CLR'}
               </button>

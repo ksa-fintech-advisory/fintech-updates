@@ -37,9 +37,9 @@ export function AboutHero({
   return (
     <section
       id="about-overview"
-      className="scroll-mt-28 relative overflow-hidden border-b border-zinc-200/90 bg-gradient-to-b from-white via-white/95 to-zinc-50/80 pt-10 pb-16 backdrop-blur-sm dark:border-zinc-800 dark:from-zinc-950 dark:via-zinc-950/95 dark:to-zinc-900/90 md:pt-14 md:pb-24"
+      className="scroll-mt-28 relative overflow-hidden border-b border-zinc-200/90 bg-white pt-10 pb-16 dark:border-zinc-800 dark:bg-zinc-950 md:pt-14 md:pb-24"
     >
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_120%_80%_at_50%_-40%,rgba(0,0,0,0.04),transparent_55%)] dark:bg-[radial-gradient(ellipse_120%_80%_at_50%_-40%,rgba(255,255,255,0.06),transparent_55%)]" />
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_120%_80%_at_50%_-40%,rgba(0,0,0,0.02),transparent_55%)] dark:bg-[radial-gradient(ellipse_120%_80%_at_50%_-40%,rgba(255,255,255,0.02),transparent_55%)]" />
       <div className="absolute inset-0 z-0 opacity-[0.35] mix-blend-multiply grayscale dark:opacity-[0.22] dark:mix-blend-screen">
         <Network3D />
       </div>
@@ -74,13 +74,13 @@ export function AboutHero({
           </AnimatedSection>
 
           <AnimatedSection direction="up" delay={0.22} className="relative mx-auto hidden h-[min(22rem,50vw)] w-full max-w-sm lg:col-span-5 lg:block">
-            <div className="absolute inset-0 rounded-none border border-zinc-200 bg-white/40 shadow-none backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-900/30" />
+            <div className="absolute inset-0 rounded-none border border-zinc-200 bg-zinc-50/40 shadow-none backdrop-blur-sm dark:border-zinc-800 dark:bg-zinc-900/30" />
             <div className="absolute inset-x-4 top-4 h-px bg-zinc-200/50 dark:bg-zinc-800/50" />
             <div className="absolute inset-y-4 start-4 w-px bg-zinc-200/50 dark:bg-zinc-800/50" />
             {tags.map(({ text, rotate, offset }) => (
               <div
                 key={text}
-                className={`absolute ${offset} max-w-[11rem] rounded-none border border-zinc-200/80 bg-white/95 px-4 py-3 font-mono text-[11px] font-bold uppercase tracking-wider text-zinc-800 shadow-sm backdrop-blur-md dark:border-zinc-700/80 dark:bg-zinc-950/95 dark:text-zinc-300 ${rotate}`}
+                className={`absolute ${offset} max-w-[11rem] rounded-none border border-zinc-200/80 bg-white/95 px-4 py-3 font-mono text-[11px] font-bold uppercase tracking-wider text-zinc-800 shadow-sm backdrop-blur-md dark:border-zinc-700/80 dark:bg-zinc-900/95 dark:text-zinc-300 ${rotate}`}
               >
                 <div className="absolute -start-1 -top-1 h-2 w-2 border-s border-t border-primary-500/50" />
                 <div className="absolute -end-1 -bottom-1 h-2 w-2 border-b border-e border-primary-500/50" />

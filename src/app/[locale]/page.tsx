@@ -168,18 +168,22 @@ export default async function HomePage({ params }: { params: { locale: string } 
       <BlogFeatureSection />
 
       {/* ─── Closing CTA ─── */}
-      <section className="relative border-t border-zinc-200 bg-zinc-100/80 py-20 dark:border-zinc-800 dark:bg-zinc-950/80 md:py-24">
-        <div className="container mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
+      <section className="relative border-t border-white/10 bg-[#050505] py-20 overflow-hidden md:py-28">
+        {/* Decorative Grid & Glow */}
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.05)_1px,transparent_1px)] bg-[size:32px_32px]" />
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-[100px]" />
+        
+        <div className="container relative z-10 mx-auto max-w-2xl px-4 text-center sm:px-6 lg:px-8">
           <AnimatedSection>
-            <h2 className="mb-4 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white sm:text-3xl">
+            <h2 className="mb-4 text-2xl font-bold tracking-tight text-white sm:text-3xl">
               {tHome('closingTitle')}
             </h2>
-            <p className="mb-8 text-base leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-lg">
+            <p className="mb-8 text-base leading-relaxed text-zinc-400 md:text-lg">
               {tHome('closingLead')}
             </p>
             <Link
               href={`/${locale}/contact`}
-              className="apple-btn group inline-flex h-12 items-center gap-2 rounded-full bg-zinc-900 px-7 text-sm font-bold text-white shadow-apple transition-all duration-200 hover:bg-zinc-800 hover:shadow-apple-hover dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+              className="apple-btn group inline-flex h-12 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-7 text-sm font-bold text-white shadow-[0_0_20px_rgba(16,185,129,0.1)] transition-all duration-200 hover:bg-emerald-500 hover:text-zinc-950 hover:shadow-[0_0_30px_rgba(16,185,129,0.4)]"
             >
               {tHome('closingCta')}
               <ArrowIcon
