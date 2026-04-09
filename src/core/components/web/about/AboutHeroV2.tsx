@@ -44,7 +44,7 @@ export function AboutHeroV2({
   return (
     <section
       id="about-overview"
-      className="relative min-h-[85vh] scroll-mt-28 overflow-hidden border-b border-white/10 bg-[#030303] py-20 md:min-h-[90vh] md:py-28"
+      className="relative min-h-[85vh] scroll-mt-28 overflow-hidden border-b border-white/10 bg-zinc-950 py-20 md:min-h-[90vh] md:py-28"
       onMouseMove={onMove}
       dir={isArabic ? 'rtl' : 'ltr'}
     >

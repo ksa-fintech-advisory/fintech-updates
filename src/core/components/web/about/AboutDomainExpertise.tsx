@@ -76,7 +76,7 @@ export function AboutDomainExpertise({ isArabic, kicker, heading, domains }: Pro
   return (
     <section
       id="about-domains"
-      className="scroll-mt-28 border-b border-white/10 bg-[#030303] py-20 md:py-28"
+      className="scroll-mt-28 border-b border-white/10 bg-zinc-950 py-20 md:py-28"
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -141,7 +141,7 @@ export function AboutDomainExpertise({ isArabic, kicker, heading, domains }: Pro
 
           {/* Right Side: Stage */}
           <div className="lg:col-span-7">
-            <div className="relative flex h-[350px] w-full items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-[#0a0a0b] shadow-[0_0_40px_-20px_rgba(255,255,255,0.1)] md:h-[450px]">
+            <div className="relative flex h-[350px] w-full items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-zinc-800/40 shadow-[0_0_40px_-20px_rgba(255,255,255,0.1)] md:h-[450px]">
               {/* Glassmorphism subtle backdrop */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
               <div className="absolute inset-0" style={{ backdropFilter: 'blur(20px)' }} />

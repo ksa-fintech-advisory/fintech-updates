@@ -55,7 +55,7 @@ export function BlogInfiniteGrid({ allBlogs }: Props) {
                 href={`/${locale}/blog/${blog.slug}`}
                 className="group block h-full outline-none"
               >
-                <article className="press-scale h-full flex flex-col bg-[#0a0a0b] border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:border-emerald-500/30 hover:bg-white/[0.02] group-hover:shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)] group-focus-visible:ring-2 group-focus-visible:ring-emerald-500/40">
+                <article className="press-scale h-full flex flex-col bg-zinc-800/40 border border-white/10 rounded-xl overflow-hidden transition-all duration-300 hover:border-emerald-500/30 hover:bg-white/[0.02] group-hover:shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)] group-focus-visible:ring-2 group-focus-visible:ring-emerald-500/40">
                   <div className="p-5 sm:p-6 flex-1 flex flex-col">
                     {/* Category + Date row */}
                     <div className="flex items-center justify-between gap-3 mb-4">
@@ -116,7 +116,7 @@ export function BlogInfiniteGrid({ allBlogs }: Props) {
           <button
             onClick={loadMore}
             disabled={loading}
-            className="press-scale inline-flex items-center gap-2.5 rounded-xl border border-white/10 bg-[#0a0a0b] px-7 py-3.5 text-sm font-semibold text-zinc-300 shadow-[0_0_20px_rgba(16,185,129,0.05)] transition-all hover:border-emerald-500/30 hover:bg-white/[0.02] hover:text-emerald-400 disabled:opacity-60 disabled:cursor-wait"
+            className="press-scale inline-flex items-center gap-2.5 rounded-xl border border-white/10 bg-zinc-800/40 px-7 py-3.5 text-sm font-semibold text-zinc-300 shadow-[0_0_20px_rgba(16,185,129,0.05)] transition-all hover:border-emerald-500/30 hover:bg-white/[0.02] hover:text-emerald-400 disabled:opacity-60 disabled:cursor-wait"
           >
             {loading ? (
               <>

@@ -88,7 +88,7 @@ export default async function BlogPage({
       <div className="pointer-events-none fixed right-0 top-0 h-[500px] w-[500px] -translate-y-1/2 translate-x-1/2 rounded-full bg-emerald-500/5 blur-[120px] z-0" />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden border-b border-white/10 bg-[#050505] backdrop-blur-sm">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden border-b border-white/10 bg-zinc-900 backdrop-blur-sm">
         <div className="absolute inset-0 z-0 opacity-30 grayscale">
           <WaveField3D />
         </div>
@@ -122,14 +122,14 @@ export default async function BlogPage({
       </section>
 
       {/* Filters */}
-      <div className="border-b border-white/10 bg-[#030303]/80 backdrop-blur-xl sticky top-[65px] z-30">
+      <div className="border-b border-white/10 bg-zinc-950/80 backdrop-blur-xl sticky top-[65px] z-30">
         <div className="container mx-auto px-4">
           <BlogFilters categories={categories} isArabic={isArabic} />
         </div>
       </div>
 
       {/* Post count bar */}
-      <div className="border-b border-white/10 bg-[#050505]/80 backdrop-blur-sm">
+      <div className="border-b border-white/10 bg-zinc-900/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div
             className="flex items-center gap-2 text-sm text-zinc-500 font-mono"

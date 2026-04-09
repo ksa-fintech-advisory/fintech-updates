@@ -49,7 +49,7 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
   };
 
   return (
-    <section className="sticky top-[64px] z-30 bg-[#030303]/80 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
+    <section className="sticky top-[64px] z-30 bg-zinc-950/80 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-4">
 
@@ -113,7 +113,7 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder={isArabic ? 'بحث في العناوين والوسوم…' : 'Search titles & tags…'}
-                className="w-full h-10 ps-9 pe-3 rounded-md border border-white/10 bg-[#0a0a0b] text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500/50 transition-all"
+                className="w-full h-10 ps-9 pe-3 rounded-md border border-white/10 bg-zinc-800/40 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500/50 transition-all"
                 autoComplete="off"
               />
             </div>

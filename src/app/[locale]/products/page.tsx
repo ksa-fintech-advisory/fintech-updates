@@ -8,14 +8,14 @@ export default function ProductsPage({ params }: { params: { locale: string } })
   const isArabic = locale === 'ar';
 
   return (
-    <div className="w-full bg-[#030303] text-zinc-100 min-h-screen selection:bg-emerald-500/30">
+    <div className="w-full bg-zinc-950 text-zinc-100 min-h-screen selection:bg-emerald-500/30">
 
       {/* 1. Global Engineering Grid */}
       <div className="fixed inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none z-0" />
       <div className="pointer-events-none fixed right-0 top-0 h-[500px] w-[500px] -translate-y-1/2 translate-x-1/2 rounded-full bg-emerald-500/5 blur-[120px] z-0" />
 
       {/* Hero Section: The "Solutions Registry" */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden border-b border-white/10 bg-[#050505]/80 backdrop-blur-sm z-10">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden border-b border-white/10 bg-zinc-900/80 backdrop-blur-sm z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
 
@@ -52,7 +52,7 @@ export default function ProductsPage({ params }: { params: { locale: string } })
       </section>
 
       {/* Benefits Section: "Core Capabilities" */}
-      <section className="py-20 md:py-28 border-t border-white/10 bg-[#030303] relative overflow-hidden">
+      <section className="py-20 md:py-28 border-t border-white/10 bg-zinc-950 relative overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
           <AnimatedSection className="mb-16 text-center">
@@ -68,7 +68,7 @@ export default function ProductsPage({ params }: { params: { locale: string } })
 
             {/* Precision */}
             <StaggerItem>
-              <div className="group h-full bg-[#0a0a0b] border border-white/10 p-8 rounded-2xl hover:border-emerald-500/30 hover:bg-white/[0.02] shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)] transition-all duration-300">
+              <div className="group h-full bg-zinc-800/40 border border-white/10 p-8 rounded-2xl hover:border-emerald-500/30 hover:bg-white/[0.02] shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)] transition-all duration-300">
                 <div className="w-12 h-12 bg-zinc-900 rounded-xl flex items-center justify-center text-emerald-400 mb-6 ring-1 ring-white/10 group-hover:ring-emerald-500/50 transition-colors">
                   <FiCrosshair className="w-6 h-6" />
                 </div>
@@ -85,7 +85,7 @@ export default function ProductsPage({ params }: { params: { locale: string } })
 
             {/* Efficiency */}
             <StaggerItem>
-              <div className="group h-full bg-[#0a0a0b] border border-white/10 p-8 rounded-2xl hover:border-emerald-500/30 hover:bg-white/[0.02] shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)] transition-all duration-300">
+              <div className="group h-full bg-zinc-800/40 border border-white/10 p-8 rounded-2xl hover:border-emerald-500/30 hover:bg-white/[0.02] shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)] transition-all duration-300">
                 <div className="w-12 h-12 bg-zinc-900 rounded-xl flex items-center justify-center text-emerald-400 mb-6 ring-1 ring-white/10 group-hover:ring-emerald-500/50 transition-colors">
                   <FiZap className="w-6 h-6" />
                 </div>
@@ -102,7 +102,7 @@ export default function ProductsPage({ params }: { params: { locale: string } })
 
             {/* Compliance */}
             <StaggerItem>
-              <div className="group h-full bg-[#0a0a0b] border border-white/10 p-8 rounded-2xl hover:border-emerald-500/30 hover:bg-white/[0.02] shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)] transition-all duration-300">
+              <div className="group h-full bg-zinc-800/40 border border-white/10 p-8 rounded-2xl hover:border-emerald-500/30 hover:bg-white/[0.02] shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)] transition-all duration-300">
                 <div className="w-12 h-12 bg-zinc-900 rounded-xl flex items-center justify-center text-emerald-400 mb-6 ring-1 ring-white/10 group-hover:ring-emerald-500/50 transition-colors">
                   <FiShield className="w-6 h-6" />
                 </div>
@@ -122,9 +122,9 @@ export default function ProductsPage({ params }: { params: { locale: string } })
       </section>
 
       {/* CTA Section: "Deploy" Style */}
-      <section className="py-20 md:py-28 border-t border-white/10 bg-[#050505]">
+      <section className="py-20 md:py-28 border-t border-white/10 bg-zinc-900">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-[#0a0a0b] rounded-2xl p-12 md:p-16 text-center text-white border border-white/10 shadow-[0_0_50px_-20px_rgba(16,185,129,0.2)] relative overflow-hidden">
+          <div className="bg-zinc-800/40 rounded-2xl p-12 md:p-16 text-center text-white border border-white/10 shadow-[0_0_50px_-20px_rgba(16,185,129,0.2)] relative overflow-hidden">
 
             {/* Background Texture */}
             <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(16,185,129,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:20px_20px]" />

@@ -39,7 +39,7 @@ export function AboutSplitProfile({
   return (
     <section
       id="about-profile"
-      className="scroll-mt-28 border-b border-white/10 bg-[#050505] py-20 md:py-28"
+      className="scroll-mt-28 border-b border-white/10 bg-zinc-900 py-20 md:py-28"
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -79,7 +79,7 @@ export function AboutSplitProfile({
               </p>
             </div>
 
-            <div className="overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0b] shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset,0_24px_64px_-24px_rgba(0,0,0,0.8)]">
+            <div className="overflow-hidden rounded-xl border border-white/10 bg-zinc-800/40 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset,0_24px_64px_-24px_rgba(0,0,0,0.8)]">
               <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.03] px-4 py-2.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
@@ -138,14 +138,18 @@ export function AboutSplitProfile({
                 key={i}
                 initial={reduce ? false : { opacity: 0, y: 28, filter: 'blur(12px)' }}
                 whileInView={reduce ? undefined : { opacity: 1, y: 0, filter: 'blur(0px)' }}
+                whileHover={reduce ? undefined : { scale: 1.02, x: isArabic ? -8 : 8 }}
                 viewport={{ once: true, margin: '-60px' }}
-                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] }}
-                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_0_48px_-20px_rgba(16,185,129,0.15)] backdrop-blur-md md:p-8"
+                transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-[0_0_48px_-20px_rgba(16,185,129,0.15)] backdrop-blur-md transition-all hover:border-emerald-500/40 hover:bg-white/[0.06] hover:shadow-[0_0_60px_-15px_rgba(16,185,129,0.3)] md:p-8"
               >
-                <span className="mb-3 block font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-500/90">
+                {/* Subtle shine effect that sweeps across on hover */}
+                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full" />
+                
+                <span className="relative z-10 mb-3 block font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-500/90 transition-colors group-hover:text-emerald-400">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <p className={`text-lg font-medium leading-relaxed text-zinc-100 md:text-xl ${isArabic ? 'font-arabic' : ''}`}>
+                <p className={`relative z-10 text-lg font-medium leading-relaxed text-zinc-100 transition-colors group-hover:text-white md:text-xl ${isArabic ? 'font-arabic' : ''}`}>
                   {text}
                 </p>
               </motion.div>

@@ -14,11 +14,11 @@ type Props = {
 };
 
 const COMPANIES = [
-  { name: 'STC Pay', role: 'Payment Gateway Integration' },
-  { name: 'Tamara', role: 'BNPL Architecture' },
-  { name: 'Lendo', role: 'Crowdfunding Platform' },
-  { name: 'Lean Tech', role: 'Open Banking APIs' },
-  { name: 'SAMA Sandbox', role: 'Compliance & Testing' },
+  { name: 'Tide', role: 'Fintech Engineering' },
+  { name: 'Ikea', role: 'E-commerce Architecture' },
+  { name: 'Suqa Group', role: 'System Integration' },
+  { name: 'Siolla', role: 'Digital Platform' },
+  { name: 'Awqef Capital', role: 'Financial Systems' },
 ];
 
 function SpotlightCard({
@@ -71,7 +71,7 @@ export function AboutExperienceBento({
   return (
     <section
       id="about-experience"
-      className="scroll-mt-28 border-b border-white/10 bg-[#050505] py-20 md:py-28"
+      className="scroll-mt-28 border-b border-white/10 bg-zinc-900 py-20 md:py-28"
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       {/* Decorative grid background */}

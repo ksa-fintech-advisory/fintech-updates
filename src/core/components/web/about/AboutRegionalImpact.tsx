@@ -42,7 +42,7 @@ export function AboutRegionalImpact({ isArabic, kicker, heading, sub }: Props) {
   return (
     <section
       id="about-regional"
-      className="relative scroll-mt-28 overflow-hidden border-b border-white/10 bg-[#030303] py-20 md:py-28"
+      className="relative scroll-mt-28 overflow-hidden border-b border-white/10 bg-zinc-950 py-20 md:py-28"
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       <div className="pointer-events-none absolute inset-0 z-0">
@@ -67,7 +67,7 @@ export function AboutRegionalImpact({ isArabic, kicker, heading, sub }: Props) {
           <p className={`mt-4 text-sm text-zinc-500 md:text-base ${isArabic ? 'font-arabic' : ''}`}>{sub}</p>
         </div>
 
-        <div className="relative mx-auto mt-16 max-w-4xl h-[300px] md:h-[400px] w-full rounded-2xl border border-white/10 bg-[#0a0a0b]/80 shadow-2xl backdrop-blur-xl overflow-hidden">
+        <div className="relative mx-auto mt-16 max-w-4xl h-[300px] md:h-[400px] w-full rounded-2xl border border-white/10 bg-zinc-800/80 shadow-2xl backdrop-blur-xl overflow-hidden">
           {/* SVG Map Canvas */}
           <svg viewBox="0 0 600 300" className="h-full w-full" preserveAspectRatio="xMidYMid slice">
             <defs>

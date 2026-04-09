@@ -44,7 +44,7 @@ export function AboutCommandPalette({
   return (
     <section
       id="about-connect"
-      className="scroll-mt-28 bg-[#050505] py-20 pb-28 md:py-28 md:pb-32"
+      className="scroll-mt-28 bg-zinc-900 py-20 pb-28 md:py-28 md:pb-32"
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

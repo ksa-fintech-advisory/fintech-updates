@@ -64,10 +64,10 @@ export default function ContactPage() {
   };
 
   const fieldClass =
-    'w-full rounded-xl border border-white/10 bg-[#0a0a0b] px-4 py-3.5 text-sm text-zinc-100 shadow-[0_0_20px_rgba(16,185,129,0.05)] transition-all duration-200 placeholder:text-zinc-600 focus:border-emerald-500/50 focus:outline-none focus:ring-2 focus:ring-emerald-500/20';
+    'w-full rounded-xl border border-white/10 bg-zinc-800/40 px-4 py-3.5 text-sm text-zinc-100 shadow-[0_0_20px_rgba(16,185,129,0.05)] transition-all duration-200 placeholder:text-zinc-600 focus:border-emerald-500/50 focus:outline-none focus:ring-2 focus:ring-emerald-500/20';
 
   return (
-    <div className="min-h-screen w-full bg-[#030303] font-sans selection:bg-emerald-500/30 text-zinc-100">
+    <div className="min-h-screen w-full bg-zinc-950 font-sans selection:bg-emerald-500/30 text-zinc-100">
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:32px_32px]" />
       <div className="pointer-events-none fixed left-0 top-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/5 blur-[120px] z-0" />
 
@@ -97,7 +97,7 @@ export default function ContactPage() {
             {/* Channels sidebar */}
             <div className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
               <AnimatedSection>
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0b] shadow-[0_0_80px_-30px_rgba(16,185,129,0.25)] backdrop-blur-xl">
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-800/40 shadow-[0_0_80px_-30px_rgba(16,185,129,0.25)] backdrop-blur-xl">
                   {/* Glowing background */}
                   <div className="absolute -inset-10 z-0 pointer-events-none">
                     <div className="absolute left-0 top-0 h-40 w-40 rounded-full bg-emerald-500/10 blur-[60px]" />
@@ -171,7 +171,7 @@ export default function ContactPage() {
             {/* Form card */}
             <div className="lg:col-span-8">
               <AnimatedSection delay={0.15}>
-                <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0b] shadow-[0_0_40px_-20px_rgba(16,185,129,0.1)] transition-shadow duration-500 hover:border-emerald-500/30">
+                <div className="overflow-hidden rounded-2xl border border-white/10 bg-zinc-800/40 shadow-[0_0_40px_-20px_rgba(16,185,129,0.1)] transition-shadow duration-500 hover:border-emerald-500/30">
                   {/* Card header */}
                   <div className="border-b border-white/5 bg-white/[0.02] px-6 py-5 md:px-8">
                     <div className="flex items-start gap-3">

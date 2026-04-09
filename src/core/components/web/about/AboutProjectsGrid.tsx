@@ -16,7 +16,7 @@ const PROJECTS = [
       en: 'Algorithmic portfolio management with real-time rebalancing, built to SAMA regulatory standards.',
       ar: 'إدارة محافظ خوارزمية مع إعادة توازن لحظية، مبنية وفق معايير مؤسسة النقد (ساما).',
     },
-    tech: ['Node.js', 'PostgreSQL', 'Redis'],
+    tech: ['Javascript', 'PostgreSQL', 'Cloud'],
     visual: (uid: string) => (
       <svg viewBox="0 0 200 100" className="h-full w-full opacity-60 transition-opacity duration-500 group-hover:opacity-100">
         <defs>
@@ -62,7 +62,7 @@ const PROJECTS = [
       en: 'High-throughput payment orchestration layer handling multi-rail routing and strict idempotent processing.',
       ar: 'طبقة توجيه مدفوعات عالية الكفاءة تتعامل مع مسارات متعددة ومعالجة صارمة لتجنب التكرار.',
     },
-    tech: ['Go', 'Kafka', 'Kubernetes'],
+    tech: ['Java', 'Infrastructure', 'Policy as Service'],
     visual: (uid: string) => (
       <div className="relative flex h-full w-full items-center justify-center p-6 opacity-60 transition-opacity duration-500 group-hover:opacity-100 overflow-hidden">
         {/* Scanning laser effect */}
@@ -136,7 +136,7 @@ export function AboutProjectsGrid({ isArabic, projectsLabel }: Props) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: i * 0.1 }}
-          className="group relative flex h-[320px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0b] transition-colors hover:border-emerald-500/30"
+          className="group relative flex h-[320px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-zinc-800/40 transition-colors hover:border-emerald-500/30"
         >
           {/* Visual Area */}
           <div className="relative h-[140px] w-full shrink-0 border-b border-white/5 bg-white/[0.01] overflow-hidden">

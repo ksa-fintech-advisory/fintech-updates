@@ -29,7 +29,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden scroll-mt-24 border-b border-white/10 bg-[#030303] py-20 md:py-28"
+      className="relative overflow-hidden scroll-mt-24 border-b border-white/10 bg-zinc-950 py-20 md:py-28"
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:32px_32px]"
@@ -54,7 +54,7 @@ export default function ServicesSection() {
             return (
               <StaggerItem key={id}>
                 <div className="group h-full">
-                  <article className="press-scale flex h-full flex-col gap-5 overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a0b] p-6 shadow-[0_0_40px_-20px_rgba(16,185,129,0.1)] transition-all duration-300 hover:border-emerald-500/30 hover:bg-white/[0.02] md:p-8">
+                  <article className="press-scale flex h-full flex-col gap-5 overflow-hidden rounded-2xl border border-white/10 bg-zinc-800/40 p-6 shadow-[0_0_40px_-20px_rgba(16,185,129,0.1)] transition-all duration-300 hover:border-emerald-500/30 hover:bg-white/[0.02] md:p-8">
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-900 ring-1 ring-white/10 text-emerald-400 transition-colors group-hover:ring-emerald-500/50">
                       <Icon className="h-5 w-5" aria-hidden />
                     </div>

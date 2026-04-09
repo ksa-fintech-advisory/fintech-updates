@@ -15,7 +15,7 @@ const ORBITS = [
     radius: 80,
     duration: 20,
     nodes: [
-      { id: 'node', label: 'Node.js', angle: 0 },
+      { id: 'javascript', label: 'Javascript', angle: 0 },
       { id: 'react', label: 'React', angle: 180 },
     ],
   },
@@ -23,7 +23,7 @@ const ORBITS = [
     radius: 140,
     duration: 35,
     nodes: [
-      { id: 'go', label: 'Go', angle: 90 },
+      { id: 'java', label: 'Java', angle: 90 },
       { id: 'postgres', label: 'PostgreSQL', angle: 210 },
       { id: 'redis', label: 'Redis', angle: 330 },
     ],
@@ -32,9 +32,9 @@ const ORBITS = [
     radius: 200,
     duration: 50,
     nodes: [
-      { id: 'kafka', label: 'Kafka', angle: 45 },
-      { id: 'kube', label: 'Kubernetes', angle: 165 },
-      { id: 'aws', label: 'AWS', angle: 285 },
+      { id: 'infrastructure', label: 'Infrastructure', angle: 45 },
+      { id: 'cloud', label: 'Cloud', angle: 165 },
+      { id: 'policy', label: 'Policy as Service', angle: 285 },
     ],
   },
 ];
@@ -43,7 +43,7 @@ export function AboutTechStack({ isArabic, kicker, heading, sub }: Props) {
   return (
     <section
       id="about-tech"
-      className="relative scroll-mt-28 overflow-hidden border-b border-white/10 bg-[#050505] py-20 md:py-28"
+      className="relative scroll-mt-28 overflow-hidden border-b border-white/10 bg-zinc-900 py-20 md:py-28"
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
@@ -55,7 +55,7 @@ export function AboutTechStack({ isArabic, kicker, heading, sub }: Props) {
           <p className={`mt-4 text-sm text-zinc-500 md:text-base ${isArabic ? 'font-arabic' : ''}`}>{sub}</p>
         </div>
 
-        <div className="relative mx-auto mt-16 flex h-[500px] w-full max-w-3xl items-center justify-center overflow-hidden rounded-3xl border border-white/5 bg-[#0a0a0b]/40 backdrop-blur-sm">
+        <div className="relative mx-auto mt-16 flex h-[500px] w-full max-w-3xl items-center justify-center overflow-hidden rounded-3xl border border-white/5 bg-zinc-800/40 backdrop-blur-sm">
           {/* Center Core */}
           <div className="absolute z-20 flex h-24 w-24 flex-col items-center justify-center rounded-full border border-white/10 bg-zinc-950 shadow-[0_0_40px_rgba(16,185,129,0.3)]">
             <span className="font-mono text-[10px] font-bold tracking-widest text-emerald-400">FINTECH</span>

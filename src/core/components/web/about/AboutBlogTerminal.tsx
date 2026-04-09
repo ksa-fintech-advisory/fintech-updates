@@ -53,7 +53,7 @@ export function AboutBlogTerminal({
   return (
     <section
       id="about-blog"
-      className="scroll-mt-28 border-b border-white/10 bg-[#030303] py-20 md:py-28"
+      className="scroll-mt-28 border-b border-white/10 bg-zinc-950 py-20 md:py-28"
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -68,7 +68,7 @@ export function AboutBlogTerminal({
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-[#0c0c0e] shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset]"
+          className="mx-auto max-w-2xl overflow-hidden rounded-xl border border-white/10 bg-zinc-800/60 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset]"
         >
           <div className="flex items-center gap-2 border-b border-white/10 px-4 py-2">
             <span className="h-2 w-2 rounded-full bg-red-500/70" />

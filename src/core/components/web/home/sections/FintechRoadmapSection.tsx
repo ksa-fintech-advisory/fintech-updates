@@ -26,7 +26,7 @@ export default function FintechRoadmapSection() {
   return (
     <section
       id="fintech-roadmap"
-      className="relative overflow-hidden border-b border-white/10 bg-[#050505] py-20 md:py-28"
+      className="relative overflow-hidden border-b border-white/10 bg-zinc-900 py-20 md:py-28"
     >
       <div
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:24px_24px]"
@@ -52,7 +52,7 @@ export default function FintechRoadmapSection() {
                   className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/50 via-zinc-800/80 to-[#0a0a0b]"
                   aria-hidden
                 />
-                <div className="relative flex flex-col gap-5 rounded-2xl bg-[#0a0a0b] px-6 py-8 backdrop-blur-md">
+                <div className="relative flex flex-col gap-5 rounded-2xl bg-zinc-800/40 px-6 py-8 backdrop-blur-md">
                   <div className="flex items-center justify-center gap-2 font-mono text-sm font-bold text-emerald-400 lg:justify-start">
                     <FiLayers className="h-5 w-5 shrink-0" aria-hidden />
                     <span>{t('statsLine', { phases: phaseCount, topics: totalTopics })}</span>

@@ -168,7 +168,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
       <BlogFeatureSection />
 
       {/* ─── Closing CTA ─── */}
-      <section className="relative border-t border-white/10 bg-[#050505] py-20 overflow-hidden md:py-28">
+      <section className="relative border-t border-white/10 bg-zinc-900 py-20 overflow-hidden md:py-28">
         {/* Decorative Grid & Glow */}
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.05)_1px,transparent_1px)] bg-[size:32px_32px]" />
         <div className="pointer-events-none absolute left-1/2 top-1/2 h-[300px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-[100px]" />

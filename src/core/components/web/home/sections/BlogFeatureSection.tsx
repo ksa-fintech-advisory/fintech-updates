@@ -21,7 +21,7 @@ export default function BlogFeatureSection() {
   const ArrowIcon = isArabic ? FiArrowLeft : FiArrowRight;
 
   return (
-    <section className="relative overflow-hidden border-b border-white/10 bg-[#030303] py-20 md:py-28">
+    <section className="relative overflow-hidden border-b border-white/10 bg-zinc-950 py-20 md:py-28">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px]" />
       <div className="pointer-events-none absolute left-0 top-0 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/5 blur-[120px]" />
 
@@ -45,7 +45,7 @@ export default function BlogFeatureSection() {
             const Icon = FOCUS_ICONS[id];
             return (
               <StaggerItem key={id}>
-                <article className="group flex h-full flex-col rounded-2xl border border-white/10 bg-[#0a0a0b] p-6 shadow-[0_0_30px_-15px_rgba(16,185,129,0.1)] transition-all hover:border-emerald-500/30 hover:bg-white/[0.02] md:p-7">
+                <article className="group flex h-full flex-col rounded-2xl border border-white/10 bg-zinc-800/40 p-6 shadow-[0_0_30px_-15px_rgba(16,185,129,0.1)] transition-all hover:border-emerald-500/30 hover:bg-white/[0.02] md:p-7">
                   <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-900 ring-1 ring-white/10 text-emerald-400 transition-colors group-hover:ring-emerald-500/50">
                     <Icon className="h-5 w-5" aria-hidden />
                   </div>

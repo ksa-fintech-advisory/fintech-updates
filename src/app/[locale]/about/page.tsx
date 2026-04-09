@@ -48,7 +48,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
   ];
 
   return (
-    <div className="dark min-h-screen bg-[#030303] text-zinc-100 selection:bg-emerald-500/25">
+    <div className="dark min-h-screen bg-zinc-950 text-zinc-100 selection:bg-emerald-500/25">
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_bottom,rgba(16,185,129,0.03),transparent_35%)]" />
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:56px_56px] opacity-40" />
 

@@ -15,14 +15,14 @@ export default async function UpdatesListingPage({ params }: UpdatesListingPageP
     const updates = await updateService.getUpdates({ lang: locale });
 
     return (
-        <div className="bg-[#030303] text-zinc-100 min-h-screen pb-20 md:pb-28 font-sans selection:bg-emerald-500/30">
+        <div className="bg-zinc-950 text-zinc-100 min-h-screen pb-20 md:pb-28 font-sans selection:bg-emerald-500/30">
 
             {/* 1. Global Engineering Grid */}
             <div className="fixed inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none z-0" />
             <div className="pointer-events-none fixed right-0 top-0 h-[500px] w-[500px] -translate-y-1/2 translate-x-1/2 rounded-full bg-emerald-500/5 blur-[120px] z-0" />
 
             {/* Hero Header: System Status Style */}
-            <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 border-b border-white/10 bg-[#050505]/80 backdrop-blur-sm z-10">
+            <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 border-b border-white/10 bg-zinc-900/80 backdrop-blur-sm z-10">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="max-w-4xl">
                         <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">
@@ -55,7 +55,7 @@ export default async function UpdatesListingPage({ params }: UpdatesListingPageP
                                 href={`/${locale}/updates/${update.slug}`}
                                 className="group block outline-none h-full"
                             >
-                                <article className="h-full bg-[#0a0a0b] border border-white/10 rounded-xl p-6 hover:border-emerald-500/30 hover:bg-white/[0.02] transition-all duration-300 flex flex-col shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)]">
+                                <article className="h-full bg-zinc-800/40 border border-white/10 rounded-xl p-6 hover:border-emerald-500/30 hover:bg-white/[0.02] transition-all duration-300 flex flex-col shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)]">
 
                                     {/* Header: Date & Tag */}
                                     <div className="flex justify-between items-start mb-6 pb-4 border-b border-white/5 border-dashed">

@@ -155,12 +155,12 @@ export default async function LocaleLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${ibmPlexSansArabic.variable} ${amiriQuran.variable}`}
     >
-      <body className="min-h-screen flex flex-col bg-[#030303] text-zinc-100 selection:bg-emerald-500/25">
+      <body className="min-h-screen flex flex-col bg-zinc-950 text-zinc-100 selection:bg-emerald-500/25">
         <JsonLd data={siteWideGraphJsonLd(getSiteUrl())} />
         <SiteJsonLd />
         <ThemeProvider>
           <NextIntlClientProvider messages={messages} locale={locale}>
-            <NavigationProgress />
+            {/* <NavigationProgress /> */}
             <Header />
             <main className="flex-1">
               {children}

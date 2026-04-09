@@ -8,13 +8,13 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
   const data = legalData.terms;
 
   return (
-    <div className="w-full min-h-screen bg-[#030303] font-sans selection:bg-emerald-500/30 text-zinc-100">
+    <div className="w-full min-h-screen bg-zinc-950 font-sans selection:bg-emerald-500/30 text-zinc-100">
 
       {/* 1. Global Engineering Grid */}
       <div className="fixed inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none z-0" />
 
       {/* Header Section: "Document Header" */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 border-b border-white/10 bg-[#050505]/80 backdrop-blur-sm z-10">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 border-b border-white/10 bg-zinc-900/80 backdrop-blur-sm z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
           <AnimatedSection>
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -56,7 +56,7 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
       {/* Content Section */}
       <section className="relative z-10 py-20 md:py-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto bg-[#0a0a0b] border border-white/10 rounded-xl shadow-[0_0_30px_rgba(16,185,129,0.05)] overflow-hidden">
+          <div className="max-w-4xl mx-auto bg-zinc-800/40 border border-white/10 rounded-xl shadow-[0_0_30px_rgba(16,185,129,0.05)] overflow-hidden">
 
             {/* Top Bar Decoration */}
             <div className="h-1 w-full bg-gradient-to-r from-emerald-500/20 via-emerald-500/80 to-emerald-500/20" />
@@ -96,7 +96,7 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
             </div>
 
             {/* Footer of the document */}
-            <div className="bg-[#050505] p-6 border-t border-white/10 text-center">
+            <div className="bg-zinc-900 p-6 border-t border-white/10 text-center">
               <p className="text-xs font-mono text-zinc-500">
                 {'//'} {isArabic ? 'نهاية الوثيقة' : 'END_OF_DOCUMENT'} {'//'}
               </p>
