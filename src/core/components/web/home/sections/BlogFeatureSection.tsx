@@ -3,13 +3,13 @@
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
-import { FiBookOpen, FiShield, FiCpu, FiGlobe, FiArrowRight, FiArrowLeft } from 'react-icons/fi';
+import { FiTrendingUp, FiShield, FiCpu, FiGlobe, FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
-const STEP_IDS = ['regulatory', 'product', 'engineering', 'region'] as const;
+const FOCUS_IDS = ['regulatory', 'product', 'engineering', 'region'] as const;
 
-const STEP_ICONS = {
+const FOCUS_ICONS = {
   regulatory: FiShield,
-  product: FiBookOpen,
+  product: FiTrendingUp,
   engineering: FiCpu,
   region: FiGlobe,
 } as const;
@@ -39,68 +39,17 @@ export default function BlogFeatureSection() {
           </div>
         </AnimatedSection>
 
-        {/* Desktop timeline */}
-        <div className="relative hidden pb-4 md:block">
-          <div
-            className="absolute h-0.5 rounded-full bg-gradient-to-r from-zinc-200 via-primary-500/40 to-zinc-200 dark:from-zinc-800 dark:via-primary-400/30 dark:to-zinc-800"
-            style={{
-              top: '1.75rem',
-              insetInlineStart: '8%',
-              insetInlineEnd: '8%',
-            }}
-            aria-hidden
-          />
-          <StaggerContainer className="relative grid grid-cols-4 gap-6 lg:gap-8">
-            {STEP_IDS.map((id, index) => {
-              const Icon = STEP_ICONS[id];
-              const step = String(index + 1).padStart(2, '0');
-              return (
-                <StaggerItem key={id} className="relative">
-                  <article className="flex flex-col items-center text-center">
-                    <div className="relative z-10 mb-6 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-4 border-white bg-zinc-900 font-mono text-sm font-bold text-white dark:border-zinc-900 dark:bg-white dark:text-black">
-                      {step}
-                    </div>
-                    <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white">
-                      <Icon className="h-5 w-5" aria-hidden />
-                    </div>
-                    <h3 className="mb-2 text-lg font-bold text-zinc-900 dark:text-white">{t(`items.${id}.title`)}</h3>
-                    <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
-                      {t(`items.${id}.description`)}
-                    </p>
-                  </article>
-                </StaggerItem>
-              );
-            })}
-          </StaggerContainer>
-        </div>
-
-        {/* Mobile timeline */}
-        <StaggerContainer className="relative space-y-0 md:hidden">
-          <div
-            className="absolute top-3 bottom-3 w-0.5 rounded-full bg-gradient-to-b from-zinc-200 via-primary-500/40 to-zinc-200 dark:from-zinc-800 dark:via-primary-400/30 dark:to-zinc-800"
-            style={{ insetInlineStart: 'calc(1.125rem - 1px)' }}
-            aria-hidden
-          />
-          {STEP_IDS.map((id, index) => {
-            const Icon = STEP_ICONS[id];
-            const step = String(index + 1).padStart(2, '0');
+        <StaggerContainer className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:gap-8">
+          {FOCUS_IDS.map((id) => {
+            const Icon = FOCUS_ICONS[id];
             return (
               <StaggerItem key={id}>
-                <article className="relative flex items-start gap-4 pb-10">
-                  <div className="relative z-10 flex w-9 shrink-0 justify-center">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-white bg-zinc-900 font-mono text-[10px] font-bold text-white dark:border-zinc-900 dark:bg-white dark:text-black">
-                      {step}
-                    </div>
+                <article className="flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/80 dark:hover:border-zinc-700 md:p-7">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white">
+                    <Icon className="h-5 w-5" aria-hidden />
                   </div>
-                  <div className="min-w-0 flex-1 pt-0.5 text-start">
-                    <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white">
-                      <Icon className="h-4 w-4" aria-hidden />
-                    </div>
-                    <h3 className="mb-2 text-base font-bold text-zinc-900 dark:text-white">{t(`items.${id}.title`)}</h3>
-                    <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
-                      {t(`items.${id}.description`)}
-                    </p>
-                  </div>
+                  <h3 className="mb-3 text-lg font-bold text-zinc-900 dark:text-white">{t(`items.${id}.title`)}</h3>
+                  <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{t(`items.${id}.description`)}</p>
                 </article>
               </StaggerItem>
             );

@@ -45,7 +45,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
     },
     summary: {
       en: 'If FinTech is new to you, this is the on-ramp. We establish a shared vocabulary and a clear picture of the whole board—who holds real power in the market, and how banks, regulators, and startups connect—without getting lost in heavy jargon first.',
-      ar: 'إذا كان عالم التقنية المالية جديداً عليك، فهنا نقطة الانطلاق. في هذه المرحلة نؤسس لغة مشتركة ونبني تصوراً واضحاً للصورة الكبرى؛ من هم اللاعبون في السوق؟ وكيف تترابط البنوك مع المشرّعين والشركات الناشئة؟ كل ذلك دون الغرق في المصطلحات التقنية المعقدة.',
+      ar: 'نقطة البداية لفهم منظومة التقنية المالية. استعراض أدوار اللاعبين في السوق، وكيفية ترابط البنوك مع المشرّعين والشركات الناشئة. نركز هنا على بناء نموذج ذهني واضح للصورة الكبرى والأسس التي يقوم عليها القطاع.',
     },
     outcomes: {
       en: [
