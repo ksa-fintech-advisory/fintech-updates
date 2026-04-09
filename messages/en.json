@@ -109,26 +109,26 @@
         "viewFull": "Open the learning roadmap"
       },
       "blogFeature": {
-        "kicker": "Engineering notes",
-        "title": "Technical perspective—in a direct voice.",
-        "intro": "Brief notes on distributed systems and where technology meets financial regulation—making complex architecture easier to turn into actionable solutions.",
+        "kicker": "Publishing focus",
+        "title": "What we write about",
+        "intro": "Four themes we keep coming back to in posts—read what fits your role or product, in whatever order you like.",
         "cta": "Read the blog",
         "items": {
           "regulatory": {
-            "title": "Rules & compliance",
-            "description": "How regulatory decisions affect your technical plan, with a practical read on legislative requirements—without getting lost in legal jargon."
+            "title": "Compliance & regulation",
+            "description": "How regulatory decisions land on system architecture, with legislative requirements unpacked from a technical, practitioner lens."
           },
           "product": {
-            "title": "Product & go-to-market strategy",
-            "description": "Prioritising what to build, proving the concept technically, and defining readiness to launch and scale under real risk and regulatory constraints."
+            "title": "Product build & growth",
+            "description": "Launch strategy in supervised markets, and how to prioritise technical architecture so you can scale quickly with confidence."
           },
           "engineering": {
-            "title": "Post-launch engineering",
-            "description": "Reliability, performance, and sustainable operations—from APIs and digital identity through to payment systems."
+            "title": "Infrastructure & operations",
+            "description": "Notes on reliability in financial systems—from APIs through identity and payments—built for sustainable day-two operations."
           },
           "region": {
-            "title": "Local context & supervision",
-            "description": "How regulators work in Saudi Arabia and the region, and how to align technical plans with local reality and expectations in Arab markets."
+            "title": "Local context (Saudi Arabia & the region)",
+            "description": "Connecting engineering blueprints to how local supervisors actually work, and what Arab markets expect from the technology stack."
           }
         }
       }

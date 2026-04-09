@@ -39,7 +39,7 @@ export const aboutUsData: AboutUsContent = {
         en:
           'Turn your idea into an MVP you can show investors—balancing a sharp core idea with lean running costs and a faster path to launch.',
         ar:
-          'تحويل فكرتك إلى منتج أولي (MVP) جاهز للعرض على المستثمرين. موازنة دقيقة بين الحفاظ على جوهر الفكرة وتقليل تكاليف التشغيل والسرعة في الإطلاق.',
+          'تحويل فكرتك إلى منتج أولي (MVP) جاهز لإثبات الفكرة قبل البدء الفعلي بالتطوير. موازنة دقيقة بين الحفاظ على جوهر الفكرة وتقليل تكاليف التشغيل والسرعة في الإطلاق.',
       },
     },
     {
