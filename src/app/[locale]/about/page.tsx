@@ -8,6 +8,10 @@ import { AboutMissionVision } from '@/core/components/web/about/AboutMissionVisi
 import { AboutValuesGrid } from '@/core/components/web/about/AboutValuesGrid';
 import { AboutExpertiseGrid } from '@/core/components/web/about/AboutExpertiseGrid';
 import { AboutClosingCta } from '@/core/components/web/about/AboutClosingCta';
+import { AboutPortfolioSubnav } from '@/core/components/web/about/AboutPortfolioSubnav';
+import { AboutStatsStrip } from '@/core/components/web/about/AboutStatsStrip';
+import { AboutPullQuote } from '@/core/components/web/about/AboutPullQuote';
+import { AboutConnectStrip } from '@/core/components/web/about/AboutConnectStrip';
 
 export async function generateMetadata({
   params,
@@ -33,17 +37,41 @@ export default async function AboutPage({ params }: { params: { locale: string }
     getTranslations('web.about'),
   ]);
 
+  const statRows = [
+    { label: t('statYearsLabel'), value: t('statYears') },
+    { label: t('statFocusLabel'), value: t('statFocus') },
+    { label: t('statGeoLabel'), value: t('statGeo') },
+    { label: t('statModeLabel'), value: t('statMode') },
+  ];
+
+  const subnavItems = [
+    { href: '#about-overview', label: t('portfolioNavOverview') },
+    { href: '#about-profile', label: t('portfolioNavProfile') },
+    { href: '#about-expertise', label: t('portfolioNavExpertise') },
+    { href: '#about-maal-tech', label: t('portfolioNavPlatform') },
+    { href: '#about-methodology', label: t('portfolioNavMethodology') },
+    { href: '#about-connect', label: t('portfolioNavConnect') },
+  ];
+
   return (
-    <div className="relative w-full bg-[#f5f5f7] selection:bg-primary-500/30 dark:bg-black">
-      <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_bottom,theme(colors.primary.500/5),transparent_28%)] dark:bg-[linear-gradient(to_bottom,theme(colors.primary.500/8),transparent_32%)]" />
+    <div className="relative w-full bg-[#f5f5f7] selection:bg-primary-500/20 dark:bg-black dark:selection:bg-primary-500/25">
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.03),transparent_30%)] dark:bg-[linear-gradient(to_bottom,rgba(255,255,255,0.04),transparent_32%)]" />
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+
+      <AboutPortfolioSubnav kicker={t('portfolioNavKicker')} items={subnavItems} isArabic={isArabic} />
 
       <AboutHero
         heroBadge={t('heroBadge')}
         title={t('title')}
         subtitle={t('subtitle')}
         isArabic={isArabic}
+        tagArchitecture={t('heroTagArchitecture')}
+        tagCompliance={t('heroTagCompliance')}
+        tagMarkets={t('heroTagMarkets')}
+        practiceLensesCaption={t('heroPracticeLensesCaption')}
       />
+
+      <AboutStatsStrip title={t('statsAtAGlance')} isArabic={isArabic} rows={statRows} />
 
       <AboutProfileCard
         authorName={t('authorName')}
@@ -58,6 +86,8 @@ export default async function AboutPage({ params }: { params: { locale: string }
         signatureLine={t('signatureLine')}
         isArabic={isArabic}
       />
+
+      <AboutPullQuote kicker={t('pullQuoteKicker')} quote={t('profilePrincipleStatement')} isArabic={isArabic} />
 
       <AboutExpertiseGrid
         content={content}
@@ -88,13 +118,24 @@ export default async function AboutPage({ params }: { params: { locale: string }
         sectionKicker={t('valuesSectionKicker')}
       />
 
-      <AboutClosingCta
-        locale={locale}
-        isArabic={isArabic}
-        title={t('ctaTitle')}
-        subtitle={t('ctaSubtitle')}
-        buttonLabel={t('ctaButton')}
-      />
+      <div id="about-connect" className="scroll-mt-28">
+        <AboutConnectStrip
+          locale={locale}
+          isArabic={isArabic}
+          kicker={t('connectStripKicker')}
+          title={t('connectStripTitle')}
+          linkedInLabel={t('connectLinkedIn')}
+          contactLabel={t('connectContact')}
+          blogLabel={t('connectBlog')}
+        />
+        <AboutClosingCta
+          locale={locale}
+          isArabic={isArabic}
+          title={t('ctaTitle')}
+          subtitle={t('ctaSubtitle')}
+          buttonLabel={t('ctaButton')}
+        />
+      </div>
     </div>
   );
 }
