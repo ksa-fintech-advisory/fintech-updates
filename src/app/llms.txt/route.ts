@@ -28,15 +28,6 @@ export function GET() {
 - [Learner roadmap (AR)](${base}/ar/roadmap)
 - [Contact (EN)](${base}/en/contact)
 - [Contact (AR)](${base}/ar/contact)
-
-## Products (public)
-- [Compliance checker](${base}/en/products/compliance-checker)
-- [Fee calculator](${base}/en/products/fee-calculator)
-- [Market analysis](${base}/en/products/market-analysis)
-
-## Courses (public)
-- [Courses hub](${base}/en/courses)
-- [FinTech fundamentals](${base}/en/courses/fintech-fundamentals)
 `;
 
   return new Response(body, {

@@ -1,10 +1,12 @@
 import { updateService } from '@/services/updates/staticUpdateService';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getSiteUrl, SITE_NAME } from '@/core/seo/site';
+import { getSiteUrl, SITE_DEFAULT_OG_IMAGE, SITE_NAME } from '@/core/seo/site';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FiArrowLeft, FiArrowRight, FiCalendar, FiDownload, FiExternalLink, FiFileText, FiHash, FiTag, FiUser } from 'react-icons/fi';
+import { JsonLd } from '@/core/seo/JsonLd';
+import { updateArticleGraphJsonLd } from '@/core/seo/structuredData';
 
 interface UpdateDetailPageProps {
   params: {
@@ -71,13 +73,15 @@ export async function generateMetadata({ params: { slug, locale } }: UpdateDetai
         locale: isArabic ? 'ar_SA' : 'en_US',
         alternateLocale: isArabic ? ['en_US'] : ['ar_SA'],
         publishedTime: update.publishedAt,
-        images: update.featuredImage ? [{ url: update.featuredImage }] : [],
+        images: update.featuredImage
+          ? [{ url: update.featuredImage }]
+          : [{ url: SITE_DEFAULT_OG_IMAGE }],
       },
       twitter: {
         card: 'summary_large_image',
         title: update.title,
         description,
-        images: update.featuredImage ? [update.featuredImage] : ['/og-image.png'],
+        images: update.featuredImage ? [update.featuredImage] : [SITE_DEFAULT_OG_IMAGE],
       },
     };
   } catch (error) {
@@ -187,7 +191,15 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
 
       {/* Main Content Grid */}
       <main className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-12 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <JsonLd
+          data={updateArticleGraphJsonLd({
+            base: getSiteUrl(),
+            locale,
+            slug,
+            update,
+          })}
+        />
+        <article className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
           {/* Left Content (8 cols) */}
           <div className="lg:col-span-8 space-y-12">
@@ -310,7 +322,7 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
             </div>
           </div>
 
-        </div>
+        </article>
       </main>
     </div>
   );
