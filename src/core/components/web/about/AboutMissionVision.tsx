@@ -1,6 +1,6 @@
 import type { AboutUsContent } from '@/core/types/web/aboutUs';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
-import { FiTarget, FiEye } from 'react-icons/fi';
+import { FiHelpCircle, FiTarget } from 'react-icons/fi';
 
 type Props = {
   content: AboutUsContent;
@@ -8,7 +8,11 @@ type Props = {
   strategicKicker: string;
   missionVisionHeading: string;
   missionLabel: string;
+  missionBody: string;
   visionLabel: string;
+  whyKnowledge: string;
+  whyGuidance: string;
+  whyEnablement: string;
   terminalPrompt: string;
   terminalFile: string;
 };
@@ -19,13 +23,16 @@ export function AboutMissionVision({
   strategicKicker,
   missionVisionHeading,
   missionLabel,
+  missionBody,
   visionLabel,
+  whyKnowledge,
+  whyGuidance,
+  whyEnablement,
   terminalPrompt,
   terminalFile,
 }: Props) {
-  const mission = isArabic ? content.mission.ar : content.mission.en;
-  const vision = isArabic ? content.vision.ar : content.vision.en;
   const description = isArabic ? content.description.ar : content.description.en;
+  const whyItems = [whyKnowledge, whyGuidance, whyEnablement];
 
   return (
     <section className="relative z-10 border-t border-zinc-200 bg-zinc-50/50 py-20 dark:border-zinc-800 dark:bg-zinc-900/50 md:py-28">
@@ -49,24 +56,31 @@ export function AboutMissionVision({
                 </h3>
               </div>
               <p className="border-s-2 border-primary-500/30 ps-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-                {mission}
+                {missionBody}
               </p>
             </div>
           </StaggerItem>
 
           <StaggerItem>
-            <div className="press-scale group h-full rounded-xl border border-zinc-200 bg-white p-7 transition-all duration-300 hover:border-primary-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-primary-500/30 md:p-8">
+            <div
+              className="press-scale group h-full rounded-xl border border-zinc-200 bg-white p-7 transition-all duration-300 hover:border-primary-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-primary-500/30 md:p-8"
+              dir={isArabic ? 'rtl' : 'ltr'}
+            >
               <div className="mb-5 flex items-center gap-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-500/10 text-primary-600 dark:text-primary-400">
-                  <FiEye className="h-5 w-5" />
+                  <FiHelpCircle className="h-5 w-5" />
                 </div>
                 <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
                   {visionLabel}
                 </h3>
               </div>
-              <p className="border-s-2 border-primary-500/30 ps-4 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
-                {vision}
-              </p>
+              <ul className="space-y-3 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+                {whyItems.map((line, idx) => (
+                  <li key={idx} className="border-s-2 border-primary-500/30 ps-4">
+                    {line}
+                  </li>
+                ))}
+              </ul>
             </div>
           </StaggerItem>
         </StaggerContainer>

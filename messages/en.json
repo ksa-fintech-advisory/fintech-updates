@@ -88,8 +88,8 @@
         "title": "Professional services",
         "items": {
           "consulting": {
-            "title": "Consulting & systems architecture ",
-            "description": "We review requirements together and shape system architecture. The goal is direct: choose the right technologies, reduce risk, and build a financial system that survives real load and holds up with supervisors—without engineering complexity you do not need.",
+            "title": "Solutions & product engineering",
+            "description": "Technical partner for building and evolving FinTech products—from requirements review and architecture design to an MVP fit for investor conversations—with engineering support for your team so delivery stays high quality and aligned with supervisors.",
             "cta": "Request technical consulting"
           },
           "enablement": {
@@ -109,26 +109,26 @@
         "viewFull": "Open the learning roadmap"
       },
       "blogFeature": {
-        "kicker": "// THE_BLOG",
-        "title": "Technical perspective—in a quiet, direct voice",
-        "intro": "Away from noisy buzzwords, I write deeper breakdowns of what happens behind the screen: emerging tech, distributed systems architecture, and how regulation reshapes engineering choices. The aim is real financial–technology literacy in our region—in language that fits developers, product leads, and curious readers alike.",
+        "kicker": "Engineering notes",
+        "title": "Technical perspective—in a direct voice.",
+        "intro": "Brief notes on distributed systems and where technology meets financial regulation—making complex architecture easier to turn into actionable solutions.",
         "cta": "Read the blog",
         "items": {
           "regulatory": {
-            "title": "Rules & supervision",
-            "description": "What a regulatory change usually means for your plan and your controls—explained straight, to inform not overwhelm."
+            "title": "Rules & compliance",
+            "description": "How regulatory decisions affect your technical plan, with a practical read on legislative requirements—without getting lost in legal jargon."
           },
           "product": {
-            "title": "Product & go-to-market",
-            "description": "How to think about launch when legal and risk sit at the table: what waits, what you prove first, and when “ready” is fair before you scale."
+            "title": "Product & go-to-market strategy",
+            "description": "Prioritising what to build, proving the concept technically, and defining readiness to launch and scale under real risk and regulatory constraints."
           },
           "engineering": {
-            "title": "Systems & day-two ops",
-            "description": "APIs, identity, payments, reliability—what runs behind the screen and matters to anyone who builds or depends on the product."
+            "title": "Post-launch engineering",
+            "description": "Reliability, performance, and sustainable operations—from APIs and digital identity through to payment systems."
           },
           "region": {
-            "title": "Saudi Arabia & the Arab world",
-            "description": "Our local context—schemes, regulators, how people expect things to work—because literacy starts with “how it works here,” plus ideas that still travel."
+            "title": "Local context & supervision",
+            "description": "How regulators work in Saudi Arabia and the region, and how to align technical plans with local reality and expectations in Arab markets."
           }
         }
       }
@@ -196,22 +196,30 @@
       "subtitle": "I'm Mohammed Abdo. Most of my time sits in the messy middle where FinTech ambition meets regulatory pressure. As a software and systems architect, I do not stop at shipping code—I help teams make sharper architecture choices, build scalable platforms, and move compliance discussions forward with quiet confidence.",
       "heroBadge": "// ABOUT_ME",
       "authorName": "Mohammed Abdo",
-      "authorTitle": "Software architect & engineer · Maal Tech",
-      "authorBio": "One person behind this site—directly with you: public engineering notes on the blog, a roadmap for your learning path, and hands-on consulting when you need less guesswork and a foundation that still holds after launch.",
+      "authorTitle": "Software engineer (FinTech Architect) · Maal Tech",
+      "authorBio": "With 5+ years building financial systems. I work where systems engineering meets regulation and compliance.",
+      "profilePrincipleHeading": "The principle",
+      "profilePrincipleStatement": "In FinTech, code alone is not enough—architecture is what sustains growth and compliance.",
+      "profileAudienceCompanies": "For companies: balancing engineering decisions with launch speed and regulatory rigour.",
+      "profileAudienceDevelopers": "For developers: a shorter path to understanding and building complex financial systems.",
       "avatarAlt": "Portrait of Mohammed Abdo",
       "founderBadge": "ME",
       "signatureLine": "You work with me—not a faceless team",
-      "strategicKicker": "// FROM_THE_FIELD",
-      "missionVisionHeading": "From the field—straight to you",
-      "missionLabel": "Where the experience formed",
-      "visionLabel": "Maal Tech today",
+      "strategicKicker": "// ABOUT_MAAL_TECH",
+      "missionVisionHeading": "About Maal Tech",
+      "missionLabel": "Mission",
+      "missionBody": "A platform focused on simplifying and engineering financial technology: we combine learning content for developers with advisory solutions for companies—so financial systems are built to last and stay aligned with regulation.",
+      "visionLabel": "Why Maal Tech?",
+      "whyKnowledge": "Knowledge: real engineering field notes.",
+      "whyGuidance": "Guidance: stepped learning paths (roadmap).",
+      "whyEnablement": "Enablement: technical consulting for MVP build and architecture design.",
       "terminalPrompt": "$ cat",
       "terminalFile": "journal.txt",
-      "principlesHeading": "How I work (you deal with me—not a faceless team)",
+      "principlesHeading": "Technical assistance",
       "expertiseKicker": "// TECHNICAL_ANGLES",
       "expertiseHeading": "Technical angles I keep unpacking",
-      "ctaTitle": "Want to go deeper?",
-      "ctaSubtitle": "Reach out for consulting, architecture reviews, or mentorship—or keep reading the blog.",
+      "ctaTitle": "Get in touch to deliver",
+      "ctaSubtitle": "Available for consulting, systems reviews, and one-to-one mentorship. For more depth, follow the blog field notes.",
       "ctaButton": "Get in touch"
     },
     "contact": {

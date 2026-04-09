@@ -1,11 +1,15 @@
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
 import { ProfileAvatar } from '@/core/components/web/layout/ProfileAvatar';
-import { FiMapPin, FiMail } from 'react-icons/fi';
+import { FiMail } from 'react-icons/fi';
 
 type Props = {
   authorName: string;
   authorTitle: string;
   authorBio: string;
+  principleHeading: string;
+  principleStatement: string;
+  audienceCompanies: string;
+  audienceDevelopers: string;
   avatarAlt: string;
   founderBadge: string;
   signatureLine: string;
@@ -16,6 +20,10 @@ export function AboutProfileCard({
   authorName,
   authorTitle,
   authorBio,
+  principleHeading,
+  principleStatement,
+  audienceCompanies,
+  audienceDevelopers,
   avatarAlt,
   founderBadge,
   signatureLine,
@@ -71,6 +79,22 @@ export function AboutProfileCard({
                   <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-lg">
                     {authorBio}
                   </p>
+
+                  <div
+                    className="mt-8 rounded-xl border border-zinc-200 bg-zinc-50/80 p-6 text-start dark:border-zinc-800 dark:bg-zinc-950/40"
+                    dir={isArabic ? 'rtl' : 'ltr'}
+                  >
+                    <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+                      {principleHeading}
+                    </h3>
+                    <p className="mb-5 text-base font-medium leading-relaxed text-zinc-800 dark:text-zinc-200">
+                      {principleStatement}
+                    </p>
+                    <ul className="space-y-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                      <li className="border-s-2 border-primary-500/40 ps-4">{audienceCompanies}</li>
+                      <li className="border-s-2 border-primary-500/40 ps-4">{audienceDevelopers}</li>
+                    </ul>
+                  </div>
 
                   <div className="mt-8 flex items-center gap-4 border-t border-zinc-100 pt-6 dark:border-zinc-800">
                     <div className="hidden h-px flex-1 bg-zinc-200 md:block dark:bg-zinc-800" />

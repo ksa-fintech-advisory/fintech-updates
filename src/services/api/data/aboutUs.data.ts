@@ -3,54 +3,54 @@ import { AboutUsContent } from '@/core/types/web/aboutUs';
 export const aboutUsData: AboutUsContent = {
   mission: {
     en:
-      "My experience didn't start in slide decks—it was forged under delivery pressure: distributed systems (including microservices), payment stacks, and automated investing platforms (robo-advisory). I've seen how fuzzy requirements sink programmes—and how supervisors expect hardened infrastructure, not promises.",
+      'A platform focused on simplifying and engineering financial technology: we combine learning content for developers with advisory solutions for companies—so financial systems are built to last and stay aligned with regulation.',
     ar:
-      'خبرة ميدانية تحت ضغط التسليم: أنظمة موزعة، مدفوعات، ومنصّات استثمار آلي. المتطلبات الضبابية تُخرّب البرامج؛ والمشرّع يتوقع بنية تحتية تتحمّل المراجعة لا وعوداً على ورق.',
+      'منصة شخصية أهدف من خلالها إلى تبسيط هندسة التقنية المالية؛ عبر تقديم محتوى تعليمي للمطورين، وحلول استشارية للشركات، لضمان بناء أنظمة متينة ومطابقة للتشريعات.',
   },
   vision: {
     en:
-      'Through Maal Tech I put that field experience to work for you: the blog is my engineering notebook in public, the roadmap is your guide, and my consulting is where we reduce guesswork in your programme—so financial systems do not fall apart after launch week.',
+      'Knowledge: real engineering field notes. Guidance: stepped learning paths (roadmap). Enablement: technical consulting for MVP build and architecture design.',
     ar:
-      '«مال تك» يضع هذه الخبرة في خدمتك: مدونة كسجلّ هندسي، خارطة تعلم كدليل للبداية، واستشارات تقلّل التخمين — لنظام مالي لا ينهار بعد أسبوع الإطلاق.',
+      'المعرفة: تجارب هندسية واقعية (في المدونة). التوجيه: مسارات تعلم متدرجة (خارطة طريق). التمكين: استشارات تقنية لبناء الـ MVP وتصميم المعمارية.',
   },
   description: {
     en:
       'journal.txt — field notes on regulated FinTech, architecture trade-offs, and what actually holds up in review.',
     ar:
-      'journal.txt — مذكرات ميدانية عن التقنية المالية الخاضعة للتنظيم، ومفاضلات المعمارية، وما يصمد فعلياً عند المراجعة.',
+      'journal.txt —توثيق لتجارب بناء الأنظمة المالية؛ نناقش هنا المفاضلات الهندسية، معايير الامتثال، وكيفية تحويل الأنظمة المعقدة إلى منتجات قابلة للتوسع.',
   },
   values: [
     {
       id: '1',
-      iconKey: 'candor',
-      title: { en: 'Radical candor', ar: 'الوضوح من البداية' },
+      iconKey: 'depth',
+      title: { en: 'Architecture & compliance', ar: 'المعمارية والامتثال' },
       description: {
         en:
-          'I will be direct when proposed architecture is fragile, or when deferring technical debt will cost far more later. I sell you the sound path—not the easy story.',
+          'System architecture shaped to your business and what regulators expect. The focus is scalable infrastructure and meeting compliance expectations from day one.',
         ar:
-          'تقييم صريح عندما تكون البنية ضعيفة أو عندما يكون تأجيل الدين التقني كلفة لاحقة. المسار الأصلح، لا الأسهل في العرض.',
+          'تصميم معمارية الأنظمة بما يتناسب مع طبيعة نشاطك ومتطلبات الجهات التنظيمية. نركز على بناء بنية تحتية تقبل التوسع وتلبي معايير الامتثال من اليوم الأول.',
       },
     },
     {
       id: '2',
       iconKey: 'lean',
-      title: { en: 'Engineering without excess', ar: 'هندسة بلا تعقيد زائد' },
+      title: { en: 'MVP build & prototyping', ar: 'بناء الـ MVP والنمذجة' },
       description: {
         en:
-          'Measured bets: an MVP built with intent, hypotheses tested at clear checkpoints, and an architecture that can grow—without unjustified complexity.',
+          'Turn your idea into an MVP you can show investors—balancing a sharp core idea with lean running costs and a faster path to launch.',
         ar:
-          'MVP بوعي، فرضيات تُختبر عند محطات واضحة، ومعمارية تنمو مع النمو — بلا تعقيد غير مبرر.',
+          'تحويل فكرتك إلى منتج أولي (MVP) جاهز للعرض على المستثمرين. موازنة دقيقة بين الحفاظ على جوهر الفكرة وتقليل تكاليف التشغيل والسرعة في الإطلاق.',
       },
     },
     {
       id: '3',
       iconKey: 'partner',
-      title: { en: 'With you in delivery', ar: 'معك في التنفيذ' },
+      title: { en: 'Review & technical support', ar: 'المراجعة والدعم التقني' },
       description: {
         en:
-          'Not a "PDF and goodbye" handoff. I step into planning, architecture review, and steering technical conversations only when the programme actually needs that depth.',
+          'Full engineering review of your current stack—code and architecture. I act as an extra pair of hands for your team: unblocking hard technical issues and keeping execution quality high.',
         ar:
-          'عند الحاجة، ممكن أشارك مع الفريق بالتخطيط، مراجعة المعمارية والنقاش الفني اللي يوجّه القرار  ',
+          'مراجعة هندسية شاملة لمعمارية مشروعك الحالي (Code & Architecture Review). أعمل كذراع داعم لفريقك التقني لحل العقد البرمجية وضمان جودة التنفيذ.',
       },
     },
     // {
