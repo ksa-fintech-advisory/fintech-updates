@@ -1,17 +1,19 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { usePathname, useSearchParams } from 'next/navigation';
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-/**
- * Lightweight route progress bar for App Router.
- * Does not patch history (avoids conflicts with Next.js App Router + Google Analytics).
- */
-export function NavigationProgress() {
+function NavigationProgressInner() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const routeKey = useMemo(() => {
+    const q = searchParams.toString();
+    return q ? `${pathname}?${q}` : pathname;
+  }, [pathname, searchParams]);
+
   const [widthPct, setWidthPct] = useState(0);
   const pendingRef = useRef(false);
-  const pathRef = useRef<string | null>(null);
+  const routeRef = useRef<string | null>(null);
   const fallbackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const doneTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -34,23 +36,22 @@ export function NavigationProgress() {
   }, [clearTimers]);
 
   useEffect(() => {
-    if (pathRef.current === null) {
-      pathRef.current = pathname;
+    if (routeRef.current === null) {
+      routeRef.current = routeKey;
       return;
     }
-    if (pathRef.current === pathname) return;
-    pathRef.current = pathname;
+    if (routeRef.current === routeKey) return;
+    routeRef.current = routeKey;
 
     if (pendingRef.current) {
       finishBar();
     } else {
       clearTimers();
-      // Back/forward without a captured pointerdown: short pulse
       setWidthPct(30);
       requestAnimationFrame(() => setWidthPct(100));
       doneTimerRef.current = setTimeout(() => setWidthPct(0), 320);
     }
-  }, [pathname, finishBar, clearTimers]);
+  }, [routeKey, finishBar, clearTimers]);
 
   useEffect(() => {
     const shouldHandle = (a: HTMLAnchorElement) => {
@@ -113,5 +114,16 @@ export function NavigationProgress() {
         }}
       />
     </div>
+  );
+}
+
+/**
+ * Suspense required by Next.js when using useSearchParams (query changes must complete the bar, e.g. blog category).
+ */
+export function NavigationProgress() {
+  return (
+    <Suspense fallback={null}>
+      <NavigationProgressInner />
+    </Suspense>
   );
 }
