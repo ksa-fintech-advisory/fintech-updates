@@ -130,7 +130,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
                         ${
                           button.variant === 'primary'
                             ? 'bg-white text-black shadow-apple hover:bg-zinc-100 hover:shadow-apple-hover'
-                            : 'border border-black/10 dark:border-white/10 text-zinc-900 dark:text-white glass hover:bg-white/80 dark:hover:bg-white/10'
+                            : 'border-2 border-white/80 bg-transparent text-white shadow-none hover:border-white hover:bg-white/[0.12]'
                         }
                       `}
                     >

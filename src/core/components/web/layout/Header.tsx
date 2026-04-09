@@ -75,7 +75,9 @@ export default function Header() {
         - Blurry (Glassmorphism)
         - High Contrast Borders 
       */}
-      <header className="sticky top-0 z-50 w-full border-b border-grey-200 dark:border-grey-800 bg-white/80 pt-[max(0px,env(safe-area-inset-top))] dark:bg-black/80 backdrop-blur-xl">
+      <header
+        className={`glass-nav-header sticky top-0 w-full border-b pt-[max(0px,env(safe-area-inset-top))] md:z-50 ${mobileMenuOpen ? 'z-[70]' : 'z-50'}`}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex min-h-[3.5rem] items-center justify-between py-1 sm:py-0">
 
@@ -184,28 +186,28 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Mobile: iOS-style bottom sheet + dimmed backdrop (md+) hidden */}
+      {/* Mobile: panel below header (common mobile-web pattern — aligns with menu tap) */}
       {mobileMenuOpen ? (
         <div
-          className="fixed inset-0 z-[60] flex flex-col justify-end md:hidden"
+          className="fixed inset-0 z-[60] md:hidden"
           role="dialog"
           aria-modal="true"
           aria-label={isArabic ? 'القائمة' : 'Menu'}
         >
           <button
             type="button"
-            className="absolute inset-0 bg-black/45 backdrop-blur-md animate-mobile-nav-backdrop motion-reduce:animate-none motion-reduce:opacity-100"
+            className="glass-nav-backdrop absolute inset-0 animate-mobile-nav-backdrop motion-reduce:animate-none motion-reduce:opacity-100"
             aria-label={isArabic ? 'إغلاق القائمة' : 'Close menu'}
             onClick={() => setMobileMenuOpen(false)}
           />
-          <div className="relative z-10 mx-auto w-full max-h-[min(88dvh,calc(100svh-4rem))] overflow-hidden rounded-t-[1.25rem] border border-grey-200/90 border-b-0 bg-white/95 shadow-2xl backdrop-blur-2xl dark:border-grey-800 dark:bg-[#1c1c1e]/96 animate-mobile-nav-sheet motion-reduce:animate-none">
-            <div className="flex max-h-[inherit] flex-col pt-2">
-              <div className="mx-auto mb-3 h-1 w-9 shrink-0 rounded-full bg-grey-300 dark:bg-grey-600" aria-hidden />
-              <nav
-                className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-1"
-                aria-label={isArabic ? 'التنقل الرئيسي' : 'Primary navigation'}
-              >
-                <div className="space-y-2 rounded-2xl bg-grey-100/95 p-1.5 dark:bg-grey-900/55">
+          <div
+            className="glass-nav-panel absolute inset-x-0 bottom-0 top-[calc(3.5rem+max(0px,env(safe-area-inset-top)))] flex min-h-0 flex-col overflow-hidden border-t animate-mobile-nav-panel motion-reduce:animate-none"
+          >
+            <nav
+              className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3 pb-[max(1rem,env(safe-area-inset-bottom))]"
+              aria-label={isArabic ? 'التنقل الرئيسي' : 'Primary navigation'}
+            >
+                <div className="glass-nav-inset space-y-2 rounded-2xl p-1.5">
                   {navItems.map((item: any) => (
                     <div key={item.key}>
                       {item.hasMegaMenu ? (
@@ -215,7 +217,7 @@ export default function Header() {
                             onClick={() => setHoveredItem(hoveredItem === item.key ? null : item.key)}
                             className={`
                               flex min-h-[44px] w-full items-center justify-between rounded-xl px-3 py-2.5 text-start text-base font-semibold transition-colors
-                              ${hoveredItem === item.key ? 'bg-white text-grey-900 dark:bg-grey-800 dark:text-white' : 'text-grey-700 dark:text-grey-300'}
+                              ${hoveredItem === item.key ? 'glass-nav-row-active text-grey-900 dark:text-white' : 'text-grey-700 dark:text-grey-300'}
                             `}
                           >
                             {item.label}
@@ -232,14 +234,14 @@ export default function Header() {
                                 <Link
                                   href={`/${locale}/products/compliance-checker`}
                                   onClick={() => setMobileMenuOpen(false)}
-                                  className="flex min-h-[44px] items-center rounded-xl px-3 py-2 text-sm text-grey-700 active:bg-white dark:text-grey-300 dark:active:bg-grey-800"
+                                  className="glass-nav-link flex min-h-[44px] items-center rounded-xl px-3 py-2 text-sm text-grey-700 dark:text-grey-300"
                                 >
                                   {isArabic ? 'فاحص الامتثال' : 'Compliance Checker'}
                                 </Link>
                                 <Link
                                   href={`/${locale}/products/fee-calculator`}
                                   onClick={() => setMobileMenuOpen(false)}
-                                  className="flex min-h-[44px] items-center rounded-xl px-3 py-2 text-sm text-grey-700 active:bg-white dark:text-grey-300 dark:active:bg-grey-800"
+                                  className="glass-nav-link flex min-h-[44px] items-center rounded-xl px-3 py-2 text-sm text-grey-700 dark:text-grey-300"
                                 >
                                   {isArabic ? 'حاسبة الرسوم' : 'Fee Calculator'}
                                 </Link>
@@ -250,7 +252,7 @@ export default function Header() {
                                 <Link
                                   key={course.id}
                                   href={`/${locale}/courses/${course.slug}`}
-                                  className="block rounded-xl px-3 py-2.5 active:bg-white dark:active:bg-grey-800"
+                                  className="glass-nav-link block rounded-xl px-3 py-2.5"
                                   onClick={() => setMobileMenuOpen(false)}
                                 >
                                   <div className="text-sm font-semibold text-grey-900 dark:text-grey-100">{course.title[lang]}</div>
@@ -270,9 +272,9 @@ export default function Header() {
                         <Link
                           href={`/${locale}${item.href}`}
                           onClick={() => setMobileMenuOpen(false)}
-                          className={`flex min-h-[44px] items-center rounded-xl px-3 py-2.5 text-base font-medium transition-colors active:bg-white dark:active:bg-grey-800 ${
+                          className={`glass-nav-link flex min-h-[44px] items-center rounded-xl px-3 py-2.5 text-base font-medium transition-colors ${
                             isActive(item.href)
-                              ? 'bg-white font-semibold text-grey-900 dark:bg-grey-800 dark:text-white'
+                              ? 'glass-nav-row-active font-semibold text-grey-900 dark:text-white'
                               : 'text-grey-700 dark:text-grey-300'
                           }`}
                         >
@@ -286,14 +288,13 @@ export default function Header() {
                 <Link
                   href={`/${otherLocale}${currentPath}`}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="mt-4 flex min-h-[48px] w-full items-center justify-center gap-2 rounded-2xl border border-grey-200/90 bg-white/80 px-4 py-3 text-sm font-semibold text-grey-800 backdrop-blur-sm dark:border-grey-700 dark:bg-grey-900/50 dark:text-grey-200"
+                  className="glass-nav-inset mt-4 flex min-h-[48px] w-full items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold text-grey-800 dark:text-grey-200"
                 >
                   <FiGlobe className="h-5 w-5 shrink-0 text-grey-500" aria-hidden />
                   <span className="font-mono">{otherLocale.toUpperCase()}</span>
                   <span className="text-grey-500">{isArabic ? 'تبديل اللغة' : 'Language'}</span>
                 </Link>
               </nav>
-            </div>
           </div>
         </div>
       ) : null}
