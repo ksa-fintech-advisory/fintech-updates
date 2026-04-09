@@ -1,6 +1,6 @@
 import type { AboutUsContent } from '@/core/types/web/aboutUs';
 import { ABOUT_EXPERTISE_ICONS } from '@/core/components/web/about/aboutUsIconMaps';
-import { StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
+import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
 
 type Props = {
   content: AboutUsContent;
@@ -11,39 +11,58 @@ type Props = {
 
 export function AboutExpertiseGrid({ content, isArabic, expertiseKicker, expertiseHeading }: Props) {
   return (
-    <section className="relative z-10 border-t border-zinc-200 bg-zinc-50 py-20 dark:border-zinc-800 dark:bg-zinc-900 md:py-28">
+    <section
+      id="about-expertise"
+      className="scroll-mt-28 relative z-10 py-24 md:py-32 bg-[#fcfcfc] dark:bg-black"
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-14 flex flex-col items-start gap-4 md:flex-row md:items-end md:justify-between">
-          <div>
-            <span className="mb-2 block font-mono text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
-              {expertiseKicker}
-            </span>
-            <h3 className="text-3xl font-bold text-zinc-900 dark:text-white md:text-4xl">{expertiseHeading}</h3>
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          
+          <div className="lg:sticky lg:top-32 lg:col-span-4">
+            <AnimatedSection>
+              <div className="mb-6 flex items-center gap-4">
+                <div className="h-px w-8 bg-primary-500/50" />
+                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
+                  {expertiseKicker}
+                </span>
+              </div>
+              <h3 className="text-balance text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl lg:text-5xl">
+                {expertiseHeading}
+              </h3>
+            </AnimatedSection>
           </div>
-        </div>
 
-        <StaggerContainer className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {content.expertise.map((area) => {
-            const Icon = ABOUT_EXPERTISE_ICONS[area.iconKey];
-            return (
-              <StaggerItem key={area.id}>
-                <div className="press-scale group flex items-start gap-5 rounded-xl border border-zinc-200 bg-white p-6 transition-all duration-300 hover:border-primary-500/40 hover:shadow-md dark:border-zinc-800 dark:bg-black dark:hover:border-primary-500/30">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-zinc-100 text-zinc-700 transition-colors group-hover:bg-primary-500/10 group-hover:text-primary-600 dark:bg-zinc-800 dark:text-zinc-300 dark:group-hover:bg-primary-500/10 dark:group-hover:text-primary-400">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <h4 className="mb-1.5 text-base font-bold text-zinc-900 dark:text-white">
-                      {isArabic ? area.title.ar : area.title.en}
-                    </h4>
-                    <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
-                      {isArabic ? area.description.ar : area.description.en}
-                    </p>
-                  </div>
-                </div>
-              </StaggerItem>
-            );
-          })}
-        </StaggerContainer>
+          <div className="lg:col-span-8">
+            <StaggerContainer className="flex flex-col">
+              {content.expertise.map((area, idx) => {
+                const Icon = ABOUT_EXPERTISE_ICONS[area.iconKey];
+                return (
+                  <StaggerItem key={area.id}>
+                    <div className="group relative flex flex-col gap-6 border-b border-zinc-200/60 py-10 transition-colors hover:border-primary-500/50 dark:border-zinc-800/60 dark:hover:border-primary-500/50">
+                      <div className="flex items-center justify-between">
+                        <span className="font-mono text-xs font-bold text-zinc-300 transition-colors group-hover:text-primary-500 dark:text-zinc-700 dark:group-hover:text-primary-400">
+                          {String(idx + 1).padStart(2, '0')}
+                        </span>
+                        <div className="flex h-12 w-12 items-center justify-center rounded-full border border-zinc-200/50 bg-white text-zinc-500 transition-colors group-hover:border-primary-500/20 group-hover:bg-primary-50 group-hover:text-primary-600 dark:border-zinc-800/50 dark:bg-zinc-900 dark:text-zinc-500 dark:group-hover:border-primary-500/20 dark:group-hover:bg-primary-500/10 dark:group-hover:text-primary-400">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className="mb-4 text-2xl font-bold text-zinc-900 dark:text-white">
+                          {isArabic ? area.title.ar : area.title.en}
+                        </h4>
+                        <p className="max-w-2xl text-lg leading-[1.8] text-zinc-600 dark:text-zinc-400">
+                          {isArabic ? area.description.ar : area.description.en}
+                        </p>
+                      </div>
+                    </div>
+                  </StaggerItem>
+                );
+              })}
+            </StaggerContainer>
+          </div>
+
+        </div>
       </div>
     </section>
   );

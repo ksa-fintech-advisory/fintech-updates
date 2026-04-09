@@ -31,86 +31,96 @@ export function AboutProfileCard({
   isArabic,
 }: Props) {
   return (
-    <section className="relative z-10 py-14 md:py-28">
+    <section id="about-profile" className="scroll-mt-28 relative z-10 py-16 md:py-24 border-b border-zinc-200/50 dark:border-zinc-800/50 bg-[#fcfcfc] dark:bg-black">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedSection>
-          <div className="apple-card group relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-zinc-200/90 bg-white shadow-apple transition-shadow duration-500 hover:shadow-apple-hover dark:border-zinc-800 dark:bg-zinc-900">
-            {/* Top accent bar — full-width gradient instead of small corner stripe */}
-            <div className="h-1 w-full bg-gradient-to-r from-primary-500 via-primary-400 to-primary-600" />
-
-            <div className="p-6 sm:p-8 md:p-12 lg:p-14">
-              <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-12">
-                {/* Avatar area */}
-                <div className="relative shrink-0">
-                  <div className="relative">
-                    <ProfileAvatar
-                      size={176}
-                      alt={avatarAlt}
-                      fallbackText={authorName}
-                      variant="rounded"
-                      className="shadow-md ring-4 ring-zinc-100 dark:ring-zinc-800"
-                      authorNameFont
-                    />
-                    {/* Availability dot */}
-                    <div className="absolute bottom-2 end-2 h-4 w-4 rounded-full border-2 border-white bg-primary-500 dark:border-zinc-900" />
-                  </div>
-                  <div className="mt-3 flex justify-center">
-                    <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-400">
-                      {founderBadge}
-                    </span>
-                  </div>
+        <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          
+          {/* Sticky Sidebar Profile */}
+          <div className="lg:sticky lg:top-32 lg:col-span-4">
+            <AnimatedSection>
+              <div className="relative mb-6 inline-block">
+                <ProfileAvatar
+                  size={160}
+                  alt={avatarAlt}
+                  fallbackText={authorName}
+                  variant="rounded"
+                  className="grayscale hover:grayscale-0 transition-all duration-500"
+                  authorNameFont
+                />
+                <div className="absolute -bottom-3 -end-3 rounded bg-zinc-900 px-2 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-white dark:bg-white dark:text-zinc-900 shadow-sm">
+                  {founderBadge}
                 </div>
+              </div>
 
-                {/* Content */}
-                <div className="min-w-0 flex-1 text-center md:text-start">
-                  <h2 className="mb-1.5 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
-                    <AuthorNameText isArabic={isArabic} className="text-[1.06em] md:text-[1.05em]">
-                      {authorName}
-                    </AuthorNameText>
-                  </h2>
-                  <p className="mb-4 text-sm font-medium text-primary-600 dark:text-primary-400">
-                    {authorTitle}
-                  </p>
+              <h2 className="mb-2 mt-4 text-2xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-3xl">
+                <AuthorNameText isArabic={isArabic} className="text-[1.06em]">
+                  {authorName}
+                </AuthorNameText>
+              </h2>
+              <p className="mb-6 font-mono text-xs uppercase tracking-widest text-primary-600 dark:text-primary-400">
+                {authorTitle}
+              </p>
+              
+              <div className="mb-6 h-px w-12 bg-zinc-200 dark:bg-zinc-800" />
+              
+              <div className="flex items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400">
+                <FiMail className="h-4 w-4 text-zinc-400" />
+                <span className="font-mono text-[10px] uppercase tracking-widest">
+                  {isArabic ? 'متاح للاستشارة' : 'Available for consulting'}
+                </span>
+              </div>
+            </AnimatedSection>
+          </div>
 
-                  {/* Quick info pills */}
-                  <div className="mb-6 flex flex-wrap justify-center gap-2 md:justify-start">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">
-                      <FiMail className="h-3 w-3" />
-                      {isArabic ? 'متاح للاستشارة' : 'Available for consulting'}
-                    </span>
-                  </div>
-
-                  <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-lg">
-                    {authorBio}
-                  </p>
-
-                  <div
-                    className="mt-8 rounded-xl border border-zinc-200 bg-zinc-50/80 p-6 text-start dark:border-zinc-800 dark:bg-zinc-950/40"
-                    dir={isArabic ? 'rtl' : 'ltr'}
-                  >
-                    <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
-                      {principleHeading}
-                    </h3>
-                    <p className="mb-5 text-base font-medium leading-relaxed text-zinc-800 dark:text-zinc-200">
-                      {principleStatement}
+          {/* Right Column Content */}
+          <div className="lg:col-span-8 lg:pt-4">
+            <AnimatedSection delay={0.1}>
+              <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
+                {isArabic ? '// النبذة' : '// PROFILE'}
+              </h3>
+              
+              <p className="mb-16 text-xl font-medium leading-[1.7] text-zinc-800 dark:text-zinc-200 md:text-2xl md:leading-[1.7]">
+                {authorBio}
+              </p>
+              
+              <div className="relative border-s-2 border-primary-500/30 ps-6 md:ps-8" dir={isArabic ? 'rtl' : 'ltr'}>
+                <h3 className="mb-4 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
+                  {principleHeading}
+                </h3>
+                <blockquote className="mb-10 text-2xl font-medium leading-snug tracking-tight text-zinc-900 dark:text-zinc-100 md:text-3xl md:leading-[1.3]">
+                  &quot;{principleStatement}&quot;
+                </blockquote>
+                
+                <div className="space-y-8">
+                  <div className="rounded-2xl border border-zinc-200/60 bg-zinc-50/50 p-6 dark:border-zinc-800/60 dark:bg-zinc-900/30">
+                    <div className="mb-3 font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-900 dark:text-zinc-100">
+                      01 / {isArabic ? 'للشركات' : 'Organisations'}
+                    </div>
+                    <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl">
+                      {audienceCompanies}
                     </p>
-                    <ul className="space-y-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-                      <li className="border-s-2 border-primary-500/40 ps-4">{audienceCompanies}</li>
-                      <li className="border-s-2 border-primary-500/40 ps-4">{audienceDevelopers}</li>
-                    </ul>
                   </div>
-
-                  <div className="mt-8 flex items-center gap-4 border-t border-zinc-100 pt-6 dark:border-zinc-800">
-                    <div className="hidden h-px flex-1 bg-zinc-200 md:block dark:bg-zinc-800" />
-                    <span className="w-full text-center text-xs font-mono uppercase tracking-widest text-zinc-400 md:w-auto md:text-start">
-                      {signatureLine}
-                    </span>
+                  <div className="rounded-2xl border border-zinc-200/60 bg-zinc-50/50 p-6 dark:border-zinc-800/60 dark:bg-zinc-900/30">
+                    <div className="mb-3 font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-900 dark:text-zinc-100">
+                      02 / {isArabic ? 'للمطورين' : 'Developers'}
+                    </div>
+                    <p className="text-base leading-relaxed text-zinc-600 dark:text-zinc-400 max-w-2xl">
+                      {audienceDevelopers}
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
+
+              <div className="mt-16 flex items-center gap-4">
+                <div className="h-px w-8 bg-zinc-200 dark:bg-zinc-800" />
+                <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+                  {signatureLine}
+                </span>
+              </div>
+            </AnimatedSection>
           </div>
-        </AnimatedSection>
+          
+        </div>
       </div>
     </section>
   );

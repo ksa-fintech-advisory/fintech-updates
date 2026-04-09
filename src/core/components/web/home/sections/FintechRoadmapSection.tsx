@@ -26,39 +26,40 @@ export default function FintechRoadmapSection() {
   return (
     <section
       id="fintech-roadmap"
-      className="relative overflow-hidden border-b border-zinc-200 bg-white py-20 dark:border-zinc-800 dark:bg-zinc-900 md:py-24"
+      className="relative overflow-hidden border-b border-white/10 bg-zinc-900 py-20 md:py-28"
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:24px_24px]"
         aria-hidden
       />
+      <div className="pointer-events-none absolute right-0 top-1/2 h-[400px] w-[400px] -translate-y-1/2 translate-x-1/3 rounded-full bg-emerald-500/5 blur-[120px]" />
 
       <div className="container relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <AnimatedSection>
           <div className="flex flex-col items-stretch gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
             <div className="max-w-xl text-center lg:text-start">
-              <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
                 {t('title')}
               </h2>
-              <p className="mt-4 text-sm leading-relaxed text-zinc-500 dark:text-zinc-400 md:text-base">
+              <p className="mt-4 text-sm leading-relaxed text-zinc-400 md:text-base">
                 {t('intro')}
               </p>
             </div>
 
             <div className="mx-auto w-full max-w-sm shrink-0 lg:mx-0 lg:max-w-xs">
-              <div className="relative rounded-2xl p-[1px] shadow-sm">
+              <div className="relative rounded-2xl p-[1px] shadow-[0_0_30px_rgba(16,185,129,0.15)]">
                 <div
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-500/35 via-zinc-200/80 to-zinc-300/40 dark:from-primary-500/25 dark:via-zinc-600/30 dark:to-zinc-800/60"
+                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/50 via-zinc-800/80 to-[#0a0a0b]"
                   aria-hidden
                 />
-                <div className="relative flex flex-col gap-5 rounded-2xl bg-white px-6 py-8 dark:bg-zinc-950">
-                  <div className="flex items-center justify-center gap-2 font-mono text-sm font-bold text-primary-600 dark:text-primary-400 lg:justify-start">
+                <div className="relative flex flex-col gap-5 rounded-2xl bg-zinc-800/40 px-6 py-8 backdrop-blur-md">
+                  <div className="flex items-center justify-center gap-2 font-mono text-sm font-bold text-emerald-400 lg:justify-start">
                     <FiLayers className="h-5 w-5 shrink-0" aria-hidden />
                     <span>{t('statsLine', { phases: phaseCount, topics: totalTopics })}</span>
                   </div>
                   <Link
                     href={roadmapHref}
-                    className="press-scale group inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-5 text-sm font-bold text-white transition-all hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                    className="press-scale group inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 text-sm font-bold text-zinc-950 transition-all hover:bg-emerald-400"
                   >
                     {t('viewFull')}
                     <ArrowIcon

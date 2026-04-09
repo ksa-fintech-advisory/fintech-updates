@@ -11,8 +11,9 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   return (
     <NextThemesProvider
       attribute="class"
-      defaultTheme="light"
+      defaultTheme="dark"
       enableSystem={false}
+      forcedTheme="dark"
       storageKey="maal-tech-theme"
     >
       {children}

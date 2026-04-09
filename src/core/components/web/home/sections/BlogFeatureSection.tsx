@@ -21,21 +21,22 @@ export default function BlogFeatureSection() {
   const ArrowIcon = isArabic ? FiArrowLeft : FiArrowRight;
 
   return (
-    <section className="relative overflow-hidden border-b border-zinc-200 bg-zinc-50 py-20 dark:border-zinc-800 dark:bg-zinc-950 md:py-24">
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:24px_24px]" />
+    <section className="relative overflow-hidden border-b border-white/10 bg-zinc-950 py-20 md:py-28">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px]" />
+      <div className="pointer-events-none absolute left-0 top-0 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/5 blur-[120px]" />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="mb-14 md:mb-20">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-2xl">
-              <span className="mb-3 block font-mono text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+              <span className="mb-3 block font-mono text-[10px] font-bold uppercase tracking-widest text-emerald-400">
                 {t('kicker')}
               </span>
-              <h2 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
                 {t('title')}
               </h2>
             </div>
-            <p className="max-w-xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 md:text-base">{t('intro')}</p>
+            <p className="max-w-xl text-sm leading-relaxed text-zinc-400 md:text-base">{t('intro')}</p>
           </div>
         </AnimatedSection>
 
@@ -44,12 +45,12 @@ export default function BlogFeatureSection() {
             const Icon = FOCUS_ICONS[id];
             return (
               <StaggerItem key={id}>
-                <article className="flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900/80 dark:hover:border-zinc-700 md:p-7">
-                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-100 text-zinc-900 dark:bg-zinc-800 dark:text-white">
+                <article className="group flex h-full flex-col rounded-2xl border border-white/10 bg-zinc-800/40 p-6 shadow-[0_0_30px_-15px_rgba(16,185,129,0.1)] transition-all hover:border-emerald-500/30 hover:bg-white/[0.02] md:p-7">
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-zinc-900 ring-1 ring-white/10 text-emerald-400 transition-colors group-hover:ring-emerald-500/50">
                     <Icon className="h-5 w-5" aria-hidden />
                   </div>
-                  <h3 className="mb-3 text-lg font-bold text-zinc-900 dark:text-white">{t(`items.${id}.title`)}</h3>
-                  <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{t(`items.${id}.description`)}</p>
+                  <h3 className="mb-3 text-lg font-bold text-zinc-100 transition-colors group-hover:text-white">{t(`items.${id}.title`)}</h3>
+                  <p className="text-sm leading-relaxed text-zinc-400">{t(`items.${id}.description`)}</p>
                 </article>
               </StaggerItem>
             );
@@ -59,7 +60,7 @@ export default function BlogFeatureSection() {
         <AnimatedSection className="mt-12 flex justify-center md:mt-16">
           <Link
             href={`/${locale}/blog`}
-            className="press-scale group inline-flex h-12 items-center gap-2 rounded-xl border border-zinc-200 bg-white px-6 text-sm font-bold text-zinc-900 shadow-sm transition-all hover:border-primary-500/50 hover:shadow-md hover:text-primary-700 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:hover:border-primary-400/50 dark:hover:text-primary-300"
+            className="press-scale group inline-flex h-12 items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 text-sm font-bold text-white transition-all hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-300"
           >
             {t('cta')}
             <ArrowIcon

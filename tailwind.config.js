@@ -14,6 +14,8 @@ module.exports = {
         sans: ['var(--font-inter)', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
         arabic: ['var(--font-ibm-plex-sans-arabic)', 'Tahoma', 'sans-serif'],
         amiriQuran: ['var(--font-amiri-quran)', 'Traditional Arabic', 'serif'],
+        /** About page manifesto / pull quotes (Latin); Arabic copy uses `font-arabic`. */
+        portfolio: ['var(--font-portfolio-serif)', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
         mono: ['var(--font-ibm-plex-mono)', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
 
