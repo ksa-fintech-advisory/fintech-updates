@@ -3,21 +3,21 @@ import { AboutUsContent } from '@/core/types/web/aboutUs';
 export const aboutUsData: AboutUsContent = {
   mission: {
     en:
-      'A platform focused on simplifying and engineering financial technology: we combine learning content for developers with advisory solutions for companies—so financial systems are built to last and stay aligned with regulation.',
+      'Maal Tech is where I share what I have tested in FinTech engineering: content for developers, and consulting for teams building financial products—so what ships lasts, technically and regulatorily.',
     ar:
-      'منصة شخصية أهدف من خلالها إلى تبسيط هندسة التقنية المالية؛ عبر تقديم محتوى تعليمي للمطورين، وحلول استشارية للشركات، لضمان بناء أنظمة متينة ومطابقة للتشريعات.',
+      'مال تك مساحة أشارك فيها ما اختبرته ميدانياً في هندسة الفنتك: محتوى للمطورين، واستشارات لفرق تبني منتجات مالية — ليبقى ما يُطلق متيناً تقنياً وتنظيمياً.',
   },
   vision: {
     en:
-      'Knowledge: real engineering field notes. Guidance: stepped learning paths (roadmap). Enablement: technical consulting for MVP build and architecture design.',
+      'Knowledge: blog field notes. Guidance: stepped roadmap. Enablement: MVP and architecture consulting as a partnership.',
     ar:
-      'المعرفة: تجارب هندسية واقعية (في المدونة). التوجيه: مسارات تعلم متدرجة (خارطة طريق). التمكين: استشارات تقنية لبناء الـ MVP وتصميم المعمارية.',
+      'المعرفة: ملاحظات ميدانية في المدونة. التوجيه: خارطة تعلم متدرّجة. التمكين: استشارات للـ MVP والمعمارية كشراكة عمل.',
   },
   description: {
     en:
-      'journal.txt — field notes on regulated FinTech, architecture trade-offs, and what actually holds up in review.',
+      'Field notes on regulated FinTech—architecture trade-offs, compliance, and what still stands when auditors ask. Simplicity in complexity; no buzzwords.',
     ar:
-      'journal.txt —توثيق لتجارب بناء الأنظمة المالية؛ نناقش هنا المفاضلات الهندسية، معايير الامتثال، وكيفية تحويل الأنظمة المعقدة إلى منتجات قابلة للتوسع.',
+      'ملاحظات ميدانية عن الفنتك الخاضع للرقابة: مفاضلات معمارية، امتثال، وما يصمد عند سؤال المشرّع. بساطة داخل التعقيد؛ بلا مفردات تسويقية.',
   },
   values: [
     {
@@ -105,7 +105,7 @@ export const aboutUsData: AboutUsContent = {
         en:
           'Aligning product intent with Gulf market behaviour—from UX expectations to integration with domestic rails such as Mada, SARIE-style flows, and Sadad, where operational detail matters.',
         ar:
-          'مواءمة رؤية المنتج مع ثقافة السوق الخليجي؛ من تجربة المستخدم، إلى التكامل مع الشبكات المحلية ',
+          'مواءمة رؤية المنتج مع ثقافة السوق الخليجي؛ من تجربة المستخدم إلى التكامل مع الشبكات المحلية مثل مدى وسداد وتدفقات تحويل مشابهة لسريع — حيث تفاصيل التشغيل تحدد جودة المنتج.',
       },
     },
   ],

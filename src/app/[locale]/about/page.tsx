@@ -34,8 +34,16 @@ export default async function AboutPage({ params }: { params: { locale: string }
   ]);
 
   return (
-    <div className="w-full bg-[#f5f5f7] selection:bg-primary-500/30 dark:bg-black">
+    <div className="relative w-full bg-[#f5f5f7] selection:bg-primary-500/30 dark:bg-black">
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_bottom,theme(colors.primary.500/5),transparent_28%)] dark:bg-[linear-gradient(to_bottom,theme(colors.primary.500/8),transparent_32%)]" />
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+
+      <AboutHero
+        heroBadge={t('heroBadge')}
+        title={t('title')}
+        subtitle={t('subtitle')}
+        isArabic={isArabic}
+      />
 
       <AboutProfileCard
         authorName={t('authorName')}
@@ -51,11 +59,13 @@ export default async function AboutPage({ params }: { params: { locale: string }
         isArabic={isArabic}
       />
 
-      {/* <AboutHero heroBadge={t('heroBadge')} title={t('title')} subtitle={t('subtitle')} /> */}
+      <AboutExpertiseGrid
+        content={content}
+        isArabic={isArabic}
+        expertiseKicker={t('expertiseKicker')}
+        expertiseHeading={t('expertiseHeading')}
+      />
 
-     
-      <AboutValuesGrid content={content} isArabic={isArabic} principlesHeading={t('principlesHeading')} />
-      
       <AboutMissionVision
         content={content}
         isArabic={isArabic}
@@ -71,14 +81,12 @@ export default async function AboutPage({ params }: { params: { locale: string }
         terminalFile={t('terminalFile')}
       />
 
-     
-
-      {/* <AboutExpertiseGrid
+      <AboutValuesGrid
         content={content}
         isArabic={isArabic}
-        expertiseKicker={t('expertiseKicker')}
-        expertiseHeading={t('expertiseHeading')}
-      /> */}
+        principlesHeading={t('principlesHeading')}
+        sectionKicker={t('valuesSectionKicker')}
+      />
 
       <AboutClosingCta
         locale={locale}
