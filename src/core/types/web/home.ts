@@ -22,7 +22,12 @@ export interface HeroSection {
     en: string;
     ar: string;
   };
-  
+  /** First segment of subtitle (author name) styled distinctly in the hero. */
+  subtitleLeadHighlight?: {
+    en: { name: string; tail: string };
+    ar: { name: string; tail: string };
+  };
+
   ctaButtons: CTAButton[];
   backgroundImage?: string;
 }

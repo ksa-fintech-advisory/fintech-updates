@@ -74,6 +74,7 @@ export default function Header() {
                 variant="circle"
                 className="shadow-sm transition-transform duration-200 group-hover:scale-105"
                 priority
+                authorNameFont
               />
               <div className="flex min-w-0 flex-col gap-1.5 sm:gap-2">
                 <span className="truncate text-lg font-bold leading-snug tracking-tight text-zinc-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">

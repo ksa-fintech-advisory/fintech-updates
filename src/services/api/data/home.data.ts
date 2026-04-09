@@ -15,7 +15,17 @@ export const homeData: HomeContent = {
       en: 'Mohammed Abdo | FinTech systems engineer\n• Building system architecture and preparing it for compliance.\n• Technical guidance for developers on the FinTech path.',
       ar: 'محمد عبده | مهندس أنظمة تقنية مالية\n• بناء معمارية الأنظمة وتجهيزها للامتثال.\n• إرشاد تقني للمطورين في مسار الفنتك.',
     },
-   
+    subtitleLeadHighlight: {
+      en: {
+        name: 'Mohammed Abdo',
+        tail: ' | FinTech systems engineer\n• Building system architecture and preparing it for compliance.\n• Technical guidance for developers on the FinTech path.',
+      },
+      ar: {
+        name: 'محمد عبده',
+        tail: ' | مهندس أنظمة تقنية مالية\n• بناء معمارية الأنظمة وتجهيزها للامتثال.\n• إرشاد تقني للمطورين في مسار الفنتك.',
+      },
+    },
+
     ctaButtons: [
       {
         label: { en: 'How I can help', ar: 'كيف أساعدك؟' },

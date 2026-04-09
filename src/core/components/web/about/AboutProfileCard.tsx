@@ -1,4 +1,5 @@
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
+import { AuthorNameText } from '@/core/components/web/layout/AuthorNameText';
 import { ProfileAvatar } from '@/core/components/web/layout/ProfileAvatar';
 import { FiMail } from 'react-icons/fi';
 
@@ -48,6 +49,7 @@ export function AboutProfileCard({
                       fallbackText={authorName}
                       variant="rounded"
                       className="shadow-md ring-4 ring-zinc-100 dark:ring-zinc-800"
+                      authorNameFont
                     />
                     {/* Availability dot */}
                     <div className="absolute bottom-2 end-2 h-4 w-4 rounded-full border-2 border-white bg-primary-500 dark:border-zinc-900" />
@@ -62,7 +64,9 @@ export function AboutProfileCard({
                 {/* Content */}
                 <div className="min-w-0 flex-1 text-center md:text-start">
                   <h2 className="mb-1.5 text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl">
-                    {authorName}
+                    <AuthorNameText isArabic={isArabic} className="text-[1.06em] md:text-[1.05em]">
+                      {authorName}
+                    </AuthorNameText>
                   </h2>
                   <p className="mb-4 text-sm font-medium text-primary-600 dark:text-primary-400">
                     {authorTitle}

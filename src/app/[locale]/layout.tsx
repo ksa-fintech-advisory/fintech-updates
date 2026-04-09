@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { IBM_Plex_Sans_Arabic, Inter } from 'next/font/google';
+import { Amiri_Quran, IBM_Plex_Sans_Arabic, Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
 import { locales } from '@/core/i18n/config';
@@ -22,6 +22,14 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
   subsets: ['arabic'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-ibm-plex-sans-arabic',
+  display: 'swap',
+});
+
+/** Quranic Naskh — used sparingly (e.g. hero name in Arabic). */
+const amiriQuran = Amiri_Quran({
+  weight: '400',
+  subsets: ['arabic', 'latin'],
+  variable: '--font-amiri-quran',
   display: 'swap',
 });
 
@@ -137,7 +145,7 @@ export default async function LocaleLayout({
       lang={locale}
       dir={direction}
       suppressHydrationWarning
-      className={`${inter.variable} ${ibmPlexSansArabic.variable}`}
+      className={`${inter.variable} ${ibmPlexSansArabic.variable} ${amiriQuran.variable}`}
     >
       <body className="min-h-screen flex flex-col bg-grey-50">
         <JsonLd data={siteWideGraphJsonLd(getSiteUrl())} />
