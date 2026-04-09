@@ -22,13 +22,13 @@ function renderContentBlock(block: any, index: number) {
   const key = index.toString();
   switch (block.type) {
     case 'paragraph':
-      return <p key={key} className="text-zinc-700 dark:text-zinc-300 leading-relaxed mb-6 text-lg">{block.content}</p>;
+      return <p key={key} className="text-grey-700 dark:text-grey-300 leading-relaxed mb-6 text-lg">{block.content}</p>;
     case 'heading':
       const HeadingTag = `h${block.level}` as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-      return <HeadingTag key={key} className="font-bold text-zinc-900 dark:text-white mt-10 mb-4 text-2xl tracking-tight">{block.content}</HeadingTag>;
+      return <HeadingTag key={key} className="font-bold text-grey-900 dark:text-white mt-10 mb-4 text-2xl tracking-tight">{block.content}</HeadingTag>;
     case 'list':
       return (
-        <ul key={key} className="list-disc list-outside ml-6 space-y-2 mb-8 text-zinc-700 dark:text-zinc-300 text-lg marker:text-primary-500">
+        <ul key={key} className="list-disc list-outside ml-6 space-y-2 mb-8 text-grey-700 dark:text-grey-300 text-lg marker:text-primary-500">
           {block.items.map((item: string, i: number) => (
             <li key={i}>{item}</li>
           ))}
@@ -122,20 +122,20 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
   }
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black pb-24 font-sans selection:bg-primary-500/30 text-zinc-900 dark:text-zinc-100">
+    <div className="min-h-screen bg-grey-50 dark:bg-black pb-24 font-sans selection:bg-primary-500/30 text-grey-900 dark:text-grey-100">
 
       {/* 1. Global Engineering Grid */}
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
 
       {/* Header: System Report Style */}
-      <header className="relative pt-32 pb-12 border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm z-10">
+      <header className="relative pt-32 pb-12 border-b border-grey-200 dark:border-grey-800 bg-white/50 dark:bg-grey-900/50 backdrop-blur-sm z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
 
           {/* Back Link */}
           <div className="mb-8">
             <Link
               href={`/${locale}/updates`}
-              className="inline-flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white uppercase tracking-widest transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-mono font-bold text-grey-500 hover:text-grey-900 dark:hover:text-white uppercase tracking-widest transition-colors"
             >
               {isArabic ? <FiArrowRight /> : <FiArrowLeft />}
               <span>{isArabic ? '../العودة_للسجل' : '../RETURN_TO_LOG'}</span>
@@ -145,7 +145,7 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
           <div className="flex flex-col md:flex-row md:items-start gap-8">
             {/* Icon Block */}
             <div className="shrink-0">
-              <div className="w-16 h-16 rounded bg-zinc-900 dark:bg-white text-white dark:text-black flex items-center justify-center text-3xl shadow-lg">
+              <div className="w-16 h-16 rounded bg-grey-900 dark:bg-white text-white dark:text-black flex items-center justify-center text-3xl shadow-lg">
                 {/* Fallback Icon if update.icon is missing or just text */}
                 {update.icon ? update.icon : <FiFileText />}
               </div>
@@ -154,7 +154,7 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
             <div className="flex-1">
               {/* Metadata Tags */}
               <div className="flex flex-wrap items-center gap-3 mb-4">
-                <span className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded text-[10px] font-mono font-bold uppercase tracking-wide text-zinc-600 dark:text-zinc-300">
+                <span className="px-2 py-1 bg-grey-100 dark:bg-grey-800 border border-grey-200 dark:border-grey-700 rounded text-[10px] font-mono font-bold uppercase tracking-wide text-grey-600 dark:text-grey-300">
                   ID: {update.id.toString().padStart(6, '0')}
                 </span>
                 {update.category && (
@@ -162,7 +162,7 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
                     {update.category}
                   </span>
                 )}
-                <span className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded text-[10px] font-mono font-bold uppercase tracking-wide text-zinc-600 dark:text-zinc-300 flex items-center gap-1.5">
+                <span className="px-2 py-1 bg-grey-100 dark:bg-grey-800 border border-grey-200 dark:border-grey-700 rounded text-[10px] font-mono font-bold uppercase tracking-wide text-grey-600 dark:text-grey-300 flex items-center gap-1.5">
                   <span className={`w-1.5 h-1.5 rounded-full ${isArabic ? 'ml-1' : 'mr-1'} bg-emerald-500 animate-pulse`}></span>
                   {isArabic ? 'نشط' : 'ACTIVE'}
                 </span>
@@ -172,7 +172,7 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
                 {update.title}
               </h1>
 
-              <div className="flex flex-wrap gap-6 text-sm text-zinc-500 dark:text-zinc-400 font-mono">
+              <div className="flex flex-wrap gap-6 text-sm text-grey-500 dark:text-grey-400 font-mono">
                 <div className="flex items-center gap-2">
                   <FiCalendar />
                   <span>{new Date(update.date).toLocaleDateString('en-US')}</span>
@@ -206,7 +206,7 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
 
             {/* Featured Image (if exists) */}
             {update.featuredImage && (
-              <div className="rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 relative h-[300px] md:h-[400px]">
+              <div className="rounded-3xl overflow-hidden border border-grey-200 dark:border-grey-800 relative h-[300px] md:h-[400px]">
                 <Image
                   src={update.featuredImage}
                   alt={update.title}
@@ -218,11 +218,11 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
 
             {/* Summary Box */}
             {update.summary && (
-              <div className="bg-zinc-100 dark:bg-zinc-900 border-l-4 border-zinc-400 dark:border-zinc-600 p-6 rounded-r-lg">
-                <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500 mb-3">
+              <div className="bg-grey-100 dark:bg-grey-900 border-l-4 border-grey-400 dark:border-grey-600 p-6 rounded-r-lg">
+                <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-grey-500 mb-3">
                   {isArabic ? 'الملخص_التنفيذي' : 'EXECUTIVE_SUMMARY'}
                 </h3>
-                <p className="text-lg font-medium text-zinc-800 dark:text-zinc-200 leading-relaxed">
+                <p className="text-lg font-medium text-grey-800 dark:text-grey-200 leading-relaxed">
                   {update.summary}
                 </p>
               </div>
@@ -230,7 +230,7 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
 
             {/* Main Prose */}
             <div className="prose prose-zinc dark:prose-invert prose-lg max-w-none">
-              <div className="mb-8 text-xl leading-relaxed font-light text-zinc-600 dark:text-zinc-300">
+              <div className="mb-8 text-xl leading-relaxed font-light text-grey-600 dark:text-grey-300">
                 {update.description}
               </div>
 
@@ -244,8 +244,8 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
 
             {/* References List */}
             {references.length > 0 && (
-              <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
-                <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500 mb-6 flex items-center gap-2">
+              <div className="mt-12 pt-8 border-t border-grey-200 dark:border-grey-800">
+                <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-grey-500 mb-6 flex items-center gap-2">
                   <FiHash /> {isArabic ? 'المصادر_والمراجع' : 'REFERENCES_INDEX'}
                 </h3>
                 <div className="grid gap-3">
@@ -255,17 +255,17 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
                       href={ref.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center justify-between p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded hover:border-zinc-400 dark:hover:border-zinc-600 transition-colors group"
+                      className="flex items-center justify-between p-4 bg-white dark:bg-grey-900 border border-grey-200 dark:border-grey-800 rounded hover:border-grey-400 dark:hover:border-grey-600 transition-colors group"
                     >
                       <div className="flex items-center gap-3 overflow-hidden">
-                        <span className="shrink-0 w-6 h-6 flex items-center justify-center bg-zinc-100 dark:bg-zinc-800 text-[10px] font-mono font-bold text-zinc-500 rounded">
+                        <span className="shrink-0 w-6 h-6 flex items-center justify-center bg-grey-100 dark:bg-grey-800 text-[10px] font-mono font-bold text-grey-500 rounded">
                           {index + 1}
                         </span>
-                        <span className="font-mono text-sm truncate text-zinc-600 dark:text-zinc-300 group-hover:text-primary-600 transition-colors">
+                        <span className="font-mono text-sm truncate text-grey-600 dark:text-grey-300 group-hover:text-primary-600 transition-colors">
                           {ref.title}
                         </span>
                       </div>
-                      <FiExternalLink className="shrink-0 text-zinc-400 group-hover:text-primary-600" />
+                      <FiExternalLink className="shrink-0 text-grey-400 group-hover:text-primary-600" />
                     </a>
                   ))}
                 </div>
@@ -278,8 +278,8 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
           <div className="lg:col-span-4 space-y-8">
 
             {/* Info Card */}
-            <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-6 shadow-sm sticky top-32">
-              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500 mb-6 border-b border-zinc-100 dark:border-zinc-800 pb-4">
+            <div className="bg-white dark:bg-grey-900 border border-grey-200 dark:border-grey-800 rounded-3xl p-6 shadow-sm sticky top-32">
+              <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-grey-500 mb-6 border-b border-grey-100 dark:border-grey-800 pb-4">
                 {isArabic ? 'خصائص_الملف' : 'FILE_PROPERTIES'}
               </h3>
 
@@ -290,7 +290,7 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
                     href={update.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 w-full py-3 bg-zinc-900 dark:bg-white text-white dark:text-black font-bold text-sm uppercase tracking-wider rounded hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors shadow-md"
+                    className="flex items-center justify-center gap-2 w-full py-3 bg-grey-900 dark:bg-white text-white dark:text-black font-bold text-sm uppercase tracking-wider rounded hover:bg-grey-700 dark:hover:bg-grey-200 transition-colors shadow-md"
                   >
                     <FiDownload />
                     {isArabic ? 'تحميل_PDF' : 'DOWNLOAD_PDF'}
@@ -300,19 +300,19 @@ export default async function UpdateDetailPage({ params }: UpdateDetailPageProps
 
               <dl className="space-y-4 text-sm">
                 <div className="flex justify-between">
-                  <dt className="text-zinc-500">{isArabic ? 'تاريخ النشر' : 'Published'}</dt>
-                  <dd className="font-mono font-bold text-zinc-900 dark:text-white">
+                  <dt className="text-grey-500">{isArabic ? 'تاريخ النشر' : 'Published'}</dt>
+                  <dd className="font-mono font-bold text-grey-900 dark:text-white">
                     {new Date(update.publishedAt).toLocaleDateString('en-US')}
                   </dd>
                 </div>
                 <div className="flex justify-between">
-                  <dt className="text-zinc-500">{isArabic ? 'المصدر' : 'Source'}</dt>
-                  <dd className="font-bold text-zinc-900 dark:text-white text-right max-w-[150px] truncate">
+                  <dt className="text-grey-500">{isArabic ? 'المصدر' : 'Source'}</dt>
+                  <dd className="font-bold text-grey-900 dark:text-white text-right max-w-[150px] truncate">
                     {update.source || 'N/A'}
                   </dd>
                 </div>
                 <div className="flex justify-between">
-                  <dt className="text-zinc-500">{isArabic ? 'الحالة' : 'Status'}</dt>
+                  <dt className="text-grey-500">{isArabic ? 'الحالة' : 'Status'}</dt>
                   <dd className="font-mono font-bold text-emerald-600">
                     {isArabic ? 'منشور' : 'PUBLISHED'}
                   </dd>

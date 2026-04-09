@@ -18,7 +18,7 @@ export default function Footer() {
   const whatsappUrl = getWhatsAppWaMeUrl();
 
   const socialBase =
-    'flex h-10 w-10 items-center justify-center rounded-xl border border-zinc-200 text-zinc-500 transition-all hover:border-zinc-400 hover:bg-white hover:text-zinc-900 dark:border-zinc-800 dark:text-zinc-400 dark:hover:border-zinc-600 dark:hover:bg-zinc-900 dark:hover:text-white';
+    'flex h-10 w-10 items-center justify-center rounded-xl border border-grey-200 text-grey-500 transition-all hover:border-grey-400 hover:bg-white hover:text-grey-900 dark:border-grey-800 dark:text-grey-400 dark:hover:border-grey-600 dark:hover:bg-grey-900 dark:hover:text-white';
 
   const footerLinks = [
     { href: '', label: tNav('home') },
@@ -32,7 +32,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="relative overflow-hidden border-t border-zinc-200 bg-gradient-to-b from-zinc-50 to-zinc-100/80 font-sans text-zinc-600 dark:border-zinc-800 dark:from-zinc-950 dark:to-black dark:text-zinc-400">
+    <footer className="relative overflow-hidden border-t border-grey-200 bg-gradient-to-b from-grey-50 to-grey-100/80 font-sans text-grey-600 dark:border-grey-800 dark:from-grey-950 dark:to-black dark:text-grey-400">
       <div
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#80808010_1px,transparent_1px),linear-gradient(to_bottom,#80808010_1px,transparent_1px)] bg-[size:32px_32px] opacity-60 dark:opacity-40"
         aria-hidden
@@ -48,20 +48,20 @@ export default function Footer() {
                 alt={th('avatarAlt')}
                 fallbackText={th('displayName')}
                 variant="circle"
-                className="shadow-md ring-2 ring-white transition-transform duration-200 group-hover:scale-105 dark:ring-zinc-900"
+                className="shadow-md ring-2 ring-white transition-transform duration-200 group-hover:scale-105 dark:ring-grey-900"
                 authorNameFont
               />
               <div className="min-w-0 text-start">
-                <span className="block text-lg font-bold tracking-tight text-zinc-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
+                <span className="block text-lg font-bold tracking-tight text-grey-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
                   {isArabic ? 'مال تك' : 'Maal Tech'}
                 </span>
-                <span className="mt-0.5 block max-w-[16rem] font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
+                <span className="mt-0.5 block max-w-[16rem] font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-grey-400 dark:text-grey-500">
                   {th('tagline')}
                 </span>
               </div>
             </Link>
 
-            <p className="max-w-sm text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{t('tagline')}</p>
+            <p className="max-w-sm text-sm leading-relaxed text-grey-600 dark:text-grey-400">{t('tagline')}</p>
 
             <div className="flex flex-wrap items-center gap-2.5">
               <a
@@ -107,14 +107,14 @@ export default function Footer() {
           {/* Explore — flex-row-reverse on links broke RTL: row-reverse puts main-start on physical left while headers use row (main-start = inline-start = right). Use dir + normal row so headers and links share the same edge. */}
           <div className="flex min-w-0 flex-col items-stretch text-start lg:col-span-2">
             <div className="mb-6 w-full">
-              <h4 className="flex w-full items-start justify-start gap-2 text-zinc-900 dark:text-white">
+              <h4 className="flex w-full items-start justify-start gap-2 text-grey-900 dark:text-white">
                 <span
                   className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary-600"
                   aria-hidden
                 />
                 <span className="flex min-w-0 flex-col gap-1 leading-tight">
                   <span className="font-mono text-xs font-bold uppercase tracking-widest">{t('platform')}</span>
-                  <span className="text-[11px] font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                  <span className="text-[11px] font-medium uppercase tracking-wide text-grey-400 dark:text-grey-500">
                     {t('platformLead')}
                   </span>
                 </span>
@@ -125,11 +125,11 @@ export default function Footer() {
                 <li key={link.href || 'home'} className="w-full">
                   <Link
                     href={`/${locale}${link.href}`}
-                    className="group flex w-full items-center justify-start gap-1.5 py-1.5 text-sm text-zinc-600 transition-colors hover:text-primary-600 dark:text-zinc-400 dark:hover:text-primary-400"
+                    className="group flex w-full items-center justify-start gap-1.5 py-1.5 text-sm text-grey-600 transition-colors hover:text-primary-600 dark:text-grey-400 dark:hover:text-primary-400"
                   >
                     <span className="min-w-0">{link.label}</span>
                     <FiChevronRight
-                      className="h-3.5 w-3.5 shrink-0 text-zinc-400 opacity-0 transition-all group-hover:opacity-100 ltr:group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5 dark:text-zinc-500"
+                      className="h-3.5 w-3.5 shrink-0 text-grey-400 opacity-0 transition-all group-hover:opacity-100 ltr:group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5 dark:text-grey-500"
                       aria-hidden
                     />
                   </Link>
@@ -141,14 +141,14 @@ export default function Footer() {
           {/* Connect */}
           <div className="flex min-w-0 flex-col items-stretch text-start lg:col-span-2">
             <div className="mb-6 w-full">
-              <h4 className="flex w-full items-start justify-start gap-2 text-zinc-900 dark:text-white">
+              <h4 className="flex w-full items-start justify-start gap-2 text-grey-900 dark:text-white">
                 <span
-                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400 dark:bg-zinc-500"
+                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-grey-400 dark:bg-grey-500"
                   aria-hidden
                 />
                 <span className="flex min-w-0 flex-col gap-1 leading-tight">
                   <span className="font-mono text-xs font-bold uppercase tracking-widest">{t('company')}</span>
-                  <span className="text-[11px] font-medium uppercase tracking-wide text-zinc-400 dark:text-zinc-500">
+                  <span className="text-[11px] font-medium uppercase tracking-wide text-grey-400 dark:text-grey-500">
                     {t('companyLead')}
                   </span>
                 </span>
@@ -159,11 +159,11 @@ export default function Footer() {
                 <li key={link.href} className="w-full">
                   <Link
                     href={`/${locale}${link.href}`}
-                    className="group flex w-full items-center justify-start gap-1.5 py-1.5 text-sm text-zinc-600 transition-colors hover:text-primary-600 dark:text-zinc-400 dark:hover:text-primary-400"
+                    className="group flex w-full items-center justify-start gap-1.5 py-1.5 text-sm text-grey-600 transition-colors hover:text-primary-600 dark:text-grey-400 dark:hover:text-primary-400"
                   >
                     <span className="min-w-0">{link.label}</span>
                     <FiChevronRight
-                      className="h-3.5 w-3.5 shrink-0 text-zinc-400 opacity-0 transition-all group-hover:opacity-100 ltr:group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5 dark:text-zinc-500"
+                      className="h-3.5 w-3.5 shrink-0 text-grey-400 opacity-0 transition-all group-hover:opacity-100 ltr:group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5 dark:text-grey-500"
                       aria-hidden
                     />
                   </Link>
@@ -174,19 +174,19 @@ export default function Footer() {
 
           {/* CTA */}
           <div className="lg:col-span-4">
-            <div className="relative overflow-hidden rounded-2xl border border-zinc-200/90 bg-white p-6 shadow-sm ring-1 ring-zinc-900/[0.04] dark:border-zinc-700/80 dark:bg-zinc-900/60 dark:ring-white/[0.06]">
+            <div className="relative overflow-hidden rounded-2xl border border-grey-200/90 bg-white p-6 shadow-sm ring-1 ring-grey-900/[0.04] dark:border-grey-700/80 dark:bg-grey-900/60 dark:ring-white/[0.06]">
               <div
                 className="pointer-events-none absolute -end-16 -top-16 h-40 w-40 rounded-full bg-primary-500/10 blur-3xl dark:bg-primary-400/10"
                 aria-hidden
               />
-              <h4 className="relative mb-2 flex items-center gap-2 text-sm font-bold text-zinc-900 dark:text-white">
+              <h4 className="relative mb-2 flex items-center gap-2 text-sm font-bold text-grey-900 dark:text-white">
                 <FiCommand className="text-primary-600 dark:text-primary-400" aria-hidden />
                 {t('interestTitle')}
               </h4>
-              <p className="relative mb-6 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">{t('interestBody')}</p>
+              <p className="relative mb-6 text-xs leading-relaxed text-grey-600 dark:text-grey-400">{t('interestBody')}</p>
               <Link
                 href={`/${locale}/contact`}
-                className="relative inline-flex w-full items-center justify-center gap-2 rounded-xl bg-zinc-900 px-4 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+                className="relative inline-flex w-full items-center justify-center gap-2 rounded-xl bg-grey-900 px-4 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-grey-800 dark:bg-white dark:text-grey-900 dark:hover:bg-grey-200"
               >
                 {t('interestCta')}
                 {isArabic ? <FiArrowLeft className="h-4 w-4" aria-hidden /> : <FiArrowRight className="h-4 w-4" aria-hidden />}
@@ -195,8 +195,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-zinc-200/80 pt-8 dark:border-zinc-800/80">
-          <p className="text-center text-sm text-zinc-500 dark:text-zinc-500 md:text-start">
+        <div className="border-t border-grey-200/80 pt-8 dark:border-grey-800/80">
+          <p className="text-center text-sm text-grey-500 dark:text-grey-500 md:text-start">
             {t.rich('copyright', {
               year: currentYear,
               author: (chunks) => <AuthorNameText isArabic={isArabic}>{chunks}</AuthorNameText>,

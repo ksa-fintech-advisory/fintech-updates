@@ -31,14 +31,14 @@ export function AboutProfileCard({
   isArabic,
 }: Props) {
   return (
-    <section className="relative z-10 py-20 md:py-28">
+    <section className="relative z-10 py-14 md:py-28">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection>
-          <div className="group relative mx-auto max-w-5xl overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition-shadow duration-500 hover:shadow-lg dark:border-zinc-800 dark:bg-zinc-900">
+          <div className="apple-card group relative mx-auto max-w-5xl overflow-hidden rounded-3xl border border-zinc-200/90 bg-white shadow-apple transition-shadow duration-500 hover:shadow-apple-hover dark:border-zinc-800 dark:bg-zinc-900">
             {/* Top accent bar — full-width gradient instead of small corner stripe */}
             <div className="h-1 w-full bg-gradient-to-r from-primary-500 via-primary-400 to-primary-600" />
 
-            <div className="p-8 md:p-12 lg:p-14">
+            <div className="p-6 sm:p-8 md:p-12 lg:p-14">
               <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-12">
                 {/* Avatar area */}
                 <div className="relative shrink-0">
