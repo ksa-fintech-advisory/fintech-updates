@@ -14,7 +14,7 @@ const SERVICE_ICONS = {
   enablement: FiUsers,
 } as const;
 
-const MENTORING_CALENDAR_URL = 'https://calendar.app.google/Vb2tKVn1AiEKFMZt6';
+const MENTORING_CALENDAR_URL = 'https://calendar.app.google/GHWhrmccKBtf6vma8';
 
 export default function ServicesSection() {
   const t = useTranslations('web.home.services');
