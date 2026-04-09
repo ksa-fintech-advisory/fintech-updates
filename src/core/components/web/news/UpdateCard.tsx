@@ -24,7 +24,7 @@ export const UpdateCard: React.FC<UpdateCardProps> = ({ update, locale }) => {
   });
 
   return (
-    <div className={`group relative bg-white border border-grey-200 rounded-2xl p-6 md:p-8 hover:shadow-xl hover:border-grey-300 transition-all duration-300 ${update.isImportant ? 'border-l-4 border-l-primary-500' : ''}`}>
+    <div className={`group relative apple-card p-6 md:p-8 rounded-3xl ${update.isImportant ? 'border-l-4 border-l-primary-500' : ''}`}>
       <div className="flex flex-col gap-4 mb-5">
         <div className="flex items-center justify-between">
           <span className={`px-4 py-1.5 text-xs font-bold uppercase tracking-wider rounded-full border ${categoryColors[update.category]}`}>

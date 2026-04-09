@@ -7,12 +7,22 @@ import type { HeroSection } from '@/core/types/web/home';
 import dynamic from 'next/dynamic';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
 import { AuthorNameText } from '@/core/components/web/layout/AuthorNameText';
-import ServicesSection from '@/core/components/web/home/sections/ServicesSection';
-import FintechRoadmapSection from '@/core/components/web/home/sections/FintechRoadmapSection';
-import BlogFeatureSection from '@/core/components/web/home/sections/BlogFeatureSection';
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
-const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false });
+const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false, loading: () => null });
+
+const ServicesSection = dynamic(
+  () => import('@/core/components/web/home/sections/ServicesSection'),
+  { loading: () => null }
+);
+const FintechRoadmapSection = dynamic(
+  () => import('@/core/components/web/home/sections/FintechRoadmapSection'),
+  { loading: () => null }
+);
+const BlogFeatureSection = dynamic(
+  () => import('@/core/components/web/home/sections/BlogFeatureSection'),
+  { loading: () => null }
+);
 
 export async function generateMetadata({
   params,
@@ -126,11 +136,11 @@ export default async function HomePage({ params }: { params: { locale: string } 
                       key={index}
                       href={button.href}
                       className={`
-                        press-scale group flex h-12 w-full max-w-[220px] items-center justify-center gap-2 rounded-xl px-6 text-sm font-bold tracking-wide transition-all duration-300 sm:w-auto
+                        apple-btn group flex h-12 w-full max-w-[220px] items-center justify-center gap-2 rounded-full px-6 text-sm font-bold tracking-wide sm:w-auto
                         ${
                           button.variant === 'primary'
-                            ? 'bg-white text-black shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:bg-zinc-100 hover:shadow-[0_0_30px_rgba(255,255,255,0.15)]'
-                            : 'border border-zinc-700 bg-zinc-900/80 text-zinc-300 hover:border-zinc-500 hover:text-white'
+                            ? 'bg-white text-black shadow-apple hover:bg-zinc-100 hover:shadow-apple-hover'
+                            : 'border-2 border-white/80 bg-transparent text-white shadow-none hover:border-white hover:bg-white/[0.12]'
                         }
                       `}
                     >
@@ -169,7 +179,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
             </p>
             <Link
               href={`/${locale}/contact`}
-              className="press-scale group inline-flex h-12 items-center gap-2 rounded-xl bg-zinc-900 px-7 text-sm font-bold text-white shadow-sm transition-all duration-200 hover:bg-zinc-800 hover:shadow-md dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+              className="apple-btn group inline-flex h-12 items-center gap-2 rounded-full bg-zinc-900 px-7 text-sm font-bold text-white shadow-apple transition-all duration-200 hover:bg-zinc-800 hover:shadow-apple-hover dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
               {tHome('closingCta')}
               <ArrowIcon

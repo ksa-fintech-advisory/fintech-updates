@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Link from 'next/link';
 import { PhaseData } from '@/data/fintechFundamentalsData';
 import { FiArrowRight, FiArrowLeft, FiHash, FiCode } from 'react-icons/fi';
@@ -38,20 +38,14 @@ export default function PhaseCard({
 }: PhaseCardProps) {
   // Use specific color or fallback to primary
   const accentColor = phaseColors[phase.id] || '#6366f1';
+  const reduceMotion = useReducedMotion();
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="h-full"
-    >
+  const inner = (
       <Link
         href={`/${locale}/courses/fintech-fundamentals/session/${phase.id}`}
         className="block h-full outline-none group"
       >
-        <article className="relative flex flex-col h-full bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 overflow-hidden transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-lg hover:shadow-zinc-200/50 dark:hover:shadow-black/50">
+        <article className="relative flex flex-col h-full apple-card rounded-3xl overflow-hidden">
 
           {/* Top Colored Line (Technical Indicator) */}
           <div
@@ -142,6 +136,21 @@ export default function PhaseCard({
           />
         </article>
       </Link>
+  );
+
+  if (reduceMotion) {
+    return <div className="h-full">{inner}</div>;
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      className="h-full"
+    >
+      {inner}
     </motion.div>
   );
 }

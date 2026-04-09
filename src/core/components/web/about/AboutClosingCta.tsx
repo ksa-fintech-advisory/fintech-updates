@@ -12,9 +12,9 @@ type Props = {
 
 export function AboutClosingCta({ locale, isArabic, title, subtitle, buttonLabel }: Props) {
   return (
-    <section className="border-t border-zinc-200 bg-white py-20 dark:border-zinc-800 dark:bg-zinc-950 md:py-24">
+    <section className="border-t border-zinc-200 bg-white py-16 pb-[max(4rem,env(safe-area-inset-bottom))] dark:border-zinc-800 dark:bg-zinc-950 md:py-24 md:pb-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <AnimatedSection className="relative overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900 p-10 text-center text-white shadow-2xl dark:bg-black md:p-16">
+        <AnimatedSection className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 p-8 text-center text-white shadow-apple dark:bg-black sm:p-10 md:p-16">
           {/* Subtle binary background */}
           <div className="pointer-events-none absolute inset-0 overflow-hidden p-4 text-start font-mono text-[10px] leading-3 text-white opacity-[0.06]">
             {Array(20).fill('010101011010010101110101010').join(' ')}
@@ -28,7 +28,7 @@ export function AboutClosingCta({ locale, isArabic, title, subtitle, buttonLabel
 
             <Link
               href={`/${locale}/contact`}
-              className="press-scale inline-flex items-center gap-3 rounded-xl bg-white px-8 py-4 text-sm font-bold text-black shadow-sm transition-all hover:bg-zinc-100 hover:shadow-md"
+              className="apple-btn inline-flex min-h-[48px] items-center justify-center gap-3 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-black shadow-apple hover:bg-zinc-100 hover:shadow-apple-hover"
             >
               <span>{buttonLabel}</span>
               {isArabic ? <FiArrowLeft /> : <FiArrowRight />}

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { fintechLearnerPhases } from '@/services/api/data/fintechRoadmap.data';
 import type { RoadmapPhase, RoadmapResource, RoadmapTopic } from '@/services/api/data/fintechRoadmap.data';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
+import { getScrollBehavior } from '@/core/lib/motionPreference';
 import { getPhaseIcon } from './phaseIcons';
 import {
   FiArrowLeft,
@@ -220,7 +221,7 @@ function RoadmapTopicRow({
                     ensureTopicOpen(nextKey);
                     window.setTimeout(() => {
                       document.getElementById(nextElId)?.scrollIntoView({
-                        behavior: 'smooth',
+                        behavior: getScrollBehavior(),
                         block: 'nearest',
                       });
                     }, 100);
@@ -290,7 +291,7 @@ function PhaseAccordion({
   return (
     <article
       id={phase.id}
-      className={`scroll-mt-[calc(4.5rem+env(safe-area-inset-top))] overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm ring-1 ring-zinc-100/80 dark:border-zinc-800 dark:bg-zinc-950 dark:shadow-none dark:ring-zinc-800/60 sm:scroll-mt-28 sm:rounded-lg ${accent.border} border-s-[3px] sm:border-s-4`}
+      className={`scroll-mt-[calc(4.5rem+env(safe-area-inset-top))] overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-apple ring-1 ring-zinc-100/80 dark:border-zinc-800 dark:bg-zinc-950 dark:shadow-none dark:ring-zinc-800/60 sm:scroll-mt-28 sm:rounded-2xl ${accent.border} border-s-[3px] sm:border-s-4`}
     >
       <button
         type="button"
@@ -298,7 +299,7 @@ function PhaseAccordion({
         aria-expanded={isOpen}
         aria-controls={`${panelId}-panel`}
         onClick={onTogglePhase}
-        className="flex w-full items-center gap-3 px-3 py-3 text-start transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900/70 sm:gap-4 sm:px-4 sm:py-3.5"
+        className="flex min-h-[44px] w-full items-center gap-3 px-3 py-3 text-start transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900/70 sm:gap-4 sm:min-h-0 sm:px-4 sm:py-3.5"
       >
         <span className="font-mono text-[11px] font-bold tabular-nums text-zinc-400 sm:text-xs">{step}</span>
         <span
@@ -510,7 +511,7 @@ export default function FintechLearnerRoadmap() {
       return next;
     });
     window.setTimeout(() => {
-      document.getElementById(phaseId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById(phaseId)?.scrollIntoView({ behavior: getScrollBehavior(), block: 'start' });
       try {
         window.history.replaceState(null, '', `#${phaseId}`);
       } catch {
@@ -530,7 +531,7 @@ export default function FintechLearnerRoadmap() {
   );
 
   return (
-    <div className="relative w-full bg-zinc-50 dark:bg-zinc-950">
+    <div className="relative w-full bg-[#f5f5f7] dark:bg-black">
       <section className="relative overflow-hidden border-b border-zinc-800 bg-zinc-950 text-white">
         <div
           className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:40px_40px]"
@@ -545,7 +546,7 @@ export default function FintechLearnerRoadmap() {
           aria-hidden
         />
 
-        <div className="container relative z-10 mx-auto max-w-5xl px-4 pb-20 pt-8 sm:px-6 sm:pb-24 sm:pt-10 lg:max-w-6xl lg:pb-28 lg:pt-14 xl:max-w-7xl">
+        <div className="container relative z-10 mx-auto max-w-5xl px-4 pb-16 pt-[max(1.5rem,env(safe-area-inset-top))] sm:px-6 sm:pb-24 sm:pt-10 lg:max-w-6xl lg:pb-28 lg:pt-14 xl:max-w-7xl">
           <AnimatedSection className="flex flex-col">
             <div className="mb-8 sm:mb-10">
               <Link
@@ -631,10 +632,10 @@ export default function FintechLearnerRoadmap() {
         </div>
       </section>
 
-      <div className="relative z-10 px-4 pb-16 sm:px-6 lg:pb-24">
+      <div className="relative z-10 px-4 pb-[max(4rem,env(safe-area-inset-bottom))] pt-2 sm:px-6 sm:pb-16 lg:pb-24">
         <div className="container mx-auto max-w-5xl pt-10 sm:pt-12 lg:max-w-6xl lg:pt-14 xl:max-w-7xl">
           <div
-            className="mb-8 flex flex-col gap-3 rounded-2xl border border-zinc-200 bg-white px-4 py-4 shadow-sm dark:border-zinc-700/90 dark:bg-zinc-900/85 sm:mb-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-2 sm:px-6 sm:py-4"
+            className="mb-8 flex flex-col gap-3 rounded-2xl border border-zinc-200 bg-white px-4 py-4 shadow-apple dark:border-zinc-700/90 dark:bg-zinc-900/85 sm:mb-10 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-2 sm:px-6 sm:py-4"
             role="region"
             aria-label={t('overviewLabel')}
           >
@@ -672,7 +673,7 @@ export default function FintechLearnerRoadmap() {
           </div>
 
           <div className="mb-10 sm:mb-12">
-            <div className="rounded-2xl border border-zinc-200 bg-white px-5 py-5 shadow-sm dark:border-zinc-700/90 dark:bg-zinc-900/85 sm:px-7 sm:py-6">
+            <div className="rounded-2xl border border-zinc-200 bg-white px-5 py-5 shadow-apple dark:border-zinc-700/90 dark:bg-zinc-900/85 sm:px-7 sm:py-6">
               <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
                 {t('topicsSubLabel')}
               </p>

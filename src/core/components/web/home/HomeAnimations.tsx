@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, Variants, useInView } from 'framer-motion';
+import { motion, Variants, useInView, useReducedMotion } from 'framer-motion';
 import { useRef, ReactNode } from 'react';
 
 // FIX: Explicitly type as a Tuple of 4 numbers
@@ -21,6 +21,7 @@ export function AnimatedSection({
   direction = 'up',
   distance = 30
 }: AnimatedSectionProps) {
+  const reduceMotion = useReducedMotion();
 
   const getDirectionOffset = () => {
     switch (direction) {
@@ -50,6 +51,10 @@ export function AnimatedSection({
     }
   };
 
+  if (reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       initial="hidden"
@@ -78,6 +83,8 @@ export function StaggerContainer({
   staggerDelay?: number;
     delayChildren?: number;
 }) {
+  const reduceMotion = useReducedMotion();
+
   const container: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -88,6 +95,10 @@ export function StaggerContainer({
       }
     }
   };
+
+  if (reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
@@ -109,6 +120,8 @@ export function StaggerItem({
   children: ReactNode;
   className?: string;
 }) {
+  const reduceMotion = useReducedMotion();
+
   const item: Variants = {
     hidden: { opacity: 0, y: 15 },
     show: {
@@ -120,6 +133,10 @@ export function StaggerItem({
       }
     }
   };
+
+  if (reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div variants={item} className={className}>
@@ -141,6 +158,12 @@ export function ScaleIn({
   className?: string;
   delay?: number;
 }) {
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -173,6 +196,11 @@ export function RevealText({
 }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20px" });
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) {
+    return <span className={className}>{text}</span>;
+  }
 
   return (
     <span ref={ref} className={`inline-block overflow-hidden align-bottom ${className}`}>

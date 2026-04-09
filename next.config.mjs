@@ -6,6 +6,13 @@ const withNextIntl = createNextIntlPlugin('./src/core/i18n/request.ts');
 const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
+  compiler: {
+    removeConsole:
+      process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
+  },
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'react-icons', 'framer-motion', 'date-fns'],
+  },
   async redirects() {
     return [
       {
