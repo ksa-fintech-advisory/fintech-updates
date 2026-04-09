@@ -13,6 +13,8 @@ module.exports = {
       fontFamily: {
         sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
         arabic: ['var(--font-ibm-plex-sans-arabic)', 'Tahoma', ...defaultTheme.fontFamily.sans],
+        /** Amiri Quran (Google Fonts) — mushaf-style Arabic; use only for short display text */
+        amiriQuran: ['var(--font-amiri-quran)', 'Traditional Arabic', 'serif'],
         // Monospace for Financial Data, APIs, and Version numbers
         mono: ['var(--font-ibm-plex-mono)', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
       },

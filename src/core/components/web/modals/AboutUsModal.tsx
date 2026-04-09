@@ -58,7 +58,7 @@ export default function AboutUsModal({ isOpen, onClose }: AboutUsModalProps) {
           <section>
             <h3 className="text-xl font-bold text-grey-900 mb-3 flex items-center gap-2">
               <FiTarget className="h-6 w-6 shrink-0 text-primary-600" aria-hidden />
-              {locale === 'ar' ? 'مهمتنا' : 'Our Mission'}
+              {locale === 'ar' ? 'المهمة' : 'Mission'}
             </h3>
             <p className="text-grey-700 leading-relaxed">
               {locale === 'ar' ? content.mission.ar : content.mission.en}
@@ -69,7 +69,7 @@ export default function AboutUsModal({ isOpen, onClose }: AboutUsModalProps) {
           <section>
             <h3 className="text-xl font-bold text-grey-900 mb-3 flex items-center gap-2">
               <FiEye className="h-6 w-6 shrink-0 text-primary-600" aria-hidden />
-              {locale === 'ar' ? 'رؤيتنا' : 'Our Vision'}
+              {locale === 'ar' ? 'لماذا مال تك؟' : 'Why Maal Tech?'}
             </h3>
             <p className="text-grey-700 leading-relaxed">
               {locale === 'ar' ? content.vision.ar : content.vision.en}

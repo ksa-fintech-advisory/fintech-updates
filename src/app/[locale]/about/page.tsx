@@ -41,6 +41,10 @@ export default async function AboutPage({ params }: { params: { locale: string }
         authorName={t('authorName')}
         authorTitle={t('authorTitle')}
         authorBio={t('authorBio')}
+        principleHeading={t('profilePrincipleHeading')}
+        principleStatement={t('profilePrincipleStatement')}
+        audienceCompanies={t('profileAudienceCompanies')}
+        audienceDevelopers={t('profileAudienceDevelopers')}
         avatarAlt={t('avatarAlt')}
         founderBadge={t('founderBadge')}
         signatureLine={t('signatureLine')}
@@ -50,19 +54,24 @@ export default async function AboutPage({ params }: { params: { locale: string }
       {/* <AboutHero heroBadge={t('heroBadge')} title={t('title')} subtitle={t('subtitle')} /> */}
 
      
-
+      <AboutValuesGrid content={content} isArabic={isArabic} principlesHeading={t('principlesHeading')} />
+      
       <AboutMissionVision
         content={content}
         isArabic={isArabic}
         strategicKicker={t('strategicKicker')}
         missionVisionHeading={t('missionVisionHeading')}
         missionLabel={t('missionLabel')}
+        missionBody={t('missionBody')}
         visionLabel={t('visionLabel')}
+        whyKnowledge={t('whyKnowledge')}
+        whyGuidance={t('whyGuidance')}
+        whyEnablement={t('whyEnablement')}
         terminalPrompt={t('terminalPrompt')}
         terminalFile={t('terminalFile')}
       />
 
-      <AboutValuesGrid content={content} isArabic={isArabic} principlesHeading={t('principlesHeading')} />
+     
 
       {/* <AboutExpertiseGrid
         content={content}

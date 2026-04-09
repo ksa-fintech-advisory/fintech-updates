@@ -6,6 +6,7 @@ import { FiTwitter, FiLinkedin, FiArrowRight, FiArrowLeft, FiCommand, FiMail, Fi
 import { SiWhatsapp } from 'react-icons/si';
 import { PUBLIC_CONTACT_EMAIL, getPublicMailtoHref, getWhatsAppWaMeUrl } from '@/core/data/publicContact';
 import { ProfileAvatar } from '@/core/components/web/layout/ProfileAvatar';
+import { AuthorNameText } from '@/core/components/web/layout/AuthorNameText';
 
 export default function Footer() {
   const t = useTranslations('common.footer');
@@ -48,6 +49,7 @@ export default function Footer() {
                 fallbackText={th('displayName')}
                 variant="circle"
                 className="shadow-md ring-2 ring-white transition-transform duration-200 group-hover:scale-105 dark:ring-zinc-900"
+                authorNameFont
               />
               <div className="min-w-0 text-start">
                 <span className="block text-lg font-bold tracking-tight text-zinc-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
@@ -195,7 +197,10 @@ export default function Footer() {
 
         <div className="border-t border-zinc-200/80 pt-8 dark:border-zinc-800/80">
           <p className="text-center text-sm text-zinc-500 dark:text-zinc-500 md:text-start">
-            {t('copyright', { year: currentYear })}
+            {t.rich('copyright', {
+              year: currentYear,
+              author: (chunks) => <AuthorNameText isArabic={isArabic}>{chunks}</AuthorNameText>,
+            })}
           </p>
         </div>
       </div>

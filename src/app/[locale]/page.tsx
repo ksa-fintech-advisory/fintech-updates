@@ -6,6 +6,7 @@ import { homeData } from '@/services/api/data/home.data';
 import type { HeroSection } from '@/core/types/web/home';
 import dynamic from 'next/dynamic';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
+import { AuthorNameText } from '@/core/components/web/layout/AuthorNameText';
 import ServicesSection from '@/core/components/web/home/sections/ServicesSection';
 import FintechRoadmapSection from '@/core/components/web/home/sections/FintechRoadmapSection';
 import BlogFeatureSection from '@/core/components/web/home/sections/BlogFeatureSection';
@@ -34,6 +35,7 @@ function localizedHero(hero: HeroSection, locale: string) {
     title: hero.title[lang],
     titleArParts: hero.titleArParts,
     subtitle: hero.subtitle[lang],
+    subtitleLeadHighlight: hero.subtitleLeadHighlight?.[lang],
 
     ctaButtons: hero.ctaButtons.map((btn) => ({
       label: btn.label[lang],
@@ -97,7 +99,23 @@ export default async function HomePage({ params }: { params: { locale: string } 
                       : 'text-lg leading-[1.7] sm:text-xl sm:leading-[1.68] md:text-2xl md:leading-[1.62]'
                   }`}
                 >
-                  {hero.subtitle}
+                  {hero.subtitleLeadHighlight ? (
+                    <>
+                      <AuthorNameText
+                        isArabic={isArabic}
+                        className={
+                          isArabic
+                            ? 'text-[1.22em] leading-none text-primary-400 [text-shadow:0_0_28px_rgba(52,211,153,0.45)] sm:text-[1.28em]'
+                            : 'text-primary-400 [text-shadow:0_0_28px_rgba(52,211,153,0.45)]'
+                        }
+                      >
+                        {hero.subtitleLeadHighlight.name}
+                      </AuthorNameText>
+                      {hero.subtitleLeadHighlight.tail}
+                    </>
+                  ) : (
+                    hero.subtitle
+                  )}
                 </p>
               </AnimatedSection>
 

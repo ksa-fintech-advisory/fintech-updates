@@ -11,6 +11,8 @@ type Props = {
   variant?: 'circle' | 'rounded';
   className?: string;
   priority?: boolean;
+  /** When the image fails to load, use Amiri Quran for the initial (author name). */
+  authorNameFont?: boolean;
 };
 
 export function ProfileAvatar({
@@ -20,6 +22,7 @@ export function ProfileAvatar({
   variant = 'circle',
   className = '',
   priority = false,
+  authorNameFont = false,
 }: Props) {
   const [failed, setFailed] = useState(false);
   const initial = (fallbackText.trim().charAt(0) || 'M').toUpperCase();
@@ -34,7 +37,7 @@ export function ProfileAvatar({
         aria-label={alt || undefined}
         aria-hidden={alt ? undefined : true}
       >
-        <span className="font-bold">{initial}</span>
+        <span className={authorNameFont ? 'font-amiriQuran font-semibold' : 'font-bold'}>{initial}</span>
       </div>
     );
   }
