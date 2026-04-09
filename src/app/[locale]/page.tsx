@@ -7,12 +7,22 @@ import type { HeroSection } from '@/core/types/web/home';
 import dynamic from 'next/dynamic';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
 import { AuthorNameText } from '@/core/components/web/layout/AuthorNameText';
-import ServicesSection from '@/core/components/web/home/sections/ServicesSection';
-import FintechRoadmapSection from '@/core/components/web/home/sections/FintechRoadmapSection';
-import BlogFeatureSection from '@/core/components/web/home/sections/BlogFeatureSection';
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
-const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false });
+const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false, loading: () => null });
+
+const ServicesSection = dynamic(
+  () => import('@/core/components/web/home/sections/ServicesSection'),
+  { loading: () => null }
+);
+const FintechRoadmapSection = dynamic(
+  () => import('@/core/components/web/home/sections/FintechRoadmapSection'),
+  { loading: () => null }
+);
+const BlogFeatureSection = dynamic(
+  () => import('@/core/components/web/home/sections/BlogFeatureSection'),
+  { loading: () => null }
+);
 
 export async function generateMetadata({
   params,
