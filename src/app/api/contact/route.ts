@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
 import type { ContactFormData, ContactFormResponse } from '@/core/types/web/contact';
-import { SendGridNotConfiguredError, sendContactFormEmail } from '@/server/email/sendContactFormEmail';
+import {
+  SendGridApiError,
+  SendGridNotConfiguredError,
+  sendContactFormEmail,
+} from '@/server/email/sendContactFormEmail';
 
-export const runtime = 'nodejs';
+export const runtime = 'edge';
 
 const LIMITS = {
   name: 200,
@@ -92,11 +96,11 @@ export async function POST(request: Request): Promise<NextResponse<ContactFormRe
       );
     }
 
-    const sgBody =
-      err && typeof err === 'object' && 'response' in err
-        ? (err as { response?: { body?: unknown } }).response?.body
-        : undefined;
-    console.error('[api/contact] SendGrid error', sgBody ?? err);
+    if (err instanceof SendGridApiError) {
+      console.error('[api/contact] SendGrid error', err.statusCode, err.responseBody);
+    } else {
+      console.error('[api/contact] SendGrid error', err);
+    }
 
     return NextResponse.json<ContactFormResponse>(
       {

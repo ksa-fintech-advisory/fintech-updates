@@ -23,7 +23,7 @@ function AnimatedAssetPlaceholder({ type }: { type: string }) {
     case 'payments':
       return (
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="absolute h-[200px] w-[200px] animate-pulse rounded-full bg-emerald-500/20 blur-[60px]" />
+          <div className="absolute h-[200px] w-[200px] animate-pulse rounded-full bg-emerald-500/20 blur-[30px] md:blur-[60px]" />
           <svg viewBox="0 0 100 100" className="h-40 w-40 text-emerald-400 opacity-80">
             <motion.circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: 'linear' }} />
             <motion.circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" strokeWidth="2" />
@@ -35,7 +35,7 @@ function AnimatedAssetPlaceholder({ type }: { type: string }) {
     case 'wealth':
       return (
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="absolute h-[200px] w-[200px] animate-pulse rounded-full bg-sky-500/20 blur-[60px]" />
+          <div className="absolute h-[200px] w-[200px] animate-pulse rounded-full bg-sky-500/20 blur-[30px] md:blur-[60px]" />
           <svg viewBox="0 0 100 100" className="h-40 w-40 text-sky-400 opacity-80">
              <motion.rect x="30" y="50" width="10" height="30" fill="currentColor" rx="2" animate={{ height: [30, 10, 40, 30], y: [50, 70, 40, 50] }} transition={{ duration: 4, repeat: Infinity }} />
              <motion.rect x="45" y="30" width="10" height="50" fill="currentColor" rx="2" animate={{ height: [50, 20, 60, 50], y: [30, 60, 20, 30] }} transition={{ duration: 4, repeat: Infinity, delay: 0.5 }} />
@@ -47,7 +47,7 @@ function AnimatedAssetPlaceholder({ type }: { type: string }) {
     case 'compliance':
       return (
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="absolute h-[200px] w-[200px] animate-pulse rounded-full bg-amber-500/20 blur-[60px]" />
+          <div className="absolute h-[200px] w-[200px] animate-pulse rounded-full bg-amber-500/20 blur-[30px] md:blur-[60px]" />
           <svg viewBox="0 0 100 100" className="h-40 w-40 text-amber-400 opacity-80">
             <path d="M50 15 L20 30 V50 C20 70 50 85 50 85 C50 85 80 70 80 50 V30 Z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
             <motion.path d="M40 50 L48 58 L65 40" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 2, repeat: Infinity }} />
@@ -57,7 +57,7 @@ function AnimatedAssetPlaceholder({ type }: { type: string }) {
     case 'crypto':
       return (
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="absolute h-[200px] w-[200px] animate-pulse rounded-full bg-purple-500/20 blur-[60px]" />
+          <div className="absolute h-[200px] w-[200px] animate-pulse rounded-full bg-purple-500/20 blur-[30px] md:blur-[60px]" />
           <svg viewBox="0 0 100 100" className="h-40 w-40 text-purple-400 opacity-80">
             <motion.rect x="25" y="25" width="20" height="20" rx="4" fill="none" stroke="currentColor" strokeWidth="2" animate={{ rotate: [0, 90, 180, 270, 360] }} transition={{ duration: 10, repeat: Infinity, ease: 'linear' }} style={{ transformOrigin: '35px 35px' }} />
             <motion.rect x="55" y="55" width="20" height="20" rx="4" fill="none" stroke="currentColor" strokeWidth="2" animate={{ rotate: [0, -90, -180, -270, -360] }} transition={{ duration: 10, repeat: Infinity, ease: 'linear' }} style={{ transformOrigin: '65px 65px' }} />
@@ -144,9 +144,9 @@ export function AboutDomainExpertise({ isArabic, kicker, heading, domains }: Pro
           {/* Right Side: Stage */}
           <div className="lg:col-span-7 lg:sticky lg:top-32 lg:self-start">
             <div className="relative flex h-[350px] w-full items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-zinc-800/40 shadow-[0_0_40px_-20px_rgba(255,255,255,0.1)] md:h-[450px]">
-              {/* Glassmorphism subtle backdrop */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />
-              <div className="absolute inset-0" style={{ backdropFilter: 'blur(20px)' }} />
+              <div className="absolute inset-0 hidden md:block" style={{ backdropFilter: 'blur(20px)' }} />
+              <div className="absolute inset-0 bg-zinc-800/80 md:hidden" />
 
               <AnimatePresence mode="wait">
                 <motion.div
