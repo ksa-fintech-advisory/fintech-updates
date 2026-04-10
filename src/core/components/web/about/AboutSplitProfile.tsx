@@ -30,30 +30,51 @@ const CODE_SNIPPETS = [
   {
     file: 'settlement.ts',
     lines: [
+      { tokens: [{ t: 'import ', c: 'text-purple-400' }, { t: '{ AuditLog } ', c: 'text-zinc-100' }, { t: 'from ', c: 'text-purple-400' }, { t: "'@core/audit';", c: 'text-emerald-300' }] },
+      { tokens: [{ t: 'import ', c: 'text-purple-400' }, { t: '{ Router } ', c: 'text-zinc-100' }, { t: 'from ', c: 'text-purple-400' }, { t: "'@core/router';", c: 'text-emerald-300' }] },
+      { tokens: [{ t: '', c: '' }] },
       { tokens: [{ t: 'export ', c: 'text-purple-400' }, { t: 'async ', c: 'text-purple-400' }, { t: 'function ', c: 'text-blue-300' }, { t: 'settlementPipeline', c: 'text-sky-300' }, { t: '(ctx: ', c: 'text-zinc-500' }, { t: 'ComplianceCtx', c: 'text-amber-300' }, { t: ') {', c: 'text-zinc-400' }] },
-      { tokens: [{ t: '  ', c: '' }, { t: 'await ', c: 'text-purple-400' }, { t: 'auditLog', c: 'text-sky-300' }, { t: '.', c: 'text-zinc-500' }, { t: 'append', c: 'text-emerald-300' }, { t: '(ctx);', c: 'text-zinc-400' }] },
-      { tokens: [{ t: '  ', c: '' }, { t: 'const ', c: 'text-purple-400' }, { t: 'result', c: 'text-zinc-100' }, { t: ' = ', c: 'text-zinc-500' }, { t: 'await ', c: 'text-purple-400' }, { t: 'router', c: 'text-sky-300' }, { t: '.', c: 'text-zinc-500' }, { t: 'route', c: 'text-emerald-300' }, { t: '(ctx);', c: 'text-zinc-400' }] },
-      { tokens: [{ t: '  ', c: '' }, { t: 'return ', c: 'text-purple-400' }, { t: 'result', c: 'text-zinc-100' }, { t: ';', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '  ', c: '' }, { t: 'try ', c: 'text-purple-400' }, { t: '{', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '    ', c: '' }, { t: 'await ', c: 'text-purple-400' }, { t: 'AuditLog', c: 'text-sky-300' }, { t: '.', c: 'text-zinc-500' }, { t: 'append', c: 'text-emerald-300' }, { t: '(ctx);', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '    ', c: '' }, { t: 'const ', c: 'text-purple-400' }, { t: 'result', c: 'text-zinc-100' }, { t: ' = ', c: 'text-zinc-500' }, { t: 'await ', c: 'text-purple-400' }, { t: 'Router', c: 'text-sky-300' }, { t: '.', c: 'text-zinc-500' }, { t: 'route', c: 'text-emerald-300' }, { t: '(ctx);', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '    ', c: '' }, { t: 'return ', c: 'text-purple-400' }, { t: 'result', c: 'text-zinc-100' }, { t: ';', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '  ', c: '' }, { t: '} ', c: 'text-zinc-400' }, { t: 'catch ', c: 'text-purple-400' }, { t: '(err) {', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '    ', c: '' }, { t: 'await ', c: 'text-purple-400' }, { t: 'AuditLog', c: 'text-sky-300' }, { t: '.', c: 'text-zinc-500' }, { t: 'flagAnomaly', c: 'text-emerald-300' }, { t: '(ctx, err);', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '    ', c: '' }, { t: 'throw ', c: 'text-purple-400' }, { t: 'new ', c: 'text-purple-400' }, { t: 'SettlementError', c: 'text-amber-300' }, { t: '(err);', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '  ', c: '' }, { t: '}', c: 'text-zinc-400' }] },
       { tokens: [{ t: '}', c: 'text-zinc-400' }] },
     ],
   },
   {
     file: 'kyc-flow.ts',
     lines: [
-      { tokens: [{ t: 'const ', c: 'text-purple-400' }, { t: 'verifyIdentity', c: 'text-sky-300' }, { t: ' = ', c: 'text-zinc-500' }, { t: 'async ', c: 'text-purple-400' }, { t: '(user: ', c: 'text-zinc-500' }, { t: 'User', c: 'text-amber-300' }, { t: ') => {', c: 'text-zinc-400' }] },
-      { tokens: [{ t: '  ', c: '' }, { t: 'const ', c: 'text-purple-400' }, { t: 'doc', c: 'text-zinc-100' }, { t: ' = ', c: 'text-zinc-500' }, { t: 'await ', c: 'text-purple-400' }, { t: 'eKYC', c: 'text-sky-300' }, { t: '.', c: 'text-zinc-500' }, { t: 'scan', c: 'text-emerald-300' }, { t: '(user.nid);', c: 'text-zinc-400' }] },
-      { tokens: [{ t: '  ', c: '' }, { t: 'await ', c: 'text-purple-400' }, { t: 'aml', c: 'text-sky-300' }, { t: '.', c: 'text-zinc-500' }, { t: 'screen', c: 'text-emerald-300' }, { t: '({ doc, user });', c: 'text-zinc-400' }] },
-      { tokens: [{ t: '  ', c: '' }, { t: 'return ', c: 'text-purple-400' }, { t: 'doc', c: 'text-zinc-100' }, { t: '.', c: 'text-zinc-500' }, { t: 'status', c: 'text-emerald-300' }, { t: ';', c: 'text-zinc-400' }] },
+      { tokens: [{ t: 'import ', c: 'text-purple-400' }, { t: '{ eKYC, AML } ', c: 'text-zinc-100' }, { t: 'from ', c: 'text-purple-400' }, { t: "'@services/compliance';", c: 'text-emerald-300' }] },
+      { tokens: [{ t: '', c: '' }] },
+      { tokens: [{ t: 'export ', c: 'text-purple-400' }, { t: 'const ', c: 'text-purple-400' }, { t: 'verifyIdentity', c: 'text-sky-300' }, { t: ' = ', c: 'text-zinc-500' }, { t: 'async ', c: 'text-purple-400' }, { t: '(user: ', c: 'text-zinc-500' }, { t: 'User', c: 'text-amber-300' }, { t: ') => {', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '  ', c: '' }, { t: 'const ', c: 'text-purple-400' }, { t: 'doc', c: 'text-zinc-100' }, { t: ' = ', c: 'text-zinc-500' }, { t: 'await ', c: 'text-purple-400' }, { t: 'eKYC', c: 'text-sky-300' }, { t: '.', c: 'text-zinc-500' }, { t: 'scanDocument', c: 'text-emerald-300' }, { t: '(user.nid);', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '  ', c: '' }, { t: 'if ', c: 'text-purple-400' }, { t: '(!doc.isValid) ', c: 'text-zinc-400' }, { t: 'return ', c: 'text-purple-400' }, { t: "'REJECTED';", c: 'text-emerald-300' }] },
+      { tokens: [{ t: '  ', c: '' }] },
+      { tokens: [{ t: '  ', c: '' }, { t: 'const ', c: 'text-purple-400' }, { t: 'riskScore', c: 'text-zinc-100' }, { t: ' = ', c: 'text-zinc-500' }, { t: 'await ', c: 'text-purple-400' }, { t: 'AML', c: 'text-sky-300' }, { t: '.', c: 'text-zinc-500' }, { t: 'screenProfile', c: 'text-emerald-300' }, { t: '({ doc, user });', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '  ', c: '' }, { t: 'if ', c: 'text-purple-400' }, { t: '(riskScore > ', c: 'text-zinc-400' }, { t: '0.8', c: 'text-purple-300' }, { t: ') ', c: 'text-zinc-400' }, { t: 'return ', c: 'text-purple-400' }, { t: "'MANUAL_REVIEW';", c: 'text-emerald-300' }] },
+      { tokens: [{ t: '  ', c: '' }] },
+      { tokens: [{ t: '  ', c: '' }, { t: 'await ', c: 'text-purple-400' }, { t: 'user', c: 'text-sky-300' }, { t: '.', c: 'text-zinc-500' }, { t: 'updateStatus', c: 'text-emerald-300' }, { t: '(', c: 'text-zinc-400' }, { t: "'VERIFIED'", c: 'text-emerald-300' }, { t: ');', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '  ', c: '' }, { t: 'return ', c: 'text-purple-400' }, { t: "'APPROVED';", c: 'text-emerald-300' }] },
       { tokens: [{ t: '};', c: 'text-zinc-400' }] },
     ],
   },
   {
     file: 'ledger.ts',
     lines: [
-      { tokens: [{ t: 'interface ', c: 'text-purple-400' }, { t: 'LedgerEntry ', c: 'text-amber-300' }, { t: '{', c: 'text-zinc-400' }] },
+      { tokens: [{ t: 'import ', c: 'text-purple-400' }, { t: '{ Dinero } ', c: 'text-zinc-100' }, { t: 'from ', c: 'text-purple-400' }, { t: "'dinero.js';", c: 'text-emerald-300' }] },
+      { tokens: [{ t: '', c: '' }] },
+      { tokens: [{ t: 'export ', c: 'text-purple-400' }, { t: 'interface ', c: 'text-purple-400' }, { t: 'LedgerEntry ', c: 'text-amber-300' }, { t: '{', c: 'text-zinc-400' }] },
       { tokens: [{ t: '  id', c: 'text-sky-300' }, { t: ': ', c: 'text-zinc-500' }, { t: 'string', c: 'text-emerald-400' }, { t: ';', c: 'text-zinc-400' }] },
       { tokens: [{ t: '  amount', c: 'text-sky-300' }, { t: ': ', c: 'text-zinc-500' }, { t: 'Dinero', c: 'text-amber-300' }, { t: '<', c: 'text-zinc-500' }, { t: 'number', c: 'text-emerald-400' }, { t: '>;', c: 'text-zinc-400' }] },
-      { tokens: [{ t: '  rail', c: 'text-sky-300' }, { t: ': ', c: 'text-zinc-500' }, { t: "'SARIE' | 'RTGS' | 'FAST'", c: 'text-emerald-400' }, { t: ';', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '  currency', c: 'text-sky-300' }, { t: ': ', c: 'text-zinc-500' }, { t: "'SAR' | 'USD'", c: 'text-emerald-400' }, { t: ';', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '  rail', c: 'text-sky-300' }, { t: ': ', c: 'text-zinc-500' }, { t: "'SARIE' | 'RTGS' | 'FAST' | 'SWIFT'", c: 'text-emerald-400' }, { t: ';', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '  timestamp', c: 'text-sky-300' }, { t: ': ', c: 'text-zinc-500' }, { t: 'Date', c: 'text-amber-300' }, { t: ';', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '  status', c: 'text-sky-300' }, { t: ': ', c: 'text-zinc-500' }, { t: "'PENDING' | 'SETTLED' | 'REJECTED'", c: 'text-emerald-400' }, { t: ';', c: 'text-zinc-400' }] },
+      { tokens: [{ t: '  reconciliationId', c: 'text-sky-300' }, { t: '?: ', c: 'text-zinc-500' }, { t: 'string', c: 'text-emerald-400' }, { t: ';', c: 'text-zinc-400' }] },
       { tokens: [{ t: '}', c: 'text-zinc-400' }] },
     ],
   },
@@ -115,10 +136,7 @@ const ROLE_BADGES = [
    Section text — bilingual
 ───────────────────────────────────────── */
 const SECTION_HEADING = bi('About Me', 'عني');
-const SECTION_SUB = bi(
-  'I sit at the intersection of financial product strategy, regulatory expertise, and systems thinking — helping teams build what lasts.',
-  'أقف عند تقاطع استراتيجية المنتجات المالية والخبرة التنظيمية والتفكير المنهجي — أساعد الفرق على بناء ما يدوم.'
-);
+
 const QUOTE_TEXT = bi(
   "Architecture isn't about making things complex — it's about making complexity manageable.",
   'العمارة التقنية ليست عن تعقيد الأشياء — بل عن جعل التعقيد قابلًا للإدارة.'
@@ -196,7 +214,7 @@ export function AboutSplitProfile({
   const arFont = isArabic ? 'font-arabic' : '';
 
   useEffect(() => {
-    const iv = setInterval(() => setCodeIdx((i) => (i + 1) % CODE_SNIPPETS.length), 5000);
+    const iv = setInterval(() => setCodeIdx((i) => (i + 1) % CODE_SNIPPETS.length), 5500);
     return () => clearInterval(iv);
   }, []);
 
@@ -232,16 +250,14 @@ export function AboutSplitProfile({
           <h2 className={`text-3xl font-bold tracking-tight text-white md:text-4xl ${arFont}`}>
             {t(SECTION_HEADING, isArabic)}
           </h2>
-          <p className={`mx-auto mt-4 max-w-xl text-sm leading-relaxed text-zinc-400 ${arFont}`}>
-            {t(SECTION_SUB, isArabic)}
-          </p>
+          
         </motion.div>
 
-        {/* ── MAIN GRID ── */}
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
-
-          {/* ── LEFT: Profile card + Code Editor + Quote ── */}
-          <div className="lg:sticky lg:top-28 lg:self-start flex flex-col gap-6">
+        {/* ── MAIN CONTENT ── */}
+        <div className="mx-auto flex max-w-7xl flex-col gap-10 lg:gap-14">
+          
+          {/* ── TOP: Profile card & Code Editor ── */}
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14 items-start">
 
             {/* Profile identity card */}
             <motion.div
@@ -295,6 +311,7 @@ export function AboutSplitProfile({
 
             {/* Live Code Editor */}
             <motion.div
+              dir="ltr"
               initial={reduce ? false : { opacity: 0, y: 24 }}
               whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -321,45 +338,21 @@ export function AboutSplitProfile({
                   ))}
                 </div>
               </div>
-              <div className="min-h-[136px]">
+              <div className="min-h-[290px]">
                 <TypewriterCode snippet={CODE_SNIPPETS[codeIdx]} idx={codeIdx} />
-              </div>
-            </motion.div>
-
-            {/* Terminal philosophy quote — bilingual */}
-            <motion.div
-              initial={reduce ? false : { opacity: 0, y: 20 }}
-              whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative overflow-hidden rounded-2xl border border-emerald-500/20 bg-zinc-950/70 p-6"
-            >
-              <div className="flex items-start gap-3">
-                <span className="font-mono text-emerald-500 text-sm flex-shrink-0 mt-0.5">$_</span>
-                <div>
-                  <p className={`font-mono text-sm text-zinc-300 leading-relaxed ${arFont}`}>
-                    {t(QUOTE_TEXT, isArabic)}
-                  </p>
-                  <p className="mt-2 font-mono text-[10px] text-zinc-600">— {authorName}</p>
-                </div>
               </div>
             </motion.div>
           </div>
 
-          {/* ── RIGHT: Stats + Value Pillars + Philosophy Cards ── */}
-          <div className="flex flex-col gap-6">
-
-
-
-            {/* Value pillars — bilingual */}
-            <motion.div
-              initial={reduce ? false : { opacity: 0, y: 24 }}
-              whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {PILLARS.map((pillar, i) => (
+          {/* ── BOTTOM: Value Pillars ── */}
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+          >
+            {PILLARS.map((pillar, i) => (
                 <motion.div
                   key={i}
                   initial={reduce ? false : { opacity: 0, y: 20 }}
@@ -380,9 +373,6 @@ export function AboutSplitProfile({
                 </motion.div>
               ))}
             </motion.div>
-
-
-          </div>
         </div>
       </div>
     </section>
