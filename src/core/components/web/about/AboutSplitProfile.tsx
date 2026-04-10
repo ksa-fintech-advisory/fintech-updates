@@ -146,11 +146,12 @@ const QUOTE_TEXT = bi(
    Sub-components
 ───────────────────────────────────────── */
 
-function TypewriterCode({ snippet, idx }: { snippet: typeof CODE_SNIPPETS[number]; idx: number }) {
+function TypewriterCode({ snippet, idx, startAnimation }: { snippet: typeof CODE_SNIPPETS[number]; idx: number; startAnimation: boolean }) {
   const [visibleLines, setVisibleLines] = useState(0);
   const reduce = useReducedMotion();
 
   useEffect(() => {
+    if (!startAnimation) return;
     setVisibleLines(0);
     if (reduce) { setVisibleLines(snippet.lines.length); return; }
     let current = 0;
@@ -160,7 +161,7 @@ function TypewriterCode({ snippet, idx }: { snippet: typeof CODE_SNIPPETS[number
       if (current >= snippet.lines.length) clearInterval(timer);
     }, 230);
     return () => clearInterval(timer);
-  }, [idx, snippet.lines.length, reduce]);
+  }, [idx, snippet.lines.length, reduce, startAnimation]);
 
   return (
     <motion.div
@@ -212,16 +213,20 @@ export function AboutSplitProfile({
   const reduce = useReducedMotion();
   const [codeIdx, setCodeIdx] = useState(0);
   const arFont = isArabic ? 'font-arabic' : '';
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   useEffect(() => {
+    if (!isInView) return;
     const iv = setInterval(() => setCodeIdx((i) => (i + 1) % CODE_SNIPPETS.length), 5500);
     return () => clearInterval(iv);
-  }, []);
+  }, [isInView]);
 
 
   return (
     <section
       id="about-profile"
+      ref={sectionRef}
       className="relative overflow-hidden scroll-mt-28 border-b border-white/10 bg-zinc-900 py-20 md:py-28"
       dir={isArabic ? 'rtl' : 'ltr'}
     >
@@ -339,7 +344,7 @@ export function AboutSplitProfile({
                 </div>
               </div>
               <div className="min-h-[290px]">
-                <TypewriterCode snippet={CODE_SNIPPETS[codeIdx]} idx={codeIdx} />
+                <TypewriterCode snippet={CODE_SNIPPETS[codeIdx]} idx={codeIdx} startAnimation={isInView} />
               </div>
             </motion.div>
           </div>
