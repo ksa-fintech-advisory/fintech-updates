@@ -89,15 +89,17 @@ export function AboutDomainExpertise({ isArabic, kicker, heading, domains }: Pro
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
           {/* Left Side: Tabs */}
-          <div className="flex flex-col gap-2 lg:col-span-5">
+          <div className="flex flex-col gap-6 lg:col-span-5 lg:pb-[30vh]">
             {domains.map((domain) => {
               const isActive = activeId === domain.id;
               return (
-                <button
+                <motion.button
                   key={domain.id}
+                  viewport={{ margin: '-25% 0px -75% 0px', amount: 'some' }}
+                  onViewportEnter={() => setActiveId(domain.id)}
                   onClick={() => setActiveId(domain.id)}
                   onMouseEnter={() => setActiveId(domain.id)}
-                  className={`group relative flex cursor-pointer flex-col rounded-2xl p-5 text-start outline-none transition-all md:p-6 ${
+                  className={`group relative flex cursor-pointer flex-col rounded-2xl p-5 text-start outline-none transition-all md:p-8 ${
                     isActive ? '' : 'hover:bg-white/[0.02]'
                   }`}
                 >
@@ -110,7 +112,7 @@ export function AboutDomainExpertise({ isArabic, kicker, heading, domains }: Pro
                     />
                   )}
                   <h3
-                    className={`relative z-10 text-lg font-bold transition-colors md:text-xl ${
+                    className={`relative z-10 text-lg font-bold transition-colors md:text-2xl ${
                       isArabic ? 'font-arabic' : ''
                     } ${isActive ? 'text-white' : 'text-zinc-500 group-hover:text-zinc-300'}`}
                   >
@@ -120,7 +122,7 @@ export function AboutDomainExpertise({ isArabic, kicker, heading, domains }: Pro
                     {isActive && (
                       <motion.div
                         initial={{ opacity: 0, height: 0, marginTop: 0 }}
-                        animate={{ opacity: 1, height: 'auto', marginTop: 12 }}
+                        animate={{ opacity: 1, height: 'auto', marginTop: 16 }}
                         exit={{ opacity: 0, height: 0, marginTop: 0 }}
                         transition={{ duration: 0.3 }}
                       >
@@ -134,13 +136,13 @@ export function AboutDomainExpertise({ isArabic, kicker, heading, domains }: Pro
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </button>
+                </motion.button>
               );
             })}
           </div>
 
           {/* Right Side: Stage */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 lg:sticky lg:top-32 lg:self-start">
             <div className="relative flex h-[350px] w-full items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-zinc-800/40 shadow-[0_0_40px_-20px_rgba(255,255,255,0.1)] md:h-[450px]">
               {/* Glassmorphism subtle backdrop */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/[0.02] to-transparent" />

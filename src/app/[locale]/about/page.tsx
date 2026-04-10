@@ -5,10 +5,8 @@ import { getWhatsAppWaMeUrl } from '@/core/data/publicContact';
 import { AboutPortfolioSubnav } from '@/core/components/web/about/AboutPortfolioSubnav';
 import { AboutHeroV2 } from '@/core/components/web/about/AboutHeroV2';
 import { AboutSplitProfile } from '@/core/components/web/about/AboutSplitProfile';
-import { AboutRegionalImpact } from '@/core/components/web/about/AboutRegionalImpact';
-import { AboutTechStack } from '@/core/components/web/about/AboutTechStack';
 import { AboutDomainExpertise } from '@/core/components/web/about/AboutDomainExpertise';
-import { AboutProjectsGraph } from '@/core/components/web/about/AboutProjectsGraph';
+import { AboutProductsShowcase } from '@/core/components/web/about/AboutProductsShowcase';
 import { AboutExperienceBento } from '@/core/components/web/about/AboutExperienceBento';
 import { AboutBlogTerminal } from '@/core/components/web/about/AboutBlogTerminal';
 import { AboutCommandPalette } from '@/core/components/web/about/AboutCommandPalette';
@@ -39,20 +37,18 @@ export default async function AboutPage({ params }: { params: { locale: string }
     { href: '#about-overview', label: t('portfolioNavOverview') },
     { href: '#about-profile', label: t('portfolioNavProfile') },
     { href: '#about-domains', label: t('portfolioNavExpertise') },
-    { href: '#about-projects', label: t('portfolioNavProjects') },
-    { href: '#about-regional', label: t('v2RegionalHeading') },
-    { href: '#about-tech', label: t('v2TechHeading') },
+    { href: '#about-projects', label: t('v2ProjectsHeading') },
     { href: '#about-experience', label: t('portfolioNavExperience') },
     { href: '#about-blog', label: t('portfolioNavBlog') },
     { href: '#about-connect', label: t('portfolioNavConnect') },
   ];
 
   return (
-    <div className="dark min-h-screen bg-zinc-950 text-zinc-100 selection:bg-emerald-500/25">
+    <div className="dark min-h-screen overflow-x-hidden bg-zinc-950 text-zinc-100 selection:bg-emerald-500/25">
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_bottom,rgba(16,185,129,0.03),transparent_35%)]" />
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:56px_56px] opacity-40" />
 
-      <AboutPortfolioSubnav kicker={t('portfolioNavKicker')} items={subnavItems} isArabic={isArabic} />
+      {/* <AboutPortfolioSubnav kicker={t('portfolioNavKicker')} items={subnavItems} isArabic={isArabic} /> */}
 
       <AboutHeroV2
         isArabic={isArabic}
@@ -67,9 +63,6 @@ export default async function AboutPage({ params }: { params: { locale: string }
       <AboutSplitProfile
         isArabic={isArabic}
         ideFileLabel={t('v2SplitIdeFile')}
-        card1={t('v2SplitCard1')}
-        card2={t('v2SplitCard2')}
-        card3={t('v2SplitCard3')}
         authorName={t('authorName')}
         authorTitle={t('authorTitle')}
         avatarAlt={t('avatarAlt')}
@@ -103,37 +96,19 @@ export default async function AboutPage({ params }: { params: { locale: string }
         ]}
       />
 
-      <AboutProjectsGraph
+      <AboutProductsShowcase
         isArabic={isArabic}
         kicker={t('v2ProjectsKicker')}
         heading={t('v2ProjectsHeading')}
-        sub={t('v2ProjectsSub')}
-        node1={t('v2ProjectNode1')}
-        node2={t('v2ProjectNode2')}
-        node3={t('v2ProjectNode3')}
       />
 
-      <AboutRegionalImpact
-        isArabic={isArabic}
-        kicker={t('v2RegionalKicker')}
-        heading={t('v2RegionalHeading')}
-        sub={t('v2RegionalSub')}
-      />
 
-      <AboutTechStack
-        isArabic={isArabic}
-        kicker={t('v2TechKicker')}
-        heading={t('v2TechHeading')}
-        sub={t('v2TechSub')}
-      />
 
       <AboutExperienceBento
         isArabic={isArabic}
         kicker={t('v2BentoKicker')}
         heading={t('v2BentoHeading')}
         companiesCaption={t('v2BentoCompaniesCaption')}
-        uptimeLabel={t('v2BentoUptime')}
-        uptimeValue={t('v2BentoUptimeValue')}
         quote={t('v2BentoQuote')}
       />
 
