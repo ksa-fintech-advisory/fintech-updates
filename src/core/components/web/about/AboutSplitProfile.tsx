@@ -11,9 +11,6 @@ import { AuthorNameText } from '@/core/components/web/layout/AuthorNameText';
 type Props = {
   isArabic: boolean;
   ideFileLabel: string;
-  card1: string;
-  card2: string;
-  card3: string;
   authorName: string;
   authorTitle: string;
   avatarAlt: string;
@@ -105,16 +102,6 @@ const PILLARS = [
 ];
 
 /* ─────────────────────────────────────────
-   Impact stats — bilingual
-───────────────────────────────────────── */
-const STATS = [
-  { value: 5, suffix: '+', label: bi('years in regulated FinTech', 'سنوات في التقنية المالية المنظّمة'), icon: '⚡' },
-  { value: 6, suffix: '+', label: bi('financial products launched', 'منتجات مالية تم إطلاقها'), icon: '🚀' },
-  { value: 3, suffix: '', label: bi('regulatory frameworks', 'أطر تنظيمية (ساما، هيئة السوق، ADGM)'), icon: '⚖️' },
-  { value: 4, suffix: '+', label: bi('GCC countries served', 'دول خليجية تم خدمتها'), icon: '🌍' },
-];
-
-/* ─────────────────────────────────────────
    Role badges — bilingual
 ───────────────────────────────────────── */
 const ROLE_BADGES = [
@@ -195,33 +182,11 @@ function TypewriterCode({ snippet, idx }: { snippet: typeof CODE_SNIPPETS[number
   );
 }
 
-function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-  const reduce = useReducedMotion();
-
-  useEffect(() => {
-    if (!inView || !ref.current) return;
-    if (reduce) { ref.current.textContent = `${value}${suffix}`; return; }
-    const controls = animate(0, value, {
-      duration: 1.6,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate(v) { if (ref.current) ref.current.textContent = `${Math.floor(v)}${suffix}`; },
-    });
-    return () => controls.stop();
-  }, [inView, value, suffix, reduce]);
-
-  return <span ref={ref}>0{suffix}</span>;
-}
-
 /* ─────────────────────────────────────────
    Main Component
 ───────────────────────────────────────── */
 export function AboutSplitProfile({
   isArabic,
-  card1,
-  card2,
-  card3,
   authorName,
   authorTitle,
   avatarAlt,
@@ -235,7 +200,6 @@ export function AboutSplitProfile({
     return () => clearInterval(iv);
   }, []);
 
-  const cards = [card1, card2, card3];
 
   return (
     <section
@@ -385,29 +349,7 @@ export function AboutSplitProfile({
           {/* ── RIGHT: Stats + Value Pillars + Philosophy Cards ── */}
           <div className="flex flex-col gap-6">
 
-            {/* Impact stats — bilingual labels */}
-            <motion.div
-              initial={reduce ? false : { opacity: 0, y: 24 }}
-              whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {STATS.map((s, i) => (
-                <motion.div
-                  key={i}
-                  whileHover={reduce ? undefined : { y: -4, scale: 1.02 }}
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-800/30 p-5 text-center transition-all hover:border-emerald-500/40 hover:bg-zinc-800/50 hover:shadow-[0_0_40px_-15px_rgba(16,185,129,0.25)]"
-                >
-                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                  <div className="text-2xl mb-1">{s.icon}</div>
-                  <div className="font-mono text-2xl font-bold text-white md:text-3xl">
-                    <AnimatedCounter value={s.value} suffix={s.suffix} />
-                  </div>
-                  <p className={`mt-1.5 font-mono text-[10px] leading-snug text-zinc-500 ${arFont}`}>{t(s.label, isArabic)}</p>
-                </motion.div>
-              ))}
-            </motion.div>
+
 
             {/* Value pillars — bilingual */}
             <motion.div
@@ -439,41 +381,7 @@ export function AboutSplitProfile({
               ))}
             </motion.div>
 
-            {/* Philosophy cards (from translations — already bilingual via props) */}
-            {cards.map((text, i) => {
-              const accents = [
-                'from-emerald-500/15 to-teal-500/5 border-emerald-500/20 hover:border-emerald-500/45',
-                'from-amber-500/15 to-orange-500/5 border-amber-500/20 hover:border-amber-500/45',
-                'from-violet-500/15 to-purple-500/5 border-violet-500/20 hover:border-violet-500/45',
-              ];
-              const icons = ['⚙️', '🎯', '📐'];
-              return (
-                <motion.div
-                  key={i}
-                  initial={reduce ? false : { opacity: 0, y: 28, filter: 'blur(12px)' }}
-                  whileInView={reduce ? undefined : { opacity: 1, y: 0, filter: 'blur(0px)' }}
-                  whileHover={reduce ? undefined : { scale: 1.02, x: isArabic ? -6 : 6 }}
-                  viewport={{ once: true, margin: '-60px' }}
-                  transition={{ duration: 0.4, delay: i * 0.1, ease: [0.25, 0.1, 0.25, 1] }}
-                  className={`group relative overflow-hidden rounded-2xl border bg-gradient-to-br ${accents[i]} p-6 shadow-[0_0_48px_-20px_rgba(16,185,129,0.1)] backdrop-blur-md transition-all md:p-7`}
-                >
-                  <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent transition-transform duration-700 ease-in-out group-hover:translate-x-full" />
-                  <div className="relative z-10 flex items-start gap-4">
-                    <span className="flex-shrink-0 rounded-xl bg-white/10 p-2.5 text-lg transition-transform duration-300 group-hover:scale-110">
-                      {icons[i]}
-                    </span>
-                    <div>
-                      <span className="mb-2 block font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-500/80 transition-colors group-hover:text-emerald-400">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
-                      <p className={`text-base font-medium leading-relaxed text-zinc-100 transition-colors group-hover:text-white md:text-lg ${arFont}`}>
-                        {text}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+
           </div>
         </div>
       </div>

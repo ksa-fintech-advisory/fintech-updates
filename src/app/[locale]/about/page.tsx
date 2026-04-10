@@ -63,9 +63,6 @@ export default async function AboutPage({ params }: { params: { locale: string }
       <AboutSplitProfile
         isArabic={isArabic}
         ideFileLabel={t('v2SplitIdeFile')}
-        card1={t('v2SplitCard1')}
-        card2={t('v2SplitCard2')}
-        card3={t('v2SplitCard3')}
         authorName={t('authorName')}
         authorTitle={t('authorTitle')}
         avatarAlt={t('avatarAlt')}
