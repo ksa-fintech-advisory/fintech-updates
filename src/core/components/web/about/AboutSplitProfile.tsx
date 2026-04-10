@@ -4,6 +4,7 @@ import { motion, useReducedMotion, useInView, animate } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { ProfileAvatar } from '@/core/components/web/layout/ProfileAvatar';
 import { AuthorNameText } from '@/core/components/web/layout/AuthorNameText';
+import { FiMap, FiShield, FiLayers, FiUsers } from 'react-icons/fi';
 
 /* ─────────────────────────────────────────
    Types
@@ -85,7 +86,7 @@ const CODE_SNIPPETS = [
 ───────────────────────────────────────── */
 const PILLARS = [
   {
-    icon: '🧭',
+    icon: <FiMap className="w-6 h-6 text-emerald-400" />,
     label: bi('Product strategy', 'استراتيجية المنتج'),
     description: bi(
       'Turning financial regulation into a product roadmap that investors and regulators both approve.',
@@ -94,7 +95,7 @@ const PILLARS = [
     accent: 'from-emerald-500/15 to-teal-500/5 border-emerald-500/20 hover:border-emerald-500/50',
   },
   {
-    icon: '⚖️',
+    icon: <FiShield className="w-6 h-6 text-amber-400" />,
     label: bi('Regulatory navigation', 'التوجيه التنظيمي'),
     description: bi(
       'Deep familiarity with SAMA, CMA and GCC supervisory frameworks — translating policy into architecture.',
@@ -103,7 +104,7 @@ const PILLARS = [
     accent: 'from-amber-500/15 to-orange-500/5 border-amber-500/20 hover:border-amber-500/50',
   },
   {
-    icon: '🏗️',
+    icon: <FiLayers className="w-6 h-6 text-sky-400" />,
     label: bi('System design', 'تصميم الأنظمة'),
     description: bi(
       'Designing platforms that scale to millions of users while remaining auditable and compliant by default.',
@@ -112,7 +113,7 @@ const PILLARS = [
     accent: 'from-sky-500/15 to-blue-500/5 border-sky-500/20 hover:border-sky-500/50',
   },
   {
-    icon: '🤝',
+    icon: <FiUsers className="w-6 h-6 text-violet-400" />,
     label: bi('Founder & advisor', 'مستشار تقني'),
     description: bi(
       'Working alongside founding teams and C-suite to close the gap between a vision and a licensed product.',
@@ -251,7 +252,7 @@ export function AboutSplitProfile({
           transition={{ duration: 0.5 }}
           className="mb-14 text-center"
         >
-          <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">// ABOUT_ME</p>
+          <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">{"// ABOUT_ME"}</p>
           <h2 className={`text-3xl font-bold tracking-tight text-white md:text-4xl ${arFont}`}>
             {t(SECTION_HEADING, isArabic)}
           </h2>
