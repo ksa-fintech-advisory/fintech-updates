@@ -127,7 +127,7 @@ const ROLE_BADGES = [
 /* ─────────────────────────────────────────
    Section text — bilingual
 ───────────────────────────────────────── */
-const SECTION_HEADING = bi('The person behind the work', 'الشخص وراء العمل');
+const SECTION_HEADING = bi('About Me', 'عني');
 const SECTION_SUB = bi(
   'I sit at the intersection of financial product strategy, regulatory expertise, and systems thinking — helping teams build what lasts.',
   'أقف عند تقاطع استراتيجية المنتجات المالية والخبرة التنظيمية والتفكير المنهجي — أساعد الفرق على بناء ما يدوم.'

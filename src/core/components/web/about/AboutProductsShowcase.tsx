@@ -10,7 +10,7 @@ type Props = {
   isArabic: boolean;
   kicker: string;
   heading: string;
-  sub: string;
+  sub?: string;
 };
 
 type Product = {
@@ -687,7 +687,7 @@ export function AboutProductsShowcase({ isArabic, kicker, heading, sub }: Props)
         >
           <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">{kicker}</p>
           <h2 className={`text-3xl font-bold tracking-tight text-white md:text-4xl ${arFont}`}>{heading}</h2>
-          <p className={`mt-4 text-sm text-zinc-500 md:text-base ${arFont}`}>{sub}</p>
+          {sub && <p className={`mt-4 text-sm text-zinc-500 md:text-base ${arFont}`}>{sub}</p>}
         </motion.div>
 
         {/* Products grid — 2×3 */}

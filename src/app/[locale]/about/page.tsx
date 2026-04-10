@@ -5,7 +5,6 @@ import { getWhatsAppWaMeUrl } from '@/core/data/publicContact';
 import { AboutPortfolioSubnav } from '@/core/components/web/about/AboutPortfolioSubnav';
 import { AboutHeroV2 } from '@/core/components/web/about/AboutHeroV2';
 import { AboutSplitProfile } from '@/core/components/web/about/AboutSplitProfile';
-import { AboutRegionalImpact } from '@/core/components/web/about/AboutRegionalImpact';
 import { AboutDomainExpertise } from '@/core/components/web/about/AboutDomainExpertise';
 import { AboutProductsShowcase } from '@/core/components/web/about/AboutProductsShowcase';
 import { AboutExperienceBento } from '@/core/components/web/about/AboutExperienceBento';
@@ -38,9 +37,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
     { href: '#about-overview', label: t('portfolioNavOverview') },
     { href: '#about-profile', label: t('portfolioNavProfile') },
     { href: '#about-domains', label: t('portfolioNavExpertise') },
-    { href: '#about-projects', label: t('portfolioNavProjects') },
-    { href: '#about-regional', label: t('v2RegionalHeading') },
-    { href: '#about-tech', label: t('v2TechHeading') },
+    { href: '#about-projects', label: t('v2ProjectsHeading') },
     { href: '#about-experience', label: t('portfolioNavExperience') },
     { href: '#about-blog', label: t('portfolioNavBlog') },
     { href: '#about-connect', label: t('portfolioNavConnect') },
@@ -106,14 +103,6 @@ export default async function AboutPage({ params }: { params: { locale: string }
         isArabic={isArabic}
         kicker={t('v2ProjectsKicker')}
         heading={t('v2ProjectsHeading')}
-        sub={t('v2ProjectsSub')}
-      />
-
-      <AboutRegionalImpact
-        isArabic={isArabic}
-        kicker={t('v2RegionalKicker')}
-        heading={t('v2RegionalHeading')}
-        sub={t('v2RegionalSub')}
       />
 
 
