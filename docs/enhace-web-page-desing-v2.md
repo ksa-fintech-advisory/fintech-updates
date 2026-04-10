@@ -87,7 +87,7 @@ Text (Arabic):
 > cat latest_insights.md
 [1] بناء الـ MVP في الفنتك: موازنة التكلفة والامتثال.
 [2] هندسة ما بعد الإطلاق والـ APIs.
-> تصفح المذكرات الميدانية_ (Make this line a clickable link).
+> تصفح المدونة_ (Make this line a clickable link).
 
 6. Contact (The Command Palette):
 

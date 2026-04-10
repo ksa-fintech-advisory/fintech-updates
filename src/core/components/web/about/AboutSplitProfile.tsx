@@ -251,7 +251,7 @@ export function AboutSplitProfile({
           transition={{ duration: 0.5 }}
           className="mb-14 text-center"
         >
-          <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">// ABOUT_ME</p>
+          <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">{"// ABOUT_ME"}</p>
           <h2 className={`text-3xl font-bold tracking-tight text-white md:text-4xl ${arFont}`}>
             {t(SECTION_HEADING, isArabic)}
           </h2>
