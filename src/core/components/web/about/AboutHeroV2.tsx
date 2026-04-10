@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState, useCallback } from 'react';
+import { useIsMobile } from '@/core/hooks/useIsMobile';
 
 const Network3D = dynamic(() => import('@/core/components/web/about/Network3D'), { ssr: false });
 
@@ -29,6 +30,7 @@ export function AboutHeroV2({
 }: Props) {
   const [perspective, setPerspective] = useState<Perspective>('business');
   const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 });
+  const isMobile = useIsMobile();
 
   const onMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
@@ -45,10 +47,10 @@ export function AboutHeroV2({
     <section
       id="about-overview"
       className="relative flex flex-col items-center justify-center min-h-[85vh] scroll-mt-28 overflow-hidden border-b border-white/10 bg-zinc-950 py-20 md:min-h-[90vh] md:py-28"
-      onMouseMove={onMove}
+      onMouseMove={isMobile ? undefined : onMove}
       dir={isArabic ? 'rtl' : 'ltr'}
     >
-      {/* Moving grid — subtle parallax from mouse */}
+      {/* Moving grid — subtle parallax from mouse (static on mobile) */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.45]"
         style={{
@@ -57,22 +59,32 @@ export function AboutHeroV2({
             linear-gradient(90deg, rgba(16,185,129,0.1) 1px, transparent 1px)
           `,
           backgroundSize: '48px 48px',
-          backgroundPosition: `${mouse.x * 24}px ${mouse.y * 24}px`,
-          transition: 'background-position 0.4s ease-out',
+          ...(!isMobile && {
+            backgroundPosition: `${mouse.x * 24}px ${mouse.y * 24}px`,
+            transition: 'background-position 0.4s ease-out',
+          }),
         }}
       />
-      {/* Glowing orbs for more visual depth */}
+      {/* Glowing orbs — reduced blur radius on mobile to avoid GPU stalls */}
       <div
-        className="pointer-events-none absolute left-0 top-[20%] h-[50vh] w-[50vh] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-[120px]"
+        className="pointer-events-none absolute left-0 top-[20%] h-[50vh] w-[50vh] -translate-x-1/2 rounded-full bg-emerald-500/10 blur-[40px] md:blur-[120px]"
       />
       <div
-        className="pointer-events-none absolute right-0 top-[60%] h-[60vh] w-[60vh] translate-x-1/2 rounded-full bg-sky-500/5 blur-[120px]"
+        className="pointer-events-none absolute right-0 top-[60%] h-[60vh] w-[60vh] translate-x-1/2 rounded-full bg-sky-500/5 blur-[40px] md:blur-[120px]"
       />
 
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-emerald-500/[0.03] via-transparent to-black/80" />
-      <div className="absolute inset-0 z-0 opacity-[0.4] mix-blend-screen">
-        <Network3D />
-      </div>
+      {isMobile ? (
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-30">
+          <div className="absolute left-1/4 top-1/3 h-32 w-32 rounded-full bg-emerald-500/20 blur-[50px]" />
+          <div className="absolute right-1/4 top-1/2 h-24 w-24 rounded-full bg-emerald-400/15 blur-[40px]" />
+          <div className="absolute left-1/2 bottom-1/4 h-20 w-20 rounded-full bg-teal-500/10 blur-[35px]" />
+        </div>
+      ) : (
+        <div className="absolute inset-0 z-0 opacity-[0.4] mix-blend-screen">
+          <Network3D />
+        </div>
+      )}
 
       <div className="container relative z-10 mx-auto flex flex-col items-center px-4 text-center sm:px-6 lg:px-8">
         {/* Glass perspective switcher */}

@@ -239,8 +239,8 @@ export function AboutSplitProfile({
           backgroundSize: '40px 40px',
         }}
       />
-      <div className="pointer-events-none absolute -top-40 -start-40 h-[500px] w-[500px] rounded-full bg-emerald-500/5 blur-[120px]" />
-      <div className="pointer-events-none absolute -bottom-40 -end-40 h-[400px] w-[400px] rounded-full bg-sky-500/5 blur-[120px]" />
+      <div className="pointer-events-none absolute -top-40 -start-40 h-[500px] w-[500px] rounded-full bg-emerald-500/5 blur-[40px] md:blur-[120px]" />
+      <div className="pointer-events-none absolute -bottom-40 -end-40 h-[400px] w-[400px] rounded-full bg-sky-500/5 blur-[40px] md:blur-[120px]" />
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
 
