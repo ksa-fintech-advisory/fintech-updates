@@ -111,6 +111,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
         node1={t('v2ProjectNode1')}
         node2={t('v2ProjectNode2')}
         node3={t('v2ProjectNode3')}
+        node4={t('v2ProjectNode4')}
       />
 
       <AboutRegionalImpact
@@ -132,8 +133,6 @@ export default async function AboutPage({ params }: { params: { locale: string }
         kicker={t('v2BentoKicker')}
         heading={t('v2BentoHeading')}
         companiesCaption={t('v2BentoCompaniesCaption')}
-        uptimeLabel={t('v2BentoUptime')}
-        uptimeValue={t('v2BentoUptimeValue')}
         quote={t('v2BentoQuote')}
       />
 

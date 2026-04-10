@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useCallback, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -9,8 +8,6 @@ type Props = {
   kicker: string;
   heading: string;
   companiesCaption: string;
-  uptimeLabel: string;
-  uptimeValue: string;
   quote: string;
 };
 
@@ -95,8 +92,6 @@ export function AboutExperienceBento({
   kicker,
   heading,
   companiesCaption,
-  uptimeLabel,
-  uptimeValue,
   quote,
 }: Props) {
   return (
@@ -124,80 +119,63 @@ export function AboutExperienceBento({
           </h2>
         </div>
 
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-4 md:grid-rows-2 md:gap-5">
-          <SpotlightCard className="md:col-span-2 md:row-span-2 min-h-[220px] p-6 md:min-h-[280px] md:p-8">
-            <p className="mb-4 font-mono text-[10px] uppercase tracking-widest text-zinc-500">{companiesCaption}</p>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              {COMPANIES.map((company, i) => (
-                <motion.div
-                  key={company.name}
-                  initial={{ opacity: 0, y: 8 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  className="group relative flex items-center gap-4 rounded-xl border border-white/5 bg-white/[0.02] p-4 transition-all hover:bg-white/[0.04]"
-                >
-                  <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-900 ring-1 ring-white/10 transition-colors group-hover:ring-emerald-500/50 p-1">
-                    {company.logo ? (
-                      <Image 
-                        src={company.logo} 
-                        alt={`${company.name} logo`} 
-                        fill
-                        className="object-contain p-1.5 filter grayscale group-hover:grayscale-0 transition-all duration-300" 
-                      />
-                    ) : (
-                      <span className="font-mono text-sm font-bold text-zinc-400 group-hover:text-emerald-400">
-                        {company.name.charAt(0)}
-                      </span>
-                    )}
-                  </div>
-                  <div>
-                    <h3 className="font-mono text-sm font-semibold text-zinc-300 group-hover:text-white transition-colors">
-                      {company.href ? (
-                        <a href={company.href} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                          {company.name}
-                        </a>
+        <div className="mx-auto flex max-w-6xl flex-col gap-6 md:gap-8">
+          <SpotlightCard className="p-6 md:p-8">
+            <p className="mb-6 font-mono text-[10px] uppercase tracking-widest text-zinc-500">{companiesCaption}</p>
+            <div className="relative w-full overflow-hidden">
+              {/* Fade masks for smooth edges */}
+              <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-zinc-900 to-transparent" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-zinc-900 to-transparent" />
+
+              <motion.div
+                className={`flex w-max gap-4 ${isArabic ? 'pl-4' : 'pr-4'}`}
+                animate={{ x: isArabic ? ['0%', '50%'] : ['0%', '-50%'] }}
+                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                whileHover={{ animationPlayState: 'paused' }} 
+              >
+                {[...COMPANIES, ...COMPANIES].map((company, i) => (
+                  <div
+                    key={`${company.name}-${i}`}
+                    className="group relative flex w-[280px] shrink-0 flex-col justify-between gap-4 rounded-xl border border-white/5 bg-white/[0.02] p-5 transition-all hover:bg-white/[0.04] md:w-[320px]"
+                  >
+                    <div className="flex h-12 w-full items-center justify-start opacity-80 transition-opacity duration-300 group-hover:opacity-100">
+                      {company.logo ? (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img 
+                          src={company.logo} 
+                          alt={`${company.name} logo`} 
+                          className={`max-h-full max-w-[120px] object-contain transition-all duration-300 ${
+                            company.name === 'Awqef Capital' || company.name === 'Tide' ? 'brightness-0 invert' : ''
+                          }`}
+                        />
                       ) : (
-                        company.name
+                        <span className="font-mono text-xl font-bold text-zinc-400 group-hover:text-emerald-400">
+                          {company.name}
+                        </span>
                       )}
-                    </h3>
-                    <p className="text-[10px] text-zinc-500 mb-0.5">{company.role}</p>
-                    {company.desc && (
-                      <p className="text-[9px] text-zinc-600 line-clamp-1 group-hover:text-zinc-400 transition-colors">{company.desc}</p>
-                    )}
+                    </div>
+                    <div>
+                      <h3 className="font-mono text-base font-semibold text-zinc-300 transition-colors group-hover:text-white">
+                        {company.href ? (
+                          <a href={company.href} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                            {company.name}
+                          </a>
+                        ) : (
+                          company.name
+                        )}
+                      </h3>
+                      <p className="mb-2 text-xs text-zinc-500">{company.role}</p>
+                      {company.desc && (
+                        <p className="line-clamp-2 text-xs text-zinc-400">{company.desc}</p>
+                      )}
+                    </div>
                   </div>
-                </motion.div>
-              ))}
+                ))}
+              </motion.div>
             </div>
           </SpotlightCard>
 
-          <SpotlightCard className="md:col-span-2 min-h-[140px] p-6">
-            <div className="flex items-center justify-between mb-4">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">Scale & Volume</p>
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-[8px] text-emerald-500/70">PROCESSED</span>
-                <motion.div
-                  className="h-1.5 w-1.5 rounded-full bg-emerald-500"
-                  animate={{ opacity: [1, 0.5, 1] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                />
-              </div>
-            </div>
-            
-            <div className="space-y-4">
-              <div>
-                <p className="text-3xl font-bold tabular-nums text-emerald-400/95 md:text-4xl">100M+</p>
-                <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">Daily API Requests</p>
-              </div>
-              <div className="h-px w-full bg-gradient-to-r from-white/10 to-transparent" />
-              <div>
-                <p className="text-xl font-bold tabular-nums text-zinc-200 md:text-2xl">$2B+</p>
-                <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">Transaction Volume</p>
-              </div>
-            </div>
-          </SpotlightCard>
-
-          <SpotlightCard className="md:col-span-4 min-h-[120px] p-6 md:p-8">
+          <SpotlightCard className="min-h-[120px] p-6 md:p-8">
             <p className={`text-lg font-medium leading-relaxed text-zinc-200 md:text-xl ${isArabic ? 'font-arabic' : ''}`}>
               {quote}
             </p>

@@ -14,6 +14,7 @@ type Props = {
   node1: string;
   node2: string;
   node3: string;
+  node4: string;
 };
 
 export function AboutProjectsGraph({
@@ -24,17 +25,21 @@ export function AboutProjectsGraph({
   node1,
   node2,
   node3,
+  node4,
 }: Props) {
   const uid = useId().replace(/:/g, '');
   const nodes: NodeDef[] = [
-    { id: 'n1', label: node1, short: 'RA', x: 200, y: 70 },
-    { id: 'n2', label: node2, short: 'PG', x: 80, y: 230 },
-    { id: 'n3', label: node3, short: 'IAM', x: 320, y: 230 },
+    { id: 'n1', label: node1, short: 'RA', x: 200, y: 40 },
+    { id: 'n2', label: node2, short: 'PG', x: 60, y: 150 },
+    { id: 'n3', label: node3, short: 'IAM', x: 340, y: 150 },
+    { id: 'n4', label: node4, short: 'LED', x: 200, y: 260 },
   ];
   const edges: [string, string][] = [
     ['n1', 'n2'],
     ['n1', 'n3'],
-    ['n2', 'n3'],
+    ['n2', 'n4'],
+    ['n3', 'n4'],
+    ['n1', 'n4'],
   ];
 
   const [hovered, setHovered] = useState<string | null>(null);

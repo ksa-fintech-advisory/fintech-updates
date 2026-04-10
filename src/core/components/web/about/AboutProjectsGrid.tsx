@@ -16,7 +16,6 @@ const PROJECTS = [
       en: 'Algorithmic portfolio management with real-time rebalancing, built to SAMA regulatory standards.',
       ar: 'إدارة محافظ خوارزمية مع إعادة توازن لحظية، مبنية وفق معايير مؤسسة النقد (ساما).',
     },
-    tech: ['Javascript', 'PostgreSQL', 'Cloud'],
     visual: (uid: string) => (
       <svg viewBox="0 0 200 100" className="h-full w-full opacity-60 transition-opacity duration-500 group-hover:opacity-100">
         <defs>
@@ -62,7 +61,6 @@ const PROJECTS = [
       en: 'High-throughput payment orchestration layer handling multi-rail routing and strict idempotent processing.',
       ar: 'طبقة توجيه مدفوعات عالية الكفاءة تتعامل مع مسارات متعددة ومعالجة صارمة لتجنب التكرار.',
     },
-    tech: ['Java', 'Infrastructure', 'Policy as Service'],
     visual: (uid: string) => (
       <div className="relative flex h-full w-full items-center justify-center p-6 opacity-60 transition-opacity duration-500 group-hover:opacity-100 overflow-hidden">
         {/* Scanning laser effect */}
@@ -95,7 +93,6 @@ const PROJECTS = [
       en: 'Centralized auth provider featuring RBAC, zero-trust tokens, and strict audit logging for compliance.',
       ar: 'مزود مصادقة مركزي يتميز بصلاحيات مبنية على الأدوار وتسجيل تدقيق صارم للامتثال.',
     },
-    tech: ['OAuth2', 'JWT', 'gRPC'],
     visual: (uid: string) => (
       <svg viewBox="0 0 200 100" className="h-full w-full opacity-60 transition-opacity duration-500 group-hover:opacity-100">
         <motion.circle
@@ -122,13 +119,43 @@ const PROJECTS = [
       </svg>
     ),
   },
+  {
+    id: 'ledger',
+    title: { en: 'Core Ledger System', ar: 'نظام السجل الأساسي' },
+    desc: {
+      en: 'Centralized core ledger handling all financial accounting and reconciliation for fintech products.',
+      ar: 'سجل أساسي مركزي يعالج جميع الحسابات المالية والتسويات لمنتجات التقنية المالية.',
+    },
+    visual: (uid: string) => (
+      <svg viewBox="0 0 200 100" className="h-full w-full opacity-60 transition-opacity duration-500 group-hover:opacity-100">
+        <defs>
+          <linearGradient id={`${uid}-ledger`} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="rgba(16,185,129,0)" />
+            <stop offset="50%" stopColor="rgba(16,185,129,0.5)" />
+            <stop offset="100%" stopColor="rgba(16,185,129,0)" />
+          </linearGradient>
+        </defs>
+        <motion.rect x="40" y="35" width="120" height="2" fill={`url(#${uid}-ledger)`} animate={{ x: [-20, 20, -20] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} />
+        <motion.rect x="40" y="50" width="120" height="2" fill={`url(#${uid}-ledger)`} animate={{ x: [20, -20, 20] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} />
+        <motion.rect x="40" y="65" width="120" height="2" fill={`url(#${uid}-ledger)`} animate={{ x: [-10, 30, -10] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }} />
+        {/* Ledger columns */}
+        <line x1="100" y1="20" x2="100" y2="80" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+        <line x1="70" y1="20" x2="70" y2="80" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+        <line x1="130" y1="20" x2="130" y2="80" stroke="rgba(255,255,255,0.05)" strokeWidth="1" />
+        {/* Glowing data points */}
+        <motion.circle cx="70" cy="35" r="3" fill="#10b981" animate={{ opacity: [0.2, 1, 0.2] }} transition={{ duration: 2, repeat: Infinity, delay: 0.1 }} />
+        <motion.circle cx="130" cy="50" r="3" fill="#10b981" animate={{ opacity: [0.2, 1, 0.2] }} transition={{ duration: 2, repeat: Infinity, delay: 0.8 }} />
+        <motion.circle cx="100" cy="65" r="3" fill="#10b981" animate={{ opacity: [0.2, 1, 0.2] }} transition={{ duration: 2, repeat: Infinity, delay: 1.5 }} />
+      </svg>
+    ),
+  },
 ];
 
 export function AboutProjectsGrid({ isArabic, projectsLabel }: Props) {
   const uid = useId().replace(/:/g, '');
 
   return (
-    <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3">
+    <div className="mx-auto mt-12 grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2">
       {PROJECTS.map((p, i) => (
         <motion.div
           key={p.id}
@@ -150,16 +177,6 @@ export function AboutProjectsGrid({ isArabic, projectsLabel }: Props) {
             <p className={`mb-4 text-xs leading-relaxed text-zinc-400 ${isArabic ? 'font-arabic' : ''}`}>
               {isArabic ? p.desc.ar : p.desc.en}
             </p>
-            <div className="mt-auto flex flex-wrap gap-2">
-              {p.tech.map((t) => (
-                <span
-                  key={t}
-                  className="rounded bg-white/5 px-2 py-1 font-mono text-[9px] uppercase tracking-wider text-emerald-400/80 transition-colors group-hover:bg-emerald-500/10 group-hover:text-emerald-300"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
           </div>
         </motion.div>
       ))}
