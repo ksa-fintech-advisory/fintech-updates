@@ -6,9 +6,8 @@ import { AboutPortfolioSubnav } from '@/core/components/web/about/AboutPortfolio
 import { AboutHeroV2 } from '@/core/components/web/about/AboutHeroV2';
 import { AboutSplitProfile } from '@/core/components/web/about/AboutSplitProfile';
 import { AboutRegionalImpact } from '@/core/components/web/about/AboutRegionalImpact';
-import { AboutTechStack } from '@/core/components/web/about/AboutTechStack';
 import { AboutDomainExpertise } from '@/core/components/web/about/AboutDomainExpertise';
-import { AboutProjectsGraph } from '@/core/components/web/about/AboutProjectsGraph';
+import { AboutProductsShowcase } from '@/core/components/web/about/AboutProductsShowcase';
 import { AboutExperienceBento } from '@/core/components/web/about/AboutExperienceBento';
 import { AboutBlogTerminal } from '@/core/components/web/about/AboutBlogTerminal';
 import { AboutCommandPalette } from '@/core/components/web/about/AboutCommandPalette';
@@ -103,15 +102,11 @@ export default async function AboutPage({ params }: { params: { locale: string }
         ]}
       />
 
-      <AboutProjectsGraph
+      <AboutProductsShowcase
         isArabic={isArabic}
         kicker={t('v2ProjectsKicker')}
         heading={t('v2ProjectsHeading')}
         sub={t('v2ProjectsSub')}
-        node1={t('v2ProjectNode1')}
-        node2={t('v2ProjectNode2')}
-        node3={t('v2ProjectNode3')}
-        node4={t('v2ProjectNode4')}
       />
 
       <AboutRegionalImpact
@@ -121,12 +116,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
         sub={t('v2RegionalSub')}
       />
 
-      <AboutTechStack
-        isArabic={isArabic}
-        kicker={t('v2TechKicker')}
-        heading={t('v2TechHeading')}
-        sub={t('v2TechSub')}
-      />
+
 
       <AboutExperienceBento
         isArabic={isArabic}
