@@ -121,7 +121,6 @@ export function AboutExperienceBento({
 
         <div className="mx-auto flex max-w-6xl flex-col gap-6 md:gap-8">
           <SpotlightCard className="p-6 md:p-8">
-            <p className="mb-6 font-mono text-[10px] uppercase tracking-widest text-zinc-500">{companiesCaption}</p>
             <div className="relative w-full overflow-hidden">
               {/* Fade masks for smooth edges */}
               <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-zinc-900 to-transparent" />
