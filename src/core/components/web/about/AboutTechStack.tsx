@@ -13,7 +13,7 @@ type Props = {
 const MODULES = [
   {
     id: 'wallet',
-    title: { en: 'Digital Wallet & Virtual IBAN', ar: 'محفظة رقمية وآيبان افتراضي' },
+    title: { en: 'Digital Wallet & Virtual IBAN', ar: 'Digital Wallets (Virtual IBAN)' },
     desc: { 
       en: 'Secure ledger architecture for individual and corporate fund management, tightly integrated with local banking infrastructure.', 
       ar: 'بنية سجل آمنة لإدارة أموال الأفراد والشركات، متكاملة تماماً مع البنية التحتية المصرفية المحلية.' 
@@ -22,7 +22,7 @@ const MODULES = [
   },
   {
     id: 'pooled',
-    title: { en: 'Pooled Account Management', ar: 'إدارة الحسابات المجمعة' },
+    title: { en: 'Pooled Account Management', ar: 'Pooled Account (Omnibus)' },
     desc: { 
       en: 'Real-time reconciliation, ledger segregation, and transparent fund management to satisfy strict regulatory compliance.', 
       ar: 'تسوية لحظية، فصل السجلات، وإدارة شفافة للأموال لضمان الامتثال الصارم للمتطلبات الرقابية.' 
