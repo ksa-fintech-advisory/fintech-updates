@@ -79,7 +79,7 @@ export default function Header() {
         className={`glass-nav-header sticky top-0 w-full border-b pt-[max(0px,env(safe-area-inset-top))] md:z-50 ${mobileMenuOpen ? 'z-[70]' : 'z-50'}`}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex min-h-[3.5rem] items-center justify-between py-1 sm:py-0">
+          <div className="flex min-h-[4.5rem] items-center justify-between py-1 sm:py-0">
 
             {/* --- Logo Section: Technical Brand --- */}
             <Link href={`/${locale}`} className="group flex items-center gap-3 outline-none">
@@ -201,7 +201,7 @@ export default function Header() {
             onClick={() => setMobileMenuOpen(false)}
           />
           <div
-            className="glass-nav-panel absolute inset-x-0 bottom-0 top-[calc(3.5rem+max(0px,env(safe-area-inset-top)))] flex min-h-0 flex-col overflow-hidden border-t animate-mobile-nav-panel motion-reduce:animate-none"
+            className="glass-nav-panel absolute inset-x-0 bottom-0 top-[calc(4.5rem+max(0px,env(safe-area-inset-top)))] flex min-h-0 flex-col overflow-hidden border-t animate-mobile-nav-panel motion-reduce:animate-none"
           >
             <nav
               className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3 pb-[max(1rem,env(safe-area-inset-bottom))]"

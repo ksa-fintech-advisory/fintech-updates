@@ -113,10 +113,10 @@ const PILLARS = [
   },
   {
     icon: '🤝',
-    label: bi('Founder & advisor', 'مؤسس ومستشار'),
+    label: bi('Founder & advisor', 'مستشار تقني'),
     description: bi(
       'Working alongside founding teams and C-suite to close the gap between a vision and a licensed product.',
-      'العمل جنبًا إلى جنب مع فرق التأسيس والإدارة العليا لسد الفجوة بين الرؤية والمنتج المرخّص.'
+      'أساعد فرق التأسيس والإدارة العليا لسد الفجوة بين الرؤية والمنتج المرخّص.'
     ),
     accent: 'from-violet-500/15 to-purple-500/5 border-violet-500/20 hover:border-violet-500/50',
   },
