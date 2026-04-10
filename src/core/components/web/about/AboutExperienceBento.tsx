@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useCallback, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
@@ -14,11 +15,41 @@ type Props = {
 };
 
 const COMPANIES = [
-  { name: 'Tide', role: 'Fintech Engineering' },
-  { name: 'Ikea', role: 'E-commerce Architecture' },
-  { name: 'Suqa Group', role: 'System Integration' },
-  { name: 'Siolla', role: 'Digital Platform' },
-  { name: 'Awqef Capital', role: 'Financial Systems' },
+  { 
+    name: 'Ikea', 
+    role: 'Senior Micro Frontends',
+    href: 'https://www.ikea.com/',
+    logo: '/logos/ikea.svg',
+    desc: 'Customer bank portal architecture'
+  },
+  { 
+    name: 'Tide', 
+    role: 'Fintech Engineering',
+    href: 'https://www.tide.co/',
+    logo: '/logos/tide.svg',
+    desc: 'Business banking platform'
+  },
+  { 
+    name: 'Seqa Group', 
+    role: 'Senior Full Stack',
+    href: 'https://www.seqagroup.com.sa/',
+    logo: '/logos/seqa-lo.png',
+    desc: 'E-commerce & payment gateways'
+  },
+  { 
+    name: 'Siolla', 
+    role: 'Backend Team Lead',
+    href: 'https://www.siolla.com/',
+    logo: '/logos/siolla.jpeg',
+    desc: 'Financial technology infrastructure'
+  },
+  { 
+    name: 'Awqef Capital', 
+    role: 'Tech Lead',
+    href: 'https://awqef.sa/',
+    logo: '/logos/awqef.svg',
+    desc: 'Digital endowment platform'
+  },
 ];
 
 function SpotlightCard({
@@ -106,16 +137,34 @@ export function AboutExperienceBento({
                   transition={{ delay: i * 0.05 }}
                   className="group relative flex items-center gap-4 rounded-xl border border-white/5 bg-white/[0.02] p-4 transition-all hover:bg-white/[0.04]"
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-900 ring-1 ring-white/10 transition-colors group-hover:ring-emerald-500/50">
-                    <span className="font-mono text-sm font-bold text-zinc-400 group-hover:text-emerald-400">
-                      {company.name.charAt(0)}
-                    </span>
+                  <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-zinc-900 ring-1 ring-white/10 transition-colors group-hover:ring-emerald-500/50 p-1">
+                    {company.logo ? (
+                      <Image 
+                        src={company.logo} 
+                        alt={`${company.name} logo`} 
+                        fill
+                        className="object-contain p-1.5 filter grayscale group-hover:grayscale-0 transition-all duration-300" 
+                      />
+                    ) : (
+                      <span className="font-mono text-sm font-bold text-zinc-400 group-hover:text-emerald-400">
+                        {company.name.charAt(0)}
+                      </span>
+                    )}
                   </div>
                   <div>
-                    <h3 className="font-mono text-sm font-semibold text-zinc-300 group-hover:text-white">
-                      {company.name}
+                    <h3 className="font-mono text-sm font-semibold text-zinc-300 group-hover:text-white transition-colors">
+                      {company.href ? (
+                        <a href={company.href} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          {company.name}
+                        </a>
+                      ) : (
+                        company.name
+                      )}
                     </h3>
-                    <p className="text-[10px] text-zinc-500">{company.role}</p>
+                    <p className="text-[10px] text-zinc-500 mb-0.5">{company.role}</p>
+                    {company.desc && (
+                      <p className="text-[9px] text-zinc-600 line-clamp-1 group-hover:text-zinc-400 transition-colors">{company.desc}</p>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -123,35 +172,28 @@ export function AboutExperienceBento({
           </SpotlightCard>
 
           <SpotlightCard className="md:col-span-2 min-h-[140px] p-6">
-            <div className="flex items-center justify-between mb-2">
-              <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">{uptimeLabel}</p>
+            <div className="flex items-center justify-between mb-4">
+              <p className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">Scale & Volume</p>
               <div className="flex items-center gap-2">
-                <span className="font-mono text-[8px] text-emerald-500/70">LIVE</span>
+                <span className="font-mono text-[8px] text-emerald-500/70">PROCESSED</span>
                 <motion.div
                   className="h-1.5 w-1.5 rounded-full bg-emerald-500"
-                  animate={{ opacity: [1, 0.3, 1], scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  animate={{ opacity: [1, 0.5, 1] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                 />
               </div>
             </div>
-            <p className="text-3xl font-bold tabular-nums text-emerald-400/95 md:text-4xl">{uptimeValue}</p>
-            <div className="relative mt-3 h-12 w-full overflow-hidden mask-image-fade">
-              <motion.svg
-                viewBox="0 0 400 48"
-                className="absolute inset-y-0 h-full w-[200%] text-emerald-500/40"
-                preserveAspectRatio="none"
-                animate={{ x: ['0%', '-50%'] }}
-                transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-              >
-                <polyline
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  points="0,40 20,35 40,38 60,28 80,32 100,18 120,22 140,12 160,16 180,8 200,10 220,35 240,38 260,28 280,32 300,18 320,22 340,12 360,16 380,8 400,10"
-                />
-              </motion.svg>
-              {/* Fade out edges to blend into card background */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#0a0a0b] via-transparent to-[#0a0a0b]" />
+            
+            <div className="space-y-4">
+              <div>
+                <p className="text-3xl font-bold tabular-nums text-emerald-400/95 md:text-4xl">100M+</p>
+                <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">Daily API Requests</p>
+              </div>
+              <div className="h-px w-full bg-gradient-to-r from-white/10 to-transparent" />
+              <div>
+                <p className="text-xl font-bold tabular-nums text-zinc-200 md:text-2xl">$2B+</p>
+                <p className="font-mono text-[10px] text-zinc-500 mt-1 uppercase tracking-wider">Transaction Volume</p>
+              </div>
             </div>
           </SpotlightCard>
 

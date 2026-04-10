@@ -39,7 +39,7 @@ export function AboutSplitProfile({
   return (
     <section
       id="about-profile"
-      className="scroll-mt-28 border-b border-white/10 bg-zinc-900 py-20 md:py-28"
+      className="relative overflow-hidden scroll-mt-28 border-b border-white/10 bg-zinc-900 py-20 md:py-28"
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,17 +50,23 @@ export function AboutSplitProfile({
             <div className="absolute -inset-10 z-0 pointer-events-none">
               <motion.div
                 className="absolute left-10 top-10 h-40 w-40 rounded-full bg-emerald-500/10 blur-[60px]"
-                animate={{ scale: [1, 1.2, 1], x: [0, 20, 0], y: [0, -20, 0] }}
-                transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+                animate={{ opacity: [0.5, 0.8, 0.5] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
               />
               <motion.div
                 className="absolute bottom-10 right-10 h-40 w-40 rounded-full bg-sky-500/10 blur-[60px]"
-                animate={{ scale: [1, 1.3, 1], x: [0, -30, 0], y: [0, 20, 0] }}
-                transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                animate={{ opacity: [0.4, 0.7, 0.4] }}
+                transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
               />
             </div>
 
-            <div className="relative z-10 mb-10 flex flex-col items-center text-center lg:items-start lg:text-start">
+            <motion.div 
+              initial={reduce ? false : { opacity: 0, y: 20 }}
+              whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
+              className="relative z-10 mb-10 flex flex-col items-center text-center lg:items-start lg:text-start"
+            >
               <ProfileAvatar
                 size={140}
                 alt={avatarAlt}
@@ -77,9 +83,16 @@ export function AboutSplitProfile({
               <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-emerald-400">
                 {authorTitle}
               </p>
-            </div>
+            </motion.div>
 
-            <div className="overflow-hidden rounded-xl border border-white/10 bg-zinc-800/40 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset,0_24px_64px_-24px_rgba(0,0,0,0.8)]">
+            <motion.div 
+              initial={reduce ? false : { opacity: 0, y: 20 }}
+              whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+              whileHover={reduce ? undefined : { y: -4, transition: { duration: 0.2 } }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.15, ease: 'easeOut' }}
+              className="group overflow-hidden rounded-xl border border-white/10 bg-zinc-800/40 shadow-[0_0_0_1px_rgba(255,255,255,0.04)_inset,0_24px_64px_-24px_rgba(0,0,0,0.8)] transition-colors hover:border-emerald-500/40"
+            >
               <div className="flex items-center gap-2 border-b border-white/10 bg-white/[0.03] px-4 py-2.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-500/80" />
                 <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
@@ -128,7 +141,7 @@ export function AboutSplitProfile({
                   />
                 </code>
               </pre>
-            </div>
+            </motion.div>
           </div>
 
           {/* Glass cards */}
