@@ -96,7 +96,7 @@ export default function Header() {
                 <span className="truncate text-lg font-bold leading-snug tracking-tight text-grey-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
                   {isArabic ? 'مال تك' : 'Maal Tech'}
                 </span>
-                <span className="max-w-[10rem] truncate text-[9px] font-mono uppercase leading-relaxed tracking-widest text-grey-500 sm:max-w-none">
+                <span className="max-w-[10rem] truncate text-[12px]  uppercase leading-relaxed tracking-widest text-grey-500 sm:max-w-none">
                   {th('tagline')}
                 </span>
               </div>

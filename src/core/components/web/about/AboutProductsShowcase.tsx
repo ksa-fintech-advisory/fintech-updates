@@ -8,7 +8,7 @@ import { useState, useCallback, useRef } from 'react';
 ───────────────────────────────────────── */
 type Props = {
   isArabic: boolean;
-  kicker: string;
+      
   heading: string;
   sub?: string;
 };
@@ -690,7 +690,7 @@ function ProductCard({
 /* ─────────────────────────────────────────
    Main Component
 ───────────────────────────────────────── */
-export function AboutProductsShowcase({ isArabic, kicker, heading, sub }: Props) {
+export function AboutProductsShowcase({ isArabic, heading, sub }: Props) {
   const reduce = useReducedMotion();
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const arFont = isArabic ? 'font-arabic' : '';
@@ -720,7 +720,7 @@ export function AboutProductsShowcase({ isArabic, kicker, heading, sub }: Props)
           transition={{ duration: 0.5 }}
           className="mx-auto max-w-3xl text-center"
         >
-          <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">{kicker}</p>
+          
           <h2 className={`text-3xl font-bold tracking-tight text-white md:text-4xl ${arFont}`}>{heading}</h2>
           {sub && <p className={`mt-4 text-sm text-zinc-500 md:text-base ${arFont}`}>{sub}</p>}
         </motion.div>

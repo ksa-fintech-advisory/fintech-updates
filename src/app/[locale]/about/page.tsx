@@ -98,7 +98,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
 
       <AboutProductsShowcase
         isArabic={isArabic}
-        kicker={t('v2ProjectsKicker')}
+
         heading={t('v2ProjectsHeading')}
       />
 

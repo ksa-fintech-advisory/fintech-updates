@@ -55,7 +55,7 @@ export default function Footer() {
                 <span className="block text-lg font-bold tracking-tight text-grey-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
                   {isArabic ? 'مال تك' : 'Maal Tech'}
                 </span>
-                <span className="mt-0.5 block max-w-[16rem] font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-grey-400 dark:text-grey-500">
+                <span className="mt-0.5 block max-w-[16rem] text-[12px] font-semibold uppercase tracking-[0.18em] text-grey-400 dark:text-grey-500">
                   {th('tagline')}
                 </span>
               </div>

@@ -341,6 +341,33 @@
         "error": "Something went wrong. Please try again or email me directly."
       }
     },
+    "rate": {
+      "metaTitle": "Rate & Feedback",
+      "metaDescription": "Share your feedback about our service.",
+      "title": "Rate our service",
+      "subtitle": "Your feedback helps us improve and deliver better services.",
+      "kicker": "// RATE",
+      "successTitle": "Feedback sent",
+      "errorTitle": "Could not send",
+      "formCardTitle": "Share your experience",
+      "formCardHint": "Please fill in the details below to rate our service.",
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Your name",
+        "serviceType": "Service Type",
+        "serviceTypePlaceholder": "Select a service type",
+        "consulting": "Consulting",
+        "technical": "Technical",
+        "description": "Description",
+        "descriptionPlaceholder": "Tell us about your experience...",
+        "agreeToShare": "I agree to show my rating on the website as what clients say about me",
+        "submit": "Submit Feedback",
+        "sending": "Submitting...",
+        "success": "Thank you for your feedback!",
+        "error": "Something went wrong. Please try again.",
+        "required": "*"
+      }
+    },
     "article": {
       "relatedArticles": "Related Articles"
     }

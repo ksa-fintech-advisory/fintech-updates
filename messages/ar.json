@@ -339,6 +339,33 @@
         "error": "حدث خطأ. حاول مرة أخرى أو راسلني مباشرة على البريد."
       }
     },
+    "rate": {
+      "metaTitle": "التقييم والملاحظات",
+      "metaDescription": "شاركنا رأيك حول الخدمة المقدمة.",
+      "title": "قيّم خدمتنا",
+      "subtitle": "ملاحظاتك تساعدنا على التحسين وتقديم خدمات أفضل.",
+      "kicker": "// التقييم",
+      "successTitle": "تم إرسال التقييم",
+      "errorTitle": "تعذّر إرسال التقييم",
+      "formCardTitle": "شاركنا تجربتك",
+      "formCardHint": "يرجى تعبئة التفاصيل أدناه لتقييم الخدمة.",
+      "form": {
+        "name": "الاسم",
+        "namePlaceholder": "اسمك",
+        "serviceType": "نوع الخدمة",
+        "serviceTypePlaceholder": "اختر نوع الخدمة",
+        "consulting": "استشارات",
+        "technical": "تقنية",
+        "description": "الوصف",
+        "descriptionPlaceholder": "أخبرنا عن تجربتك...",
+        "agreeToShare": "أوافق على عرض تقييمي على الموقع كرأي عميل",
+        "submit": "إرسال التقييم",
+        "sending": "جاري الإرسال...",
+        "success": "شكراً لتقييمك!",
+        "error": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+        "required": "*"
+      }
+    },
     "article": {
       "relatedArticles": "مقالات ذات صلة"
     }
