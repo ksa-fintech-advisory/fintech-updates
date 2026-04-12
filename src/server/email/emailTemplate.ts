@@ -6,7 +6,7 @@ export function escapeHtml(text: string): string {
     .replace(/"/g, '&quot;');
 }
 
-export type FormType = 'contact' | 'questionnaire' | 'rate';
+export type FormType = 'contact' | 'questionnaire' | 'rate' | 'newsletter';
 
 interface BuildEmailParams {
   formType: FormType;
@@ -27,6 +27,7 @@ export function buildEmailHtml({
     contact: '#0F172A',
     questionnaire: '#2563EB',
     rate: '#059669',
+    newsletter: '#7C3AED',
   };
 
   const headerColor = colors[formType] || colors.contact;
