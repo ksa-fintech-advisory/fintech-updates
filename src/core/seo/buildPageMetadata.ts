@@ -9,12 +9,14 @@ type BuildOpts = {
   path: string;
   /** Extra phrases for crawlers / answer engines (optional). */
   keywords?: string[];
+  /** Custom OpenGraph/Twitter image path (e.g. /images/og-rate.png) */
+  image?: string;
 };
 
 /**
  * Per-locale page metadata with hreflang-style alternates and Open Graph.
  */
-export function buildPageMetadata({ locale, title, description, path, keywords }: BuildOpts): Metadata {
+export function buildPageMetadata({ locale, title, description, path, keywords, image }: BuildOpts): Metadata {
   const base = getSiteUrl();
   const canonicalPath = `/${locale}${path}`;
 
@@ -38,11 +40,13 @@ export function buildPageMetadata({ locale, title, description, path, keywords }
       locale: locale === 'ar' ? 'ar_SA' : 'en_US',
       alternateLocale: locale === 'ar' ? ['en_US'] : ['ar_SA'],
       type: 'website',
+      ...(image ? { images: [{ url: image }] } : {}),
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
+      ...(image ? { images: [image] } : {}),
     },
   };
 }
