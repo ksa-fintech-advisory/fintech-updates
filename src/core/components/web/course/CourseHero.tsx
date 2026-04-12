@@ -101,7 +101,7 @@ export default function CourseHero({ locale, translations }: CourseHeroProps) {
           <motion.div variants={itemVariants} className="flex justify-center mb-8">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 shadow-sm">
               <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-              <span className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-300 uppercase tracking-widest">
+              <span className="text-xs  font-bold text-zinc-600 dark:text-zinc-300 uppercase tracking-widest">
                 {isArabic ? '// التسجيل_مفتوح' : '// OPEN_ENROLLMENT'}
               </span>
             </div>
@@ -151,7 +151,7 @@ export default function CourseHero({ locale, translations }: CourseHeroProps) {
 
             <a
               href="#phases"
-              className="group w-full sm:w-auto px-8 py-4 rounded border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300 font-mono font-bold text-sm uppercase tracking-wider hover:border-zinc-900 dark:hover:border-white hover:text-zinc-900 dark:hover:text-white bg-white dark:bg-black transition-all duration-300 flex items-center justify-center gap-3"
+              className="group w-full sm:w-auto px-8 py-4 rounded border border-zinc-300 dark:border-zinc-700 text-zinc-600 dark:text-zinc-300  font-bold text-sm uppercase tracking-wider hover:border-zinc-900 dark:hover:border-white hover:text-zinc-900 dark:hover:text-white bg-white dark:bg-black transition-all duration-300 flex items-center justify-center gap-3"
             >
               <FiTerminal className="w-4 h-4" />
               <span>{translations.cta.learnMore}</span>
@@ -173,10 +173,10 @@ export default function CourseHero({ locale, translations }: CourseHeroProps) {
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-mono font-bold">
+                    <span className="text-[10px] uppercase tracking-widest text-zinc-400  font-bold">
                       {feature.label}
                     </span>
-                    <span className="text-[9px] font-mono text-zinc-300 dark:text-zinc-600 bg-zinc-100 dark:bg-zinc-900 px-1 rounded">
+                    <span className="text-[9px]  text-zinc-300 dark:text-zinc-600 bg-zinc-100 dark:bg-zinc-900 px-1 rounded">
                       {feature.code}
                     </span>
                   </div>

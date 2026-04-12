@@ -58,7 +58,7 @@ export default function CoursesMegaMenu({ closeMenu }: CoursesMegaMenuProps) {
               <h2 className="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-wider">
                 {isArabic ? 'الأكاديمية التقنية' : 'TECH_ACADEMY_HUB'}
               </h2>
-              <p className="text-[10px] text-zinc-500 font-mono">
+              <p className="text-[10px] text-zinc-500 ">
                 {isArabic ? 'اختر مسارك التعليمي' : 'SELECT_LEARNING_PATH'}
               </p>
             </div>
@@ -107,11 +107,11 @@ export default function CoursesMegaMenu({ closeMenu }: CoursesMegaMenuProps) {
 
                   {/* Badges */}
                   {course.isComingSoon ? (
-                    <span className="px-2 py-1 text-[10px] font-mono font-bold uppercase bg-zinc-200 dark:bg-zinc-800 text-zinc-500 rounded border border-zinc-300 dark:border-zinc-700">
+                    <span className="px-2 py-1 text-[10px]  font-bold uppercase bg-zinc-200 dark:bg-zinc-800 text-zinc-500 rounded border border-zinc-300 dark:border-zinc-700">
                       {isArabic ? 'قريباً' : 'LOCKED'}
                     </span>
                   ) : (
-                    <span className="px-2 py-1 text-[10px] font-mono font-bold uppercase bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded border border-emerald-200 dark:border-emerald-800">
+                      <span className="px-2 py-1 text-[10px]  font-bold uppercase bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 rounded border border-emerald-200 dark:border-emerald-800">
                       ACTIVE
                     </span>
                   )}
@@ -131,11 +131,11 @@ export default function CoursesMegaMenu({ closeMenu }: CoursesMegaMenuProps) {
                 {/* Footer Metadata */}
                 {!course.isComingSoon && (
                   <div className="mt-4 pt-4 border-t border-zinc-100 dark:border-zinc-800 flex items-center gap-4">
-                    <div className="flex items-center gap-1.5 text-[10px] font-mono font-medium text-zinc-400">
+                    <div className="flex items-center gap-1.5 text-[10px]  font-medium text-zinc-400">
                       <FiLayers />
                       <span>{course.modules} {isArabic ? 'وحدات' : 'MODS'}</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-[10px] font-mono font-medium text-zinc-400">
+                    <div className="flex items-center gap-1.5 text-[10px]  font-medium text-zinc-400">
                       <FiClock />
                       <span>4h 20m</span>
                     </div>

@@ -86,7 +86,7 @@ export const BlogListBlock: React.FC<BlogListBlockProps> = ({ block }) => {
   // Ordered: Decimal with mono font
   // Unordered: Square bullets for tech feel
   const listClass = isOrdered
-    ? 'list-decimal marker:text-zinc-400 marker:font-mono marker:font-bold'
+    ? 'list-decimal marker:text-zinc-400 marker: marker:font-bold'
     : 'list-square marker:text-primary-500';
 
   return (
@@ -126,7 +126,7 @@ function LinkedInSourceCallout({ url, locale }: { url: string; locale: string })
             </svg>
           </div>
           <div className="min-w-0 pt-0.5">
-            <p className="text-xs font-mono font-bold uppercase tracking-[0.2em] text-[#0A66C2] dark:text-[#70b7f9] mb-1">
+            <p className="text-xs  font-bold uppercase tracking-[0.2em] text-[#0A66C2] dark:text-[#70b7f9] mb-1">
               LinkedIn
             </p>
             <p className="text-base font-semibold text-zinc-900 dark:text-zinc-100 leading-snug">
@@ -195,7 +195,7 @@ export const BlogHighlightBlock: React.FC<BlogHighlightBlockProps> = ({ block, l
         </div>
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-widest opacity-60">
+            <span className="text-[10px]  font-bold uppercase tracking-widest opacity-60">
               {style.label}
             </span>
             {title && <span className={`font-bold text-sm ${style.text}`}>{title}</span>}
@@ -229,7 +229,7 @@ export const BlogQuoteBlock: React.FC<BlogQuoteBlockProps> = ({ block }) => {
       {block.author && (
         <div className="mt-4 flex items-center gap-2">
           <div className="h-px w-8 bg-zinc-300 dark:bg-zinc-700"></div>
-          <cite className="text-sm font-mono font-bold text-zinc-500 dark:text-zinc-400 not-italic uppercase tracking-wide">
+          <cite className="text-sm  font-bold text-zinc-500 dark:text-zinc-400 not-italic uppercase tracking-wide">
             {block.author}
           </cite>
         </div>
@@ -266,7 +266,7 @@ export const BlogTimelineBlock: React.FC<BlogTimelineBlockProps> = ({ block }) =
               </span>
 
               <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-1">
-                <span className="font-mono text-xs font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
+                <span className=" text-xs font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-wider">
                   {item.date}
                 </span>
                 <h4 className={`text-lg font-bold ${isActive ? 'text-amber-600' : 'text-zinc-900 dark:text-white'}`}>
@@ -316,7 +316,7 @@ const BlogImageBlock: React.FC<BlogImageBlockProps> = ({ block }) => {
         </div>
       </div>
       {block.caption && (
-        <figcaption className="mt-3 flex items-center justify-center gap-2 text-xs font-mono text-zinc-500 uppercase tracking-wide">
+        <figcaption className="mt-3 flex items-center justify-center gap-2 text-xs  text-zinc-500 uppercase tracking-wide">
           <FiCpu className="w-3 h-3" />
           {block.caption}
         </figcaption>

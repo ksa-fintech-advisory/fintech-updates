@@ -96,7 +96,7 @@ export default function FeeCalculatorPage({
       {/* 2. Header Section */}
       <div className="relative pt-24 pb-8 border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-black/50 backdrop-blur-md z-20 mb-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest mb-4">
+          <div className="flex items-center gap-2 text-xs  font-bold text-zinc-500 uppercase tracking-widest mb-4">
             <Link href={`/${locale}/tools`} className="hover:text-primary-600 transition-colors">
               {isArabic ? 'الأدوات' : 'TOOLS'}
             </Link>
@@ -163,7 +163,7 @@ export default function FeeCalculatorPage({
                   <h4 className="text-sm font-bold text-red-800 dark:text-red-300 mb-1">
                     {isArabic ? 'خطأ في الحساب' : 'Calculation Error'}
                   </h4>
-                  <p className="text-xs text-red-600 dark:text-red-400 font-mono">{error}</p>
+                  <p className="text-xs text-red-600 dark:text-red-400 ">{error}</p>
                 </div>
               </div>
             )}
@@ -178,7 +178,7 @@ export default function FeeCalculatorPage({
                   <h3 className="font-bold text-sm text-zinc-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
                     <FiPieChart /> {isArabic ? 'التحليل المالي' : 'FINANCIAL BREAKDOWN'}
                   </h3>
-                  <div className="text-[10px] font-mono text-zinc-400">
+                  <div className="text-[10px]  text-zinc-400">
                     ID: {new Date().getTime().toString().slice(-6)}
                   </div>
                 </div>
@@ -246,7 +246,7 @@ export default function FeeCalculatorPage({
                 {isLoading && (
                   <div className="flex-1 rounded-2xl border-2 border-dashed border-zinc-300 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col items-center justify-center animate-pulse">
                     <div className="w-16 h-16 border-4 border-zinc-200 border-t-primary-600 rounded-full animate-spin mb-4"></div>
-                    <span className="font-mono text-sm font-bold text-zinc-400 uppercase">
+                      <span className=" text-sm font-bold text-zinc-400 uppercase">
                       {isArabic ? 'جاري معالجة البيانات...' : 'PROCESSING_DATA...'}
                     </span>
                   </div>

@@ -51,7 +51,7 @@ export default async function SessionDetailPage({
           {/* Breadcrumb / Back Link - مسار العودة التقني */}
           <Link
             href={`/${locale}/courses/fintech-fundamentals`}
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white mb-8 transition-colors uppercase tracking-widest"
+            className="inline-flex items-center gap-2 text-xs  font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white mb-8 transition-colors uppercase tracking-widest"
           >
             {isArabic ? <FiArrowRight /> : <FiArrowLeft />}
             <span>{isArabic ? '../العودة_للمنهج' : '../BACK_TO_CURRICULUM'}</span>
@@ -79,7 +79,7 @@ export default async function SessionDetailPage({
               {/* Meta Tags - وسوم البيانات */}
               <div className="flex items-center gap-3 mb-4">
                 <span
-                  className="px-2 py-1 rounded text-[10px] font-mono font-bold uppercase tracking-wider border"
+                  className="px-2 py-1 rounded text-[10px]  font-bold uppercase tracking-wider border"
                   style={{ borderColor: `${accentColor}40`, backgroundColor: `${accentColor}10`, color: accentColor }}
                 >
                   {isArabic ? `الوحدة 0${sessionId}` : `MODULE_0${sessionId}`}
@@ -93,7 +93,7 @@ export default async function SessionDetailPage({
 
               {/* Objectives: The "Readme" - صندوق الأهداف كملف اقرأني */}
               <div className="bg-zinc-100 dark:bg-zinc-900/50 rounded-lg p-6 border-l-4" style={{ borderLeftColor: accentColor }}>
-                <h2 className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500 mb-4 flex items-center gap-2">
+                <h2 className="text-xs  font-bold uppercase tracking-widest text-zinc-500 mb-4 flex items-center gap-2">
                   <FiHash />
                   {isArabic ? 'أهداف_الجلسة' : 'SESSION_OBJECTIVES'}
                 </h2>
@@ -138,7 +138,7 @@ export default async function SessionDetailPage({
 
                   {/* Topic Header */}
                   <div className="mb-6">
-                    <span className="text-xs font-mono text-zinc-400 mb-1 block">
+                    <span className="text-xs  text-zinc-400 mb-1 block">
                       0{topicIdx + 1} {'//'}
                     </span>
                     <h3 className="text-xl font-bold text-zinc-900 dark:text-white">
@@ -183,7 +183,7 @@ export default async function SessionDetailPage({
             <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden shadow-sm">
               <div className="bg-zinc-50 dark:bg-zinc-950/50 p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center gap-2">
                 <FiBookOpen className="text-zinc-500" />
-                <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500">
+                <h3 className="text-xs  font-bold uppercase tracking-widest text-zinc-500">
                   {isArabic ? 'المصادر' : 'REFERENCES'}
                 </h3>
               </div>
@@ -200,7 +200,7 @@ export default async function SessionDetailPage({
             <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl overflow-hidden shadow-sm">
               <div className="bg-zinc-50 dark:bg-zinc-950/50 p-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center gap-2">
                 <FiLink className="text-zinc-500" />
-                <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500">
+                <h3 className="text-xs  font-bold uppercase tracking-widest text-zinc-500">
                   {isArabic ? 'روابط خارجية' : 'EXTERNAL_LINKS'}
                 </h3>
               </div>
@@ -241,7 +241,7 @@ export default async function SessionDetailPage({
                     {isArabic ? <FiArrowRight /> : <FiArrowLeft />}
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-400">{isArabic ? 'السابق' : 'PREVIOUS'}</span>
+                    <span className="text-[10px] uppercase  tracking-widest text-zinc-400">{isArabic ? 'السابق' : 'PREVIOUS'}</span>
                     <span className="text-sm font-bold">{isArabic ? 'الجلسة السابقة' : `Session 0${sessionId - 1}`}</span>
                   </div>
                 </Link>
@@ -261,7 +261,7 @@ export default async function SessionDetailPage({
                     {isArabic ? <FiArrowLeft /> : <FiArrowRight />}
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[10px] uppercase font-mono tracking-widest text-zinc-400">{isArabic ? 'التالي' : 'NEXT'}</span>
+                    <span className="text-[10px] uppercase  tracking-widest text-zinc-400">{isArabic ? 'التالي' : 'NEXT'}</span>
                     <span className="text-sm font-bold">{isArabic ? 'الجلسة التالية' : `Session 0${sessionId + 1}`}</span>
                   </div>
                 </Link>
@@ -274,7 +274,7 @@ export default async function SessionDetailPage({
                     <FiCheckCircle />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[10px] uppercase font-mono tracking-widest opacity-70">{isArabic ? 'إكمال' : 'COMPLETE'}</span>
+                      <span className="text-[10px] uppercase  tracking-widest opacity-70">{isArabic ? 'إكمال' : 'COMPLETE'}</span>
                     <span className="text-sm font-bold">{isArabic ? 'التسجيل النهائي' : 'Final Registration'}</span>
                   </div>
                 </Link>

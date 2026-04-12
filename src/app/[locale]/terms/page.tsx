@@ -21,7 +21,7 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">
                   <FiShield className="w-4 h-4" />
-                  <span className="text-xs font-mono font-bold uppercase tracking-widest">
+                  <span className="text-xs  font-bold uppercase tracking-widest">
                     {isArabic ? 'وثيقة قانونية' : 'LEGAL_DOCUMENT'}
                   </span>
                 </div>
@@ -30,7 +30,7 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
                   {isArabic ? data.title.ar : data.title.en}
                 </h1>
 
-                <div className="flex items-center gap-2 text-zinc-500 font-mono text-sm">
+                <div className="flex items-center gap-2 text-zinc-500  text-sm">
                   <FiClock />
                   <span>{isArabic ? 'آخر تحديث:' : 'LAST_UPDATED:'}</span>
                   <span className="font-bold text-white bg-zinc-900 px-2 py-0.5 rounded ring-1 ring-white/10">
@@ -69,7 +69,7 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
                     <div className="flex flex-col md:flex-row gap-4 md:gap-8 items-start">
                       {/* Section Index (The "Clause Number") */}
                       <div className="shrink-0">
-                        <span className="inline-block font-mono text-2xl md:text-3xl font-bold text-zinc-700 group-hover:text-emerald-500/50 transition-colors select-none">
+                        <span className="inline-block  text-2xl md:text-3xl font-bold text-zinc-700 group-hover:text-emerald-500/50 transition-colors select-none">
                           {(index + 1).toString().padStart(2, '0')}
                         </span>
                       </div>
@@ -97,7 +97,7 @@ export default function TermsPage({ params }: { params: { locale: string } }) {
 
             {/* Footer of the document */}
             <div className="bg-zinc-900 p-6 border-t border-white/10 text-center">
-              <p className="text-xs font-mono text-zinc-500">
+              <p className="text-xs  text-zinc-500">
                 {'//'} {isArabic ? 'نهاية الوثيقة' : 'END_OF_DOCUMENT'} {'//'}
               </p>
             </div>

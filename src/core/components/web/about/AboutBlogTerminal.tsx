@@ -56,7 +56,7 @@ export function AboutBlogTerminal({
       dir={isArabic ? 'rtl' : 'ltr'}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="mb-3 text-center font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">
+        <p className="mb-3 text-center  text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">
         </p>
         <h2 className={`mb-10 text-center text-2xl font-bold text-white md:text-3xl ${isArabic ? 'font-arabic' : ''}`}>
           {heading}
@@ -72,9 +72,9 @@ export function AboutBlogTerminal({
             <span className="h-2 w-2 rounded-full bg-red-500/70" />
             <span className="h-2 w-2 rounded-full bg-amber-500/70" />
             <span className="h-2 w-2 rounded-full bg-emerald-500/70" />
-            <span className="ms-2 font-mono text-[10px] text-zinc-500">zsh — maal-tech</span>
+            <span className="ms-2  text-[10px] text-zinc-500">zsh — maal-tech</span>
           </div>
-          <div className="min-h-[200px] p-5 font-mono text-sm leading-relaxed text-zinc-300 md:p-6 md:text-[15px]">
+          <div className="min-h-[200px] p-5  text-sm leading-relaxed text-zinc-300 md:p-6 md:text-[15px]">
             <p>
               <span className="text-emerald-400">➜</span> <span className="text-cyan-400">~</span>{' '}
               <span className="text-zinc-100">{typed}</span>

@@ -131,7 +131,7 @@ function PaymentGatewayVisual({ active }: { active: boolean }) {
           animate={{ top: ['-5%', '110%'] }}
           transition={{ duration: 3.5, repeat: inf, ease: 'linear' }}
         />
-        <div className="rounded-lg border border-sky-500/20 bg-black/60 p-4 font-mono text-[10px] text-sky-400/90 shadow-[0_0_20px_rgba(56,189,248,0.08)]">
+        <div className="rounded-lg border border-sky-500/20 bg-black/60 p-4  text-[10px] text-sky-400/90 shadow-[0_0_20px_rgba(56,189,248,0.08)]">
           <p className="text-zinc-600 mb-1">{'// POST /api/v1/settle'}</p>
           <p className="text-zinc-500">{'{'}</p>
           <motion.div className="ps-3" animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: inf, ease: 'easeInOut' }}>
@@ -667,7 +667,7 @@ function ProductCard({
 
         <div className="flex flex-1 flex-col justify-between p-5">
           <div>
-            <h3 className="mb-2 font-mono text-sm font-bold tracking-tight text-zinc-100 transition-colors group-hover:text-white">
+            <h3 className="mb-2  text-sm font-bold tracking-tight text-zinc-100 transition-colors group-hover:text-white">
               {product.title}
             </h3>
             <p className={`text-xs leading-relaxed text-zinc-400 transition-colors group-hover:text-zinc-300 ${arFont}`}>

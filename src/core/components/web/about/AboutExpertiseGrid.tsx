@@ -21,7 +21,7 @@ export function AboutExpertiseGrid({ content, isArabic,  expertiseHeading }: Pro
             <AnimatedSection>
               <div className="mb-6 flex items-center gap-4">
                 <div className="h-px w-8 bg-primary-500/50" />
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
+                <span className=" text-[10px] font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
                 </span>
               </div>
               <h3 className="text-balance text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl lg:text-5xl">
@@ -38,7 +38,7 @@ export function AboutExpertiseGrid({ content, isArabic,  expertiseHeading }: Pro
                   <StaggerItem key={area.id}>
                     <div className="group relative flex flex-col gap-6 border-b border-zinc-200/60 py-10 transition-colors hover:border-primary-500/50 dark:border-zinc-800/60 dark:hover:border-primary-500/50">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-xs font-bold text-zinc-300 transition-colors group-hover:text-primary-500 dark:text-zinc-700 dark:group-hover:text-primary-400">
+                        <span className=" text-xs font-bold text-zinc-300 transition-colors group-hover:text-primary-500 dark:text-zinc-700 dark:group-hover:text-primary-400">
                           {String(idx + 1).padStart(2, '0')}
                         </span>
                         <div className="flex h-12 w-12 items-center justify-center rounded-full border border-zinc-200/50 bg-white text-zinc-500 transition-colors group-hover:border-primary-500/20 group-hover:bg-primary-50 group-hover:text-primary-600 dark:border-zinc-800/50 dark:bg-zinc-900 dark:text-zinc-500 dark:group-hover:border-primary-500/20 dark:group-hover:bg-primary-500/10 dark:group-hover:text-primary-400">

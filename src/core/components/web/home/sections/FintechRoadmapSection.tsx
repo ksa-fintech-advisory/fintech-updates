@@ -53,7 +53,7 @@ export default function FintechRoadmapSection() {
                   aria-hidden
                 />
                 <div className="relative flex flex-col gap-5 rounded-2xl bg-zinc-800/40 px-6 py-8 backdrop-blur-md">
-                  <div className="flex items-center justify-center gap-2 font-mono text-sm font-bold text-emerald-400 lg:justify-start">
+                  <div className="flex items-center justify-center gap-2  text-sm font-bold text-emerald-400 lg:justify-start">
                     <FiLayers className="h-5 w-5 shrink-0" aria-hidden />
                     <span>{t('statsLine', { phases: phaseCount, topics: totalTopics })}</span>
                   </div>

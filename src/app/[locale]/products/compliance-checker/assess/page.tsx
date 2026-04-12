@@ -54,9 +54,9 @@ function ActivitySelectionStep({
       {/* Header */}
       <div className="mb-12">
         <div className="flex items-center gap-3 mb-4">
-          <span className="flex items-center justify-center w-8 h-8 rounded bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 font-mono font-bold text-sm">01</span>
+          <span className="flex items-center justify-center w-8 h-8 rounded bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400  font-bold text-sm">01</span>
           <span className="h-px w-12 bg-zinc-200 dark:bg-zinc-800"></span>
-          <span className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-widest">
+          <span className="text-xs  font-bold text-zinc-400 uppercase tracking-widest">
             {isArabic ? 'تهيئة النظام' : 'SYSTEM CONFIGURATION'}
           </span>
         </div>
@@ -90,7 +90,7 @@ function ActivitySelectionStep({
             >
               <div className="flex justify-between items-start w-full mb-4">
                 <div className={`
-                  w-8 h-8 rounded flex items-center justify-center transition-colors font-mono text-xs
+                  w-8 h-8 rounded flex items-center justify-center transition-colors  text-xs
                   ${isSelected
                     ? 'bg-primary-600 text-white'
                     : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400'
@@ -118,7 +118,7 @@ function ActivitySelectionStep({
 
       {/* Action Bar */}
       <div className="flex justify-between items-center border-t border-zinc-200 dark:border-zinc-800 pt-8">
-        <div className="text-xs font-mono text-zinc-400">
+        <div className="text-xs  text-zinc-400">
           {isArabic ? 'تم اختيار' : 'SELECTED'}: {Object.values(activities).filter(Boolean).length}
         </div>
         <button
@@ -197,7 +197,7 @@ function ModuleInspector({
         <div className="p-6 border-b border-zinc-200 dark:border-zinc-800">
           <button
             onClick={onReturn}
-            className="text-xs font-mono font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center gap-2 mb-4 uppercase tracking-wider"
+            className="text-xs  font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center gap-2 mb-4 uppercase tracking-wider"
           >
             {isArabic ? <FiArrowRight /> : <FiArrowLeft />}
             {isArabic ? 'العودة للوحة' : 'BACK_TO_HUB'}
@@ -260,10 +260,10 @@ function ModuleInspector({
 
         <div className="flex-1 overflow-y-auto p-8 lg:p-12 flex flex-col justify-center max-w-3xl mx-auto w-full">
           <div className="mb-6 flex items-center gap-3">
-            <span className="font-mono text-xs font-bold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 px-2 py-1 rounded">
+            <span className=" text-xs font-bold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 px-2 py-1 rounded">
               {currentQuestion.ruleId}
             </span>
-            <span className={`text-[10px] font-mono font-bold uppercase px-2 py-1 rounded border ${currentQuestion.riskLevel === 'High'
+            <span className={`text-[10px]  font-bold uppercase px-2 py-1 rounded border ${currentQuestion.riskLevel === 'High'
                 ? 'text-red-600 border-red-200 bg-red-50 dark:bg-red-900/20 dark:border-red-900/50'
                 : 'text-zinc-500 border-zinc-200 dark:border-zinc-700'
               }`}>
@@ -326,7 +326,7 @@ function ModuleInspector({
             {isArabic ? 'السابق' : 'PREV'}
           </button>
 
-          <div className="text-xs font-mono text-zinc-400">
+          <div className="text-xs  text-zinc-400">
             {currentIndex + 1} / {questions.length}
           </div>
 
@@ -377,7 +377,7 @@ function ModuleAuditRow({
             <h4 className="font-bold text-zinc-900 dark:text-white text-sm">
               {module.moduleLabel[locale as 'en' | 'ar']}
             </h4>
-            <span className={`font-mono font-bold text-sm ${module.score >= 80 ? 'text-emerald-600' : module.score >= 50 ? 'text-amber-600' : 'text-red-600'}`}>
+            <span className={` font-bold text-sm ${module.score >= 80 ? 'text-emerald-600' : module.score >= 50 ? 'text-amber-600' : 'text-red-600'}`}>
               {module.score}%
             </span>
           </div>
@@ -391,7 +391,7 @@ function ModuleAuditRow({
 
         {hasGaps && (
           <div className="flex items-center gap-3">
-            <span className="hidden sm:inline-block px-2 py-1 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-[10px] font-mono font-bold uppercase rounded border border-red-100 dark:border-red-900">
+            <span className="hidden sm:inline-block px-2 py-1 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-[10px]  font-bold uppercase rounded border border-red-100 dark:border-red-900">
               {module.gaps.length} {isArabic ? 'تنبيهات' : 'ALERTS'}
             </span>
             {!forceExpanded && (
@@ -410,7 +410,7 @@ function ModuleAuditRow({
                 <Link
                   href={`/${locale}/products/compliance-checker/rules/${gap.ruleId}`}
                   target="_blank" // Optional: Open in new tab to keep report open
-                  className="group/link flex items-center gap-1.5 text-[10px] font-mono font-bold text-red-600 bg-red-100 dark:bg-red-900/30 px-1.5 py-0.5 rounded hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors"
+                  className="group/link flex items-center gap-1.5 text-[10px]  font-bold text-red-600 bg-red-100 dark:bg-red-900/30 px-1.5 py-0.5 rounded hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors"
                 >
                   <span>{gap.ruleId}</span>
                   <FiExternalLink className="w-2.5 h-2.5 opacity-50 group-hover/link:opacity-100" />
@@ -424,7 +424,7 @@ function ModuleAuditRow({
               <p className="text-zinc-700 dark:text-zinc-300 mb-2 font-medium">
                 {gap.description[locale as 'en' | 'ar']}
               </p>
-              <div className="text-zinc-500 dark:text-zinc-500 text-xs font-mono bg-white dark:bg-zinc-900 p-2 rounded border border-zinc-200 dark:border-zinc-800">
+              <div className="text-zinc-500 dark:text-zinc-500 text-xs  bg-white dark:bg-zinc-900 p-2 rounded border border-zinc-200 dark:border-zinc-800">
                 <span className="font-bold text-zinc-700 dark:text-zinc-300">ACTION:</span> {gap.requiredAction[locale as 'en' | 'ar']}
               </div>
             </div>
@@ -493,7 +493,7 @@ export default function AssessPage({ params: { locale } }: { params: { locale: s
       {/* Hero Header */}
       <div className="relative pt-32 pb-8 border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-black/50 backdrop-blur-md z-20 mb-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest mb-4">
+          <div className="flex items-center gap-2 text-xs  font-bold text-zinc-500 uppercase tracking-widest mb-4">
             <Link href={`/${locale}/products/compliance-checker`} className="hover:text-primary-600 transition-colors">
               {isArabic ? 'الرئيسية' : 'ROOT'}
             </Link>
@@ -586,7 +586,7 @@ function AssessmentHub({
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-8 border-b border-zinc-200 dark:border-zinc-800">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <span className="inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 uppercase">
+            <span className="inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px]  font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 uppercase">
               {isArabic ? 'نشط الآن' : 'LIVE_SESSION'}
             </span>
           </div>
@@ -602,7 +602,7 @@ function AssessmentHub({
 
         {/* Global Progress Widget */}
         <div className="bg-zinc-100 dark:bg-zinc-900 p-4 rounded-xl min-w-[240px] border border-zinc-200 dark:border-zinc-800">
-          <div className="flex justify-between text-xs font-mono font-bold text-zinc-500 mb-2">
+          <div className="flex justify-between text-xs  font-bold text-zinc-500 mb-2">
             <span>{isArabic ? 'حالة التغطية' : 'COVERAGE'}</span>
             <span>{globalProgress}%</span>
           </div>
@@ -612,7 +612,7 @@ function AssessmentHub({
               style={{ width: `${globalProgress}%` }}
             />
           </div>
-          <div className="mt-2 text-[10px] text-zinc-400 text-right font-mono">
+          <div className="mt-2 text-[10px] text-zinc-400 text-right ">
             {answeredCount} / {totalQuestions} {isArabic ? 'تم فحصه' : 'CHECKED'}
           </div>
         </div>
@@ -658,7 +658,7 @@ function AssessmentHub({
                 `}>
                   {isModuleComplete ? <FiCheckCircle /> : isModuleStarted ? <FiActivity /> : <FiGrid />}
                 </div>
-                <div className="text-[10px] font-mono font-bold text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded uppercase">
+                <div className="text-[10px]  font-bold text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded uppercase">
                   {questions.length} {isArabic ? 'نقاط' : 'ITEMS'}
                 </div>
               </div>
@@ -679,7 +679,7 @@ function AssessmentHub({
 
               {/* Progress Bar */}
               <div className="w-full pl-2">
-                <div className="flex justify-between text-[10px] font-mono font-bold text-zinc-400 mb-1.5">
+                <div className="flex justify-between text-[10px]  font-bold text-zinc-400 mb-1.5">
                   <span>{isModuleComplete ? 'DONE' : 'STATUS'}</span>
                   <span>{progress}%</span>
                 </div>
@@ -787,7 +787,7 @@ function ReportStep({
             <h1 className="text-4xl font-black uppercase tracking-tight mb-2">
               {isPartial ? (isArabic ? 'مسودة تقرير (جزئي)' : 'DRAFT AUDIT REPORT') : (isArabic ? 'تقرير الامتثال النهائي' : 'FINAL COMPLIANCE AUDIT')}
             </h1>
-            <p className="font-mono text-sm text-gray-600">
+            <p className=" text-sm text-gray-600">
               STATUS: {isPartial ? 'INCOMPLETE DATA' : 'COMPLETED'} {'//'} COVERAGE: {coveragePercent}%
             </p>
           </div>
@@ -814,7 +814,7 @@ function ReportStep({
           <div>
             <div className="flex items-center gap-2 mb-2">
               <div className={`w-2 h-2 rounded-full animate-pulse ${isPartial ? 'bg-amber-500' : result.overallScore >= 80 ? 'bg-emerald-500' : 'bg-red-500'}`} />
-              <span className="text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest">
+              <span className="text-xs  font-bold text-zinc-500 uppercase tracking-widest">
                 {isArabic ? (isPartial ? 'مسودة' : 'تقرير نهائي') : (isPartial ? 'DRAFT_MODE' : 'FINAL_REPORT')}
               </span>
             </div>
@@ -825,8 +825,8 @@ function ReportStep({
 
           <div className="flex items-center gap-4">
             <div className="text-right hidden sm:block">
-              <div className="text-[10px] font-mono text-zinc-400 uppercase">AUDIT_ID</div>
-              <div className="text-sm font-mono font-bold text-zinc-600 dark:text-zinc-400">#{new Date().getTime().toString().slice(-6)}</div>
+              <div className="text-[10px]  text-zinc-400 uppercase">AUDIT_ID</div>
+              <div className="text-sm  font-bold text-zinc-600 dark:text-zinc-400">#{new Date().getTime().toString().slice(-6)}</div>
             </div>
             <button
               onClick={handleExportPDF}
@@ -857,7 +857,7 @@ function ReportStep({
                 />
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className={`text-6xl font-black font-mono tracking-tighter ${scoreColor}`}>
+                <span className={`text-6xl font-black  tracking-tighter ${scoreColor}`}>
                   {result.overallScore}%
                 </span>
                 <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest mt-2 bg-white dark:bg-black px-2">
@@ -869,14 +869,14 @@ function ReportStep({
             <div className="grid grid-cols-2 gap-4 w-full max-w-lg">
               {/* Stats Cards */}
               <div className="p-5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl">
-                <div className="text-[10px] font-mono font-bold text-zinc-400 uppercase mb-1">Items Audited</div>
+                <div className="text-[10px]  font-bold text-zinc-400 uppercase mb-1">Items Audited</div>
                 <div className="text-3xl font-black text-zinc-900 dark:text-white">
                   {result.answeredQuestions}<span className="text-base text-zinc-400 font-medium">/{result.totalQuestions}</span>
                 </div>
               </div>
 
               <div className="p-5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl">
-                <div className="text-[10px] font-mono font-bold text-zinc-400 uppercase mb-1">Gaps Found</div>
+                <div className="text-[10px]  font-bold text-zinc-400 uppercase mb-1">Gaps Found</div>
                 <div className="text-3xl font-black text-zinc-900 dark:text-white">{result.totalGaps}</div>
               </div>
 
@@ -899,7 +899,7 @@ function ReportStep({
                 <FiGrid /> {isArabic ? 'تفاصيل الوحدات المفحوصة' : 'Audited Modules Breakdown'}
               </h3>
               {isPartial && (
-                <span className="text-[10px] font-mono text-amber-600 bg-amber-50 dark:bg-amber-900/20 px-2 py-1 rounded">
+                <span className="text-[10px]  text-amber-600 bg-amber-50 dark:bg-amber-900/20 px-2 py-1 rounded">
                   {isArabic ? 'عرض الوحدات التي تم بدأها فقط' : 'Showing active modules only'}
                 </span>
               )}

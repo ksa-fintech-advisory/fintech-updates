@@ -162,13 +162,13 @@ function RoadmapTopicRow({
           aria-expanded={isOpen}
           className="flex w-full items-start gap-2 rounded-xl py-2 pe-2 text-start outline-none ring-primary-500 focus-visible:ring-2"
         >
-          <span className="mt-0.5 font-mono text-[11px] font-bold tabular-nums text-zinc-400">{topicIndex + 1}</span>
+          <span className="mt-0.5  text-[11px] font-bold tabular-nums text-zinc-400">{topicIndex + 1}</span>
           <span className="min-w-0 flex-1 text-sm font-semibold leading-snug text-zinc-900 dark:text-white sm:text-base">
             {topic.title[lang]}
           </span>
           {topic.resources.length > 0 ? (
             <span
-              className="mt-0.5 inline-flex max-w-[5.5rem] shrink-0 items-center truncate rounded-full border border-zinc-200 bg-white px-1.5 py-0.5 font-mono text-[9px] font-semibold tabular-nums text-zinc-500 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-400 sm:max-w-none sm:px-2 sm:text-[10px]"
+              className="mt-0.5 inline-flex max-w-[5.5rem] shrink-0 items-center truncate rounded-full border border-zinc-200 bg-white px-1.5 py-0.5  text-[9px] font-semibold tabular-nums text-zinc-500 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-400 sm:max-w-none sm:px-2 sm:text-[10px]"
               title={t('resourcesCount', { count: topic.resources.length })}
             >
               {t('resourcesCount', { count: topic.resources.length })}
@@ -186,7 +186,7 @@ function RoadmapTopicRow({
             <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{topic.description[lang]}</p>
             {topic.resources.length > 0 ? (
               <div className="rounded-md border border-zinc-200/90 bg-zinc-50/80 px-3 py-2.5 dark:border-zinc-700/80 dark:bg-zinc-950/40">
-                <p className="mb-1 font-mono text-[10px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
+                <p className="mb-1  text-[10px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
                   {t('resourcesHeading')}
                 </p>
                 <p className="mb-2.5 text-[11px] leading-relaxed text-zinc-500 dark:text-zinc-500 sm:text-xs">
@@ -224,7 +224,7 @@ function RoadmapTopicRow({
                   className="flex w-full items-center justify-between gap-3 rounded-lg border border-zinc-200 bg-white px-3 py-2.5 text-start shadow-sm transition-colors active:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900 dark:active:bg-zinc-800/90"
                 >
                   <span className="min-w-0">
-                    <span className="block font-mono text-[10px] font-bold uppercase tracking-wider text-zinc-400">
+                    <span className="block  text-[10px] font-bold uppercase tracking-wider text-zinc-400">
                       {t('nextTopic')}
                     </span>
                     <span className="mt-0.5 block text-sm font-semibold leading-snug text-zinc-900 dark:text-white">
@@ -296,7 +296,7 @@ function PhaseAccordion({
         onClick={onTogglePhase}
         className="flex min-h-[44px] w-full items-center gap-3 px-3 py-3 text-start transition-colors hover:bg-white/[0.02] sm:gap-4 sm:min-h-0 sm:px-4 sm:py-3.5"
       >
-        <span className="font-mono text-[11px] font-bold tabular-nums text-zinc-400 sm:text-xs">{step}</span>
+        <span className=" text-[11px] font-bold tabular-nums text-zinc-400 sm:text-xs">{step}</span>
         <span
           className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-zinc-100 dark:bg-zinc-800/90 ${accent.iconTint}`}
         >
@@ -329,7 +329,7 @@ function PhaseAccordion({
             <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{phase.summary[lang]}</p>
 
             <div className="rounded-md border border-dashed border-zinc-200 bg-zinc-50/50 px-3 py-2.5 dark:border-zinc-700/80 dark:bg-zinc-900/30">
-              <p className="mb-2 font-mono text-[10px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
+              <p className="mb-2  text-[10px] font-bold uppercase tracking-wider text-zinc-500 dark:text-zinc-500">
                 {t('outcomesHeading')}
               </p>
               <ul
@@ -350,7 +350,7 @@ function PhaseAccordion({
 
             <div>
               <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-3">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+                <p className=" text-[10px] font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
                   {t('topicsHeading')}
                 </p>
                 {phase.topics.length > 1 ? (
@@ -394,7 +394,7 @@ function PhaseAccordion({
 
             {isOpen && nextPhase ? (
               <div className="mt-2 border-t border-zinc-100 bg-gradient-to-b from-zinc-50/95 to-white px-3 pb-4 pt-4 dark:border-zinc-800 dark:from-zinc-900/90 dark:to-zinc-950 sm:px-5 sm:pb-5">
-                <p className="mb-2 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
+                <p className="mb-2  text-[10px] font-bold uppercase tracking-[0.18em] text-zinc-400 dark:text-zinc-500">
                   {t('continueReading')}
                 </p>
                 <button
@@ -403,7 +403,7 @@ function PhaseAccordion({
                   className="flex w-full items-center justify-between gap-3 rounded-xl border border-zinc-200 bg-white px-3 py-3 text-start shadow-sm transition-colors active:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900 dark:active:bg-zinc-800/90 sm:py-3.5"
                 >
                   <span className="min-w-0">
-                    <span className="block font-mono text-[10px] font-bold uppercase tracking-wider text-zinc-400">
+                    <span className="block  text-[10px] font-bold uppercase tracking-wider text-zinc-400">
                       {t('nextPhase')}
                     </span>
                     <span className="mt-1 block text-sm font-semibold leading-snug text-zinc-900 dark:text-white sm:text-base">
@@ -546,7 +546,7 @@ export default function FintechLearnerRoadmap() {
             <div className="mb-8 sm:mb-10">
               <Link
                 href={`/${locale}`}
-                className="inline-flex items-center gap-2 rounded-xl border border-zinc-700/80 bg-zinc-900/50 px-3 py-2 text-[11px] font-mono font-bold uppercase tracking-widest text-zinc-400 backdrop-blur transition-colors hover:border-zinc-600 hover:text-white sm:text-xs"
+                className="inline-flex items-center gap-2 rounded-xl border border-zinc-700/80 bg-zinc-900/50 px-3 py-2 text-[11px]  font-bold uppercase tracking-widest text-zinc-400 backdrop-blur transition-colors hover:border-zinc-600 hover:text-white sm:text-xs"
               >
                 {isArabic ? <FiArrowRight className="h-3.5 w-3.5" aria-hidden /> : <FiArrowLeft className="h-3.5 w-3.5" aria-hidden />}
                 {t('backHome')}
@@ -590,7 +590,7 @@ export default function FintechLearnerRoadmap() {
             </header>
 
             <div className="mt-12 border-t border-zinc-800/70 pt-10 sm:mt-14 sm:pt-12">
-              <p className="mb-4 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 sm:mb-5">
+              <p className="mb-4  text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 sm:mb-5">
                 {t('phasesNavLabel')}
               </p>
               <div className="relative min-w-0">
@@ -613,7 +613,7 @@ export default function FintechLearnerRoadmap() {
                         className="inline-flex max-w-[min(100vw-2.5rem,22rem)] shrink-0 items-center gap-2 rounded-xl border border-zinc-700/90 bg-zinc-900/45 px-3 py-2 text-start text-[11px] font-medium text-zinc-300 transition-colors hover:border-zinc-500 hover:bg-zinc-900/70 hover:text-white sm:max-w-[16.5rem] sm:px-3.5 sm:text-xs"
                       >
                         <span className={`h-1.5 w-1.5 shrink-0 rounded-full sm:h-2 sm:w-2 ${accent.rail}`} aria-hidden />
-                        <span className="font-mono text-[10px] tabular-nums text-zinc-500">
+                        <span className=" text-[10px] tabular-nums text-zinc-500">
                           {String(i + 1).padStart(2, '0')}
                         </span>
                         <span className="min-w-0 line-clamp-2 sm:line-clamp-2">{phase.title[lang]}</span>
@@ -634,7 +634,7 @@ export default function FintechLearnerRoadmap() {
             role="region"
             aria-label={t('overviewLabel')}
           >
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 sm:me-1">
+            <p className=" text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400 sm:me-1">
               {t('overviewLabel')}
             </p>
             <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
@@ -669,7 +669,7 @@ export default function FintechLearnerRoadmap() {
 
           <div className="mb-10 sm:mb-12">
             <div className="rounded-2xl border border-white/10 bg-zinc-800/40 px-5 py-5 shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)] sm:px-7 sm:py-6">
-              <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500">
+              <p className="mb-3  text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500">
                 {t('topicsSubLabel')}
               </p>
               <p className="text-sm leading-[1.7] text-zinc-600 dark:text-zinc-300 sm:text-base sm:leading-relaxed">
@@ -686,7 +686,7 @@ export default function FintechLearnerRoadmap() {
               <div className="border-b border-zinc-100 px-4 py-3 dark:border-zinc-800">
                 <p
                   id="roadmap-mobile-toc-title"
-                  className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400"
+                  className=" text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400"
                 >
                   {t('tocLabel')}
                 </p>
@@ -709,7 +709,7 @@ export default function FintechLearnerRoadmap() {
                         className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${accent.rail}`}
                         aria-hidden
                       />
-                      <span className="font-mono text-[11px] font-bold tabular-nums text-zinc-400">
+                      <span className=" text-[11px] font-bold tabular-nums text-zinc-400">
                         {String(i + 1).padStart(2, '0')}
                       </span>
                       <span className="min-w-0 flex-1 text-sm font-medium leading-snug text-zinc-800 dark:text-zinc-200">
@@ -755,7 +755,7 @@ export default function FintechLearnerRoadmap() {
                 aria-label={t('tocLabel')}
                 className="max-h-[calc(100vh-6.5rem)] space-y-3 overflow-y-auto overscroll-contain pe-2 scrollbar-thin scrollbar-thumb-zinc-300 dark:scrollbar-thumb-zinc-600"
               >
-                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
+                <p className=" text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
                   {t('tocLabel')}
                 </p>
                 <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-500">{t('tocHint')}</p>
@@ -774,7 +774,7 @@ export default function FintechLearnerRoadmap() {
                           className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full ${accent.rail}`}
                           aria-hidden
                         />
-                        <span className="font-mono text-[10px] tabular-nums text-zinc-400">{String(i + 1).padStart(2, '0')}</span>
+                        <span className=" text-[10px] tabular-nums text-zinc-400">{String(i + 1).padStart(2, '0')}</span>
                         <span className="min-w-0 leading-snug">{phase.title[lang]}</span>
                       </a>
                     </li>

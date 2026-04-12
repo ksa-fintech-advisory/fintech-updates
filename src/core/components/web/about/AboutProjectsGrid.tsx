@@ -69,7 +69,7 @@ const PROJECTS = [
           animate={{ top: ['-10%', '110%'] }}
           transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
         />
-        <div className="w-full rounded-lg border border-emerald-500/20 bg-black/60 p-4 font-mono text-[9px] text-emerald-400/80 shadow-[0_0_15px_rgba(16,185,129,0.1)] relative z-0">
+        <div className="w-full rounded-lg border border-emerald-500/20 bg-black/60 p-4  text-[9px] text-emerald-400/80 shadow-[0_0_15px_rgba(16,185,129,0.1)] relative z-0">
           <p className="text-zinc-500">{'// POST /api/v1/payments'}</p>
           <p>{'{'}</p>
           <motion.p className="ps-4" animate={{ opacity: [0.6, 1, 0.6] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}>
@@ -282,7 +282,7 @@ export function AboutProjectsGrid({ isArabic, projectsLabel }: Props) {
 
           {/* Content Area */}
           <div className="flex flex-1 flex-col p-6 z-10 bg-gradient-to-b from-[#0a0a0b] to-[#050505]">
-            <h3 className="mb-2 font-mono text-sm font-bold text-zinc-100">{isArabic ? p.title.ar : p.title.en}</h3>
+            <h3 className="mb-2  text-sm font-bold text-zinc-100">{isArabic ? p.title.ar : p.title.en}</h3>
             <p className={`mb-4 text-xs leading-relaxed text-zinc-400 ${isArabic ? 'font-arabic' : ''}`}>
               {isArabic ? p.desc.ar : p.desc.en}
             </p>

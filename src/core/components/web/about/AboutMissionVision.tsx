@@ -44,7 +44,7 @@ export function AboutMissionVision({
           <div className="mx-auto max-w-4xl">
             <div className="flex items-center gap-4 mb-4">
               <div className="h-px flex-1 bg-zinc-800" />
-              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-primary-400">
+              <span className=" text-[10px] font-bold uppercase tracking-[0.2em] text-primary-400">
               </span>
               <div className="h-px flex-1 bg-zinc-800" />
             </div>
@@ -63,7 +63,7 @@ export function AboutMissionVision({
                 <div className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
                 <div className="h-2.5 w-2.5 rounded-full bg-zinc-700" />
               </div>
-              <div className="font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+              <div className=" text-[10px] uppercase tracking-widest text-zinc-500">
                 ~/manifest.yml
               </div>
               <div className="w-8" />
@@ -73,7 +73,7 @@ export function AboutMissionVision({
               {/* Mission */}
               <StaggerItem>
                 <div className="p-8 md:p-12">
-                  <div className="mb-6 inline-flex rounded bg-primary-500/20 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-primary-400">
+                  <div className="mb-6 inline-flex rounded bg-primary-500/20 px-3 py-1  text-[10px] font-bold uppercase tracking-widest text-primary-400">
                     <FiTarget className="mr-2 inline-block h-3 w-3" />
                     {missionLabel}
                   </div>
@@ -86,11 +86,11 @@ export function AboutMissionVision({
               {/* Vision */}
               <StaggerItem>
                 <div className="p-8 md:p-12" dir={isArabic ? 'rtl' : 'ltr'}>
-                  <div className="mb-6 inline-flex rounded bg-primary-500/20 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-primary-400">
+                  <div className="mb-6 inline-flex rounded bg-primary-500/20 px-3 py-1  text-[10px] font-bold uppercase tracking-widest text-primary-400">
                     <FiHelpCircle className="mr-2 inline-block h-3 w-3" />
                     {visionLabel}
                   </div>
-                  <div className="space-y-4 font-mono text-sm text-zinc-400">
+                  <div className="space-y-4  text-sm text-zinc-400">
                     {whyItems.map((line, idx) => (
                       <div key={idx} className="flex items-start gap-3">
                         <span className="text-primary-400 mt-1">{`->`}</span>
@@ -103,7 +103,7 @@ export function AboutMissionVision({
             </div>
             
             {/* Terminal snippet footer */}
-            <div className="border-t border-zinc-800 bg-black p-6 font-mono text-xs">
+            <div className="border-t border-zinc-800 bg-black p-6  text-xs">
               <div className="flex flex-wrap items-baseline gap-2 mb-3">
                 <span className="text-primary-400">{terminalPrompt}</span>
                 <span className="text-zinc-300">{terminalFile}</span>

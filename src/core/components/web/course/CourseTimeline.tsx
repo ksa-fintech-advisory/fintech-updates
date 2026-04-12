@@ -38,7 +38,7 @@ export default function CourseTimeline({
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center text-center mb-20"
         >
-          <span className="text-primary-600 dark:text-primary-400 font-mono text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded bg-primary-50 dark:bg-primary-900/20 border border-primary-100 dark:border-primary-800/30">
+          <span className="text-primary-600 dark:text-primary-400  text-xs font-bold uppercase tracking-widest mb-3 px-3 py-1 rounded bg-primary-50 dark:bg-primary-900/20 border border-primary-100 dark:border-primary-800/30">
             {isArabic ? 'خارطة الطريق' : 'CURRICULUM_ROADMAP'}
           </span>
 
@@ -55,7 +55,7 @@ export default function CourseTimeline({
             <div className="bg-white dark:bg-zinc-900 px-6 py-3 flex items-center gap-3">
               <FiLayers className="text-zinc-400" />
               <div className="flex flex-col text-start">
-                <span className="text-[10px] text-zinc-400 font-mono uppercase tracking-wider">{isArabic ? 'المحتوى' : 'CONTENT'}</span>
+                <span className="text-[10px] text-zinc-400  uppercase tracking-wider">{isArabic ? 'المحتوى' : 'CONTENT'}</span>
                 <span className="text-sm font-bold text-zinc-800 dark:text-zinc-200">{phasesData.length} {isArabic ? 'وحدات' : 'Modules'}</span>
               </div>
             </div>
@@ -63,7 +63,7 @@ export default function CourseTimeline({
             <div className="bg-white dark:bg-zinc-900 px-6 py-3 flex items-center gap-3">
               <FiTarget className="text-zinc-400" />
               <div className="flex flex-col text-start">
-                <span className="text-[10px] text-zinc-400 font-mono uppercase tracking-wider">{isArabic ? 'المستوى' : 'LEVEL'}</span>
+                <span className="text-[10px] text-zinc-400  uppercase tracking-wider">{isArabic ? 'المستوى' : 'LEVEL'}</span>
                 <span className="text-sm font-bold text-zinc-800 dark:text-zinc-200">{isArabic ? 'شامل' : 'All Levels'}</span>
               </div>
             </div>
@@ -71,7 +71,7 @@ export default function CourseTimeline({
             <div className="bg-white dark:bg-zinc-900 px-6 py-3 flex items-center gap-3">
               <FiMapPin className="text-zinc-400" />
               <div className="flex flex-col text-start">
-                <span className="text-[10px] text-zinc-400 font-mono uppercase tracking-wider">{isArabic ? 'التركيز' : 'FOCUS'}</span>
+                <span className="text-[10px] text-zinc-400  uppercase tracking-wider">{isArabic ? 'التركيز' : 'FOCUS'}</span>
                 <span className="text-sm font-bold text-zinc-800 dark:text-zinc-200">{isArabic ? 'السوق السعودي' : 'KSA Market'}</span>
               </div>
             </div>
@@ -110,7 +110,7 @@ export default function CourseTimeline({
 
                   {/* Label below node */}
                   <div className="absolute top-10 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                    <span className="block text-xs font-mono font-bold text-zinc-400 uppercase tracking-widest group-hover:text-primary-600 transition-colors">
+                    <span className="block text-xs  font-bold text-zinc-400 uppercase tracking-widest group-hover:text-primary-600 transition-colors">
                       {isArabic ? `مرحلة 0${phase.id}` : `PHASE_0${phase.id}`}
                     </span>
                   </div>

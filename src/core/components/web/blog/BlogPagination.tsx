@@ -36,7 +36,7 @@ function visiblePageButtons(current: number, total: number): number[] {
 
 const pageBtnClass = (active: boolean) =>
   `
-                  flex h-10 w-10 items-center justify-center rounded-xl border font-mono text-sm transition-all duration-200
+                  flex h-10 w-10 items-center justify-center rounded-xl border  text-sm transition-all duration-200
                   ${active
                     ? 'border-zinc-900 dark:border-white bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-bold shadow-sm'
                     : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-500 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-600 hover:text-zinc-900 dark:hover:text-white'
@@ -65,14 +65,14 @@ export function BlogPagination({ currentPage, totalPages, isArabic }: BlogPagina
             aria-disabled
           >
             {isArabic ? <FiChevronRight /> : <FiChevronLeft />}
-            <span className="hidden sm:inline font-mono text-xs uppercase tracking-wider">
+            <span className="hidden sm:inline  text-xs uppercase tracking-wider">
               {isArabic ? 'السابق' : 'PREV'}
             </span>
           </span>
         ) : (
           <Link href={href({ page: String(currentPage - 1) })} scroll={false} className={navClass}>
             {isArabic ? <FiChevronRight /> : <FiChevronLeft />}
-            <span className="hidden sm:inline font-mono text-xs uppercase tracking-wider">
+              <span className="hidden sm:inline  text-xs uppercase tracking-wider">
               {isArabic ? 'السابق' : 'PREV'}
             </span>
           </Link>
@@ -83,7 +83,7 @@ export function BlogPagination({ currentPage, totalPages, isArabic }: BlogPagina
             page < 0 ? (
               <span
                 key={`ellipsis-${idx}`}
-                className="w-10 h-10 flex items-center justify-center text-zinc-400 font-mono text-sm"
+                className="w-10 h-10 flex items-center justify-center text-zinc-400  text-sm"
                 aria-hidden
               >
                 …
@@ -105,14 +105,14 @@ export function BlogPagination({ currentPage, totalPages, isArabic }: BlogPagina
             className={`${navClass} opacity-50 cursor-not-allowed pointer-events-none`}
             aria-disabled
           >
-            <span className="hidden sm:inline font-mono text-xs uppercase tracking-wider">
+            <span className="hidden sm:inline  text-xs uppercase tracking-wider">
               {isArabic ? 'التالي' : 'NEXT'}
             </span>
             {isArabic ? <FiChevronLeft /> : <FiChevronRight />}
           </span>
         ) : (
           <Link href={href({ page: String(currentPage + 1) })} scroll={false} className={navClass}>
-            <span className="hidden sm:inline font-mono text-xs uppercase tracking-wider">
+              <span className="hidden sm:inline  text-xs uppercase tracking-wider">
               {isArabic ? 'التالي' : 'NEXT'}
             </span>
             {isArabic ? <FiChevronLeft /> : <FiChevronRight />}

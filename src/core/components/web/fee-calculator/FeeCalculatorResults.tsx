@@ -166,7 +166,7 @@ export default function FeeCalculatorResults({
               </h3>
             </div>
             <div className="flex items-baseline gap-2">
-              <span className="text-4xl md:text-5xl font-black text-emerald-700 dark:text-emerald-400 font-mono tracking-tight">
+              <span className="text-4xl md:text-5xl font-black text-emerald-700 dark:text-emerald-400  tracking-tight">
                 {formatNumber(results.netSettlementAmount, locale)}
               </span>
               <span className="text-sm font-bold text-emerald-600/70 dark:text-emerald-500/70">
@@ -190,7 +190,7 @@ export default function FeeCalculatorResults({
               <FiArrowDownRight className="w-4 h-4 text-red-500" />
               <h3 className="text-xs font-bold uppercase tracking-wider">{labels.totalMonthlyFees}</h3>
             </div>
-            <div className="text-2xl font-bold text-red-600 dark:text-red-400 font-mono">
+            <div className="text-2xl font-bold text-red-600 dark:text-red-400 ">
               -{formatNumber(results.totalMonthlyFees, locale)} <span className="text-xs">{labels.currency}</span>
             </div>
           </div>
@@ -203,7 +203,7 @@ export default function FeeCalculatorResults({
               <FiPercent className="w-4 h-4 text-blue-500" />
               <h3 className="text-xs font-bold uppercase tracking-wider">{labels.effectiveRate}</h3>
             </div>
-            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 font-mono">
+            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 ">
               {results.effectiveFeeRate.toFixed(2)}%
             </div>
             <div className="text-[10px] text-zinc-400 mt-1">
@@ -219,7 +219,7 @@ export default function FeeCalculatorResults({
           <h3 className="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-wider flex items-center gap-2">
             <FiPieChart /> {labels.feeBreakdown}
           </h3>
-          <span className="text-xs font-mono text-zinc-400 bg-white dark:bg-zinc-800 px-2 py-1 rounded border border-zinc-200 dark:border-zinc-700">
+          <span className="text-xs  text-zinc-400 bg-white dark:bg-zinc-800 px-2 py-1 rounded border border-zinc-200 dark:border-zinc-700">
             100% = {formatNumber(results.totalMonthlyFees, locale)} {labels.currency}
           </span>
         </div>
@@ -234,7 +234,7 @@ export default function FeeCalculatorResults({
             >
               {/* Tooltip on Hover */}
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block z-10 w-max">
-                <div className="bg-black text-white text-xs rounded py-1 px-2 font-mono">
+                <div className="bg-black text-white text-xs rounded py-1 px-2 ">
                   {item.percentage.toFixed(1)}%
                 </div>
               </div>
@@ -249,7 +249,7 @@ export default function FeeCalculatorResults({
               <div className={`w-3 h-3 rounded-full mt-1.5 shrink-0 ${item.color} shadow-sm`} />
               <div>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 font-medium uppercase tracking-wide">{item.label}</p>
-                <p className={`text-sm font-bold font-mono ${item.textColor}`}>
+                <p className={`text-sm font-bold  ${item.textColor}`}>
                   {formatNumber(item.value, locale)}
                 </p>
               </div>
@@ -286,16 +286,16 @@ export default function FeeCalculatorResults({
                       {method.methodLabel}
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-end font-mono text-zinc-600 dark:text-zinc-400 hidden sm:table-cell">
+                  <td className="px-6 py-4 text-end  text-zinc-600 dark:text-zinc-400 hidden sm:table-cell">
                     {method.transactionCount}
                   </td>
-                  <td className="px-6 py-4 text-end font-mono text-zinc-900 dark:text-zinc-300 font-medium">
+                  <td className="px-6 py-4 text-end  text-zinc-900 dark:text-zinc-300 font-medium">
                     {formatNumber(method.volume, locale)}
                   </td>
-                  <td className="px-6 py-4 text-end font-mono text-red-600 dark:text-red-400 font-medium bg-red-50/30 dark:bg-red-900/10">
+                  <td className="px-6 py-4 text-end  text-red-600 dark:text-red-400 font-medium bg-red-50/30 dark:bg-red-900/10">
                     {formatNumber(method.totalFee, locale)}
                   </td>
-                  <td className="px-6 py-4 text-end font-mono text-zinc-600 dark:text-zinc-400">
+                  <td className="px-6 py-4 text-end  text-zinc-600 dark:text-zinc-400">
                     {method.effectiveRate.toFixed(2)}%
                   </td>
                 </tr>
@@ -304,10 +304,10 @@ export default function FeeCalculatorResults({
             <tfoot className="bg-zinc-50 dark:bg-zinc-900 font-bold border-t border-zinc-200 dark:border-zinc-800">
               <tr>
                 <td className="px-6 py-4 text-zinc-900 dark:text-white uppercase text-xs tracking-wider">TOTAL</td>
-                <td className="px-6 py-4 text-end font-mono hidden sm:table-cell">{results.totalTransactions}</td>
-                <td className="px-6 py-4 text-end font-mono text-zinc-900 dark:text-white">{formatNumber(results.totalVolume, locale)}</td>
-                <td className="px-6 py-4 text-end font-mono text-red-600 dark:text-red-400">{formatNumber(results.totalMonthlyFees, locale)}</td>
-                <td className="px-6 py-4 text-end font-mono text-blue-600 dark:text-blue-400">{results.effectiveFeeRate.toFixed(2)}%</td>
+                <td className="px-6 py-4 text-end  hidden sm:table-cell">{results.totalTransactions}</td>
+                <td className="px-6 py-4 text-end  text-zinc-900 dark:text-white">{formatNumber(results.totalVolume, locale)}</td>
+                <td className="px-6 py-4 text-end  text-red-600 dark:text-red-400">{formatNumber(results.totalMonthlyFees, locale)}</td>
+                <td className="px-6 py-4 text-end  text-blue-600 dark:text-blue-400">{results.effectiveFeeRate.toFixed(2)}%</td>
               </tr>
             </tfoot>
           </table>
@@ -348,7 +348,7 @@ export default function FeeCalculatorResults({
           <p className="text-[10px] text-zinc-500 dark:text-zinc-400 leading-relaxed mb-2">
             {results.disclaimer}
           </p>
-          <div className="text-[10px] font-mono text-zinc-400 border-t border-zinc-200 dark:border-zinc-800 pt-2 mt-2">
+          <div className="text-[10px]  text-zinc-400 border-t border-zinc-200 dark:border-zinc-800 pt-2 mt-2">
             {labels.lastUpdated}: {results.lastUpdated}
           </div>
         </div>

@@ -162,13 +162,13 @@ export function AboutExperienceBento({
                             }`}
                           />
                         ) : (
-                          <span className="font-mono text-xl font-bold text-zinc-400 group-hover:text-emerald-400">
+                            <span className=" text-xl font-bold text-zinc-400 group-hover:text-emerald-400">
                             {company.name}
                           </span>
                         )}
                       </div>
                       <div>
-                        <h3 className="font-mono text-base font-semibold text-zinc-300 transition-colors group-hover:text-white">
+                        <h3 className=" text-base font-semibold text-zinc-300 transition-colors group-hover:text-white">
                           {company.href ? (
                             <a href={company.href} target="_blank" rel="noopener noreferrer" className="hover:underline">
                               {company.name}

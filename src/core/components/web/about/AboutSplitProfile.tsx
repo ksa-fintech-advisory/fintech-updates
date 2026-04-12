@@ -173,7 +173,7 @@ function TypewriterCode({ snippet, idx, startAnimation }: { snippet: typeof CODE
       transition={{ duration: 0.3 }}
       className="h-full"
     >
-      <pre className="overflow-x-auto p-5 font-mono text-[11px] leading-[1.9] text-zinc-300 md:text-xs">
+      <pre className="overflow-x-auto p-5  text-[11px] leading-[1.9] text-zinc-300 md:text-xs">
         <code className="block whitespace-pre">
           {snippet.lines.slice(0, visibleLines).map((line, li) => (
             <motion.span
@@ -252,7 +252,7 @@ export function AboutSplitProfile({
           transition={{ duration: 0.5 }}
           className="mb-14 text-center"
         >
-          <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">{"// ABOUT_ME"}</p>
+          <p className="mb-3  text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">{"// ABOUT_ME"}</p>
           <h2 className={`text-3xl font-bold tracking-tight text-white md:text-4xl ${arFont}`}>
             {t(SECTION_HEADING, isArabic)}
           </h2>
@@ -298,7 +298,7 @@ export function AboutSplitProfile({
                   <h2 className="text-2xl font-bold text-white">
                     <AuthorNameText isArabic={isArabic} className="text-[1.06em]">{authorName}</AuthorNameText>
                   </h2>
-                  <p className={`mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-emerald-400 ${arFont}`}>{authorTitle}</p>
+                  <p className={`mt-1  text-[10px] uppercase tracking-[0.18em] text-emerald-400 ${arFont}`}>{authorTitle}</p>
 
                   {/* Role badges — bilingual */}
                   <div className="mt-4 flex flex-wrap justify-center gap-2">
@@ -331,8 +331,8 @@ export function AboutSplitProfile({
                   <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-[10px] text-zinc-500">{CODE_SNIPPETS[codeIdx].file}</span>
-                  <span className="rounded bg-emerald-500/20 px-1.5 py-0.5 font-mono text-[9px] text-emerald-400">TS</span>
+                  <span className=" text-[10px] text-zinc-500">{CODE_SNIPPETS[codeIdx].file}</span>
+                  <span className="rounded bg-emerald-500/20 px-1.5 py-0.5  text-[9px] text-emerald-400">TS</span>
                 </div>
                 <div className="flex gap-1">
                   {CODE_SNIPPETS.map((_, i) => (

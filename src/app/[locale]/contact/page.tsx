@@ -76,7 +76,7 @@ export default function ContactPage() {
         <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="max-w-3xl">
-              <p className="mb-4 font-mono text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
+              <p className="mb-4  text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
               </p>
               <h1 className="mb-5 text-3xl font-bold leading-[1.18] tracking-tight text-zinc-900 dark:text-white sm:text-4xl md:text-5xl md:leading-[1.15] lg:text-6xl lg:leading-[1.12]">
                 {t('title')}
@@ -106,7 +106,7 @@ export default function ContactPage() {
                     {/* Header */}
                     <div className="border-b border-white/5 bg-white/[0.02] px-5 py-4">
                       <div className="flex items-center justify-between">
-                         <h2 className="font-mono text-[10px] font-bold uppercase tracking-widest text-emerald-400/90">
+                        <h2 className=" text-[10px] font-bold uppercase tracking-widest text-emerald-400/90">
                            {t('channelsHeading')}
                          </h2>
                          <div className="flex gap-1.5">
@@ -127,7 +127,7 @@ export default function ContactPage() {
                            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 ring-1 ring-white/10 text-emerald-400 group-hover:bg-emerald-500/10 group-hover:text-emerald-300 transition-colors">
                              <FiMail className="h-4.5 w-4.5" />
                            </div>
-                           <span className="font-mono font-medium">{PUBLIC_CONTACT_EMAIL}</span>
+                          <span className=" font-medium">{PUBLIC_CONTACT_EMAIL}</span>
                         </div>
                         <FiArrowUpRight className={`h-4 w-4 shrink-0 text-zinc-600 transition-transform group-hover:text-emerald-400 ${isArabic ? 'rotate-[270deg] group-hover:-translate-x-0.5 group-hover:translate-y-0.5' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'}`} />
                       </a>
@@ -143,7 +143,7 @@ export default function ContactPage() {
                              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 ring-1 ring-white/10 text-[#25D366] group-hover:bg-[#25D366]/10 transition-colors">
                                <SiWhatsapp className="h-4.5 w-4.5" />
                              </div>
-                             <span className={`font-medium ${isArabic ? 'font-arabic' : 'font-mono'}`}>{t('whatsappTitle')}</span>
+                            <span className={`font-medium ${isArabic ? 'font-arabic' : ''}`}>{t('whatsappTitle')}</span>
                           </div>
                           <FiArrowUpRight className={`h-4 w-4 shrink-0 text-zinc-600 transition-transform group-hover:text-emerald-400 ${isArabic ? 'rotate-[270deg] group-hover:-translate-x-0.5 group-hover:translate-y-0.5' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'}`} />
                         </a>
@@ -152,7 +152,7 @@ export default function ContactPage() {
                     
                     {/* Social footer */}
                     <div className="border-t border-white/5 bg-white/[0.01] px-6 py-4 flex items-center justify-between">
-                      <span className="text-xs font-mono text-zinc-500">PING_ME</span>
+                      <span className="text-xs  text-zinc-500">PING_ME</span>
                       <div className="flex gap-4">
                         <a href="https://x.com/mohfintech" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-emerald-400 transition-colors">
                           <FiTwitter className="h-4.5 w-4.5" />

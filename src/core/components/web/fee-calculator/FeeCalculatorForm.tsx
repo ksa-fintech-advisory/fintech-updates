@@ -206,7 +206,7 @@ export default function FeeCalculatorForm({
                 value={formData.monthlyVolume}
                 onChange={(e) => setFormData((prev) => ({ ...prev, monthlyVolume: e.target.value }))}
                 placeholder="100000"
-                className="w-full pl-9 pr-12 py-3 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white font-mono placeholder-zinc-400 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
+                className="w-full pl-9 pr-12 py-3 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white  placeholder-zinc-400 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                 min="0"
               />
               <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-xs font-bold text-zinc-400">
@@ -226,7 +226,7 @@ export default function FeeCalculatorForm({
                 value={formData.averageTransactionValue}
                 onChange={(e) => setFormData((prev) => ({ ...prev, averageTransactionValue: e.target.value }))}
                 placeholder="250"
-                className="w-full pl-9 pr-12 py-3 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white font-mono placeholder-zinc-400 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
+                className="w-full pl-9 pr-12 py-3 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-xl text-zinc-900 dark:text-white  placeholder-zinc-400 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                 min="0"
               />
               <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-xs font-bold text-zinc-400">
@@ -245,7 +245,7 @@ export default function FeeCalculatorForm({
           <label className="flex items-center gap-2 text-xs font-bold text-zinc-500 uppercase tracking-widest">
             <FiPieChart className="text-primary-500" /> {labels.sectionMix}
           </label>
-          <span className={`text-xs font-mono font-bold ${isMixValid ? 'text-emerald-600' : 'text-red-600'}`}>
+          <span className={`text-xs  font-bold ${isMixValid ? 'text-emerald-600' : 'text-red-600'}`}>
             {mixTotal.toFixed(0)}% / 100%
           </span>
         </div>
@@ -264,7 +264,7 @@ export default function FeeCalculatorForm({
               <span className="font-medium text-zinc-700 dark:text-zinc-300 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-blue-500"></span> {labels.mada}
               </span>
-              <span className="font-mono font-bold text-zinc-900 dark:text-white">{formData.paymentMix.mada}%</span>
+              <span className=" font-bold text-zinc-900 dark:text-white">{formData.paymentMix.mada}%</span>
             </div>
             <input
               type="range"
@@ -281,7 +281,7 @@ export default function FeeCalculatorForm({
               <span className="font-medium text-zinc-700 dark:text-zinc-300 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-amber-500"></span> {labels.visaLocal}
               </span>
-              <span className="font-mono font-bold text-zinc-900 dark:text-white">{formData.paymentMix.visa_mc_local}%</span>
+              <span className=" font-bold text-zinc-900 dark:text-white">{formData.paymentMix.visa_mc_local}%</span>
             </div>
             <input
               type="range"
@@ -298,7 +298,7 @@ export default function FeeCalculatorForm({
               <span className="font-medium text-zinc-700 dark:text-zinc-300 flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-purple-500"></span> {labels.visaIntl}
               </span>
-              <span className="font-mono font-bold text-zinc-900 dark:text-white">{formData.paymentMix.visa_mc_international}%</span>
+              <span className=" font-bold text-zinc-900 dark:text-white">{formData.paymentMix.visa_mc_international}%</span>
             </div>
             <input
               type="range"

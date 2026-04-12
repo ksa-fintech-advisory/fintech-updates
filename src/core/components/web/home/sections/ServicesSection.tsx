@@ -39,7 +39,7 @@ export default function ServicesSection() {
       <div className="container relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:max-w-6xl lg:px-8">
         <AnimatedSection className="mb-12 md:mb-16">
           <div className="max-w-3xl">
-            <span className="mb-3 block font-mono text-[10px] font-bold uppercase tracking-widest text-emerald-400/90">
+            <span className="mb-3 block  text-[10px] font-bold uppercase tracking-widest text-emerald-400/90">
             </span>
             <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
               {t('title')}

@@ -18,7 +18,7 @@ export function AboutPortfolioSubnav({  items, isArabic }: Props) {
           className="flex flex-col gap-3 py-3 sm:flex-row sm:items-center sm:gap-6 sm:py-2.5"
           dir={isArabic ? 'rtl' : 'ltr'}
         >
-          <span className="shrink-0 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary-600 dark:text-primary-400">
+          <span className="shrink-0  text-[10px] font-bold uppercase tracking-[0.18em] text-primary-600 dark:text-primary-400">
           </span>
           <ul className="flex min-w-0 flex-wrap items-center gap-x-1 gap-y-2 sm:gap-x-0">
             {items.map(({ href, label }) => (

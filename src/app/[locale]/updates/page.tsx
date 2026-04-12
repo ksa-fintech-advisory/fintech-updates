@@ -27,7 +27,7 @@ export default async function UpdatesListingPage({ params }: UpdatesListingPageP
                     <div className="max-w-4xl">
                         <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">
                             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                            <span className="text-xs font-mono font-bold uppercase tracking-widest">
+                            <span className="text-xs  font-bold uppercase tracking-widest">
                                 {isArabic ? 'سجل_النظام' : 'SYSTEM_CHANGELOG'}
                             </span>
                         </div>
@@ -59,7 +59,7 @@ export default async function UpdatesListingPage({ params }: UpdatesListingPageP
 
                                     {/* Header: Date & Tag */}
                                     <div className="flex justify-between items-start mb-6 pb-4 border-b border-white/5 border-dashed">
-                                        <div className="flex items-center gap-2 text-xs font-mono text-zinc-500">
+                                        <div className="flex items-center gap-2 text-xs  text-zinc-500">
                                             <FiCalendar className="w-3.5 h-3.5 text-emerald-400" />
                                             <time dateTime={update.date}>
                                                 {new Date(update.date).toLocaleDateString('en-US', {
@@ -71,7 +71,7 @@ export default async function UpdatesListingPage({ params }: UpdatesListingPageP
                                         </div>
 
                                         {update.featured && (
-                                            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                                            <span className="px-2 py-0.5 rounded text-[10px]  font-bold uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                                                 {isArabic ? 'هام' : 'CRITICAL'}
                                             </span>
                                         )}
@@ -96,7 +96,7 @@ export default async function UpdatesListingPage({ params }: UpdatesListingPageP
                                     </div>
 
                                     {/* Footer: Action */}
-                                    <div className="mt-6 pt-4 flex items-center justify-between text-xs font-mono font-bold text-zinc-500 group-hover:text-emerald-400 transition-colors border-t border-white/5">
+                                    <div className="mt-6 pt-4 flex items-center justify-between text-xs  font-bold text-zinc-500 group-hover:text-emerald-400 transition-colors border-t border-white/5">
                                         <span className="uppercase tracking-wider">
                                             {isArabic ? 'عرض التفاصيل' : 'VIEW_DETAILS'}
                                         </span>
@@ -114,7 +114,7 @@ export default async function UpdatesListingPage({ params }: UpdatesListingPageP
                         <div className="w-16 h-16 bg-zinc-900 rounded-full flex items-center justify-center mb-6 text-emerald-500/50">
                             <FiClock className="w-8 h-8" />
                         </div>
-                        <h3 className="text-xl font-bold text-zinc-100 mb-2 font-mono">
+                            <h3 className="text-xl font-bold text-zinc-100 mb-2 ">
                             {isArabic ? 'لا توجد بيانات' : 'NO_UPDATES_FOUND'}
                         </h3>
                         <p className="text-zinc-500 max-w-md mx-auto">

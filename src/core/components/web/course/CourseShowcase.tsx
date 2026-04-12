@@ -98,7 +98,7 @@ export default function CourseShowcase() {
 
                         {/* Status Badge */}
                         {course.isComingSoon ? (
-                          <span className="px-3 py-1 rounded-full text-xs font-mono font-medium bg-grey-100 dark:bg-grey-800 text-grey-500 border border-grey-200 dark:border-grey-700 flex items-center gap-1">
+                          <span className="px-3 py-1 rounded-full text-xs  font-medium bg-grey-100 dark:bg-grey-800 text-grey-500 border border-grey-200 dark:border-grey-700 flex items-center gap-1">
                             <FiLock className="w-3 h-3" />
                             {isArabic ? 'قريباً' : 'LOCKED'}
                           </span>
@@ -134,7 +134,7 @@ export default function CourseShowcase() {
                     {/* Bottom Section: Metrics & CTA */}
                     <div className="p-6 flex items-center justify-between">
                       {/* Metrics */}
-                      <div className="flex items-center gap-4 text-xs font-mono text-grey-500 dark:text-grey-400">
+                      <div className="flex items-center gap-4 text-xs  text-grey-500 dark:text-grey-400">
                         <div className="flex items-center gap-1.5">
                           <FiBarChart className="w-3.5 h-3.5" />
                           <span>{course.modules} {isArabic ? 'وحدات' : 'Mods'}</span>
@@ -149,7 +149,7 @@ export default function CourseShowcase() {
                       {/* Price / CTA */}
                       <div className="flex items-center gap-3">
                         {!course.isComingSoon && course.price && (
-                          <span className="font-mono font-bold text-grey-900 dark:text-white">
+                          <span className=" font-bold text-grey-900 dark:text-white">
                             {course.price} <span className="text-xs text-grey-500">{course.currency[lang]}</span>
                           </span>
                         )}
