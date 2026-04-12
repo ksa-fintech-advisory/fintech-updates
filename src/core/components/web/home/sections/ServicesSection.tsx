@@ -40,7 +40,6 @@ export default function ServicesSection() {
         <AnimatedSection className="mb-12 md:mb-16">
           <div className="max-w-3xl">
             <span className="mb-3 block font-mono text-[10px] font-bold uppercase tracking-widest text-emerald-400/90">
-              {t('kicker')}
             </span>
             <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
               {t('title')}

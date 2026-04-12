@@ -11,7 +11,6 @@ type DomainItem = {
 
 type Props = {
   isArabic: boolean;
-  kicker: string;
   heading: string;
   domains: DomainItem[];
 };
@@ -70,7 +69,7 @@ function AnimatedAssetPlaceholder({ type }: { type: string }) {
   }
 }
 
-export function AboutDomainExpertise({ isArabic, kicker, heading, domains }: Props) {
+export function AboutDomainExpertise({ isArabic,  heading, domains }: Props) {
   const [activeId, setActiveId] = useState(domains[0].id);
 
   return (
@@ -81,7 +80,6 @@ export function AboutDomainExpertise({ isArabic, kicker, heading, domains }: Pro
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-2xl text-center md:text-start">
-          <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">{kicker}</p>
           <h2 className={`text-3xl font-bold tracking-tight text-white md:text-4xl ${isArabic ? 'font-arabic' : ''}`}>
             {heading}
           </h2>

@@ -48,7 +48,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_bottom,rgba(16,185,129,0.03),transparent_35%)]" />
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:56px_56px] opacity-40" />
 
-      {/* <AboutPortfolioSubnav kicker={t('portfolioNavKicker')} items={subnavItems} isArabic={isArabic} /> */}
+      {/* <AboutPortfolioSubnav items={subnavItems} isArabic={isArabic} /> */}
 
       <AboutHeroV2
         isArabic={isArabic}
@@ -70,7 +70,6 @@ export default async function AboutPage({ params }: { params: { locale: string }
 
       <AboutDomainExpertise
         isArabic={isArabic}
-        kicker={t('v2DomainKicker')}
         heading={t('v2DomainHeading')}
         domains={[
           {
@@ -98,7 +97,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
 
       <AboutProductsShowcase
         isArabic={isArabic}
-        kicker={t('v2ProjectsKicker')}
+
         heading={t('v2ProjectsHeading')}
       />
 
@@ -106,7 +105,6 @@ export default async function AboutPage({ params }: { params: { locale: string }
 
       <AboutExperienceBento
         isArabic={isArabic}
-        kicker={t('v2BentoKicker')}
         heading={t('v2BentoHeading')}
         companiesCaption={t('v2BentoCompaniesCaption')}
         quote={t('v2BentoQuote')}
@@ -115,7 +113,6 @@ export default async function AboutPage({ params }: { params: { locale: string }
       <AboutBlogTerminal
         locale={locale}
         isArabic={isArabic}
-        kicker={t('v2BlogKicker')}
         heading={t('v2BlogHeading')}
         command={t('v2BlogCommand')}
         line1={t('v2BlogLine1')}
@@ -126,7 +123,6 @@ export default async function AboutPage({ params }: { params: { locale: string }
       <AboutCommandPalette
         locale={locale}
         isArabic={isArabic}
-        kicker={t('v2PaletteKicker')}
         heading={t('v2PaletteHeading')}
         placeholder={t('v2PalettePlaceholder')}
         actionMvp={t('v2PaletteActionMvp')}

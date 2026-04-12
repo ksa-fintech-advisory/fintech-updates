@@ -3,12 +3,11 @@
 type NavItem = { href: string; label: string };
 
 type Props = {
-  kicker: string;
   items: NavItem[];
   isArabic: boolean;
 };
 
-export function AboutPortfolioSubnav({ kicker, items, isArabic }: Props) {
+export function AboutPortfolioSubnav({  items, isArabic }: Props) {
   return (
     <nav
       aria-label={isArabic ? 'أقسام الصفحة' : 'On this page'}
@@ -20,7 +19,6 @@ export function AboutPortfolioSubnav({ kicker, items, isArabic }: Props) {
           dir={isArabic ? 'rtl' : 'ltr'}
         >
           <span className="shrink-0 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary-600 dark:text-primary-400">
-            {kicker}
           </span>
           <ul className="flex min-w-0 flex-wrap items-center gap-x-1 gap-y-2 sm:gap-x-0">
             {items.map(({ href, label }) => (

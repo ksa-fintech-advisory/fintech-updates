@@ -5,7 +5,6 @@ import { UserCheck, Wallet, Database, CreditCard } from 'lucide-react';
 
 type Props = {
   isArabic: boolean;
-  kicker: string;
   heading: string;
   sub: string;
 };
@@ -49,7 +48,7 @@ const MODULES = [
   },
 ];
 
-export function AboutTechStack({ isArabic, kicker, heading, sub }: Props) {
+export function AboutTechStack({ isArabic,  heading, sub }: Props) {
   return (
     <section
       id="about-tech"
@@ -58,7 +57,6 @@ export function AboutTechStack({ isArabic, kicker, heading, sub }: Props) {
     >
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">{kicker}</p>
           <h2 className={`text-3xl font-bold tracking-tight text-white md:text-4xl ${isArabic ? 'font-arabic' : ''}`}>
             {heading}
           </h2>

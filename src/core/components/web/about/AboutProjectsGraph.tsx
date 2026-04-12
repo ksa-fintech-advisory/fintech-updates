@@ -8,7 +8,6 @@ type NodeDef = { id: string; label: string; short: string; x: number; y: number 
 
 type Props = {
   isArabic: boolean;
-  kicker: string;
   heading: string;
   sub: string;
   node1: string;
@@ -19,7 +18,7 @@ type Props = {
 
 export function AboutProjectsGraph({
   isArabic,
-  kicker,
+  
   heading,
   sub,
   node1,
@@ -68,7 +67,6 @@ export function AboutProjectsGraph({
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">{kicker}</p>
           <h2 className={`text-3xl font-bold tracking-tight text-white md:text-4xl ${isArabic ? 'font-arabic' : ''}`}>
             {heading}
           </h2>

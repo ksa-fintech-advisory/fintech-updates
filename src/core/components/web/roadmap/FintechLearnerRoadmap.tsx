@@ -100,17 +100,12 @@ function ResourceRow({
 
   return (
     <li className="min-w-0">
-      {/*
-        External link disabled pending URL verification. Restore when ready:
-        <a href={resource.href} target="_blank" rel="noopener noreferrer" className="group inline-flex …">
-          …
-        </a>
-        URL value: `resource.href` from fintechRoadmap.data (unchanged in data).
-      */}
+      <a href={resource.href} target="_blank" rel="noopener noreferrer" className="group inline-flex …">
       <span className="inline-flex items-start gap-1.5 text-xs font-medium leading-snug text-zinc-700 dark:text-zinc-300 sm:text-sm">
         <span className="min-w-0 break-words">{label}</span>
         <FiExternalLink className="mt-0.5 h-3 w-3 shrink-0 opacity-40" aria-hidden />
-      </span>
+        </span>
+        </a>
     </li>
   );
 }
@@ -802,9 +797,6 @@ export default function FintechLearnerRoadmap() {
                   <FiShield className="h-7 w-7 text-zinc-600 dark:text-zinc-400" />
                 </div>
                 <div className="min-w-0 flex-1 px-5 py-6 sm:px-8 sm:py-8">
-                  <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.26em] text-zinc-500 dark:text-zinc-400">
-                    {t('disclaimerKicker')}
-                  </p>
                   <h2
                     id="roadmap-disclaimer-title"
                     className="mt-2.5 text-lg font-semibold leading-snug tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-xl"

@@ -70,6 +70,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         resources: [
           r('gs1a', 'Investopedia: FinTech', 'إنفستوبيديا: الفنتك', 'https://www.investopedia.com/terms/f/fintech.asp'),
           r('gs1b', 'World Bank: FinTech overview', 'البنك الدولي: نظرة على الفنتك', 'https://www.worldbank.org/en/topic/financialsector/brief/fintech'),
+          r('gs1c', 'Coursera: FinTech Foundations (Audit Free)', 'كورسيرا: أسس الفنتك (استماع مجاني)', 'https://www.coursera.org/learn/fintech-foundations-overview'),
         ],
       },
       {
@@ -82,6 +83,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         resources: [
           r('gs2a', 'Wikipedia: Financial technology', 'ويكيبيديا: التقنية المالية', 'https://en.wikipedia.org/wiki/Financial_technology'),
           r('gs2b', 'IMF: FinTech topic hub', 'صندوق النقد: موضوع الفنتك', 'https://www.imf.org/en/Topics/fintech'),
+          r('gs2c', 'edX: Intro to FinTech (HKU - Audit Free)', 'إيديكس: مقدمة في الفنتك (جامعة هونج كونج)', 'https://www.edx.org/course/introduction-to-fintech'),
         ],
       },
       {
@@ -94,6 +96,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         resources: [
           r('gs3a', 'BIS: Payment systems primer', 'بنك التسويات: مدخل أنظمة الدفع', 'https://www.bis.org/publ/bppdf/bispap106.pdf'),
           r('gs3b', 'MAS Singapore: FinTech', 'هيئة سنغافورة: الفنتك', 'https://www.mas.gov.sg/development/fintech'),
+          r('gs3c', 'Stripe: How payments work', 'سترايب: كيف تعمل المدفوعات', 'https://docs.stripe.com/payments/payment-flow'),
         ],
       },
       {
@@ -104,8 +107,8 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'منتج، امتثال/مخاطر، هندسة، بيانات، أو عمليات — لا تحتاج كل ذلك دفعة واحدة. اختر حسب وظيفتك أو تخصصك، ثم توسّع تدريجياً للمجاور.',
         },
         resources: [
-          r('gs4a', 'Coursera: FinTech (overview course)', 'كورسيرا: مقدمة في الفنتك', 'https://www.coursera.org/learn/fintech'),
-          r('gs4b', 'CFTE: FinTech industry map', 'سي إف تي إي: خريطة الصناعة', 'https://courses.cfte.education/'),
+          r('gs4a', 'Coursera: Wharton FinTech (Audit)', 'كورسيرا: فنتك وارتون (استماع مجاني)', 'https://www.coursera.org/specializations/wharton-fintech'),
+          r('gs4b', 'edX: FinTech Technologies (Audit)', 'إيديكس: تقنيات الفنتك (استماع مجاني)', 'https://www.edx.org/course/fintech-technologies'),
         ],
       },
       {
@@ -148,7 +151,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'الودائع، الإقراض، السيولة، الفرق بين البنك المركزي والتجاري، ولماذا «المال الرقمي» ما زال مرتبطاً بقواعد وسجلات.',
         },
         resources: [
-          r('f1a', 'Khan Academy: Money & banking (series)', 'خان أكاديمي: المال والمصارف', 'https://www.khanacademy.org/economics-finance-domain/core-finance/money-and-banking'),
+          r('f1a', 'Crash Course Economics: Money & Finance', 'كراش كورس: المال والتمويل', 'https://www.youtube.com/watch?v=Dugn51K_6WA'),
           r('f1b', 'Bank for International Settlements', 'بنك التسويات الدولية', 'https://www.bis.org/'),
         ],
       },
@@ -160,7 +163,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'التفويض، المقاصة، التسوية، الاسترداد، ونوافذ التسوية — لماذا «تم الدفع» على الشاشة ليس دائماً «انتقل المال».',
         },
         resources: [
-          r('f2a', 'Stripe: How payments work', 'سترايب: كيف تعمل المدفوعات', 'https://stripe.com/docs/payments/how-payments-work'),
+          r('f2a', 'Stripe: How payments work', 'سترايب: كيف تعمل المدفوعات', 'https://docs.stripe.com/payments/payment-flow'),
           r('f2b', 'European Central Bank: Payment systems', 'البنك المركزي الأوروبي: أنظمة الدفع', 'https://www.ecb.europa.eu/paym/intro/html/index.en.html'),
         ],
       },
@@ -172,8 +175,8 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'السرعة، الشراكات، التمويل المدمج، ولماذا الكبار والناشئين يحتاجون بعضهم — ليست قصة «الإزاحة» فقط.',
         },
         resources: [
-          r('f3a', 'McKinsey: Global payments report (annual)', 'ماكينزي: تقرير المدفوعات العالمية', 'https://www.mckinsey.com/industries/financial-services/our-insights'),
-          r('f3b', 'World Economic Forum: FinTech', 'المنتدى الاقتصادي العالمي', 'https://www.weforum.org/topics/financial-and-monetary-systems/'),
+          r('f3a', 'McKinsey: Global payments report', 'ماكينزي: تقرير المدفوعات العالمية', 'https://www.mckinsey.com/industries/financial-services/our-insights'),
+          r('f3b', 'World Economic Forum: FinTech', 'المنتدى الاقتصادي العالمي: الفنتك', 'https://www.weforum.org/topics/financial-and-monetary-systems/'),
         ],
       },
       {
@@ -185,7 +188,8 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('f4a', 'SAMA — Saudi Central Bank', 'ساما — البنك المركزي السعودي', 'https://www.sama.gov.sa/'),
-          r('f4b', 'CMA Saudi Arabia', 'هيئة السوق المالية', 'https://cma.org.sa/'),
+          r('f4b', 'Fintech Saudi', 'فنتك السعودية', 'https://fintechsaudi.com/'),
+          r('f4c', 'CMA Saudi Arabia', 'هيئة السوق المالية', 'https://cma.org.sa/'),
         ],
       },
       {
@@ -196,7 +200,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'مسارات دخول شائعة: المخاطر والامتثال، إدارة المنتج، البرمجة، علوم البيانات، والشراكات — لكل منها «مهارات أولى» مختلفة.',
         },
         resources: [
-          r('f5a', 'LinkedIn FinTech skills (trends)', 'لينكدإن: مهارات الفنتك', 'https://www.linkedin.com/business/talent/blog/talent-strategy/fintech-jobs'),
+          r('f5a', 'LinkedIn: FinTech skills guide', 'لينكدإن: دليل مهارات الفنتك', 'https://www.linkedin.com/business/talent/blog/talent-strategy/fintech-jobs'),
           r('f5b', 'OECD: FinTech & jobs', 'منظمة التعاون: الفنتك والوظائف', 'https://www.oecd.org/finance/fintech.htm'),
         ],
       },
@@ -252,8 +256,9 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'بنية الوساطة، ضغط العمولات، قواعد الملاءمة، وكيف توزع الخوارزميات على صناديق المؤشرات — يرتبط بعلم المحافظ في مرحلة «المحركات».',
         },
         resources: [
-          r('fd3a', 'SEC: Robo-advisers (investor bulletin)', 'هيئة الأوراق الأمريكية: الروبو-مستشار', 'https://www.sec.gov/oiea/investor-alerts-bulletins/ib_robo-advisers'),
+          r('fd3a', 'SEC: Robo-advisers', 'هيئة الأوراق الأمريكية: الروبو-مستشار', 'https://www.sec.gov/oiea/investor-alerts-bulletins/ib_robo-advisers'),
           r('fd3b', 'IOSCO: Retail market conduct', 'أيوسكو: سلوك سوق التجزئة', 'https://www.iosco.org/'),
+          r('fd3c', 'Investopedia: Modern Portfolio Theory', 'إنفستوبيديا: نظرية المحافظ الحديثة', 'https://www.investopedia.com/terms/m/modernportfoliotheory.asp'),
         ],
       },
       {
@@ -277,7 +282,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('fd5a', 'Cambridge: Alternative finance reports', 'كامبريدج: تقارير التمويل البديل', 'https://www.jbs.cam.ac.uk/faculty-research/centres/alternative-finance/publications/'),
-          r('fd5b', 'EC: Crowdfunding regulation (EU context)', 'المفوضية الأوروبية: تنظيم التمويل الجماعي', 'https://finance.ec.europa.eu/crowdfunding_en'),
+          r('fd5b', 'EC: Crowdfunding regulation (EU)', 'المفوضية الأوروبية: تنظيم التمويل الجماعي', 'https://finance.ec.europa.eu/crowdfunding_en'),
         ],
       },
       {
@@ -288,7 +293,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'أتمتة الذمم الدائنة/المدينة، تمويل سلسلة الإمداد، أدوات تحوط الصرف، وواجهات تدمج الفواتير أو خطوط الائتمان أو التأمين في أنظمة تخطيط الموارد والأسواق.',
         },
         resources: [
-          r('fd6a', 'WEF: Trade tech / supply chain finance', 'المنتدى الاقتصادي: تكنولوجيا التجارة', 'https://www.weforum.org/stories/'),
+          r('fd6a', 'WEF: Trade tech & supply chain', 'المنتدى الاقتصادي: تكنولوجيا التجارة', 'https://www.weforum.org/stories/'),
           r('fd6b', 'ICC: Trade finance register', 'الغرفة الدولية: سجل تمويل التجارة', 'https://iccwbo.org/'),
         ],
       },
@@ -333,7 +338,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('r1a', 'PCI Security Standards', 'معايير أمن بطاقات الدفع', 'https://www.pcisecuritystandards.org/'),
-          r('r1b', 'Visa: How VisaNet works (overview)', 'فيزا: كيف يعمل الشبكة', 'https://usa.visa.com/run-your-business/small-business-tools/payment-technology.html'),
+          r('r1b', 'Visa: How VisaNet works', 'فيزا: كيف تعمل الشبكة', 'https://usa.visa.com/run-your-business/small-business-tools/payment-technology.html'),
         ],
       },
       {
@@ -344,8 +349,8 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'أنماط التسوية اللحظية، أفكار الطلب للدفع، ولماذا السيولة وضوابط الاحتيال تختلف عن البطاقات.',
         },
         resources: [
-          r('r2a', 'Open Banking UK — what is OB?', 'المصرفية المفتوحة UK', 'https://www.openbanking.org.uk/what-is-open-banking/'),
-          r('r2b', 'BIS: Fast payments', 'بنك التسويات: المدفوعات السريعة', 'https://www.bis.org/cpmi/publ/d174.pdf'),
+          r('r2a', 'Open Banking UK', 'المصرفية المفتوحة UK', 'https://www.openbanking.org.uk/what-is-open-banking/'),
+          r('r2b', 'BIS: Fast payments report', 'بنك التسويات: المدفوعات السريعة', 'https://www.bis.org/cpmi/publ/d154.htm'),
         ],
       },
       {
@@ -413,7 +418,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('pe1a', 'SWIFT: About us & standards', 'سويفت: من نحن والمعايير', 'https://www.swift.com/about-us'),
-          r('pe1b', 'ISO 20022 (official)', 'ISO 20022', 'https://www.iso20022.org/'),
+          r('pe1b', 'ISO 20022 (official)', 'ISO 20022 الموقع الرسمي', 'https://www.iso20022.org/'),
         ],
       },
       {
@@ -436,8 +441,8 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'نموذج الأربعة أطراف، سقوف التبادل، الرمز المميز، وكيف تعيش المفاتيح الوطنية (مثل مدى) مع العلامات العالمية في كثير من الدول.',
         },
         resources: [
-          r('pe3a', 'Visa: How network operates (basics)', 'فيزا: كيف تعمل الشبكة', 'https://usa.visa.com/run-your-business/small-business-tools/payment-technology.html'),
-          r('pe3b', 'EU: Interchange regulation context', 'الاتحاد الأوروبي: سياق تنظيم التبادل', 'https://finance.ec.europa.eu/consumer-finance-and-payments/payment-services/interchange-fees_en'),
+          r('pe3a', 'Visa: How network operates', 'فيزا: كيف تعمل الشبكة', 'https://usa.visa.com/run-your-business/small-business-tools/payment-technology.html'),
+          r('pe3b', 'EU: Interchange regulation', 'الاتحاد الأوروبي: تنظيم التبادل', 'https://finance.ec.europa.eu/consumer-finance-and-payments/payment-services/interchange-fees_en'),
         ],
       },
       {
@@ -449,7 +454,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('pe4a', 'BIS: Payment, clearing & settlement', 'بنك التسويات: الدفع والمقاصة والتسوية', 'https://www.bis.org/cpmi/publ/d174.pdf'),
-          r('pe4b', 'New York Fed: Large-value systems', 'الاحتياطي الفيدرالي نيويورك: أنظمة القيم الكبيرة', 'https://www.newyorkfed.org/financial-services-and-infrastructure'),
+          r('pe4b', 'New York Fed: Large-value systems', 'الفيدرالي: أنظمة القيم الكبيرة', 'https://www.newyorkfed.org/financial-services-and-infrastructure'),
         ],
       },
       {
@@ -461,7 +466,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('pe5a', 'Investopedia: Modern Portfolio Theory', 'إنفستوبيديا: نظرية المحافظ الحديثة', 'https://www.investopedia.com/terms/m/modernportfoliotheory.asp'),
-          r('pe5b', 'CFA Institute: Portfolio management basics', 'معهد CFA: أساسيات إدارة المحافظ', 'https://www.cfainstitute.org/en/research/foundation/2015/portfolio-management-concepts'),
+          r('pe5b', 'CFA Institute: Portfolio management', 'معهد CFA: إدارة المحافظ', 'https://www.cfainstitute.org/en/research/foundation/2015/portfolio-management-concepts'),
         ],
       },
       {
@@ -472,7 +477,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'دفاتر الأوامر، أولوية السعر-الزمن، عدالة التأخير، وأين تتصل تطبيقات تداول الفنتك بالبورصات أو المعالجات الداخلية — سياق مفيد لأدوار الهندسة والمنتج.',
         },
         resources: [
-          r('pe6a', 'SEC: National market system (US overview)', 'هيئة الأوراق: النظام الوطني للسوق', 'https://www.sec.gov/rules-regulations/study-and-reports-on-regulatory-system/national-market-system'),
+          r('pe6a', 'SEC: National market system', 'هيئة الأوراق: النظام الوطني للسوق', 'https://www.sec.gov/rules-regulations/study-and-reports-on-regulatory-system/national-market-system'),
           r('pe6b', 'BIS: Market liquidity & structure', 'بنك التسويات: سيولة السوق والبنية', 'https://www.bis.org/publ/work405.pdf'),
         ],
       },
@@ -518,8 +523,9 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'الترخيص مقابل التسجيل، التجارب المحدودة، وكيف تمنح الرمل وقتاً — دون أن تحل محل أدلة الترخيص الكامل.',
         },
         resources: [
-          r('g1a', 'FinTech Saudi (ecosystem & programs)', 'فنتك السعودية', 'https://fintechsaudi.com/'),
+          r('g1a', 'Fintech Saudi', 'فنتك السعودية', 'https://fintechsaudi.com/'),
           r('g1b', 'IOSCO: FinTech workstream', 'أيوسكو: مسار الفنتك', 'https://www.iosco.org/'),
+          r('g1c', 'SAMA Sandbox Guidelines', 'إرشادات بيئة ساما التجريبية', 'https://www.sama.gov.sa/'),
         ],
       },
       {
@@ -543,7 +549,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('g3a', 'Onfido: Identity verification guide', 'أونفيدو: دليل التحقق من الهوية', 'https://onfido.com/guides/identity-verification'),
-          r('g3b', 'NIST: Digital identity guidelines (US)', 'نيست: إرشادات الهوية الرقمية', 'https://pages.nist.gov/800-63-3/'),
+          r('g3b', 'NIST: Digital identity guidelines 800-63', 'نيست: إرشادات الهوية الرقمية 800-63', 'https://csrc.nist.gov/pubs/sp/800/63/4/final'),
         ],
       },
       {
@@ -579,7 +585,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('g6a', 'SDAIA — Saudi data & AI authority', 'سدايا', 'https://sdaia.gov.sa/en'),
-          r('g6b', 'NDMO — National Data Management Office (KSA)', 'المركز الوطني لإدارة البيانات', 'https://ndmo.gov.sa/en'),
+          r('g6b', 'NDMO — National Data Management Office', 'المركز الوطني لإدارة البيانات', 'https://ndmo.gov.sa/en'),
         ],
       },
       {
@@ -614,9 +620,9 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'البرازيل LGPD، الهند DPDP، الصين PIPL، وإصلاحات كندا — مفيد عندما يخدم فنتك الجاليات، أو يعالج بيانات عبر الحدود، أو يتسوّق في أكثر من إقليم. الهدف أن تعرف ماذا تسأل القانوني، لا أن تُصدر حكماً على كل نص بنفسك.',
         },
         resources: [
-          r('g9a', 'Brazil LGPD (gov portal)', 'البرازيل: LGPD', 'https://www.gov.br/cidadania/pt-br/acesso-a-informacao/lgpd'),
-          r('g9b', 'India: Digital Personal Data Protection', 'الهند: حماية البيانات الشخصية الرقمية', 'https://www.meity.gov.in/data-protection-framework'),
-          r('g9c', 'IAPP: Global privacy legislation directory', 'IAPP: دليل التشريعات', 'https://iapp.org/resources/global-privacy-directory/'),
+          r('g9a', 'Brazil LGPD', 'البرازيل: LGPD', 'https://www.gov.br/cidadania/pt-br/acesso-a-informacao/lgpd'),
+          r('g9b', 'India: DPDP', 'الهند: حماية البيانات الشخصية الرقمية', 'https://www.meity.gov.in/data-protection-framework'),
+          r('g9c', 'IAPP: Global privacy directory', 'IAPP: دليل التشريعات', 'https://iapp.org/resources/global-privacy-directory/'),
         ],
       },
     ],
@@ -671,7 +677,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'هياكل الرسوم، فهم APR/APY، مواقع المقارنة، ومخاطر السلوك عند التسويق لـ«مجاني».',
         },
         resources: [
-          r('p3a', 'FCA: Consumer duty (UK)', 'هيئة السلوك المالي UK', 'https://www.fca.org.uk/consumers/consumer-duty'),
+          r('p3a', 'FCA: Consumer duty (UK)', 'هيئة السلوك المالي UK', 'https://www.fca.org.uk/firms/consumer-duty'),
           r('p3b', 'CFPB: Consumer tools (US)', 'مكتب الحماية المالية الأمريكي', 'https://www.consumerfinance.gov/consumer-tools/'),
         ],
       },
@@ -684,7 +690,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('p4a', 'Amplitude: Product metrics', 'أمبليتيود: مؤشرات المنتج', 'https://amplitude.com/blog/product-metrics'),
-          r('p4b', 'Lean Analytics (book site)', 'Lean Analytics', 'https://leananalyticsbook.com/'),
+          r('p4b', 'Lean Analytics', 'Lean Analytics', 'https://leananalyticsbook.com/'),
         ],
       },
     ],
@@ -716,7 +722,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('s1a', 'Martin Fowler: Event sourcing', 'مارتن فاولر: تتبع الأحداث', 'https://martinfowler.com/eaaDev/EventSourcing.html'),
-          r('s1b', 'AWS: Banking core on cloud (paper)', 'أمازون: النواة المصرفية على السحابة', 'https://aws.amazon.com/financial-services/banking-core/'),
+          r('s1b', 'AWS: Banking core on cloud', 'أمازون: النواة المصرفية على السحابة', 'https://aws.amazon.com/financial-services/banking-core/'),
         ],
       },
       {
@@ -727,7 +733,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'مفاتيح الإيديمبوتنسي، إعادة المحاولة، التوقيع، حدود المعدل، وطوابير الرسائل الميتة عند سوء سلوك الشركاء.',
         },
         resources: [
-          r('s2a', 'Stripe: Idempotency', 'سترايب: الإيديمبوتنسي', 'https://stripe.com/docs/api/idempotent_requests'),
+          r('s2a', 'Stripe: Idempotency', 'سترايب: الإيديمبوتنسي', 'https://docs.stripe.com/api/idempotent_requests'),
           r('s2b', 'OWASP API Security Top 10', 'أواسب أمن واجهات البرمجة', 'https://owasp.org/www-project-api-security/'),
         ],
       },
@@ -751,7 +757,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'السجلات والمقاييس والمسارات، أهداف مستوى الخدمة للمدفوعات، كتيبات التشغيل، مراجعات ما بعد الحادث، وساعات إخطار الجهات.',
         },
         resources: [
-          r('s4a', 'Google SRE: Books & resources', 'غوغل SRE', 'https://sre.google/books/'),
+          r('s4a', 'Google SRE: Books', 'غوغل SRE', 'https://sre.google/books/'),
           r('s4b', 'Honeycomb: Observability primer', 'هونيكومب: مدخل المراقبة', 'https://www.honeycomb.io/blog/what-is-observability'),
         ],
       },
@@ -784,7 +790,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('sh1a', 'NIST: Cybersecurity Framework', 'نيست: إطار الأمن السيبراني', 'https://www.nist.gov/cyberframework'),
-          r('sh1b', 'ITIL / ITSM primers (Axelos)', 'آي تي آي إل', 'https://www.axelos.com/best-practice-solutions/itil'),
+          r('sh1b', 'ITIL / ITSM primers', 'آي تي آي إل', 'https://www.axelos.com/best-practice-solutions/itil'),
         ],
       },
       {
@@ -795,7 +801,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'استبيانات العناية الواجبة، تقارير SOC، نطاق اختبار الاختراق، وجداول شهادات المخطط.',
         },
         resources: [
-          r('sh2a', 'AICPA: SOC reports overview', 'AICPA: تقارير SOC', 'https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc1report.html'),
+          r('sh2a', 'AICPA: SOC reports', 'AICPA: تقارير SOC', 'https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc1report.html'),
           r('sh2b', 'Cloud Security Alliance', 'تحالف أمن السحابة', 'https://cloudsecurityalliance.org/'),
         ],
       },
@@ -808,7 +814,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
         },
         resources: [
           r('sh3a', 'COSO: Internal control', 'كوسو: الضبط الداخلي', 'https://www.coso.org/Pages/Internal-Control-Integrated-Framework.aspx'),
-          r('sh3b', 'ISO 27001 (overview)', 'آيزو 27001', 'https://www.iso.org/isoiec-27001-information-security.html'),
+          r('sh3b', 'ISO 27001', 'آيزو 27001', 'https://www.iso.org/isoiec-27001-information-security.html'),
         ],
       },
       {
@@ -819,8 +825,8 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
           ar: 'الكتابة، اللقاءات، المصدر المفتوح، والإرشاد — تضاعف التعلم بالتعليم وبناء إثباتات صغيرة.',
         },
         resources: [
-          r('sh4a', 'GitHub: Awesome FinTech lists', 'جيت هاب: قوائم الفنتك', 'https://github.com/search?q=awesome+fintech&type=repositories'),
-          r('sh4b', 'Meetup: FinTech groups', 'ميت أب: مجموعات الفنتك', 'https://www.meetup.com/find/?keywords=fintech'),
+          r('sh4a', 'GitHub: Awesome FinTech', 'جيت هاب: قوائم الفنتك', 'https://github.com/search?q=awesome+fintech&type=repositories'),
+          r('sh4b', 'Meetup: FinTech', 'ميت أب: مجموعات الفنتك', 'https://www.meetup.com/find/?keywords=fintech'),
         ],
       },
     ],
