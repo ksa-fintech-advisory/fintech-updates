@@ -32,7 +32,7 @@ export default function Header() {
     // { href: '/courses', label: t('common.nav.courses'), key: 'courses', hasMegaMenu: true },
     // { href: '/updates', label: t('common.nav.updates'), key: 'updates' },
     { href: '/blog', label: t('common.nav.blog'), key: 'blog' },
-    { href: '/about', label: t('common.nav.about'), key: 'about' },
+    { href: '/about', label: t('common.nav.about'), key: 'about', badge: isArabic ? '+5 سنوات' : '5+ Years' },
     { href: '/contact', label: t('common.nav.contact'), key: 'contact' },
   ];
 
@@ -126,6 +126,15 @@ export default function Header() {
                       `}
                     >
                       {item.label}
+                      {item.badge && (
+                        <span className="flex items-center gap-1.5 rounded-full bg-primary-50 px-2 py-0.5 text-[10px] font-bold text-primary-700 ring-1 ring-inset ring-primary-600/20 dark:bg-primary-500/10 dark:text-primary-400 dark:ring-primary-500/20">
+                          <span className="relative flex h-1.5 w-1.5 shrink-0">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-500 opacity-75"></span>
+                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-600 dark:bg-primary-400"></span>
+                          </span>
+                          {item.badge}
+                        </span>
+                      )}
                       {item.hasMegaMenu && (
                         <FiChevronDown
                           className={`w-3.5 h-3.5 opacity-50 transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`}
@@ -278,7 +287,18 @@ export default function Header() {
                               : 'text-grey-700 dark:text-grey-300'
                           }`}
                         >
-                          {item.label}
+                          <span className="flex items-center gap-2">
+                            {item.label}
+                            {item.badge && (
+                              <span className="flex items-center gap-1.5 rounded-full bg-primary-50 px-2 py-0.5 text-[10px] font-bold text-primary-700 ring-1 ring-inset ring-primary-600/20 dark:bg-primary-500/10 dark:text-primary-400 dark:ring-primary-500/20">
+                                <span className="relative flex h-1.5 w-1.5 shrink-0">
+                                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-500 opacity-75"></span>
+                                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-600 dark:bg-primary-400"></span>
+                                </span>
+                                {item.badge}
+                              </span>
+                            )}
+                          </span>
                         </Link>
                       )}
                     </div>
