@@ -70,7 +70,6 @@ export default function QuestionnairePage() {
           <AnimatedSection>
             <div className="mb-12 text-center">
               <p className="mb-4 font-mono text-xs font-bold uppercase tracking-widest text-emerald-400">
-                {t('kicker')}
               </p>
               <h1 className="mb-5 text-3xl font-bold leading-[1.18] tracking-tight text-white sm:text-4xl">
                 {t('title')}

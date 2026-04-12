@@ -77,7 +77,6 @@ export default function ContactPage() {
           <AnimatedSection>
             <div className="max-w-3xl">
               <p className="mb-4 font-mono text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
-                {t('kicker')}
               </p>
               <h1 className="mb-5 text-3xl font-bold leading-[1.18] tracking-tight text-zinc-900 dark:text-white sm:text-4xl md:text-5xl md:leading-[1.15] lg:text-6xl lg:leading-[1.12]">
                 {t('title')}

@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 type Props = {
   locale: string;
   isArabic: boolean;
-  kicker: string;
   heading: string;
   command: string;
   line1: string;
@@ -18,7 +17,7 @@ type Props = {
 export function AboutBlogTerminal({
   locale,
   isArabic,
-  kicker,
+  
   heading,
   command,
   line1,
@@ -58,7 +57,6 @@ export function AboutBlogTerminal({
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <p className="mb-3 text-center font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">
-          {kicker}
         </p>
         <h2 className={`mb-10 text-center text-2xl font-bold text-white md:text-3xl ${isArabic ? 'font-arabic' : ''}`}>
           {heading}

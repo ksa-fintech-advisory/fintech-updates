@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 
 type Props = {
   isArabic: boolean;
-  kicker: string;
   heading: string;
   companiesCaption: string;
   quote: string;
@@ -89,7 +88,7 @@ function SpotlightCard({
 
 export function AboutExperienceBento({
   isArabic,
-  kicker,
+  
   heading,
   companiesCaption,
   quote,
@@ -113,7 +112,6 @@ export function AboutExperienceBento({
       />
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12 max-w-2xl">
-          <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-400/90">{kicker}</p>
           <h2 className={`text-3xl font-bold tracking-tight text-white md:text-4xl ${isArabic ? 'font-arabic' : ''}`}>
             {heading}
           </h2>

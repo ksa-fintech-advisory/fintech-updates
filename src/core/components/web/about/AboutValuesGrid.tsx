@@ -6,10 +6,9 @@ type Props = {
   content: AboutUsContent;
   isArabic: boolean;
   principlesHeading: string;
-  sectionKicker: string;
 };
 
-export function AboutValuesGrid({ content, isArabic, principlesHeading, sectionKicker }: Props) {
+export function AboutValuesGrid({ content, isArabic, principlesHeading}: Props) {
   return (
     <section
       id="about-methodology"
@@ -18,9 +17,6 @@ export function AboutValuesGrid({ content, isArabic, principlesHeading, sectionK
       <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="mb-16 md:mb-20">
           <div className="max-w-3xl">
-            <span className="mb-4 block font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
-              {sectionKicker}
-            </span>
             <h3 className="text-balance text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl lg:text-5xl">
               {principlesHeading}
             </h3>

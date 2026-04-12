@@ -5,11 +5,10 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/component
 type Props = {
   content: AboutUsContent;
   isArabic: boolean;
-  expertiseKicker: string;
   expertiseHeading: string;
 };
 
-export function AboutExpertiseGrid({ content, isArabic, expertiseKicker, expertiseHeading }: Props) {
+export function AboutExpertiseGrid({ content, isArabic,  expertiseHeading }: Props) {
   return (
     <section
       id="about-expertise"
@@ -23,7 +22,6 @@ export function AboutExpertiseGrid({ content, isArabic, expertiseKicker, experti
               <div className="mb-6 flex items-center gap-4">
                 <div className="h-px w-8 bg-primary-500/50" />
                 <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
-                  {expertiseKicker}
                 </span>
               </div>
               <h3 className="text-balance text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl lg:text-5xl">

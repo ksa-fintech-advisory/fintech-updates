@@ -5,7 +5,6 @@ import { FiHelpCircle, FiTarget } from 'react-icons/fi';
 type Props = {
   content: AboutUsContent;
   isArabic: boolean;
-  strategicKicker: string;
   missionVisionHeading: string;
   missionLabel: string;
   missionBody: string;
@@ -20,7 +19,7 @@ type Props = {
 export function AboutMissionVision({
   content,
   isArabic,
-  strategicKicker,
+  
   missionVisionHeading,
   missionLabel,
   missionBody,
@@ -46,7 +45,6 @@ export function AboutMissionVision({
             <div className="flex items-center gap-4 mb-4">
               <div className="h-px flex-1 bg-zinc-800" />
               <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-primary-400">
-                {strategicKicker}
               </span>
               <div className="h-px flex-1 bg-zinc-800" />
             </div>

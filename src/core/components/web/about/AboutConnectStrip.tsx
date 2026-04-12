@@ -7,7 +7,6 @@ const LINKEDIN_URL = 'https://www.linkedin.com/in/mohfintech/';
 type Props = {
   locale: string;
   isArabic: boolean;
-  kicker: string;
   title: string;
   linkedInLabel: string;
   contactLabel: string;
@@ -17,7 +16,7 @@ type Props = {
 export function AboutConnectStrip({
   locale,
   isArabic,
-  kicker,
+  
   title,
   linkedInLabel,
   contactLabel,
@@ -54,7 +53,6 @@ export function AboutConnectStrip({
         <AnimatedSection className="mb-12 md:mb-16">
           <div className="mx-auto max-w-3xl" dir={isArabic ? 'rtl' : 'ltr'}>
             <span className="mb-4 block font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
-              {kicker}
             </span>
             <h2 className="text-balance text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl lg:text-5xl">
               {title}
