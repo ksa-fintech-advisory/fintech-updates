@@ -37,18 +37,19 @@ export async function POST(request: Request): Promise<NextResponse<RateFormRespo
 
   const d = body as Record<string, unknown>;
   const name = typeof d.name === 'string' ? d.name.trim() : '';
+  const role = typeof d.role === 'string' ? d.role.trim() : '';
   const serviceType = typeof d.serviceType === 'string' ? d.serviceType : '';
   const description = typeof d.description === 'string' ? d.description.trim() : '';
   const agreeToShare = typeof d.agreeToShare === 'boolean' ? d.agreeToShare : false;
 
-  if (!name || !serviceType || !description) {
+  if (!name || !role || !serviceType || !description) {
     return badRequest({
       en: 'Please fill in all required fields.',
       ar: 'يرجى تعبئة جميع الحقول المطلوبة.',
     });
   }
 
-  if (serviceType !== 'consulting' && serviceType !== 'technical') {
+  if (serviceType !== 'technical_consulting' && serviceType !== 'mentoring_enablement') {
     return badRequest({
       en: 'Invalid service type.',
       ar: 'نوع الخدمة غير صالح.',
@@ -69,7 +70,7 @@ export async function POST(request: Request): Promise<NextResponse<RateFormRespo
     });
   }
 
-  const payload: RateFormData = { name, serviceType: serviceType as 'consulting' | 'technical', description, agreeToShare };
+  const payload: RateFormData = { name, role, serviceType: serviceType as 'technical_consulting' | 'mentoring_enablement', description, agreeToShare };
 
   try {
     await sendRateFormEmail(payload);

@@ -21,7 +21,8 @@ export default function RatePage() {
 
   const [formData, setFormData] = useState<RateFormData>({
     name: '',
-    serviceType: 'consulting',
+    role: '',
+    serviceType: 'technical_consulting',
     description: '',
     agreeToShare: false,
   });
@@ -41,7 +42,7 @@ export default function RatePage() {
       });
 
       if (response.success) {
-        setFormData({ name: '', serviceType: 'consulting', description: '', agreeToShare: false });
+        setFormData({ name: '', role: '', serviceType: 'technical_consulting', description: '', agreeToShare: false });
       }
     } catch {
       setResult({
@@ -113,6 +114,21 @@ export default function RatePage() {
                   </div>
 
                   <div className="space-y-2">
+                    <label htmlFor="role" className="block text-sm font-medium text-zinc-300">
+                      {tf('role')} <span className="text-red-500">{tf('required')}</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="role"
+                      required
+                      value={formData.role}
+                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                      className={fieldClass}
+                      placeholder={tf('rolePlaceholder')}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
                     <label htmlFor="serviceType" className="block text-sm font-medium text-zinc-300">
                       {tf('serviceType')} <span className="text-red-500">{tf('required')}</span>
                     </label>
@@ -121,11 +137,11 @@ export default function RatePage() {
                         id="serviceType"
                         required
                         value={formData.serviceType}
-                        onChange={(e) => setFormData({ ...formData, serviceType: e.target.value as 'consulting' | 'technical' })}
+                        onChange={(e) => setFormData({ ...formData, serviceType: e.target.value as 'technical_consulting' | 'mentoring_enablement' })}
                         className={`${fieldClass} appearance-none pr-10`}
                       >
-                        <option value="consulting">{tf('consulting')}</option>
-                        <option value="technical">{tf('technical')}</option>
+                        <option value="technical_consulting">{tf('technicalConsulting')}</option>
+                        <option value="mentoring_enablement">{tf('mentoringEnablement')}</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-zinc-400">
                         <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

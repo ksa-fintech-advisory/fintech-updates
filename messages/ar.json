@@ -83,7 +83,7 @@
       },
       "services": {
         "kicker": "// الخدمات",
-        "title": "أوجه التعاون التقني",
+        "title": "خدماتي",
         "items": {
           "consulting": {
             "title": "هندسة الحلول والمنتجات",
@@ -352,10 +352,12 @@
       "form": {
         "name": "الاسم",
         "namePlaceholder": "اسمك",
+        "role": "المسمى الوظيفي",
+        "rolePlaceholder": "مسماك الوظيفي",
         "serviceType": "نوع الخدمة",
         "serviceTypePlaceholder": "اختر نوع الخدمة",
-        "consulting": "استشارات",
-        "technical": "تقنية",
+        "technicalConsulting": "technical consulting",
+        "mentoringEnablement": "تأهيل ارشادي",
         "description": "الوصف",
         "descriptionPlaceholder": "أخبرنا عن تجربتك...",
         "agreeToShare": "أوافق على عرض تقييمي على الموقع كرأي عميل",

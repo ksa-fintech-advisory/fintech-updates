@@ -66,10 +66,11 @@ export async function sendRateFormEmail(data: RateFormData): Promise<void> {
   }
 
   const from = parseFromField(fromRaw);
-  const { name, serviceType, description, agreeToShare } = data;
+  const { name, role, serviceType, description, agreeToShare } = data;
 
   const text = [
     `Name: ${name}`,
+    `Role: ${role}`,
     `Service Type: ${serviceType}`,
     `Agreed to Share on Web: ${agreeToShare ? 'Yes' : 'No'}`,
     '',
@@ -79,6 +80,7 @@ export async function sendRateFormEmail(data: RateFormData): Promise<void> {
 
   const html = `
     <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+    <p><strong>Role:</strong> ${escapeHtml(role)}</p>
     <p><strong>Service Type:</strong> ${escapeHtml(serviceType)}</p>
     <p><strong>Agreed to Share:</strong> ${agreeToShare ? 'Yes' : 'No'}</p>
     <hr />

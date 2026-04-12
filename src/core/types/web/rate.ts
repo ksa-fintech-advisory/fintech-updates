@@ -5,7 +5,8 @@ export type LocalizedMessage = {
 
 export interface RateFormData {
   name: string;
-  serviceType: 'consulting' | 'technical';
+  role: string;
+  serviceType: 'technical_consulting' | 'mentoring_enablement';
   description: string;
   agreeToShare: boolean;
 }

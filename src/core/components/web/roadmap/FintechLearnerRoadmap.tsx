@@ -100,17 +100,12 @@ function ResourceRow({
 
   return (
     <li className="min-w-0">
-      {/*
-        External link disabled pending URL verification. Restore when ready:
-        <a href={resource.href} target="_blank" rel="noopener noreferrer" className="group inline-flex …">
-          …
-        </a>
-        URL value: `resource.href` from fintechRoadmap.data (unchanged in data).
-      */}
+      <a href={resource.href} target="_blank" rel="noopener noreferrer" className="group inline-flex …">
       <span className="inline-flex items-start gap-1.5 text-xs font-medium leading-snug text-zinc-700 dark:text-zinc-300 sm:text-sm">
         <span className="min-w-0 break-words">{label}</span>
         <FiExternalLink className="mt-0.5 h-3 w-3 shrink-0 opacity-40" aria-hidden />
-      </span>
+        </span>
+        </a>
     </li>
   );
 }
