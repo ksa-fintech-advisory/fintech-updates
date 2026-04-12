@@ -32,7 +32,7 @@ export default function Header() {
     // { href: '/courses', label: t('common.nav.courses'), key: 'courses', hasMegaMenu: true },
     // { href: '/updates', label: t('common.nav.updates'), key: 'updates' },
     { href: '/blog', label: t('common.nav.blog'), key: 'blog' },
-    { href: '/about', label: t('common.nav.about'), key: 'about', badge: isArabic ? '+5 سنوات' : '5+ Years' },
+    { href: '/about', label: t('common.nav.about'), key: 'about', isSpecial: true },
     { href: '/contact', label: t('common.nav.contact'), key: 'contact' },
   ];
 
@@ -121,20 +121,19 @@ export default function Header() {
                         relative px-3 py-1.5 rounded-button text-sm font-medium transition-all duration-200 flex items-center gap-1.5 outline-none
                         ${active || isMegaMenuOpen
                           ? 'text-grey-900 dark:text-white bg-grey-100 dark:bg-grey-800'
-                          : 'text-grey-500 dark:text-grey-400 hover:text-grey-900 dark:hover:text-white hover:bg-grey-50 dark:hover:bg-grey-900'
+                          : item.isSpecial
+                            ? 'text-primary-700 dark:text-primary-300 bg-primary-50/50 dark:bg-primary-500/10 hover:bg-primary-100 dark:hover:bg-primary-900/40 ring-1 ring-primary-500/20 shadow-sm'
+                            : 'text-grey-500 dark:text-grey-400 hover:text-grey-900 dark:hover:text-white hover:bg-grey-50 dark:hover:bg-grey-900'
                         }
                       `}
                     >
-                      {item.label}
-                      {item.badge && (
-                        <span className="flex items-center gap-1.5 rounded-full bg-primary-50 px-2 py-0.5 text-[10px] font-bold text-primary-700 ring-1 ring-inset ring-primary-600/20 dark:bg-primary-500/10 dark:text-primary-400 dark:ring-primary-500/20">
-                          <span className="relative flex h-1.5 w-1.5 shrink-0">
-                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-500 opacity-75"></span>
-                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-600 dark:bg-primary-400"></span>
-                          </span>
-                          {item.badge}
+                      {item.isSpecial && !active && (
+                        <span className="relative flex h-2 w-2 shrink-0 items-center justify-center">
+                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                         </span>
                       )}
+                      {item.label}
                       {item.hasMegaMenu && (
                         <FiChevronDown
                           className={`w-3.5 h-3.5 opacity-50 transition-transform duration-200 ${isMegaMenuOpen ? 'rotate-180' : ''}`}
@@ -284,20 +283,19 @@ export default function Header() {
                           className={`glass-nav-link flex min-h-[44px] items-center rounded-xl px-3 py-2.5 text-base font-medium transition-colors ${
                             isActive(item.href)
                               ? 'glass-nav-row-active font-semibold text-grey-900 dark:text-white'
-                              : 'text-grey-700 dark:text-grey-300'
+                              : item.isSpecial
+                                ? 'text-primary-700 dark:text-primary-300 bg-primary-50/50 dark:bg-primary-500/10 ring-1 ring-primary-500/20'
+                                : 'text-grey-700 dark:text-grey-300'
                           }`}
                         >
                           <span className="flex items-center gap-2">
-                            {item.label}
-                            {item.badge && (
-                              <span className="flex items-center gap-1.5 rounded-full bg-primary-50 px-2 py-0.5 text-[10px] font-bold text-primary-700 ring-1 ring-inset ring-primary-600/20 dark:bg-primary-500/10 dark:text-primary-400 dark:ring-primary-500/20">
-                                <span className="relative flex h-1.5 w-1.5 shrink-0">
-                                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-500 opacity-75"></span>
-                                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-600 dark:bg-primary-400"></span>
-                                </span>
-                                {item.badge}
+                            {item.isSpecial && !isActive(item.href) && (
+                              <span className="relative flex h-2 w-2 shrink-0 items-center justify-center">
+                                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                               </span>
                             )}
+                            {item.label}
                           </span>
                         </Link>
                       )}
