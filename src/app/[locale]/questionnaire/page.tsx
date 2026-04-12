@@ -11,6 +11,7 @@ import {
   FiMessageSquare,
 } from 'react-icons/fi';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
+import CustomSelect from '@/core/components/web/ui/CustomSelect';
 
 export default function QuestionnairePage() {
   const locale = useLocale();
@@ -140,25 +141,20 @@ export default function QuestionnairePage() {
                       {tf('region')} <span className="text-red-500">{tf('required')}</span>
                     </label>
                     <div className="relative">
-                      <select
+                      <CustomSelect
                         id="region"
-                        required
                         value={formData.region}
-                        onChange={(e) => setFormData({ ...formData, region: e.target.value as QuestionnaireFormData['region'] })}
-                        className={`${fieldClass} appearance-none pr-10`}
-                      >
-                        <option value="saudi_arabia">{tf('saudiArabia')}</option>
-                        <option value="uae">{tf('uae')}</option>
-                        <option value="bahrain">{tf('bahrain')}</option>
-                        <option value="kuwait">{tf('kuwait')}</option>
-                        <option value="jordan">{tf('jordan')}</option>
-                        <option value="other">{tf('other')}</option>
-                      </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-zinc-400">
-                        <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-                        </svg>
-                      </div>
+                        options={[
+                          { value: 'saudi_arabia', label: tf('saudiArabia') },
+                          { value: 'uae', label: tf('uae') },
+                          { value: 'bahrain', label: tf('bahrain') },
+                          { value: 'kuwait', label: tf('kuwait') },
+                          { value: 'jordan', label: tf('jordan') },
+                          { value: 'other', label: tf('other') }
+                        ]}
+                        onChange={(val) => setFormData({ ...formData, region: val as QuestionnaireFormData['region'] })}
+                        className={`${fieldClass} py-[13px]`}
+                      />
                     </div>
                   </div>
 
@@ -167,24 +163,19 @@ export default function QuestionnairePage() {
                       {tf('projectType')} <span className="text-red-500">{tf('required')}</span>
                     </label>
                     <div className="relative">
-                      <select
+                      <CustomSelect
                         id="projectType"
-                        required
                         value={formData.projectType}
-                        onChange={(e) => setFormData({ ...formData, projectType: e.target.value as QuestionnaireFormData['projectType'] })}
-                        className={`${fieldClass} appearance-none pr-10`}
-                      >
-                        <option value="payments">{tf('payments')}</option>
-                        <option value="open_banking">{tf('openBanking')}</option>
-                        <option value="wealth_management">{tf('wealthManagement')}</option>
-                        <option value="crypto">{tf('crypto')}</option>
-                        <option value="other">{tf('other')}</option>
-                      </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-zinc-400">
-                        <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-                        </svg>
-                      </div>
+                        options={[
+                          { value: 'payments', label: tf('payments') },
+                          { value: 'open_banking', label: tf('openBanking') },
+                          { value: 'wealth_management', label: tf('wealthManagement') },
+                          { value: 'crypto', label: tf('crypto') },
+                          { value: 'other', label: tf('other') }
+                        ]}
+                        onChange={(val) => setFormData({ ...formData, projectType: val as QuestionnaireFormData['projectType'] })}
+                        className={`${fieldClass} py-[13px]`}
+                      />
                     </div>
                   </div>
                 </div>
