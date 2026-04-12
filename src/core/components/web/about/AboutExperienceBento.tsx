@@ -3,7 +3,6 @@
 import { useCallback, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -140,13 +139,9 @@ export function AboutExperienceBento({
               <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-zinc-900 to-transparent" />
 
               <Swiper
-                modules={[Navigation, Autoplay]}
+                modules={[Autoplay]}
                 spaceBetween={16}
                 slidesPerView="auto"
-                navigation={{
-                  prevEl: '.swiper-custom-prev',
-                  nextEl: '.swiper-custom-next',
-                }}
                 loop
                 autoplay={{ delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true }}
                 speed={4000}

@@ -74,9 +74,7 @@ export default function QuestionnairePage() {
               <h1 className="mb-5 text-3xl font-bold leading-[1.18] tracking-tight text-white sm:text-4xl">
                 {t('title')}
               </h1>
-              <p className="text-base text-zinc-400">
-                {t('subtitle')}
-              </p>
+             
               <p className="mt-2 text-sm text-zinc-500 max-w-2xl mx-auto leading-relaxed">
                 {t('description')}
               </p>
