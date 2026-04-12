@@ -2,13 +2,7 @@ import type { ContactFormData } from '@/core/types/web/contact';
 
 const SENDGRID_MAIL_SEND_URL = 'https://api.sendgrid.com/v3/mail/send';
 
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
+import { buildEmailHtml } from './emailTemplate';
 
 function getInboxEmail(): string {
   return (
@@ -80,14 +74,18 @@ export async function sendContactFormEmail(data: ContactFormData): Promise<void>
     .filter(Boolean)
     .join('\n');
 
-  const html = `
-    <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-    <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-    ${phone ? `<p><strong>Phone:</strong> ${escapeHtml(phone)}</p>` : ''}
-    <p><strong>Subject:</strong> ${escapeHtml(subject)}</p>
-    <hr />
-    <pre style="font-family:system-ui,sans-serif;white-space:pre-wrap;">${escapeHtml(message)}</pre>
-  `.trim();
+  const html = buildEmailHtml({
+    formType: 'contact',
+    title: 'New Contact Submission',
+    fields: [
+      { label: 'Name', value: name },
+      { label: 'Email', value: email },
+      { label: 'Phone', value: phone },
+      { label: 'Subject', value: subject },
+    ],
+    messageLabel: 'Message',
+    messageContent: message,
+  });
 
   const body = {
     personalizations: [{ to: [{ email: to }] }],

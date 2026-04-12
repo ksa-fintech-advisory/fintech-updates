@@ -2,13 +2,7 @@ import type { RateFormData } from '@/core/types/web/rate';
 
 const SENDGRID_MAIL_SEND_URL = 'https://api.sendgrid.com/v3/mail/send';
 
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
+import { buildEmailHtml } from './emailTemplate';
 
 function getInboxEmail(): string {
   return (
@@ -78,14 +72,18 @@ export async function sendRateFormEmail(data: RateFormData): Promise<void> {
     description,
   ].join('\n');
 
-  const html = `
-    <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-    <p><strong>Role:</strong> ${escapeHtml(role)}</p>
-    <p><strong>Service Type:</strong> ${escapeHtml(serviceType)}</p>
-    <p><strong>Agreed to Share:</strong> ${agreeToShare ? 'Yes' : 'No'}</p>
-    <hr />
-    <pre style="font-family:system-ui,sans-serif;white-space:pre-wrap;">${escapeHtml(description)}</pre>
-  `.trim();
+  const html = buildEmailHtml({
+    formType: 'rate',
+    title: 'New Rate & Feedback Submission',
+    fields: [
+      { label: 'Name', value: name },
+      { label: 'Role', value: role },
+      { label: 'Service Type', value: serviceType },
+      { label: 'Agreed to Share', value: agreeToShare },
+    ],
+    messageLabel: 'Feedback',
+    messageContent: description,
+  });
 
   const body = {
     personalizations: [{ to: [{ email: to }] }],
