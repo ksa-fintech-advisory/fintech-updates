@@ -2,13 +2,7 @@ import type { QuestionnaireFormData } from '@/core/types/web/questionnaire';
 
 const SENDGRID_MAIL_SEND_URL = 'https://api.sendgrid.com/v3/mail/send';
 
-function escapeHtml(text: string): string {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
+import { buildEmailHtml } from './emailTemplate';
 
 function getInboxEmail(): string {
   return (
@@ -80,15 +74,18 @@ export async function sendQuestionnaireEmail(data: QuestionnaireFormData): Promi
     difficulties,
   ].join('\n');
 
-  const html = `
-    <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-    <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-    <p><strong>Region:</strong> ${escapeHtml(displayRegion)}</p>
-    <p><strong>Project Type:</strong> ${escapeHtml(displayProjectType)}</p>
-    <hr />
-    <p><strong>Difficulties Faced:</strong></p>
-    <pre style="font-family:system-ui,sans-serif;white-space:pre-wrap;">${escapeHtml(difficulties)}</pre>
-  `.trim();
+  const html = buildEmailHtml({
+    formType: 'questionnaire',
+    title: 'New Questionnaire Submission',
+    fields: [
+      { label: 'Name', value: name },
+      { label: 'Email', value: email },
+      { label: 'Region', value: displayRegion },
+      { label: 'Project Type', value: displayProjectType },
+    ],
+    messageLabel: 'Difficulties Faced',
+    messageContent: difficulties,
+  });
 
   const body = {
     personalizations: [{ to: [{ email: to }] }],

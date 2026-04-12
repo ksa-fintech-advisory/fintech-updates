@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { FiTwitter, FiLinkedin, FiArrowRight, FiArrowLeft, FiCommand, FiMail, FiChevronRight } from 'react-icons/fi';
@@ -12,6 +13,8 @@ export default function Footer() {
   const t = useTranslations('common.footer');
   const tNav = useTranslations('common.nav');
   const th = useTranslations('common.header');
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const locale = useLocale();
   const isArabic = locale === 'ar';
   const currentYear = new Date().getFullYear();
@@ -184,13 +187,55 @@ export default function Footer() {
                 {t('interestTitle')}
               </h4>
               <p className="relative mb-6 text-xs leading-relaxed text-grey-600 dark:text-grey-400">{t('interestBody')}</p>
-              <Link
-                href={`/${locale}/contact`}
-                className="relative inline-flex w-full items-center justify-center gap-2 rounded-xl bg-grey-900 px-4 py-3.5 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-grey-800 dark:bg-white dark:text-grey-900 dark:hover:bg-grey-200"
+              <form
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  if (!email.trim() || status === 'loading') return;
+                  setStatus('loading');
+                  try {
+                    const res = await fetch('/api/newsletter', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ email: email.trim() }),
+                    });
+                    if (!res.ok) throw new Error('Failed');
+                    setStatus('success');
+                    setEmail('');
+                  } catch {
+                    setStatus('error');
+                  }
+                }}
+                className="relative mt-2"
               >
-                {t('interestCta')}
-                {isArabic ? <FiArrowLeft className="h-4 w-4" aria-hidden /> : <FiArrowRight className="h-4 w-4" aria-hidden />}
-              </Link>
+                <div className="flex gap-2 relative">
+                  <input
+                    type="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={t('emailPlaceholder')}
+                    disabled={status === 'loading' || status === 'success'}
+                    className="w-full flex-1 rounded-xl border border-grey-200 bg-grey-50 px-4 py-3 text-sm text-grey-900 outline-none transition-colors focus:border-primary-500 focus:ring-1 focus:ring-primary-500 disabled:opacity-70 dark:border-grey-800 dark:bg-grey-900/50 dark:text-white dark:focus:border-primary-500"
+                  />
+                  <button
+                    type="submit"
+                    disabled={status === 'loading' || status === 'success'}
+                    className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-grey-900 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white transition-colors hover:bg-grey-800 disabled:opacity-70 dark:bg-white dark:text-grey-900 dark:hover:bg-grey-200"
+                  >
+                    {status === 'loading' ? '...' : t('interestCta')}
+                  </button>
+                </div>
+                {status === 'success' && (
+                  <p className="mt-3 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
+                    {t('successMessage')}
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className="mt-3 text-xs text-red-600 dark:text-red-400 font-medium">
+                    {t('errorMessage')}
+                  </p>
+                )}
+              </form>
             </div>
           </div>
         </div>

@@ -1,8 +1,7 @@
-import type { ContactFormData } from '@/core/types/web/contact';
+import { buildEmailHtml } from './emailTemplate';
+import type { NewsletterFormData } from '@/core/types/web/contact';
 
 const SENDGRID_MAIL_SEND_URL = 'https://api.sendgrid.com/v3/mail/send';
-
-import { buildEmailHtml } from './emailTemplate';
 
 function getInboxEmail(): string {
   return (
@@ -46,11 +45,7 @@ export class SendGridApiError extends Error {
   }
 }
 
-/**
- * Sends the public contact form payload to the site inbox via SendGrid (HTTP API, Edge-safe).
- * Requires `SENDGRID_API_KEY` and a verified `SENDGRID_FROM_EMAIL`.
- */
-export async function sendContactFormEmail(data: ContactFormData): Promise<void> {
+export async function sendNewsletterEmail(data: NewsletterFormData): Promise<void> {
   const apiKey = process.env.SENDGRID_API_KEY?.trim();
   const fromRaw = getFromEmail();
   const to = getInboxEmail();
@@ -60,38 +55,22 @@ export async function sendContactFormEmail(data: ContactFormData): Promise<void>
   }
 
   const from = parseFromField(fromRaw);
-  const { name, email, phone, subject, message } = data;
+  const { email } = data;
 
-  const text = [
-    `Name: ${name}`,
-    `Email: ${email}`,
-    phone ? `Phone: ${phone}` : null,
-    '',
-    `Subject: ${subject}`,
-    '',
-    message,
-  ]
-    .filter(Boolean)
-    .join('\n');
+  const text = `New Interest Registration from: ${email}`;
 
   const html = buildEmailHtml({
-    formType: 'contact',
-    title: 'New Contact Submission',
+    formType: 'newsletter',
+    title: 'New Interest Registration',
     fields: [
-      { label: 'Name', value: name },
       { label: 'Email', value: email },
-      { label: 'Phone', value: phone },
-      { label: 'Subject', value: subject },
     ],
-    messageLabel: 'Message',
-    messageContent: message,
   });
 
   const body = {
     personalizations: [{ to: [{ email: to }] }],
     from,
-    reply_to: { email },
-    subject: `[Contact] ${subject}`,
+    subject: `[Interest] New registration from ${email}`,
     content: [
       { type: 'text/plain', value: text },
       { type: 'text/html', value: html },

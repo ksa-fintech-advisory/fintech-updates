@@ -57,9 +57,12 @@
       "platformLead": "Content and learning paths",
       "company": "Connect",
       "companyLead": "About & contact",
-      "interestTitle": "Interested in working together?",
-      "interestBody": "Share what you are building or exploring — consulting, architecture, or mentorship. I read every message.",
-      "interestCta": "Start a conversation",
+      "interestTitle": "Register your interest",
+      "interestBody": "Leave your email to get early access to upcoming products and receive our periodic updates.",
+      "interestCta": "Register",
+      "emailPlaceholder": "Enter your email address",
+      "successMessage": "Thank you for registering your interest!",
+      "errorMessage": "Could not register, please try again later.",
       "copyright": "© {year} Maal Tech · <author>Mohammed Abdo</author>"
     }
   },
