@@ -22,7 +22,7 @@ export default function ProductsPage({ params }: { params: { locale: string } })
             <AnimatedSection direction="up">
               <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">
                 <FiPackage className="w-3.5 h-3.5" />
-                <span className="text-xs font-mono font-bold uppercase tracking-widest">
+                <span className="text-xs  font-bold uppercase tracking-widest">
                   {isArabic ? 'كتالوج_الحلول' : 'SOLUTIONS_CATALOG'}
                 </span>
               </div>
@@ -56,7 +56,7 @@ export default function ProductsPage({ params }: { params: { locale: string } })
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
           <AnimatedSection className="mb-16 text-center">
-            <span className="text-emerald-400 font-mono text-[10px] font-bold uppercase tracking-widest mb-3 block">
+            <span className="text-emerald-400  text-[10px] font-bold uppercase tracking-widest mb-3 block">
               {isArabic ? '// المعايير' : '// BENCHMARKS'}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
@@ -72,7 +72,7 @@ export default function ProductsPage({ params }: { params: { locale: string } })
                 <div className="w-12 h-12 bg-zinc-900 rounded-xl flex items-center justify-center text-emerald-400 mb-6 ring-1 ring-white/10 group-hover:ring-emerald-500/50 transition-colors">
                   <FiCrosshair className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-bold text-zinc-100 group-hover:text-white mb-3 font-mono">
+                <h3 className="text-lg font-bold text-zinc-100 group-hover:text-white mb-3 ">
                   {isArabic ? 'دقة حسابية' : 'Precision'}
                 </h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">
@@ -89,7 +89,7 @@ export default function ProductsPage({ params }: { params: { locale: string } })
                 <div className="w-12 h-12 bg-zinc-900 rounded-xl flex items-center justify-center text-emerald-400 mb-6 ring-1 ring-white/10 group-hover:ring-emerald-500/50 transition-colors">
                   <FiZap className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-bold text-zinc-100 group-hover:text-white mb-3 font-mono">
+                <h3 className="text-lg font-bold text-zinc-100 group-hover:text-white mb-3 ">
                   {isArabic ? 'أداء عالي' : 'Latency'}
                 </h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">
@@ -106,7 +106,7 @@ export default function ProductsPage({ params }: { params: { locale: string } })
                 <div className="w-12 h-12 bg-zinc-900 rounded-xl flex items-center justify-center text-emerald-400 mb-6 ring-1 ring-white/10 group-hover:ring-emerald-500/50 transition-colors">
                   <FiShield className="w-6 h-6" />
                 </div>
-                <h3 className="text-lg font-bold text-zinc-100 group-hover:text-white mb-3 font-mono">
+                <h3 className="text-lg font-bold text-zinc-100 group-hover:text-white mb-3 ">
                   {isArabic ? 'توافق تنظيمي' : 'Compliance'}
                 </h3>
                 <p className="text-zinc-400 text-sm leading-relaxed">

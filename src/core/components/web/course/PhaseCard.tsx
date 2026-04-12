@@ -58,7 +58,7 @@ export default function PhaseCard({
             {/* Header: Number & Icon */}
             <div className="flex justify-between items-start mb-6">
               <div className="flex flex-col">
-                <span className="font-mono text-xs font-bold tracking-widest text-zinc-400 uppercase mb-1">
+              <span className=" text-xs font-bold tracking-widest text-zinc-400 uppercase mb-1">
                   {isArabic ? `// المرحلة_0${phase.id}` : `// PHASE_0${phase.id}`}
                 </span>
                 <h3 className="text-xl md:text-2xl font-bold text-zinc-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
@@ -89,7 +89,7 @@ export default function PhaseCard({
 
             {/* Topics List - Technical Style */}
             <div className="flex-1">
-              <span className="block text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-wider mb-4 font-mono">
+            <span className="block text-xs font-bold text-zinc-900 dark:text-white uppercase tracking-wider mb-4 ">
                 {isArabic ? 'المفاهيم الأساسية:' : 'Key Concepts:'}
               </span>
               <ul className="space-y-2.5">

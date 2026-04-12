@@ -77,7 +77,7 @@ const InputField = ({
         className={`
           w-full py-4 bg-white dark:bg-zinc-900 border-2 border-zinc-200 dark:border-zinc-800 rounded-xl
           focus:border-primary-500 focus:ring-4 focus:ring-primary-500/10 outline-none
-          text-zinc-900 dark:text-white placeholder-zinc-400 font-mono transition-all
+          text-zinc-900 dark:text-white placeholder-zinc-400  transition-all
           ${isArabic ? 'pr-12 pl-4' : 'pl-12 pr-4'} 
         `}
       />
@@ -163,10 +163,10 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
         {/* Progress Header */}
         <div className="px-8 pt-8 pb-4 border-b border-zinc-200 dark:border-zinc-800">
           <div className="flex justify-between items-center mb-6">
-            <span className="text-sm font-mono text-zinc-500 dark:text-zinc-400 uppercase tracking-widest">
+            <span className="text-sm  text-zinc-500 dark:text-zinc-400 uppercase tracking-widest">
               {translations.navigation.step} <span className="text-primary-600 dark:text-primary-400 font-bold text-lg">{currentStep + 1}</span> {translations.navigation.of} {steps.length}
             </span>
-            <div className="text-xs font-bold px-3 py-1 bg-zinc-100 dark:bg-zinc-800 text-primary-600 dark:text-primary-400 rounded-md font-mono uppercase tracking-wider">
+            <div className="text-xs font-bold px-3 py-1 bg-zinc-100 dark:bg-zinc-800 text-primary-600 dark:text-primary-400 rounded-md  uppercase tracking-wider">
               {Math.round(((currentStep + 1) / steps.length) * 100)}% COMPLETE
             </div>
           </div>
@@ -230,7 +230,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
 
                   {/* Hours per week - dark chips like course enroll bar */}
                   <div className="mb-10">
-                    <span className="text-primary-600 dark:text-primary-400 font-mono text-xs uppercase tracking-widest mb-3 block text-left rtl:text-right">
+                    <span className="text-primary-600 dark:text-primary-400  text-xs uppercase tracking-widest mb-3 block text-left rtl:text-right">
                       {translations.steps.availability.hoursLabel}
                     </span>
                     <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
@@ -256,7 +256,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
 
                   {/* Days - same dark chip style */}
                   <div>
-                    <span className="text-primary-600 dark:text-primary-400 font-mono text-xs uppercase tracking-widest mb-3 block text-left rtl:text-right">
+                    <span className="text-primary-600 dark:text-primary-400  text-xs uppercase tracking-widest mb-3 block text-left rtl:text-right">
                       {translations.steps.availability.daysLabel}
                     </span>
                     <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
@@ -332,7 +332,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
                   <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-3">{translations.steps.payment.title}</h2>
                   <p className="text-zinc-600 dark:text-zinc-400 mb-4">{translations.steps.payment.subtitle}</p>
                   {translations.steps.payment.priceLabel && (
-                    <p className="text-lg font-mono font-bold text-primary-600 dark:text-primary-400 mb-8">
+                    <p className="text-lg  font-bold text-primary-600 dark:text-primary-400 mb-8">
                       {translations.steps.payment.priceLabel}
                     </p>
                   )}
@@ -378,7 +378,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
                   <h2 className="text-2xl font-bold text-center text-zinc-900 dark:text-white mb-8">{translations.steps.confirm.title}</h2>
 
                   {/* Receipt Card - course style */}
-                  <div className="bg-white dark:bg-zinc-900/60 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 font-mono text-sm">
+                  <div className="bg-white dark:bg-zinc-900/60 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800  text-sm">
                     <div className="space-y-4">
                       <div className="flex justify-between pb-4 border-b border-zinc-200 dark:border-zinc-700">
                         <span className="text-zinc-500 uppercase tracking-wider text-xs">Applicant</span>
@@ -415,7 +415,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
             onClick={goToPrevious}
             disabled={currentStep === 0}
             className={`
-              flex items-center gap-2 font-semibold transition-colors font-mono text-sm uppercase tracking-wider
+              flex items-center gap-2 font-semibold transition-colors  text-sm uppercase tracking-wider
               ${currentStep === 0 ? 'opacity-0 pointer-events-none' : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white'}
             `}
           >
@@ -427,7 +427,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
             <button
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="flex items-center gap-2 rounded-button bg-zinc-900 px-8 py-3 font-mono text-sm font-bold uppercase tracking-wider text-white transition-all hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
+              className="flex items-center gap-2 rounded-button bg-zinc-900 px-8 py-3  text-sm font-bold uppercase tracking-wider text-white transition-all hover:bg-zinc-800 dark:bg-white dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
               {isSubmitting ? (
                 <>
@@ -446,7 +446,7 @@ export default function CourseRegistrationForm({ locale, translations }: Registr
               onClick={goToNext}
               disabled={!canProceed()}
               className={`
-                flex items-center gap-2 rounded-button px-8 py-3 font-mono text-sm font-bold uppercase tracking-wider transition-all
+                flex items-center gap-2 rounded-button px-8 py-3  text-sm font-bold uppercase tracking-wider transition-all
                 ${canProceed()
                   ? 'bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200'
                   : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed'}

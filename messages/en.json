@@ -67,14 +67,12 @@
     "home": {
       "metaTitle": "FinTech consulting, blog & learner roadmap",
       "metaDescription": "Mohammed Abdo (Maal Tech): FinTech systems engineering and consulting for Saudi Arabia and the Arab world—from idea to compliance. Learner roadmap, essays, and direct contact.",
-      "heroSignoff": "Mohammed Abdo · Maal Tech",
       "closingTitle": "Care about building something that matters?",
       "closingLead": "If you're building a financial product or facing an engineering knot in your current work, share what you're making. I read every serious message—and I genuinely enjoy sharp technical conversation.",
       "closingCta": "Start the conversation",
       "hero": {
-        "title": "FinTech systems engineering—from idea to compliance.",
-        "subtitle": "I'm Mohammed Abdo, a software engineer and systems architect. I help teams and companies design and build secure financial platforms aligned with Saudi and Arab market expectations.",
-        "description": "Here I distill field lessons from building real products—and I work with you to turn complex ideas into reliable, scalable systems.",
+        "title": "We understand FinTech.. and we build it right.",
+        "subtitle": "Mohammed Abdo — Software engineer in FinTech. I work with product and engineering teams on solid digital platforms compliant with regulations. The learning roadmap on the site is an organized path for those starting in the field.",
         "exploreArticles": "Read the blog",
         "aboutUs": "About me"
       },
@@ -399,9 +397,8 @@
   "pages": {
     "home": {
       "hero": {
-        "title": "FinTech systems engineering—from idea to compliance.",
-        "subtitle": "I'm Mohammed Abdo, a software engineer and systems architect. I help teams and companies design and build secure financial platforms aligned with Saudi and Arab market expectations.",
-        "description": "Here I distill field lessons from building real products—and I work with you to turn complex ideas into reliable, scalable systems."
+        "title": "We understand FinTech.. and we build it right.",
+        "subtitle": "I'm Mohammed Abdo, a software engineer specializing in FinTech. I help companies build robust and reliable financial platforms. If you're a professional or student feeling overwhelmed by how broad the field is, I'm here to guide you to the right first step."
       },
       "sections": {
         "featured": "Featured Articles",

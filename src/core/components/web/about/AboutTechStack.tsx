@@ -105,7 +105,7 @@ export function AboutTechStack({ isArabic,  heading, sub }: Props) {
                   <mod.icon className="h-6 w-6 text-zinc-400 transition-colors duration-500 group-hover:text-emerald-400" />
                 </div>
                 
-                <h3 className={`mb-3 text-lg font-bold text-zinc-100 transition-colors group-hover:text-white ${isArabic ? 'font-arabic' : 'font-mono tracking-tight'}`}>
+                <h3 className={`mb-3 text-lg font-bold text-zinc-100 transition-colors group-hover:text-white ${isArabic ? 'font-arabic' : ' tracking-tight'}`}>
                   {isArabic ? mod.title.ar : mod.title.en}
                 </h3>
                 

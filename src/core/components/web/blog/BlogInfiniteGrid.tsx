@@ -59,14 +59,14 @@ export function BlogInfiniteGrid({ allBlogs }: Props) {
                   <div className="p-5 sm:p-6 flex-1 flex flex-col">
                     {/* Category + Date row */}
                     <div className="flex items-center justify-between gap-3 mb-4">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-[10px] font-mono font-bold uppercase tracking-wider text-zinc-300">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/5 border border-white/10 rounded-md text-[10px]  font-bold uppercase tracking-wider text-zinc-300">
                         <span
                           className="w-1.5 h-1.5 rounded-full shrink-0"
                           style={{ backgroundColor: blog.category.color }}
                         />
                         {blog.category.name}
                       </span>
-                      <div className="flex items-center gap-1.5 text-[11px] font-mono text-zinc-500 shrink-0">
+                      <div className="flex items-center gap-1.5 text-[11px]  text-zinc-500 shrink-0">
                         <FiCalendar className="w-3 h-3" />
                         <time>
                           {new Date(blog.publishedAt).toLocaleDateString('en-US', {
@@ -90,7 +90,7 @@ export function BlogInfiniteGrid({ allBlogs }: Props) {
 
                     {/* Read indicator */}
                     <div
-                      className={`mt-auto flex items-center gap-2 pt-4 border-t border-white/10 text-xs font-mono font-medium text-zinc-500 group-hover:text-emerald-400 transition-all ${isArabic ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'}`}
+                      className={`mt-auto flex items-center gap-2 pt-4 border-t border-white/10 text-xs  font-medium text-zinc-500 group-hover:text-emerald-400 transition-all ${isArabic ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'}`}
                       aria-hidden
                     >
                       <span className="uppercase tracking-wider">
@@ -127,7 +127,7 @@ export function BlogInfiniteGrid({ allBlogs }: Props) {
               <span>{isArabic ? 'عرض المزيد' : 'Load more'}</span>
             )}
           </button>
-          <p className="text-xs font-mono text-zinc-500 tabular-nums">
+          <p className="text-xs  text-zinc-500 tabular-nums">
             {shown.length} / {allBlogs.length}
           </p>
         </div>
@@ -135,7 +135,7 @@ export function BlogInfiniteGrid({ allBlogs }: Props) {
 
       {/* End state */}
       {!hasMore && allBlogs.length > BATCH && (
-        <p className="mt-10 text-center text-xs font-mono text-zinc-400 dark:text-zinc-500">
+        <p className="mt-10 text-center text-xs  text-zinc-400 dark:text-zinc-500">
           {isArabic ? 'وصلت لنهاية المقالات' : "You've reached the end"}
         </p>
       )}

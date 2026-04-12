@@ -55,7 +55,7 @@ export default function ProductShowcase({ locale }: { locale: string }) {
         <AnimatedSection className="mb-16">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="max-w-2xl">
-              <span className="text-primary-600 dark:text-primary-400 font-mono text-xs font-bold uppercase tracking-widest mb-3 block">
+              <span className="text-primary-600 dark:text-primary-400  text-xs font-bold uppercase tracking-widest mb-3 block">
                 {isArabic ? '// الأدوات_الرقمية' : '// DIGITAL_TOOLKIT'}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white tracking-tight">
@@ -84,7 +84,7 @@ export default function ProductShowcase({ locale }: { locale: string }) {
                       {product.icon}
                     </div>
 
-                    <span className="px-2 py-1 rounded text-[10px] font-mono font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-500 border border-zinc-200 dark:border-zinc-700">
+                    <span className="px-2 py-1 rounded text-[10px]  font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-500 border border-zinc-200 dark:border-zinc-700">
                       {product.tag}
                     </span>
                   </div>
@@ -100,7 +100,7 @@ export default function ProductShowcase({ locale }: { locale: string }) {
 
                   {/* Bottom Action: "Terminal" style link */}
                   <div className="mt-auto pt-6 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-zinc-900 dark:text-white">
-                    <div className="flex items-center gap-2 text-xs font-mono font-bold opacity-70 group-hover:opacity-100 transition-opacity">
+                    <div className="flex items-center gap-2 text-xs  font-bold opacity-70 group-hover:opacity-100 transition-opacity">
                       <FiTerminal className="w-3.5 h-3.5" />
                       {isArabic ? 'فتح الأداة' : 'LAUNCH_TOOL'}
                     </div>

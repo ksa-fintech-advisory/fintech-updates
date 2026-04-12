@@ -68,7 +68,7 @@ export default function RatePage() {
         <div className="container mx-auto max-w-3xl">
           <AnimatedSection>
             <div className="mb-12 text-center">
-              <p className="mb-4 font-mono text-xs font-bold uppercase tracking-widest text-emerald-400">
+              <p className="mb-4  text-xs font-bold uppercase tracking-widest text-emerald-400">
               </p>
               <h1 className="mb-5 text-3xl font-bold leading-[1.18] tracking-tight text-white sm:text-4xl">
                 {t('title')}

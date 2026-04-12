@@ -88,7 +88,7 @@ export default function MarketAnalysisPage({ params: { locale } }: { params: { l
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Breadcrumb */}
-          <div className="flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest mb-6">
+          <div className="flex items-center gap-2 text-xs  font-bold text-zinc-500 uppercase tracking-widest mb-6">
             <Link href={`/${locale}/products`} className="hover:text-purple-600 transition-colors">
               {t.breadcrumb.root}
             </Link>
@@ -155,7 +155,7 @@ export default function MarketAnalysisPage({ params: { locale } }: { params: { l
                   {t.bento.marketSize.sub}
                 </span>
               </div>
-              <p className="text-sm text-zinc-400 mt-2 font-mono">{t.bento.marketSize.label}</p>
+              <p className="text-sm text-zinc-400 mt-2 ">{t.bento.marketSize.label}</p>
             </div>
 
             {/* Visual: Simulated Growth Chart */}
@@ -177,7 +177,7 @@ export default function MarketAnalysisPage({ params: { locale } }: { params: { l
               <div className="w-10 h-10 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white">
                 <FiLayers />
               </div>
-              <span className="text-xs font-mono text-zinc-400">Q3 2024</span>
+              <span className="text-xs  text-zinc-400">Q3 2024</span>
             </div>
             <div className="text-3xl font-black text-zinc-900 dark:text-white mb-1">{t.bento.companies.value}</div>
             <div className="text-sm font-bold text-zinc-700 dark:text-zinc-300">{t.bento.companies.title}</div>
@@ -216,7 +216,7 @@ export default function MarketAnalysisPage({ params: { locale } }: { params: { l
                   <div className="flex-1 h-2 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
                     <div className="h-full bg-purple-600 rounded-full" style={{ width: `${item.pct}%` }}></div>
                   </div>
-                  <span className="text-xs font-mono font-bold text-zinc-900 dark:text-white">{item.pct}%</span>
+                  <span className="text-xs  font-bold text-zinc-900 dark:text-white">{item.pct}%</span>
                 </div>
               ))}
             </div>

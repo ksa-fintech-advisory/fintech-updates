@@ -103,13 +103,13 @@ export default async function CourseRegistrationPage({
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <Link
               href={`/${locale}/courses/fintech-fundamentals`}
-              className="inline-flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white mb-8 transition-colors uppercase tracking-widest"
+              className="inline-flex items-center gap-2 text-xs  font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white mb-8 transition-colors uppercase tracking-widest"
             >
               {isArabic ? <FiArrowRight className="w-4 h-4" /> : <FiArrowLeft className="w-4 h-4" />}
               <span>{isArabic ? '../العودة_للدورة' : '../BACK_TO_COURSE'}</span>
             </Link>
             <div className="max-w-3xl">
-              <span className="text-primary-600 dark:text-primary-400 font-mono text-xs uppercase tracking-widest mb-2 block">
+              <span className="text-primary-600 dark:text-primary-400  text-xs uppercase tracking-widest mb-2 block">
                 {isArabic ? '// التسجيل' : '// REGISTRATION'}
               </span>
               <h1 className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-3 leading-[1.16] md:leading-[1.14]">

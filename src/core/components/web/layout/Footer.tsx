@@ -113,7 +113,7 @@ export default function Footer() {
                   aria-hidden
                 />
                 <span className="flex min-w-0 flex-col gap-1 leading-tight">
-                  <span className="font-mono text-xs font-bold uppercase tracking-widest">{t('platform')}</span>
+                  <span className="text-xs font-bold uppercase tracking-widest">{t('platform')}</span>
                   <span className="text-[11px] font-medium uppercase tracking-wide text-grey-400 dark:text-grey-500">
                     {t('platformLead')}
                   </span>
@@ -147,7 +147,7 @@ export default function Footer() {
                   aria-hidden
                 />
                 <span className="flex min-w-0 flex-col gap-1 leading-tight">
-                  <span className="font-mono text-xs font-bold uppercase tracking-widest">{t('company')}</span>
+                  <span className=" text-xs font-bold uppercase tracking-widest">{t('company')}</span>
                   <span className="text-[11px] font-medium uppercase tracking-wide text-grey-400 dark:text-grey-500">
                     {t('companyLead')}
                   </span>

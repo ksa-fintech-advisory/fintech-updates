@@ -38,7 +38,7 @@ export default function RuleDetailsPage({
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             href={`/${locale}/products/compliance-checker/assess`} // عدل الرابط حسب مسار صفحة التقييم لديك
-            className="inline-flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 hover:text-primary-600 transition-colors uppercase tracking-widest mb-6"
+            className="inline-flex items-center gap-2 text-xs  font-bold text-zinc-500 hover:text-primary-600 transition-colors uppercase tracking-widest mb-6"
           >
             {isArabic ? <FiArrowRight /> : <FiArrowLeft />}
             {isArabic ? 'العودة للتقرير' : 'BACK_TO_REPORT'}
@@ -47,10 +47,10 @@ export default function RuleDetailsPage({
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div>
               <div className="flex items-center gap-3 mb-3">
-                <span className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded text-[10px] font-mono font-bold text-zinc-500 uppercase">
+                <span className="px-2 py-1 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded text-[10px]  font-bold text-zinc-500 uppercase">
                   RULE_ID: {ruleId}
                 </span>
-                <span className={`px-2 py-1 rounded text-[10px] font-mono font-bold uppercase text-white ${riskBg}`}>
+                <span className={`px-2 py-1 rounded text-[10px]  font-bold uppercase text-white ${riskBg}`}>
                   {rule.risk_level[locale as 'en' | 'ar']} RISK
                 </span>
               </div>
@@ -62,13 +62,13 @@ export default function RuleDetailsPage({
             {/* Meta Badges */}
             <div className="flex gap-2">
               <div className="bg-white dark:bg-zinc-900 p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 shadow-sm text-center min-w-[100px]">
-                <div className="text-[10px] font-mono text-zinc-400 uppercase mb-1">{isArabic ? 'الوحدة' : 'MODULE'}</div>
+                <div className="text-[10px]  text-zinc-400 uppercase mb-1">{isArabic ? 'الوحدة' : 'MODULE'}</div>
                 <div className="font-bold text-sm text-zinc-800 dark:text-zinc-200 truncate max-w-[150px]">
                   {rule.module[locale as 'en' | 'ar']}
                 </div>
               </div>
               <div className="bg-white dark:bg-zinc-900 p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 shadow-sm text-center min-w-[100px]">
-                <div className="text-[10px] font-mono text-zinc-400 uppercase mb-1">{isArabic ? 'المادة' : 'ARTICLE'}</div>
+                <div className="text-[10px]  text-zinc-400 uppercase mb-1">{isArabic ? 'المادة' : 'ARTICLE'}</div>
                 <div className="font-bold text-sm text-zinc-800 dark:text-zinc-200">
                   {rule.article_reference[locale as 'en' | 'ar']}
                 </div>
@@ -108,7 +108,7 @@ export default function RuleDetailsPage({
                     {isArabic ? 'الإجراء التقني/التنظيمي المطلوب' : 'REQUIRED ACTION / IMPLEMENTATION'}
                   </h2>
                 </div>
-                <div className="font-mono text-base md:text-lg text-white leading-relaxed bg-black/30 p-4 rounded-lg border border-white/10">
+                <div className=" text-base md:text-lg text-white leading-relaxed bg-black/30 p-4 rounded-lg border border-white/10">
                   {">"} {rule.required_action[locale as 'en' | 'ar']}
                 </div>
               </div>
@@ -125,7 +125,7 @@ export default function RuleDetailsPage({
               <ul className="space-y-4">
                 {rule.evidence[locale as 'en' | 'ar'].map((item, i) => (
                   <li key={i} className="flex items-start gap-4 p-3 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800/50 transition-colors border border-transparent hover:border-zinc-200 dark:hover:border-zinc-700">
-                    <div className="w-6 h-6 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-500 flex items-center justify-center text-xs font-mono font-bold flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-500 flex items-center justify-center text-xs  font-bold flex-shrink-0 mt-0.5">
                       {i + 1}
                     </div>
                     <span className="text-zinc-700 dark:text-zinc-300 font-medium">{item}</span>

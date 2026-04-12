@@ -44,11 +44,11 @@ export default function MarketAnalysisDemoPage({ params: { locale } }: { params:
                            <h1 className="text-lg font-bold text-white tracking-tight">
                               {isArabic ? 'محاكي السوق المالي' : 'Market Simulator'}
                            </h1>
-                           <span className="text-[10px] font-mono font-bold bg-purple-500/10 text-purple-400 px-1.5 py-0.5 rounded border border-purple-500/20 uppercase">
+                           <span className="text-[10px]  font-bold bg-purple-500/10 text-purple-400 px-1.5 py-0.5 rounded border border-purple-500/20 uppercase">
                               BETA v2.0
                            </span>
                         </div>
-                        <p className="text-xs text-zinc-500 font-mono">KSA FinTech Outlook 2030</p>
+                        <p className="text-xs text-zinc-500 ">KSA FinTech Outlook 2030</p>
                      </div>
                   </div>
 
@@ -84,7 +84,7 @@ export default function MarketAnalysisDemoPage({ params: { locale } }: { params:
                            <FiTarget /> {isArabic ? 'حجم السوق المستهدف' : 'TAM (2030)'}
                         </h3>
                      </div>
-                     <div className="text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded text-xs font-mono font-bold border border-emerald-500/20 flex items-center gap-1">
+                     <div className="text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded text-xs  font-bold border border-emerald-500/20 flex items-center gap-1">
                         <FiArrowUpRight /> {data.cagr}% CAGR
                      </div>
                   </div>
@@ -174,12 +174,12 @@ export default function MarketAnalysisDemoPage({ params: { locale } }: { params:
                                  style={{ height: `${height}%` }}
                               >
                                  {/* Floating Value */}
-                                 <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-zinc-800 border border-zinc-700 text-white text-[10px] font-mono py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 z-10 shadow-xl">
+                                 <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-zinc-800 border border-zinc-700 text-white text-[10px]  py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 z-10 shadow-xl">
                                     {value}B
                                  </div>
                               </div>
                               {/* Year Label */}
-                              <div className="text-center mt-3 text-[10px] font-mono font-bold text-zinc-500 group-hover:text-white transition-colors">
+                              <div className="text-center mt-3 text-[10px]  font-bold text-zinc-500 group-hover:text-white transition-colors">
                                  {2024 + i}
                               </div>
                            </div>
@@ -198,7 +198,7 @@ export default function MarketAnalysisDemoPage({ params: { locale } }: { params:
                      {data.topPlayers.map((player, i) => (
                         <div key={i} className="flex items-center justify-between p-3 rounded-xl hover:bg-zinc-800 transition-colors border border-transparent hover:border-zinc-700 group cursor-default">
                            <div className="flex items-center gap-3">
-                              <div className={`w-6 h-6 rounded flex items-center justify-center text-[10px] font-bold font-mono border ${i === 0 ? 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' :
+                              <div className={`w-6 h-6 rounded flex items-center justify-center text-[10px] font-bold  border ${i === 0 ? 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' :
                                     i === 1 ? 'bg-zinc-700/50 text-zinc-400 border-zinc-600' :
                                        'bg-zinc-800/50 text-zinc-500 border-zinc-700'
                                  }`}>
@@ -210,7 +210,7 @@ export default function MarketAnalysisDemoPage({ params: { locale } }: { params:
                               <div className="w-12 h-1 bg-zinc-800 rounded-full overflow-hidden flex justify-end">
                                  <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${player.share}%` }}></div>
                               </div>
-                              <span className="text-xs font-mono font-bold text-emerald-500 w-8 text-right">{player.share}%</span>
+                              <span className="text-xs  font-bold text-emerald-500 w-8 text-right">{player.share}%</span>
                            </div>
                         </div>
                      ))}

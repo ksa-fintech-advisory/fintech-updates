@@ -22,7 +22,7 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
             <AnimatedSection direction="up">
               <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded-md border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">
                 <FiTerminal className="w-3.5 h-3.5" />
-                <span className="text-xs font-mono font-bold uppercase tracking-widest">
+                <span className="text-xs  font-bold uppercase tracking-widest">
                   {isArabic ? 'الأرشيف_التعليمي' : 'ACADEMY_CATALOG_V2'}
                 </span>
               </div>
@@ -51,7 +51,7 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
                     <FiLayers />
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase tracking-widest text-emerald-400/80 font-mono font-bold">
+                    <div className="text-[10px] uppercase tracking-widest text-emerald-400/80  font-bold">
                       {isArabic ? 'المراحل' : 'MODULES'}
                     </div>
                     <div className="text-zinc-100 font-bold text-xl">11+</div>
@@ -63,7 +63,7 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
                     <FiClock />
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase tracking-widest text-emerald-400/80 font-mono font-bold">
+                    <div className="text-[10px] uppercase tracking-widest text-emerald-400/80  font-bold">
                       {isArabic ? 'المحتوى' : 'RUNTIME'}
                     </div>
                     <div className="text-zinc-100 font-bold text-xl">60h+</div>
@@ -75,7 +75,7 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
                     <FiGlobe />
                   </div>
                   <div>
-                    <div className="text-[10px] uppercase tracking-widest text-emerald-400/80 font-mono font-bold">
+                    <div className="text-[10px] uppercase tracking-widest text-emerald-400/80  font-bold">
                       {isArabic ? 'اللغات' : 'LOCALES'}
                     </div>
                     <div className="text-zinc-100 font-bold text-xl">AR/EN</div>
@@ -91,7 +91,7 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
       {/* Visualizing the Path */}
       <section className="py-12 bg-zinc-950 border-b border-white/10">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-[10px] font-mono text-zinc-500 mb-8 uppercase tracking-widest"></p>
+          <p className="text-[10px]  text-zinc-500 mb-8 uppercase tracking-widest"></p>
           {/* Diagram Trigger: 
                  This diagram helps users visualize the sequence of courses, from basics to advanced compliance.
              */}
@@ -112,7 +112,7 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
 
           <AnimatedSection className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
-              <span className="text-emerald-400 font-mono text-[10px] font-bold uppercase tracking-widest mb-3 block">
+              <span className="text-emerald-400  text-[10px] font-bold uppercase tracking-widest mb-3 block">
                 {isArabic ? '// المميزات' : '// CAPABILITIES'}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
@@ -131,7 +131,7 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
                   <div className="p-2 bg-zinc-900 rounded-xl text-emerald-400 ring-1 ring-white/10 group-hover:ring-emerald-500/50 transition-colors">
                     <FiCpu className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold font-mono uppercase tracking-wide text-zinc-100 group-hover:text-white">
+                  <h3 className="text-lg font-bold  uppercase tracking-wide text-zinc-100 group-hover:text-white">
                     {isArabic ? 'محتوى تطبيقي' : 'PRACTICAL_LABS'}
                   </h3>
                 </div>
@@ -150,7 +150,7 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
                   <div className="p-2 bg-zinc-900 rounded-xl text-emerald-400 ring-1 ring-white/10 group-hover:ring-emerald-500/50 transition-colors">
                     <FiUserCheck className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold font-mono uppercase tracking-wide text-zinc-100 group-hover:text-white">
+                  <h3 className="text-lg font-bold  uppercase tracking-wide text-zinc-100 group-hover:text-white">
                     {isArabic ? 'خبراء القطاع' : 'SENIOR_ENGINEERS'}
                   </h3>
                 </div>
@@ -169,7 +169,7 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
                   <div className="p-2 bg-zinc-900 rounded-xl text-emerald-400 ring-1 ring-white/10 group-hover:ring-emerald-500/50 transition-colors">
                     <FiGlobe className="w-5 h-5" />
                   </div>
-                  <h3 className="text-lg font-bold font-mono uppercase tracking-wide text-zinc-100 group-hover:text-white">
+                  <h3 className="text-lg font-bold  uppercase tracking-wide text-zinc-100 group-hover:text-white">
                     {isArabic ? 'ثنائي اللغة' : 'DUAL_LOCALE'}
                   </h3>
                 </div>
@@ -191,7 +191,7 @@ export default function CoursesPage({ params }: { params: { locale: string } }) 
           <div className="bg-zinc-800/40 rounded-2xl p-10 md:p-16 text-center text-white relative overflow-hidden border border-white/10 shadow-[0_0_50px_-20px_rgba(16,185,129,0.2)]">
 
             {/* Background Code Pattern */}
-            <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none font-mono text-[10px] leading-3 overflow-hidden text-left p-4">
+            <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none  text-[10px] leading-3 overflow-hidden text-left p-4">
               {Array(30).fill('1010100110101110100101010').join(' ')}
             </div>
             

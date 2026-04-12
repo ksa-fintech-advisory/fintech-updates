@@ -150,7 +150,7 @@ export function AboutProjectsGraph({
                   <text
                     textAnchor="middle"
                     dominantBaseline="middle"
-                    className="fill-emerald-200/90 font-mono text-[11px] font-bold tracking-widest"
+                    className="fill-emerald-200/90  text-[11px] font-bold tracking-widest"
                     style={{ opacity: dim ? 0.4 : 1 }}
                   >
                     {n.short}

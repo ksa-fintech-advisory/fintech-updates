@@ -24,7 +24,7 @@ export default async function LatestUpdates({ locale }: { locale: string }) {
         {/* Header: Changelog Style */}
         <AnimatedSection className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
-            <span className="text-primary-600 dark:text-primary-400 font-mono text-xs font-bold uppercase tracking-widest mb-3 block">
+            <span className="text-primary-600 dark:text-primary-400  text-xs font-bold uppercase tracking-widest mb-3 block">
               {isArabic ? '// سجل_التغييرات' : '// SYSTEM_CHANGELOG'}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white tracking-tight">
@@ -33,7 +33,7 @@ export default async function LatestUpdates({ locale }: { locale: string }) {
           </div>
 
           <div className="hidden md:block">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs font-mono font-bold border border-green-200 dark:border-green-800">
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 text-xs  font-bold border border-green-200 dark:border-green-800">
               <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
               {isArabic ? 'الأنظمة تعمل: v2.4.0' : 'SYSTEM OPERATIONAL: v2.4.0'}
             </span>
@@ -49,13 +49,13 @@ export default async function LatestUpdates({ locale }: { locale: string }) {
 
                   {/* 1. Date Column (Desktop) - Monospace Date */}
                   <div className="hidden md:flex flex-col items-end w-32 pt-1 flex-shrink-0 text-right">
-                    <span className="font-mono text-sm font-bold text-zinc-900 dark:text-zinc-100">
+                    <span className=" text-sm font-bold text-zinc-900 dark:text-zinc-100">
                       {new Date(update.date).toLocaleDateString(isArabic ? 'en-US' : 'en-US', { // Force English numbers for date in Mono
                         month: 'short',
                         day: '2-digit',
                       })}
                     </span>
-                    <span className="font-mono text-xs text-zinc-400">
+                    <span className=" text-xs text-zinc-400">
                       {new Date(update.date).getFullYear()}
                     </span>
                   </div>
@@ -77,7 +77,7 @@ export default async function LatestUpdates({ locale }: { locale: string }) {
                       <article className="p-6 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl hover:border-zinc-400 dark:hover:border-zinc-600 transition-all duration-300 relative overflow-hidden">
 
                         {/* Mobile Date (Visible only on mobile) */}
-                        <div className="md:hidden flex items-center gap-2 text-xs font-mono text-zinc-400 mb-3">
+                        <div className="md:hidden flex items-center gap-2 text-xs  text-zinc-400 mb-3">
                           <FiClock className="w-3.5 h-3.5" />
                           {new Date(update.date).toLocaleDateString(isArabic ? 'ar-SA' : 'en-US')}
                         </div>
@@ -86,7 +86,7 @@ export default async function LatestUpdates({ locale }: { locale: string }) {
                           <div>
                             {/* Category Tag (e.g. SAMA, FEATURE) */}
                             <div className="flex items-center gap-2 mb-2">
-                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wide bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px]  font-bold uppercase tracking-wide bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400">
                                 <FiTag className="w-3 h-3" />
                                 {/* Mock category if not in data, or use update.type */}
                                 {update.type || (isArabic ? 'تحديث' : 'UPDATE')}

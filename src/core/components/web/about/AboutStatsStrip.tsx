@@ -29,7 +29,7 @@ export function AboutStatsStrip({ title, isArabic, rows }: Props) {
                       <Icon className="h-4 w-4" aria-hidden />
                     </div>
                     <div>
-                      <p className="mb-1 font-mono text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-500">
+                      <p className="mb-1  text-[10px] font-bold uppercase tracking-widest text-zinc-500 dark:text-zinc-500">
                         {row.label}
                       </p>
                       <p className="text-sm font-medium leading-relaxed text-zinc-900 dark:text-zinc-100">

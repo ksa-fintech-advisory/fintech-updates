@@ -36,7 +36,7 @@ function RiskBadge({ level, locale }: { level: RiskLevel; locale: string }) {
   };
 
   return (
-    <span className={`px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider rounded border ${styles[level]}`}>
+    <span className={`px-2 py-0.5 text-[10px]  font-bold uppercase tracking-wider rounded border ${styles[level]}`}>
       {labels[level][locale as 'en' | 'ar']}
     </span>
   );
@@ -48,7 +48,7 @@ function EnforcementBadge({ rule, locale }: { rule: ComplianceRule; locale: stri
 
   return (
     <span className={`
-      px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-wider rounded border
+      px-2 py-0.5 text-[10px]  font-bold uppercase tracking-wider rounded border
       ${mandatory
         ? 'bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-800'
         : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700'
@@ -78,10 +78,10 @@ function DashboardStats({ locale }: { locale: string }) {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-zinc-200 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden mb-8">
       {statItems.map((item, idx) => (
         <div key={idx} className="bg-white dark:bg-zinc-900 p-4 hover:bg-zinc-50 dark:hover:bg-zinc-900/50 transition-colors">
-          <div className="text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest mb-1">
+          <div className="text-[10px]  font-bold text-zinc-400 uppercase tracking-widest mb-1">
             {item.label}
           </div>
-          <div className={`text-2xl font-black font-mono ${item.color}`}>
+          <div className={`text-2xl font-black  ${item.color}`}>
             {item.value}
           </div>
         </div>
@@ -109,14 +109,14 @@ function ModuleSelector({
 
   return (
     <div className="mb-8">
-      <h3 className="text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+      <h3 className="text-xs  font-bold text-zinc-500 uppercase tracking-widest mb-4 flex items-center gap-2">
         <FiFolder /> {isArabic ? 'وحدات_النظام' : 'COMPLIANCE_MODULES'}
       </h3>
       <div className="flex flex-wrap gap-2">
         <button
           onClick={() => onSelectModule(null)}
           className={`
-            rounded-button border px-3 py-2 font-mono text-xs font-bold uppercase tracking-wide transition-all
+            rounded-button border px-3 py-2  text-xs font-bold uppercase tracking-wide transition-all
             ${!selectedModule
               ? 'bg-zinc-900 dark:bg-white text-white dark:text-black border-zinc-900 dark:border-white'
               : 'bg-white dark:bg-zinc-900 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300'
@@ -138,7 +138,7 @@ function ModuleSelector({
             `}
           >
             {module.moduleLabel[locale as 'en' | 'ar']}
-            <span className="bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-[9px] font-mono text-zinc-500">
+            <span className="bg-zinc-100 dark:bg-zinc-800 px-1.5 py-0.5 rounded text-[9px]  text-zinc-500">
               {module.ruleCount}
             </span>
           </button>
@@ -174,11 +174,11 @@ function RuleRow({
 
       {/* ID & Meta */}
       <div className="min-w-[140px] shrink-0">
-        <div className="text-xs font-mono font-bold text-zinc-900 dark:text-zinc-200 flex items-center gap-2">
+        <div className="text-xs  font-bold text-zinc-900 dark:text-zinc-200 flex items-center gap-2">
           <FiHash className="text-zinc-400" />
           {rule.rule_id}
         </div>
-        <div className="text-[10px] text-zinc-400 mt-1 uppercase tracking-wider font-mono">
+        <div className="text-[10px] text-zinc-400 mt-1 uppercase tracking-wider ">
           {rule.article_reference[locale as 'en' | 'ar']}
         </div>
       </div>
@@ -228,7 +228,7 @@ function RuleInspector({
         <div className="sticky top-0 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md border-b border-zinc-200 dark:border-zinc-800 p-6 flex justify-between items-start z-10">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <span className="text-xs font-mono font-bold text-zinc-400">{rule.rule_id}</span>
+              <span className="text-xs  font-bold text-zinc-400">{rule.rule_id}</span>
               <RiskBadge level={riskLevel} locale={locale} />
               <EnforcementBadge rule={rule} locale={locale} />
             </div>
@@ -246,7 +246,7 @@ function RuleInspector({
 
           {/* Main Description */}
           <div className="bg-zinc-50 dark:bg-zinc-900 p-6 rounded-lg border border-zinc-100 dark:border-zinc-800">
-            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500 mb-3">
+            <h3 className="text-xs  font-bold uppercase tracking-widest text-zinc-500 mb-3">
               {isArabic ? 'نص القاعدة' : 'RULE_DESCRIPTION'}
             </h3>
             <p className="text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">
@@ -283,7 +283,7 @@ function RuleInspector({
 
           {/* Evidence Checklist */}
           <div>
-            <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-zinc-500 mb-4 flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-2">
+            <h3 className="text-xs  font-bold uppercase tracking-widest text-zinc-500 mb-4 flex items-center gap-2 border-b border-zinc-100 dark:border-zinc-800 pb-2">
               <FiFolder /> {isArabic ? 'المستندات_والأدلة' : 'REQUIRED_EVIDENCE'}
             </h3>
             <ul className="space-y-3">
@@ -298,7 +298,7 @@ function RuleInspector({
 
           {/* Penalty */}
           <div className="mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-800">
-            <div className="flex items-center gap-2 text-xs font-mono text-red-500 uppercase tracking-widest mb-1">
+            <div className="flex items-center gap-2 text-xs  text-red-500 uppercase tracking-widest mb-1">
               <FiAlertTriangle /> {isArabic ? 'مرجع العقوبة' : 'PENALTY_REF'}
             </div>
             <p className="text-sm font-bold text-zinc-900 dark:text-white">
@@ -354,7 +354,7 @@ export default function ComplianceCheckerPage({ params: { locale } }: { params: 
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded border border-zinc-300 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
                 <FiShield className="w-4 h-4 text-emerald-500" />
-                <span className="text-xs font-mono font-bold uppercase tracking-widest">
+                <span className="text-xs  font-bold uppercase tracking-widest">
                   {isArabic ? 'نظام_الامتثال_الآلي' : 'COMPLIANCE_ENGINE_V2'}
                 </span>
               </div>
@@ -401,13 +401,13 @@ export default function ComplianceCheckerPage({ params: { locale } }: { params: 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={isArabic ? 'بحث في معرف القاعدة، النص، أو المادة...' : 'Query rule_id, content, or reference...'}
-              className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg py-3 pl-10 pr-4 rtl:pr-10 rtl:pl-4 text-sm font-mono text-zinc-900 dark:text-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all shadow-sm"
+              className="w-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg py-3 pl-10 pr-4 rtl:pr-10 rtl:pl-4 text-sm  text-zinc-900 dark:text-white focus:outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 transition-all shadow-sm"
             />
           </div>
 
           {/* Risk Filter */}
           <div className="flex items-center gap-2 overflow-x-auto pb-2 lg:pb-0">
-            <span className="text-xs font-mono font-bold text-zinc-400 uppercase whitespace-nowrap">
+            <span className="text-xs  font-bold text-zinc-400 uppercase whitespace-nowrap">
               {isArabic ? 'مستوى_الخطر:' : 'RISK_LEVEL:'}
             </span>
             {['High', 'Medium', 'Low'].map((level) => (
@@ -446,10 +446,10 @@ export default function ComplianceCheckerPage({ params: { locale } }: { params: 
 
               {/* List Header */}
               <div className="px-4 py-3 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 flex justify-between items-center">
-                <span className="text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest">
+                <span className="text-xs  font-bold text-zinc-500 uppercase tracking-widest">
                   {isArabic ? 'نتائج_البحث' : 'QUERY_RESULTS'}
                 </span>
-                <span className="text-xs font-mono font-bold text-zinc-400 bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded">
+                <span className="text-xs  font-bold text-zinc-400 bg-zinc-200 dark:bg-zinc-800 px-2 py-0.5 rounded">
                   {filteredRules.length}
                 </span>
               </div>
@@ -468,7 +468,7 @@ export default function ComplianceCheckerPage({ params: { locale } }: { params: 
                 ) : (
                   <div className="p-12 text-center text-zinc-400">
                     <FiFolder className="w-12 h-12 mx-auto mb-4 opacity-20" />
-                    <p className="font-mono text-sm">NO_DATA_FOUND</p>
+                      <p className=" text-sm">NO_DATA_FOUND</p>
                   </div>
                 )}
               </div>

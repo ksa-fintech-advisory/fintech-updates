@@ -98,7 +98,7 @@ export default async function BlogPage({
             <AnimatedSection direction="up">
               <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 rounded border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">
                 <FiBookOpen className="w-4 h-4" />
-                <span className="text-xs font-mono font-bold uppercase tracking-widest">
+                <span className="text-xs  font-bold uppercase tracking-widest">
                   {isArabic ? 'مركز المعرفة' : 'KNOWLEDGE_BASE'}
                 </span>
               </div>
@@ -132,7 +132,7 @@ export default async function BlogPage({
       <div className="border-b border-white/10 bg-zinc-900/80 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div
-            className="flex items-center gap-2 text-sm text-zinc-500 font-mono"
+            className="flex items-center gap-2 text-sm text-zinc-500 "
             dir={isArabic ? 'rtl' : 'ltr'}
           >
             <FiLayers className="w-4 h-4 shrink-0 text-emerald-400/70" aria-hidden />
@@ -171,7 +171,7 @@ export default async function BlogPage({
                 <h3 className="text-zinc-100 text-lg font-bold mb-2">
                   {isArabic ? 'لا توجد نتائج' : 'NO_DATA_FOUND'}
                 </h3>
-                <p className="text-zinc-500 font-mono text-sm">
+                <p className="text-zinc-500  text-sm">
                   {isArabic
                     ? 'لا توجد مقالات مطابقة للتصنيف أو البحث.'
                     : 'No posts match this category or search.'}

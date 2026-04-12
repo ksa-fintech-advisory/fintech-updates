@@ -33,7 +33,7 @@ export function AboutValuesGrid({ content, isArabic, principlesHeading}: Props) 
                     <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-zinc-100 text-zinc-600 transition-colors group-hover:bg-primary-50 group-hover:text-primary-600 dark:bg-zinc-800/50 dark:text-zinc-400 dark:group-hover:bg-primary-900/20 dark:group-hover:text-primary-400">
                       <ValueIcon className="h-5 w-5" aria-hidden />
                     </div>
-                    <span className="font-mono text-[10px] font-bold tabular-nums tracking-widest text-zinc-400 transition-colors group-hover:text-primary-500 dark:text-zinc-600 dark:group-hover:text-primary-400">
+                    <span className=" text-[10px] font-bold tabular-nums tracking-widest text-zinc-400 transition-colors group-hover:text-primary-500 dark:text-zinc-600 dark:group-hover:text-primary-400">
                       {String(idx + 1).padStart(2, '0')}
                     </span>
                   </div>

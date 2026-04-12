@@ -107,7 +107,7 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
       <section className="relative pt-28 pb-14 md:pt-32 md:pb-16 border-b border-zinc-200 dark:border-zinc-800 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm z-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
           <nav
-            className="flex items-center gap-2 text-xs font-mono text-zinc-500 mb-10"
+            className="flex items-center gap-2 text-xs  text-zinc-500 mb-10"
             aria-label={isArabic ? 'مسار التنقل' : 'Breadcrumb'}
           >
             <Link
@@ -154,14 +154,14 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
               >
                 {isArabic ? (
                   <>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 block mb-0.5">
+                    <span className=" text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 block mb-0.5">
                       تاريخ النشر
                     </span>
                     {publishedLabel}
                   </>
                 ) : (
                   <>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 block mb-0.5">
+                      <span className=" text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500 block mb-0.5">
                       Published
                     </span>
                     {publishedLabel}
@@ -187,7 +187,7 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
               prose-headings:font-bold prose-headings:tracking-tight 
               prose-a:text-primary-600 dark:prose-a:text-primary-400 
               prose-img:rounded-xl prose-img:border prose-img:border-zinc-200 dark:prose-img:border-zinc-800
-              prose-code:text-primary-600 dark:prose-code:text-primary-400 prose-code:bg-zinc-100 dark:prose-code:bg-zinc-900 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code:font-mono prose-code:before:content-none prose-code:after:content-none"
+              prose-code:text-primary-600 dark:prose-code:text-primary-400 prose-code:bg-zinc-100 dark:prose-code:bg-zinc-900 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-code: prose-code:before:content-none prose-code:after:content-none"
             >
               <BlogContentRenderer content={content} locale={locale} />
             </div>
@@ -202,7 +202,7 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
                 ) : (
                   <FiArrowLeft className="group-hover:-translate-x-1 transition-transform" aria-hidden />
                 )}
-                <span className="font-mono text-sm uppercase tracking-wide">
+                <span className=" text-sm uppercase tracking-wide">
                   {isArabic ? 'كل المقالات' : 'All articles'}
                 </span>
               </Link>

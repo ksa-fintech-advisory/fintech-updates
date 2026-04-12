@@ -36,7 +36,7 @@ export default function FeaturedCourses() {
           viewport={{ once: true }}
           className="mb-12 flex flex-col items-start"
         >
-          <span className="text-primary-600 dark:text-primary-400 font-mono text-xs font-bold uppercase tracking-widest mb-3 block">
+          <span className="text-primary-600 dark:text-primary-400  text-xs font-bold uppercase tracking-widest mb-3 block">
             {isArabic ? '// الدورة_المميزة' : '// FEATURED_COURSE'}
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white tracking-tight">
@@ -60,7 +60,7 @@ export default function FeaturedCourses() {
               {/* Badge: System Chip */}
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 w-fit mb-6">
                 <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-xs font-mono font-bold text-zinc-600 dark:text-zinc-300 uppercase tracking-wider">
+                <span className="text-xs  font-bold text-zinc-600 dark:text-zinc-300 uppercase tracking-wider">
                   {featuredCourse.badge[lang]}
                 </span>
               </div>
@@ -80,19 +80,19 @@ export default function FeaturedCourses() {
               {/* Data Grid: Price & Modules */}
               <div className="grid grid-cols-2 gap-6 mb-10 p-6 bg-zinc-50 dark:bg-black/20 rounded-lg border border-zinc-100 dark:border-zinc-800/50">
                 <div>
-                  <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1">
+                  <div className="text-xs  text-zinc-400 uppercase tracking-wider mb-1">
                     {isArabic ? 'عدد الوحدات' : 'MODULES'}
                   </div>
-                  <div className="text-2xl font-bold text-zinc-900 dark:text-white font-mono flex items-baseline gap-1">
+                  <div className="text-2xl font-bold text-zinc-900 dark:text-white  flex items-baseline gap-1">
                     {featuredCourse.modules}
                     <span className="text-sm font-normal text-zinc-500">.00</span>
                   </div>
                 </div>
                 <div>
-                  <div className="text-xs font-mono text-zinc-400 uppercase tracking-wider mb-1">
+                  <div className="text-xs  text-zinc-400 uppercase tracking-wider mb-1">
                     {isArabic ? 'الاستثمار' : 'INVESTMENT'}
                   </div>
-                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400 font-mono flex items-baseline gap-1">
+                  <div className="text-2xl font-bold text-primary-600 dark:text-primary-400  flex items-baseline gap-1">
                     {featuredCourse.price}
                     <span className="text-sm font-normal text-zinc-500">{featuredCourse.currency[lang]}</span>
                   </div>
@@ -138,7 +138,7 @@ export default function FeaturedCourses() {
 
               {/* Topics List: "Code Stack" Look */}
               <div className="relative z-10">
-                <div className="text-xs font-mono font-bold text-zinc-400 uppercase tracking-widest mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">
+                <div className="text-xs  font-bold text-zinc-400 uppercase tracking-widest mb-4 border-b border-zinc-200 dark:border-zinc-800 pb-2">
                   {isArabic ? 'التقنيات المستخدمة' : 'TECH_STACK'}
                 </div>
 
@@ -146,14 +146,14 @@ export default function FeaturedCourses() {
                   {featuredCourse.topics[lang].slice(0, 5).map((topic, index) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 text-sm text-zinc-600 dark:text-zinc-400 font-mono"
+                      className="flex items-center gap-3 text-sm text-zinc-600 dark:text-zinc-400 "
                     >
                       <FiCheck className="w-4 h-4 text-emerald-500" />
                       <span>{topic}</span>
                     </div>
                   ))}
                   {featuredCourse.topics[lang].length > 5 && (
-                    <div className="flex items-center gap-3 text-sm text-zinc-400 font-mono pl-7">
+                    <div className="flex items-center gap-3 text-sm text-zinc-400  pl-7">
                       <span>+ {featuredCourse.topics[lang].length - 5} more libraries...</span>
                     </div>
                   )}

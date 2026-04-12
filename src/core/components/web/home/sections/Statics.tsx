@@ -45,7 +45,7 @@ export default function StatisticsSection({ statistics }: { statistics: any[] })
 
                                 {/* Value: Monospace & Big */}
                                 <div className="relative">
-                                    <span className="text-4xl md:text-5xl font-bold font-mono text-zinc-900 dark:text-white tracking-tighter">
+                                    <span className="text-4xl md:text-5xl font-bold  text-zinc-900 dark:text-white tracking-tighter">
                                         {stat.value}
                                     </span>
                                     {/* Optional: Live Status Dot */}
@@ -56,7 +56,7 @@ export default function StatisticsSection({ statistics }: { statistics: any[] })
                                 </div>
 
                                 {/* Label: Technical Uppercase */}
-                                <div className="mt-2 text-xs font-bold text-zinc-500 uppercase tracking-[0.2em] font-mono group-hover:text-zinc-800 dark:group-hover:text-zinc-300 transition-colors">
+                                <div className="mt-2 text-xs font-bold text-zinc-500 uppercase tracking-[0.2em]  group-hover:text-zinc-800 dark:group-hover:text-zinc-300 transition-colors">
                                     {stat.label}
                                 </div>
 

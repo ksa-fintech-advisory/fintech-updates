@@ -51,7 +51,7 @@ export function AboutHero({
         >
           <AnimatedSection direction="up" delay={0.12} className="lg:col-span-7">
             <div className={`relative ${accentEdge} border-primary-600 dark:border-primary-400`}>
-              <span className="mb-4 block font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
+              <span className="mb-4 block  text-[11px] font-bold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
                 {heroBadge}
               </span>
               <h1 className="mb-6 text-balance text-3xl font-bold tracking-tight text-zinc-900 dark:text-white md:text-4xl lg:text-[2.65rem] lg:leading-[1.15]">
@@ -80,14 +80,14 @@ export function AboutHero({
             {tags.map(({ text, rotate, offset }) => (
               <div
                 key={text}
-                className={`absolute ${offset} max-w-[11rem] rounded-none border border-zinc-200/80 bg-white/95 px-4 py-3 font-mono text-[11px] font-bold uppercase tracking-wider text-zinc-800 shadow-sm backdrop-blur-md dark:border-zinc-700/80 dark:bg-zinc-900/95 dark:text-zinc-300 ${rotate}`}
+                className={`absolute ${offset} max-w-[11rem] rounded-none border border-zinc-200/80 bg-white/95 px-4 py-3  text-[11px] font-bold uppercase tracking-wider text-zinc-800 shadow-sm backdrop-blur-md dark:border-zinc-700/80 dark:bg-zinc-900/95 dark:text-zinc-300 ${rotate}`}
               >
                 <div className="absolute -start-1 -top-1 h-2 w-2 border-s border-t border-primary-500/50" />
                 <div className="absolute -end-1 -bottom-1 h-2 w-2 border-b border-e border-primary-500/50" />
                 {text}
               </div>
             ))}
-            <p className="absolute bottom-6 end-6 max-w-[10rem] text-end font-mono text-[9px] uppercase leading-tight tracking-widest text-primary-600/80 dark:text-primary-400/70">
+            <p className="absolute bottom-6 end-6 max-w-[10rem] text-end  text-[9px] uppercase leading-tight tracking-widest text-primary-600/80 dark:text-primary-400/70">
               {practiceLensesCaption}
             </p>
           </AnimatedSection>

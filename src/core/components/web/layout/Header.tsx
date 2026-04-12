@@ -146,7 +146,7 @@ export default function Header() {
             <div className="flex shrink-0 items-center gap-2 md:ml-2 md:gap-3 md:pl-4 md:border-l md:border-grey-200 md:dark:border-grey-800">
               <Link
                 href={`/${otherLocale}${currentPath}`}
-                className="hidden md:inline-flex items-center gap-2 rounded-button border border-grey-200 bg-grey-100 px-3 py-1.5 text-xs font-mono font-bold text-grey-600 transition-all hover:border-grey-400 dark:border-grey-800 dark:bg-grey-900 dark:text-grey-400 dark:hover:border-grey-600"
+                className="hidden md:inline-flex items-center gap-2 rounded-button border border-grey-200 bg-grey-100 px-3 py-1.5 text-xs  font-bold text-grey-600 transition-all hover:border-grey-400 dark:border-grey-800 dark:bg-grey-900 dark:text-grey-400 dark:hover:border-grey-600"
                 aria-label="Switch Language"
               >
                 <FiGlobe className="h-3.5 w-3.5 shrink-0" aria-hidden />
@@ -256,7 +256,7 @@ export default function Header() {
                                   onClick={() => setMobileMenuOpen(false)}
                                 >
                                   <div className="text-sm font-semibold text-grey-900 dark:text-grey-100">{course.title[lang]}</div>
-                                  <div className="mt-0.5 font-mono text-xs text-grey-500">{course.modules} Modules</div>
+                                  <div className="mt-0.5  text-xs text-grey-500">{course.modules} Modules</div>
                                 </Link>
                               ))}
                             <Link
@@ -291,7 +291,7 @@ export default function Header() {
                   className="glass-nav-inset mt-4 flex min-h-[48px] w-full items-center justify-center gap-2 rounded-2xl px-4 py-3 text-sm font-semibold text-grey-800 dark:text-grey-200"
                 >
                   <FiGlobe className="h-5 w-5 shrink-0 text-grey-500" aria-hidden />
-                  <span className="font-mono">{otherLocale.toUpperCase()}</span>
+                <span className="">{otherLocale.toUpperCase()}</span>
                   <span className="text-grey-500">{isArabic ? 'تبديل اللغة' : 'Language'}</span>
                 </Link>
               </nav>

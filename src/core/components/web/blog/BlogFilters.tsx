@@ -26,7 +26,7 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
   }, [qFromUrl]);
 
   const pillBase =
-    'group flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-mono font-bold uppercase tracking-wide border transition-all duration-200 whitespace-nowrap shrink-0';
+    'group flex items-center gap-2 px-3 py-1.5 rounded-md text-xs  font-bold uppercase tracking-wide border transition-all duration-200 whitespace-nowrap shrink-0';
 
   const handleSearchSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -53,7 +53,7 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-4">
 
-          <div className="hidden lg:flex items-center gap-2 text-xs font-mono font-bold text-zinc-500 uppercase tracking-widest pl-2 border-l border-white/10 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-2 shrink-0">
+          <div className="hidden lg:flex items-center gap-2 text-xs  font-bold text-zinc-500 uppercase tracking-widest pl-2 border-l border-white/10 rtl:border-l-0 rtl:border-r rtl:pl-0 rtl:pr-2 shrink-0">
             <FiFilter className="w-3.5 h-3.5" />
             <span>{isArabic ? 'تصفية' : 'FILTER'}</span>
           </div>
@@ -119,7 +119,7 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
             </div>
             <button
               type="submit"
-              className="h-10 shrink-0 rounded-xl border border-white/10 bg-white/5 px-3 font-mono text-xs font-bold uppercase tracking-wide text-zinc-300 transition-colors hover:bg-emerald-500 hover:text-zinc-950 hover:border-emerald-400"
+              className="h-10 shrink-0 rounded-xl border border-white/10 bg-white/5 px-3  text-xs font-bold uppercase tracking-wide text-zinc-300 transition-colors hover:bg-emerald-500 hover:text-zinc-950 hover:border-emerald-400"
             >
               {isArabic ? 'بحث' : 'GO'}
             </button>
@@ -127,7 +127,7 @@ export function BlogFilters({ categories, isArabic }: BlogFiltersProps) {
               <button
                 type="button"
                 onClick={clearSearch}
-                className="h-10 px-2 text-xs font-mono text-zinc-500 hover:text-zinc-300 shrink-0"
+                className="h-10 px-2 text-xs  text-zinc-500 hover:text-zinc-300 shrink-0"
               >
                 {isArabic ? 'مسح' : 'CLR'}
               </button>

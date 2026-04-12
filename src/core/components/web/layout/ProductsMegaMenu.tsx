@@ -72,7 +72,7 @@ export default function ProductsMegaMenu({ closeMenu }: { closeMenu?: () => void
             <h2 className="text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-wider">
               {isArabic ? 'منصة المنتجات' : 'PRODUCT_SUITE_V1'}
             </h2>
-            <p className="text-[10px] text-zinc-500 font-mono">
+            <p className="text-[10px] text-zinc-500 ">
               {isArabic ? 'أدوات التشغيل والامتثال' : 'OPERATIONAL & COMPLIANCE TOOLS'}
             </p>
           </div>
@@ -129,7 +129,7 @@ export default function ProductsMegaMenu({ closeMenu }: { closeMenu?: () => void
               <div>
                 <h4 className="text-sm font-bold text-zinc-900 dark:text-white flex items-center gap-2">
                   {isArabic ? 'بوابة المطورين' : 'Developer Hub'}
-                  <span className="text-[10px] bg-zinc-200 dark:bg-zinc-800 text-zinc-500 px-1.5 py-0.5 rounded border border-zinc-300 dark:border-zinc-700 font-mono">API v2</span>
+                  <span className="text-[10px] bg-zinc-200 dark:bg-zinc-800 text-zinc-500 px-1.5 py-0.5 rounded border border-zinc-300 dark:border-zinc-700 ">API v2</span>
                 </h4>
                 <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
                   {isArabic ? 'وثائق الربط، البيئة التجريبية (Sandbox)، والمكتبات.' : 'Integration docs, Sandbox keys & SDKs.'}

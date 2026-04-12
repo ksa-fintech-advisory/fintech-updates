@@ -88,7 +88,7 @@ export default function DocsPage({ params: { locale } }: { params: { locale: str
                             <FiCode className="w-5 h-5" />
                         </div>
                         <span className="font-bold text-lg tracking-tight">DevHub</span>
-                        <span className="px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-xs font-mono text-zinc-500 border border-zinc-200 dark:border-zinc-700">v2.1.0</span>
+                        <span className="px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-xs  text-zinc-500 border border-zinc-200 dark:border-zinc-700">v2.1.0</span>
                     </div>
                     <div className="flex items-center gap-4 text-sm font-medium text-zinc-500">
                         <Link href={`/${locale}/products`} className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
@@ -191,7 +191,7 @@ export default function DocsPage({ params: { locale } }: { params: { locale: str
                                 </button>
                             </div>
                             <div className="p-6 overflow-x-auto">
-                                <pre className="font-mono text-sm text-zinc-300">
+                                <pre className=" text-sm text-zinc-300">
                                     <code>{CODE_SNIPPETS.auth[codeLang]}</code>
                                 </pre>
                             </div>
@@ -212,13 +212,13 @@ export default function DocsPage({ params: { locale } }: { params: { locale: str
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <div className="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50">
                                 <div className="text-xs font-bold text-zinc-500 uppercase mb-2">Endpoint</div>
-                                <div className="font-mono text-sm text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded w-fit">
+                                <div className=" text-sm text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 px-2 py-1 rounded w-fit">
                                     POST /v1/compliance/check
                                 </div>
                             </div>
                             <div className="p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/50">
                                 <div className="text-xs font-bold text-zinc-500 uppercase mb-2">Rate Limit</div>
-                                <div className="font-mono text-sm text-zinc-900 dark:text-white">
+                                <div className=" text-sm text-zinc-900 dark:text-white">
                                     100 req / minute
                                 </div>
                             </div>
@@ -226,13 +226,13 @@ export default function DocsPage({ params: { locale } }: { params: { locale: str
 
                         <div className="rounded-2xl bg-[#0d1117] border border-zinc-800 overflow-hidden shadow-2xl">
                             <div className="flex items-center justify-between px-4 py-3 bg-zinc-900/50 border-b border-zinc-800">
-                                <span className="text-xs font-mono text-zinc-500">Example Request</span>
+                                <span className="text-xs  text-zinc-500">Example Request</span>
                                 <button onClick={() => handleCopy(CODE_SNIPPETS.compliance[codeLang])} className="text-zinc-400 hover:text-white">
                                     {copied ? <FiCheck className="text-emerald-500" /> : <FiCopy />}
                                 </button>
                             </div>
                             <div className="p-6 overflow-x-auto">
-                                <pre className="font-mono text-sm text-zinc-300">
+                                <pre className=" text-sm text-zinc-300">
                                     <code>{CODE_SNIPPETS.compliance[codeLang]}</code>
                                 </pre>
                             </div>

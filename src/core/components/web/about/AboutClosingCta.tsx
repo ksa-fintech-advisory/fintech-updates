@@ -17,7 +17,7 @@ export function AboutClosingCta({ locale, isArabic, title, subtitle, buttonLabel
         <AnimatedSection className="relative mx-auto max-w-5xl overflow-hidden border-y border-zinc-200/80 bg-zinc-50/50 p-10 text-center dark:border-zinc-800/80 dark:bg-zinc-900/30 sm:p-14 md:p-20">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_-20%,rgba(0,0,0,0.03),transparent_55%)] dark:bg-[radial-gradient(ellipse_60%_60%_at_50%_-20%,rgba(255,255,255,0.04),transparent_55%)]" />
           {/* Subtle binary background */}
-          <div className="pointer-events-none absolute inset-0 overflow-hidden p-4 text-start font-mono text-[10px] leading-3 text-zinc-900 opacity-[0.02] dark:text-white dark:opacity-[0.03]">
+          <div className="pointer-events-none absolute inset-0 overflow-hidden p-4 text-start  text-[10px] leading-3 text-zinc-900 opacity-[0.02] dark:text-white dark:opacity-[0.03]">
             {Array(20).fill('010101011010010101110101010').join(' ')}
           </div>
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-500/20 to-transparent dark:via-primary-400/20" />
