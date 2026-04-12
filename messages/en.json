@@ -370,6 +370,49 @@
         "required": "*"
       }
     },
+    "questionnaire": {
+      "metaTitle": "Project Questionnaire",
+      "metaDescription": "Tell us about your project and the challenges you face.",
+      "title": "Project Questionnaire",
+      "subtitle": "Help us understand your project context.",
+      "description": "This questionnaire will help us discover the difficulties you face and how we can support your project effectively.",
+      "kicker": "// QUESTIONNAIRE",
+      "successTitle": "Successfully sent",
+      "errorTitle": "Could not send",
+      "formCardTitle": "Project details",
+      "formCardHint": "Please fill in the project information.",
+      "form": {
+        "name": "Name",
+        "namePlaceholder": "Your name",
+        "email": "Email",
+        "emailPlaceholder": "Your email address",
+        "region": "Region",
+        "regionPlaceholder": "Select a region",
+        "saudiArabia": "Saudi Arabia",
+        "uae": "UAE",
+        "bahrain": "Bahrain",
+        "kuwait": "Kuwait",
+        "jordan": "Jordan",
+        "otherRegion": "Please specify region",
+        "otherRegionPlaceholder": "Enter your region",
+        "projectType": "Project Type",
+        "projectTypePlaceholder": "Select the type of project",
+        "payments": "Payments",
+        "openBanking": "Open Banking Apps",
+        "wealthManagement": "Wealth Management",
+        "crypto": "Crypto",
+        "other": "Other",
+        "otherProjectType": "Please specify",
+        "otherProjectTypePlaceholder": "Enter the project type",
+        "difficulties": "Difficulties",
+        "difficultiesPlaceholder": "Describe the difficulties you face...",
+        "submit": "Submit",
+        "sending": "Submitting...",
+        "success": "Your responses have been recorded.",
+        "error": "Something went wrong. Please try again.",
+        "required": "*"
+      }
+    },
     "article": {
       "relatedArticles": "Related Articles"
     }

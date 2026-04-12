@@ -368,6 +368,49 @@
         "required": "*"
       }
     },
+    "questionnaire": {
+      "metaTitle": "استبيان المشروع",
+      "metaDescription": "أخبرنا عن مشروعك والتحديات التي تواجهها.",
+      "title": "استبيان المشروع",
+      "subtitle": "ساعدنا في فهم سياق مشروعك.",
+      "description": "هذا الاستبيان سيساعدنا على فهم الصعوبات التي تواجهها وكيف يمكننا دعم مشروعك بفعالية.",
+      "kicker": "// استبيان",
+      "successTitle": "تم الإرسال بنجاح",
+      "errorTitle": "تعذّر الإرسال",
+      "formCardTitle": "تفاصيل المشروع",
+      "formCardHint": "يرجى تعبئة معلومات المشروع.",
+      "form": {
+        "name": "الاسم",
+        "namePlaceholder": "اسمك",
+        "email": "البريد الإلكتروني",
+        "emailPlaceholder": "بريدك الإلكتروني",
+        "region": "المنطقة",
+        "regionPlaceholder": "اختر المنطقة",
+        "saudiArabia": "السعودية",
+        "uae": "الإمارات",
+        "bahrain": "البحرين",
+        "kuwait": "الكويت",
+        "jordan": "الأردن",
+        "otherRegion": "يرجى تحديد المنطقة",
+        "otherRegionPlaceholder": "أدخل منطقتك",
+        "projectType": "نوع المشروع",
+        "projectTypePlaceholder": "اختر نوع المشروع",
+        "payments": "مدفوعات (Payments)",
+        "openBanking": "تطبيقات المصرفية المفتوحة (Open Banking)",
+        "wealthManagement": "إدارة الثروات (Wealth Management)",
+        "crypto": "عملات رقمية (Crypto)",
+        "other": "أخرى (Other)",
+        "otherProjectType": "يرجى التحديد",
+        "otherProjectTypePlaceholder": "أدخل نوع المشروع",
+        "difficulties": "الصعوبات",
+        "difficultiesPlaceholder": "صف الصعوبات التي تواجهها...",
+        "submit": "إرسال",
+        "sending": "جاري الإرسال...",
+        "success": "تم تسجيل ردودك بنجاح.",
+        "error": "حدث خطأ. يرجى المحاولة مرة أخرى.",
+        "required": "*"
+      }
+    },
     "article": {
       "relatedArticles": "مقالات ذات صلة"
     }

@@ -1,30 +1,31 @@
 'use client';
 
 import { useState } from 'react';
-import { rateApiService } from '@/services/api/rateApi';
-import type { RateFormData } from '@/core/types/web/rate';
+import { questionnaireApiService } from '@/services/api/questionnaireApi';
+import type { QuestionnaireFormData } from '@/core/types/web/questionnaire';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   FiSend,
   FiCheckCircle,
   FiAlertCircle,
   FiMessageSquare,
-  FiShield,
 } from 'react-icons/fi';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
 
-export default function RatePage() {
+export default function QuestionnairePage() {
   const locale = useLocale();
   const isArabic = locale === 'ar';
-  const t = useTranslations('web.rate');
-  const tf = useTranslations('web.rate.form');
+  const t = useTranslations('web.questionnaire');
+  const tf = useTranslations('web.questionnaire.form');
 
-  const [formData, setFormData] = useState<RateFormData>({
+  const [formData, setFormData] = useState<QuestionnaireFormData>({
     name: '',
-    role: '',
-    serviceType: 'technical_consulting',
-    description: '',
-    agreeToShare: false,
+    email: '',
+    region: 'saudi_arabia',
+    otherRegion: '',
+    projectType: 'payments',
+    otherProjectType: '',
+    difficulties: '',
   });
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
@@ -35,14 +36,14 @@ export default function RatePage() {
     setResult(null);
 
     try {
-      const response = await rateApiService.submitRateForm(formData);
+      const response = await questionnaireApiService.submitQuestionnaireForm(formData);
       setResult({
         success: response.success,
         message: locale === 'ar' ? response.message.ar : response.message.en,
       });
 
       if (response.success) {
-        setFormData({ name: '', role: '', serviceType: 'technical_consulting', description: '', agreeToShare: false });
+        setFormData({ name: '', email: '', region: 'saudi_arabia', otherRegion: '', projectType: 'payments', otherProjectType: '', difficulties: '' });
       }
     } catch {
       setResult({
@@ -75,6 +76,9 @@ export default function RatePage() {
               </h1>
               <p className="text-base text-zinc-400">
                 {t('subtitle')}
+              </p>
+              <p className="mt-2 text-sm text-zinc-500 max-w-2xl mx-auto leading-relaxed">
+                {t('description')}
               </p>
             </div>
           </AnimatedSection>
@@ -114,35 +118,41 @@ export default function RatePage() {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="role" className="block text-sm font-medium text-zinc-300">
-                      {tf('role')} <span className="text-red-500">{tf('required')}</span>
+                    <label htmlFor="email" className="block text-sm font-medium text-zinc-300">
+                      {tf('email')} <span className="text-red-500">{tf('required')}</span>
                     </label>
                     <input
-                      type="text"
-                      id="role"
+                      type="email"
+                      id="email"
                       required
-                      value={formData.role}
-                      onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                      autoComplete="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className={fieldClass}
-                      placeholder={tf('rolePlaceholder')}
+                      placeholder={tf('emailPlaceholder')}
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="serviceType" className="block text-sm font-medium text-zinc-300">
-                      {tf('serviceType')} <span className="text-red-500">{tf('required')}</span>
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <label htmlFor="region" className="block text-sm font-medium text-zinc-300">
+                      {tf('region')} <span className="text-red-500">{tf('required')}</span>
                     </label>
                     <div className="relative">
                       <select
-                        id="serviceType"
+                        id="region"
                         required
-                        value={formData.serviceType}
-                        onChange={(e) => setFormData({ ...formData, serviceType: e.target.value as 'technical_consulting' | 'mentoring_enablement' })}
+                        value={formData.region}
+                        onChange={(e) => setFormData({ ...formData, region: e.target.value as QuestionnaireFormData['region'] })}
                         className={`${fieldClass} appearance-none pr-10`}
                       >
-                        <option value="technical_consulting">{tf('technicalConsulting')}</option>
-                        <option value="mentoring_enablement">{tf('mentoringEnablement')}</option>
+                        <option value="saudi_arabia">{tf('saudiArabia')}</option>
+                        <option value="uae">{tf('uae')}</option>
+                        <option value="bahrain">{tf('bahrain')}</option>
+                        <option value="kuwait">{tf('kuwait')}</option>
+                        <option value="jordan">{tf('jordan')}</option>
+                        <option value="other">{tf('other')}</option>
                       </select>
                       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-zinc-400">
                         <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -152,34 +162,84 @@ export default function RatePage() {
                     </div>
                   </div>
 
-                <div className="space-y-2">
-                  <label htmlFor="description" className="block text-sm font-medium text-zinc-300">
-                    {tf('description')} <span className="text-red-500">{tf('required')}</span>
-                  </label>
-                  <textarea
-                    id="description"
-                    required
-                    rows={5}
-                    value={formData.description}
-                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                    className={`${fieldClass} min-h-[140px] resize-y`}
-                    placeholder={tf('descriptionPlaceholder')}
-                  />
+                  <div className="space-y-2">
+                    <label htmlFor="projectType" className="block text-sm font-medium text-zinc-300">
+                      {tf('projectType')} <span className="text-red-500">{tf('required')}</span>
+                    </label>
+                    <div className="relative">
+                      <select
+                        id="projectType"
+                        required
+                        value={formData.projectType}
+                        onChange={(e) => setFormData({ ...formData, projectType: e.target.value as QuestionnaireFormData['projectType'] })}
+                        className={`${fieldClass} appearance-none pr-10`}
+                      >
+                        <option value="payments">{tf('payments')}</option>
+                        <option value="open_banking">{tf('openBanking')}</option>
+                        <option value="wealth_management">{tf('wealthManagement')}</option>
+                        <option value="crypto">{tf('crypto')}</option>
+                        <option value="other">{tf('other')}</option>
+                      </select>
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-zinc-400">
+                        <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="flex items-center gap-3 bg-zinc-900/50 p-4 rounded-xl border border-white/5">
-                  <div className="flex items-center h-5">
-                    <input
-                      id="agreeToShare"
-                      type="checkbox"
-                      checked={formData.agreeToShare}
-                      onChange={(e) => setFormData({ ...formData, agreeToShare: e.target.checked })}
-                      className="w-5 h-5 rounded border-white/20 bg-zinc-800 text-emerald-500 focus:ring-emerald-500/30 focus:ring-offset-zinc-950 transition-colors"
-                    />
-                  </div>
-                  <label htmlFor="agreeToShare" className="text-sm text-zinc-300 leading-relaxed cursor-pointer select-none">
-                    {tf('agreeToShare')}
+                {formData.region === 'other' && (
+                  <AnimatedSection  delay={0.1}>
+                    <div className="space-y-2">
+                      <label htmlFor="otherRegion" className="block text-sm font-medium text-zinc-300">
+                        {tf('otherRegion')} <span className="text-red-500">{tf('required')}</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="otherRegion"
+                        required
+                        value={formData.otherRegion}
+                        onChange={(e) => setFormData({ ...formData, otherRegion: e.target.value })}
+                        className={fieldClass}
+                        placeholder={tf('otherRegionPlaceholder')}
+                      />
+                    </div>
+                  </AnimatedSection>
+                )}
+
+                {formData.projectType === 'other' && (
+                  <AnimatedSection delay={0.1}>
+                    <div className="space-y-2">
+                      <label htmlFor="otherProjectType" className="block text-sm font-medium text-zinc-300">
+                        {tf('otherProjectType')} <span className="text-red-500">{tf('required')}</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="otherProjectType"
+                        required
+                        value={formData.otherProjectType}
+                        onChange={(e) => setFormData({ ...formData, otherProjectType: e.target.value })}
+                        className={fieldClass}
+                        placeholder={tf('otherProjectTypePlaceholder')}
+                      />
+                    </div>
+                  </AnimatedSection>
+                )}
+
+                <div className="space-y-2">
+                  <label htmlFor="difficulties" className="block text-sm font-medium text-zinc-300">
+                    {tf('difficulties')} <span className="text-red-500">{tf('required')}</span>
                   </label>
+                  <textarea
+                    id="difficulties"
+                    required
+                    rows={6}
+                    value={formData.difficulties}
+                    onChange={(e) => setFormData({ ...formData, difficulties: e.target.value })}
+                    className={`${fieldClass} min-h-[160px] resize-y`}
+                    placeholder={tf('difficultiesPlaceholder')}
+                  />
                 </div>
 
                 {/* Result notification */}
