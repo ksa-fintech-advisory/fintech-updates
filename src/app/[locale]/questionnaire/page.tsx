@@ -147,6 +147,13 @@ export default function QuestionnairePage() {
                           { value: 'bahrain', label: tf('bahrain') },
                           { value: 'kuwait', label: tf('kuwait') },
                           { value: 'jordan', label: tf('jordan') },
+                          { value: 'egypt', label: tf('egypt') },
+                          { value: 'oman', label: tf('oman') },
+                          { value: 'qatar', label: tf('qatar') },
+                          { value: 'yemen', label: tf('yemen') },
+                          { value: 'lebanon', label: tf('lebanon') },
+                          { value: 'syria', label: tf('syria') },
+                          { value: 'iraq', label: tf('iraq') },
                           { value: 'other', label: tf('other') }
                         ]}
                         onChange={(val) => setFormData({ ...formData, region: val as QuestionnaireFormData['region'] })}
