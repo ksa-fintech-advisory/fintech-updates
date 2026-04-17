@@ -56,13 +56,13 @@ export async function POST(request: Request): Promise<NextResponse<Questionnaire
     });
   }
 
-  const validRegions = ['saudi_arabia', 'uae', 'bahrain', 'kuwait', 'jordan', 'other'];
-  if (!validRegions.includes(region)) {
-    return badRequest({
-      en: 'Invalid region.',
-      ar: 'المنطقة غير صالحة.',
-    });
-  }
+  // const validRegions = ['saudi_arabia', 'uae', 'bahrain', 'kuwait', 'jordan', 'lebanon', 'syria', 'iraq', 'qatar', 'oman','egypt', 'yemen','other'];
+  // if (!validRegions.includes(region)) {
+  //   return badRequest({
+  //     en: 'Invalid region.',
+  //     ar: 'المنطقة غير صالحة.',
+  //   });
+  // }
 
   if (region === 'other' && !otherRegion) {
     return badRequest({
