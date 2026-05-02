@@ -2,23 +2,15 @@
 
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { useMemo } from 'react';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
-import { fintechLearnerPhases } from '@/services/api/data/fintechRoadmap.data';
-import { FiArrowLeft, FiArrowRight, FiLayers } from 'react-icons/fi';
+import { FiArrowLeft, FiArrowRight, FiMap, FiBookOpen, FiLayers, FiCheckCircle } from 'react-icons/fi';
+
+const HIGHLIGHT_ICONS = [FiBookOpen, FiLayers, FiCheckCircle] as const;
 
 export default function FintechRoadmapSection() {
   const t = useTranslations('web.home.roadmap');
   const locale = useLocale();
   const isArabic = locale === 'ar';
-
-  const { totalTopics, phaseCount } = useMemo(() => {
-    const list = fintechLearnerPhases;
-    return {
-      phaseCount: list.length,
-      totalTopics: list.reduce((n, p) => n + p.topics.length, 0),
-    };
-  }, []);
 
   const roadmapHref = `/${locale}/roadmap`;
   const ArrowIcon = isArabic ? FiArrowLeft : FiArrowRight;
@@ -28,38 +20,66 @@ export default function FintechRoadmapSection() {
       id="fintech-roadmap"
       className="relative overflow-hidden border-b border-white/10 bg-zinc-900 py-20 md:py-28"
     >
+      {/* Background grid */}
       <div
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:24px_24px]"
         aria-hidden
       />
-      <div className="pointer-events-none absolute right-0 top-1/2 h-[400px] w-[400px] -translate-y-1/2 translate-x-1/3 rounded-full bg-emerald-500/5 blur-[120px]" />
+      {/* Glow */}
+      <div className="pointer-events-none absolute right-0 top-1/2 h-[500px] w-[500px] -translate-y-1/2 translate-x-1/3 rounded-full bg-emerald-500/6 blur-[140px]" />
+      <div className="pointer-events-none absolute left-0 bottom-0 h-[300px] w-[300px] -translate-x-1/3 translate-y-1/4 rounded-full bg-emerald-500/4 blur-[100px]" />
 
       <div className="container relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <AnimatedSection>
-          <div className="flex flex-col items-stretch gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-14">
-            <div className="max-w-xl text-center lg:text-start">
-              <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
-                {t('title')}
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-zinc-400 md:text-base">
-                {t('intro')}
-              </p>
-            </div>
+          {/* Promotional banner card */}
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-zinc-800/60 via-zinc-900/80 to-zinc-950 p-8 shadow-[0_0_60px_-20px_rgba(16,185,129,0.12)] md:p-12">
+            {/* Decorative corner glow */}
+            <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-emerald-500/10 blur-[80px]" aria-hidden />
+            <div className="pointer-events-none absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-emerald-500/8 blur-[60px]" aria-hidden />
 
-            <div className="mx-auto w-full max-w-sm shrink-0 lg:mx-0 lg:max-w-xs">
-              <div className="relative rounded-2xl p-[1px] shadow-[0_0_30px_rgba(16,185,129,0.15)]">
-                <div
-                  className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/50 via-zinc-800/80 to-[#0a0a0b]"
-                  aria-hidden
-                />
-                <div className="relative flex flex-col gap-5 rounded-2xl bg-zinc-800/40 px-6 py-8 backdrop-blur-md">
-                  <div className="flex items-center justify-center gap-2  text-sm font-bold text-emerald-400 lg:justify-start">
-                    <FiLayers className="h-5 w-5 shrink-0" aria-hidden />
-                    <span>{t('statsLine', { phases: phaseCount, topics: totalTopics })}</span>
-                  </div>
+            <div className="relative flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
+              {/* Left — text content */}
+              <div className="flex-1 text-center lg:text-start">
+                {/* Badge */}
+                <span className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-[11px] font-bold text-amber-400">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber-400" />
+                  </span>
+                  {t('badge')}
+                </span>
+
+                {/* Title */}
+                <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
+                  {t('title')}
+                </h2>
+
+                {/* Subtitle */}
+                <p className="mt-3 text-sm leading-relaxed text-zinc-400 md:text-base">
+                  {t('intro')}
+                </p>
+
+                {/* Highlight points */}
+                <ul className="mt-6 flex flex-col gap-3 sm:gap-2.5">
+                  {([0, 1, 2] as const).map((i) => {
+                    const Icon = HIGHLIGHT_ICONS[i];
+                    return (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2.5 text-start text-sm text-zinc-300"
+                      >
+                        <Icon className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400" aria-hidden />
+                        <span>{t(`highlights.${i}`)}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+
+                {/* CTA */}
+                <div className="mt-8">
                   <Link
                     href={roadmapHref}
-                    className="press-scale group inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 text-sm font-bold text-zinc-950 transition-all hover:bg-emerald-400"
+                    className="press-scale group inline-flex h-12 items-center gap-2 rounded-xl bg-emerald-500 px-6 text-sm font-bold text-zinc-950 transition-all hover:bg-emerald-400 hover:shadow-[0_0_24px_-4px_rgba(16,185,129,0.4)]"
                   >
                     {t('viewFull')}
                     <ArrowIcon
@@ -69,6 +89,26 @@ export default function FintechRoadmapSection() {
                       aria-hidden
                     />
                   </Link>
+                </div>
+              </div>
+
+              {/* Right — visual element (topic chips) */}
+              <div className="mx-auto w-full max-w-xs shrink-0 lg:mx-0">
+                <div className="rounded-2xl border border-white/10 bg-zinc-800/50 p-5 backdrop-blur-sm">
+                  <div className="mb-4 flex items-center gap-2 text-sm font-bold text-emerald-400">
+                    <FiMap className="h-4 w-4 shrink-0" aria-hidden />
+                    <span>{t('topicsLabel')}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {([0, 1, 2, 3, 4, 5] as const).map((i) => (
+                      <span
+                        key={i}
+                        className="rounded-lg border border-white/5 bg-zinc-900/80 px-3 py-1.5 text-xs font-medium text-zinc-300"
+                      >
+                        {t(`topics.${i}`)}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
