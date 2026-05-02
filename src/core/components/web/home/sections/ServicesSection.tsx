@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { AnimatedSection, StaggerContainer, StaggerItem } from '@/core/components/web/home/HomeAnimations';
-import { FiBriefcase, FiUsers, FiArrowRight, FiArrowLeft, FiCalendar } from 'react-icons/fi';
+import { FiBriefcase, FiUsers, FiCalendar, FiMail } from 'react-icons/fi';
 import { SiWhatsapp } from 'react-icons/si';
 import { getWhatsAppWaMeUrl } from '@/core/data/publicContact';
 
@@ -19,12 +19,9 @@ const MENTORING_CALENDAR_URL = 'https://calendar.app.google/GHWhrmccKBtf6vma8';
 export default function ServicesSection() {
   const t = useTranslations('web.home.services');
   const locale = useLocale();
-  const isArabic = locale === 'ar';
 
   const contactHref = `/${locale}/contact`;
   const whatsappUrl = getWhatsAppWaMeUrl();
-
-  const ArrowIcon = isArabic ? FiArrowLeft : FiArrowRight;
 
   return (
     <section
@@ -37,6 +34,7 @@ export default function ServicesSection() {
       />
 
       <div className="container relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:max-w-6xl lg:px-8">
+        {/* ── Section heading ── */}
         <AnimatedSection className="mb-12 md:mb-16">
           <div className="max-w-3xl">
             <span className="mb-3 block  text-[10px] font-bold uppercase tracking-widest text-emerald-400/90">
@@ -47,6 +45,7 @@ export default function ServicesSection() {
           </div>
         </AnimatedSection>
 
+        {/* ── Service cards (informational only — no CTAs) ── */}
         <StaggerContainer className="grid gap-6 md:grid-cols-2 md:gap-8">
           {SERVICE_IDS.map((id) => {
             const Icon = SERVICE_ICONS[id];
@@ -63,50 +62,56 @@ export default function ServicesSection() {
                     <p className="text-sm leading-relaxed text-zinc-400">
                       {t(`items.${id}.description`)}
                     </p>
-
-                    {id === 'enablement' ? (
-                      <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                        <a
-                          href={MENTORING_CALENDAR_URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="press-scale inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-emerald-500 px-5 text-sm font-bold text-zinc-950 transition-all hover:bg-emerald-400"
-                        >
-                          <FiCalendar className="h-4 w-4 shrink-0" aria-hidden />
-                          {t('items.enablement.ctaCalendar')}
-                        </a>
-                        {whatsappUrl ? (
-                          <a
-                            href={whatsappUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="press-scale inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 text-sm font-bold text-white transition-all hover:border-white/20 hover:bg-white/10"
-                          >
-                            <SiWhatsapp className="h-4 w-4 shrink-0 text-[#25D366]" aria-hidden />
-                            {t('items.enablement.ctaWhatsApp')}
-                          </a>
-                        ) : null}
-                      </div>
-                    ) : (
-                      <Link
-                        href={contactHref}
-                        className="press-scale group/btn mt-auto inline-flex h-12 w-fit items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 text-sm font-bold text-white transition-all hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-300"
-                      >
-                        {t(`items.${id}.cta`)}
-                        <ArrowIcon
-                          className={`h-4 w-4 shrink-0 transition-transform ${
-                            isArabic ? 'group-hover/btn:-translate-x-0.5' : 'group-hover/btn:translate-x-0.5'
-                          }`}
-                          aria-hidden
-                        />
-                      </Link>
-                    )}
                   </article>
                 </div>
               </StaggerItem>
             );
           })}
         </StaggerContainer>
+
+        {/* ── Unified action strip ── */}
+        <AnimatedSection className="mt-10 md:mt-14">
+          <div className="rounded-2xl border border-white/10 bg-zinc-900/60 px-6 py-8 md:px-10 md:py-10">
+            <p className="mb-6 text-center text-sm font-semibold uppercase tracking-widest text-zinc-500">
+              {t('actionsTitle')}
+            </p>
+
+            <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center sm:gap-4">
+              {/* Primary — WhatsApp */}
+              {whatsappUrl ? (
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="press-scale inline-flex h-12 items-center justify-center gap-2.5 rounded-xl bg-[#25D366] px-6 text-sm font-bold text-white transition-all hover:bg-[#20bd5a] hover:shadow-[0_0_24px_-4px_rgba(37,211,102,0.4)]"
+                >
+                  <SiWhatsapp className="h-4 w-4 shrink-0" aria-hidden />
+                  {t('ctaWhatsApp')}
+                </a>
+              ) : null}
+
+              {/* Secondary — Book a 1:1 session */}
+              <a
+                href={MENTORING_CALENDAR_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="press-scale inline-flex h-12 items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-white/5 px-6 text-sm font-bold text-white transition-all hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-300"
+              >
+                <FiCalendar className="h-4 w-4 shrink-0" aria-hidden />
+                {t('ctaBookSession')}
+              </a>
+
+              {/* Secondary — Contact page */}
+              <Link
+                href={contactHref}
+                className="press-scale inline-flex h-12 items-center justify-center gap-2.5 rounded-xl border border-white/10 bg-white/5 px-6 text-sm font-bold text-white transition-all hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-300"
+              >
+                <FiMail className="h-4 w-4 shrink-0" aria-hidden />
+                {t('ctaContact')}
+              </Link>
+            </div>
+          </div>
+        </AnimatedSection>
       </div>
     </section>
   );

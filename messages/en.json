@@ -86,17 +86,18 @@
       },
       "services": {
         "title": "Professional services",
+        "actionsTitle": "How would you like to start?",
+        "ctaBookSession": "Book a 1:1 session",
+        "ctaWhatsApp": "Message on WhatsApp",
+        "ctaContact": "Send a message",
         "items": {
           "consulting": {
             "title": "Solutions & product engineering",
-            "description": "Technical partner for building and evolving FinTech products—from requirements review and architecture design to an MVP fit for investor conversations—with engineering support for your team so delivery stays high quality and aligned with supervisors.",
-            "cta": "Request technical consulting"
+            "description": "Technical partner for building and evolving FinTech products—from requirements review and architecture design to an MVP fit for investor conversations—with engineering support for your team so delivery stays high quality and aligned with supervisors."
           },
           "enablement": {
             "title": "Upskilling & one-to-one mentoring ",
-            "description": "Live one-to-one sessions for developers and technical teams. We focus on how the market actually works—financial systems and compliance in practice—so the team gains judgement and makes sound engineering calls in day-to-day delivery, not only writing code.",
-            "ctaCalendar": "Book a 1:1 session",
-            "ctaWhatsApp": "Message on WhatsApp"
+            "description": "Live one-to-one sessions for developers and technical teams. We focus on how the market actually works—financial systems and compliance in practice—so the team gains judgement and makes sound engineering calls in day-to-day delivery, not only writing code."
           }
         }
       },
@@ -108,8 +109,8 @@
         "viewFull": "Open the learning roadmap"
       },
       "blogFeature": {
-        "title": "What we write about",
-        "intro": "Four themes we keep coming back to in posts—read what fits your role or product, in whatever order you like.",
+        "title": "My blog",
+        "intro": "Articles on FinTech, regulation, engineering, and regional market context.",
         "cta": "Read the blog",
         "items": {
           "regulatory": {
