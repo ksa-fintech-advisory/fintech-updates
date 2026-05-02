@@ -41,7 +41,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
     id: 'getting-started',
     title: {
       en: 'Starting point: framing the mindset (no prior background)',
-      ar: 'البداية: تأسيس العقلية (بلا خلفية مسبقة)',
+      ar: 'البداية: تأسيس العقلية',
     },
     summary: {
       en: 'If FinTech is new to you, this is the on-ramp. We establish a shared vocabulary and a clear picture of the whole board—who holds real power in the market, and how banks, regulators, and startups connect—without getting lost in heavy jargon first.',
@@ -393,7 +393,7 @@ export const fintechLearnerPhases: RoadmapPhase[] = [
   },
   {
     id: 'protocols-engines',
-    title: { en: 'Networks, protocols & quant engines', ar: 'الشبكات والبروتوكولات والمحركات الكمية' },
+    title: { en: 'Networks, protocols & quant engines', ar: 'الشبكات والبروتوكولات ' },
     summary: {
       en: 'Under the product screens: messaging networks (SWIFT), national instant stacks (UPI-style), standards like ISO 20022, and the math that powers portfolios and trading systems—not exhaustive, but enough to speak credibly with engineers and quants.',
       ar: 'تحت واجهات المنتج: شبكات الرسائل (سويفت)، البنى الفورية الوطنية (أسلوب يو بي آي)، معايير مثل ISO 20022، والرياضيات التي تشغل المحافظ وأنظمة التداول — ليس شاملاً، لكن يكفي للحديث بجدية مع المهندسين ومحللي الكمّ.',

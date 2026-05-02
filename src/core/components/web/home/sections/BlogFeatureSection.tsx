@@ -27,15 +27,13 @@ export default function BlogFeatureSection() {
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="mb-14 md:mb-20">
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <div className="max-w-2xl">
-              <span className="mb-3 block  text-[10px] font-bold uppercase tracking-widest text-emerald-400">
-              </span>
-              <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
-                {t('title')}
-              </h2>
-            </div>
-            <p className="max-w-xl text-sm leading-relaxed text-zinc-400 md:text-base">{t('intro')}</p>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
+              {t('title')}
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-zinc-400 md:text-base">
+              {t('intro')}
+            </p>
           </div>
         </AnimatedSection>
 

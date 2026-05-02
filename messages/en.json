@@ -86,30 +86,44 @@
       },
       "services": {
         "title": "Professional services",
+        "actionsTitle": "How would you like to start?",
+        "ctaBookSession": "Book a 1:1 session",
+        "ctaWhatsApp": "Message on WhatsApp",
+        "ctaContact": "Send a message",
         "items": {
           "consulting": {
             "title": "Solutions & product engineering",
-            "description": "Technical partner for building and evolving FinTech products—from requirements review and architecture design to an MVP fit for investor conversations—with engineering support for your team so delivery stays high quality and aligned with supervisors.",
-            "cta": "Request technical consulting"
+            "description": "Technical partner for building and evolving FinTech products—from requirements review and architecture design to an MVP fit for investor conversations—with engineering support for your team so delivery stays high quality and aligned with supervisors."
           },
           "enablement": {
             "title": "Upskilling & one-to-one mentoring ",
-            "description": "Live one-to-one sessions for developers and technical teams. We focus on how the market actually works—financial systems and compliance in practice—so the team gains judgement and makes sound engineering calls in day-to-day delivery, not only writing code.",
-            "ctaCalendar": "Book a 1:1 session",
-            "ctaWhatsApp": "Message on WhatsApp"
+            "description": "Live one-to-one sessions for developers and technical teams. We focus on how the market actually works—financial systems and compliance in practice—so the team gains judgement and makes sound engineering calls in day-to-day delivery, not only writing code."
           }
         }
       },
       "roadmap": {
-        "title": "A field guide to reading FinTech end to end",
-        "intro": "Shipping financial products takes more than code—it's where technology meets accounting discipline and regulatory reality. This roadmap walks you step by step—from core concepts to how integrated financial systems are actually shaped. A gradual path that keeps you pointed in the right direction.",
-        "teaserNote": "This is only a nudge to explore",
-        "statsLine": "{phases} phases · {topics} topics",
-        "viewFull": "Open the learning roadmap"
+        "title": "FinTech learning roadmap",
+        "badge": "Coming soon",
+        "intro": "A practical, step-by-step path — from core concepts to how financial systems are actually built and regulated.",
+        "highlights": [
+          "Structured phases from fundamentals to advanced architecture",
+          "Curated references from regulators, central banks, and industry standards",
+          "Built for engineers, PMs, and founders entering FinTech"
+        ],
+        "topicsLabel": "Topics you'll explore",
+        "topics": [
+          "Money movement",
+          "Payment rails",
+          "KYC & AML",
+          "Open banking",
+          "Systems architecture",
+          "Regulatory compliance"
+        ],
+        "viewFull": "Explore the roadmap"
       },
       "blogFeature": {
-        "title": "What we write about",
-        "intro": "Four themes we keep coming back to in posts—read what fits your role or product, in whatever order you like.",
+        "title": "My blog",
+        "intro": "Articles on FinTech, regulation, engineering, and regional market context.",
         "cta": "Read the blog",
         "items": {
           "regulatory": {
@@ -136,6 +150,14 @@
       "metaDescription": "A field-style guide to money flows, systems architecture, and regulatory compliance—phases, practical outcomes, topics with official references. For beginners, engineers building payment systems, and PMs planning a launch.",
       "title": "The FinTech roadmap",
       "subtitle": "It is more than code—it is where money movement, systems architecture, and regulatory compliance meet. I designed this path to be your practical guide—whether you are starting from scratch, an engineer building payment systems, or a product manager planning a launch.",
+      "comingSoonBadge": "Under construction",
+      "comingSoonDescription": "I'm still shaping the full roadmap — refining phases, curating references, and making sure every topic earns its place. Register your interest and I'll notify you when it's ready.",
+      "notifyButton": "Notify me when it's ready",
+      "notifyCta": "Register",
+      "notifySuccess": "You're on the list — I'll let you know!",
+      "notifyError": "Something went wrong. Please try again.",
+      "emailPlaceholder": "Your email address",
+      "previewLabel": "What's inside",
       "journeyHeading": "How do you get the most from the roadmap?",
       "journeyStep1": "Sequence first: follow the order to build a complete mental model of the field.",
       "journeyStep2": "Focus next: return and go deeper in the parts that intersect with your role or project.",
