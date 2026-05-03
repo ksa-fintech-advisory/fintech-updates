@@ -7,6 +7,7 @@ import type { HeroSection } from '@/core/types/web/home';
 import dynamic from 'next/dynamic';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
 import { AuthorNameText } from '@/core/components/web/layout/AuthorNameText';
+import { ProfileAvatar } from '@/core/components/web/layout/ProfileAvatar';
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
 const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false, loading: () => null });
@@ -101,32 +102,41 @@ export default async function HomePage({ params }: { params: { locale: string } 
               </AnimatedSection>
 
               <AnimatedSection direction="up" delay={0.32} distance={18}>
-                <p
-                  lang={isArabic ? 'ar' : undefined}
-                  className={`mx-auto max-w-xl whitespace-pre-line font-light text-[#999] sm:max-w-2xl md:max-w-3xl ${
-                    isArabic
-                      ? 'text-[1.125rem] leading-[1.85] sm:text-xl sm:leading-[1.82] md:text-2xl md:leading-[1.78]'
-                      : 'text-lg leading-[1.7] sm:text-xl sm:leading-[1.68] md:text-2xl md:leading-[1.62]'
-                  }`}
-                >
-                  {hero.subtitleLeadHighlight ? (
-                    <>
-                      <AuthorNameText
-                        isArabic={isArabic}
-                        className={
-                          isArabic
-                            ? 'text-[1.22em] leading-none text-primary-400 [text-shadow:0_0_28px_rgba(52,211,153,0.45)] sm:text-[1.28em]'
-                            : 'text-primary-400 [text-shadow:0_0_28px_rgba(52,211,153,0.45)]'
-                        }
-                      >
-                        {hero.subtitleLeadHighlight.name}
-                      </AuthorNameText>
-                      {hero.subtitleLeadHighlight.tail}
-                    </>
-                  ) : (
-                    hero.subtitle
-                  )}
-                </p>
+                <div className="flex flex-col items-center gap-5">
+                  <ProfileAvatar
+                    size={72}
+                    alt={isArabic ? 'محمد عبده' : 'Mohammed Abdo'}
+                    fallbackText="Mohammed"
+                    variant="circle"
+                    className="ring-2 ring-emerald-400/30 shadow-[0_0_30px_rgba(52,211,153,0.15)]"
+                  />
+                  <p
+                    lang={isArabic ? 'ar' : undefined}
+                    className={`mx-auto max-w-xl whitespace-pre-line font-light text-[#999] sm:max-w-2xl md:max-w-3xl ${
+                      isArabic
+                        ? 'text-[1.125rem] leading-[1.85] sm:text-xl sm:leading-[1.82] md:text-2xl md:leading-[1.78]'
+                        : 'text-lg leading-[1.7] sm:text-xl sm:leading-[1.68] md:text-2xl md:leading-[1.62]'
+                    }`}
+                  >
+                    {hero.subtitleLeadHighlight ? (
+                      <>
+                        <AuthorNameText
+                          isArabic={isArabic}
+                          className={
+                            isArabic
+                              ? 'text-[1.22em] leading-none text-primary-400 [text-shadow:0_0_28px_rgba(52,211,153,0.45)] sm:text-[1.28em]'
+                              : 'text-primary-400 [text-shadow:0_0_28px_rgba(52,211,153,0.45)]'
+                          }
+                        >
+                          {hero.subtitleLeadHighlight.name}
+                        </AuthorNameText>
+                        {hero.subtitleLeadHighlight.tail}
+                      </>
+                    ) : (
+                      hero.subtitle
+                    )}
+                  </p>
+                </div>
               </AnimatedSection>
 
               <AnimatedSection direction="up" delay={0.5} distance={16}>

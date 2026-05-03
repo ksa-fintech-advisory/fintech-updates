@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
-import { FiArrowLeft, FiArrowRight, FiMap, FiBookOpen, FiLayers, FiCheckCircle } from 'react-icons/fi';
+import { FiArrowLeft, FiArrowRight, FiMap, FiBookOpen, FiLayers, FiCheckCircle, FiLock } from 'react-icons/fi';
 
 const HIGHLIGHT_ICONS = [FiBookOpen, FiLayers, FiCheckCircle] as const;
 
@@ -92,23 +92,37 @@ export default function FintechRoadmapSection() {
                 </div>
               </div>
 
-              {/* Right — visual element (topic chips) */}
+              {/* Right — visual element (topic chips) - Blurred for anticipation */}
               <div className="mx-auto w-full max-w-xs shrink-0 lg:mx-0">
-                <div className="rounded-2xl border border-white/10 bg-zinc-800/50 p-5 backdrop-blur-sm">
-                  <div className="mb-4 flex items-center gap-2 text-sm font-bold text-emerald-400">
-                    <FiMap className="h-4 w-4 shrink-0" aria-hidden />
-                    <span>{t('topicsLabel')}</span>
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-800/50 p-5 backdrop-blur-sm">
+                  
+                  <div className="pointer-events-none select-none opacity-40 blur-[4px] transition-all duration-700 hover:blur-[3px]">
+                    <div className="mb-4 flex items-center gap-2 text-sm font-bold text-emerald-400">
+                      <FiMap className="h-4 w-4 shrink-0" aria-hidden />
+                      <span>{t('topicsLabel')}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {([0, 1, 2, 3, 4, 5] as const).map((i) => (
+                        <span
+                          key={i}
+                          className="rounded-lg border border-white/5 bg-zinc-900/80 px-3 py-1.5 text-xs font-medium text-zinc-300"
+                        >
+                          {t(`topics.${i}`)}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {([0, 1, 2, 3, 4, 5] as const).map((i) => (
-                      <span
-                        key={i}
-                        className="rounded-lg border border-white/5 bg-zinc-900/80 px-3 py-1.5 text-xs font-medium text-zinc-300"
-                      >
-                        {t(`topics.${i}`)}
+
+                  {/* Lock Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-zinc-950/20">
+                    <div className="flex flex-col items-center gap-2 rounded-2xl border border-white/10 bg-zinc-900/90 px-4 py-3 shadow-2xl backdrop-blur-md">
+                      <FiLock className="h-5 w-5 text-amber-400" aria-hidden />
+                      <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-300">
+                        {isArabic ? 'محتوى حصري' : 'Unlocking Soon'}
                       </span>
-                    ))}
+                    </div>
                   </div>
+
                 </div>
               </div>
             </div>

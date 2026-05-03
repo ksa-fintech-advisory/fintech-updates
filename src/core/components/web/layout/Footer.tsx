@@ -47,11 +47,11 @@ export default function Footer() {
           <div className="space-y-6 lg:col-span-4">
             <Link href={`/${locale}`} className="group flex w-fit items-center gap-3 outline-none">
               <ProfileAvatar
-                size={48}
+                size={36}
                 alt={th('avatarAlt')}
                 fallbackText={th('displayName')}
                 variant="circle"
-                className="shadow-md ring-2 ring-white transition-transform duration-200 group-hover:scale-105 dark:ring-grey-900"
+                className="opacity-90 transition-all duration-200 group-hover:opacity-100 group-hover:scale-105"
                 authorNameFont
               />
               <div className="min-w-0 text-start">

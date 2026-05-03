@@ -7,7 +7,6 @@ import { useState, useRef, useEffect } from 'react';
 import ProductsMegaMenu from './ProductsMegaMenu';
 import CoursesMegaMenu from './CoursesMegaMenu';
 import { getAllCourses } from '@/data/courseData';
-import { ProfileAvatar } from '@/core/components/web/layout/ProfileAvatar';
 import { FiChevronDown, FiMenu, FiX, FiGlobe, FiArrowRight } from 'react-icons/fi';
 
 export default function Header() {
@@ -81,17 +80,11 @@ export default function Header() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex min-h-[4.5rem] items-center justify-between py-1 sm:py-0">
 
-            {/* --- Logo Section: Technical Brand --- */}
+            {/* --- Logo Section: Brand First --- */}
             <Link href={`/${locale}`} className="group flex items-center gap-3 outline-none">
-              <ProfileAvatar
-                size={40}
-                alt={th('avatarAlt')}
-                fallbackText={th('displayName')}
-                variant="circle"
-                className="shadow-sm transition-transform duration-200 group-hover:scale-105"
-                priority
-                authorNameFont
-              />
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-lg font-bold text-zinc-950 shadow-sm transition-transform duration-200 group-hover:scale-105">
+                M
+              </div>
               <div className="flex min-w-0 flex-col gap-1.5 sm:gap-2">
                 <span className="truncate text-lg font-bold leading-snug tracking-tight text-grey-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
                   {isArabic ? 'مال تك' : 'Maal Tech'}
