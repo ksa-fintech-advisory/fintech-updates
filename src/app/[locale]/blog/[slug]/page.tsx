@@ -102,6 +102,8 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
   const publishedLabel = formatPublishedAt(blog.publishedAt, locale);
   const catColor = blog.category.color;
   const { prev, next } = getAdjacentPosts(slug, locale);
+  const leftPost = isArabic ? next : prev;
+  const rightPost = isArabic ? prev : next;
 
   return (
     <div className="w-full bg-zinc-50 dark:bg-black min-h-screen font-sans selection:bg-primary-500/30">
@@ -113,6 +115,7 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
           blog,
         })}
       />
+
 
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
 
@@ -202,9 +205,33 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
       </section>
 
       <article className="pb-24 relative z-10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto pt-10 md:pt-12">
-            <div
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="flex flex-col xl:grid xl:grid-cols-[240px_minmax(0,1fr)_240px] gap-8 xl:gap-12 pt-10 md:pt-12 items-start">
+            
+            {/* Left Sidebar (Prev in LTR, Prev in RTL visually on Right) */}
+            <aside className="hidden xl:block sticky top-32 w-full pt-4">
+              {prev ? (
+                <Link
+                  href={`/${locale}/blog/${prev.slug}`}
+                  className="group flex flex-col gap-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 transition-all hover:border-primary-500/40 hover:bg-primary-50/50 dark:hover:bg-zinc-800/80 shadow-sm hover:shadow-md"
+                >
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 flex items-center gap-1.5">
+                    {isArabic ? (
+                      <><FiArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" /> المقال السابق</>
+                    ) : (
+                      <><FiArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" /> Previous</>
+                    )}
+                  </span>
+                  <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-3 leading-snug">
+                    {prev.title}
+                  </span>
+                </Link>
+              ) : <div />}
+            </aside>
+
+            {/* Main Content */}
+            <div className="w-full max-w-3xl mx-auto min-w-0">
+              <div
               className="prose prose-zinc dark:prose-invert prose-lg max-w-none 
               prose-headings:font-bold prose-headings:tracking-tight 
               prose-a:text-primary-600 dark:prose-a:text-primary-400 
@@ -224,10 +251,10 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
               <BlogAuthorCard locale={locale} />
             </div>
 
-            {/* Prev / Next navigation */}
+            {/* Prev / Next navigation (Mobile & Tablet only) */}
             {(prev || next) && (
               <nav
-                className="mt-10 pt-8 border-t border-zinc-200 dark:border-zinc-800 grid grid-cols-1 sm:grid-cols-2 gap-4"
+                className="mt-10 pt-8 border-t border-zinc-200 dark:border-zinc-800 grid grid-cols-1 sm:grid-cols-2 gap-4 xl:hidden"
                 aria-label={isArabic ? 'تنقل بين المقالات' : 'Post navigation'}
               >
                 {prev ? (
@@ -287,6 +314,29 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
                 </span>
               </Link>
             </div>
+            </div>
+
+            {/* Right Sidebar (Next in LTR, Next in RTL visually on Left) */}
+            <aside className="hidden xl:block sticky top-32 w-full pt-4">
+              {next ? (
+                <Link
+                  href={`/${locale}/blog/${next.slug}`}
+                  className="group flex flex-col gap-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-5 transition-all hover:border-primary-500/40 hover:bg-primary-50/50 dark:hover:bg-zinc-800/80 shadow-sm hover:shadow-md sm:text-end sm:items-end"
+                >
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 flex items-center gap-1.5">
+                    {isArabic ? (
+                      <>المقال التالي <FiArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" /></>
+                    ) : (
+                      <>Next <FiArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" /></>
+                    )}
+                  </span>
+                  <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors line-clamp-3 leading-snug">
+                    {next.title}
+                  </span>
+                </Link>
+              ) : <div />}
+            </aside>
+
           </div>
         </div>
       </article>

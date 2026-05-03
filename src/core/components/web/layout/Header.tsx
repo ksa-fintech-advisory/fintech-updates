@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState, useRef, useEffect } from 'react';
@@ -82,8 +83,14 @@ export default function Header() {
 
             {/* --- Logo Section: Brand First --- */}
             <Link href={`/${locale}`} className="group flex items-center gap-3 outline-none">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-lg font-bold text-zinc-950 shadow-sm transition-transform duration-200 group-hover:scale-105">
-                M
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center transition-transform duration-200 group-hover:scale-105">
+                <Image
+                  src="/logos/only-icon-white-green-no-bg.png"
+                  alt="Maal Tech"
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 object-contain"
+                />
               </div>
               <div className="flex min-w-0 flex-col gap-1.5 sm:gap-2">
                 <span className="truncate text-lg font-bold leading-snug tracking-tight text-grey-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
