@@ -14,6 +14,21 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'react-icons', 'framer-motion', 'date-fns'],
   },
   async redirects() {
+    // Deprecated routes — code kept but not publicly accessible
+    const deprecatedRoutes = ['courses', 'products', 'updates', 'docs', 'terms', 'privacy'];
+    const deprecatedRedirects = deprecatedRoutes.flatMap((route) => [
+      {
+        source: `/:locale(en|ar)/${route}`,
+        destination: '/:locale',
+        permanent: true,
+      },
+      {
+        source: `/:locale(en|ar)/${route}/:path*`,
+        destination: '/:locale',
+        permanent: true,
+      },
+    ]);
+
     return [
       {
         source: '/favicon.ico',
@@ -30,6 +45,7 @@ const nextConfig = {
         destination: '/:locale/:path*',
         permanent: true,
       },
+      ...deprecatedRedirects,
     ];
   },
   images: {

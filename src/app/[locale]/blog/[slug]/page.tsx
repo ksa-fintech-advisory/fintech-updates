@@ -1,14 +1,21 @@
-import { getStaticBlogBySlug } from '@/services/blog/staticBlogs';
+import { getStaticBlogBySlug, getAdjacentPosts } from '@/services/blog/staticBlogs';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { BlogContentRenderer } from '@/core/components/web/blog/BlogContentRenderer';
 import { blogDetailHeroSrc } from '@/core/constants/blogMedia';
 import { RelatedPosts } from '@/core/components/web/blog/RelatedPosts';
+import { BlogAuthorCard } from '@/core/components/web/blog/BlogAuthorCard';
 import { Metadata } from 'next';
 import { getSiteUrl, SITE_NAME } from '@/core/seo/site';
 import { JsonLd } from '@/core/seo/JsonLd';
 import { blogArticleGraphJsonLd } from '@/core/seo/structuredData';
-import { FiArrowLeft, FiArrowRight, FiHome } from 'react-icons/fi';
+import { FiArrowLeft, FiArrowRight, FiHome, FiClock } from 'react-icons/fi';
+import nextDynamic from 'next/dynamic';
+
+const BlogShareBar = nextDynamic(
+  () => import('@/core/components/web/blog/BlogShareBar').then((m) => m.BlogShareBar),
+  { ssr: false },
+);
 
 interface BlogPageProps {
   params: {
@@ -35,6 +42,8 @@ export async function generateMetadata({ params: { slug, locale } }: BlogPagePro
   return {
     title: blog.title,
     description: blog.excerpt,
+    ...(blog.tags.length > 0 ? { keywords: blog.tags } : {}),
+    authors: [{ name: blog.author.name || 'Mohammed Abdo', url: `${base}/${locale}/about` }],
     alternates: {
       canonical: `/${locale}${path}`,
       languages: {
@@ -52,7 +61,9 @@ export async function generateMetadata({ params: { slug, locale } }: BlogPagePro
       locale: isArabic ? 'ar_SA' : 'en_US',
       alternateLocale: isArabic ? ['en_US'] : ['ar_SA'],
       publishedTime: blog.publishedAt,
-      images: [{ url: ogImage }],
+      authors: [blog.author.name || 'Mohammed Abdo'],
+      tags: blog.tags,
+      images: [{ url: ogImage, alt: blog.title }],
     },
     twitter: {
       card: 'summary_large_image',
@@ -90,6 +101,7 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
   const base = getSiteUrl();
   const publishedLabel = formatPublishedAt(blog.publishedAt, locale);
   const catColor = blog.category.color;
+  const { prev, next } = getAdjacentPosts(slug, locale);
 
   return (
     <div className="w-full bg-zinc-50 dark:bg-black min-h-screen font-sans selection:bg-primary-500/30">
@@ -168,6 +180,16 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
                   </>
                 )}
               </time>
+              {/* Reading time */}
+              <span className="hidden sm:inline h-1 w-1 rounded-full bg-zinc-300 dark:bg-zinc-600" aria-hidden />
+              <span className="flex items-center gap-1.5 text-sm text-zinc-500 dark:text-zinc-400">
+                <FiClock className="w-3.5 h-3.5 shrink-0 opacity-70" aria-hidden />
+                <span>
+                  {isArabic
+                    ? `${blog.readTime} دقائق قراءة`
+                    : `${blog.readTime} min read`}
+                </span>
+              </span>
             </div>
 
             <div>
@@ -192,17 +214,75 @@ export default async function BlogPage({ params: { slug, locale } }: BlogPagePro
               <BlogContentRenderer content={content} locale={locale} />
             </div>
 
-            <div className="mt-16 pt-10 border-t border-zinc-200 dark:border-zinc-800 flex justify-center">
+            {/* Share bar */}
+            <div className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800">
+              <BlogShareBar title={title} slug={slug} />
+            </div>
+
+            {/* Author card */}
+            <div className="mt-8">
+              <BlogAuthorCard locale={locale} />
+            </div>
+
+            {/* Prev / Next navigation */}
+            {(prev || next) && (
+              <nav
+                className="mt-10 pt-8 border-t border-zinc-200 dark:border-zinc-800 grid grid-cols-1 sm:grid-cols-2 gap-4"
+                aria-label={isArabic ? 'تنقل بين المقالات' : 'Post navigation'}
+              >
+                {prev ? (
+                  <Link
+                    href={`/${locale}/blog/${prev.slug}`}
+                    className="group flex flex-col gap-2 rounded-xl border border-white/10 bg-zinc-800/40 p-4 transition-all hover:border-emerald-500/30 hover:bg-white/[0.02]"
+                  >
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 flex items-center gap-1.5">
+                      {isArabic ? (
+                        <><FiArrowRight className="w-3 h-3" /> المقال السابق</>
+                      ) : (
+                        <><FiArrowLeft className="w-3 h-3" /> Previous</>
+                      )}
+                    </span>
+                    <span className="text-sm font-semibold text-zinc-300 group-hover:text-white transition-colors line-clamp-2">
+                      {prev.title}
+                    </span>
+                  </Link>
+                ) : (
+                  <div />
+                )}
+                {next ? (
+                  <Link
+                    href={`/${locale}/blog/${next.slug}`}
+                    className="group flex flex-col gap-2 rounded-xl border border-white/10 bg-zinc-800/40 p-4 transition-all hover:border-emerald-500/30 hover:bg-white/[0.02] sm:text-right sm:items-end"
+                  >
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 flex items-center gap-1.5">
+                      {isArabic ? (
+                        <>المقال التالي <FiArrowLeft className="w-3 h-3" /></>
+                      ) : (
+                        <>Next <FiArrowRight className="w-3 h-3" /></>
+                      )}
+                    </span>
+                    <span className="text-sm font-semibold text-zinc-300 group-hover:text-white transition-colors line-clamp-2">
+                      {next.title}
+                    </span>
+                  </Link>
+                ) : (
+                  <div />
+                )}
+              </nav>
+            )}
+
+            {/* Back to all articles */}
+            <div className="mt-8 flex justify-center">
               <Link
                 href={`/${locale}/blog`}
-                className="group inline-flex items-center gap-3 rounded-xl border border-zinc-200 bg-white px-6 py-3.5 font-medium text-zinc-600 shadow-sm transition-all hover:border-primary-500/40 hover:text-primary-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-primary-500/30 dark:hover:text-primary-400"
+                className="group inline-flex items-center gap-3 rounded-xl border border-white/10 bg-zinc-800/40 px-6 py-3.5 font-medium text-zinc-400 shadow-sm transition-all hover:border-emerald-500/30 hover:text-emerald-400"
               >
                 {isArabic ? (
-                  <FiArrowRight className="group-hover:-translate-x-1 transition-transform" aria-hidden />
+                  <FiArrowRight className="group-hover:translate-x-1 transition-transform" aria-hidden />
                 ) : (
                   <FiArrowLeft className="group-hover:-translate-x-1 transition-transform" aria-hidden />
                 )}
-                <span className=" text-sm uppercase tracking-wide">
+                <span className="text-sm uppercase tracking-wide">
                   {isArabic ? 'كل المقالات' : 'All articles'}
                 </span>
               </Link>

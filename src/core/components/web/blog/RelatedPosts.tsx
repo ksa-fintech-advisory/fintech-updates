@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { LocalizedBlog } from '@/core/types/web/blog';
+import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
 interface RelatedPostsProps {
   posts: LocalizedBlog[];
@@ -9,33 +10,46 @@ interface RelatedPostsProps {
 
 export const RelatedPosts: React.FC<RelatedPostsProps> = ({ posts, locale }) => {
   if (posts.length === 0) return null;
+  const isArabic = locale === 'ar';
 
   return (
-    <div className="mt-16 pt-12 border-t border-grey-200">
-      <h3 className="text-2xl font-bold text-grey-900 mb-8">
-        {locale === 'ar' ? 'مقالات ذات صلة' : 'Related Posts'}
-      </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {posts.map((post) => (
-          <Link
-            key={post.id}
-            href={`/${locale}/blog/${post.slug}`}
-            className="group flex flex-col gap-3 rounded-xl border border-zinc-200 bg-white p-5 transition-all hover:border-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-600"
-          >
-            <div className="flex items-center gap-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {posts.map((post) => (
+        <Link
+          key={post.id}
+          href={`/${locale}/blog/${post.slug}`}
+          className="group flex flex-col gap-4 rounded-xl border border-white/10 bg-zinc-800/40 p-5 transition-all duration-300 hover:border-emerald-500/30 hover:bg-white/[0.02] hover:shadow-[0_0_30px_-15px_rgba(16,185,129,0.15)]"
+        >
+          <div className="flex items-center gap-2">
+            <span
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider border border-white/10 bg-white/5 text-zinc-300"
+              style={{ borderColor: `${post.category.color}30` }}
+            >
               <span
-                className="text-xs font-semibold px-2 py-1 rounded-full"
-                style={{ backgroundColor: `${post.category.color}15`, color: post.category.color }}
-              >
-                {post.category.name}
-              </span>
-            </div>
-            <h4 className="text-lg font-bold text-grey-900 group-hover:text-primary transition-colors line-clamp-2">
-              {post.title}
-            </h4>
-          </Link>
-        ))}
-      </div>
+                className="w-1.5 h-1.5 rounded-full shrink-0"
+                style={{ backgroundColor: post.category.color }}
+              />
+              {post.category.name}
+            </span>
+          </div>
+          <h4 className="text-base font-bold text-zinc-100 group-hover:text-white transition-colors leading-snug line-clamp-2">
+            {post.title}
+          </h4>
+          <div
+            className={`mt-auto flex items-center gap-2 pt-3 border-t border-white/10 text-xs font-medium text-zinc-500 group-hover:text-emerald-400 transition-all ${isArabic ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'}`}
+            aria-hidden
+          >
+            <span className="uppercase tracking-wider">
+              {isArabic ? 'اقرأ' : 'Read'}
+            </span>
+            {isArabic ? (
+              <FiArrowLeft className="w-3.5 h-3.5" />
+            ) : (
+              <FiArrowRight className="w-3.5 h-3.5" />
+            )}
+          </div>
+        </Link>
+      ))}
     </div>
   );
 };
