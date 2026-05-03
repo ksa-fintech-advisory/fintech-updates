@@ -14,11 +14,17 @@ const SERVICE_ICONS = {
   enablement: FiUsers,
 } as const;
 
+const SERVICE_AUDIENCE = {
+  consulting: { en: 'For companies', ar: 'للشركات' },
+  enablement: { en: 'For engineers & teams', ar: 'للمهندسين والفرق' },
+} as const;
+
 const MENTORING_CALENDAR_URL = 'https://calendar.app.google/GHWhrmccKBtf6vma8';
 
 export default function ServicesSection() {
   const t = useTranslations('web.home.services');
   const locale = useLocale();
+  const lang = locale === 'ar' ? 'ar' : 'en';
 
   const contactHref = `/${locale}/contact`;
   const whatsappUrl = getWhatsAppWaMeUrl();
@@ -56,6 +62,9 @@ export default function ServicesSection() {
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-zinc-900 ring-1 ring-white/10 text-emerald-400 transition-colors group-hover:ring-emerald-500/50">
                       <Icon className="h-5 w-5" aria-hidden />
                     </div>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400/70">
+                      {SERVICE_AUDIENCE[id][lang]}
+                    </span>
                     <h3 className="text-lg font-bold leading-snug text-zinc-100 transition-colors group-hover:text-white md:text-xl">
                       {t(`items.${id}.title`)}
                     </h3>

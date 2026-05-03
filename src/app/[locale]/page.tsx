@@ -164,8 +164,8 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
       {/* ─── Sections ─── */}
       <ServicesSection />
-      <BlogFeatureSection />
       <FintechRoadmapSection />
+      <BlogFeatureSection />
 
       {/* ─── Closing CTA ─── */}
       <section className="relative border-t border-white/10 bg-zinc-900 py-20 overflow-hidden md:py-28">

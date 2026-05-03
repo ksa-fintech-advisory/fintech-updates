@@ -29,7 +29,8 @@
       "updates": "Updates",
       "products": "Products",
       "courses": "Courses",
-      "roadmap": "Roadmap"
+      "roadmap": "Roadmap",
+      "services": "Services"
     },
     "actions": {
       "readMore": "Read More",
@@ -70,12 +71,12 @@
     "home": {
       "metaTitle": "FinTech consulting, blog & learner roadmap",
       "metaDescription": "Mohammed Abdo (Maal Tech): FinTech systems engineering and consulting for Saudi Arabia and the Arab world—from idea to compliance. Learner roadmap, essays, and direct contact.",
-      "closingTitle": "Care about building something that matters?",
-      "closingLead": "If you're building a financial product or facing an engineering knot in your current work, share what you're making. I read every serious message—and I genuinely enjoy sharp technical conversation.",
+      "closingTitle": "Let's discuss your project",
+      "closingLead": "Whether you're building a financial product or facing an engineering challenge — share what you're working on. I read every serious message and reply in person.",
       "closingCta": "Start the conversation",
       "hero": {
         "title": "We understand FinTech.. and we build it right.",
-        "subtitle": "Mohammed Abdo — Software engineer in FinTech. I work with product and engineering teams on solid digital platforms compliant with regulations. The learning roadmap on the site is an organized path for those starting in the field.",
+        "subtitle": "Mohammed Abdo — Software engineer specializing in FinTech. I help teams build compliant digital platforms and guide developers entering the field.",
         "exploreArticles": "Read the blog",
         "aboutUs": "About me"
       },

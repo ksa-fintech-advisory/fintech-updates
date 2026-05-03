@@ -12,11 +12,10 @@ import {
   FiAlertCircle,
   FiMessageSquare,
   FiShield,
-  FiTwitter,
   FiLinkedin,
   FiArrowUpRight,
 } from 'react-icons/fi';
-import { SiWhatsapp } from 'react-icons/si';
+import { SiWhatsapp, SiX } from 'react-icons/si';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
 import { PUBLIC_CONTACT_EMAIL, getPublicMailtoHref, getWhatsAppWaMeUrl } from '@/core/data/publicContact';
 
@@ -71,23 +70,21 @@ export default function ContactPage() {
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:32px_32px]" />
       <div className="pointer-events-none fixed left-0 top-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/5 blur-[120px] z-0" />
 
-      {/* Hero */}
-      {/* <section className="relative z-10 border-b border-zinc-200/80 bg-white/80 pt-28 pb-14 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900/80 md:pt-36 md:pb-20">
+      {/* Hero — minimal heading for page context */}
+      <section className="relative z-10 pt-28 pb-8 md:pt-32 md:pb-12">
         <div className="container mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="max-w-3xl">
-              <p className="mb-4  text-xs font-bold uppercase tracking-widest text-primary-600 dark:text-primary-400">
-              </p>
-              <h1 className="mb-5 text-3xl font-bold leading-[1.18] tracking-tight text-zinc-900 dark:text-white sm:text-4xl md:text-5xl md:leading-[1.15] lg:text-6xl lg:leading-[1.12]">
+              <h1 className="mb-4 text-3xl font-bold leading-[1.18] tracking-tight text-white sm:text-4xl md:text-5xl md:leading-[1.15]">
                 {t('title')}
               </h1>
-              <p className="max-w-2xl text-base leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-lg md:text-xl">
+              <p className="max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
                 {t('subtitle')}
               </p>
             </div>
           </AnimatedSection>
         </div>
-      </section> */}
+      </section>
 
       {/* Main content */}
       <section className="relative z-10 py-20 md:py-28">
@@ -148,19 +145,38 @@ export default function ContactPage() {
                           <FiArrowUpRight className={`h-4 w-4 shrink-0 text-zinc-600 transition-transform group-hover:text-emerald-400 ${isArabic ? 'rotate-[270deg] group-hover:-translate-x-0.5 group-hover:translate-y-0.5' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'}`} />
                         </a>
                       ) : null}
-                    </div>
-                    
-                    {/* Social footer */}
-                    <div className="border-t border-white/5 bg-white/[0.01] px-6 py-4 flex items-center justify-between">
-                      <span className="text-xs  text-zinc-500">PING_ME</span>
-                      <div className="flex gap-4">
-                        <a href="https://x.com/mohfintech" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-emerald-400 transition-colors">
-                          <FiTwitter className="h-4.5 w-4.5" />
-                        </a>
-                        <a href="https://www.linkedin.com/in/mohfintech/" target="_blank" rel="noopener noreferrer" className="text-zinc-500 hover:text-emerald-400 transition-colors">
-                          <FiLinkedin className="h-4.5 w-4.5" />
-                        </a>
-                      </div>
+
+                      {/* X (Twitter) */}
+                      <a
+                        href="https://x.com/mohfintech"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center justify-between gap-3 rounded-xl px-4 py-3.5 text-sm text-zinc-300 transition-colors hover:bg-white/[0.06] hover:text-white"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 ring-1 ring-white/10 text-zinc-400 group-hover:bg-white/[0.06] group-hover:text-white transition-colors">
+                            <SiX className="h-3.5 w-3.5" />
+                          </div>
+                          <span className="font-medium">X</span>
+                        </div>
+                        <FiArrowUpRight className={`h-4 w-4 shrink-0 text-zinc-600 transition-transform group-hover:text-emerald-400 ${isArabic ? 'rotate-[270deg] group-hover:-translate-x-0.5 group-hover:translate-y-0.5' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'}`} />
+                      </a>
+
+                      {/* LinkedIn */}
+                      <a
+                        href="https://www.linkedin.com/in/mohfintech/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center justify-between gap-3 rounded-xl px-4 py-3.5 text-sm text-zinc-300 transition-colors hover:bg-white/[0.06] hover:text-white"
+                      >
+                        <div className="flex items-center gap-3">
+                          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-900 ring-1 ring-white/10 text-[#0A66C2] group-hover:bg-[#0A66C2]/10 transition-colors">
+                            <FiLinkedin className="h-4 w-4" />
+                          </div>
+                          <span className="font-medium">LinkedIn</span>
+                        </div>
+                        <FiArrowUpRight className={`h-4 w-4 shrink-0 text-zinc-600 transition-transform group-hover:text-emerald-400 ${isArabic ? 'rotate-[270deg] group-hover:-translate-x-0.5 group-hover:translate-y-0.5' : 'group-hover:translate-x-0.5 group-hover:-translate-y-0.5'}`} />
+                      </a>
                     </div>
                   </div>
                 </div>

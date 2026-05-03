@@ -27,12 +27,10 @@ export default function Header() {
 
   const navItems:any = [
     { href: '', label: t('common.nav.home'), key: 'home' },
-    { href: '/roadmap', label: t('common.nav.roadmap'), key: 'roadmap' },
-    // { href: '/products', label: t("common.nav.products"), key: 'products', hasMegaMenu: true },
-    // { href: '/courses', label: t('common.nav.courses'), key: 'courses', hasMegaMenu: true },
-    // { href: '/updates', label: t('common.nav.updates'), key: 'updates' },
+    { href: '/#services', label: t('common.nav.services'), key: 'services' },
     { href: '/blog', label: t('common.nav.blog'), key: 'blog' },
-    { href: '/about', label: t('common.nav.about'), key: 'about', isSpecial: true },
+    { href: '/roadmap', label: t('common.nav.roadmap'), key: 'roadmap' },
+    { href: '/about', label: t('common.nav.about'), key: 'about' },
     { href: '/contact', label: t('common.nav.contact'), key: 'contact' },
   ];
 
@@ -51,6 +49,8 @@ export default function Header() {
     if (href === '') {
       return currentPath === '' || currentPath === '/';
     }
+    // Hash links (e.g. /#services) are scroll targets, never "active"
+    if (href.includes('#')) return false;
     return currentPath === href || currentPath.startsWith(`${href}/`);
   };
 
@@ -116,7 +116,7 @@ export default function Header() {
                     onMouseLeave={handleMouseLeave}
                   >
                     <Link
-                      href={item.hasMegaMenu ? '#' : `/${locale}${item.href}`}
+                      href={item.hasMegaMenu ? '#' : item.href.startsWith('/#') ? `/${locale}${item.href.slice(1)}` : `/${locale}${item.href}`}
                       className={`
                         relative px-3 py-1.5 rounded-button text-sm font-medium transition-all duration-200 flex items-center gap-1.5 outline-none
                         ${active || isMegaMenuOpen
@@ -278,14 +278,12 @@ export default function Header() {
                         </div>
                       ) : (
                         <Link
-                          href={`/${locale}${item.href}`}
+                          href={item.href.startsWith('/#') ? `/${locale}${item.href.slice(1)}` : `/${locale}${item.href}`}
                           onClick={() => setMobileMenuOpen(false)}
                           className={`glass-nav-link flex min-h-[44px] items-center rounded-xl px-3 py-2.5 text-base font-medium transition-colors ${
                             isActive(item.href)
                               ? 'glass-nav-row-active font-semibold text-grey-900 dark:text-white'
-                              : item.isSpecial
-                                ? 'text-primary-700 dark:text-primary-300 bg-primary-50/50 dark:bg-primary-500/10 ring-1 ring-primary-500/20'
-                                : 'text-grey-700 dark:text-grey-300'
+                              : 'text-grey-700 dark:text-grey-300'
                           }`}
                         >
                           <span className="flex items-center gap-2">
