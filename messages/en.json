@@ -13,7 +13,7 @@
     "appName": "Maal Tech",
     "viewAll": "View All",
     "header": {
-      "tagline": "FinTech · Engineering · Writing",
+      "tagline": "Clearly, we understand and build.",
       "displayName": "Mohammed Abdo",
       "avatarAlt": "Mohammed Abdo"
     },
@@ -312,7 +312,7 @@
     "contact": {
       "metaTitle": "Contact — start a conversation on consulting, architecture & collaboration",
       "metaDescription": "Architecture guidance, engineering reviews, or mentorship for your FinTech team—by email, WhatsApp, or form. I reply personally to serious notes.",
-      "title": "Let’s start a conversation: consulting, architecture, and collaboration",
+      "title": "Contact me",
       "subtitle": "Whether you need help steering the architecture of a financial product, a focused engineering review, or mentorship for your technical team—I’m listening. Share the challenge you’re facing or what you’re building, and I’ll reply in person to every serious message so we can see how to work together.",
       "channelsHeading": "Contact channels",
       "emailTitle": "Email",
@@ -376,8 +376,8 @@
     "questionnaire": {
       "metaTitle": "Project Questionnaire",
       "metaDescription": "Tell us about your project and the challenges you face.",
-      "title": "Project Questionnaire",
-      "subtitle": "Help us understand your project context.",
+      "title": "Fintech sector challenges in the Arab region",
+      "subtitle": "Fintech sector challenges in the Arab region",
       "description": "This questionnaire aims to diagnose the fundamental challenges facing emerging financial technology startups in the Arab region and Gulf countries. Through your responses, we seek to highlight regulatory and technical gaps, contributing to building a more flexible innovation environment supportive of entrepreneurs in the financial sector.",
       "successTitle": "Successfully sent",
       "errorTitle": "Could not send",
@@ -402,7 +402,6 @@
         "lebanon": "Lebanon",
         "syria": "Syria",
         "iraq": "Iraq",
-        "palestine": "Palestine",
         "otherRegion": "Please specify region",
         "otherRegionPlaceholder": "Enter your region",
         "projectType": "Project Type",
@@ -479,7 +478,7 @@
       "badge": "Saudi Market Specialized",
       "phases": "4 Integrated Modules",
       "duration": "Theory & Practice Combined",
-      "language": "Bilingual AR/EN"
+      "language": "In Arabic"
     },
     "cta": {
       "enroll": "Enroll Now",
