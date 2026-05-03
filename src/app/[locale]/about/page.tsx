@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { buildPageMetadata } from '@/core/seo/buildPageMetadata';
 import { getWhatsAppWaMeUrl } from '@/core/data/publicContact';
-import { AboutPortfolioSubnav } from '@/core/components/web/about/AboutPortfolioSubnav';
 import { AboutHeroV2 } from '@/core/components/web/about/AboutHeroV2';
 import { AboutSplitProfile } from '@/core/components/web/about/AboutSplitProfile';
 import { AboutDomainExpertise } from '@/core/components/web/about/AboutDomainExpertise';
@@ -33,22 +32,13 @@ export default async function AboutPage({ params }: { params: { locale: string }
   const t = await getTranslations('web.about');
   const whatsappUrl = getWhatsAppWaMeUrl();
 
-  const subnavItems = [
-    { href: '#about-overview', label: t('portfolioNavOverview') },
-    { href: '#about-profile', label: t('portfolioNavProfile') },
-    { href: '#about-domains', label: t('portfolioNavExpertise') },
-    { href: '#about-projects', label: t('v2ProjectsHeading') },
-    { href: '#about-experience', label: t('portfolioNavExperience') },
-    { href: '#about-blog', label: t('portfolioNavBlog') },
-    { href: '#about-connect', label: t('portfolioNavConnect') },
-  ];
 
   return (
     <div className="dark min-h-screen overflow-x-hidden bg-zinc-950 text-zinc-100 selection:bg-emerald-500/25">
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_bottom,rgba(16,185,129,0.03),transparent_35%)]" />
       <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:56px_56px] opacity-40" />
 
-      {/* <AboutPortfolioSubnav items={subnavItems} isArabic={isArabic} /> */}
+
 
       <AboutHeroV2
         isArabic={isArabic}

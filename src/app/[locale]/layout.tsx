@@ -10,7 +10,6 @@ import { getSiteUrl, SITE_DEFAULT_OG_IMAGE } from '@/core/seo/site';
 import { JsonLd } from '@/core/seo/JsonLd';
 import { siteWideGraphJsonLd } from '@/core/seo/structuredData';
 import SiteJsonLd from '@/core/components/web/seo/SiteJsonLd';
-import { NavigationProgress } from '@/core/components/web/layout/NavigationProgress';
 import '@/core/theme/globals.css';
 import { GoogleAnalytics } from '@next/third-parties/google';
 
@@ -160,7 +159,6 @@ export default async function LocaleLayout({
         <SiteJsonLd />
         <ThemeProvider>
           <NextIntlClientProvider messages={messages} locale={locale}>
-            {/* <NavigationProgress /> */}
             <Header />
             <main className="flex-1">
               {children}

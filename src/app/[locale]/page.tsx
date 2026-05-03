@@ -7,6 +7,7 @@ import type { HeroSection } from '@/core/types/web/home';
 import dynamic from 'next/dynamic';
 import { AnimatedSection } from '@/core/components/web/home/HomeAnimations';
 import { AuthorNameText } from '@/core/components/web/layout/AuthorNameText';
+import { ProfileAvatar } from '@/core/components/web/layout/ProfileAvatar';
 import { FiArrowRight, FiArrowLeft } from 'react-icons/fi';
 
 const Hero3D = dynamic(() => import('@/core/components/web/home/Hero3D'), { ssr: false, loading: () => null });
@@ -76,6 +77,18 @@ export default async function HomePage({ params }: { params: { locale: string } 
         <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
           <div className="relative isolate mx-auto max-w-5xl text-center sm:max-w-4xl md:max-w-5xl">
             <div className="flex flex-col gap-8 sm:gap-10 md:gap-12">
+              <AnimatedSection direction="up" delay={0.1} distance={18}>
+                <div className="mx-auto mb-4 flex justify-center sm:mb-6">
+                  <ProfileAvatar
+                    size={112}
+                    alt={isArabic ? 'محمد عبده' : 'Mohammed Abdo'}
+                    fallbackText="Mohammed"
+                    variant="circle"
+                    className="ring-2 ring-emerald-400/30 shadow-[0_0_30px_rgba(52,211,153,0.15)]"
+                  />
+                </div>
+              </AnimatedSection>
+
               <AnimatedSection direction="up" delay={0.15} distance={18}>
                 <h1
                   className={
@@ -164,8 +177,8 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
       {/* ─── Sections ─── */}
       <ServicesSection />
-      <BlogFeatureSection />
       <FintechRoadmapSection />
+      <BlogFeatureSection />
 
       {/* ─── Closing CTA ─── */}
       <section className="relative border-t border-white/10 bg-zinc-900 py-20 overflow-hidden md:py-28">

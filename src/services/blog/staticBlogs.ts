@@ -194,3 +194,20 @@ export function getFeaturedStaticBlogs(locale: string, limit: number = 3): Local
 export function getAllBlogSlugs(): { slug: string; publishedAt: string }[] {
   return sortedBlogs.map((b) => ({ slug: b.slug, publishedAt: b.publishedAt }));
 }
+
+/** Returns the previous (newer) and next (older) posts relative to the given slug. */
+export function getAdjacentPosts(
+  slug: string,
+  locale: string,
+): { prev: LocalizedBlog | null; next: LocalizedBlog | null } {
+  const idx = sortedBlogs.findIndex((b) => b.slug === slug);
+  if (idx === -1) return { prev: null, next: null };
+
+  const prevBlog = idx > 0 ? sortedBlogs[idx - 1] : null;
+  const nextBlog = idx < sortedBlogs.length - 1 ? sortedBlogs[idx + 1] : null;
+
+  return {
+    prev: prevBlog ? localizeBlog(prevBlog, locale, { omitContent: true }) : null,
+    next: nextBlog ? localizeBlog(nextBlog, locale, { omitContent: true }) : null,
+  };
+}

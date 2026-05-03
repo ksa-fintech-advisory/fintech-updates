@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { FiMap, FiArrowLeft, FiArrowRight, FiMail, FiCheck, FiX } from 'react-icons/fi';
+import { FiMap, FiArrowLeft, FiArrowRight, FiMail, FiCheck, FiX, FiLock } from 'react-icons/fi';
 import { fintechLearnerPhases } from '@/services/api/data/fintechRoadmap.data';
 
 export default function RoadmapComingSoon() {
@@ -175,34 +175,48 @@ export default function RoadmapComingSoon() {
                 {t('previewLabel')}
               </p>
 
-              {/* Phase list */}
-              <ol className="relative space-y-0">
-                {phases.map((phase, i) => {
-                  const isLast = i === phases.length - 1;
-                  return (
-                    <li key={i} className="relative flex gap-3 pb-5 last:pb-0">
-                      {/* Vertical line */}
-                      {!isLast && (
-                        <div className="absolute start-[7px] top-4 bottom-0 w-px bg-gradient-to-b from-emerald-500/30 to-emerald-500/5" aria-hidden />
-                      )}
-                      {/* Dot */}
-                      <div className="relative mt-1 flex h-[15px] w-[15px] shrink-0 items-center justify-center">
-                        <span className="absolute h-[15px] w-[15px] rounded-full bg-emerald-500/10" />
-                        <span className="relative h-[7px] w-[7px] rounded-full bg-emerald-400" />
-                      </div>
-                      {/* Text */}
-                      <div className="min-w-0 flex-1">
-                        <p className="text-sm font-semibold leading-snug text-zinc-200">
-                          {phase.title}
-                        </p>
-                        <p className="mt-0.5 text-xs text-zinc-500">
-                          {phase.topicCount} {isArabic ? 'مواضيع' : 'topics'}
-                        </p>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ol>
+              {/* Phase list - Blurred for anticipation */}
+              <div className="relative">
+                <div className="pointer-events-none select-none opacity-40 blur-[5px] transition-all duration-700 hover:blur-[4px]">
+                  <ol className="relative space-y-0">
+                    {phases.map((phase, i) => {
+                      const isLast = i === phases.length - 1;
+                      return (
+                        <li key={i} className="relative flex gap-3 pb-5 last:pb-0">
+                          {/* Vertical line */}
+                          {!isLast && (
+                            <div className="absolute start-[7px] top-4 bottom-0 w-px bg-gradient-to-b from-emerald-500/30 to-emerald-500/5" aria-hidden />
+                          )}
+                          {/* Dot */}
+                          <div className="relative mt-1 flex h-[15px] w-[15px] shrink-0 items-center justify-center">
+                            <span className="absolute h-[15px] w-[15px] rounded-full bg-emerald-500/10" />
+                            <span className="relative h-[7px] w-[7px] rounded-full bg-emerald-400" />
+                          </div>
+                          {/* Text */}
+                          <div className="min-w-0 flex-1">
+                            <p className="text-sm font-semibold leading-snug text-zinc-200">
+                              {phase.title}
+                            </p>
+                            <p className="mt-0.5 text-xs text-zinc-500">
+                              {phase.topicCount} {isArabic ? 'مواضيع' : 'topics'}
+                            </p>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </div>
+
+                {/* Lock Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="flex animate-pulse flex-col items-center gap-2 rounded-2xl border border-white/10 bg-zinc-900/80 px-5 py-4 shadow-2xl backdrop-blur-md">
+                    <FiLock className="h-6 w-6 text-emerald-400" aria-hidden />
+                    <span className="text-xs font-bold uppercase tracking-widest text-zinc-300">
+                      {isArabic ? 'يتم التجهيز' : 'Curating Content'}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

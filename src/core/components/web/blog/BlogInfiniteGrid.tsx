@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import { useLocale } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiCalendar, FiArrowRight, FiArrowLeft, FiLoader } from 'react-icons/fi';
 import type { LocalizedBlog } from '@/core/types/web/blog';
@@ -15,11 +16,29 @@ interface Props {
   allBlogs: LocalizedBlog[];
 }
 
+function getInitialVisible(searchParams: URLSearchParams, total: number): number {
+  const raw = searchParams.get('loaded');
+  if (raw) {
+    const n = parseInt(raw, 10);
+    if (!Number.isNaN(n) && n > 0) return Math.min(n, total);
+  }
+  return Math.min(BATCH, total);
+}
+
 export function BlogInfiniteGrid({ allBlogs }: Props) {
   const locale = useLocale();
   const isArabic = locale === 'ar';
-  const [visible, setVisible] = useState(BATCH);
+  const searchParams = useSearchParams();
+  const [visible, setVisible] = useState(() => getInitialVisible(searchParams, allBlogs.length));
   const [loading, setLoading] = useState(false);
+
+  // Sync visible count to URL so browser-back restores scroll depth
+  useEffect(() => {
+    if (visible <= BATCH) return; // Don't pollute URL for initial state
+    const url = new URL(window.location.href);
+    url.searchParams.set('loaded', String(visible));
+    window.history.replaceState(null, '', url.toString());
+  }, [visible]);
 
   const hasMore = visible < allBlogs.length;
   const shown = allBlogs.slice(0, visible);
@@ -69,7 +88,7 @@ export function BlogInfiniteGrid({ allBlogs }: Props) {
                       <div className="flex items-center gap-1.5 text-[11px]  text-zinc-500 shrink-0">
                         <FiCalendar className="w-3 h-3" />
                         <time>
-                          {new Date(blog.publishedAt).toLocaleDateString('en-US', {
+                          {new Date(blog.publishedAt).toLocaleDateString(isArabic ? 'ar-SA' : 'en-US', {
                             year: 'numeric',
                             month: 'short',
                             day: 'numeric',

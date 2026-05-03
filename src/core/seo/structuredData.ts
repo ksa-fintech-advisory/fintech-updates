@@ -68,8 +68,17 @@ export function blogPostingJsonLd(params: {
     datePublished: blog.publishedAt,
     dateModified: blog.publishedAt,
     publisher: { '@id': `${base}/#organization` },
+    author: {
+      '@type': 'Person',
+      name: blog.author.name || (locale === 'ar' ? 'محمد عبده' : 'Mohammed Abdo'),
+      url: `${base}/${locale}/about`,
+    },
     articleSection: blog.category.name,
     inLanguage: locale,
+    ...(blog.tags.length > 0 ? { keywords: blog.tags.join(', ') } : {}),
+    wordCount: blog.content
+      .filter((b): b is { type: 'paragraph'; text: string } => b.type === 'paragraph')
+      .reduce((sum, b) => sum + b.text.split(/\s+/).length, 0),
   };
 
   return node;

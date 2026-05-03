@@ -1,13 +1,13 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { useState, useRef, useEffect } from 'react';
 import ProductsMegaMenu from './ProductsMegaMenu';
 import CoursesMegaMenu from './CoursesMegaMenu';
 import { getAllCourses } from '@/data/courseData';
-import { ProfileAvatar } from '@/core/components/web/layout/ProfileAvatar';
 import { FiChevronDown, FiMenu, FiX, FiGlobe, FiArrowRight } from 'react-icons/fi';
 
 export default function Header() {
@@ -27,12 +27,10 @@ export default function Header() {
 
   const navItems:any = [
     { href: '', label: t('common.nav.home'), key: 'home' },
-    { href: '/roadmap', label: t('common.nav.roadmap'), key: 'roadmap' },
-    // { href: '/products', label: t("common.nav.products"), key: 'products', hasMegaMenu: true },
-    // { href: '/courses', label: t('common.nav.courses'), key: 'courses', hasMegaMenu: true },
-    // { href: '/updates', label: t('common.nav.updates'), key: 'updates' },
+    { href: '/#services', label: t('common.nav.services'), key: 'services' },
     { href: '/blog', label: t('common.nav.blog'), key: 'blog' },
-    { href: '/about', label: t('common.nav.about'), key: 'about', isSpecial: true },
+    { href: '/roadmap', label: t('common.nav.roadmap'), key: 'roadmap' },
+    { href: '/about', label: t('common.nav.about'), key: 'about' },
     { href: '/contact', label: t('common.nav.contact'), key: 'contact' },
   ];
 
@@ -51,6 +49,8 @@ export default function Header() {
     if (href === '') {
       return currentPath === '' || currentPath === '/';
     }
+    // Hash links (e.g. /#services) are scroll targets, never "active"
+    if (href.includes('#')) return false;
     return currentPath === href || currentPath.startsWith(`${href}/`);
   };
 
@@ -81,17 +81,17 @@ export default function Header() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex min-h-[4.5rem] items-center justify-between py-1 sm:py-0">
 
-            {/* --- Logo Section: Technical Brand --- */}
+            {/* --- Logo Section: Brand First --- */}
             <Link href={`/${locale}`} className="group flex items-center gap-3 outline-none">
-              <ProfileAvatar
-                size={40}
-                alt={th('avatarAlt')}
-                fallbackText={th('displayName')}
-                variant="circle"
-                className="shadow-sm transition-transform duration-200 group-hover:scale-105"
-                priority
-                authorNameFont
-              />
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center transition-transform duration-200 group-hover:scale-105">
+                <Image
+                  src="/logos/only-icon-white-green-no-bg.png"
+                  alt="Maal Tech"
+                  width={48}
+                  height={48}
+                  className="h-12 w-12 object-contain"
+                />
+              </div>
               <div className="flex min-w-0 flex-col gap-1.5 sm:gap-2">
                 <span className="truncate text-lg font-bold leading-snug tracking-tight text-grey-900 transition-colors group-hover:text-primary-600 dark:text-white dark:group-hover:text-primary-400">
                   {isArabic ? 'مال تك' : 'Maal Tech'}
@@ -116,7 +116,7 @@ export default function Header() {
                     onMouseLeave={handleMouseLeave}
                   >
                     <Link
-                      href={item.hasMegaMenu ? '#' : `/${locale}${item.href}`}
+                      href={item.hasMegaMenu ? '#' : item.href.startsWith('/#') ? `/${locale}${item.href.slice(1)}` : `/${locale}${item.href}`}
                       className={`
                         relative px-3 py-1.5 rounded-button text-sm font-medium transition-all duration-200 flex items-center gap-1.5 outline-none
                         ${active || isMegaMenuOpen
@@ -278,14 +278,12 @@ export default function Header() {
                         </div>
                       ) : (
                         <Link
-                          href={`/${locale}${item.href}`}
+                          href={item.href.startsWith('/#') ? `/${locale}${item.href.slice(1)}` : `/${locale}${item.href}`}
                           onClick={() => setMobileMenuOpen(false)}
                           className={`glass-nav-link flex min-h-[44px] items-center rounded-xl px-3 py-2.5 text-base font-medium transition-colors ${
                             isActive(item.href)
                               ? 'glass-nav-row-active font-semibold text-grey-900 dark:text-white'
-                              : item.isSpecial
-                                ? 'text-primary-700 dark:text-primary-300 bg-primary-50/50 dark:bg-primary-500/10 ring-1 ring-primary-500/20'
-                                : 'text-grey-700 dark:text-grey-300'
+                              : 'text-grey-700 dark:text-grey-300'
                           }`}
                         >
                           <span className="flex items-center gap-2">

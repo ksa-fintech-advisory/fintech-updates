@@ -12,17 +12,17 @@ export const homeData: HomeContent = {
       after: '.. ونبنيه صح.',
     },
     subtitle: {
-      en: 'Mohammed Abdo | FinTech systems engineer\n• Building system architecture and preparing it for compliance.\n• Technical guidance for developers on the FinTech path.',
-      ar: 'محمد عبده | مهندس أنظمة تقنية مالية\n• بناء معمارية الأنظمة وتجهيزها للامتثال.\n• إرشاد تقني للمطورين في مسار الفنتك.',
+      en: 'Mohammed Abdo — Software engineer specializing in FinTech. I help teams build compliant digital platforms and guide developers entering the field.',
+      ar: 'محمد عبده — مهندس برمجيات متخصص في التقنية المالية. أساعد الفرق على بناء منصات رقمية متوافقة مع التنظيم، وأرشد المطورين الداخلين للمجال.',
     },
     subtitleLeadHighlight: {
       en: {
         name: 'Mohammed Abdo',
-        tail: ' | FinTech systems engineer\n• Building system architecture and preparing it for compliance.\n• Technical guidance for developers on the FinTech path.',
+        tail: ' — Software engineer specializing in FinTech. I help teams build compliant digital platforms and guide developers entering the field.',
       },
       ar: {
         name: 'محمد عبده',
-        tail: ' | مهندس أنظمة تقنية مالية\n• بناء معمارية الأنظمة وتجهيزها للامتثال.\n• إرشاد تقني للمطورين في مسار الفنتك.',
+        tail: ' — مهندس برمجيات متخصص في التقنية المالية. أساعد الفرق على بناء منصات رقمية متوافقة مع التنظيم، وأرشد المطورين الداخلين للمجال.',
       },
     },
 

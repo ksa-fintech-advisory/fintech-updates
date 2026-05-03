@@ -3,8 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { FiTwitter, FiLinkedin, FiArrowRight, FiArrowLeft, FiCommand, FiMail, FiChevronRight } from 'react-icons/fi';
-import { SiWhatsapp } from 'react-icons/si';
+import { FiLinkedin, FiArrowRight, FiArrowLeft, FiCommand, FiMail, FiChevronRight } from 'react-icons/fi';
+import { SiWhatsapp, SiX } from 'react-icons/si';
 import { PUBLIC_CONTACT_EMAIL, getPublicMailtoHref, getWhatsAppWaMeUrl } from '@/core/data/publicContact';
 import { ProfileAvatar } from '@/core/components/web/layout/ProfileAvatar';
 import { AuthorNameText } from '@/core/components/web/layout/AuthorNameText';
@@ -47,11 +47,11 @@ export default function Footer() {
           <div className="space-y-6 lg:col-span-4">
             <Link href={`/${locale}`} className="group flex w-fit items-center gap-3 outline-none">
               <ProfileAvatar
-                size={48}
+                size={36}
                 alt={th('avatarAlt')}
                 fallbackText={th('displayName')}
                 variant="circle"
-                className="shadow-md ring-2 ring-white transition-transform duration-200 group-hover:scale-105 dark:ring-grey-900"
+                className="opacity-90 transition-all duration-200 group-hover:opacity-100 group-hover:scale-105"
                 authorNameFont
               />
               <div className="min-w-0 text-start">
@@ -91,9 +91,9 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={socialBase}
-                aria-label="Twitter"
+                aria-label="X"
               >
-                <FiTwitter className="h-5 w-5" />
+                <SiX className="h-4 w-4" />
               </a>
               <a
                 href="https://www.linkedin.com/in/mohfintech/"
