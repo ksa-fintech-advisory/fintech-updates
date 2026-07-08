@@ -3,6 +3,8 @@ import { getSiteUrl } from '@/core/seo/site';
 import { getAllBlogSlugs } from '@/services/blog/staticBlogs';
 import { getUpdateSitemapEntries } from '@/services/updates/staticUpdateService';
 
+export const runtime = 'edge';
+
 type Freq = MetadataRoute.Sitemap[number]['changeFrequency'];
 
 function localizedUrls(

@@ -37,6 +37,8 @@ const amiriQuran = Amiri_Quran({
 
 const fav = '/favicon_io';
 
+export const runtime = 'edge';
+
 export const metadata: Metadata = {
   title: {
     default: 'Maal Tech | مال تك',

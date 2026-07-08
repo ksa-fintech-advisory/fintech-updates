@@ -5,7 +5,6 @@ const withNextIntl = createNextIntlPlugin('./src/core/i18n/request.ts');
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'standalone',
   compiler: {
     removeConsole:
       process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,

@@ -1,5 +1,7 @@
 import { getSiteUrl, SITE_NAME, SITE_NAME_AR } from '@/core/seo/site';
 
+export const runtime = 'edge';
+
 /**
  * llms.txt — machine-readable site summary for LLM / AI crawlers.
  * @see https://llmstxt.org/

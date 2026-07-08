@@ -1,6 +1,8 @@
 import { MetadataRoute } from 'next';
 import { getSiteUrl } from '@/core/seo/site';
 
+export const runtime = 'edge';
+
 const disallow: string[] = [];
 
 export default function robots(): MetadataRoute.Robots {
