@@ -12,6 +12,7 @@ import { siteWideGraphJsonLd } from '@/core/seo/structuredData';
 import SiteJsonLd from '@/core/components/web/seo/SiteJsonLd';
 import '@/core/theme/globals.css';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { MAINTENANCE_MODE } from '@/core/config/maintenance';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -101,11 +102,11 @@ export const metadata: Metadata = {
     creator: '@mohfintech',
   },
   robots: {
-    index: true, // Website should be indexed
-    follow: true,
+    index: !MAINTENANCE_MODE,
+    follow: !MAINTENANCE_MODE,
     googleBot: {
-      index: true,
-      follow: true,
+      index: !MAINTENANCE_MODE,
+      follow: !MAINTENANCE_MODE,
     },
   },
   icons: {
@@ -159,11 +160,11 @@ export default async function LocaleLayout({
         <SiteJsonLd />
         <ThemeProvider>
           <NextIntlClientProvider messages={messages} locale={locale}>
-            <Header />
+            {!MAINTENANCE_MODE && <Header />}
             <main className="flex-1">
               {children}
             </main>
-            <Footer />
+            {!MAINTENANCE_MODE && <Footer />}
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

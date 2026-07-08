@@ -146,6 +146,13 @@
         }
       }
     },
+    "maintenance": {
+      "metaTitle": "Enhancing the platform",
+      "metaDescription": "Maal Tech is being improved. We'll be back soon with a better experience.",
+      "badge": "In progress",
+      "title": "We're enhancing the platform",
+      "description": "We're working on improvements to deliver a better experience.\nPlease check back soon."
+    },
     "roadmapPage": {
       "metaTitle": "FinTech roadmap — a practical guide from first principles to architecture",
       "metaDescription": "A field-style guide to money flows, systems architecture, and regulatory compliance—phases, practical outcomes, topics with official references. For beginners, engineers building payment systems, and PMs planning a launch.",
