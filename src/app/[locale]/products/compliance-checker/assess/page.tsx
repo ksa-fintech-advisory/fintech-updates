@@ -11,6 +11,7 @@ import {
   scoreAnswer,
   calculateAssessmentResult,
   getActivityLabels,
+  getModuleLabel,
 } from '@/services/compliance-checker/assessment-engine';
 import type {
   AssessmentQuestion,
@@ -35,7 +36,74 @@ import {
   FiCheck,
   FiExternalLink,
   FiShield,
+  FiBriefcase,
+  FiLock,
+  FiTrendingUp,
+  FiGitMerge,
+  FiMessageCircle,
+  FiInfo,
 } from 'react-icons/fi';
+
+const ACTIVITY_ICONS: Record<keyof SelectedActivities, typeof FiBriefcase> = {
+  dealing: FiBriefcase,
+  custody: FiLock,
+  managing: FiTrendingUp,
+  arranging: FiGitMerge,
+  advising: FiMessageCircle,
+};
+
+function StepProgress({
+  current,
+  locale,
+}: {
+  current: 1 | 2 | 3;
+  locale: string;
+}) {
+  const isArabic = locale === 'ar';
+  const steps = [
+    { n: 1, label: isArabic ? 'النطاق' : 'Scope' },
+    { n: 2, label: isArabic ? 'التدقيق' : 'Audit' },
+    { n: 3, label: isArabic ? 'التقرير' : 'Report' },
+  ] as const;
+
+  return (
+    <ol className="mb-8 flex items-center gap-2 sm:gap-3">
+      {steps.map((step, idx) => {
+        const done = current > step.n;
+        const active = current === step.n;
+        return (
+          <li key={step.n} className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
+            <div className="flex min-w-0 items-center gap-2">
+              <span
+                className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold transition-colors ${
+                  done
+                    ? 'bg-emerald-500 text-zinc-950'
+                    : active
+                      ? 'bg-white text-zinc-950'
+                      : 'bg-zinc-800 text-zinc-500'
+                }`}
+              >
+                {done ? <FiCheck size={12} strokeWidth={3} /> : step.n}
+              </span>
+              <span
+                className={`truncate text-xs font-semibold sm:text-sm ${
+                  active ? 'text-white' : done ? 'text-emerald-400' : 'text-zinc-600'
+                }`}
+              >
+                {step.label}
+              </span>
+            </div>
+            {idx < steps.length - 1 && (
+              <div
+                className={`h-px min-w-4 flex-1 ${done ? 'bg-emerald-500/50' : 'bg-zinc-800'}`}
+              />
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  );
+}
 
 function ActivitySelectionStep({
   activities,
@@ -50,91 +118,191 @@ function ActivitySelectionStep({
 }) {
   const isArabic = locale === 'ar';
   const activityLabels = getActivityLabels();
+  const keys = Object.keys(activityLabels) as (keyof SelectedActivities)[];
   const hasSelection = Object.values(activities).some(Boolean);
   const selectedCount = Object.values(activities).filter(Boolean).length;
+  const allSelected = keys.every((key) => activities[key]);
+
+  const selectAll = () => {
+    const next = { ...activities };
+    keys.forEach((key) => {
+      next[key] = true;
+    });
+    onUpdate(next);
+  };
+
+  const clearAll = () => {
+    const next = { ...activities };
+    keys.forEach((key) => {
+      next[key] = false;
+    });
+    onUpdate(next);
+  };
 
   return (
-    <div className="mx-auto max-w-5xl">
-      <div className="mb-10">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
-          {isArabic ? 'الخطوة 01' : 'Step 01'}
-        </p>
+    <div className="mx-auto max-w-5xl pb-28">
+      <StepProgress current={1} locale={locale} />
+
+      <div className="mb-8">
         <h2 className="mb-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
           {isArabic ? 'حدد نطاق عملياتك' : 'Define your operational scope'}
         </h2>
         <p className="max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
           {isArabic
-            ? 'حدد الأنشطة المرخصة التي تمارسها منشأتك. سيتم بناء مصفوفة الامتثال بناءً على اختيارك.'
-            : 'Select the regulated activities your entity performs. The compliance matrix is built from this selection.'}
+            ? 'اختر الأنشطة المرخصة التي تمارسها منشأتك. سيتم بناء مصفوفة الامتثال بناءً على اختيارك.'
+            : 'Choose the licensed activities your entity performs. The compliance matrix is built from this selection.'}
         </p>
       </div>
 
-      <div className="mb-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {(Object.keys(activityLabels) as (keyof SelectedActivities)[]).map((key) => {
-          const label = activityLabels[key];
-          const isSelected = activities[key];
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <p className="text-sm text-zinc-500">
+          {isArabic ? 'يمكنك اختيار أكثر من نشاط' : 'You can select more than one activity'}
+        </p>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            onClick={allSelected ? clearAll : selectAll}
+            className="rounded-full border border-zinc-700 bg-zinc-900/80 px-3.5 py-1.5 text-xs font-semibold text-zinc-300 transition-colors hover:border-zinc-500 hover:text-white"
+          >
+            {allSelected
+              ? isArabic
+                ? 'مسح الكل'
+                : 'Clear all'
+              : isArabic
+                ? 'تحديد الكل'
+                : 'Select all'}
+          </button>
+        </div>
+      </div>
 
-          return (
-            <button
-              key={key}
-              type="button"
-              onClick={() => onUpdate({ ...activities, [key]: !isSelected })}
-              className={`group relative flex min-h-[140px] flex-col rounded-2xl border p-5 text-start transition-all duration-200 ${
-                isSelected
-                  ? 'border-emerald-500/50 bg-emerald-500/10 shadow-[0_0_24px_rgba(16,185,129,0.12)]'
-                  : 'border-zinc-800 bg-zinc-900/60 hover:border-zinc-700 hover:bg-zinc-900'
-              }`}
-            >
-              <div className="mb-4 flex w-full items-start justify-between">
-                <div
-                  className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-bold transition-colors ${
+      <fieldset className="mb-6">
+        <legend className="sr-only">
+          {isArabic ? 'الأنشطة المرخصة' : 'Licensed activities'}
+        </legend>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {keys.map((key) => {
+            const label = activityLabels[key];
+            const isSelected = activities[key];
+            const Icon = ACTIVITY_ICONS[key];
+
+            return (
+              <label
+                key={key}
+                className={`group relative flex cursor-pointer gap-4 rounded-2xl border p-4 transition-all duration-200 sm:p-5 ${
+                  isSelected
+                    ? 'border-emerald-500/50 bg-emerald-500/[0.08] shadow-[0_0_28px_rgba(16,185,129,0.1)]'
+                    : 'border-zinc-800 bg-zinc-900/50 hover:border-zinc-700 hover:bg-zinc-900'
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  checked={isSelected}
+                  onChange={() => onUpdate({ ...activities, [key]: !isSelected })}
+                  className="peer sr-only"
+                />
+
+                <span
+                  className={`mt-0.5 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-colors ${
                     isSelected
                       ? 'bg-emerald-500 text-zinc-950'
-                      : 'bg-zinc-800 text-zinc-500 group-hover:text-zinc-300'
+                      : 'bg-zinc-800 text-zinc-400 group-hover:text-zinc-200'
                   }`}
                 >
-                  {isSelected ? <FiCheck strokeWidth={3} /> : key.substring(0, 2).toUpperCase()}
-                </div>
-                {isSelected && (
-                  <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
-                )}
-              </div>
+                  <Icon className="h-5 w-5" aria-hidden />
+                </span>
 
-              <div className="mt-auto">
-                <h3
-                  className={`mb-1.5 text-base font-bold ${
-                    isSelected ? 'text-emerald-300' : 'text-white'
-                  }`}
-                >
-                  {label[locale as 'en' | 'ar']}
-                </h3>
-                <p className="text-sm leading-relaxed text-zinc-500">
-                  {label.description[locale as 'en' | 'ar']}
-                </p>
-              </div>
-            </button>
-          );
-        })}
-      </div>
+                <span className="min-w-0 flex-1">
+                  <span className="mb-1 flex items-start justify-between gap-3">
+                    <span
+                      className={`block text-base font-bold ${
+                        isSelected ? 'text-emerald-200' : 'text-white'
+                      }`}
+                    >
+                      {label[locale as 'en' | 'ar']}
+                    </span>
+                    <span
+                      className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-md border transition-colors ${
+                        isSelected
+                          ? 'border-emerald-500 bg-emerald-500 text-zinc-950'
+                          : 'border-zinc-600 bg-transparent'
+                      }`}
+                      aria-hidden
+                    >
+                      {isSelected && <FiCheck size={12} strokeWidth={3} />}
+                    </span>
+                  </span>
+                  <span className="block text-sm leading-relaxed text-zinc-500">
+                    {label.description[locale as 'en' | 'ar']}
+                  </span>
+                </span>
+              </label>
+            );
+          })}
+        </div>
+      </fieldset>
 
-      <div className="flex flex-col gap-4 border-t border-zinc-800 pt-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-zinc-500">
-          {isArabic ? 'تم اختيار' : 'Selected'}:{' '}
-          <span className="font-semibold text-zinc-300">{selectedCount}</span>
-        </p>
-        <button
-          type="button"
-          onClick={onNext}
-          disabled={!hasSelection}
-          className={`inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-sm font-bold transition-all ${
-            hasSelection
-              ? 'bg-white text-zinc-950 hover:bg-zinc-200'
-              : 'cursor-not-allowed bg-zinc-800 text-zinc-500'
-          }`}
-        >
-          <span>{isArabic ? 'بدء التدقيق' : 'Start audit'}</span>
-          {isArabic ? <FiArrowLeft className="h-4 w-4" /> : <FiArrowRight className="h-4 w-4" />}
-        </button>
+      {hasSelection && (
+        <div className="mb-6 flex flex-wrap gap-2">
+          {keys
+            .filter((key) => activities[key])
+            .map((key) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => onUpdate({ ...activities, [key]: false })}
+                className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-300 transition-colors hover:bg-emerald-500/20"
+              >
+                {activityLabels[key][locale as 'en' | 'ar']}
+                <span className="text-emerald-500/80" aria-hidden>
+                  ×
+                </span>
+              </button>
+            ))}
+        </div>
+      )}
+
+      {!hasSelection && (
+        <div className="mb-6 flex items-start gap-2.5 rounded-xl border border-zinc-800 bg-zinc-900/40 px-4 py-3 text-sm text-zinc-500">
+          <FiInfo className="mt-0.5 h-4 w-4 shrink-0 text-zinc-600" />
+          <p>
+            {isArabic
+              ? 'اختر نشاطاً واحداً على الأقل للمتابعة.'
+              : 'Select at least one activity to continue.'}
+          </p>
+        </div>
+      )}
+
+      {/* Sticky action bar */}
+      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-zinc-800/90 bg-zinc-950/90 backdrop-blur-md">
+        <div className="container mx-auto flex items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+          <div>
+            <p className="text-sm font-semibold text-white">
+              {selectedCount === 0
+                ? isArabic
+                  ? 'لم يتم اختيار أي نشاط'
+                  : 'No activities selected'
+                : isArabic
+                  ? `${selectedCount} ${selectedCount === 1 ? 'نشاط محدد' : 'أنشطة محددة'}`
+                  : `${selectedCount} activit${selectedCount === 1 ? 'y' : 'ies'} selected`}
+            </p>
+            <p className="text-xs text-zinc-500">
+              {isArabic ? 'الخطوة 1 من 3' : 'Step 1 of 3'}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={onNext}
+            disabled={!hasSelection}
+            className={`inline-flex h-11 items-center justify-center gap-2 rounded-full px-6 text-sm font-bold transition-all sm:h-12 sm:px-8 ${
+              hasSelection
+                ? 'bg-white text-zinc-950 hover:bg-zinc-200'
+                : 'cursor-not-allowed bg-zinc-800 text-zinc-500'
+            }`}
+          >
+            <span>{isArabic ? 'متابعة' : 'Continue'}</span>
+            {isArabic ? <FiArrowLeft className="h-4 w-4" /> : <FiArrowRight className="h-4 w-4" />}
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -212,12 +380,20 @@ function ModuleInspector({
               {isArabic ? <FiArrowRight className="h-3.5 w-3.5" /> : <FiArrowLeft className="h-3.5 w-3.5" />}
               {isArabic ? 'العودة للوحة' : 'Back to hub'}
             </button>
-            <h3 className="mb-2 text-base font-bold leading-snug text-white">{moduleName}</h3>
-            <div className="flex items-center gap-2 text-xs text-zinc-500">
+            <h3 className="mb-2 text-base font-bold leading-snug text-white">
+              {getModuleLabel(moduleName, locale)}
+            </h3>
+            <div className="mb-3 flex items-center gap-2 text-xs text-zinc-500">
               <span
                 className={`h-2 w-2 rounded-full ${progress === 100 ? 'bg-emerald-500' : 'bg-emerald-400'}`}
               />
-              {progress}% {isArabic ? 'مكتمل' : 'complete'}
+              {answeredInModule}/{questions.length} {isArabic ? 'مكتمل' : 'answered'} · {progress}%
+            </div>
+            <div className="h-1.5 overflow-hidden rounded-full bg-zinc-800">
+              <div
+                className="h-full bg-emerald-500 transition-all duration-500"
+                style={{ width: `${progress}%` }}
+              />
             </div>
           </div>
 
@@ -233,7 +409,7 @@ function ModuleInspector({
                   onClick={() => setCurrentIndex(idx)}
                   className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-start text-sm transition-colors ${
                     isActive
-                      ? 'bg-zinc-800 text-white'
+                      ? 'bg-zinc-800 text-white ring-1 ring-zinc-700'
                       : 'text-zinc-500 hover:bg-zinc-900 hover:text-zinc-300'
                   }`}
                 >
@@ -248,9 +424,12 @@ function ModuleInspector({
                   >
                     {isAnswered ? <FiCheck size={10} /> : idx + 1}
                   </span>
-                  <span className={isActive ? 'font-semibold' : 'font-medium'}>
+                  <span className={`min-w-0 truncate ${isActive ? 'font-semibold' : 'font-medium'}`}>
                     {isArabic ? `سؤال ${idx + 1}` : `Check ${idx + 1}`}
                   </span>
+                  {q.riskLevel === 'High' && (
+                    <span className="ms-auto h-1.5 w-1.5 shrink-0 rounded-full bg-red-500" title="High risk" />
+                  )}
                 </button>
               );
             })}
@@ -276,42 +455,62 @@ function ModuleInspector({
                   className={`rounded-md border px-2 py-1 text-[10px] font-bold uppercase ${
                     currentQuestion.riskLevel === 'High'
                       ? 'border-red-500/30 bg-red-500/10 text-red-400'
-                      : 'border-zinc-700 bg-zinc-800 text-zinc-400'
+                      : currentQuestion.riskLevel === 'Medium'
+                        ? 'border-amber-500/30 bg-amber-500/10 text-amber-400'
+                        : 'border-zinc-700 bg-zinc-800 text-zinc-400'
                   }`}
                 >
                   {currentQuestion.riskLevel} risk
                 </span>
+                {currentQuestion.articleReference && (
+                  <span className="rounded-md border border-zinc-800 bg-zinc-950/60 px-2 py-1 text-[10px] font-medium text-zinc-500">
+                    {currentQuestion.articleReference[locale as 'en' | 'ar']}
+                  </span>
+                )}
               </div>
 
-              <h2 className="mb-6 text-xl font-bold leading-snug text-white sm:text-2xl md:text-3xl">
+              <h2 className="mb-3 text-xl font-bold leading-snug text-white sm:text-2xl md:text-[1.75rem]">
                 {currentQuestion.question[locale as 'en' | 'ar']}
               </h2>
 
+              <p className="mb-6 text-sm text-zinc-500">
+                {isArabic
+                  ? 'اختر الإجابة الأنسب لوضع منشأتك الحالي.'
+                  : 'Choose the answer that best matches your current state.'}
+              </p>
+
               {currentQuestion.helpText && (
-                <div className="mb-8 rounded-xl border border-zinc-800 border-s-2 border-s-emerald-500 bg-zinc-950/60 p-4 text-sm leading-relaxed text-zinc-400">
-                  {currentQuestion.helpText[locale as 'en' | 'ar']}
+                <div className="mb-7 flex gap-3 rounded-xl border border-zinc-800 border-s-2 border-s-emerald-500 bg-zinc-950/60 p-4 text-sm leading-relaxed text-zinc-400">
+                  <FiInfo className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500/80" />
+                  <p>{currentQuestion.helpText[locale as 'en' | 'ar']}</p>
                 </div>
               )}
 
-              <div className="space-y-3">
+              <div
+                role="radiogroup"
+                aria-label={isArabic ? 'خيارات الإجابة' : 'Answer options'}
+                className="space-y-3"
+              >
                 {currentQuestion.options?.map((option) => {
                   const isSelected = currentAnswer?.value === option.value;
                   return (
                     <button
                       key={option.value}
                       type="button"
+                      role="radio"
+                      aria-checked={isSelected}
                       onClick={() => handleAnswerSelect(option.value)}
                       className={`group flex w-full items-center gap-4 rounded-xl border-2 p-4 text-start transition-all duration-200 sm:p-5 ${
                         isSelected
-                          ? 'border-emerald-500/60 bg-emerald-500/10'
-                          : 'border-zinc-800 bg-zinc-950/40 hover:border-zinc-700'
+                          ? 'border-emerald-500/60 bg-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.08)]'
+                          : 'border-zinc-800 bg-zinc-950/40 hover:border-zinc-600 hover:bg-zinc-900/60'
                       }`}
                     >
                       <span
                         className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${
                           isSelected
                             ? 'border-emerald-500 bg-emerald-500'
-                            : 'border-zinc-600 group-hover:border-zinc-500'
+                            : 'border-zinc-600 group-hover:border-zinc-400'
                         }`}
                       >
                         {isSelected && <span className="h-2 w-2 rounded-full bg-zinc-950" />}
@@ -323,6 +522,9 @@ function ModuleInspector({
                       >
                         {option.label[locale as 'en' | 'ar']}
                       </span>
+                      {isSelected && (
+                        <FiCheck className="ms-auto h-4 w-4 shrink-0 text-emerald-400" />
+                      )}
                     </button>
                   );
                 })}
@@ -351,7 +553,12 @@ function ModuleInspector({
                   ? setCurrentIndex((prev) => prev + 1)
                   : onReturn()
               }
-              className="rounded-full bg-white px-5 py-2 text-sm font-bold text-zinc-950 transition-colors hover:bg-zinc-200"
+              disabled={currentIndex < questions.length - 1 && !currentAnswer}
+              className={`rounded-full px-5 py-2 text-sm font-bold transition-colors ${
+                currentIndex < questions.length - 1 && !currentAnswer
+                  ? 'cursor-not-allowed bg-zinc-800 text-zinc-500'
+                  : 'bg-white text-zinc-950 hover:bg-zinc-200'
+              }`}
             >
               {currentIndex === questions.length - 1
                 ? isArabic
@@ -508,6 +715,8 @@ function AssessmentHub({
 
   return (
     <div className="mx-auto max-w-6xl">
+      <StepProgress current={2} locale={locale} />
+
       <div className="mb-8 flex flex-col justify-between gap-6 border-b border-zinc-800 pb-8 md:flex-row md:items-end">
         <div>
           <span className="mb-2 inline-flex items-center rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-400">
@@ -586,7 +795,9 @@ function AssessmentHub({
               </div>
 
               <div className="mb-5 flex-1 ps-2">
-                <h3 className="mb-1 text-base font-bold text-white">{moduleName}</h3>
+                <h3 className="mb-1 text-base font-bold text-white">
+                  {getModuleLabel(moduleName, locale)}
+                </h3>
                 <p className="text-xs font-medium text-zinc-500">
                   {isModuleComplete
                     ? isArabic
@@ -718,6 +929,8 @@ function ReportStep({
 
   return (
     <div className="mx-auto max-w-5xl">
+      <StepProgress current={3} locale={locale} />
+
       <div
         ref={printRef}
         className="fixed left-[-9999px] top-0 w-[900px] bg-white p-12 font-sans text-black"

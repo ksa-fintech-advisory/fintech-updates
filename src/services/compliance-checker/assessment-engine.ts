@@ -25,7 +25,7 @@ import { getAllRules, getModuleSummaries, getRulesByModule } from './engine';
 /**
  * Module labels for display
  */
-const MODULE_LABELS: Record<string, { en: string; ar: string }> = {
+export const MODULE_LABELS: Record<string, { en: string; ar: string }> = {
   'Licensing': { en: 'Licensing', ar: 'الترخيص' },
   'Governance': { en: 'Governance', ar: 'الحوكمة' },
   'Operations': { en: 'Operations', ar: 'العمليات' },
@@ -34,6 +34,13 @@ const MODULE_LABELS: Record<string, { en: string; ar: string }> = {
   'Data & Cybersecurity': { en: 'Data & Cybersecurity', ar: 'البيانات والأمن السيبراني' },
   'Capital & Financials': { en: 'Capital & Financials', ar: 'رأس المال والشؤون المالية' },
 };
+
+/** Localized display name for a module key (English key from rules). */
+export function getModuleLabel(moduleKey: string, locale: string): string {
+  const label = MODULE_LABELS[moduleKey];
+  if (!label) return moduleKey;
+  return locale === 'ar' ? label.ar : label.en;
+}
 
 /**
  * Standard yes/no/partial options
