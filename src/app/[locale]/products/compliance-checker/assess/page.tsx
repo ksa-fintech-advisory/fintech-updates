@@ -948,7 +948,7 @@ function ReportStep({
                   : 'Final compliance audit'}
             </h1>
             <p className="text-sm text-gray-600">
-              Status: {isPartial ? 'Incomplete data' : 'Completed'} // Coverage: {coveragePercent}%
+              {`Status: ${isPartial ? 'Incomplete data' : 'Completed'} · Coverage: ${coveragePercent}%`}
             </p>
           </div>
           <div className="text-right">

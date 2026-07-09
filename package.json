@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "PORT=5005 next dev",
-    "build": "next build",
+    "build": "NODE_ENV=production next build",
     "pages:build": "next-on-pages",
     "start": "next start",
     "lint": "next lint",
@@ -12,7 +12,7 @@
     "postinstall": "node scripts/patch-next-on-pages.mjs"
   },
   "dependencies": {
-    "@next/third-parties": "^16.2.3",
+    "@next/third-parties": "^14.2.35",
     "@react-three/drei": "^9.122.0",
     "@react-three/fiber": "^8.18.0",
     "@tailwindcss/forms": "^0.5.11",
