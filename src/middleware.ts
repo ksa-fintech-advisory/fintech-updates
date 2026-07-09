@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const intlMiddleware = createMiddleware(routing);
 
 const LOCALE_HOME = /^\/(en|ar)$/;
+const COMPLIANCE_CHECKER = /^\/(en|ar)\/products\/compliance-checker(\/|$)/;
 
 export default function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -14,7 +15,8 @@ export default function middleware(request: NextRequest) {
     const localeMatch = pathname.match(/^\/(en|ar)/);
     const locale = localeMatch?.[1] ?? request.cookies.get('NEXT_LOCALE')?.value ?? 'ar';
 
-    if (!LOCALE_HOME.test(pathname)) {
+    const isAllowed = LOCALE_HOME.test(pathname) || COMPLIANCE_CHECKER.test(pathname);
+    if (!isAllowed) {
       return NextResponse.redirect(new URL(`/${locale}`, request.url));
     }
 

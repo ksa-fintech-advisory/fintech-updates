@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
+import { FiArrowLeft, FiArrowRight, FiShield } from 'react-icons/fi';
 
 type Props = {
   locale: string;
@@ -7,6 +9,7 @@ type Props = {
 export default async function MaintenancePage({ locale }: Props) {
   const isArabic = locale === 'ar';
   const t = await getTranslations({ locale, namespace: 'web.maintenance' });
+  const ArrowIcon = isArabic ? FiArrowLeft : FiArrowRight;
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-zinc-950 py-20 text-white">
@@ -34,12 +37,26 @@ export default async function MaintenancePage({ locale }: Props) {
 
         <p
           lang={isArabic ? 'ar' : undefined}
-          className={`mx-auto max-w-lg whitespace-pre-line font-light text-zinc-400 ${
+          className={`mx-auto mb-10 max-w-lg whitespace-pre-line font-light text-zinc-400 ${
             isArabic ? 'text-lg leading-[1.85]' : 'text-base leading-relaxed sm:text-lg'
           }`}
         >
           {t('description')}
         </p>
+
+        <Link
+          href={`/${locale}/products/compliance-checker`}
+          className="group inline-flex h-12 items-center gap-2.5 rounded-full border border-white/10 bg-white/5 px-7 text-sm font-bold text-white transition-all duration-200 hover:border-emerald-500/40 hover:bg-emerald-500 hover:text-zinc-950"
+        >
+          <FiShield className="h-4 w-4 shrink-0" aria-hidden />
+          <span>{t('complianceCta')}</span>
+          <ArrowIcon
+            className={`h-4 w-4 shrink-0 transition-transform ${
+              isArabic ? 'group-hover:-translate-x-0.5' : 'group-hover:translate-x-0.5'
+            }`}
+            aria-hidden
+          />
+        </Link>
       </div>
     </section>
   );

@@ -14,7 +14,8 @@ const nextConfig = {
   },
   async redirects() {
     // Deprecated routes — code kept but not publicly accessible
-    const deprecatedRoutes = ['courses', 'products', 'updates', 'docs', 'terms', 'privacy'];
+    // Compliance checker stays available during maintenance.
+    const deprecatedRoutes = ['courses', 'updates', 'docs', 'terms', 'privacy'];
     const deprecatedRedirects = deprecatedRoutes.flatMap((route) => [
       {
         source: `/:locale(en|ar)/${route}`,
@@ -27,6 +28,34 @@ const nextConfig = {
         permanent: true,
       },
     ]);
+
+    const otherProductRedirects = [
+      {
+        source: '/:locale(en|ar)/products',
+        destination: '/:locale',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ar)/products/fee-calculator',
+        destination: '/:locale',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ar)/products/fee-calculator/:path*',
+        destination: '/:locale',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ar)/products/market-analysis',
+        destination: '/:locale',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ar)/products/market-analysis/:path*',
+        destination: '/:locale',
+        permanent: true,
+      },
+    ];
 
     return [
       {
@@ -45,6 +74,7 @@ const nextConfig = {
         permanent: true,
       },
       ...deprecatedRedirects,
+      ...otherProductRedirects,
     ];
   },
   images: {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useRef, useEffect } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import Link from 'next/link';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -11,7 +11,6 @@ import {
   scoreAnswer,
   calculateAssessmentResult,
   getActivityLabels,
-  getProgress
 } from '@/services/compliance-checker/assessment-engine';
 import type {
   AssessmentQuestion,
@@ -21,17 +20,22 @@ import type {
   AssessmentState,
   ModuleScore,
 } from '@/services/compliance-checker/assessment-types';
-import { INITIAL_ASSESSMENT_STATE, getStatusDisplay } from '@/services/compliance-checker/assessment-types';
+import { INITIAL_ASSESSMENT_STATE } from '@/services/compliance-checker/assessment-types';
 import {
-  FiCheckCircle, FiCircle, FiChevronRight, FiChevronLeft, FiCpu,
-  FiAlertTriangle, FiFileText, FiRefreshCw, FiDownload, FiActivity,
-  FiShield, FiGrid, FiArrowLeft, FiArrowRight, FiCheck, FiMenu,
-  FiExternalLink
+  FiCheckCircle,
+  FiChevronRight,
+  FiAlertTriangle,
+  FiFileText,
+  FiRefreshCw,
+  FiDownload,
+  FiActivity,
+  FiGrid,
+  FiArrowLeft,
+  FiArrowRight,
+  FiCheck,
+  FiExternalLink,
+  FiShield,
 } from 'react-icons/fi';
-
-// ============================================
-// 1. Module Configuration (Activity Selection)
-// ============================================
 
 function ActivitySelectionStep({
   activities,
@@ -47,31 +51,25 @@ function ActivitySelectionStep({
   const isArabic = locale === 'ar';
   const activityLabels = getActivityLabels();
   const hasSelection = Object.values(activities).some(Boolean);
+  const selectedCount = Object.values(activities).filter(Boolean).length;
 
   return (
-    <div className="max-w-5xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500">
-
-      {/* Header */}
-      <div className="mb-12">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="flex items-center justify-center w-8 h-8 rounded bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400  font-bold text-sm">01</span>
-          <span className="h-px w-12 bg-zinc-200 dark:bg-zinc-800"></span>
-          <span className="text-xs  font-bold text-zinc-400 uppercase tracking-widest">
-            {isArabic ? 'تهيئة النظام' : 'SYSTEM CONFIGURATION'}
-          </span>
-        </div>
-        <h2 className="text-3xl md:text-4xl font-black text-zinc-900 dark:text-white mb-4 tracking-tight">
-          {isArabic ? 'حدد نطاق عملياتك' : 'Define Operational Scope'}
+    <div className="mx-auto max-w-5xl">
+      <div className="mb-10">
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
+          {isArabic ? 'الخطوة 01' : 'Step 01'}
+        </p>
+        <h2 className="mb-3 text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
+          {isArabic ? 'حدد نطاق عملياتك' : 'Define your operational scope'}
         </h2>
-        <p className="text-zinc-500 dark:text-zinc-400 max-w-2xl text-lg leading-relaxed">
+        <p className="max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
           {isArabic
-            ? 'لضمان دقة التدقيق، يرجى تحديد الأنشطة المرخصة التي تمارسها منشأتك حالياً أو تخطط لها.'
-            : 'Select the regulated activities your entity performs. The engine will dynamically construct the compliance matrix based on this selection.'}
+            ? 'حدد الأنشطة المرخصة التي تمارسها منشأتك. سيتم بناء مصفوفة الامتثال بناءً على اختيارك.'
+            : 'Select the regulated activities your entity performs. The compliance matrix is built from this selection.'}
         </p>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+      <div className="mb-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {(Object.keys(activityLabels) as (keyof SelectedActivities)[]).map((key) => {
           const label = activityLabels[key];
           const isSelected = activities[key];
@@ -79,35 +77,38 @@ function ActivitySelectionStep({
           return (
             <button
               key={key}
+              type="button"
               onClick={() => onUpdate({ ...activities, [key]: !isSelected })}
-              className={`
-                group relative flex h-full flex-col rounded-button border-2 p-6 text-start transition-all duration-200
-                ${isSelected
-                  ? 'border-primary-600 bg-zinc-50 dark:bg-zinc-900/50 shadow-lg shadow-primary-900/5'
-                  : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md'
-                }
-              `}
+              className={`group relative flex min-h-[140px] flex-col rounded-2xl border p-5 text-start transition-all duration-200 ${
+                isSelected
+                  ? 'border-emerald-500/50 bg-emerald-500/10 shadow-[0_0_24px_rgba(16,185,129,0.12)]'
+                  : 'border-zinc-800 bg-zinc-900/60 hover:border-zinc-700 hover:bg-zinc-900'
+              }`}
             >
-              <div className="flex justify-between items-start w-full mb-4">
-                <div className={`
-                  w-8 h-8 rounded flex items-center justify-center transition-colors  text-xs
-                  ${isSelected
-                    ? 'bg-primary-600 text-white'
-                    : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400'
-                  }
-                `}>
+              <div className="mb-4 flex w-full items-start justify-between">
+                <div
+                  className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-bold transition-colors ${
+                    isSelected
+                      ? 'bg-emerald-500 text-zinc-950'
+                      : 'bg-zinc-800 text-zinc-500 group-hover:text-zinc-300'
+                  }`}
+                >
                   {isSelected ? <FiCheck strokeWidth={3} /> : key.substring(0, 2).toUpperCase()}
                 </div>
                 {isSelected && (
-                  <span className="inline-block w-2 h-2 rounded-full bg-primary-500 animate-pulse"></span>
+                  <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
                 )}
               </div>
 
               <div className="mt-auto">
-                <h3 className={`font-bold text-lg mb-2 ${isSelected ? 'text-primary-700 dark:text-primary-400' : 'text-zinc-900 dark:text-white'}`}>
+                <h3
+                  className={`mb-1.5 text-base font-bold ${
+                    isSelected ? 'text-emerald-300' : 'text-white'
+                  }`}
+                >
                   {label[locale as 'en' | 'ar']}
                 </h3>
-                <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed font-medium">
+                <p className="text-sm leading-relaxed text-zinc-500">
                   {label.description[locale as 'en' | 'ar']}
                 </p>
               </div>
@@ -116,34 +117,28 @@ function ActivitySelectionStep({
         })}
       </div>
 
-      {/* Action Bar */}
-      <div className="flex justify-between items-center border-t border-zinc-200 dark:border-zinc-800 pt-8">
-        <div className="text-xs  text-zinc-400">
-          {isArabic ? 'تم اختيار' : 'SELECTED'}: {Object.values(activities).filter(Boolean).length}
-        </div>
+      <div className="flex flex-col gap-4 border-t border-zinc-800 pt-6 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-sm text-zinc-500">
+          {isArabic ? 'تم اختيار' : 'Selected'}:{' '}
+          <span className="font-semibold text-zinc-300">{selectedCount}</span>
+        </p>
         <button
+          type="button"
           onClick={onNext}
           disabled={!hasSelection}
-          className={`
-            flex items-center gap-3 rounded-button px-8 py-4 text-sm font-bold uppercase tracking-wider transition-all
-            ${hasSelection
-              ? 'bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-lg hover:shadow-xl translate-y-0'
-              : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed'
-            }
-          `}
+          className={`inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-sm font-bold transition-all ${
+            hasSelection
+              ? 'bg-white text-zinc-950 hover:bg-zinc-200'
+              : 'cursor-not-allowed bg-zinc-800 text-zinc-500'
+          }`}
         >
-          <span>{isArabic ? 'إنشاء لوحة التدقيق' : 'GENERATE_AUDIT_HUB'}</span>
-          {isArabic ? <FiArrowLeft /> : <FiArrowRight />}
+          <span>{isArabic ? 'بدء التدقيق' : 'Start audit'}</span>
+          {isArabic ? <FiArrowLeft className="h-4 w-4" /> : <FiArrowRight className="h-4 w-4" />}
         </button>
       </div>
     </div>
   );
 }
-
-
-// ============================================
-// 3. Module Inspector (The Drill-down View)
-// ============================================
 
 function ModuleInspector({
   moduleName,
@@ -151,7 +146,7 @@ function ModuleInspector({
   answers,
   onAnswer,
   onReturn,
-  locale
+  locale,
 }: {
   moduleName: string;
   questions: AssessmentQuestion[];
@@ -161,17 +156,20 @@ function ModuleInspector({
   locale: string;
 }) {
   const isArabic = locale === 'ar';
-
-  // Local state for navigation within the module
-  // Find the first unanswered question to start with
-  const firstUnansweredIdx = questions.findIndex(q => !answers.find(a => a.questionId === q.id));
-  const [currentIndex, setCurrentIndex] = useState(firstUnansweredIdx >= 0 ? firstUnansweredIdx : 0);
+  const firstUnansweredIdx = questions.findIndex((q) => !answers.find((a) => a.questionId === q.id));
+  const [currentIndex, setCurrentIndex] = useState(
+    firstUnansweredIdx >= 0 ? firstUnansweredIdx : 0,
+  );
 
   const currentQuestion = questions[currentIndex];
-  const currentAnswer = answers.find(a => a.questionId === currentQuestion?.id);
+  const currentAnswer = answers.find((a) => a.questionId === currentQuestion?.id);
+  const answeredInModule = answers.filter((a) =>
+    questions.map((q) => q.id).includes(a.questionId),
+  ).length;
+  const progress = Math.round((answeredInModule / questions.length) * 100);
 
-  // Auto-advance logic could go here, but let's keep it manual/smooth
   const handleAnswerSelect = (value: string) => {
+    if (!currentQuestion) return;
     const score = scoreAnswer(currentQuestion, value);
     onAnswer({
       questionId: currentQuestion.id,
@@ -180,177 +178,200 @@ function ModuleInspector({
       score,
     });
 
-    // Smooth transition to next question after short delay
     if (currentIndex < questions.length - 1) {
-      setTimeout(() => setCurrentIndex(prev => prev + 1), 350);
+      setTimeout(() => setCurrentIndex((prev) => prev + 1), 280);
     }
   };
 
-  const progress = Math.round((answers.filter(a => questions.map(q => q.id).includes(a.questionId)).length / questions.length) * 100);
+  if (!currentQuestion) {
+    return (
+      <div className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-8 text-center text-zinc-400">
+        {isArabic ? 'لا توجد أسئلة في هذه الوحدة.' : 'No questions in this module.'}
+        <button
+          type="button"
+          onClick={onReturn}
+          className="mt-4 block w-full text-sm font-semibold text-emerald-400"
+        >
+          {isArabic ? 'العودة' : 'Go back'}
+        </button>
+      </div>
+    );
+  }
 
   return (
-    <div className="flex flex-col lg:flex-row h-[calc(100vh-140px)] min-h-[600px] overflow-hidden bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-2xl animate-in zoom-in-95 duration-300">
-
-      {/* Sidebar (Navigation) */}
-      <div className="w-full lg:w-80 bg-zinc-50 dark:bg-black border-b lg:border-b-0 lg:border-r border-zinc-200 dark:border-zinc-800 flex flex-col">
-        {/* Sidebar Header */}
-        <div className="p-6 border-b border-zinc-200 dark:border-zinc-800">
-          <button
-            onClick={onReturn}
-            className="text-xs  font-bold text-zinc-500 hover:text-zinc-900 dark:hover:text-white flex items-center gap-2 mb-4 uppercase tracking-wider"
-          >
-            {isArabic ? <FiArrowRight /> : <FiArrowLeft />}
-            {isArabic ? 'العودة للوحة' : 'BACK_TO_HUB'}
-          </button>
-          <h3 className="font-bold text-lg text-zinc-900 dark:text-white leading-tight mb-1">{moduleName}</h3>
-          <div className="flex items-center gap-2 text-xs text-zinc-500">
-            <span className={`w-2 h-2 rounded-full ${progress === 100 ? 'bg-emerald-500' : 'bg-primary-500'}`}></span>
-            {progress}% {isArabic ? 'مكتمل' : 'Complete'}
-          </div>
-        </div>
-
-        {/* Question List */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-2">
-          {questions.map((q, idx) => {
-            const isAnswered = answers.some(a => a.questionId === q.id);
-            const isActive = idx === currentIndex;
-
-            return (
-              <button
-                key={q.id}
-                onClick={() => setCurrentIndex(idx)}
-                className={`
-                  flex w-full items-start gap-3 rounded-button p-3 text-start text-sm transition-colors
-                  ${isActive
-                    ? 'bg-white dark:bg-zinc-900 shadow-sm border border-zinc-200 dark:border-zinc-700'
-                    : 'text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-900'
-                  }
-                `}
-              >
-                <div className={`
-                   mt-0.5 w-4 h-4 rounded-full border flex items-center justify-center shrink-0
-                   ${isAnswered
-                    ? 'bg-primary-600 border-primary-600 text-white'
-                    : isActive
-                      ? 'border-zinc-400 dark:border-zinc-500'
-                      : 'border-zinc-300 dark:border-zinc-700'
-                  }
-                 `}>
-                  {isAnswered && <FiCheck size={10} />}
-                </div>
-                <span className={`${isActive ? 'font-bold text-zinc-900 dark:text-white' : 'font-medium'}`}>
-                  {isArabic ? `سؤال ${idx + 1}` : `Check ${idx + 1}`}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Main Content (The Question) */}
-      <div className="flex-1 flex flex-col relative overflow-hidden bg-white dark:bg-zinc-900/50">
-
-        {/* Top Bar inside Content */}
-        <div className="h-1.5 w-full bg-zinc-100 dark:bg-zinc-800">
-          <div
-            className="h-full bg-primary-600 transition-all duration-300"
-            style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
-          />
-        </div>
-
-        <div className="flex-1 overflow-y-auto p-8 lg:p-12 flex flex-col justify-center max-w-3xl mx-auto w-full">
-          <div className="mb-6 flex items-center gap-3">
-            <span className=" text-xs font-bold text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/20 px-2 py-1 rounded">
-              {currentQuestion.ruleId}
-            </span>
-            <span className={`text-[10px]  font-bold uppercase px-2 py-1 rounded border ${currentQuestion.riskLevel === 'High'
-                ? 'text-red-600 border-red-200 bg-red-50 dark:bg-red-900/20 dark:border-red-900/50'
-                : 'text-zinc-500 border-zinc-200 dark:border-zinc-700'
-              }`}>
-              {currentQuestion.riskLevel} Risk
-            </span>
-          </div>
-
-          <h2 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-8 leading-snug">
-            {currentQuestion.question[locale as 'en' | 'ar']}
-          </h2>
-
-          {/* Helper Text */}
-          {currentQuestion.helpText && (
-            <div className="mb-10 p-5 bg-zinc-50 dark:bg-zinc-950/50 rounded-lg border-l-2 border-primary-500 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium">
-              {currentQuestion.helpText[locale as 'en' | 'ar']}
+    <div className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/80 shadow-2xl">
+      <div className="flex flex-col lg:flex-row lg:min-h-[560px]">
+        {/* Sidebar */}
+        <aside className="flex w-full flex-col border-b border-zinc-800 bg-zinc-950/80 lg:w-72 lg:border-b-0 lg:border-e lg:shrink-0">
+          <div className="border-b border-zinc-800 p-5">
+            <button
+              type="button"
+              onClick={onReturn}
+              className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-zinc-500 transition-colors hover:text-white"
+            >
+              {isArabic ? <FiArrowRight className="h-3.5 w-3.5" /> : <FiArrowLeft className="h-3.5 w-3.5" />}
+              {isArabic ? 'العودة للوحة' : 'Back to hub'}
+            </button>
+            <h3 className="mb-2 text-base font-bold leading-snug text-white">{moduleName}</h3>
+            <div className="flex items-center gap-2 text-xs text-zinc-500">
+              <span
+                className={`h-2 w-2 rounded-full ${progress === 100 ? 'bg-emerald-500' : 'bg-emerald-400'}`}
+              />
+              {progress}% {isArabic ? 'مكتمل' : 'complete'}
             </div>
-          )}
+          </div>
 
-          {/* Options */}
-          <div className="space-y-4">
-            {currentQuestion.options?.map((option) => {
-              const isSelected = currentAnswer?.value === option.value;
+          <div className="max-h-48 space-y-1 overflow-y-auto p-3 lg:max-h-none lg:flex-1">
+            {questions.map((q, idx) => {
+              const isAnswered = answers.some((a) => a.questionId === q.id);
+              const isActive = idx === currentIndex;
+
               return (
                 <button
-                  key={option.value}
-                  onClick={() => handleAnswerSelect(option.value)}
-                  className={`
-                      group flex w-full items-center gap-4 rounded-button border-2 p-5 text-start transition-all duration-200
-                      ${isSelected
-                      ? 'border-primary-600 bg-primary-50 dark:bg-primary-900/10'
-                      : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 hover:border-zinc-300 dark:hover:border-zinc-700'
-                    }
-                    `}
+                  key={q.id}
+                  type="button"
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-start text-sm transition-colors ${
+                    isActive
+                      ? 'bg-zinc-800 text-white'
+                      : 'text-zinc-500 hover:bg-zinc-900 hover:text-zinc-300'
+                  }`}
                 >
-                  <div className={`
-                      w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors
-                      ${isSelected
-                      ? 'border-primary-600 bg-primary-600 text-white'
-                      : 'border-zinc-300 dark:border-zinc-600 group-hover:border-zinc-400'
-                    }
-                    `}>
-                    {isSelected && <div className="w-2.5 h-2.5 bg-white rounded-full" />}
-                  </div>
-                  <span className={`text-lg ${isSelected ? 'font-bold text-primary-900 dark:text-primary-100' : 'font-medium text-zinc-700 dark:text-zinc-300'}`}>
-                    {option.label[locale as 'en' | 'ar']}
+                  <span
+                    className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border text-[10px] ${
+                      isAnswered
+                        ? 'border-emerald-500 bg-emerald-500 text-zinc-950'
+                        : isActive
+                          ? 'border-zinc-500'
+                          : 'border-zinc-700'
+                    }`}
+                  >
+                    {isAnswered ? <FiCheck size={10} /> : idx + 1}
+                  </span>
+                  <span className={isActive ? 'font-semibold' : 'font-medium'}>
+                    {isArabic ? `سؤال ${idx + 1}` : `Check ${idx + 1}`}
                   </span>
                 </button>
               );
             })}
           </div>
-        </div>
+        </aside>
 
-        {/* Footer Navigation */}
-        <div className="p-6 border-t border-zinc-200 dark:border-zinc-800 flex justify-between items-center bg-white dark:bg-zinc-900">
-          <button
-            onClick={() => currentIndex > 0 ? setCurrentIndex(prev => prev - 1) : null}
-            disabled={currentIndex === 0}
-            className="rounded-button px-4 py-2 text-sm font-bold text-zinc-500 transition-colors hover:bg-zinc-100 disabled:opacity-30 dark:hover:bg-zinc-800"
-          >
-            {isArabic ? 'السابق' : 'PREV'}
-          </button>
-
-          <div className="text-xs  text-zinc-400">
-            {currentIndex + 1} / {questions.length}
+        {/* Question panel */}
+        <div className="flex min-w-0 flex-1 flex-col">
+          <div className="h-1 w-full bg-zinc-800">
+            <div
+              className="h-full bg-emerald-500 transition-all duration-300"
+              style={{ width: `${((currentIndex + 1) / questions.length) * 100}%` }}
+            />
           </div>
 
-          <button
-            onClick={() => currentIndex < questions.length - 1 ? setCurrentIndex(prev => prev + 1) : onReturn()}
-            className="rounded-button bg-zinc-900 px-6 py-2 text-sm font-bold text-white transition-colors hover:bg-zinc-700 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
-          >
-            {currentIndex === questions.length - 1 ? (isArabic ? 'إنهاء الوحدة' : 'FINISH_MODULE') : (isArabic ? 'التالي' : 'NEXT')}
-          </button>
-        </div>
+          <div className="flex-1 overflow-y-auto p-6 sm:p-8 lg:p-10">
+            <div className="mx-auto w-full max-w-2xl">
+              <div className="mb-5 flex flex-wrap items-center gap-2">
+                <span className="rounded-md bg-emerald-500/10 px-2 py-1 text-xs font-bold text-emerald-400">
+                  {currentQuestion.ruleId}
+                </span>
+                <span
+                  className={`rounded-md border px-2 py-1 text-[10px] font-bold uppercase ${
+                    currentQuestion.riskLevel === 'High'
+                      ? 'border-red-500/30 bg-red-500/10 text-red-400'
+                      : 'border-zinc-700 bg-zinc-800 text-zinc-400'
+                  }`}
+                >
+                  {currentQuestion.riskLevel} risk
+                </span>
+              </div>
 
+              <h2 className="mb-6 text-xl font-bold leading-snug text-white sm:text-2xl md:text-3xl">
+                {currentQuestion.question[locale as 'en' | 'ar']}
+              </h2>
+
+              {currentQuestion.helpText && (
+                <div className="mb-8 rounded-xl border border-zinc-800 border-s-2 border-s-emerald-500 bg-zinc-950/60 p-4 text-sm leading-relaxed text-zinc-400">
+                  {currentQuestion.helpText[locale as 'en' | 'ar']}
+                </div>
+              )}
+
+              <div className="space-y-3">
+                {currentQuestion.options?.map((option) => {
+                  const isSelected = currentAnswer?.value === option.value;
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => handleAnswerSelect(option.value)}
+                      className={`group flex w-full items-center gap-4 rounded-xl border-2 p-4 text-start transition-all duration-200 sm:p-5 ${
+                        isSelected
+                          ? 'border-emerald-500/60 bg-emerald-500/10'
+                          : 'border-zinc-800 bg-zinc-950/40 hover:border-zinc-700'
+                      }`}
+                    >
+                      <span
+                        className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${
+                          isSelected
+                            ? 'border-emerald-500 bg-emerald-500'
+                            : 'border-zinc-600 group-hover:border-zinc-500'
+                        }`}
+                      >
+                        {isSelected && <span className="h-2 w-2 rounded-full bg-zinc-950" />}
+                      </span>
+                      <span
+                        className={`text-base sm:text-lg ${
+                          isSelected ? 'font-bold text-emerald-100' : 'font-medium text-zinc-300'
+                        }`}
+                      >
+                        {option.label[locale as 'en' | 'ar']}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between gap-3 border-t border-zinc-800 bg-zinc-950/50 px-5 py-4 sm:px-8">
+            <button
+              type="button"
+              onClick={() => currentIndex > 0 && setCurrentIndex((prev) => prev - 1)}
+              disabled={currentIndex === 0}
+              className="rounded-full px-4 py-2 text-sm font-semibold text-zinc-400 transition-colors hover:bg-zinc-800 hover:text-white disabled:opacity-30"
+            >
+              {isArabic ? 'السابق' : 'Previous'}
+            </button>
+
+            <span className="text-xs font-medium text-zinc-500">
+              {currentIndex + 1} / {questions.length}
+            </span>
+
+            <button
+              type="button"
+              onClick={() =>
+                currentIndex < questions.length - 1
+                  ? setCurrentIndex((prev) => prev + 1)
+                  : onReturn()
+              }
+              className="rounded-full bg-white px-5 py-2 text-sm font-bold text-zinc-950 transition-colors hover:bg-zinc-200"
+            >
+              {currentIndex === questions.length - 1
+                ? isArabic
+                  ? 'إنهاء الوحدة'
+                  : 'Finish module'
+                : isArabic
+                  ? 'التالي'
+                  : 'Next'}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
-// ============================================
-// 4. System Audit Log (Report) - Minimal Changes needed as it was good
-// ============================================
-
 function ModuleAuditRow({
   module,
   locale,
-  forceExpanded = false
+  forceExpanded = false,
 }: {
   module: ModuleScore;
   locale: string;
@@ -362,70 +383,99 @@ function ModuleAuditRow({
   const showContent = forceExpanded || (hasGaps && isOpen);
 
   return (
-    <div className="border border-zinc-200 dark:border-zinc-800 rounded-lg overflow-hidden mb-3 bg-white dark:bg-zinc-900 break-inside-avoid">
+    <div className="mb-3 overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900/60">
       <div
         onClick={() => !forceExpanded && hasGaps && setIsOpen(!isOpen)}
-        className={`
-          flex items-center gap-4 p-4 transition-colors
-          ${!forceExpanded && hasGaps ? 'cursor-pointer hover:bg-zinc-50 dark:hover:bg-zinc-800/50' : ''}
-        `}
+        className={`flex items-center gap-4 p-4 transition-colors ${
+          !forceExpanded && hasGaps ? 'cursor-pointer hover:bg-zinc-800/40' : ''
+        }`}
       >
-        <div className={`w-2 h-2 rounded-full shrink-0 ${module.score >= 80 ? 'bg-emerald-500' : module.score >= 50 ? 'bg-amber-500' : 'bg-red-500'}`} />
+        <div
+          className={`h-2 w-2 shrink-0 rounded-full ${
+            module.score >= 80
+              ? 'bg-emerald-500'
+              : module.score >= 50
+                ? 'bg-amber-500'
+                : 'bg-red-500'
+          }`}
+        />
 
-        <div className="flex-1">
-          <div className="flex items-center justify-between mb-1">
-            <h4 className="font-bold text-zinc-900 dark:text-white text-sm">
+        <div className="min-w-0 flex-1">
+          <div className="mb-1.5 flex items-center justify-between gap-3">
+            <h4 className="truncate text-sm font-bold text-white">
               {module.moduleLabel[locale as 'en' | 'ar']}
             </h4>
-            <span className={` font-bold text-sm ${module.score >= 80 ? 'text-emerald-600' : module.score >= 50 ? 'text-amber-600' : 'text-red-600'}`}>
+            <span
+              className={`shrink-0 text-sm font-bold ${
+                module.score >= 80
+                  ? 'text-emerald-400'
+                  : module.score >= 50
+                    ? 'text-amber-400'
+                    : 'text-red-400'
+              }`}
+            >
               {module.score}%
             </span>
           </div>
-          <div className="h-1.5 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden w-full max-w-[200px]">
+          <div className="h-1.5 max-w-[200px] overflow-hidden rounded-full bg-zinc-800">
             <div
-              className={`h-full ${module.score >= 80 ? 'bg-emerald-500' : module.score >= 50 ? 'bg-amber-500' : 'bg-red-500'}`}
+              className={`h-full ${
+                module.score >= 80
+                  ? 'bg-emerald-500'
+                  : module.score >= 50
+                    ? 'bg-amber-500'
+                    : 'bg-red-500'
+              }`}
               style={{ width: `${module.score}%` }}
             />
           </div>
         </div>
 
         {hasGaps && (
-          <div className="flex items-center gap-3">
-            <span className="hidden sm:inline-block px-2 py-1 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 text-[10px]  font-bold uppercase rounded border border-red-100 dark:border-red-900">
-              {module.gaps.length} {isArabic ? 'تنبيهات' : 'ALERTS'}
+          <div className="flex shrink-0 items-center gap-2">
+            <span className="hidden rounded border border-red-500/30 bg-red-500/10 px-2 py-1 text-[10px] font-bold uppercase text-red-400 sm:inline-block">
+              {module.gaps.length} {isArabic ? 'تنبيهات' : 'alerts'}
             </span>
             {!forceExpanded && (
-              <FiChevronRight className={`w-4 h-4 text-zinc-400 transition-transform ${isOpen ? 'rotate-90' : ''}`} />
+              <FiChevronRight
+                className={`h-4 w-4 text-zinc-500 transition-transform ${isOpen ? 'rotate-90' : ''}`}
+              />
             )}
           </div>
         )}
       </div>
 
       {hasGaps && showContent && (
-        <div className="border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-black/20 p-4 space-y-3">
+        <div className="space-y-3 border-t border-zinc-800 bg-zinc-950/40 p-4">
           {module.gaps.map((gap, i) => (
-            <div key={`${gap.ruleId}-${i}`} className="text-sm border-l-2 border-red-500 pl-3 ml-1">
-              <div className="flex items-center gap-2 mb-1">
-                {/* START OF UPDATE: Wrapped Rule ID in Link */}
+            <div key={`${gap.ruleId}-${i}`} className="border-s-2 border-red-500 ps-3 text-sm">
+              <div className="mb-1.5 flex flex-wrap items-center gap-2">
                 <Link
                   href={`/${locale}/products/compliance-checker/rules/${gap.ruleId}`}
-                  target="_blank" // Optional: Open in new tab to keep report open
-                  className="group/link flex items-center gap-1.5 text-[10px]  font-bold text-red-600 bg-red-100 dark:bg-red-900/30 px-1.5 py-0.5 rounded hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors"
+                  target="_blank"
+                  className="inline-flex items-center gap-1.5 rounded bg-red-500/15 px-1.5 py-0.5 text-[10px] font-bold text-red-400 transition-colors hover:bg-red-500/25"
                 >
                   <span>{gap.ruleId}</span>
-                  <FiExternalLink className="w-2.5 h-2.5 opacity-50 group-hover/link:opacity-100" />
+                  <FiExternalLink className="h-2.5 w-2.5 opacity-60" />
                 </Link>
-                {/* END OF UPDATE */}
-
-                <span className="font-bold text-zinc-900 dark:text-white text-xs">
-                  {gap.severity === 'High' ? (isArabic ? 'مخاطر عالية' : 'CRITICAL') : (isArabic ? 'متوسط' : 'WARNING')}
+                <span className="text-xs font-bold text-white">
+                  {gap.severity === 'High'
+                    ? isArabic
+                      ? 'مخاطر عالية'
+                      : 'Critical'
+                    : isArabic
+                      ? 'متوسط'
+                      : 'Warning'}
                 </span>
               </div>
-              <p className="text-zinc-700 dark:text-zinc-300 mb-2 font-medium">
+              <p className="mb-2 font-medium text-zinc-300">
                 {gap.description[locale as 'en' | 'ar']}
               </p>
-              <div className="text-zinc-500 dark:text-zinc-500 text-xs  bg-white dark:bg-zinc-900 p-2 rounded border border-zinc-200 dark:border-zinc-800">
-                <span className="font-bold text-zinc-700 dark:text-zinc-300">ACTION:</span> {gap.requiredAction[locale as 'en' | 'ar']}
+              <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-2.5 text-xs text-zinc-500">
+                <span className="font-bold text-zinc-300">
+                  {isArabic ? 'الإجراء:' : 'Action:'}
+                </span>{' '}
+                {gap.requiredAction[locale as 'en' | 'ar']}
               </div>
             </div>
           ))}
@@ -435,46 +485,501 @@ function ModuleAuditRow({
   );
 }
 
+function AssessmentHub({
+  moduleGroups,
+  answers,
+  onSelectModule,
+  onComplete,
+  locale,
+}: {
+  moduleGroups: Map<string, AssessmentQuestion[]>;
+  answers: AssessmentAnswer[];
+  onSelectModule: (moduleName: string) => void;
+  onComplete: () => void;
+  locale: string;
+}) {
+  const isArabic = locale === 'ar';
+  const totalQuestions = Array.from(moduleGroups.values()).flat().length;
+  const answeredCount = answers.length;
+  const globalProgress =
+    totalQuestions > 0 ? Math.round((answeredCount / totalQuestions) * 100) : 0;
+  const isComplete = answeredCount === totalQuestions && totalQuestions > 0;
+  const hasStarted = answeredCount > 0;
 
+  return (
+    <div className="mx-auto max-w-6xl">
+      <div className="mb-8 flex flex-col justify-between gap-6 border-b border-zinc-800 pb-8 md:flex-row md:items-end">
+        <div>
+          <span className="mb-2 inline-flex items-center rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+            {isArabic ? 'جلسة نشطة' : 'Live session'}
+          </span>
+          <h2 className="mb-2 text-2xl font-bold text-white sm:text-3xl">
+            {isArabic ? 'لوحة التدقيق' : 'Compliance audit hub'}
+          </h2>
+          <p className="max-w-xl text-sm leading-relaxed text-zinc-400 sm:text-base">
+            {isArabic
+              ? 'راجع الوحدات واحدةً تلو الآخر. يمكنك إصدار تقرير جزئي في أي وقت.'
+              : 'Work through modules one by one. You can generate a partial report anytime.'}
+          </p>
+        </div>
 
-// ============================================
-// 5. Main Controller
-// ============================================
+        <div className="min-w-[220px] rounded-xl border border-zinc-800 bg-zinc-900/60 p-4">
+          <div className="mb-2 flex justify-between text-xs font-semibold text-zinc-500">
+            <span>{isArabic ? 'التغطية' : 'Coverage'}</span>
+            <span>{globalProgress}%</span>
+          </div>
+          <div className="h-2 overflow-hidden rounded-full bg-zinc-800">
+            <div
+              className="h-full bg-emerald-500 transition-all duration-700"
+              style={{ width: `${globalProgress}%` }}
+            />
+          </div>
+          <p className="mt-2 text-end text-[11px] text-zinc-500">
+            {answeredCount} / {totalQuestions} {isArabic ? 'تم فحصه' : 'checked'}
+          </p>
+        </div>
+      </div>
+
+      <div className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {Array.from(moduleGroups.entries()).map(([moduleName, questions]) => {
+          const moduleQIds = questions.map((q) => q.id);
+          const moduleAnswers = answers.filter((a) => moduleQIds.includes(a.questionId));
+          const progress = Math.round((moduleAnswers.length / questions.length) * 100);
+          const isModuleComplete = progress === 100;
+          const isModuleStarted = progress > 0;
+
+          return (
+            <button
+              key={moduleName}
+              type="button"
+              onClick={() => onSelectModule(moduleName)}
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5 text-start transition-all duration-200 hover:-translate-y-0.5 hover:border-emerald-500/40 hover:shadow-[0_0_24px_rgba(16,185,129,0.08)]"
+            >
+              {isModuleStarted && !isModuleComplete && (
+                <div className="absolute inset-y-0 start-0 w-1 bg-amber-500" />
+              )}
+              {isModuleComplete && (
+                <div className="absolute inset-y-0 start-0 w-1 bg-emerald-500" />
+              )}
+
+              <div className="mb-5 flex w-full items-start justify-between ps-2">
+                <div
+                  className={`flex h-10 w-10 items-center justify-center rounded-xl text-lg ${
+                    isModuleComplete
+                      ? 'bg-emerald-500/15 text-emerald-400'
+                      : isModuleStarted
+                        ? 'bg-amber-500/15 text-amber-400'
+                        : 'bg-zinc-800 text-zinc-500'
+                  }`}
+                >
+                  {isModuleComplete ? (
+                    <FiCheckCircle />
+                  ) : isModuleStarted ? (
+                    <FiActivity />
+                  ) : (
+                    <FiGrid />
+                  )}
+                </div>
+                <span className="rounded-md bg-zinc-800 px-2 py-1 text-[10px] font-bold uppercase text-zinc-400">
+                  {questions.length} {isArabic ? 'نقاط' : 'items'}
+                </span>
+              </div>
+
+              <div className="mb-5 flex-1 ps-2">
+                <h3 className="mb-1 text-base font-bold text-white">{moduleName}</h3>
+                <p className="text-xs font-medium text-zinc-500">
+                  {isModuleComplete
+                    ? isArabic
+                      ? 'جاهز للتقرير'
+                      : 'Ready for report'
+                    : isModuleStarted
+                      ? isArabic
+                        ? 'قيد العمل...'
+                        : 'In progress...'
+                      : isArabic
+                        ? 'لم يبدأ'
+                        : 'Not started'}
+                </p>
+              </div>
+
+              <div className="w-full ps-2">
+                <div className="mb-1.5 flex justify-between text-[10px] font-bold text-zinc-500">
+                  <span>{isModuleComplete ? 'Done' : 'Status'}</span>
+                  <span>{progress}%</span>
+                </div>
+                <div className="h-1.5 overflow-hidden rounded-full bg-zinc-800">
+                  <div
+                    className={`h-full transition-all duration-700 ${
+                      isModuleComplete ? 'bg-emerald-500' : 'bg-amber-500'
+                    }`}
+                    style={{ width: `${progress}%` }}
+                  />
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="flex flex-col items-stretch justify-between gap-4 border-t border-zinc-800 pt-6 sm:flex-row sm:items-center">
+        <p className="text-sm text-zinc-500">
+          {hasStarted
+            ? isComplete
+              ? isArabic
+                ? 'جميع الوحدات مكتملة.'
+                : 'All modules completed.'
+              : isArabic
+                ? 'يمكنك إصدار تقرير جزئي الآن.'
+                : 'You can generate a partial report now.'
+            : isArabic
+              ? 'ابدأ بأي وحدة للمتابعة.'
+              : 'Start any module to proceed.'}
+        </p>
+
+        <button
+          type="button"
+          onClick={onComplete}
+          disabled={!hasStarted}
+          className={`inline-flex h-12 items-center justify-center gap-2 rounded-full px-7 text-sm font-bold transition-all ${
+            !hasStarted
+              ? 'cursor-not-allowed bg-zinc-800 text-zinc-500'
+              : 'bg-white text-zinc-950 hover:bg-zinc-200'
+          }`}
+        >
+          {isArabic
+            ? isComplete
+              ? 'إصدار التقرير النهائي'
+              : 'إصدار مسودة التقرير'
+            : isComplete
+              ? 'Generate final report'
+              : 'Generate draft report'}
+          <FiFileText className="h-4 w-4" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function ReportStep({
+  result,
+  onRestart,
+  locale,
+}: {
+  result: AssessmentResult;
+  onRestart: () => void;
+  locale: string;
+}) {
+  const isArabic = locale === 'ar';
+  const reportRef = useRef<HTMLDivElement>(null);
+  const printRef = useRef<HTMLDivElement>(null);
+  const [isExporting, setIsExporting] = useState(false);
+
+  const isPartial = result.answeredQuestions < result.totalQuestions;
+  const coveragePercent = Math.round((result.answeredQuestions / result.totalQuestions) * 100);
+
+  const scoreColor =
+    result.overallScore >= 80
+      ? 'text-emerald-400'
+      : result.overallScore >= 50
+        ? 'text-amber-400'
+        : 'text-red-400';
+
+  const handleExportPDF = async () => {
+    const element = printRef.current || reportRef.current;
+    if (!element) return;
+    setIsExporting(true);
+    const toastId = toast.loading(isArabic ? 'جاري إنشاء التقرير...' : 'Compiling audit report...');
+    try {
+      const canvas = await html2canvas(element, {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: '#ffffff',
+        windowHeight: element.scrollHeight + 50,
+      });
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'px',
+        format: [canvas.width, canvas.height],
+      });
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+      pdf.save(
+        `CMA-Audit-${isPartial ? 'DRAFT' : 'FINAL'}-${new Date().toISOString().split('T')[0]}.pdf`,
+      );
+      toast.success(isArabic ? 'تم التحميل' : 'Report downloaded', { id: toastId });
+    } catch (error) {
+      console.error('PDF export failed:', error);
+      toast.error('Export failed', { id: toastId });
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  return (
+    <div className="mx-auto max-w-5xl">
+      <div
+        ref={printRef}
+        className="fixed left-[-9999px] top-0 w-[900px] bg-white p-12 font-sans text-black"
+        aria-hidden
+      >
+        <div className="mb-8 flex items-end justify-between border-b-4 border-black pb-6">
+          <div>
+            <h1 className="mb-2 text-4xl font-black uppercase tracking-tight">
+              {isPartial
+                ? isArabic
+                  ? 'مسودة تقرير (جزئي)'
+                  : 'Draft audit report'
+                : isArabic
+                  ? 'تقرير الامتثال النهائي'
+                  : 'Final compliance audit'}
+            </h1>
+            <p className="text-sm text-gray-600">
+              Status: {isPartial ? 'Incomplete data' : 'Completed'} // Coverage: {coveragePercent}%
+            </p>
+          </div>
+          <div className="text-right">
+            <div className="text-5xl font-black">{result.overallScore}%</div>
+            <div className="text-xs uppercase text-gray-500">Score</div>
+          </div>
+        </div>
+        <div className="space-y-4">
+          {result.moduleScores
+            .filter((m) => m.answeredQuestions > 0 || !isPartial)
+            .map((module) => (
+              <div key={module.module} className="border border-gray-200 p-4">
+                <div className="mb-2 flex justify-between font-bold">
+                  <span>{module.moduleLabel[locale as 'en' | 'ar']}</span>
+                  <span>{module.score}%</span>
+                </div>
+                {module.gaps.map((gap, i) => (
+                  <div key={`${gap.ruleId}-${i}`} className="mb-2 border-l-2 border-red-500 pl-3 text-sm">
+                    <div className="font-bold">
+                      {gap.ruleId} — {gap.severity}
+                    </div>
+                    <p>{gap.description[locale as 'en' | 'ar']}</p>
+                    <p className="text-gray-600">{gap.requiredAction[locale as 'en' | 'ar']}</p>
+                  </div>
+                ))}
+              </div>
+            ))}
+        </div>
+      </div>
+
+      <div
+        ref={reportRef}
+        className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/80 shadow-2xl"
+      >
+        {isPartial && (
+          <div className="flex items-center justify-center gap-2 border-b border-amber-500/20 bg-amber-500/10 px-4 py-2.5 text-center text-xs font-bold uppercase tracking-wider text-amber-300">
+            <FiAlertTriangle className="h-3.5 w-3.5 shrink-0" />
+            {isArabic
+              ? `تقرير أولي: تم فحص ${coveragePercent}٪ فقط من النطاق المحدد.`
+              : `Draft report: only ${coveragePercent}% of scope audited.`}
+          </div>
+        )}
+
+        <div className="flex flex-col items-start justify-between gap-6 border-b border-zinc-800 bg-zinc-950/50 px-6 py-6 sm:px-8 md:flex-row md:items-center">
+          <div>
+            <div className="mb-2 flex items-center gap-2">
+              <span
+                className={`h-2 w-2 animate-pulse rounded-full ${
+                  isPartial
+                    ? 'bg-amber-500'
+                    : result.overallScore >= 80
+                      ? 'bg-emerald-500'
+                      : 'bg-red-500'
+                }`}
+              />
+              <span className="text-xs font-bold uppercase tracking-widest text-zinc-500">
+                {isArabic
+                  ? isPartial
+                    ? 'مسودة'
+                    : 'تقرير نهائي'
+                  : isPartial
+                    ? 'Draft mode'
+                    : 'Final report'}
+              </span>
+            </div>
+            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+              {isArabic ? 'نتيجة الامتثال' : 'Compliance readiness'}
+            </h2>
+          </div>
+
+          <button
+            type="button"
+            onClick={handleExportPDF}
+            disabled={isExporting}
+            className="inline-flex h-10 items-center gap-2 rounded-full bg-white px-4 text-sm font-bold text-zinc-950 transition-colors hover:bg-zinc-200 disabled:opacity-60"
+          >
+            <FiDownload className="h-4 w-4" />
+            {isArabic ? 'تصدير PDF' : 'Export PDF'}
+          </button>
+        </div>
+
+        <div className="p-6 sm:p-8 md:p-10">
+          <div className="mb-12 flex flex-col items-center gap-10 md:flex-row">
+            <div className="relative flex h-48 w-48 shrink-0 items-center justify-center sm:h-56 sm:w-56">
+              <div className="absolute inset-0 rounded-full border-4 border-zinc-800 opacity-50" />
+              {isPartial && (
+                <div className="absolute inset-0 rounded-full border-4 border-dashed border-amber-500/20" />
+              )}
+              <svg className="h-full w-full -rotate-90 drop-shadow-2xl" viewBox="0 0 224 224">
+                <circle
+                  cx="112"
+                  cy="112"
+                  r="100"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="16"
+                  className="text-zinc-800"
+                />
+                <circle
+                  cx="112"
+                  cy="112"
+                  r="100"
+                  fill="none"
+                  stroke={
+                    result.overallScore >= 80
+                      ? '#10b981'
+                      : result.overallScore >= 50
+                        ? '#f59e0b'
+                        : '#ef4444'
+                  }
+                  strokeWidth="16"
+                  strokeLinecap="round"
+                  strokeDasharray={`${result.overallScore * 6.28} 628`}
+                  className="transition-all duration-1000 ease-out"
+                />
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <span className={`text-5xl font-black tracking-tighter sm:text-6xl ${scoreColor}`}>
+                  {result.overallScore}%
+                </span>
+                <span className="mt-1 text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+                  {isArabic ? 'الدرجة' : 'Score'}
+                </span>
+              </div>
+            </div>
+
+            <div className="grid w-full max-w-lg grid-cols-2 gap-3">
+              <div className="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+                <div className="mb-1 text-[10px] font-bold uppercase text-zinc-500">
+                  {isArabic ? 'تم فحصه' : 'Items audited'}
+                </div>
+                <div className="text-2xl font-black text-white sm:text-3xl">
+                  {result.answeredQuestions}
+                  <span className="text-base font-medium text-zinc-500">
+                    /{result.totalQuestions}
+                  </span>
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+                <div className="mb-1 text-[10px] font-bold uppercase text-zinc-500">
+                  {isArabic ? 'الفجوات' : 'Gaps found'}
+                </div>
+                <div className="text-2xl font-black text-white sm:text-3xl">{result.totalGaps}</div>
+              </div>
+
+              <div className="col-span-2 rounded-xl border border-zinc-800 bg-zinc-950/50 p-4">
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="text-xs font-bold uppercase text-zinc-500">
+                    {isArabic ? 'تغطية النطاق' : 'Scope coverage'}
+                  </span>
+                  <span className="text-xs font-bold text-white">{coveragePercent}%</span>
+                </div>
+                <div className="h-2 overflow-hidden rounded-full bg-zinc-800">
+                  <div
+                    className="h-full bg-emerald-500"
+                    style={{ width: `${coveragePercent}%` }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mb-8">
+            <div className="mb-5 flex flex-wrap items-center justify-between gap-2 border-b border-zinc-800 pb-3">
+              <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white">
+                <FiGrid className="h-4 w-4" />
+                {isArabic ? 'تفاصيل الوحدات' : 'Module breakdown'}
+              </h3>
+              {isPartial && (
+                <span className="rounded bg-amber-500/10 px-2 py-1 text-[10px] font-semibold text-amber-400">
+                  {isArabic ? 'الوحدات التي بدأت فقط' : 'Active modules only'}
+                </span>
+              )}
+            </div>
+
+            <div className="space-y-2">
+              {result.moduleScores
+                .filter((m) => m.answeredQuestions > 0 || !isPartial)
+                .map((module) => (
+                  <ModuleAuditRow key={module.module} module={module} locale={locale} />
+                ))}
+
+              {isPartial && result.moduleScores.some((m) => m.answeredQuestions === 0) && (
+                <div className="rounded-xl border border-dashed border-zinc-800 py-8 text-center text-sm text-zinc-500">
+                  {isArabic
+                    ? `يوجد ${result.moduleScores.filter((m) => m.answeredQuestions === 0).length} وحدة لم يتم فحصها بعد.`
+                    : `${result.moduleScores.filter((m) => m.answeredQuestions === 0).length} modules have not been audited yet.`}
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <button
+              type="button"
+              onClick={onRestart}
+              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-zinc-500 transition-colors hover:bg-zinc-800 hover:text-white"
+            >
+              <FiRefreshCw className="h-4 w-4" />
+              {isArabic ? 'بدء فحص جديد' : 'Start new audit'}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function AssessPage({ params: { locale } }: { params: { locale: string } }) {
   const isArabic = locale === 'ar';
-
   const [state, setState] = useState<AssessmentState>(INITIAL_ASSESSMENT_STATE);
   const [activeModule, setActiveModule] = useState<string | null>(null);
   const [result, setResult] = useState<AssessmentResult | null>(null);
 
-  // Memoize questions & grouping
-  const questions = useMemo(() => {
-    return getQuestionsForActivities(state.selectedActivities);
-  }, [state.selectedActivities]);
+  const questions = useMemo(
+    () => getQuestionsForActivities(state.selectedActivities),
+    [state.selectedActivities],
+  );
 
-  const moduleGroups = useMemo(() => {
-    return groupQuestionsByModule(questions);
-  }, [questions]);
+  const moduleGroups = useMemo(() => groupQuestionsByModule(questions), [questions]);
 
   const handleActivityUpdate = (activities: SelectedActivities) => {
-    setState(prev => ({ ...prev, selectedActivities: activities }));
+    setState((prev) => ({ ...prev, selectedActivities: activities }));
   };
 
   const handleAnswer = (answer: AssessmentAnswer) => {
-    setState(prev => {
-      const existing = prev.answers.findIndex(a => a.questionId === answer.questionId);
-      const newAnswers = existing >= 0
-        ? prev.answers.map((a, i) => i === existing ? answer : a)
-        : [...prev.answers, answer];
+    setState((prev) => {
+      const existing = prev.answers.findIndex((a) => a.questionId === answer.questionId);
+      const newAnswers =
+        existing >= 0
+          ? prev.answers.map((a, i) => (i === existing ? answer : a))
+          : [...prev.answers, answer];
       return { ...prev, answers: newAnswers };
     });
   };
 
   const handleComplete = () => {
-    const assessmentResult = calculateAssessmentResult(state.answers, state.selectedActivities);
+    const assessmentResult = calculateAssessmentResult(
+      state.answers,
+      state.selectedActivities,
+    );
     setResult(assessmentResult);
-    setState(prev => ({ ...prev, currentStep: 'report' }));
+    setState((prev) => ({ ...prev, currentStep: 'report' }));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -485,36 +990,54 @@ export default function AssessPage({ params: { locale } }: { params: { locale: s
   };
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black font-sans selection:bg-primary-500/30 pb-24 text-zinc-900 dark:text-zinc-100">
+    <div className="relative min-h-screen bg-zinc-950 pb-20 text-zinc-100">
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
+      <div className="pointer-events-none fixed inset-0 z-0 bg-radial-gradient from-transparent via-zinc-950/40 to-zinc-950" />
 
-      {/* Background Grid */}
-      <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0" />
-
-      {/* Hero Header */}
-      <div className="relative pt-32 pb-8 border-b border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-black/50 backdrop-blur-md z-20 mb-10">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2 text-xs  font-bold text-zinc-500 uppercase tracking-widest mb-4">
-            <Link href={`/${locale}/products/compliance-checker`} className="hover:text-primary-600 transition-colors">
-              {isArabic ? 'الرئيسية' : 'ROOT'}
+      <header className="relative z-20 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur-md">
+        <div className="container mx-auto px-4 py-6 sm:px-6 lg:px-8">
+          <div className="mb-4 flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-widest text-zinc-500">
+            <Link
+              href={`/${locale}`}
+              className="transition-colors hover:text-emerald-400"
+            >
+              {isArabic ? 'الرئيسية' : 'Home'}
             </Link>
             <span>/</span>
-            <span className="text-zinc-900 dark:text-white">
-              {isArabic ? 'أداة_التقييم' : 'COMPLIANCE_ENGINE_V1'}
-            </span>
+            <Link
+              href={`/${locale}/products/compliance-checker`}
+              className="transition-colors hover:text-emerald-400"
+            >
+              {isArabic ? 'فحص الامتثال' : 'Compliance checker'}
+            </Link>
+            <span>/</span>
+            <span className="text-zinc-300">{isArabic ? 'التقييم' : 'Assessment'}</span>
           </div>
-          <h1 className="text-3xl md:text-5xl font-black text-zinc-900 dark:text-white tracking-tight leading-[1.16] md:leading-[1.14]">
-            {isArabic ? 'مدقق الامتثال الذكي' : 'Regulatory Compliance Engine'}
-          </h1>
-        </div>
-      </div>
 
-      {/* Content Area */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex items-start gap-3">
+            <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-400">
+              <FiShield className="h-5 w-5" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight text-white sm:text-3xl md:text-4xl">
+                {isArabic ? 'مدقق الامتثال' : 'Compliance assessment'}
+              </h1>
+              <p className="mt-1 text-sm text-zinc-500 sm:text-base">
+                {isArabic
+                  ? 'قيّم جاهزية منشأتك التنظيمية خطوة بخطوة.'
+                  : 'Evaluate your regulatory readiness step by step.'}
+              </p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="container relative z-10 mx-auto px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
         {state.currentStep === 'activities' && (
           <ActivitySelectionStep
             activities={state.selectedActivities}
             onUpdate={handleActivityUpdate}
-            onNext={() => setState(prev => ({ ...prev, currentStep: 'questions' }))}
+            onNext={() => setState((prev) => ({ ...prev, currentStep: 'questions' }))}
             locale={locale}
           />
         )}
@@ -541,395 +1064,8 @@ export default function AssessPage({ params: { locale } }: { params: { locale: s
         )}
 
         {state.currentStep === 'report' && result && (
-          <ReportStep
-            result={result}
-            onRestart={handleRestart}
-            locale={locale}
-          />
+          <ReportStep result={result} onRestart={handleRestart} locale={locale} />
         )}
-      </div>
-    </div>
-  );
-}
-
-
-// ============================================
-// 2. The Hub (Dashboard View) - UPDATED
-// ============================================
-
-function AssessmentHub({
-  moduleGroups,
-  answers,
-  onSelectModule,
-  onComplete,
-  locale
-}: {
-  moduleGroups: Map<string, AssessmentQuestion[]>;
-  answers: AssessmentAnswer[];
-  onSelectModule: (moduleName: string) => void;
-  onComplete: () => void;
-  locale: string;
-}) {
-  const isArabic = locale === 'ar';
-
-  // Calculate Global Progress
-  const totalQuestions = Array.from(moduleGroups.values()).flat().length;
-  const answeredCount = answers.length;
-  const globalProgress = Math.round((answeredCount / totalQuestions) * 100);
-  const isComplete = answeredCount === totalQuestions;
-  const hasStarted = answeredCount > 0;
-
-  return (
-    <div className="max-w-6xl mx-auto animate-in fade-in duration-500">
-
-      {/* Dashboard Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-8 border-b border-zinc-200 dark:border-zinc-800">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px]  font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 uppercase">
-              {isArabic ? 'نشط الآن' : 'LIVE_SESSION'}
-            </span>
-          </div>
-          <h2 className="text-3xl font-black text-zinc-900 dark:text-white mb-2">
-            {isArabic ? 'لوحة التدقيق المركزية' : 'Compliance Audit Hub'}
-          </h2>
-          <p className="text-zinc-500 dark:text-zinc-400">
-            {isArabic
-              ? 'يمكنك إصدار تقرير فوري لأي وحدة بعد الانتهاء منها، لا يشترط إكمال كافة الوحدات.'
-              : 'Audit specific modules or the entire system. You can generate a partial report at any time.'}
-          </p>
-        </div>
-
-        {/* Global Progress Widget */}
-        <div className="bg-zinc-100 dark:bg-zinc-900 p-4 rounded-xl min-w-[240px] border border-zinc-200 dark:border-zinc-800">
-          <div className="flex justify-between text-xs  font-bold text-zinc-500 mb-2">
-            <span>{isArabic ? 'حالة التغطية' : 'COVERAGE'}</span>
-            <span>{globalProgress}%</span>
-          </div>
-          <div className="h-2 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-zinc-900 dark:bg-white transition-all duration-1000 ease-out"
-              style={{ width: `${globalProgress}%` }}
-            />
-          </div>
-          <div className="mt-2 text-[10px] text-zinc-400 text-right ">
-            {answeredCount} / {totalQuestions} {isArabic ? 'تم فحصه' : 'CHECKED'}
-          </div>
-        </div>
-      </div>
-
-      {/* Modules Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {Array.from(moduleGroups.entries()).map(([moduleName, questions], idx) => {
-          // Module Stats
-          const moduleQIds = questions.map(q => q.id);
-          const moduleAnswers = answers.filter(a => moduleQIds.includes(a.questionId));
-          const progress = Math.round((moduleAnswers.length / questions.length) * 100);
-          const isModuleComplete = progress === 100;
-          const isModuleStarted = progress > 0;
-
-          return (
-            <button
-              key={moduleName}
-              onClick={() => onSelectModule(moduleName)}
-              className={`
-                group relative flex flex-col overflow-hidden rounded-button border p-6 text-start transition-all duration-300 hover:-translate-y-1
-                ${isModuleComplete
-                  ? 'bg-zinc-50 dark:bg-zinc-900/30 border-zinc-200 dark:border-zinc-800'
-                  : 'bg-white dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 hover:border-primary-500 dark:hover:border-primary-500 shadow-sm hover:shadow-xl hover:shadow-primary-900/5'
-                }
-              `}
-            >
-              {/* Active Indicator Strip */}
-              {isModuleStarted && !isModuleComplete && (
-                <div className="absolute top-0 left-0 w-1 h-full bg-amber-500"></div>
-              )}
-
-              {/* Card Header */}
-              <div className="flex justify-between items-start w-full mb-6 pl-2">
-                <div className={`
-                  w-10 h-10 rounded-lg flex items-center justify-center text-lg transition-colors
-                  ${isModuleComplete
-                    ? 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/20 dark:text-emerald-400'
-                    : isModuleStarted
-                      ? 'bg-amber-100 text-amber-600 dark:bg-amber-900/20 dark:text-amber-400'
-                      : 'bg-zinc-100 text-zinc-500 dark:bg-zinc-800 dark:text-zinc-400'
-                  }
-                `}>
-                  {isModuleComplete ? <FiCheckCircle /> : isModuleStarted ? <FiActivity /> : <FiGrid />}
-                </div>
-                <div className="text-[10px]  font-bold text-zinc-400 bg-zinc-100 dark:bg-zinc-800 px-2 py-1 rounded uppercase">
-                  {questions.length} {isArabic ? 'نقاط' : 'ITEMS'}
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="mb-6 flex-1 pl-2">
-                <h3 className="font-bold text-lg text-zinc-900 dark:text-white mb-1">
-                  {moduleName}
-                </h3>
-                <div className="text-xs text-zinc-500 font-medium">
-                  {isModuleComplete
-                    ? (isArabic ? 'جاهز للتقرير' : 'Ready for Report')
-                    : isModuleStarted
-                      ? (isArabic ? 'قيد العمل...' : 'In Progress...')
-                      : (isArabic ? 'لم يبدأ' : 'Not Started')}
-                </div>
-              </div>
-
-              {/* Progress Bar */}
-              <div className="w-full pl-2">
-                <div className="flex justify-between text-[10px]  font-bold text-zinc-400 mb-1.5">
-                  <span>{isModuleComplete ? 'DONE' : 'STATUS'}</span>
-                  <span>{progress}%</span>
-                </div>
-                <div className="h-1.5 bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
-                  <div
-                    className={`h-full transition-all duration-700 ${isModuleComplete ? 'bg-emerald-500' : 'bg-amber-500'}`}
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
-              </div>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Footer Action - UPDATED LOGIC */}
-      <div className="flex flex-col sm:flex-row justify-between items-center pt-6 border-t border-zinc-200 dark:border-zinc-800 gap-4">
-        <div className="text-sm text-zinc-500 dark:text-zinc-400">
-          {hasStarted
-            ? (isArabic
-              ? isComplete ? 'جميع الوحدات مكتملة.' : 'يمكنك إصدار تقرير جزئي الآن.'
-              : isComplete ? 'All modules completed.' : 'You can generate a partial report now.')
-            : (isArabic ? 'ابدأ بأي وحدة للمتابعة.' : 'Start any module to proceed.')
-          }
-        </div>
-
-        <button
-          onClick={onComplete}
-          disabled={!hasStarted}
-          className={`
-              flex items-center gap-3 rounded-button px-10 py-4 text-sm font-bold uppercase tracking-wider transition-all
-              ${!hasStarted
-              ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed'
-              : isComplete
-                ? 'bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-lg shadow-zinc-900/10 dark:shadow-zinc-900/20'
-                : 'bg-zinc-900 dark:bg-white text-white dark:text-black hover:bg-zinc-700 dark:hover:bg-zinc-200'
-            }
-            `}
-        >
-          {isArabic
-            ? (isComplete ? 'إصدار التقرير النهائي' : 'إصدار مسودة التقرير')
-            : (isComplete ? 'GENERATE_FINAL_REPORT' : 'GENERATE_DRAFT_REPORT')
-          }
-          <FiFileText />
-        </button>
-      </div>
-
-    </div>
-  );
-}
-
-// ============================================
-// 4. Report Step - UPDATED TO SHOW PARTIAL STATUS
-// ============================================
-
-function ReportStep({
-  result,
-  onRestart,
-  locale,
-}: {
-  result: AssessmentResult;
-  onRestart: () => void;
-  locale: string;
-}) {
-  const isArabic = locale === 'ar';
-  const reportRef = useRef<HTMLDivElement>(null);
-  const printRef = useRef<HTMLDivElement>(null);
-  const [isExporting, setIsExporting] = useState(false);
-
-  // Check partial status
-  const isPartial = result.answeredQuestions < result.totalQuestions;
-  const coveragePercent = Math.round((result.answeredQuestions / result.totalQuestions) * 100);
-
-  const scoreColor = result.overallScore >= 80 ? 'text-emerald-600' :
-    result.overallScore >= 50 ? 'text-amber-600' : 'text-red-600';
-
-  const handleExportPDF = async () => {
-    // ... (PDF Export Logic remains same)
-    const element = printRef.current || reportRef.current;
-    if (!element) return;
-    setIsExporting(true);
-    const toastId = toast.loading(isArabic ? 'جاري إنشاء التقرير...' : 'Compiling Audit Report...');
-    try {
-      const canvas = await html2canvas(element, { scale: 2, useCORS: true, logging: false, backgroundColor: '#ffffff', windowHeight: element.scrollHeight + 50 });
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF({ orientation: 'portrait', unit: 'px', format: [canvas.width, canvas.height] });
-      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
-      pdf.save(`CMA-Audit-${isPartial ? 'DRAFT' : 'FINAL'}-${new Date().toISOString().split('T')[0]}.pdf`);
-      toast.success(isArabic ? 'تم التحميل' : 'Report Downloaded', { id: toastId });
-    } catch (error) {
-      console.error('PDF export failed:', error);
-      toast.error('Export Failed', { id: toastId });
-    } finally {
-      setIsExporting(false);
-    }
-  };
-
-  return (
-    <div className="max-w-5xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700">
-
-      {/* Hidden Print Template (Simplified for brevity - ensure to update title based on isPartial) */}
-      <div ref={printRef} className="fixed left-[-9999px] top-0 w-[900px] bg-white text-black p-12 font-sans">
-        <div className="border-b-4 border-black pb-6 mb-8 flex justify-between items-end">
-          <div>
-            <h1 className="text-4xl font-black uppercase tracking-tight mb-2">
-              {isPartial ? (isArabic ? 'مسودة تقرير (جزئي)' : 'DRAFT AUDIT REPORT') : (isArabic ? 'تقرير الامتثال النهائي' : 'FINAL COMPLIANCE AUDIT')}
-            </h1>
-            <p className=" text-sm text-gray-600">
-              STATUS: {isPartial ? 'INCOMPLETE DATA' : 'COMPLETED'} {'//'} COVERAGE: {coveragePercent}%
-            </p>
-          </div>
-          {/* ... Rest of print template ... */}
-        </div>
-        {/* ... */}
-      </div>
-
-      {/* Screen View */}
-      <div ref={reportRef} className="bg-white dark:bg-zinc-950 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden relative">
-
-        {/* Partial Warning Strip */}
-        {isPartial && (
-          <div className="bg-amber-100 dark:bg-amber-900/30 text-amber-800 dark:text-amber-200 px-4 py-2 text-xs font-bold text-center border-b border-amber-200 dark:border-amber-900/50 uppercase tracking-widest flex items-center justify-center gap-2">
-            <FiAlertTriangle />
-            {isArabic
-              ? `تقرير أولي: تم فحص ${coveragePercent}٪ فقط من النطاق المحدد.`
-              : `DRAFT REPORT: ONLY ${coveragePercent}% OF SCOPE AUDITED.`}
-          </div>
-        )}
-
-        {/* Header */}
-        <div className="bg-zinc-50 dark:bg-black/50 px-8 py-8 border-b border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <div className={`w-2 h-2 rounded-full animate-pulse ${isPartial ? 'bg-amber-500' : result.overallScore >= 80 ? 'bg-emerald-500' : 'bg-red-500'}`} />
-              <span className="text-xs  font-bold text-zinc-500 uppercase tracking-widest">
-                {isArabic ? (isPartial ? 'مسودة' : 'تقرير نهائي') : (isPartial ? 'DRAFT_MODE' : 'FINAL_REPORT')}
-              </span>
-            </div>
-            <h2 className="text-3xl font-black text-zinc-900 dark:text-white tracking-tight">
-              {isArabic ? 'نتيجة الامتثال' : 'Compliance Readiness'}
-            </h2>
-          </div>
-
-          <div className="flex items-center gap-4">
-            <div className="text-right hidden sm:block">
-              <div className="text-[10px]  text-zinc-400 uppercase">AUDIT_ID</div>
-              <div className="text-sm  font-bold text-zinc-600 dark:text-zinc-400">#{new Date().getTime().toString().slice(-6)}</div>
-            </div>
-            <button
-              onClick={handleExportPDF}
-              className="flex items-center gap-2 rounded-button bg-zinc-900 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-zinc-700 dark:bg-white dark:text-black"
-            >
-              <FiDownload /> {isArabic ? 'PDF' : 'Export'}
-            </button>
-          </div>
-        </div>
-
-        <div className="p-8 md:p-12">
-
-          {/* Score Hero */}
-          <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
-            <div className="relative w-56 h-56 flex-shrink-0 flex items-center justify-center">
-              {/* Decorative rings */}
-              <div className="absolute inset-0 border-4 border-zinc-100 dark:border-zinc-800 rounded-full opacity-50"></div>
-              {isPartial && <div className="absolute inset-0 border-4 border-amber-500/20 rounded-full border-dashed"></div>}
-
-              <svg className="w-full h-full transform -rotate-90 drop-shadow-2xl">
-                <circle cx="112" cy="112" r="100" fill="none" stroke="currentColor" strokeWidth="16" className="text-zinc-100 dark:text-zinc-900" />
-                <circle
-                  cx="112" cy="112" r="100" fill="none"
-                  stroke={result.overallScore >= 80 ? '#10b981' : result.overallScore >= 50 ? '#f59e0b' : '#ef4444'}
-                  strokeWidth="16" strokeLinecap="round"
-                  strokeDasharray={`${result.overallScore * 6.28} 628`}
-                  className="transition-all duration-1000 ease-out"
-                />
-              </svg>
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className={`text-6xl font-black  tracking-tighter ${scoreColor}`}>
-                  {result.overallScore}%
-                </span>
-                <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest mt-2 bg-white dark:bg-black px-2">
-                  {isArabic ? 'الدرجة الحالية' : 'CURRENT_SCORE'}
-                </span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-4 w-full max-w-lg">
-              {/* Stats Cards */}
-              <div className="p-5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl">
-                <div className="text-[10px]  font-bold text-zinc-400 uppercase mb-1">Items Audited</div>
-                <div className="text-3xl font-black text-zinc-900 dark:text-white">
-                  {result.answeredQuestions}<span className="text-base text-zinc-400 font-medium">/{result.totalQuestions}</span>
-                </div>
-              </div>
-
-              <div className="p-5 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl">
-                <div className="text-[10px]  font-bold text-zinc-400 uppercase mb-1">Gaps Found</div>
-                <div className="text-3xl font-black text-zinc-900 dark:text-white">{result.totalGaps}</div>
-              </div>
-
-              <div className="col-span-2 p-4 bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-xs font-bold text-zinc-500 uppercase">Audit Scope Coverage</span>
-                  <span className="text-xs font-bold text-zinc-900 dark:text-white">{coveragePercent}%</span>
-                </div>
-                <div className="h-2 bg-zinc-200 dark:bg-zinc-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-zinc-800 dark:bg-zinc-200" style={{ width: `${coveragePercent}%` }}></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Tabs / Sections */}
-          <div className="mb-8">
-            <div className="flex justify-between items-center border-b border-zinc-200 dark:border-zinc-800 mb-6 pb-2">
-              <h3 className="flex items-center gap-2 text-sm font-bold text-zinc-900 dark:text-white uppercase tracking-wider">
-                <FiGrid /> {isArabic ? 'تفاصيل الوحدات المفحوصة' : 'Audited Modules Breakdown'}
-              </h3>
-              {isPartial && (
-                <span className="text-[10px]  text-amber-600 bg-amber-50 dark:bg-amber-900/20 px-2 py-1 rounded">
-                  {isArabic ? 'عرض الوحدات التي تم بدأها فقط' : 'Showing active modules only'}
-                </span>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              {/* Filter to show only modules with at least 1 answer if partial, or show all if specifically requested to see empty ones */}
-              {result.moduleScores
-                .filter(m => m.answeredQuestions > 0 || !isPartial) // Show only touched modules in draft mode for cleaner UI
-                .map((module) => (
-                  <ModuleAuditRow key={module.module} module={module} locale={locale} />
-                ))}
-
-              {isPartial && result.moduleScores.some(m => m.answeredQuestions === 0) && (
-                <div className="text-center py-8 border-2 border-dashed border-zinc-200 dark:border-zinc-800 rounded-lg text-zinc-400 text-sm">
-                  {isArabic
-                    ? `يوجد ${result.moduleScores.filter(m => m.answeredQuestions === 0).length} وحدة لم يتم فحصها بعد.`
-                    : `${result.moduleScores.filter(m => m.answeredQuestions === 0).length} modules have not been audited yet.`}
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Footer Action */}
-          <div className="flex justify-center mt-12 gap-4">
-            <button onClick={onRestart} className="flex items-center gap-2 rounded-button px-4 py-2 text-sm font-bold text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:hover:bg-zinc-900 dark:hover:text-zinc-300">
-              <FiRefreshCw /> {isArabic ? 'بدء فحص جديد' : 'Start New Audit'}
-            </button>
-          </div>
-        </div>
       </div>
     </div>
   );
