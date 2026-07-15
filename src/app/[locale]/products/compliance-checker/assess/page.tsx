@@ -1,9 +1,7 @@
 'use client';
 
-import { useState, useMemo, useRef } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 import { toast } from 'sonner';
 import {
   getQuestionsForActivities,
@@ -22,6 +20,7 @@ import type {
   ModuleScore,
 } from '@/services/compliance-checker/assessment-types';
 import { INITIAL_ASSESSMENT_STATE } from '@/services/compliance-checker/assessment-types';
+import { generateAssessmentPdf } from '@/services/compliance-checker/report-pdf';
 import {
   FiCheckCircle,
   FiChevronRight,
@@ -881,8 +880,6 @@ function ReportStep({
   locale: string;
 }) {
   const isArabic = locale === 'ar';
-  const reportRef = useRef<HTMLDivElement>(null);
-  const printRef = useRef<HTMLDivElement>(null);
   const [isExporting, setIsExporting] = useState(false);
 
   const isPartial = result.answeredQuestions < result.totalQuestions;
@@ -896,32 +893,14 @@ function ReportStep({
         : 'text-red-400';
 
   const handleExportPDF = async () => {
-    const element = printRef.current || reportRef.current;
-    if (!element) return;
     setIsExporting(true);
     const toastId = toast.loading(isArabic ? 'جاري إنشاء التقرير...' : 'Compiling audit report...');
     try {
-      const canvas = await html2canvas(element, {
-        scale: 2,
-        useCORS: true,
-        logging: false,
-        backgroundColor: '#ffffff',
-        windowHeight: element.scrollHeight + 50,
-      });
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF({
-        orientation: 'portrait',
-        unit: 'px',
-        format: [canvas.width, canvas.height],
-      });
-      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
-      pdf.save(
-        `CMA-Audit-${isPartial ? 'DRAFT' : 'FINAL'}-${new Date().toISOString().split('T')[0]}.pdf`,
-      );
+      await generateAssessmentPdf(result, locale);
       toast.success(isArabic ? 'تم التحميل' : 'Report downloaded', { id: toastId });
     } catch (error) {
       console.error('PDF export failed:', error);
-      toast.error('Export failed', { id: toastId });
+      toast.error(isArabic ? 'فشل التصدير' : 'Export failed', { id: toastId });
     } finally {
       setIsExporting(false);
     }
@@ -931,58 +910,7 @@ function ReportStep({
     <div className="mx-auto max-w-5xl">
       <StepProgress current={3} locale={locale} />
 
-      <div
-        ref={printRef}
-        className="fixed left-[-9999px] top-0 w-[900px] bg-white p-12 font-sans text-black"
-        aria-hidden
-      >
-        <div className="mb-8 flex items-end justify-between border-b-4 border-black pb-6">
-          <div>
-            <h1 className="mb-2 text-4xl font-black uppercase tracking-tight">
-              {isPartial
-                ? isArabic
-                  ? 'مسودة تقرير (جزئي)'
-                  : 'Draft audit report'
-                : isArabic
-                  ? 'تقرير الامتثال النهائي'
-                  : 'Final compliance audit'}
-            </h1>
-            <p className="text-sm text-gray-600">
-              {`Status: ${isPartial ? 'Incomplete data' : 'Completed'} · Coverage: ${coveragePercent}%`}
-            </p>
-          </div>
-          <div className="text-right">
-            <div className="text-5xl font-black">{result.overallScore}%</div>
-            <div className="text-xs uppercase text-gray-500">Score</div>
-          </div>
-        </div>
-        <div className="space-y-4">
-          {result.moduleScores
-            .filter((m) => m.answeredQuestions > 0 || !isPartial)
-            .map((module) => (
-              <div key={module.module} className="border border-gray-200 p-4">
-                <div className="mb-2 flex justify-between font-bold">
-                  <span>{module.moduleLabel[locale as 'en' | 'ar']}</span>
-                  <span>{module.score}%</span>
-                </div>
-                {module.gaps.map((gap, i) => (
-                  <div key={`${gap.ruleId}-${i}`} className="mb-2 border-l-2 border-red-500 pl-3 text-sm">
-                    <div className="font-bold">
-                      {gap.ruleId} — {gap.severity}
-                    </div>
-                    <p>{gap.description[locale as 'en' | 'ar']}</p>
-                    <p className="text-gray-600">{gap.requiredAction[locale as 'en' | 'ar']}</p>
-                  </div>
-                ))}
-              </div>
-            ))}
-        </div>
-      </div>
-
-      <div
-        ref={reportRef}
-        className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/80 shadow-2xl"
-      >
+      <div className="overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/80 shadow-2xl">
         {isPartial && (
           <div className="flex items-center justify-center gap-2 border-b border-amber-500/20 bg-amber-500/10 px-4 py-2.5 text-center text-xs font-bold uppercase tracking-wider text-amber-300">
             <FiAlertTriangle className="h-3.5 w-3.5 shrink-0" />
