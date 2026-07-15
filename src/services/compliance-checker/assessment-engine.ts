@@ -124,13 +124,42 @@ export function getRelevantModules(activities: SelectedActivities): string[] {
 }
 
 /**
- * Get questions relevant to selected activities
+ * Rule-level applicability. Most CMA controls bind every licensed institution
+ * regardless of activity — those are NOT listed here and are always included.
+ * A rule is listed only when its condition ties it to specific activities, so
+ * scoping the assessment genuinely removes checks that cannot apply.
+ */
+const ACTIVITY_SPECIFIC_RULES: Record<string, (keyof SelectedActivities)[]> = {
+  // Suitability assessment — required before dealing/advising/managing for a client
+  'OPS-004': ['dealing', 'advising', 'managing'],
+  // Margin transactions are a dealing activity
+  'OPS-006': ['dealing'],
+  // Client money/asset rules bind institutions that hold client assets
+  'CLM-001': ['dealing', 'custody', 'managing'],
+  'CLM-002': ['dealing', 'custody', 'managing'],
+  // Client-money audit reporting applies to holders of client money
+  'RPT-003': ['dealing', 'custody', 'managing'],
+};
+
+/**
+ * Conflicts-of-interest controls between business lines only arise when the
+ * institution runs more than one activity.
+ */
+const MULTI_ACTIVITY_RULES = new Set(['DAT-002']);
+
+/**
+ * Get questions relevant to selected activities.
+ * General controls always pass; activity-specific ones require a match.
  */
 export function getQuestionsForActivities(activities: SelectedActivities): AssessmentQuestion[] {
-  const relevantModules = getRelevantModules(activities);
-  const allQuestions = getAllQuestions();
-  
-  return allQuestions.filter(q => relevantModules.includes(q.module));
+  const selectedCount = Object.values(activities).filter(Boolean).length;
+
+  return getAllQuestions().filter(q => {
+    if (MULTI_ACTIVITY_RULES.has(q.ruleId)) return selectedCount > 1;
+    const applicableTo = ACTIVITY_SPECIFIC_RULES[q.ruleId];
+    if (!applicableTo) return true;
+    return applicableTo.some(activity => activities[activity]);
+  });
 }
 
 /**
