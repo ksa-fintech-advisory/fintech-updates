@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { toast } from 'sonner';
 import {
@@ -49,6 +49,16 @@ const ACTIVITY_ICONS: Record<keyof SelectedActivities, typeof FiBriefcase> = {
   managing: FiTrendingUp,
   arranging: FiGitMerge,
   advising: FiMessageCircle,
+};
+
+const STORAGE_KEY = 'cma-compliance-assessment-v1';
+
+const ALL_ACTIVITIES: SelectedActivities = {
+  dealing: true,
+  custody: true,
+  managing: true,
+  arranging: true,
+  advising: true,
 };
 
 function StepProgress({
@@ -121,6 +131,11 @@ function ActivitySelectionStep({
   const hasSelection = Object.values(activities).some(Boolean);
   const selectedCount = Object.values(activities).filter(Boolean).length;
   const allSelected = keys.every((key) => activities[key]);
+  const questionCount = useMemo(
+    () => getQuestionsForActivities(activities).length,
+    [activities],
+  );
+  const estimatedMinutes = Math.max(2, Math.ceil(questionCount / 4));
 
   const selectAll = () => {
     const next = { ...activities };
@@ -155,7 +170,9 @@ function ActivitySelectionStep({
 
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <p className="text-sm text-zinc-500">
-          {isArabic ? 'يمكنك اختيار أكثر من نشاط' : 'You can select more than one activity'}
+          {isArabic
+            ? 'جميع الأنشطة محددة افتراضياً — ألغِ ما لا ينطبق على منشأتك'
+            : 'All activities are pre-selected — deselect any that don’t apply to your firm'}
         </p>
         <div className="flex items-center gap-2">
           <button
@@ -286,6 +303,8 @@ function ActivitySelectionStep({
             </p>
             <p className="text-xs text-zinc-500">
               {isArabic ? 'الخطوة 1 من 3' : 'Step 1 of 3'}
+              {hasSelection &&
+                ` · ${questionCount} ${isArabic ? 'بنداً' : 'checks'} · ~${estimatedMinutes} ${isArabic ? 'دقيقة' : 'min'}`}
             </p>
           </div>
           <button
@@ -313,6 +332,7 @@ function ModuleInspector({
   answers,
   onAnswer,
   onReturn,
+  onAdvance,
   locale,
 }: {
   moduleName: string;
@@ -320,6 +340,7 @@ function ModuleInspector({
   answers: AssessmentAnswer[];
   onAnswer: (answer: AssessmentAnswer) => void;
   onReturn: () => void;
+  onAdvance: () => void;
   locale: string;
 }) {
   const isArabic = locale === 'ar';
@@ -347,6 +368,16 @@ function ModuleInspector({
 
     if (currentIndex < questions.length - 1) {
       setTimeout(() => setCurrentIndex((prev) => prev + 1), 280);
+    } else {
+      setTimeout(() => onAdvance(), 450);
+    }
+  };
+
+  const handleSkip = () => {
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex((prev) => prev + 1);
+    } else {
+      onAdvance();
     }
   };
 
@@ -528,6 +559,16 @@ function ModuleInspector({
                   );
                 })}
               </div>
+
+              <button
+                type="button"
+                onClick={handleSkip}
+                className="mt-6 text-xs font-semibold text-zinc-600 transition-colors hover:text-zinc-300"
+              >
+                {isArabic
+                  ? 'تخطي — لا ينطبق على منشأتي'
+                  : 'Skip — not applicable to my firm'}
+              </button>
             </div>
           </div>
 
@@ -550,7 +591,7 @@ function ModuleInspector({
               onClick={() =>
                 currentIndex < questions.length - 1
                   ? setCurrentIndex((prev) => prev + 1)
-                  : onReturn()
+                  : onAdvance()
               }
               disabled={currentIndex < questions.length - 1 && !currentAnswer}
               className={`rounded-full px-5 py-2 text-sm font-bold transition-colors ${
@@ -1040,6 +1081,65 @@ function ReportStep({
             </div>
           </div>
 
+          {result.recommendations.length > 0 && (
+            <div className="mb-10">
+              <div className="mb-5 border-b border-zinc-800 pb-3">
+                <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white">
+                  <FiTrendingUp className="h-4 w-4" />
+                  {isArabic ? 'الإجراءات ذات الأولوية' : 'Priority actions'}
+                </h3>
+              </div>
+              <div className="space-y-3">
+                {result.recommendations.slice(0, 5).map((rec, i) => (
+                  <div
+                    key={`${rec.module}-${rec.priority}-${i}`}
+                    className="flex gap-4 rounded-xl border border-zinc-800 bg-zinc-950/50 p-4"
+                  >
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-zinc-800 text-xs font-bold text-white">
+                      {i + 1}
+                    </span>
+                    <div className="min-w-0 flex-1">
+                      <div className="mb-1.5 flex flex-wrap items-center gap-2">
+                        <span
+                          className={`rounded-md border px-2 py-0.5 text-[10px] font-bold uppercase ${
+                            rec.priority === 'high'
+                              ? 'border-red-500/30 bg-red-500/10 text-red-400'
+                              : rec.priority === 'medium'
+                                ? 'border-amber-500/30 bg-amber-500/10 text-amber-400'
+                                : 'border-zinc-700 bg-zinc-800 text-zinc-400'
+                          }`}
+                        >
+                          {rec.priority === 'high'
+                            ? isArabic
+                              ? 'أولوية عالية'
+                              : 'High priority'
+                            : rec.priority === 'medium'
+                              ? isArabic
+                                ? 'أولوية متوسطة'
+                                : 'Medium priority'
+                              : isArabic
+                                ? 'أولوية منخفضة'
+                                : 'Low priority'}
+                        </span>
+                        <span className="text-[10px] font-medium text-zinc-500">
+                          {isArabic
+                            ? `الجهد المقدر: ${rec.estimatedEffort === 'high' ? 'مرتفع' : rec.estimatedEffort === 'medium' ? 'متوسط' : 'منخفض'}`
+                            : `Estimated effort: ${rec.estimatedEffort}`}
+                        </span>
+                      </div>
+                      <p className="text-sm font-medium leading-relaxed text-zinc-300">
+                        {rec.action[locale as 'en' | 'ar']}
+                      </p>
+                      <p className="mt-1.5 text-xs text-zinc-600">
+                        {rec.relatedRuleIds.join(isArabic ? '، ' : ', ')}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="mb-8">
             <div className="mb-5 flex flex-wrap items-center justify-between gap-2 border-b border-zinc-800 pb-3">
               <h3 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white">
@@ -1088,7 +1188,10 @@ function ReportStep({
 
 export default function AssessPage({ params: { locale } }: { params: { locale: string } }) {
   const isArabic = locale === 'ar';
-  const [state, setState] = useState<AssessmentState>(INITIAL_ASSESSMENT_STATE);
+  const [state, setState] = useState<AssessmentState>({
+    ...INITIAL_ASSESSMENT_STATE,
+    selectedActivities: ALL_ACTIVITIES,
+  });
   const [activeModule, setActiveModule] = useState<string | null>(null);
   const [result, setResult] = useState<AssessmentResult | null>(null);
 
@@ -1098,6 +1201,59 @@ export default function AssessPage({ params: { locale } }: { params: { locale: s
   );
 
   const moduleGroups = useMemo(() => groupQuestionsByModule(questions), [questions]);
+
+  // Latest state for callbacks that fire after a delayed setState (auto-advance).
+  const stateRef = useRef(state);
+  useEffect(() => {
+    stateRef.current = state;
+  }, [state]);
+
+  // Restore a previous session (answers survive refresh / accidental close).
+  const hydrated = useRef(false);
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const saved = JSON.parse(raw) as {
+          state?: AssessmentState;
+          activeModule?: string | null;
+        };
+        if (saved.state?.answers) {
+          setState({
+            ...INITIAL_ASSESSMENT_STATE,
+            ...saved.state,
+            // The computed result is not persisted; land on the audit instead.
+            currentStep:
+              saved.state.currentStep === 'report' ? 'questions' : saved.state.currentStep,
+          });
+          setActiveModule(saved.activeModule ?? null);
+          if (saved.state.answers.length > 0) {
+            toast.info(
+              isArabic ? 'تم استئناف جلستك السابقة' : 'Resumed your previous session',
+              {
+                description: isArabic
+                  ? `${saved.state.answers.length} إجابة محفوظة`
+                  : `${saved.state.answers.length} saved answers`,
+              },
+            );
+          }
+        }
+      }
+    } catch {
+      // Corrupt storage — start fresh.
+    }
+    hydrated.current = true;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    if (!hydrated.current) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ state, activeModule }));
+    } catch {
+      // Storage unavailable (private mode) — the session just won't persist.
+    }
+  }, [state, activeModule]);
 
   const handleActivityUpdate = (activities: SelectedActivities) => {
     setState((prev) => ({ ...prev, selectedActivities: activities }));
@@ -1115,20 +1271,71 @@ export default function AssessPage({ params: { locale } }: { params: { locale: s
   };
 
   const handleComplete = () => {
+    const current = stateRef.current;
     const assessmentResult = calculateAssessmentResult(
-      state.answers,
-      state.selectedActivities,
+      current.answers,
+      current.selectedActivities,
     );
     setResult(assessmentResult);
     setState((prev) => ({ ...prev, currentStep: 'report' }));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleStart = () => {
+    const answers = stateRef.current.answers;
+    const names = Array.from(moduleGroups.keys());
+    const firstIncomplete = names.find((name) =>
+      (moduleGroups.get(name) || []).some((q) => !answers.some((a) => a.questionId === q.id)),
+    );
+    setState((prev) => ({ ...prev, currentStep: 'questions' }));
+    setActiveModule(firstIncomplete ?? names[0] ?? null);
+  };
+
+  // Continuous flow: when a module is done (or skipped through), move straight
+  // to the next module with open questions; when none remain, build the report.
+  const handleModuleAdvance = (completedModule: string) => {
+    const answers = stateRef.current.answers;
+    const names = Array.from(moduleGroups.keys());
+    const startIdx = names.indexOf(completedModule);
+    const isIncomplete = (name: string) =>
+      (moduleGroups.get(name) || []).some((q) => !answers.some((a) => a.questionId === q.id));
+
+    const ordered = [
+      ...names.slice(startIdx + 1),
+      ...names.slice(0, startIdx),
+    ];
+    const next = ordered.find(isIncomplete);
+
+    if (next) {
+      setActiveModule(next);
+      toast.success(
+        isArabic ? 'اكتملت الوحدة' : 'Module complete',
+        {
+          description: isArabic
+            ? `التالي: ${getModuleLabel(next, locale)}`
+            : `Next up: ${getModuleLabel(next, locale)}`,
+        },
+      );
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      handleComplete();
+    }
+  };
+
   const handleRestart = () => {
-    setState(INITIAL_ASSESSMENT_STATE);
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // ignore
+    }
+    setState({ ...INITIAL_ASSESSMENT_STATE, selectedActivities: ALL_ACTIVITIES });
     setResult(null);
     setActiveModule(null);
   };
+
+  // A restored module may no longer exist if the scope changed.
+  const currentModule =
+    activeModule && moduleGroups.has(activeModule) ? activeModule : null;
 
   return (
     <div className="relative min-h-screen bg-zinc-950 pb-20 text-zinc-100">
@@ -1178,12 +1385,12 @@ export default function AssessPage({ params: { locale } }: { params: { locale: s
           <ActivitySelectionStep
             activities={state.selectedActivities}
             onUpdate={handleActivityUpdate}
-            onNext={() => setState((prev) => ({ ...prev, currentStep: 'questions' }))}
+            onNext={handleStart}
             locale={locale}
           />
         )}
 
-        {state.currentStep === 'questions' && !activeModule && (
+        {state.currentStep === 'questions' && !currentModule && (
           <AssessmentHub
             moduleGroups={moduleGroups}
             answers={state.answers}
@@ -1193,13 +1400,15 @@ export default function AssessPage({ params: { locale } }: { params: { locale: s
           />
         )}
 
-        {state.currentStep === 'questions' && activeModule && (
+        {state.currentStep === 'questions' && currentModule && (
           <ModuleInspector
-            moduleName={activeModule}
-            questions={moduleGroups.get(activeModule) || []}
+            key={currentModule}
+            moduleName={currentModule}
+            questions={moduleGroups.get(currentModule) || []}
             answers={state.answers}
             onAnswer={handleAnswer}
             onReturn={() => setActiveModule(null)}
+            onAdvance={() => handleModuleAdvance(currentModule)}
             locale={locale}
           />
         )}
