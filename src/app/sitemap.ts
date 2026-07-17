@@ -55,6 +55,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const products: Array<{ path: string; priority: number }> = [
     { path: '/products/compliance-checker', priority: 0.65 },
+    { path: '/products/compliance-checker/rules', priority: 0.6 },
+    { path: '/products/compliance-checker/assess', priority: 0.6 },
     { path: '/products/fee-calculator', priority: 0.6 },
     { path: '/products/market-analysis', priority: 0.6 },
   ];
